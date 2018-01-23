@@ -820,19 +820,19 @@
                 <!-- /LINE SEPARATOR -->
                 <form id="register-form3" action="../scripts/registration.php" method="post">
                     <label for="email_address4" class="rl-label required">البريد الإلكتروني :</label>
-                    <input type="email" id="email_address4" name="email_address4" class="invalid" placeholder="Enter your email address here...">
+                    <input type="email" id="email_address4" name="email_address4" class="invalid" placeholder="انشأ ايميل جديد...">
                     <label for="firstname" class="rl-label">الاسم:</label>
-                    <input type="text" id="firstname" name="firstname" placeholder="Enter your firstname here...">
+                    <input type="text" id="firstname" name="firstname" placeholder="الرجاء إدخال الاسم..">
                     <label for="lastname" class="rl-label">الكنيه:</label>
-                    <input type="text" id="lastname" name="lastname" placeholder="Enter your lastname here...">
+                    <input type="text" id="lastname" name="lastname" placeholder="الرجاء إدخال الكنيه...">
                     <label for="username_reg" class="rl-label">اسم المستخدم:</label>
-                    <input type="text" id="username_reg" name="username" placeholder="Enter your username here...">
-                    <label for="password_reg" class="rl-label required">كلمة مرور جديدة:</label>
-                    <input type="password" id="password_reg" name="password" placeholder="Enter your password here...">
+                    <input type="text" id="username_reg" name="username" placeholder="انشأ مستخدم جديد...">
+                    <label for="password_reg" class="rl-label required">كلمة المرور :</label>
+                    <input type="password" id="password_reg" name="password" placeholder="انشأ كلمة مرور جديدة...">
                     <label for="repeat_password" class="rl-label required">إعادة كلمة المرور:</label>
-                    <input type="password" id="repeat_password" name="repeat_password" placeholder="Repeat your password here...">
+                    <input type="password" id="repeat_password" name="repeat_password" placeholder="الرجاء إدخال كلمة المرور مره اخرى...">
                     <label for="tel_number" class="rl-label">رقم الهاتف:</label>
-                    <input type="number" id="tel_number" name="tel_number" placeholder="Enter your telephone Number here...">
+                    <input type="number" id="tel_number" name="tel_number" placeholder="الرجاء إدخال رقم الهاتف...">
                     <p class="highlighted" style="display: none;"><span>Sorry!</span>هذا الاسم مستخدم بالفعل!</p>
                     <button class="button mid dark" name="submit">إنشاء <span class="primary"> حساب!</span></button>
                 </form>
