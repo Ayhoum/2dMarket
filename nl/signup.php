@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -796,7 +797,7 @@
 <!-- SECTION HEADLINE -->
 <div class="section-headline-wrap">
     <div class="section-headline">
-        <h2>Login and Register Boxes</h2>
+        <h2>Nieuwe account maken!</h2>
         <p>Home<span class="separator">/</span><span class="current-section">Boxes</span></p>
     </div>
 </div>
@@ -809,38 +810,31 @@
         <!-- FORM REGISTRATION-->
         <div class="form-popup">
             <!-- CLOSE BTN -->
-            <div class="close-btn">
-                <!-- SVG PLUS -->
-                <svg class="svg-plus">
-                    <use xlink:href="#svg-plus"></use>
-                </svg>
-                <!-- /SVG PLUS -->
-            </div>
-            <!-- /CLOSE BTN -->
+
 
             <!-- FORM POPUP CONTENT -->
             <div class="form-popup-content">
-                <h4 class="popup-title">Register Account</h4>
+                <h4 class="popup-title">Aanmelden!</h4>
                 <!-- LINE SEPARATOR -->
                 <hr class="line-separator">
                 <!-- /LINE SEPARATOR -->
-                <form id="register-form3"  method="post">
-                    <label for="email_address4" class="rl-label required">Email Address</label>
-                    <input type="email" id="email_address4" name="email_address4" class="invalid" placeholder="Enter your email address here...">
-                    <label for="firstname" class="rl-label">Firstname</label>
-                    <input type="text" id="firstname" name="firstname" placeholder="Enter your firstname here...">
-                    <label for="lastname" class="rl-label">Lastname</label>
-                    <input type="text" id="lastname" name="lastname" placeholder="Enter your lastname here...">
-                    <label for="username_reg" class="rl-label">Username</label>
-                    <input type="text" id="username_reg" name="username" placeholder="Enter your username here...">
-                    <label for="password_reg" class="rl-label required">Password</label>
-                    <input type="password" id="password_reg" name="password" placeholder="Enter your password here...">
-                    <label for="repeat_password" class="rl-label required">Repeat Password</label>
-                    <input type="password" id="repeat_password" name="repeat_password" placeholder="Repeat your password here...">
-                    <label for="tel_number" class="rl-label">Telephone</label>
-                    <input type="number" id="tel_number" name="tel_number" placeholder="Enter your telephone Number here...">
-                    <p class="highlighted" style="display: none;"><span>Sorry!</span> That email is already registered</p>
-                    <button class="button mid dark" name="submit">Register <span class="primary">Now!</span></button>
+                <form id="register-form3" action="../scripts/registration.php" method="post">
+                    <label for="email_address4" class="rl-label required">Email</label>
+                    <input type="email" id="email_address4" name="email" class="invalid" placeholder="Vul uw email in...">
+                    <label for="firstname" class="rl-label">Voornaam</label>
+                    <input type="text" id="firstname" name="first_name" placeholder="Vul uw Voornaam in...">
+                    <label for="lastname" class="rl-label">Achternaam</label>
+                    <input type="text" id="lastname" name="last_name" placeholder="Vul uw Achternaam in...">
+                    <label for="username_reg" class="rl-label">Gebruiksnam</label>
+                    <input type="text" id="username_reg" name="username" placeholder="Vul uw Gebruiksnaam in...">
+                    <label for="password_reg" class="rl-label required">Wachtwoord</label>
+                    <input type="password" id="password_reg" name="password" placeholder="Vul uw Wachtwoord in...">
+                    <label for="repeat_password" class="rl-label required">Wachtwoord bevestigen</label>
+                    <input type="password" id="repeat_password" name="repeat_password" placeholder="Vul uw Wachtwoord Nog een keer in...">
+                    <label for="tel_number" class="rl-label">telefoon nummer</label>
+                    <input type="number" id="tel_number" name="tel_number" placeholder="Vul Telefoon nummer in...">
+                    <p class="highlighted" style="display: none;"><span>Sorry!</span> Dit email bestaat al!</p>
+                    <button class="button mid dark" name="submit">Door<span class="primary">Gaan!</span></button>
                 </form>
             </div>
             <!-- /FORM POPUP CONTENT -->

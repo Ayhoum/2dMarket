@@ -797,7 +797,7 @@
 <!-- SECTION HEADLINE -->
 <div class="section-headline-wrap">
     <div class="section-headline">
-        <h2>Login and Register Boxes</h2>
+        <h2>Registeration!</h2>
         <p>Home<span class="separator">/</span><span class="current-section">Boxes</span></p>
     </div>
 </div>
