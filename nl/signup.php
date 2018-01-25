@@ -814,7 +814,7 @@
 
             <!-- FORM POPUP CONTENT -->
             <div class="form-popup-content">
-                <h4 class="popup-title">Aanmelden!</h4>
+                <h4 class="popup-title">Registreren!</h4>
                 <!-- LINE SEPARATOR -->
                 <hr class="line-separator">
                 <!-- /LINE SEPARATOR -->

@@ -1,3 +1,9 @@
+<?php
+ob_start();
+session_start();
+require_once "../scripts/db_connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +14,58 @@
     <!-- favicon -->
     <link rel="icon" href="favicon.ico">
     <title>Emerald Dragon | Login and Register</title>
+
+<?php
+
+//function for alert message
+function phpAlert($msg) {
+    echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+}
+
+
+//check if its logged in
+if (isset($_POST['Log_in'])) {
+
+    $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+    $password = mysqli_real_escape_string($mysqli, $_POST['password']);
+
+
+//check for empty fields
+            if (!$_POST['email']) {
+                $errEnterUserName = 'Please enter username';
+                echo $errEnterUserName.'<br>';
+            }
+            if (!$_POST['password']) {
+                $errEnterPass = 'Please enter password';
+                echo $errEnterPass;
+
+
+    }else {
+
+
+
+//if its nothing encrypt the pass and go ON
+        $password = md5($password);
+        $query = "SELECT * FROM USER WHERE email='$email' AND password='$password'";
+        $results = mysqli_query($mysqli, $query);
+
+        if (mysqli_num_rows($results) == 1) {
+            while ($row = mysqli_fetch_assoc($results)) {
+                $username = $row['username'];
+                $_SESSION['username'] = $username;
+              header('location: ../index.php');
+
+
+            }
+        } else {
+            phpAlert(   "Wrong username/password combination"  );
+
+        }
+    }
+}
+
+
+?>
 </head>
 <body>
 
@@ -796,7 +854,7 @@
 <!-- SECTION HEADLINE -->
 <div class="section-headline-wrap">
     <div class="section-headline">
-        <h2>Restore your Password</h2>
+        <h2>Aanmelden!</h2>
         <p>Home<span class="separator">/</span><span class="current-section">Boxes</span></p>
     </div>
 </div>
@@ -805,34 +863,39 @@
 <!-- SECTION -->
 <div class="section-wrap">
     <div class="section demo">
-
-        <!-- RESTORE-->
+        <!-- FORMLOGIN -->
         <div class="form-popup">
 
-            <!-- RESTORE-->
+            <!-- FORM POPUP CONTENT -->
             <div class="form-popup-content">
-                <h4 class="popup-title">Forgotten Password!!</h4>
+                <h4 class="popup-title">Inloggen:</h4>
                 <!-- LINE SEPARATOR -->
-                <hr class="line-separator short">
+                <hr class="line-separator">
                 <!-- /LINE SEPARATOR -->
-                <p class="spaced">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                <form id="restore-pwd-form">
-                    <label for="email_address" class="rl-label">Email Address</label>
-                    <input type="email" id="email_address" name="email_address" placeholder="Enter your email address...">
+                <form id="login-form" action="#" method="post">
+                    <label for="email" class="rl-label">Email</label>
+                    <input type="text" id="username" name="email" placeholder="Vul uw email in...">
+                    <label for="password" class="rl-label">Wachtwoord</label>
+                    <input type="password" id="password" name="password" placeholder="Vul uw wachtwoord in...">
                     <!-- CHECKBOX -->
-                    <input type="checkbox" id="generate_pwd" name="generate_pwd" checked>
-                    <label for="generate_pwd" class="label-check">
+                    <input type="checkbox" id="remember" name="remember" checked>
+                    <label for="remember" class="label-check">
                         <span class="checkbox primary primary"><span></span></span>
-                        Generate new password
+                        Onthoud mijn gegevens.
                     </label>
                     <!-- /CHECKBOX -->
-                    <button class="button mid dark no-space" name="restore">Restore your <span class="primary">Password</span></button>
+                    <p>Wachtwoord vergeten? <a href="#" class="primary">Click dan hier!</a></p>
+                    <button class="button mid dark" name="Log_in">In <span class="primary">Loggen!</span></button>
                 </form>
+                <!-- LINE SEPARATOR -->
+                <hr class="line-separator double">
+                <!-- /LINE SEPARATOR -->
+                <a href="#" class="button mid fb half">Inloggen met  Facebook </a>
+                <a href="#" class="button mid twt half">Inloggen  met  Twitter </a>
             </div>
             <!-- /FORM POPUP CONTENT -->
         </div>
         <!-- /FORM POPUP -->
-
 
         <div class="clearfix"></div>
     </div>

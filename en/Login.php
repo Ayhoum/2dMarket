@@ -1,3 +1,9 @@
+<?php
+ob_start();
+session_start();
+require_once "../scripts/db_connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +14,58 @@
     <!-- favicon -->
     <link rel="icon" href="favicon.ico">
     <title>Emerald Dragon | Login and Register</title>
+
+<?php
+
+//function for alert message
+function phpAlert($msg) {
+    echo '<script type="text/javascript">alert("' . $msg . '")</script>';
+}
+
+
+//check if its logged in
+if (isset($_POST['Log_in'])) {
+
+    $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+    $password = mysqli_real_escape_string($mysqli, $_POST['password']);
+
+
+//check for empty fields
+            if (!$_POST['email']) {
+                $errEnterUserName = 'Please enter username';
+                echo $errEnterUserName.'<br>';
+            }
+            if (!$_POST['password']) {
+                $errEnterPass = 'Please enter password';
+                echo $errEnterPass;
+
+
+    }else {
+
+
+
+//if its nothing encrypt the pass and go ON
+        $password = md5($password);
+        $query = "SELECT * FROM USER WHERE email='$email' AND password='$password'";
+        $results = mysqli_query($mysqli, $query);
+
+        if (mysqli_num_rows($results) == 1) {
+            while ($row = mysqli_fetch_assoc($results)) {
+                $username = $row['username'];
+                $_SESSION['username'] = $username;
+              header('location: ../index.php');
+
+
+            }
+        } else {
+            phpAlert(   "Wrong username/password combination"  );
+
+        }
+    }
+}
+
+
+?>
 </head>
 <body>
 
@@ -807,15 +865,6 @@
     <div class="section demo">
         <!-- FORMLOGIN -->
         <div class="form-popup">
-            <!-- CLOSE BTN -->
-            <div class="close-btn">
-                <!-- SVG PLUS -->
-                <svg class="svg-plus">
-                    <use xlink:href="#svg-plus"></use>
-                </svg>
-                <!-- /SVG PLUS -->
-            </div>
-            <!-- /CLOSE BTN -->
 
             <!-- FORM POPUP CONTENT -->
             <div class="form-popup-content">
@@ -823,9 +872,9 @@
                 <!-- LINE SEPARATOR -->
                 <hr class="line-separator">
                 <!-- /LINE SEPARATOR -->
-                <form id="login-form">
-                    <label for="username" class="rl-label">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter your username here...">
+                <form id="login-form" action="#" method="post">
+                    <label for="email" class="rl-label">Email</label>
+                    <input type="text" id="username" name="email" placeholder="Enter your username here...">
                     <label for="password" class="rl-label">Password</label>
                     <input type="password" id="password" name="password" placeholder="Enter your password here...">
                     <!-- CHECKBOX -->
@@ -836,7 +885,7 @@
                     </label>
                     <!-- /CHECKBOX -->
                     <p>Forgot your password? <a href="#" class="primary">Click here!</a></p>
-                    <button class="button mid dark">Login <span class="primary">Now!</span></button>
+                    <button class="button mid dark" name="Log_in">Login <span class="primary">Now!</span></button>
                 </form>
                 <!-- LINE SEPARATOR -->
                 <hr class="line-separator double">
