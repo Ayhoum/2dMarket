@@ -51,9 +51,15 @@ if (isset($_POST['Log_in'])) {
 
         if (mysqli_num_rows($results) == 1) {
             while ($row = mysqli_fetch_assoc($results)) {
+                $id = $row['id'];
+                $email = $row['email'];
                 $username = $row['username'];
                 $_SESSION['username'] = $username;
-              header('location: ../index.php');
+
+                $_SESSION['email'] = $email;
+                $_SESSION['id'] = $id;
+
+                header('location: user_dashboard.php');
 
 
             }
