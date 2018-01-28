@@ -821,9 +821,9 @@
                 <form id="register-form3" action="../scripts/registration.php" method="post">
                     <label for="email_address4" class="rl-label required">Email Address</label>
                     <input type="email" id="email_address4" name="email" class="invalid" placeholder="Enter your email address here...">
-                    <label for="firstname" class="rl-label">Firstname</label>
+                    <label for="firstname" class="rl-label">First name</label>
                     <input type="text" id="firstname" name="first_name" placeholder="Enter your firstname here...">
-                    <label for="lastname" class="rl-label">Lastname</label>
+                    <label for="lastname" class="rl-label">Last name</label>
                     <input type="text" id="lastname" name="last_name" placeholder="Enter your lastname here...">
                     <label for="username_reg" class="rl-label">Username</label>
                     <input type="text" id="username_reg" name="username" placeholder="Enter your username here...">

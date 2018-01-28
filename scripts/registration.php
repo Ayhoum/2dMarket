@@ -29,17 +29,19 @@ if (isset($_POST['submit'])) {
         array_push($errors, "The two passwords do not match");
     }
     $match= "SELECT * From USER WHERE email = '{$email}' ";
-    $getAgent = mysqli_query($mysqli, $query);
+    $getAgent = mysqli_query($mysqli, $match);
     if (mysqli_num_rows($getAgent) == 1)  { array_push($errors, "This email is already exists"); }
 
 
 
     // register user if there are0 no errors in the form
     if (count($errors) == 0) {
+
+        $register_date = date("Y-m-d h:i:s");
         $password = md5($password);//encrypt the password before saving in the database
-        $query = "INSERT INTO USER (first_name,last_name,username,email,password,Phone_number) 
-  		
-  			  VALUES('$firstname', '$lastname', '$username','$email','$password','$tel_number')";
+        $query = "INSERT INTO USER (first_name,last_name,username,email,password,Phone_number,register_date)
+  			      VALUES('{$firstname}', '{$lastname}', '{$username}','{$email}','{$password}','{$tel_number}','{$register_date}')";
+
         mysqli_query($mysqli, $query);
         $_SESSION['username'] = $username;
         $_SESSION['success'] = "You are now logged in";

@@ -57,7 +57,7 @@ if (isset($_POST['Log_in'])) {
                         $last_name              = $row['last_name'];
                         $username               = $row['username'];
                         $profile_picture        = $row['profile_picture'];
-                        $registeration_date     = $row['register_date'];
+                        $registration_date     = $row['register_date'];
 
                     }
                     $_SESSION['id']                 = $id;
@@ -65,6 +65,7 @@ if (isset($_POST['Log_in'])) {
                     $_SESSION['username']           = $username;
                     $_SESSION['email']              = $email;
                     $_SESSION['profile_picture']    = $profile_picture;
+                    $_SESSION['registration_date'] = $registration_date;
 
 
                     header('location: user_dashboard.php');
