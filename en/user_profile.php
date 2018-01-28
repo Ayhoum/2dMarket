@@ -1,27 +1,17 @@
 <?php
 session_start();
 include '../scripts/db_connection.php';
-
 ?>
 <?php
-$id = $_SESSION['id'];
-$select_query = "SELECT * FROM `USER` WHERE `id` = '{$id}' ";
-
-$select_result = mysqli_query($mysqli, $select_query);
-if (mysqli_num_rows($select_result) > 0 ){
-    while ($row = mysqli_fetch_assoc($select_result)){
-        $first_name = $row['first_name'];
-        $last_name = $row['last_name'];
-        $profile_picture = $row['profile_picture'];
-        $registeration_date = $row['register_date'];
-    }
-    $full_name = $first_name . " ". $last_name;
+$id                 = $_SESSION['id'];
+$full_name          = $_SESSION['full_name'];
+$profile_picture    = $_SESSION['profile_picture'];
 
     //Set a profile picture in case that the user didn't has one!
     if (empty($profile_picture)){
         $profile_picture =  "../images/avatars/avatar_01.jpg";
     }
-}
+
 
 
 //get the user's data from URL:
@@ -29,7 +19,6 @@ if (mysqli_num_rows($select_result) > 0 ){
     $user_id = '7';
 
 $select_query_user="SELECT * FROM `USER` WHERE `id` = '{$user_id}' ";
-
 $select_result_user = mysqli_query($mysqli, $select_query_user);
 if (mysqli_num_rows($select_result_user) > 0 ){
     while ($row = mysqli_fetch_assoc($select_result_user)){

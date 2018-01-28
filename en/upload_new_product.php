@@ -3,20 +3,14 @@ session_start();
 include "../scripts/db_connection.php";
 ?>
 <?php
-$email = "sam.obied@gmail.com";
-$select_query = "SELECT * FROM `USER` WHERE `email` = '{$email}' ";
-$select_result = mysqli_query($mysqli, $select_query);
-if (mysqli_num_rows($select_result) > 0 ){
-    while ($row = mysqli_fetch_assoc($select_result)){
-        $id = $row ['id'];
-        $first_name = $row['first_name'];
-        $last_name = $row['last_name'];
-        $profile_picture = $row['profile_picture'];
-        $registeration_date = $row['register_date'];
-    }
-    $full_name = $first_name . " ". $last_name;
-}
+$id                 = $_SESSION['id'];
+$full_name          = $_SESSION['full_name'];
+$profile_picture    = $_SESSION['profile_picture'];
 
+//Set a profile picture in case that the user didn't has one!
+if (empty($profile_picture)){
+    $profile_picture =  "../images/avatars/avatar_01.jpg";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +21,7 @@ if (mysqli_num_rows($select_result) > 0 ){
 	<link rel="stylesheet" href="../css/style.css">
 	<!-- favicon -->
 	<link rel="icon" href="favicon.ico">
-	<title>2D Market | Upload a new product</title>
+	<title>2D Market | Upload a new Advertisement</title>
 </head>
 <body>
 

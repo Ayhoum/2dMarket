@@ -49,15 +49,27 @@ if (isset($_POST['Log_in'])) {
         $query = "SELECT * FROM USER WHERE email='$email' AND password='$password'";
         $results = mysqli_query($mysqli, $query);
 
-        if (mysqli_num_rows($results) == 1) {
-            while ($row = mysqli_fetch_assoc($results)) {
-                $username = $row['username'];
-                $_SESSION['username'] = $username;
-              header('location: ../index.php');
+                if (mysqli_num_rows($results) == 1) {
+                    while ($row = mysqli_fetch_assoc($results)) {
+                        $id                     = $row['id'];
+                        $email                  = $row['email'];
+                        $first_name             = $row['first_name'];
+                        $last_name              = $row['last_name'];
+                        $username               = $row['username'];
+                        $profile_picture        = $row['profile_picture'];
+                        $registeration_date     = $row['register_date'];
+
+                    }
+                    $_SESSION['id']                 = $id;
+                    $_SESSION['full_name']          = $first_name . ' '. $last_name;
+                    $_SESSION['username']           = $username;
+                    $_SESSION['email']              = $email;
+                    $_SESSION['profile_picture']    = $profile_picture;
 
 
-            }
-        } else {
+                    header('location: user_dashboard.php');
+
+                } else {
             phpAlert(   "كلمه المرور / اسم المستخدم غير صحيح"  );
 
         }

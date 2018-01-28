@@ -6,24 +6,13 @@ if(!isset($_SESSION['id'])){
 }
 ?>
 <?php
-$id = $_SESSION['id'];
-$select_query = "SELECT * FROM `USER` WHERE `id` = '{$id}' ";
-$select_result = mysqli_query($mysqli, $select_query);
-if (mysqli_num_rows($select_result) > 0 ){
-    while ($row = mysqli_fetch_assoc($select_result)){
-        $first_name         = $row['first_name'];
-        $last_name          = $row['last_name'];
-        $profile_picture    = $row['profile_picture'];
-        $emmail             = $row['email'];
-        $registeration_date = $row['register_date'];
-    }
+$id                 = $_SESSION['id'];
+$full_name          = $_SESSION['full_name'];
+$profile_picture    = $_SESSION['profile_picture'];
 
-    $full_name = $first_name . " ". $last_name;
-
-    //Set a profile picture in case that the user didn't has one!
-    if (empty($profile_picture)){
-        $profile_picture =  "../images/avatars/avatar_01.jpg";
-    }
+//Set a profile picture in case that the user didn't has one!
+if (empty($profile_picture)){
+    $profile_picture =  "../images/avatars/avatar_01.jpg";
 }
 
 ?>
