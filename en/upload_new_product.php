@@ -1,6 +1,9 @@
 <?php
 session_start();
 include "../scripts/db_connection.php";
+if(!isset($_SESSION['id'])){
+    header('Location: ../index.php');
+}
 ?>
 <?php
 $id                 = $_SESSION['id'];
