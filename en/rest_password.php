@@ -1,79 +1,14 @@
 <?php
-ob_start();
+/**
+ * Created by PhpStorm.
+ * User: sulim
+ * Date: 27-1-2018
+ * Time: 23:46
+ */
 session_start();
+ob_start();
 require_once "../scripts/db_connection.php";
-require_once '../phpmailer/class.phpmailer.php';
 
-
-
-if(isset($_POST['restore'])) {
-
-    $email = mysqli_real_escape_string($mysqli, $_POST['email_address']);
-    $sql = "SELECT * FROM USER WHERE email='$email' ";
-    $getAgent = mysqli_query($mysqli, $sql);
-
-
-    //checking for available email
-    if (mysqli_num_rows($getAgent) == 1) {
-        $row = mysqli_fetch_array($getAgent);
-
-        $id = $row['id'];
-        $note = $row['Note'];
-
-
-        ///check if the user already has an activation code(NOTE)
-        if ($note != "") {
-            echo 'pleas check your email we have already sent you an email with Rest-code';
-            exit();
-
-
-        }
-        //if not proceed
-        else {
-
-
-            $random_note = time() . rand(5000, 10000);
-            $random_note = str_shuffle($random_note);
-            $update_note = "UPDATE USER SET Note='$random_note' WHERE id='$id' AND email = '$email' ";
-            if (mysqli_query($mysqli, $update_note)) {
-
-
-
-                $mail = new PHPMailer(); // defaults to using php "mail()"
-
-// TCP port to connect to
-
-
-
-                $mail->CharSet = 'UTF-8';
-                $mail->IsHTML(true);
-                $body = "
-                        <h1>here is your Code</h1>
-                    <p> http:localhost/2dMarket/en/rest_Password.php?_ijt=.
-                         $random_note .&email= . $email </p>
-                       ";
-
-//
-                $mail->AddAddress($email);
-                $mail->Subject = "restore password";
-                $mail->MsgHTML($body);
-//
-
-                if (!$mail->Send()) {
-
-                    echo "het is niet gelukt".$mail->ErrorInfo;
-
-                } else {
-                    echo "check your email";
-                    header("Location: insert_code.php");
-                }
-
-            }
-        }
-
-    }else {
-        echo "Your email addres dose not exists";}
-}
 ?>
 
 
@@ -88,6 +23,26 @@ if(isset($_POST['restore'])) {
     <link rel="icon" href="favicon.ico">
     <title>Emerald Dragon | Login and Register</title>
 </head>
+<?php
+if(isset($_POST['code_submit'])){
+    $code = $_POST['code'];
+    $email = $_POST['email'];
+    $query = "SELECT * From User WHERE email = '{$email}' ";
+    $getAgent = mysqli_query($mysqli, $query);
+    if (mysqli_num_rows($getAgent) == 1) {
+        while ($row = mysqli_fetch_assoc($getAgent)) {
+            $id = $row['id'];
+        }
+    }
+    $codeQuery = "SELECT * FROM User WHERE id = '{$id}' AND Note = '{$code}'";
+    $getCode = mysqli_query($mysqli, $codeQuery);
+    if (mysqli_num_rows($getCode) != 1) {
+        header("Location: insert_code.php");
+    }
+}
+
+?>
+
 <body>
 
 <!-- HEADER -->
@@ -890,18 +845,20 @@ if(isset($_POST['restore'])) {
 
             <!-- RESTORE-->
             <div class="form-popup-content">
-                <h4 class="popup-title">Forgotten Password!!</h4>
+                <h4 class="popup-title">Rest your password!!</h4>
                 <!-- LINE SEPARATOR -->
                 <hr class="line-separator short">
                 <!-- /LINE SEPARATOR -->
 
-                <p class="spaced">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <p class="spaced">Add your new password.</p>
 
-                <form id="restore-pwd-form" method="post" action="#">
-                    <label for="email_address" class="rl-label">Email Address</label>
-                    <input type="email" id="email_address" name="email_address" placeholder="Enter your email address...">
+                <form id="restore-pwd-form" method="post" action="update_password.php?email=<?php echo $email;?>">
+                    <label for="password1" class="rl-label">Enter your passwrod</label>
+                    <input type="password" id="password1" name="password1" placeholder="Enter your email address...">
+                    <label for="password2" class="rl-label">Re-enter the passwrod</label>
+                    <input type="password" id="password2" name="password2" placeholder="Enter your email address...">
 
-                    <button class="button mid dark no-space" name="restore">Restore your <span class="primary">Password</span></button>
+                    <button class="button mid dark no-space" name="Rest">Rest your <span class="primary">Password</span></button>
                 </form>
             </div>
             <!-- /FORM POPUP CONTENT -->
@@ -1119,3 +1076,4 @@ if(isset($_POST['restore'])) {
 <script src="../js/footer.js"></script>
 </body>
 </html>
+

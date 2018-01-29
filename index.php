@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Created by PhpStorm.
@@ -5,6 +6,9 @@
  * Date: 14/1/2018
  * Time: 12:21 ص
  */
+
 echo "Hello folks!!";
 
 echo " Hi From Groningen";
+
+?>

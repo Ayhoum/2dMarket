@@ -51,25 +51,18 @@ if (isset($_POST['Log_in'])) {
 
         if (mysqli_num_rows($results) == 1) {
             while ($row = mysqli_fetch_assoc($results)) {
-                $id                     = $row['id'];
-                $email                  = $row['email'];
-                $first_name             = $row['first_name'];
-                $last_name              = $row['last_name'];
-                $username               = $row['username'];
-                $profile_picture        = $row['profile_picture'];
-                $registration_date     = $row['register_date'];
+                $id = $row['id'];
+                $email = $row['email'];
+                $username = $row['username'];
+                $_SESSION['username'] = $username;
+
+                $_SESSION['email'] = $email;
+                $_SESSION['id'] = $id;
+
+                header('location: user_dashboard.php');
+
 
             }
-            $_SESSION['id']                 = $id;
-            $_SESSION['full_name']          = $first_name . ' '. $last_name;
-            $_SESSION['username']           = $username;
-            $_SESSION['email']              = $email;
-            $_SESSION['profile_picture']    = $profile_picture;
-            $_SESSION['registration_date'] = $registration_date;
-
-
-            header('location: user_dashboard.php');
-
         } else {
             phpAlert(   "Wrong username/password combination"  );
 

@@ -1,4 +1,8 @@
-<?php session_start()?>
+<?php
+ob_start();
+session_start();
+require_once "../scripts/db_connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
