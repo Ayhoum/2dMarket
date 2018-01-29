@@ -1,5 +1,4 @@
 <?php
-ob_start();
 session_start();
 require_once "../scripts/db_connection.php";
 ?>
@@ -10,6 +9,7 @@ require_once "../scripts/db_connection.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="../css/vendor/simple-line-icons.css">
+    <link rel="stylesheet" href="../css/vendor/magnific-popup.css">
     <link rel="stylesheet" href="../css/style.css">
     <!-- favicon -->
     <link rel="icon" href="favicon.ico">
@@ -22,7 +22,7 @@ function phpAlert($msg) {
     echo '<script type="text/javascript">alert("' . $msg . '")</script>';
 }
 
-
+/*  <?php  ?>  */
 //check if its logged in
 if (isset($_POST['Log_in'])) {
 
@@ -32,13 +32,15 @@ if (isset($_POST['Log_in'])) {
 
 //check for empty fields
             if (!$_POST['email']) {
-                $errEnterUserName = 'Please enter username';
-                echo $errEnterUserName.'<br>';
-            }
-            if (!$_POST['password']) {
-                $errEnterPass = 'Please enter password';
-                echo $errEnterPass;
 
+                phpAlert(   "enter your email"  );
+
+            }
+
+
+
+            if (!$_POST['password']) {
+                phpAlert(   "enter your password"  );
 
     }else {
 
@@ -860,7 +862,7 @@ if (isset($_POST['Log_in'])) {
 <!-- SECTION HEADLINE -->
 <div class="section-headline-wrap">
     <div class="section-headline">
-        <h2>Login and Register Boxes</h2>
+        <h2>Login and Register </h2>
         <p>Home<span class="separator">/</span><span class="current-section">Boxes</span></p>
     </div>
 </div>
@@ -884,20 +886,10 @@ if (isset($_POST['Log_in'])) {
                     <label for="password" class="rl-label">Password</label>
                     <input type="password" id="password" name="password" placeholder="Enter your password here...">
                     <!-- CHECKBOX -->
-                    <input type="checkbox" id="remember" name="remember" checked>
-                    <label for="remember" class="label-check">
-                        <span class="checkbox primary primary"><span></span></span>
-                        Remember username and password
-                    </label>
-                    <!-- /CHECKBOX -->
-                    <p>Forgot your password? <a href="#" class="primary">Click here!</a></p>
+
                     <button class="button mid dark" name="Log_in">Login <span class="primary">Now!</span></button>
                 </form>
-                <!-- LINE SEPARATOR -->
-                <hr class="line-separator double">
-                <!-- /LINE SEPARATOR -->
-                <a href="#" class="button mid fb half">Login with Facebook</a>
-                <a href="#" class="button mid twt half">Login with Twitter</a>
+
             </div>
             <!-- /FORM POPUP CONTENT -->
         </div>
@@ -1105,11 +1097,17 @@ if (isset($_POST['Log_in'])) {
 <script src="../js/vendor/jquery-3.1.0.min.js"></script>
 <!-- Tweet -->
 <script src="../js/vendor/twitter/jquery.tweet.min.js"></script>
+<!-- xmAlert -->
+<script src="../js/vendor/jquery.xmalert.min.js"></script>
+<!-- Magnific Popup -->
+<script src="../js/vendor/jquery.magnific-popup.min.js"></script>
 <!-- Side Menu -->
 <script src="../js/side-menu.js"></script>
 <!-- User Quickview Dropdown -->
 <script src="../js/user-board.js"></script>
-<!-- Footer -->
-<script src="../js/footer.js"></script>
+<!-- Alerts Demo -->
+<script src="../js/alerts-demo.js"></script>
+<!-- Alerts Generator -->
+<script src="../js/alerts-generator.js"></script>
 </body>
 </html>
