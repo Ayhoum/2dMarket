@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="../css/vendor/simple-line-icons.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- favicon -->
     <link rel="icon" href="favicon.ico">
     <title>Emerald Dragon | Login and Register</title>
@@ -16,30 +25,30 @@
 <div class="header-wrap">
     <header>
         <!-- LOGO -->
-        <a href="index.html">
+        <a href="index.php">
             <figure class="logo">
-                <img src="images/logo.png" alt="logo">
+                <img src="../images/logo.png" alt="logo">
             </figure>
         </a>
         <!-- /LOGO -->
 
         <!-- MOBILE MENU HANDLER -->
         <div class="mobile-menu-handler left primary">
-            <img src="images/pull-icon.png" alt="pull-icon">
+            <img src="../images/pull-icon.png" alt="pull-icon">
         </div>
         <!-- /MOBILE MENU HANDLER -->
 
         <!-- LOGO MOBILE -->
-        <a href="index.html">
+        <a href="index.php">
             <figure class="logo-mobile">
-                <img src="images/logo_mobile.png" alt="logo-mobile">
+                <img src="../images/logo_mobile.png" alt="logo-mobile">
             </figure>
         </a>
         <!-- /LOGO MOBILE -->
 
         <!-- MOBILE ACCOUNT OPTIONS HANDLER -->
         <div class="mobile-account-options-handler right secondary">
-            <span class="icon-user"></span>
+            <span class="fa fa-user" style="color:#fff;font-size:24px;position:absolute;top:38px;left:50%;margin-left:-12px"><span>
         </div>
         <!-- /MOBILE ACCOUNT OPTIONS HANDLER -->
 
@@ -52,7 +61,7 @@
                     <div class="outer-ring">
                         <div class="inner-ring"></div>
                         <figure class="user-avatar">
-                            <img src="images/avatars/avatar_01.jpg" alt="avatar">
+                            <img src="../images/avatars/avatar_01.jpg" alt="avatar">
                         </figure>
                     </div>
                 </a>
@@ -132,7 +141,7 @@
                             <!-- /SVG PLUS -->
                             <div class="dropdown-triangle"></div>
                             <figure class="product-preview-image tiny">
-                                <img src="images/items/pixel_s.jpg" alt="">
+                                <img src="../images/items/pixel_s.jpg" alt="">
                             </figure>
                             <p class="text-header tiny">Pixel Diamond Gaming Shop</p>
                             <p class="category tiny primary">Shopify</p>
@@ -149,7 +158,7 @@
                             </svg>
                             <!-- /SVG PLUS -->
                             <figure class="product-preview-image tiny">
-                                <img src="images/items/monsters_s.jpg" alt="">
+                                <img src="../images/items/monsters_s.jpg" alt="">
                             </figure>
                             <p class="text-header tiny">Little Monsters - 40 Pack Button Badge Maker</p>
                             <p class="category tiny primary">Graphics</p>
@@ -166,7 +175,7 @@
                             </svg>
                             <!-- /SVG PLUS -->
                             <figure class="product-preview-image tiny">
-                                <img src="images/items/flat_s.jpg" alt="">
+                                <img src="../images/items/flat_s.jpg" alt="">
                             </figure>
                             <p class="text-header tiny">Flatland - Hero Image Composer</p>
                             <p class="category tiny primary">Shopify</p>
@@ -205,7 +214,7 @@
                             <div class="dropdown-triangle"></div>
                             <a href="dashboard-openmessage.html" class="link-to"></a>
                             <figure class="user-avatar">
-                                <img src="images/avatars/avatar_06.jpg" alt="">
+                                <img src="../images/avatars/avatar_06.jpg" alt="">
                             </figure>
                             <p class="text-header tiny"><span>Sarah-Imaginarium</span></p>
                             <p class="subject">Product Question</p>
@@ -218,7 +227,7 @@
                         <li class="dropdown-item">
                             <a href="dashboard-openmessage.html" class="link-to"></a>
                             <figure class="user-avatar">
-                                <img src="images/avatars/avatar_04.jpg" alt="">
+                                <img src="../images/avatars/avatar_04.jpg" alt="">
                             </figure>
                             <p class="text-header tiny"><span>Red Thunder Graphics</span></p>
                             <p class="subject">Support Inquiry</p>
@@ -231,7 +240,7 @@
                         <li class="dropdown-item">
                             <a href="dashboard-openmessage.html" class="link-to"></a>
                             <figure class="user-avatar">
-                                <img src="images/avatars/avatar_07.jpg" alt="">
+                                <img src="../images/avatars/avatar_07.jpg" alt="">
                             </figure>
                             <p class="text-header tiny"><span>Twisted Themes</span></p>
                             <p class="subject">Collaboration</p>
@@ -244,7 +253,7 @@
                         <li class="dropdown-item">
                             <a href="dashboard-openmessage.html" class="link-to"></a>
                             <figure class="user-avatar">
-                                <img src="images/avatars/avatar_08.jpg" alt="">
+                                <img src="../images/avatars/avatar_08.jpg" alt="">
                             </figure>
                             <p class="text-header tiny"><span>GregSpiegel1820</span></p>
                             <p class="subject">How to Install the Theme...</p>
@@ -276,7 +285,7 @@
                             <div class="dropdown-triangle"></div>
                             <a href="author-profile.html">
                                 <figure class="user-avatar">
-                                    <img src="images/avatars/avatar_02.jpg" alt="">
+                                    <img src="../images/avatars/avatar_02.jpg" alt="">
                                 </figure>
                             </a>
                             <p class="title">
@@ -292,7 +301,7 @@
                         <li class="dropdown-item">
                             <a href="author-profile.html">
                                 <figure class="user-avatar">
-                                    <img src="images/avatars/avatar_03.jpg" alt="">
+                                    <img src="../images/avatars/avatar_03.jpg" alt="">
                                 </figure>
                             </a>
                             <p class="title">
@@ -308,7 +317,7 @@
                         <li class="dropdown-item">
                             <a href="author-profile.html">
                                 <figure class="user-avatar">
-                                    <img src="images/avatars/avatar_04.jpg" alt="">
+                                    <img src="../images/avatars/avatar_04.jpg" alt="">
                                 </figure>
                             </a>
                             <p class="title">
@@ -324,7 +333,7 @@
                         <li class="dropdown-item">
                             <a href="author-profile.html">
                                 <figure class="user-avatar">
-                                    <img src="images/avatars/avatar_05.jpg" alt="">
+                                    <img src="../images/avatars/avatar_05.jpg" alt="">
                                 </figure>
                             </a>
                             <p class="title">
@@ -365,7 +374,7 @@
     <!-- SIDE MENU HEADER -->
     <div class="side-menu-header">
         <figure class="logo small">
-            <img src="images/logo.png" alt="logo">
+            <img src="../images/logo.png" alt="logo">
         </figure>
     </div>
     <!-- /SIDE MENU HEADER -->
@@ -855,7 +864,7 @@
             <!-- COMPANY INFO -->
             <div class="company-info">
                 <figure class="logo small">
-                    <img src="images/logo_small.png" alt="logo-small">
+                    <img src="../images/logo_small.png" alt="logo-small">
                 </figure>
                 <p>Lorem ipsum dolor sit amet, consectetur isicing elit, sed do eiusmod tempor incididunt ut labo dolore magna ua.</p>
                 <ul class="company-info-list">
