@@ -6,6 +6,6 @@
  * Time: 21:21
  */
 
-$_COOKIE;
+//cookies not yet
 
-$name="somename";
+

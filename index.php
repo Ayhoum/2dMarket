@@ -11,6 +11,8 @@
     <title>Emerald Dragon | Alerts</title>
 </head>
 <body>
+
+
 <?php
 /**
  * Created by PhpStorm.
@@ -25,13 +27,6 @@ echo " Hi From Groningen";
 
 if(isset($_POST['but'])){
 
-?>
-    <a href="#" class="button mid dark alert-success">
-        Preview <span class="primary">Success Alert Box</span>
-    </a>
-<?php
-
-
 }
 
 ?>
@@ -41,11 +36,30 @@ if(isset($_POST['but'])){
 <form method="post">
 
 
-    <button name="but">click</button>
+    <button name="but" id="button">click</button>
 
 </form>
 
 
+
+<script>
+    $('#button').click( function () {
+        $('body').xmalert({
+            x: 'left',
+            y: 'bottom',
+            xOffset: 30,
+            yOffset: 30,
+            alertSpacing: 40,
+            lifetime: 6000,
+            fadeDelay: 0.3,
+            template: 'messageInfo',
+            title: 'wrong pass',
+            paragraph: 'vul in your pass',
+        });
+    });
+
+
+</script>
 
 <script src="js/vendor/jquery-3.1.0.min.js"></script>
 <!-- Tweet -->
@@ -64,4 +78,5 @@ if(isset($_POST['but'])){
 <script src="js/alerts-generator.js"></script>
 <!-- Footer -->
 <script src="js/footer.js"></script>
+
 </body>

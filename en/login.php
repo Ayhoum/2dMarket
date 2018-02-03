@@ -33,6 +33,8 @@ if (isset($_POST['Log_in'])) {
 //check for empty fields
             if (!$_POST['email']) {
 
+                //header("location:../en/login.php");
+
                 phpAlert(   "enter your email"  );
 
             }
