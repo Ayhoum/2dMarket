@@ -7,14 +7,13 @@ if(!isset($_SESSION['id'])){
 ?>
 <?php
 $id                 = $_SESSION['id'];
-$full_name          = $_SESSION['full_name'];
-$profile_picture    = $_SESSION['profile_picture'];
-
-//Set a profile picture in case that the user didn't has one!
-if (empty($profile_picture)){
+$full_name          = $_SESSION['username'];
+if(isset($_SESSION['profile_picture'])){
+    $profile_picture    = $_SESSION['profile_picture'];
+}else{
     $profile_picture =  "../images/avatars/avatar_01.jpg";
-}
 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +76,7 @@ if (empty($profile_picture)){
 
 			<!-- DROPDOWN ITEM -->
 			<li class="dropdown-item">
-				<a href="#">
+				<a href="messages.php">
                     <span class="sl-icon icon-envelope"></span>
                     Messages
 				</a>
