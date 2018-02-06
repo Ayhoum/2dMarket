@@ -1,4 +1,16 @@
-﻿
+﻿<?php
+
+//Call the connection
+require_once "../scripts/db_connection.php";
+
+//Check if user
+if(isset($_SESSION['username'])){
+    header("Location: user_dashboard.php");
+}
+
+//Insert New User
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -63,82 +75,11 @@
          <div class="loader-section section-left"></div>
          <div class="loader-section section-right"></div>
       </div>
-     <!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
-    <div class="color-switcher" id="choose_color">
-         <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
-         <h5>STYLE SWITCHER</h5>
-         <div class="theme-colours">
-            <p> Choose Colour style </p>
-            <ul>
-               <li>
-                  <a href="#." class="defualt" id="defualt"></a>
-               </li>
-               <li>
-                  <a href="#." class="green" id="green"></a>
-               </li>
-               <li>
-                  <a href="#." class="blue" id="blue"></a>
-               </li>
-               <li>
-                  <a href="#." class="red" id="red"></a>
-               </li>
-               
-               <li>
-                  <a href="#." class="sea-green" id="sea-green"></a>
-               </li>
-              
-            </ul>
-         </div>
-         <div class="clearfix"> </div>
-      </div>
+
       <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
       <div class="colored-header">
          <!-- Top Bar -->
-         <div class="header-top">
-            <div class="container">
-               <div class="row">
-                  <!-- Header Top Left -->
-                  <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
-                     <ul class="listnone">
-                        <li><a href="about.html"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
-                        <li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
-                        <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>
-                           <ul class="dropdown-menu">
-                              <li><a href="#">English</a></li>
-                              <li><a href="#">Swedish</a></li>
-                              <li><a href="#">Arabic</a></li>
-                              <li><a href="#">Russian</a></li>
-                              <li><a href="#">chinese</a></li>
-                           </ul>
-                        </li>
-                     </ul>
-                  </div>
-                  <!-- Header Top Right Social -->
-                  <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
-                     <div class="pull-right">
-                        <ul class="listnone">
-                           <li><a href="login.php"><i class="fa fa-sign-in"></i> Log in</a></li>
-                           <li><a href="register.php"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
-                           <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> Umair <span class="caret"></span></a>
-                              <ul class="dropdown-menu">
-                                 <li><a href="profile.html">User Profile</a></li>
-                                 <li><a href="profile-2.html">User Profile 2</a></li>
-                                 <li><a href="archives.html">Archives</a></li>
-                                 <li><a href="active-ads.html">Active Ads</a></li>
-                              <li><a href="pending-ads.html">Pending Ads</a></li>
-                                 <li><a href="favourite.html">Favourite Ads</a></li>
-                                 <li><a href="messages.html">Message Panel</a></li>
-                                 <li><a href="deactive.html">Account Deactivation</a></li>
-                              </ul>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
+        <?php include "topbar-en.php";?>
          <!-- Top Bar End -->
          <!-- Navigation Menu -->
          <nav id="menu-1" class="mega-menu">
@@ -425,7 +366,7 @@
          <div class="container">
             <div class="row">
                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="header-page">
+                  <div class="header-page text-center">
                      <h1>Create Your Account</h1>
                   </div>
                </div>
@@ -433,29 +374,29 @@
          </div>
       </div>
       <!-- Small Breadcrumb -->
-      <div class="small-breadcrumb">
-         <div class="container">
-            <div class=" breadcrumb-link">
-               <ul>
-                  <li><a href="index.html">Home Page</a></li>
-                  <li><a href="#">Pages</a></li>
-                  <li><a class="active" href="#">Sign Up</a></li>
-               </ul>
-            </div>
-         </div>
-      </div>
+<!--      <div class="small-breadcrumb">-->
+<!--         <div class="container">-->
+<!--            <div class=" breadcrumb-link">-->
+<!--               <ul>-->
+<!--                  <li><a href="index.html">Home Page</a></li>-->
+<!--                  <li><a href="#">Pages</a></li>-->
+<!--                  <li><a class="active" href="#">Sign Up</a></li>-->
+<!--               </ul>-->
+<!--            </div>-->
+<!--         </div>-->
+<!--      </div>-->
       <!-- Small Breadcrumb -->
       <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
          <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
-         <section class="section-padding error-page pattern-bg ">
+         <section class="section-padding-140 error-page pattern-bg " style="margin-top: -60px;">
             <!-- Main Container -->
             <div class="container">
                <!-- Row -->
-               <div class="row">
+               <div class="row center-block">
                   <!-- Middle Content Area -->
-                  <div class="col-md-5 col-md-push-7 col-sm-12 col-xs-12">
+                  <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
                      <!--  Form -->
                      <div class="form-grid">
                         <form>
@@ -497,61 +438,6 @@
                         </form>
                      </div>
                      <!-- Form -->
-                  </div>
-                 
-                  <div class="col-md-7  col-md-pull-5  col-sm-12 col-xs-12">
-                     <div class="heading-panel">
-                        <h3 class="main-title text-left">
-                           Create Your Account  
-                        </h3>
-                     </div>
-                     <div class="content-info">
-                        <div class="features">
-                           <div class="features-icons">
-                              <img src="images/icons/chat.png" alt="img">
-                           </div>
-                           <div class="features-text">
-                              <h3>Chat & Messaging</h3>
-                              <p>
-                                 Access your chats and account info from any device.
-                              </p>
-                           </div>
-                        </div>
-                        <div class="features">
-                           <div class="features-icons">
-                              <img src="images/icons/panel.png" alt="img">
-                           </div>
-                           <div class="features-text">
-                              <h3>User Dashboard</h3>
-                              <p>
-                                 Maintain a wishlist by saving your favourite items.
-                              </p>
-                           </div>
-                        </div>
-                        <div class="features">
-                           <div class="features-icons">
-                              <img src="images/icons/history.png" alt="img">
-                           </div>
-                           <div class="features-text">
-                              <h3>Track History</h3>
-                              <p>
-                                 Track the status of your ads history.
-                              </p>
-                           </div>
-                        </div>
-                        <div class="features">
-                           <div class="features-icons">
-                              <img src="images/icons/featured-listing.png" alt="img">
-                           </div>
-                           <div class="features-text">
-                              <h3>features Listing</h3>
-                              <p>
-                                 Get more value fro your ad.
-                              </p>
-                           </div>
-                        </div>
-                        <span class="arrowsign hidden-sm hidden-xs"><img src="images/arrow.png" alt=""></span>
-                     </div>
                   </div>
                   <!-- Middle Content Area  End -->
                </div>

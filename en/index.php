@@ -1,6 +1,4 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
    <head>
       <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -45,7 +43,11 @@
       <link rel="stylesheet" id="color" href="css/colors/defualt.css">
       <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
       <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
-      <!-- JavaScripts -->
+       <!-- =-=-=-=-=-=-= Remodal CSS =-=-=-=-=-=-= -->
+       <link rel="stylesheet" href="css/remodal.css">
+       <link rel="stylesheet" href="css/remodal-default-theme.css">
+
+       <!-- JavaScripts -->
       <script src="js/modernizr.js"></script>
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,34 +63,7 @@
          <div class="loader-section section-left"></div>
          <div class="loader-section section-right"></div>
       </div>
-      <!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
-      <div class="color-switcher" id="choose_color">
-         <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
-         <h5>STYLE SWITCHER</h5>
-         <div class="theme-colours">
-            <p> Choose Colour style </p>
-            <ul>
-               <li>
-                  <a href="#." class="defualt" id="defualt"></a>
-               </li>
-               <li>
-                  <a href="#." class="green" id="green"></a>
-               </li>
-               <li>
-                  <a href="#." class="blue" id="blue"></a>
-               </li>
-               <li>
-                  <a href="#." class="red" id="red"></a>
-               </li>
-               
-               <li>
-                  <a href="#." class="sea-green" id="sea-green"></a>
-               </li>
-              
-            </ul>
-         </div>
-         <div class="clearfix"> </div>
-      </div>
+
       <!-- =-=-=-=-=-=-= Transparent Header =-=-=-=-=-=-= -->
       <div class="transparent-header mobile-custom">
          <!-- Top Bar -->
@@ -980,6 +955,25 @@
          </span>
          <h4>SELL</h4>
       </a>
+
+      <!-- =-=-=-=-=-=-= Remodals =-=-=-=-=-=-= -->
+      <div class="remodal" data-remodal-id="modal">
+          <button data-remodal-action="close" class="remodal-close"></button>
+          <h2 style="text-align: center">Login</h2>
+          <p style="direction: rtl">TestA</p>
+          <br>
+          <button data-remodal-action="confirm" class="remodal-confirm">حسناً</button>
+      </div>
+
+      <div class="remodal" data-remodal-id="modal2">
+          <button data-remodal-action="close" class="remodal-close"></button>
+          <h2 style="text-align: center">Login</h2>
+          <p style="direction: rtl">TestB</p>
+          <br>
+          <button data-remodal-action="confirm" class="remodal-confirm">حسناً</button>
+      </div>
+
+
       <!-- Back To Top -->
       <a href="#0" class="cd-top">Top</a>
       <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
@@ -1016,6 +1010,31 @@
       <script src="js/color-switcher.js"></script>
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
+      <!-- =-=-=-=-=-=-= Remodal JS =-=-=-=-=-=-= -->
+      <script src="js/remodal.js"></script>
+      <script>
+          var inst;
+          var openModal = function () {
+              inst = $('[data-remodal-id=modal]').remodal({
+                  closeOnOutsideClick:false
+              });
+              inst.open();
+              $(document).on('confirmation', '.remodal', function () {
+                  console.log('Confirmation button is clicked');
+              });
+          };
+
+          var inst2;
+          var openModal2 = function () {
+              inst2 = $('[data-remodal-id=modal2]').remodal({
+                  closeOnOutsideClick:false
+              });
+              inst2.open();
+              $(document).on('confirmation', '.remodal', function () {
+                  console.log('Confirmation button is clicked');
+              });
+          };
+      </script>
    </body>
 </html>
 

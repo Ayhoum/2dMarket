@@ -4187,13 +4187,13 @@ ul.category-list-data li:hover a span {
 }
 /* =-=-=-=-=-=-= Breadcrumbs =-=-=-=-=-=-= */
 .page-header-area {
-	background: rgba(0, 0, 0, 0) url("../images/breadcrumb.jpg") no-repeat scroll center center / cover;
+	background: rgb(45, 52, 61);
 	padding: 50px 0;
 	text-align: right;
 	position: relative;
 }
 .page-header-area::before {
-	background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+	background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
 	content: "";
 	height: 100%;
 	left: 0;
@@ -5179,7 +5179,7 @@ ul.category-list-data li:hover a span {
 	position: relative;
 }
 .form-grid {
-	box-shadow: 0 1px 2px #ccc;
+	box-shadow: 0px 0px 10px #1b1f25;
 	padding: 30px;
 }
 .form-grid .skin-minimal .list li label {
