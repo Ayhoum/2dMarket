@@ -45,6 +45,8 @@
       <link rel="stylesheet" id="color" href="css/colors/defualt.css">
       <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
       <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
+      <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
+      <link href="skins/minimal/minimal.css" rel="stylesheet">
       <!-- JavaScripts -->
       <script src="js/modernizr.js"></script>
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -56,13 +58,13 @@
    </head>
    <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
-      <div id="loader-wrapper">
+          <div id="loader-wrapper">
          <div id="loader"></div>
          <div class="loader-section section-left"></div>
          <div class="loader-section section-right"></div>
       </div>
-      <!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
-      <div class="color-switcher" id="choose_color">
+     <!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
+    <div class="color-switcher" id="choose_color">
          <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
          <h5>STYLE SWITCHER</h5>
          <div class="theme-colours">
@@ -89,8 +91,8 @@
          </div>
          <div class="clearfix"> </div>
       </div>
-      <!-- =-=-=-=-=-=-= Transparent Header =-=-=-=-=-=-= -->
-      <div class="transparent-header mobile-custom">
+      <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
+      <div class="colored-header">
          <!-- Top Bar -->
          <div class="header-top">
             <div class="container">
@@ -148,7 +150,7 @@
                            <!-- menu logo -->
                            <ul class="menu-logo">
                               <li>
-                                 <a href="index.html"><img src="images/logo-1.png" alt="logo"> </a>
+                                 <a href="index.html"><img src="images/logo.png" alt="logo"> </a>
                               </li>
                            </ul>
                            <!-- menu links -->
@@ -366,8 +368,6 @@
                                        <a href="javascript:void(0)">Items Left Side <i class="fa fa-angle-left fa-indicator"></i> </a>
                                        <!-- add class left-side -->
                                        <ul class="drop-down-multilevel left-side">
-
-
                                           <li>
                                              <a href="#"> <i class="fa fa-forumbee"></i> Level 2</a>
                                           </li>
@@ -418,565 +418,242 @@
                </section>
             </nav>
       </div>
-      <!-- =-=-=-=-=-=-= Transparent Header End =-=-=-=-=-=-= -->
-      <!-- =-=-=-=-=-=-= Background Rotator =-=-=-=-=-=-= -->
-      <div class="background-rotator">
-         <!-- slider start-->
-         <div class="owl-carousel owl-theme background-rotator-slider">
-            <!-- Slide -->
-            <div class="item linear-overlay"><img src="images/slider/4.jpg" alt=""></div>
-            <!-- Slide -->
-            <div class="item linear-overlay"><img  src="images/slider/2.jpg" alt=""></div>
-            <!-- Slide -->
-            <div class="item linear-overlay"><img src="images/slider/3.jpg" alt=""></div>
-         </div>
-         <div class="search-section">
-            <!-- Find search section -->
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12">
-                     <!-- Heading -->
-                     <div class="content">
-                     <div class="heading-caption">
-                        <h1>Find what are you looking for</h1>
-                        <p>Over <strong>95,00,000</strong> Classified Ads Listing</p>
-                     </div>
-                     <div class="search-form">
-                        <form>
-                           <div class="row">
-                              <div class="col-md-4 col-xs-12 col-sm-4">
-                                 <!-- Category -->
-                                 <select class="category form-control">
-                                    <option label="Select Option"></option>
-                                    <option value="0">Cars & Bikes</option>
-                                    <option value="1">Mobile Phones</option>
-                                    <option value="2">Home Appliances</option>
-                                    <option value="3">Clothing</option>
-                                    <option value="4">Human Resource</option>
-                                    <option value="5">Information Technology</option>
-                                    <option value="6">Marketing</option>
-                                    <option value="7">Others</option>
-                                    <option value="8">Sales</option>
-                                 </select>
-                              </div>
-                              <!-- Input Field -->
-                              <div class="col-md-4 col-xs-12 col-sm-4">
-                                 <input type="text" class="form-control" placeholder="What Are You Looking For..." />
-                              </div>
-                              <!-- Search Button -->
-                              <div class="col-md-4 col-xs-12 col-sm-4">
-                                 <button type="submit" class="btn btn-theme btn-block">Search <i class="fa fa-search" aria-hidden="true"></i></button>
-                              </div>
-                           </div>
-                        </form>
-                     </div>
-                     </div>
+      <!-- Navigation Menu End -->
+      <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Transparent Breadcrumb =-=-=-=-=-=-= -->
+      <div class="page-header-area">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="header-page">
+                     <h1>Create Your Account</h1>
                   </div>
                </div>
             </div>
          </div>
-         <!-- /.Find search section-->
       </div>
-      <!-- =-=-=-=-=-=-= Background Rotator End =-=-=-=-=-=-= -->
+      <!-- Small Breadcrumb -->
+      <div class="small-breadcrumb">
+         <div class="container">
+            <div class=" breadcrumb-link">
+               <ul>
+                  <li><a href="index.html">Home Page</a></li>
+                  <li><a href="#">Pages</a></li>
+                  <li><a class="active" href="#">Sign Up</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
-         <!-- =-=-=-=-=-=-= Categories =-=-=-=-=-=-= -->
-         <section class="custom-padding gray">
+         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+         <section class="section-padding error-page pattern-bg ">
             <!-- Main Container -->
             <div class="container">
                <!-- Row -->
                <div class="row">
-                  <!-- Heading Area -->
-                  <div class="heading-panel">
-                     <div class="col-xs-12 col-md-12 col-sm-12 text-center">
-                        <!-- Main Title -->
-                        <h1>Browse <span class="heading-color"> Ads</span> By Categories</h1>
-                        <!-- Short Description -->
-                        <p class="heading-text">Eu delicata rationibus usu. Vix te putant utroque, ludus fabellas duo eu, his dico ut debet consectetuer.</p>
+                  <!-- Middle Content Area -->
+                  <div class="col-md-5 col-md-push-7 col-sm-12 col-xs-12">
+                     <!--  Form -->
+                     <div class="form-grid">
+                        <form>
+                           <div class="form-group">
+                              <label>Name</label>
+                              <input placeholder="Enter Your Name" class="form-control" type="text">
+                           </div>
+                           <div class="form-group">
+                              <label>Contact Number</label>
+                              <input placeholder="Enter Your Contact Number" class="form-control" type="text">
+                           </div>
+                           <div class="form-group">
+                              <label>Email</label>
+                              <input placeholder="Your Email" class="form-control" type="email">
+                           </div>
+                           <div class="form-group">
+                              <label>Password</label>
+                              <input placeholder="Your Password" class="form-control" type="password">
+                           </div>
+                           <div class="form-group">
+                              <div class="row">
+                                 <div class="col-xs-12 col-sm-7">
+                                    <div class="skin-minimal">
+                                       <ul class="list">
+                                          <li>
+                                             <input  type="checkbox" id="minimal-checkbox-1">
+                                             <label for="minimal-checkbox-1">i agree <a href="#">Terms of Services</a></label>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                                 <div class="col-xs-12 col-sm-5 text-right">
+                                    <p class="help-block"><a data-target="#myModal" data-toggle="modal">Forgot password?</a>
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                           <button class="btn btn-theme btn-lg btn-block">Register</button>
+                        </form>
+                     </div>
+                     <!-- Form -->
+                  </div>
+                 
+                  <div class="col-md-7  col-md-pull-5  col-sm-12 col-xs-12">
+                     <div class="heading-panel">
+                        <h3 class="main-title text-left">
+                           Create Your Account  
+                        </h3>
+                     </div>
+                     <div class="content-info">
+                        <div class="features">
+                           <div class="features-icons">
+                              <img src="images/icons/chat.png" alt="img">
+                           </div>
+                           <div class="features-text">
+                              <h3>Chat & Messaging</h3>
+                              <p>
+                                 Access your chats and account info from any device.
+                              </p>
+                           </div>
+                        </div>
+                        <div class="features">
+                           <div class="features-icons">
+                              <img src="images/icons/panel.png" alt="img">
+                           </div>
+                           <div class="features-text">
+                              <h3>User Dashboard</h3>
+                              <p>
+                                 Maintain a wishlist by saving your favourite items.
+                              </p>
+                           </div>
+                        </div>
+                        <div class="features">
+                           <div class="features-icons">
+                              <img src="images/icons/history.png" alt="img">
+                           </div>
+                           <div class="features-text">
+                              <h3>Track History</h3>
+                              <p>
+                                 Track the status of your ads history.
+                              </p>
+                           </div>
+                        </div>
+                        <div class="features">
+                           <div class="features-icons">
+                              <img src="images/icons/featured-listing.png" alt="img">
+                           </div>
+                           <div class="features-text">
+                              <h3>features Listing</h3>
+                              <p>
+                                 Get more value fro your ad.
+                              </p>
+                           </div>
+                        </div>
+                        <span class="arrowsign hidden-sm hidden-xs"><img src="images/arrow.png" alt=""></span>
                      </div>
                   </div>
-                  <!-- Middle Content Box -->
-                  <div class="col-md-12 col-xs-12 col-sm-12 ">
-                     <div class="row">
-                        <!-- Category List -->
-                        <ul class="category-list-style">
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#">Cars & Trucks<span>(897 Ads)</span>
-                              <i class="flaticon-transport-9"></i>
-                              </a> 
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#">Bikes & Cycles<span>(397 Ads)</span>
-                              <i class="flaticon-transport-4"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#">Sports<span>(897 Ads)</span>
-                              <i class="flaticon-bowling"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#"> Mobiles & Tablets <span>(230 Ads)</span>
-                              <i class="flaticon-technology-19"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#">Music & Art <span>(97 Ads)</span>
-                              <i class="flaticon-music-3"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#">Real Estate<span>(1123 Ads)</span>
-                              <i class="flaticon-internet"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#">Gedgets<span>(300 Ads)</span>
-                              <i class="flaticon-technology-13"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#"> Matrimonial <span>(230 Ads)</span>
-                              <i class="flaticon-shapes-2"></i>
-                              </a>
-                           </li>
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#">Services<span>(1247 Ads)</span>
-                              <i class="flaticon-construction"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#"> Electronics<span>(3397 Ads)</span>
-                              <i class="flaticon-technology-21"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#">Pets<span>(111 Ads)</span>
-                              <i class="flaticon-dog-1"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#"> Clothing<span>(2230 Ads)</span>
-                              <i class="flaticon-woman-1"></i>
-                              </a>
-                           </li>
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#"> Jobs<span>(7230 Ads)</span>
-                              <i class="flaticon-info"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#"> Property & Land<span>(2230 Ads)</span>
-                              <i class="flaticon-internet-2"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#"> Education<span>(130 Ads)</span>
-                              <i class="flaticon-education"></i>
-                              </a>
-                           </li>
-                           <!-- Category -->
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="#"> Camera<span>(1230 Ads)</span>
-                              <i class="flaticon-technology-15"></i>
-                              </a>
-                           </li>
-                        </ul>
-                        <!-- Category List End -->    
-                     </div>
-                  </div>
-                  <!-- Middle Content Box End -->
+                  <!-- Middle Content Area  End -->
                </div>
                <!-- Row End -->
             </div>
             <!-- Main Container End -->
          </section>
-         <!-- =-=-=-=-=-=-= Categories End =-=-=-=-=-=-= -->
-         <!-- =-=-=-=-=-=-= How It Work =-=-=-=-=-=-= -->
-         <section class="section-padding white">
-            <!-- Main Container -->
-            <div class="container">
-               <!-- Row -->
-               <div class="row">
-                  <!-- Heading Area -->
-                  <div class="heading-panel">
-                     <div class="col-xs-12 col-md-12 col-sm-12 text-center">
-                        <!-- Main Title -->
-                        <h1>How It <span class="heading-color"> Work</span></h1>
-                        <!-- Short Description -->
-                        <p class="heading-text">Eu delicata rationibus usu. Vix te putant utroque, ludus fabellas duo eu, his dico ut debet consectetuer.</p>
-                     </div>
-                  </div>
-                  <!-- Middle Content Box -->
-                  <div class="col-xs-12 col-md-12 col-sm-12 ">
-                     <div class="row">
-                        <div class="how-it-work text-center">
-                           <div class="how-it-work-icon"> <i class="flaticon-people"></i> </div>
-                           <h4>Create Your Account</h4>
-                           <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
-                        </div>
-                        <div class="how-it-work text-center ">
-                           <div class="how-it-work-icon"> <i class="flaticon-people-2"></i> </div>
-                           <h4>Post Free Ad</h4>
-                           <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
-                        </div>
-                        <div class="how-it-work text-center">
-                           <div class="how-it-work-icon "> <i class="flaticon-heart-1"></i> </div>
-                           <h4>Deal Done</h4>
-                           <p>Duis posuere nec libero efficitur maecenas ut aliquam augue dapibus elit nullam eleifend odio aliquam gravida mauris.</p>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- Middle Content Box End -->
-               </div>
-               <!-- Row End -->
-            </div>
-            <!-- Main Container End -->
-         </section>
-         <!-- =-=-=-=-=-=-= How It Work End =-=-=-=-=-=-= -->
-         <!-- =-=-=-=-=-=-= Abs By Countries =-=-=-=-=-=-= -->
-         <section class="section-padding gray">
-            <!-- Main Container -->
-            <div class="container">
-               <!-- Row -->
-               <div class="row">
-                  <!-- Heading Area -->
-                  <div class="heading-panel">
-                     <div class="col-xs-12 col-md-12 col-sm-12 text-center">
-                        <!-- Main Title -->
-                        <h1>Explore<span class="heading-color"> Ads</span> By Location</h1>
-                        <!-- Short Description -->
-                        <p class="heading-text">Eu delicata rationibus usu. Vix te putant utroque, ludus fabellas duo eu, his dico ut debet consectetuer.</p>
-                     </div>
-                  </div>
-                  <div class="col-md-12 col-xs-12 col-sm-12">
-                     <div class="row">
-                        <!-- Countries Masonry Grid -->
-                        <div id="ads-countries" class="posts-masonry">
-                           <!-- Country Ads -->
-                           <div class="col-sm-6 col-xs-12 col-md-4">
-                              <a href="#">
-                                 <div class="country-box">
-                                    <img class="img-responsive" src="images/countries/aus.png" alt="">
-                                    <div class="country-description">
-                                       <h2 class="country-name">Australia</h2>
-                                       <p class="country-ads"><span>3118</span> Ads</p>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                           <!-- Country Ads -->
-                           <div class="col-sm-6 col-xs-12 col-md-4">
-                              <a href="#">
-                                 <div class="country-box">
-                                    <img class="img-responsive" src="images/countries/france.png" alt="">
-                                    <div class="country-description">
-                                       <h2 class="country-name">France</h2>
-                                       <p class="country-ads"><span>209</span> Ads</p>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                           <!-- Country Ads -->
-                           <div class="col-sm-6 col-xs-12 col-md-4">
-                              <a href="#">
-                                 <div class="country-box">
-                                    <img class="img-responsive" src="images/countries/bangladesh.png" alt="">
-                                    <div class="country-description">
-                                       <h2 class="country-name">Bangladesh</h2>
-                                       <p class="country-ads"><span>712</span> Ads</p>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                           <!-- Country Ads -->
-                           <div class="col-sm-6 col-xs-12 col-md-4">
-                              <a href="#">
-                                 <div class="country-box">
-                                    <img src="images/countries/usa.png" alt="" class="img-responsive">
-                                    <div class="country-description">
-                                       <h2 class="country-name">united states</h2>
-                                       <p class="country-ads"><span>3385</span> Ads</p>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                           <!-- Country Ads -->
-                           <div class="col-sm-6 col-xs-12 col-md-4">
-                              <a href="#">
-                                 <div class="country-box">
-                                    <img class="img-responsive" src="images/countries/england.png" alt="">
-                                    <div class="country-description">
-                                       <h2 class="country-name">England</h2>
-                                       <p class="country-ads"><span>281</span> Ads</p>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                           <!-- Country Ads -->
-                           <div class="col-sm-6 col-xs-12 col-md-4">
-                              <a href="#">
-                                 <div class="country-box">
-                                    <img class="img-responsive" src="images/countries/mexico.png" alt="">
-                                    <div class="country-description">
-                                       <h2 class="country-name">mexico</h2>
-                                       <p class="country-ads"><span>48</span> Ads</p>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                           <!-- Country Ads -->
-                           <div class="col-sm-6 col-xs-12 col-md-4">
-                              <a href="#">
-                                 <div class="country-box">
-                                    <img class="img-responsive" src="images/countries/pakistan.png" alt="">
-                                    <div class="country-description">
-                                       <h2 class="country-name">Pakistan</h2>
-                                       <p class="country-ads"><span>1218</span> Ads</p>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                           <!-- Country Ads -->
-                           <div class="col-sm-6 col-xs-12 col-md-4">
-                              <a href="#">
-                                 <div class="country-box">
-                                    <img src="images/countries/africa.png" class="img-responsive" alt="">
-                                    <div class="country-description">
-                                       <h2 class="country-name">South Africa</h2>
-                                       <p class="country-ads"><span>798</span> Ads</p>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                           <!-- Country Ads -->
-                           <div class="col-sm-6 col-xs-12 col-md-4">
-                              <a href="#">
-                                 <div class="country-box">
-                                    <img class="img-responsive" src="images/countries/brazil.png" alt="">
-                                    <div class="country-description">
-                                       <h2 class="country-name">Brazil</h2>
-                                       <p class="country-ads"><span>318</span> Ads</p>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                        </div>
-                        <!-- Countries Masonry Grid End -->
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Main Container End -->
-         </section>
-         <!-- =-=-=-=-=-=-= Abs By Countries End =-=-=-=-=-=-= -->
-         <!-- =-=-=-=-=-=-= Statistics Counter =-=-=-=-=-=-= -->
-         <div class="funfacts custom-padding  parallex">
-            <div class="container">
-               <div class="row">
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                     <div class="number"><span class="timer" data-from="0" data-to="1238" data-speed="1500" data-refresh-interval="5">0</span>+</div>
-                     <h4>Completed <span>Project</span></h4>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                     <div class="number"><span class="timer" data-from="0" data-to="820" data-speed="1500" data-refresh-interval="5">0</span>+</div>
-                     <h4>Expert <span>Worker</span></h4>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                     <div class="number"><span class="timer" data-from="0" data-to="1042" data-speed="1500" data-refresh-interval="5">0</span>+</div>
-                     <h4>Happy <span>Client</span></h4>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                     <div class="number"><span class="timer" data-from="0" data-to="34" data-speed="1500" data-refresh-interval="5">0</span>+</div>
-                     <h4>Award <span>Winner</span></h4>
-                  </div>
-               </div>
-               <!-- /.row -->
-            </div>
-            <!-- /.container -->
-         </div>
-         <!-- /.funfacts -->
-         <div class="clearfix"></div>
-         <!-- =-=-=-=-=-=-= Statistics Counter End =-=-=-=-=-=-= -->
-         <!-- =-=-=-=-=-=-= Pricing =-=-=-=-=-=-= -->
-         <section class="custom-padding">
-            <!-- Main Container -->
-            <div class="container">
-               <!-- Row -->
-               <div class="row">
-                  <!-- Heading Area -->
-                  <div class="heading-panel">
-                     <div class="col-xs-12 col-md-12 col-sm-12 text-center">
-                        <!-- Main Title -->
-                        <h1>Choose the best <span class="heading-color"> subscription </span>for you</h1>
-                        <!-- Short Description -->
-                        <p class="heading-text">Eu delicata rationibus usu. Vix te putant utroque, ludus fabellas duo eu, his dico ut debet consectetuer.</p>
-                     </div>
-                  </div>
-                  <!-- Middle Content Box -->
-                  <div class="col-md-12 col-xs-12 col-sm-12">
-                     <div class="row pricing">
-                        <div class="col-sm-6 col-lg-4 col-md-4">
-                           <div class="block">
-                              <h3>Individual</h3>
-                              <span class="type">Standalone</span>
-                              <span class="price">$0</span>
-                              <span class="time">30 days free trail</span>
-                              <ul>
-                                 <li>All the awesomeness</li>
-                                 <li>Up to 15 projects</li>
-                                 <li>Unlimited tasks</li>
-                                 <li>Basic Dashboards</li>
-                              </ul>
-                              <a href="#" class="btn btn-theme">Select Plan <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                           </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-md-4">
-                           <div class="block featured">
-                              <h3>Business</h3>
-                              <span class="type">Teams</span>
-                              <span class="price">$5</span>
-                              <span class="time">after the 14 days free trial</span>
-                              <ul>
-                                 <li>All the awesomeness</li>
-                                 <li>Up to 15 projects</li>
-                                 <li>Unlimited tasks</li>
-                                 <li>Basic Dashboards</li>
-                              </ul>
-                              <a href="#" class="btn btn-theme">Select Plan <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                           </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4 col-md-4">
-                           <div class="block">
-                              <h3>Complex</h3>
-                              <span class="type">Companies</span>
-                              <span class="price">$10</span>
-                              <span class="time">after the 14 days free trial</span>
-                              <ul>
-                                 <li>All the awesomeness</li>
-                                 <li>Up to 15 projects</li>
-                                 <li>Unlimited tasks</li>
-                                 <li>Basic Dashboards</li>
-                              </ul>
-                              <a href="#" class="btn btn-theme">Select Plan <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <!-- Row End -->
-            </div>
-            <!-- Main Container End -->
-         </section>
-         <!-- =-=-=-=-=-=-= Pricing End =-=-=-=-=-=-= -->
-         <!-- =-=-=-=-=-=-= App Download Section  =-=-=-=-=-=-= --> 
-         <div class="app-download-section parallex">
-            <!-- app-download-section-wrapper -->
-            <div class="app-download-section-wrapper">
-               <!-- app-download-section-container -->
-               <div class="app-download-section-container">
-                  <!-- container -->
-                  <div class="container">
-                     <!-- row -->
-                     <div class="row">
-                        <!-- col-md-12 -->
-                        <div class="col-md-12 col-xs-12 col-sm-12">
-                           <!-- section-title -->
-                           <div class="section-title"> <span>Download</span> <span><img src="images/logo-1.png" alt="Tiny Logo"></span> <span>Now</span> </div>
-                           <!-- /section-title -->
-                        </div>
-                        <!-- /col-md-12 -->
-                        <!-- col-md-4 -->
-                        <div class="col-md-4 col-sm-4">
-                           <!-- Windows Store -->
-                           <a href="#" title="Windows Store" class="btn app-download-button"> <span class="app-store-btn">
-                           <i class="fa fa-windows"></i>
-                           <span>
-                           <span>Download From</span> <span>Windows Store </span> </span>
-                           </span>
-                           </a>
-                           <!-- /Windows Store -->
-                        </div>
-                        <!-- /col-md-4 -->
-                        <!-- col-md-4 -->
-                        <div class="col-md-4 col-sm-4">
-                           <!-- Google Store -->
-                           <a href="#" title="Google Store" class="btn app-download-button"> <span class="app-store-btn">
-                           <i class="fa fa-android"></i>
-                           <span>
-                           <span>Download From</span> <span>Google Store </span> </span>
-                           </span>
-                           </a>
-                           <!-- /Google Store -->
-                        </div>
-                        <!-- /col-md-4 -->
-                        <!-- col-md-4 -->
-                        <div class="col-md-4 col-sm-4">
-                           <!-- Apple Store -->
-                           <a href="#" title="Windows Store" class="btn app-download-button"> <span class="app-store-btn">
-                           <i class="fa fa-apple"></i>
-                           <span>
-                           <span>Download From</span> <span>Apple Store </span> </span>
-                           </span>
-                           </a>
-                           <!-- /Apple Store -->
-                        </div>
-                        <!-- /col-md-4 -->
-                     </div>
-                     <!-- /row -->
-                  </div>
-                  <!-- /container -->
-               </div>
-               <!-- /app-download-section-container -->
-            </div>
-            <!-- /download-section-wrapper -->
-         </div>
-         <!-- =-=-=-=-=-=-= App Download Section End =-=-=-=-=-=-= --> 
+         <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-         <footer class="minimal-footer text-center">
-            <div class="container">
-               <div class="row address-info">
-                  <div class="col-sm-4 col-md-4 col-xs-12 footer-widget">
-                     <h2>Our Telephones</h2>
-                     <p> <span>+90 555 999 77 44</span> , <span>+90 505 959 75 24 </span> </p>
-                  </div>
-                  <div class="col-sm-4 col-md-4 col-xs-12 footer-widget">
-                     <h2>Our Address</h2>
-                     <p> <span>1 LoopText Center London</span> , <span> CA 112</span> <span>United Kingdom </span> </p>
-                  </div>
-                  <div class="col-sm-4 col-md-4 col-xs-12 footer-widget">
-                     <h2>Keep in Touch</h2>
-                     <p> <a href="#">contact@scriptsbundle.com</a> </p>
+         <footer>
+            <!-- Footer Content -->
+            <div class="footer-top">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-3  col-sm-6 col-xs-12">
+                        <!-- Info Widget -->
+                        <div class="widget">
+                           <div class="logo"> <img alt="" src="images/logo-1.png"> </div>
+                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
+                           <ul>
+                              <li><img src="images/appstore.png" alt=""></li>
+                              <li><img src="images/googleplay.png" alt=""></li>
+                           </ul>
+                        </div>
+                        <!-- Info Widget Exit -->
+                     </div>
+                     <div class="col-md-3  col-sm-6 col-xs-12">
+                        <!-- Follow Us -->
+                        <div class="widget socail-icons">
+                           <h5>Follow Us</h5>
+                           <ul>
+                              <li><a class="fb" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
+                              <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
+                              <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
+                              <li><a class="googleplus" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
+                           </ul>
+                        </div>
+                        <!-- Follow Us End -->
+                     </div>
+                     <div class="col-md-6  col-sm-6 col-xs-12">
+                        <!-- Newslatter -->
+                        <div class="widget widget-newsletter">
+                           <h5>Singup for Weekly Newsletter</h5>
+                           <div class="fieldset">
+                              <p>We may send you information about related events, webinars, products and services which we believe.</p>
+                              <form>
+                                 <input class="" value="Enter your email address" type="text">
+                                 <input class="submit-btn" name="submit" value="Submit" type="submit"> 
+                              </form>
+
+                           </div>
+                        </div>
+                        <!-- Newslatter -->
+                     </div>
                   </div>
                </div>
-               <ul class="footer-social text-center">
-                  <li> <a href="#"><span class="fa fa-google-plus"></span> </a> </li>
-                  <li> <a href="#"><span class="fa fa-twitter"></span> </a> </li>
-                  <li> <a href="#"><span class="fa fa-facebook"></span> </a> </li>
-                  <li> <a href="#"><span class="fa fa-linkedin-square"></span> </a> </li>
-               </ul>
-               <p class="copy-rights">All Rights Reserved © Subscribe Theme  |  Designed By  Scriptsbundle</p>
+            </div>
+            <!-- Copyrights -->
+            <div class="copyrights">
+               <div class="container">
+                  <div class="copyright-content">
+                     <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           <p>© 2017 AForest All rights reserved. Design by <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
          </footer>
          <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
       </div>
+      <!-- Main Content Area End --> 
+      <!-- Forget Password -->
+      <div class="custom-modal">
+         <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content">
+                  <div class="modal-header rte">
+                     <h2 class="modal-title">Forgot Your Password ?</h2>
+                  </div>
+                  <form>
+                     <div class="modal-body">
+                        <div class="form-group">
+                           <label>Email</label>
+                           <input placeholder="Enter Your Email Adress" class="form-control" type="email">
+                        </div>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-default">Reset My Account</button>
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
       <!-- Post Ad Sticky -->
-      <a href="#" class="sticky-post-button">
+      <a href="#" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
-         <i class="fa fa-plus"></i>
+         <i class="flaticon-transport-9"></i>
          </span>
          <h4>SELL</h4>
       </a>

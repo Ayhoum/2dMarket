@@ -116,8 +116,8 @@
                   <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
                      <div class="pull-right">
                         <ul class="listnone">
-                           <li><a href="login.html"><i class="fa fa-sign-in"></i> Log in</a></li>
-                           <li><a href="register.html"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
+                           <li><a href="login.php"><i class="fa fa-sign-in"></i> Log in</a></li>
+                           <li><a href="register.php"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
                            <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> Umair <span class="caret"></span></a>
                               <ul class="dropdown-menu">
@@ -283,8 +283,8 @@
                                        <div class="grid-col-3">
                                           <h4>Others</h4>
                                           <ul>
-                                             <li><a href="login.html">Login</a></li>
-                                             <li><a href="register.html">Register</a></li>
+                                             <li><a href="login.php">Login</a></li>
+                                             <li><a href="register.php">Register</a></li>
                                              <li><a href="pricing.html">Pricing</a></li>
                                              <li><a href="site-map.html">Site Map</a></li>
                                              <li><a href="post-ad-1.html">Post Ad</a></li>
