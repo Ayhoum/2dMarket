@@ -1,6 +1,60 @@
 ﻿<?php
 require_once '../scripts/db_connection.php';
 ?>
+<?php
+if(isset($_POST['submit'])){
+    $title          = $_POST['title'];
+    $selling_type   = $_POST['selling_type'];
+    $description    = $_POST['description'];
+    $delivery_type  = $_POST['delivery_type'];
+    $condition      = $_POST['condition'];
+    $category_id    = $_POST['category_id'];
+    $ad_type        = $_POST['ad_type'];
+
+
+    $ins_pr_query  = "INSERT INTO `PRODUCT`(`name`) VALUES ('{$title}') ";
+    echo $ins_pr_query;
+    $ins_pr_result = mysqli_query($mysqli,$ins_pr_query);
+
+            $sel_pr_id     = "SELECT * FROM `PRODUCT` ORDER BY `id` DESC LIMIT 1";
+            $sel_pr_result = mysqli_query($mysqli, $sel_pr_id);
+            while ($row = mysqli_fetch_assoc($sel_pr_result)){
+                $product_id= $row['id'];
+            }
+
+            $lang    = "EN";
+            $user_id =  "1";
+
+            $ins_ad_query  = "INSERT INTO `ADVERTISEMENT`";
+            $ins_ad_query .= "(`title`, `lang`, `selling_type`, `delivery_type`, `description`, `ad_type`, `USER_id`, `PRODUCT_id`, `CATEGORY_id`, `condition`)";
+            $ins_ad_query .= "VALUES (  '{$title}',
+                                        '{$lang}',
+                                        '{$selling_type}',
+                                        '{$delivery_type}',
+                                        '{$description}',
+                                        '{$ad_type}',
+                                        '{$user_id}',
+                                        '{$product_id}',
+                                        '{$category_id}',
+                                        '{$condition}' )";
+
+            $ins_ad_result = mysqli_query($mysqli,$ins_ad_query);
+                if($ad_type == "FREE"){
+
+                    echo "done  header('Location: free.php')";
+
+                } elseif ($ad_type == "PAID"){
+
+                    echo "done  header('Location: payment.php')";
+                }
+            } else{
+                echo "Error";
+
+
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -10,7 +64,7 @@ require_once '../scripts/db_connection.php';
       <![endif]-->
       <meta name="description" content="">
       <meta name="author" content="ScriptsBundle">
-      <title>AdForest | Largest Classifieds Portal</title>
+      <title>2D Market | Place a new Add</title>
       <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
       <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
       <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -470,225 +524,148 @@ require_once '../scripts/db_connection.php';
                            </h3>
                         </div>
                         <p class="lead">Posting an ad on <a href="#">2dmarket.com</a> is free! However, all ads must follow our rules:</p>
-                        <form  class="submit-form">
-                           <!-- Title  -->
-                           <div class="row">
-                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                 <label class="control-label">Advertisment title <small>Enter a title for your add</small></label>
-                                 <input name= "title" class="form-control" placeholder="Brand new honda civic 2017 for sale" type="text">
-                              </div>
-                           </div>
-                           <div class="row">
-                              <!-- Category  -->
-                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                 <label class="control-label">Category <small>Select suitable category for your ad</small></label>
-                                       <select name="category" class="category form-control">
-                                           <option label="Select Option"></option>
-                                           <?php
-                                           // GET ALL CATEGORIES from DB
-                                           $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'EN' ORDER BY `name` ASC  ";
-                                           $cat_result= mysqli_query($mysqli, $cat_query);
-                                           if (mysqli_num_rows($cat_result) > 0 ) {
-                                               while ($row = mysqli_fetch_assoc($cat_result)) {
-                                                   $id = $row['id'];
-                                                   $name = $row['name'];
-                                                    // GET ALL RELATED SUB_CATEGORIES from DB
-                                                   $sub_cat_query = "SELECT * FROM `SUB_CATEGORY`  WHERE `CATEGORY_id` = '{$id}'  ";
-                                                   $sub_cat_result = mysqli_query($mysqli, $sub_cat_query);
-                                                   if (mysqli_num_rows($sub_cat_result) > 0) {
-                                                       while ($row = mysqli_fetch_assoc($sub_cat_result)) {
-                                                           $sub_id = $row['id'];
-                                                           $sub_name = $row['name'];
-                                                           ?>
-                                                           <option value="<?php echo $id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
-                                                           <?php
-                                                       }
-                                                   } else {
-                                                   ?>
-                                                       <option value="<?php echo $id; ?>"><?php echo $name ; ?></option>
-                                                   <?php
-                                                   }
-                                               }
-                                           }
-                                           ?>
-                                       </select>
-                              </div>
-                           </div>
-                            <hr>
-                            <!-- end row-->
-                            <!-- Price  -->
-                            <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                    <label class="control-label">Price  <small>Euro only </small></label>
-                                    <input name= "price" class="form-control" placeholder="e.g 350 " type="text">
-                                </div>
-                            </div>
-                            <hr>
-                           <!-- end row -->
+                        <form  name="add_new_ad" method="post" action="new_advertisement.php" class="submit-form">
+                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                         <ul class="accordion">
+                             <li>
+                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 1.</span> Select a category</a></h4>
+                                     <div class="accordion-content">
+                                         <div class="row">
+                                             <!-- Category  -->
+                                             <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                                 <label class="control-label">Category <small>Select suitable category for your ad</small></label>
+                                                 <select name="category_id" class="category form-control">
+                                                     <option label="Select Option"></option>
+                                                     <?php
+                                                     // GET ALL CATEGORIES from DB
+                                                     $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'EN' ORDER BY `name` ASC  ";
+                                                     $cat_result= mysqli_query($mysqli, $cat_query);
+                                                     if (mysqli_num_rows($cat_result) > 0 ) {
+                                                         while ($row = mysqli_fetch_assoc($cat_result)) {
+                                                             $id = $row['id'];
+                                                             $name = $row['name'];
+                                                             // GET ALL RELATED SUB_CATEGORIES from DB
+                                                             $sub_cat_query = "SELECT * FROM `SUB_CATEGORY`  WHERE `CATEGORY_id` = '{$id}'  ";
+                                                             $sub_cat_result = mysqli_query($mysqli, $sub_cat_query);
+                                                             if (mysqli_num_rows($sub_cat_result) > 0) {
+                                                                 while ($row = mysqli_fetch_assoc($sub_cat_result)) {
+                                                                     $sub_id = $row['id'];
+                                                                     $sub_name = $row['name'];
+                                                                     ?>
+                                                                     <option value="<?php echo $id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
+                                                                     <?php
+                                                                 }
+                                                             } else {
+                                                                 ?>
+                                                                 <option value="<?php echo $id; ?>"><?php echo $name ; ?></option>
+                                                                 <?php
+                                                             }
+                                                         }
+                                                     }
+                                                     ?>
+                                                 </select>
+                                             </div>
+                                         </div>
 
-                           <!-- Image Upload  -->
-                           <div class="row">
-                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                 <label class="control-label">Photos for your ad <small>Please add images of your ad. (350x450)</small></label>
-                                 <div id="dropzone" class="dropzone"></div>
-                              </div>
-                           </div>
-                            <hr>
-                           <!-- end row -->
-                           <!-- Ad Description  -->
-                           <div class="row">
-                              <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
-                                 <label class="control-label">Ad Description <small>Enter a description for your ad</small></label>
-                                 <textarea name="description" id="editor1" rows="12" class="form-control"></textarea>
-                              </div>
-                           </div>
-                           <!-- end row -->
-                            <hr>
-                           <!-- Ad Type  -->
-
-                           <div class="row">
-                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                 <label class="control-label">Type Of Ad<small>Bid or Fixed price</small></label>
-                                 <div class="skin-minimal">
-                                     <select name="add_type" class="category form-control">
-                                         <option value=""> Select an option</option>
-                                         <option value="BID"> Bid</option>
-                                         <option value="FIXED_PRICE"> Fixed Price</option>
-                                     </select>
+                                     </div>
+                             </li>
+                             <li>
+                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 2.</span> Advertisement information</a></h4>
+                                 <div class="accordion-content">
+                                     <!-- Title-->
+                                     <div class="row">
+                                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                             <label class="control-label">Advertisment title <small>Enter a title for your ad.</small></label>
+                                             <input name= "title" class="form-control" placeholder="Brand new honda civic 2017 for sale" type="text">
+                                         </div>
+                                     </div>
+                                     <!-- end row-->
+                                     <!-- Price  -->
+                                     <div class="row">
+                                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                             <label class="control-label">Price <small>Euro only </small></label>
+                                             <input name= "price" class="form-control" placeholder="e.g 350 " type="text">
+                                         </div>
+                                     </div>
+                                     <!-- Ad Type  -->
+                                     <div class="row">
+                                         <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                             <label  class="control-label">Type Of Ad<small>Bid or Fixed price</small></label>
+                                             <div class="skin-minimal">
+                                                 <select name="selling_type" class="category form-control">
+                                                     <option value=""> Select an option</option>
+                                                     <option value="BID"> Bid</option>
+                                                     <option value="FIXED_PRICE"> Fixed Price</option>
+                                                 </select>
+                                             </div>
+                                         </div>
+                                         <!-- Ad Condition  -->
+                                         <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                             <label class="control-label">Condition<small>Item Condition</small></label>
+                                             <div class="skin-minimal">
+                                                 <select name="condition" class="category form-control">
+                                                     <option value=""> Select an option</option>
+                                                     <option value="NEW"> New</option>
+                                                     <option value="USED"> Used</option>
+                                                 </select>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="row">
+                                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                             <label class="control-label">Delivery Type  <small>Pick up or Post Delivery </small></label>
+                                             <select name="delivery_type" class="category form-control">
+                                                 <option value=""> Select an option</option>
+                                                 <option value="PICK_UP"> Pick Up</option>
+                                                 <option value="DELIVERY"> Post Delivery</option>
+                                             </select>
+                                         </div>
+                                     </div>
+                                     <!-- end row -->
                                  </div>
-                              </div>
-                           <!-- Ad Condition  -->
-                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                 <label class="control-label">Condition<small>Item Condition</small></label>
-                                 <div class="skin-minimal">
-                                     <select name="condition" class="category form-control">
-                                         <option value=""> Select an option</option>
-                                         <option value="NEW"> New</option>
-                                         <option value="USED"> Used</option>
-                                     </select>
+                             </li>
+                             <li>
+                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 3.</span> Product information</a></h4>
+                                 <div class="accordion-content">
+                                     <div class="row">
+                                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                             <label class="control-label">Photos of your product</label>
+                                             <div id="dropzone" class="dropzone"></div>
+                                         </div>
+                                     </div>
+                                     <hr>
+                                     <!-- end row -->
+                                     <!-- Ad Description  -->
+                                     <div class="row">
+                                         <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
+                                             <label class="control-label">Product Description <small>Enter a description of the product</small></label>
+                                             <textarea name="description" id="editor2" rows="12" class="form-control"></textarea>
+                                         </div>
+                                     </div>
+                                     <!-- end row -->
                                  </div>
-                              </div>
-                           </div>
-                            <div class="row">
-                                <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                    <label class="control-label">Delivery Type  <small>Pick up or Post Delivery </small></label>
-                                    <select name="condition" class="category form-control">
-                                        <option value=""> Select an option</option>
-                                        <option value="PICK_UP"> Pick Up</option>
-                                        <option value="DELIVERY"> Post Delivery</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <hr>
-                           <!-- end row -->
-                           <div class="row">
-                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                 <label class="control-label">Your Name</label>
-                                 <input class="form-control" placeholder="eg John Doe" type="text">
-                              </div>
-                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                 <label class="control-label">Your Email ID<small>where you receive your emails</small></label>
-                                 <input class="form-control" placeholder="contact@scriptsbundle.com" type="text">
-                              </div>
-                           </div>
-                           <!-- end row -->
-                           <div class="row">
-                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                 <label class="control-label">Mobile Number<small>number for conformation</small></label>
-                                 <input class="form-control" placeholder="eg +92-0321-123-456-789" type="text">
-                              </div>
-                              <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                 <label class="control-label">Address<small>your permanent address</small></label>
-                                 <input class="form-control" placeholder="eg House no 8 Streent no 2 New York" type="text">
-                              </div>
-                           </div>
-                           <!-- Select Package  -->
-                           <div class="select-package">
-                              	<div class="no-padding col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                 <h3 class="margin-bottom-20">Select Package</h3>
-                                 <div class="pricing-list">
-                                    <div class="row">
-                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                          <h3>Free Listing   <small>Submit 5 Listings</small></h3>
-                                          <p>Lorem ipsum dolor sit amet, non odio tincidunt ut ante, lorem a euismod suspendisse vel, sed quam nulla mauris iaculis.</p>
-                                       </div>
-                                       <!-- end col -->
-                                       <div class="col-md-3 col-sm-3 col-xs-12">
-                                          <div class="pricing-list-price text-center">
-                                             <h4>$0.00</h4>
-                                             <a href="#submit" class="btn btn-theme btn-sm btn-block">Select</a>
-                                          </div>
-                                       </div>
-                                       <!-- end col -->
-                                    </div>
-                                    <!-- end row -->
+                             </li>
+                             <li>
+                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 4.</span> Advertisement Options</a></h4>
+                                 <div class="accordion-content">
+                                     <div class="row">
+                                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                             <label class="control-label">Ad Type  <small>Choose between Free Or Premium</small></label>
+                                             <select name="ad_type" class="category form-control">
+                                                 <option value=""> Select an option</option>
+                                                 <option value="FREE"> FREE</option>
+                                                 <option value="PREMIUM"> Premium</option>
+                                             </select>
+                                         </div>
+                                     </div>
                                  </div>
-                                 <div class="pricing-list">
-                                    <div class="row">
-                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                          <h3>Premium Listing   <small>Submit 10 Listings</small></h3>
-                                          <p>Lorem ipsum dolor sit amet, non odio tincidunt ut ante, lorem a euismod suspendisse vel, sed quam nulla mauris iaculis.</p>
-                                       </div>
-                                       <!-- end col -->
-                                       <div class="col-md-3 col-sm-3 col-xs-12">
-                                          <div class="pricing-list-price text-center">
-                                             <h4>$2.00</h4>
-                                             <a href="#submit" class="btn btn-theme btn-sm btn-block">Select</a>
-                                          </div>
-                                       </div>
-                                       <!-- end col -->
-                                    </div>
-                                    <!-- end row -->
-                                 </div>
-                                 <div class="pricing-list">
-                                    <div class="row">
-                                       <div class="col-md-9 col-sm-9 col-xs-12">
-                                          <h3>Business Listing   <small>Submit Unlimited Projects</small></h3>
-                                          <p>Lorem ipsum dolor sit amet, non odio tincidunt ut ante, lorem a euismod suspendisse vel, sed quam nulla mauris iaculis.</p>
-                                       </div>
-                                       <!-- end col -->
-                                       <div class="col-md-3 col-sm-3 col-xs-12">
-                                          <div class="pricing-list-price text-center">
-                                             <h4>$10.00</h4>
-                                             <a href="#submit" class="btn btn-theme btn-sm btn-block">Select</a>
-                                          </div>
-                                       </div>
-                                       <!-- end col -->
-                                    </div>
-                                    <!-- end row -->
-                                 </div>
-                              </div>
-                           </div>   
-
-                           <!-- Featured Ad  -->
-                           <div class="row">
-                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                 <label class="control-label">Make Your Ad Featured  <small class="pull-right" > <a href="">What is featured ad</a></small></label>
-                                 <div class="skin-minimal">
-                                    <ul class="list">
-                                       <li>
-                                          <input type="radio" id="bank" name="minimal-radio">
-                                          <label  for="bank"> Direct Bank Transfer</label>
-                                       </li>
-                                       <li>
-                                          <input type="radio" id="cheque" name="minimal-radio" checked>
-                                          <label for="cheque">Cheque Payment</label>
-                                       </li>
-                                       <li>
-                                          <input type="radio" id="paypal" name="minimal-radio" checked>
-                                          <label for="paypal">Paypal</label>
-                                       </li>
-                                       <li>
-                                          <input type="radio" id="card" name="minimal-radio" checked>
-                                          <label for="card">Credit Card</label>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- end row -->
-                           <button class="btn btn-theme pull-right">Publish My Ad</button>
+                             </li>
+                         </ul>
+                             <div class="margin-top-20">
+                                 <button name="submit" class="btn btn-theme pull-right">Publish My Ad</button>
+                             </div>
                         </form>
+
                      </div>
                      <!-- end post-ad-form-->
                   </div>
@@ -753,7 +730,7 @@ require_once '../scripts/db_connection.php';
                   <div class="copyright-content">
                      <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                           <p>© 2017 AForest All rights reserved. Design by <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
+                           <p>© 2018 <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
                         </div>
                      </div>
                   </div>
@@ -834,7 +811,7 @@ require_once '../scripts/db_connection.php';
          $("#dropzone").dropzone({
            addRemoveLinks: true,
            maxFiles: 5, //change limit as per your requirements
-         acceptedFiles: '.jpeg,.jpg,.png,.gif',
+           acceptedFiles: '.jpeg,.jpg,.png,.gif',
            dictMaxFilesExceeded: "Maximum upload limit reached",
            acceptedFiles: acceptedFileTypes,
          url: "uploads",
