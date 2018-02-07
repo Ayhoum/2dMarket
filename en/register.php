@@ -396,34 +396,48 @@ if(isset($_SESSION['username'])){
                <!-- Row -->
                <div class="row center-block">
                   <!-- Middle Content Area -->
-                  <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
+                  <div class="col-sm-offset-0 col-sm-12 col-md-offset-2 col-md-8">
                      <!--  Form -->
                      <div class="form-grid">
-                        <form>
+                        <form name="signup" id="signupForm" method="post" action="scripts/signup.php" data-toggle="validator">
                            <div class="form-group">
-                              <label>Name</label>
-                              <input placeholder="Enter Your Name" class="form-control" type="text">
+                              <label>Email Address</label>
+                              <input autocomplete="false" required placeholder="Enter Your Email" name="email" onchange="checkAvailability();" id="emailArea" class="form-control" type="email">
+                               <label id="checkEmailError"></label>
                            </div>
-                           <div class="form-group">
-                              <label>Contact Number</label>
-                              <input placeholder="Enter Your Contact Number" class="form-control" type="text">
+                            <div class="row">
+                           <div class="form-group col-sm-6">
+                              <label>First Name</label>
+                              <input required placeholder="Enter Your First Name" name="fname" class="form-control" type="text">
                            </div>
+                            <div class="form-group col-sm-6">
+                                <label>Last Name</label>
+                                <input required placeholder="Enter Your Last Name" name="lname" class="form-control" type="text">
+                            </div>
+                            </div>
                            <div class="form-group">
-                              <label>Email</label>
-                              <input placeholder="Your Email" class="form-control" type="email">
+                              <label>Username</label>
+                              <input required placeholder="Your Username" name="username" class="form-control" type="text">
                            </div>
-                           <div class="form-group">
+                            <div class="row">
+                            <div class="form-group col-sm-6">
                               <label>Password</label>
-                              <input placeholder="Your Password" class="form-control" type="password">
+                              <input required placeholder="Your Password" id="inputPassword" name="password" class="form-control" type="password">
                            </div>
+                            <div class="form-group col-sm-6">
+                                <label>Repeate The Password</label>
+                                <input required placeholder="Your Password Again" name="repassword" class="form-control" onChange="checkPasswordMatch();" id="inputPasswordConfirm" type="password">
+                                <label id="txtConfirm"></label>
+                            </div>
+                            </div>
                            <div class="form-group">
                               <div class="row">
                                  <div class="col-xs-12 col-sm-7">
                                     <div class="skin-minimal">
                                        <ul class="list">
                                           <li>
-                                             <input  type="checkbox" id="minimal-checkbox-1">
-                                             <label for="minimal-checkbox-1">i agree <a href="#">Terms of Services</a></label>
+                                             <input required type="checkbox" id="minimal-checkbox-1">
+                                             <label for="minimal-checkbox-1">I agree <a href="#">Terms of Services</a></label>
                                           </li>
                                        </ul>
                                     </div>
@@ -434,7 +448,7 @@ if(isset($_SESSION['username'])){
                                  </div>
                               </div>
                            </div>
-                           <button class="btn btn-theme btn-lg btn-block">Register</button>
+                           <button class="btn btn-theme btn-lg btn-block" name="submit" type="submit" id="regBut" disabled>Register</button>
                         </form>
                      </div>
                      <!-- Form -->
@@ -579,6 +593,54 @@ if(isset($_SESSION['username'])){
       <script src="js/color-switcher.js"></script>
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
+<script>
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    function checkPasswordMatch() {
+        var password = $("#inputPassword").val();
+        var confirmPassword = $("#inputPasswordConfirm").val();
+
+        if (password != confirmPassword){
+            $("#txtConfirm").html("Doesn't Match");
+            $("#regBut").prop("disabled",true);
+        }else{
+            $("#txtConfirm").html("Passwords match.");
+            $("#regBut").prop("disabled",false);
+        }
+    }
+
+    function checkAvailability(){
+        var email = $("#emailArea").val();
+        if(validateEmail(email)){
+        $.post('scripts/handle_email.php?email='+email,function(response){
+
+            if(response > 0){
+                $('#checkEmailError').html("This email is already registered!");
+                $("#regBut").prop("disabled",true);
+            }else{
+                $('#checkEmailError').html("This email is available!");
+                $("#regBut").prop("disabled",false);
+            }
+        });
+        }else{
+            $('#checkEmailError').html("Enter a valid Email Address!");
+            $("#regBut").prop("disabled",true);
+
+        }
+    }
+
+    $(document).ready(function () {
+        $("#inputPasswordConfirm").keyup(checkPasswordMatch);
+        $("#emailArea").keyup(checkAvailability);
+    });
+
+
+
+
+</script>
    </body>
 </html>
 
