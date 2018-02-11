@@ -1,4 +1,8 @@
-﻿
+﻿<?php
+session_start();
+require_once "../scripts/db_connection.php";
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +60,56 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
    </head>
+
+   <?php
+   //check if its logged in
+   if (isset($_POST['log_in'])) {
+       $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+       $password = mysqli_real_escape_string($mysqli, $_POST['password']);
+//check for empty fields
+       if (!$_POST['email']) {
+           //header("location:../en/login.php");
+           echo(   "enter your email"  );
+       }
+       if (!$_POST['password']) {
+           echo(   "enter your password"  );
+
+       }else {
+//if its nothing encrypt the pass and go ON
+           $password = md5($password);
+           $query = "SELECT * FROM USER WHERE email='$email' AND password='$password'";
+           $results = mysqli_query($mysqli, $query);
+
+           if (mysqli_num_rows($results) == 1) {
+               while ($row = mysqli_fetch_assoc($results)) {
+                   $id = $row['id'];
+                   $email = $row['email'];
+                   $username = $row['username'];
+
+                   $_SESSION['username'] = $username;
+                   $_SESSION['email'] = $email;
+                   $_SESSION['id'] = $id;
+
+                   header("location:../en/index.php");
+                   ?>
+                   <div class="alert alert-success">
+                    <strong>Success!</strong> Indicates a successful or positive action.
+                </div>
+                    <?php
+
+               }
+           } else {
+               echo(   "Wrong username/password combination"  );
+
+               header("location:../en/index.php");
+
+           }
+       }
+   }
+
+   ?>
    <body>
+
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
           <div id="loader-wrapper">
          <div id="loader"></div>
@@ -387,30 +440,19 @@
                   <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
                      <!--  Form -->
                      <div class="form-grid">
-                        <form>
+                        <form   method="post">
                            <div class="form-group">
                               <label>Email</label>
-                              <input placeholder="Your Email" class="form-control" type="email">
+                              <input placeholder="Your Email" class="form-control" type="email" id="email">
                            </div>
                            <div class="form-group">
                               <label>Password</label>
-                              <input placeholder="Your Password" class="form-control" type="password">
+                              <input placeholder="Your Password" class="form-control" type="password" id="password">
+
+                               <p><b><a href="../en/scripts/RestorePassowrd/restore_password.php" target="_blank">Have you forgot your password!</a></b></p>
                            </div>
-                           <div class="form-group">
-                              <div class="row">
-                                 <div class="col-xs-12">
-                                    <div class="skin-minimal">
-                                       <ul class="list">
-                                          <li>
-                                             <input  type="checkbox" id="minimal-checkbox-1">
-                                             <label for="minimal-checkbox-1">Remember Me</label>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <button class="btn btn-theme btn-lg btn-block">Login With Us</button>
+
+                           <button class="btn btn-theme btn-lg btn-block" name="Log_in">LoginIn</button>
                         </form>
                      </div>
                      <!-- Form -->
