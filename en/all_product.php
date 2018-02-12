@@ -12,7 +12,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
     <meta name="description" content="">
-    <meta name="author" content="2d market">
+    <meta name="author" content="2D Market">
     <title>AdForest | Largest Classifieds Portal</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
@@ -482,7 +482,7 @@ session_start();
                         <!-- Ads Archive -->
                         <div class="posts-masonry">
                             <!-- Listing Ad Grid -->
-                            <?php include 'scripts/select_all_ads_premuim.php';?>
+                            <?php include 'scripts/select_all_ads_premium.php';?>
                             <!-- Advertizing -->
                             <div class="col-md-12 col-xs-12 col-sm-12">
                                 <section class="advertising">
@@ -539,89 +539,10 @@ session_start();
                                 </div>
                                 <!-- Content -->
                                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="panel-body categories">
-                                        <ul>
-                                            <li><a href="#"><i class="flaticon-data"></i>Electronics & Gedget<span>(1029)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-transport-6"></i>Cars & Vehicles<span>(1228)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-mortgage"></i>Property<span>(178)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-technology-8"></i>Mobile & Tablets<span>(2178)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-suitcase"></i>Jobs<span>(7178)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-search"></i>Home & Garden<span>(7163)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-dog"></i>Pets & Animals<span>(8709)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-science"></i>Health & Beauty<span>(3129)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-game"></i>Hobby, Sport & Kids<span>(2019)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-food"></i>Food & Agriculture<span>(323)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-blouse"></i>Women & Children Cloths<span>(425)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-technology-22"></i>Cameras & Security<span>(3223)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-technology-45"></i>Office Product<span>(3283)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-wrench"></i>Arts, Crafts & Sewing<span>(3221)</span></a></li>
-                                            <li><a href="#"><i class="flaticon-cogwheel-2"></i>Others<span>(3129)</span></a></li>
-                                        </ul>
-                                    </div>
+                                    <?php include 'scripts/category.php';?>
                                 </div>
                             </div>
                             <!-- Categories Panel End -->
-                            <!-- Brands Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Brands
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- Content -->
-                                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        <!-- Search -->
-                                        <div class="search-widget">
-                                            <input placeholder="search" type="text">
-                                            <button type="submit"><i class="fa fa-search"></i></button>
-                                        </div>
-                                        <!-- Brands List -->
-                                        <div class="skin-minimal">
-                                            <ul class="list">
-                                                <li>
-                                                    <input  type="checkbox" id="minimal-checkbox-1">
-                                                    <label for="minimal-checkbox-1">All Brands</label>
-                                                </li>
-                                                <li>
-                                                    <input  type="checkbox" id="minimal-checkbox-2">
-                                                    <label for="minimal-checkbox-2">Samsung</label>
-                                                </li>
-                                                <li>
-                                                    <input  type="checkbox" id="minimal-checkbox-3">
-                                                    <label for="minimal-checkbox-3">Apple</label>
-                                                </li>
-                                                <li>
-                                                    <input  type="checkbox" id="minimal-checkbox-4">
-                                                    <label for="minimal-checkbox-4">Nokia</label>
-                                                </li>
-                                                <li>
-                                                    <input  type="checkbox" id="minimal-checkbox-5">
-                                                    <label for="minimal-checkbox-5">Sony</label>
-                                                </li>
-                                                <li>
-                                                    <input  type="checkbox" id="minimal-checkbox-6">
-                                                    <label for="minimal-checkbox-6">Blackberry</label>
-                                                </li>
-                                                <li>
-                                                    <input  type="checkbox" id="minimal-checkbox-7">
-                                                    <label for="minimal-checkbox-7">HTC</label>
-                                                </li>
-                                                <li>
-                                                    <input  type="checkbox" id="minimal-checkbox-8">
-                                                    <label for="minimal-checkbox-8">Motorola</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- Brands List End -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Brands Panel End -->
                             <!-- Condition Panel -->
                             <div class="panel panel-default">
                                 <!-- Heading -->
@@ -671,6 +592,7 @@ session_start();
                                     </div>
                                 </div>
                             </div>
+
                             <!-- Pricing Panel End -->
                             <!-- Featured Ads Panel -->
                             <div class="panel panel-default">
@@ -683,16 +605,7 @@ session_start();
                                     </h4>
                                 </div>
                                 <!-- Content -->
-                                <div class="panel-collapse">
-                                    <div class="panel-body recent-ads">
-                                            <!-- Featured Ads -->
-                                            <?php include 'scripts/featured_ads.php'; ?>
-                                            <!-- Ad Box End -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php include 'scripts/featured_ads.php';?>
                             </div>
                             <!-- Featured Ads Panel End -->
                             <!-- Latest Ads Panel -->

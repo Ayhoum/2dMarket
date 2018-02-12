@@ -49,35 +49,45 @@ if (mysqli_num_rows($ad_result) > 0 ) {
         }
         ?>
 
-        <div class="item">
-        <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
-        <!-- Ad Box -->
-        <div class="category-grid-box">
-            <!-- Ad Img -->
-            <div class="category-grid-img">
-                <img class="img-responsive" alt="" src="<?php //echo $pic;?>">
-                <!-- Ad Status -->
-                <!-- User Review -->
-                <div class="user-preview">
-                    <a href="#"> <img src="<?php //echo $profile_pic; ?>" class="avatar avatar-small" alt=""> </a>
+        <div class="panel-collapse">
+            <div class="panel-body recent-ads">
+                <div class="featured-slider-3">
+                    <!-- Featured Ads -->
+                    <div class="item">
+                        <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                            <!-- Ad Box -->
+                            <div class="category-grid-box">
+                                <!-- Ad Img -->
+                                <div class="category-grid-img">
+                                    <img class="img-responsive" alt="" src="images/posting/car-3.jpg">
+                                    <!-- Ad Status -->
+                                    <!-- User Review -->
+                                    <div class="user-preview">
+                                        <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                    </div>
+                                    <!-- View Details --><a href="" class="view-details">View Details</a>
+                                </div>
+                                <!-- Ad Img End -->
+                                <div class="short-description">
+                                    <!-- Ad Category -->
+                                    <div class="category-title"> <span><a href="#"><?php echo $cat_name; ?></a></span> </div>
+                                    <!-- Ad Title -->
+                                    <h3><a title="" href="single-page-listing.html"><?php echo $title; ?></a></h3>
+                                    <!-- Price -->
+                                    <div class="price"><?php echo $price; ?> </div>
+                                </div>
+                                <!-- Addition Info -->
+                                <div class="ad-info">
+                                    <ul>
+                                        <li><i class="fa fa-map-marker"></i><?php //echo $location?></li>
+                                        <li><i class="fa fa-clock-o"></i> <?php echo $date; ?> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Ad Box End -->
+                        </div>
+                    </div>
                 </div>
-                <!-- View Details --><a href="" class="view-details">View Details</a>
-            </div>
-            <!-- Ad Img End -->
-            <div class="short-description">
-                <!-- Ad Category -->
-                <div class="category-title"><span><a href="#"><?php echo $cat_name; ?></a></span></div>
-                <!-- Ad Title -->
-                <h3><a title="" href="single-page-listing.html"><?php echo $title; ?></a></h3>
-                <!-- Price -->
-                <div class="price"><?php echo $price; ?></div>
-            </div>
-            <!-- Addition Info -->
-            <div class="ad-info">
-                <ul>
-                    <li><i class="fa fa-map-marker"></i><?php //echo $location; ?></li>
-                    <li><i class="fa fa-clock-o"></i><?php echo $date; ?> </li>
-                </ul>
             </div>
         </div>
         <?php
