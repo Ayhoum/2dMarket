@@ -1,60 +1,6 @@
 ﻿<?php
 require_once '../scripts/db_connection.php';
 ?>
-<?php
-if(isset($_POST['submit'])){
-    $title          = $_POST['title'];
-    $selling_type   = $_POST['selling_type'];
-    $description    = $_POST['description'];
-    $delivery_type  = $_POST['delivery_type'];
-    $condition      = $_POST['condition'];
-    $category_id    = $_POST['category_id'];
-    $ad_type        = $_POST['ad_type'];
-
-
-    $ins_pr_query  = "INSERT INTO `PRODUCT`(`name`) VALUES ('{$title}') ";
-    echo $ins_pr_query;
-    $ins_pr_result = mysqli_query($mysqli,$ins_pr_query);
-
-            $sel_pr_id     = "SELECT * FROM `PRODUCT` ORDER BY `id` DESC LIMIT 1";
-            $sel_pr_result = mysqli_query($mysqli, $sel_pr_id);
-            while ($row = mysqli_fetch_assoc($sel_pr_result)){
-                $product_id= $row['id'];
-            }
-
-            $lang    = "EN";
-            $user_id =  "1";
-
-            $ins_ad_query  = "INSERT INTO `ADVERTISEMENT`";
-            $ins_ad_query .= "(`title`, `lang`, `selling_type`, `delivery_type`, `description`, `ad_type`, `USER_id`, `PRODUCT_id`, `CATEGORY_id`, `condition`)";
-            $ins_ad_query .= "VALUES (  '{$title}',
-                                        '{$lang}',
-                                        '{$selling_type}',
-                                        '{$delivery_type}',
-                                        '{$description}',
-                                        '{$ad_type}',
-                                        '{$user_id}',
-                                        '{$product_id}',
-                                        '{$category_id}',
-                                        '{$condition}' )";
-
-            $ins_ad_result = mysqli_query($mysqli,$ins_ad_query);
-                if($ad_type == "FREE"){
-
-                    echo "done  header('Location: free.php')";
-
-                } elseif ($ad_type == "PAID"){
-
-                    echo "done  header('Location: payment.php')";
-                }
-            } else{
-                echo "Error";
-
-
-
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -412,7 +358,7 @@ if(isset($_POST['submit'])){
             <div class="row">
                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="header-page">
-                     <h1>User Sign In</h1>
+                     <h1>Place a new Advertisement </h1>
                   </div>
                </div>
             </div>
@@ -449,7 +395,7 @@ if(isset($_POST['submit'])){
                            </h3>
                         </div>
                         <p class="lead">Posting an ad on <a href="#">2dmarket.com</a> is free! However, all ads must follow our rules:</p>
-                        <form  name="add_new_ad" method="post" action="new_advertisement.php" class="submit-form">
+                        <form  name="add_new_ad" method="post" action="scripts/create_new_ad.php" class="submit-form">
                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                          <ul class="accordion">
                              <li>
@@ -577,7 +523,7 @@ if(isset($_POST['submit'])){
                                              <label class="control-label">Ad Type  <small>Choose between Free Or Premium</small></label>
                                              <select name="ad_type" class="category form-control">
                                                  <option value=""> Select an option</option>
-                                                 <option value="FREE"> FREE</option>
+                                                 <option value="NORMAL"> Normal</option>
                                                  <option value="PREMIUM"> Premium</option>
                                              </select>
                                          </div>
