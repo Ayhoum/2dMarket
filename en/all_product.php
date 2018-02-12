@@ -539,7 +539,11 @@ session_start();
                                 </div>
                                 <!-- Content -->
                                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body categories">
+                                        <ul>
                                     <?php include 'scripts/category.php';?>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Categories Panel End -->

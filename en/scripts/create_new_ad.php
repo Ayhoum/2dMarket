@@ -48,11 +48,11 @@ if(isset($_POST['submit'])){
     $ins_ad_result = mysqli_query($mysqli,$ins_ad_query);
     if($ad_type == "NORMAL"){
 
-         header('Location: free.php');
+         header('Location: free.php?user_id='.$user_id);
 
     } elseif ($ad_type == "PREMIUM"){
 
-          header('Location: premium.php');
+          header('Location: premium.php?user_id='.$user_id);
     }
 } else{
     echo "Error";
