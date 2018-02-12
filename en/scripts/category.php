@@ -10,10 +10,13 @@
 <?php
 $cat_query  = "SELECT * FROM `CATEGORY`";
 $cat_result = mysqli_query($mysqli, $cat_query);
-while ($row = mysqli_fetch_assoc($cat_result)){
-    $cat_id   = $row['id'];
-    $cat_name = $row['name'];
+while ($row = mysqli_fetch_assoc($cat_result)) {
+    $cat_id     = $row['id'];
+    $cat_name   = $row['name'];
+    $icon_name  = $row['icon_name'];
+    ?>
+
+    <li><a href="all_product.php?cat_id=<?php echo $cat_id; ?>"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span>(1029)</span></a></li>
+<?php
 }
 ?>
-
-        <li><a href="#"><i class="flaticon-data"></i><?php echo $cat_name; ?><span>(1029)</span></a></li>
