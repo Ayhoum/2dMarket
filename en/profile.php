@@ -5,7 +5,45 @@
  * Date: 13-2-2018
  * Time: 16:31
  */
+session_start();
+ob_start();
+require_once "../scripts/db_connection.php";
 
+$id=$_GET['id'];
+
+if(isset($_POST['updateInfo'])) {
+
+$email = mysqli_real_escape_string($mysqli, $_POST['email']);
+$firstname = mysqli_real_escape_string($mysqli, $_POST['firstName']);
+$lastname = mysqli_real_escape_string($mysqli, $_POST['lastName']);
+$userName = mysqli_real_escape_string($mysqli, $_POST['userName']);
+$phonenumber = mysqli_real_escape_string($mysqli, $_POST['numberContact']);
+$region = mysqli_real_escape_string($mysqli, $_POST['slct1']);
+$city = mysqli_real_escape_string($mysqli, $_POST['slct2']);
+$streetName = mysqli_real_escape_string($mysqli, $_POST['streetName']);
+$houseNumber = mysqli_real_escape_string($mysqli, $_POST['housenumber']);
+$extraHouseNumber = mysqli_real_escape_string($mysqli, $_POST['extraHousenumber']);
+$PostCode = mysqli_real_escape_string($mysqli, $_POST['Postcode']);
+
+
+
+$updateQueryFromTwoTabels="UPDATE USER u,ADDRESS a SET u.first_name='$firstname',u.last_name='$lastname',u.username='$userName'
+,u.email='$email',u.phone_number='$phonenumber' a.street_name= '$streetName',a.house_number='$houseNumber',a.extra_number='$extraHouseNumber'
+,a.postcode='$PostCode',a.region='$region',a.city='$city' where u.id='$id', a.id='$id' AND u.id=a.USER_id ";
+
+    $excte=mysqli_query($mysqli,$updateQueryFromTwoTabels);
+
+    if($excte){
+
+        echo "your info is updated";
+        header("location:profile.php");
+
+    }
+
+
+
+
+}
 ?>
 
 
@@ -509,31 +547,31 @@
                                     <dl class="dl-horizontal">
                                         <dt><strong>Your name </strong></dt>
                                         <dd>
-                                            John Doe
+                                            <?php echo $firstname ;?>
                                         </dd>
                                         <dt><strong>Email Address </strong></dt>
                                         <dd>
-                                            contact@scriptsbundle.com
+                                            <?php echo $email ;?>
                                         </dd>
                                         <dt><strong>Phone Number </strong></dt>
                                         <dd>
-                                            (0423) 12-2345-789
+                                            <?php echo $phonenumber ;?>
                                         </dd>
-                                        <dt><strong>Country </strong></dt>
+                                        <dt><strong>Region </strong></dt>
                                         <dd>
-                                            England
+                                            <?php echo $region ;?>
                                         </dd>
                                         <dt><strong>City </strong></dt>
                                         <dd>
-                                            London
+                                            <?php echo $city ;?>
                                         </dd>
                                         <dt><strong>You are a </strong></dt>
                                         <dd>
-                                            Dealer
+                                            <?php echo $userName ;?>
                                         </dd>
                                         <dt><strong>Address </strong></dt>
                                         <dd>
-                                            Lahore, PK
+                                            <?php echo $streetName." ".$houseNumber." ".$PostCode ;?>
                                         </dd>
                                     </dl>
                                 </div>
@@ -599,7 +637,7 @@
                                     <h2 class="heading-md">Change your account information.</h2>
                                     <p>Manage Your Account</p>
                                     <div class="clearfix"></div>
-                                    <form>
+                                    <form method="post" >
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>First Name </label>
@@ -608,6 +646,10 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Last Name </label>
                                                 <input type="text" name="lastName" class="form-control margin-bottom-20">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label>user Name </label>
+                                                <input type="text" name="userName" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Email Address <span class="color-red">*</span></label>

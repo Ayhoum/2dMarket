@@ -4,7 +4,7 @@ ob_start();
 require_once "../../../scripts/db_connection.php";
 
 //taking the email from the url
-$id=$_GET['email'];
+$email=$_GET['email'];
 
 //getting the id from the database
 $query = "SELECT * From User WHERE email ='{$email}' ";
