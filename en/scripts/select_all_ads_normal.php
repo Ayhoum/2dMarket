@@ -59,7 +59,7 @@ if (isset($_GET['cat_id'])){
                         <div class="user-preview">
                             <a href="#"> <img src="<?php //echo $user_pic; ?>" class="avatar avatar-small" alt=""> </a>
                         </div>
-                        <!-- View Details --><a href="" class="view-details">View Details</a>
+                        <!-- View Details --><a href="ad_page?ad_id=<?php echo $ad_id ?>" class="view-details">View Details</a>
                         <!-- Additional Info -->
                         <div class="additional-information">
                             <p> <?php echo $title;?></p>
@@ -146,7 +146,7 @@ if (mysqli_num_rows($ad_result) > 0 ){
                         <div class="user-preview">
                             <a href="#"> <img src="<?php //echo $user_pic; ?>" class="avatar avatar-small" alt=""> </a>
                         </div>
-                        <!-- View Details --><a href="" class="view-details">View Details</a>
+                        <!-- View Details --><a href="ad_page?ad_id=<?php echo $ad_id ?>" class="view-details">View Details</a>
                         <!-- Additional Info -->
                         <div class="additional-information">
                             <p> <?php echo $title;?></p>
@@ -161,7 +161,7 @@ if (mysqli_num_rows($ad_result) > 0 ){
                         <!-- Ad Category -->
                         <div class="category-title"> <span><a href="#"><?php echo $cat_name ; ?></a></span> </div>
                         <!-- Ad Title -->
-                        <h3><a title="" href="single-page-listing.html"> <?php echo $title; ?></a></h3>
+                        <h3><a title="" href="ad_page?ad_id=<?php echo $ad_id ?>"> <?php echo $title; ?></a></h3>
                         <!-- Price -->
                         <div class="price"><?php echo  $price; ?><!-- <span class="negotiable">(Negotiable)</span>--></div>
                     </div>
