@@ -423,7 +423,7 @@ if(isset($_SESSION['username'])){
                             <div class="form-group col-sm-6">
                               <label>Password</label>
                               <input required placeholder="Your Password" id="inputPassword" name="password" class="form-control" type="password">
-                           </div>
+                            </div>
                             <div class="form-group col-sm-6">
                                 <label>Repeate The Password</label>
                                 <input required placeholder="Your Password Again" name="repassword" class="form-control" onChange="checkPasswordMatch();" id="inputPasswordConfirm" type="password">
