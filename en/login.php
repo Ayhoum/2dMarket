@@ -63,7 +63,7 @@ require_once "../scripts/db_connection.php";
 
    <?php
        //check if its logged in
-       if (isset($_POST['log_in'])) {
+       if (isset($_POST['Log_in'])) {
            $email = mysqli_real_escape_string($mysqli, $_POST['email']);
            $password = mysqli_real_escape_string($mysqli, $_POST['password']);
 
@@ -93,14 +93,12 @@ require_once "../scripts/db_connection.php";
                        $_SESSION['email'] = $email;
                        $_SESSION['id'] = $id;
 
-                       header("location:login.php");
-                       ?>
-                       <div class="alert alert-success">
-                           <strong>Success!</strong> Indicates a successful or positive action.
-                       </div>
-                       <?php
+
 
                    }
+
+
+
                } else {
                    echo(   "Wrong username/password combination"  );
 
@@ -108,6 +106,7 @@ require_once "../scripts/db_connection.php";
 
                }
            }
+           header("location:index.php");
        }
    ?>
    <body>
@@ -451,7 +450,7 @@ require_once "../scripts/db_connection.php";
                               <label>Password</label>
                               <input placeholder="Your Password" class="form-control" type="password" name="password">
 
-                               <p><b><a href="../en/scripts/RestorePassowrd/restore_password.php" target="_blank">Have you forgot your password!</a></b></p>
+                               <p><b><a href="scripts/RestorePassowrd/resotre_password.php" target="_blank">Have you forgot your password!</a></b></p>
                            </div>
 
                            <button class="btn btn-theme btn-lg btn-block" name="Log_in">LoginIn</button>
