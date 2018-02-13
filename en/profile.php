@@ -1,38 +1,13 @@
-
 <?php
 /**
  * Created by PhpStorm.
  * User: sulim
- * Date: 27-1-2018
- * Time: 23:46
+ * Date: 13-2-2018
+ * Time: 16:31
  */
-session_start();
-ob_start();
-require_once "../../../scripts/db_connection.php";
-
-if(isset($_POST['code_submit'])){
-    $code = $_POST['code'];
-    $email = $_POST['email'];
-    $query = "SELECT * From User WHERE email = '{$email}' ";
-    $getAgent = mysqli_query($mysqli, $query);
-    if (mysqli_num_rows($getAgent) == 1) {
-        while ($row = mysqli_fetch_assoc($getAgent)) {
-            $id = $row['id'];
-        }
-    }
-    $codeQuery = "SELECT * FROM User WHERE id = '{$id}' AND code = '{$code}'";
-    $getCode = mysqli_query($mysqli, $codeQuery);
-    if (mysqli_num_rows($getCode) != 1) {
-        header("Location: insert_code.php");
-        echo"wrong data/code or username";
-    }else{    header("Location: update_password.php");}
-
-}
 
 ?>
 
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,48 +19,45 @@ if(isset($_POST['code_submit'])){
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
     <title>AdForest | Largest Classifieds Portal</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-    <link rel="icon" href="../../images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="../../css/font-awesome.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.css" type="text/css">
     <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
-    <link href="../../css/flaticon.css" rel="stylesheet">
+    <link href="css/flaticon.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Et Line Fonts =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="../../css/et-line-fonts.css" type="text/css">
+    <link rel="stylesheet" href="css/et-line-fonts.css" type="text/css">
     <!-- =-=-=-=-=-=-= Menu Drop Down =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="../../css/forest-menu.css" type="text/css">
+    <link rel="stylesheet" href="css/forest-menu.css" type="text/css">
     <!-- =-=-=-=-=-=-= Animation =-=-=-=-=-=-= -->
-    <link rel="stylesheet" href="../../css/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
     <!-- =-=-=-=-=-=-= Select Options =-=-=-=-=-=-= -->
-    <link href="../../css/select2.min.css" rel="stylesheet" />
+    <link href="css/select2.min.css" rel="stylesheet" />
     <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
-    <link href="../../css/nouislider.min.css" rel="stylesheet">
+    <link href="css/nouislider.min.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
-    <link href="../../css/slider.css" rel="stylesheet">
+    <link href="css/slider.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
-    <link rel="stylesheet" type="text/css" href="../../css/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="../../css/owl.theme.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.theme.css">
     <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
-    <link href="../../skins/minimal/minimal.css" rel="stylesheet">
+    <link href="skins/minimal/minimal.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
-    <link href="../../css/responsive-media.css" rel="stylesheet">
+    <link href="css/responsive-media.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
-    <link rel="stylesheet" id="color" href="../../css/colors/defualt.css">
+    <link rel="stylesheet" id="color" href="css/colors/defualt.css">
     <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
     <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
     <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
-    <link href="../../skins/minimal/minimal.css" rel="stylesheet">
+    <link href="skins/minimal/minimal.css" rel="stylesheet">
     <!-- JavaScripts -->
-    <script src="../../js/modernizr.js"></script>
+    <script src="js/modernizr.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -187,7 +159,7 @@ if(isset($_POST['code_submit'])){
                         <!-- menu logo -->
                         <ul class="menu-logo">
                             <li>
-                                <a href="index.html"><img src="../../images/logo.png" alt="logo"> </a>
+                                <a href="index.html"><img src="images/logo.png" alt="logo"> </a>
                             </li>
                         </ul>
                         <!-- menu links -->
@@ -457,93 +429,245 @@ if(isset($_POST['code_submit'])){
 </div>
 <!-- Navigation Menu End -->
 <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
-<!-- =-=-=-=-=-=-= Transparent Breadcrumb =-=-=-=-=-=-= -->
-<div class="page-header-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="header-page">
-                    <h1>Restore your password!</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- Small Breadcrumb -->
 <div class="small-breadcrumb">
     <div class="container">
         <div class=" breadcrumb-link">
             <ul>
-                <li><a href="index.html">Home Page</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="#">Pages</a></li>
-                <li><a class="active" href="#">Restore</a></li>
+                <li><a class="active" href="#">Profile</a></li>
             </ul>
         </div>
     </div>
 </div>
 <!-- Small Breadcrumb -->
-<!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
     <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
-    <section class="section-padding error-page pattern-bg ">
+    <section class="section-padding gray">
         <!-- Main Container -->
         <div class="container">
             <!-- Row -->
             <div class="row">
                 <!-- Middle Content Area -->
-                <div class="col-md-5 col-md-push-7 col-sm-6 col-xs-12">
-                    <!--  Form -->
-                    <div class="form-grid">
-                        <form  method="post">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input placeholder="Your Email" class="form-control" type="email" name="email">
-                            </div>
-                            <div class="form-group">
-                                <label>Activation code</label>
-                                <input placeholder="Your code" class="form-control" type="text" name="code">
-                            </div>
+                <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
+                    <!-- Sidebar Widgets -->
+                    <div class="user-profile">
+                        <a href="profile.html"><img src="images/users/9.jpg" alt=""></a>
+                        <div class="profile-detail">
+                            <h6>Sonu Monu</h6>
+                            <ul class="contact-details">
+                                <li>
+                                    <i class="fa fa-map-marker"></i> UK London
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope"></i>contact@scriptsbundle.com
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i> (123) 000-1234
+                                </li>
+                            </ul>
+                        </div>
+                        <ul>
+                            <li  class="active"><a href="profile.html">Profile</a></li>
+                            <li ><a href="active-ads.html">My Ads <span class="badge">45</span></a></li>
+                            <li><a href="favourite.html">Favourites Ads <span class="badge">15</span></a></li>
+                            <li><a href="archives.html">Archives</a></li>
+                            <li ><a href="messages.html">Messages</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                    <!-- Categories -->
+                    <div class="widget">
+                        <div class="widget-heading">
+                            <h4 class="panel-title"><a>Change Your Plan</a></h4>
+                        </div>
+                        <div class="widget-content">
+                            <select class=" form-control">
+                                <option label="Select Option"></option>
+                                <option value="0">Free</option>
+                                <option value="1">Premium</option>
+                                <option value="2">Featured</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                    <!-- Row -->
+                    <div class="profile-section margin-bottom-20">
+                        <div class="profile-tabs">
+                            <ul class="nav nav-justified nav-tabs">
+                                <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+                                <li><a href="#edit" data-toggle="tab">Edit Profile</a></li>
 
-                            <button class="btn btn-theme btn-lg btn-block" name="code_submit">send</button>
-                        </form>
-                    </div>
-                    <!-- Form -->
-                </div>
-                <div class="col-md-7  col-md-pull-5  col-xs-12 col-sm-6">
-                    <div class="heading-panel">
-                        <h3 class="main-title text-left">
-                            Sign In to your account
-                        </h3>
-                    </div>
-                    <div class="content-info">
-                        <div class="features">
-                            <div class="features-icons">
-                                <img src="../../images/icons/chat.png" alt="img">
-                            </div>
-                            <div class="features-text">
-                                <h3>Chat & Messaging</h3>
-                                <p>
-                                    Access your chats and account info from any device.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="features">
-                            <div class="features-icons">
-                                <img src="../../images/icons/panel.png" alt="img">
-                            </div>
-                            <div class="features-text">
-                                <h3>User Dashboard</h3>
-                                <p>
-                                    Maintain a wishlist by saving your favourite items.
-                                </p>
-                            </div>
-                        </div>
-                        <span class="arrowsign hidden-sm hidden-xs"><img src="../../images/arrow.png" alt="" ></span>
-                    </div>
-                </div>
-                <!-- Middle Content Area  End -->
-            </div>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="profile-edit tab-pane fade in active" id="profile">
+                                    <h2 class="heading-md">Manage your Name, ID and Email Addresses.</h2>
+                                    <p>Below are the name and email addresses on file for your account.</p>
+                                    <dl class="dl-horizontal">
+                                        <dt><strong>Your name </strong></dt>
+                                        <dd>
+                                            John Doe
+                                        </dd>
+                                        <dt><strong>Email Address </strong></dt>
+                                        <dd>
+                                            contact@scriptsbundle.com
+                                        </dd>
+                                        <dt><strong>Phone Number </strong></dt>
+                                        <dd>
+                                            (0423) 12-2345-789
+                                        </dd>
+                                        <dt><strong>Country </strong></dt>
+                                        <dd>
+                                            England
+                                        </dd>
+                                        <dt><strong>City </strong></dt>
+                                        <dd>
+                                            London
+                                        </dd>
+                                        <dt><strong>You are a </strong></dt>
+                                        <dd>
+                                            Dealer
+                                        </dd>
+                                        <dt><strong>Address </strong></dt>
+                                        <dd>
+                                            Lahore, PK
+                                        </dd>
+                                    </dl>
+                                </div>
+
+
+                                <script>
+                                    function populate(s1,s2){
+                                        var s1 = document.getElementById(s1);
+                                        var s2 = document.getElementById(s2);
+                                        s2.innerHTML = "";
+
+
+                                        if(s1.value == "drenthe"){
+                                            var optionArray = ["|","assen|Assen","coevorden|Coevorden","hoogeveen|Hoogeveen","meppel|Meppel",];
+                                        } else if(s1.value == "flevoland"){
+                                            var optionArray = ["|","almere|Almere","biddinghuizen|Biddinghuizen","emmeloord|Emmeloord","lelystad|Lelystad"];
+                                        }else if(s1.value == "friesland") {
+                                            var optionArray = ["|", "bolsward|Bolsward", "dokkum|Dokkum", "drachten|Drachten", "franeker|Franeker",
+                                                "harlingen|Harlingen", "heerenveen|Heerenveen", "hindeloopen|Hindeloopen", "iJlst|IJlst",
+                                                "leeuwarden|Leeuwarden", "sloten|Sloten", "sneek|Sneek", "stavoren|Stavoren", "workum|Workum"];
+                                        }
+
+// }else if(s1.value== "gelderland"){
+//            var optionArray = [];
+//        }else if(s1.value== "groningen"){
+//            var optionArray = [];
+//        }else if(s1.value== "limburg"){
+//            var optionArray = [];
+//        }else if(s1.value== "northBrabant"){
+//            var optionArray = [];
+//        }else if(s1.value== "northHolland"){
+//            var optionArray = [];
+//        }else if(s1.value== "Overijssel"){
+//            var optionArray = [];
+//        }else if(s1.value== "southHolland"){
+//            var optionArray = [];
+//        }else if(s1.value== "utrecht"){
+//            var optionArray = [];
+//        }else if(s1.value== "zeeland"){
+//            var optionArray = [];
+//        }
+
+                                        for(var option in optionArray){
+                                            var pair = optionArray[option].split("|");
+                                            var newOption = document.createElement("option");
+                                            newOption.value = pair[0];
+                                            newOption.innerHTML = pair[1];
+                                            s2.options.add(newOption);
+                                        }
+
+
+                                    }
+
+
+                                </script>
+
+
+
+
+
+
+                                <div class="profile-edit tab-pane fade" id="edit">
+                                    <h2 class="heading-md">Change your account information.</h2>
+                                    <p>Manage Your Account</p>
+                                    <div class="clearfix"></div>
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label>First Name </label>
+                                                <input type="text" name="firstName" class="form-control margin-bottom-20">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label>Last Name </label>
+                                                <input type="text" name="lastName" class="form-control margin-bottom-20">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label>Email Address <span class="color-red">*</span></label>
+                                                <input type="text" name="email" class="form-control margin-bottom-20">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label>Contact Number <span class="color-red">*</span></label>
+                                                <input type="text" name="numberContact" class="form-control margin-bottom-20">
+                                            </div>
+                                            <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
+                                                <label>region<span class="color-red">*</span></label>
+                                                <select class="form-control" id="slct1" name="slct1" onchange="populate(this.id,'slct2')">
+                                                    <option value="drenthe">Drenthe</option>
+                                                    <option value="flevoland">Flevoland</option>
+                                                    <option value="friesland">Friesland</option>
+                                                    <option value="gelderland">Gelderland</option>
+                                                    <option value="groningen">Groningen</option>
+                                                    <option value="limburg">Limburg</option>
+                                                    <option value="northBrabant">NorthBrabant</option>
+                                                    <option value="northHolland">NorthHolland</option>
+                                                    <option value="Overijssel">Overijssel</option>
+                                                    <option value="southHolland">SouthHolland</option>
+                                                    <option value="utrecht">Utrecht</option>
+                                                    <option value="zeeland">Zeeland</option>
+                                                </select>
+
+                                            </div>
+                                            <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
+                                                <label>City <span class="color-red">*</span></label>
+
+                                                <select class="form-control"   id="slct2" name="slct2">
+
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label>Street Name</label>
+                                                <input type="text" name="lastName" class="form-control margin-bottom-20">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label>House Number</label>
+                                                <input type="text" name="housenumber" class="form-control margin-bottom-20">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label>Etxra house Number</label>
+                                                <input type="text" name="extraHousenumber" class="form-control margin-bottom-20">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label>Postcode</label>
+                                                <input type="text" name="Postcode" class="form-control margin-bottom-20">
+                                            </div>
+
+                                        <div class="row">
+
+                                            <div class="col-md-4 col-sm-4 col-xs-12 text-right">
+                                                <button type="submit" class="btn btn-theme btn-sm" name="updateInfo">Update My Info</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
             <!-- Row End -->
         </div>
         <!-- Main Container End -->
@@ -558,11 +682,11 @@ if(isset($_POST['code_submit'])){
                     <div class="col-md-3  col-sm-6 col-xs-12">
                         <!-- Info Widget -->
                         <div class="widget">
-                            <div class="logo"> <img alt="" src="../../images/logo-1.png"> </div>
+                            <div class="logo"> <img alt="" src="images/logo-1.png"> </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
                             <ul>
-                                <li><img src="../../images/appstore.png" alt=""></li>
-                                <li><img src="../../images/googleplay.png" alt=""></li>
+                                <li><img src="images/appstore.png" alt=""></li>
+                                <li><img src="images/googleplay.png" alt=""></li>
                             </ul>
                         </div>
                         <!-- Info Widget Exit -->
@@ -622,40 +746,47 @@ if(isset($_POST['code_submit'])){
 </a>
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>
+<!-- Back To Top -->
+
+
+
+
+
 <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
-<script src="../../js/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <!-- Bootstrap Core Css  -->
-<script src="../../js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <!-- Jquery Easing -->
-<script src="../../js/easing.js"></script>
+<script src="js/easing.js"></script>
 <!-- Menu Hover  -->
-<script src="../../js/forest-megamenu.js"></script>
+<script src="js/forest-megamenu.js"></script>
 <!-- Jquery Appear Plugin -->
-<script src="../../js/jquery.appear.min.js"></script>
+<script src="js/jquery.appear.min.js"></script>
 <!-- Numbers Animation   -->
-<script src="../../js/jquery.countTo.js"></script>
+<script src="js/jquery.countTo.js"></script>
 <!-- Jquery Smooth Scroll  -->
-<script src="../../js/jquery.smoothscroll.js"></script>
+<script src="js/jquery.smoothscroll.js"></script>
 <!-- Jquery Select Options  -->
-<script src="../../js/select2.min.js"></script>
+<script src="js/select2.min.js"></script>
 <!-- noUiSlider -->
-<script src="../../js/nouislider.all.min.js"></script>
+<script src="js/nouislider.all.min.js"></script>
 <!-- Carousel Slider  -->
-<script src="../../js/carousel.min.js"></script>
-<script src="../../js/slide.js"></script>
+<script src="js/carousel.min.js"></script>
+<script src="js/slide.js"></script>
 <!-- Image Loaded  -->
-<script src="../../js/imagesloaded.js"></script>
-<script src="../../js/isotope.min.js"></script>
+<script src="js/imagesloaded.js"></script>
+<script src="js/isotope.min.js"></script>
 <!-- CheckBoxes  -->
-<script src="../../js/icheck.min.js"></script>
+<script src="js/icheck.min.js"></script>
 <!-- Jquery Migration  -->
-<script src="../../js/jquery-migrate.min.js"></script>
+<script src="js/jquery-migrate.min.js"></script>
 <!-- Sticky Bar  -->
-<script src="../../js/theia-sticky-sidebar.js"></script>
+<script src="js/theia-sticky-sidebar.js"></script>
 <!-- Style Switcher -->
-<script src="../../js/color-switcher.js"></script>
+<script src="js/color-switcher.js"></script>
 <!-- Template Core JS -->
-<script src="../../js/custom.js"></script>
+<script src="js/custom.js"></script>
 </body>
 </html>
+
 

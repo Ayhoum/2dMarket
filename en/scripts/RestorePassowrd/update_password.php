@@ -513,13 +513,13 @@ if(isset($_POST['Rest'])){
                         <form  method="post">
                             <div class="form-group">
                                 <label>Enter your new Password</label>
-                                <input placeholder="Your password" class="form-control" type="password" id="password1">
+                                <input placeholder="Your password" class="form-control" type="password" name="password1">
                             </div><div class="form-group">
                                 <label>Confirm your password</label>
-                                <input placeholder="confirm the password" class="form-control" type="password" id="password2">
+                                <input placeholder="confirm the password" class="form-control" type="password" name="password2">
                             </div>
 
-                            <button class="btn btn-theme btn-lg btn-block" id="rest">Rest the password</button>
+                            <button class="btn btn-theme btn-lg btn-block" name="rest">Rest the password</button>
                         </form>
                     </div>
                     <!-- Form -->

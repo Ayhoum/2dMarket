@@ -77,6 +77,8 @@ require_once "../scripts/db_connection.php";
 
            }else {
    //if its nothing encrypt the pass and go ON
+
+
                $password = md5($password);
                $query = "SELECT * FROM USER WHERE email='$email' AND password='$password'";
                $results = mysqli_query($mysqli, $query);
@@ -91,7 +93,7 @@ require_once "../scripts/db_connection.php";
                        $_SESSION['email'] = $email;
                        $_SESSION['id'] = $id;
 
-                       header("location:en/index.php");
+                       header("location:login.php");
                        ?>
                        <div class="alert alert-success">
                            <strong>Success!</strong> Indicates a successful or positive action.
@@ -443,11 +445,11 @@ require_once "../scripts/db_connection.php";
                         <form   method="post">
                            <div class="form-group">
                               <label>Email</label>
-                              <input placeholder="Your Email" class="form-control" type="email" id="email">
+                              <input placeholder="Your Email" class="form-control" type="email" name="email">
                            </div>
                            <div class="form-group">
                               <label>Password</label>
-                              <input placeholder="Your Password" class="form-control" type="password" id="password">
+                              <input placeholder="Your Password" class="form-control" type="password" name="password">
 
                                <p><b><a href="../en/scripts/RestorePassowrd/restore_password.php" target="_blank">Have you forgot your password!</a></b></p>
                            </div>

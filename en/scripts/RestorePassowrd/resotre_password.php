@@ -67,7 +67,7 @@ if(isset($_POST['restore'])) {
 
                 } else {
                     echo "check your email";
-                    header("Location:insert_code.php");
+                    header("Location:en/scripts/RestorePassword/insert_code.php");
                 }
 
             }
@@ -1245,10 +1245,10 @@ if(isset($_POST['restore'])) {
                         <form  method="post">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input placeholder="Your Email" class="form-control" type="email" id="email">
+                                <input placeholder="Your Email" class="form-control" type="email" name="email">
                             </div>
 
-                            <button class="btn btn-theme btn-lg btn-block" id="restore">restore</button>
+                            <button class="btn btn-theme btn-lg btn-block" name="restore">restore</button>
                         </form>
                     </div>
                     <!-- Form -->
@@ -1402,4 +1402,4 @@ if(isset($_POST['restore'])) {
 </body>
 </html>
 
->>>>>>> Stashed changes
+
