@@ -86,12 +86,14 @@ require_once "../scripts/db_connection.php";
                        $id = $row['id'];
                        $email = $row['email'];
                        $username = $row['username'];
+                       $profile_pic = $row['profile_picture'];
+                       $phone_number = $row['phone_number'];
 
                        $_SESSION['username'] = $username;
                        $_SESSION['email'] = $email;
                        $_SESSION['id'] = $id;
 
-                       header("location:en/index.php");
+                       header("location: user_profile.php");
                        ?>
                        <div class="alert alert-success">
                            <strong>Success!</strong> Indicates a successful or positive action.
@@ -440,7 +442,7 @@ require_once "../scripts/db_connection.php";
                   <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
                      <!--  Form -->
                      <div class="form-grid">
-                        <form   method="post">
+                        <form   method="post" action="login.php">
                            <div class="form-group">
                               <label>Email</label>
                               <input placeholder="Your Email" class="form-control" type="email" id="email">
