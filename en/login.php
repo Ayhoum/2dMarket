@@ -62,51 +62,51 @@ require_once "../scripts/db_connection.php";
    </head>
 
    <?php
-   //check if its logged in
-   if (isset($_POST['log_in'])) {
-       $email = mysqli_real_escape_string($mysqli, $_POST['email']);
-       $password = mysqli_real_escape_string($mysqli, $_POST['password']);
-//check for empty fields
-       if (!$_POST['email']) {
-           //header("location:../en/login.php");
-           echo(   "enter your email"  );
-       }
-       if (!$_POST['password']) {
-           echo(   "enter your password"  );
+       //check if its logged in
+       if (isset($_POST['log_in'])) {
+           $email = mysqli_real_escape_string($mysqli, $_POST['email']);
+           $password = mysqli_real_escape_string($mysqli, $_POST['password']);
 
-       }else {
-//if its nothing encrypt the pass and go ON
-           $password = md5($password);
-           $query = "SELECT * FROM USER WHERE email='$email' AND password='$password'";
-           $results = mysqli_query($mysqli, $query);
+   //check for empty fields
+           if (!$_POST['email']) {
+               //header("location:../en/login.php");
+               echo(   "enter your email"  );
+           }
+           if (!$_POST['password']) {
+               echo(   "enter your password"  );
 
-           if (mysqli_num_rows($results) == 1) {
-               while ($row = mysqli_fetch_assoc($results)) {
-                   $id = $row['id'];
-                   $email = $row['email'];
-                   $username = $row['username'];
+           }else {
+   //if its nothing encrypt the pass and go ON
+               $password = md5($password);
+               $query = "SELECT * FROM USER WHERE email='$email' AND password='$password'";
+               $results = mysqli_query($mysqli, $query);
 
-                   $_SESSION['username'] = $username;
-                   $_SESSION['email'] = $email;
-                   $_SESSION['id'] = $id;
+               if (mysqli_num_rows($results) == 1) {
+                   while ($row = mysqli_fetch_assoc($results)) {
+                       $id = $row['id'];
+                       $email = $row['email'];
+                       $username = $row['username'];
 
-                   header("location:../en/index.php");
-                   ?>
-                   <div class="alert alert-success">
-                    <strong>Success!</strong> Indicates a successful or positive action.
-                </div>
-                    <?php
+                       $_SESSION['username'] = $username;
+                       $_SESSION['email'] = $email;
+                       $_SESSION['id'] = $id;
+
+                       header("location:en/index.php");
+                       ?>
+                       <div class="alert alert-success">
+                           <strong>Success!</strong> Indicates a successful or positive action.
+                       </div>
+                       <?php
+
+                   }
+               } else {
+                   echo(   "Wrong username/password combination"  );
+
+
 
                }
-           } else {
-               echo(   "Wrong username/password combination"  );
-
-               header("location:../en/index.php");
-
            }
        }
-   }
-
    ?>
    <body>
 
