@@ -112,7 +112,9 @@ $user_id = 1;
                         <!-- Price -->
                         <div class="price"> <span><?php echo "€ ". $price; ?></span> </div>
                         <!-- Ad View Button -->
+
                         <button class="btn btn-block btn-success"><i class="fa fa-eye" aria-hidden="true"></i> View Ad.</button>
+
                     </div>
                 </div>
             </div>
