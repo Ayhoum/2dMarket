@@ -24,6 +24,8 @@ while ($row = mysqli_fetch_assoc($select_result)){
     $user_register_date = $row['register_date'];
     $online_status = $row['online_status'];
 
+} if (empty($user_pic)){
+    $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
 }
 //} else{
 //    header("Location: index.php");
@@ -48,13 +50,13 @@ if (mysqli_num_rows($address_result) > 0 ){
 
 <?php
 //user's statistics
-$statistics_query  = "SELECT COUNT(*) AS 'ADVERTISEMENT_count' FROM `ADVERTISEMENT` WHERE USER_id = '{$id}';";
+$statistics_query  = "SELECT COUNT(*) AS 'ADVERTISEMENT_count' FROM `ADVERTISEMENT` WHERE USER_id = '{$id}'";
 $statistics_result = mysqli_query($mysqli, $statistics_query);
 while ($row=mysqli_fetch_assoc($statistics_result)){
 $ad_count = $row['ADVERTISEMENT_count'];
 }
 
-$statistics_query_1  = "SELECT COUNT(*) AS 'ADVERTISEMENT_count1' FROM `ADVERTISEMENT` WHERE USER_id = '{$id}' && status = 'SOLD';";
+$statistics_query_1  = "SELECT COUNT(*) AS 'ADVERTISEMENT_count1' FROM `ADVERTISEMENT` WHERE USER_id = '{$id}' && status = 'SOLD'";
 $statistics_result_1 = mysqli_query($mysqli, $statistics_query_1);
 
     while ($row = mysqli_fetch_assoc($statistics_result_1)) {

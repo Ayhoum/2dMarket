@@ -7,6 +7,10 @@
  */
 ?>
 <?php
+require_once 'user_info.php';
+
+?>
+<?php
 
 //if (isset($_GET['user_id'])){
 //    $user_id    = $_GET['user_id'];
@@ -26,6 +30,7 @@ $user_id = 1;
             $status         = $row['status'];
             $selling_type   = $row['selling_type'];
             $delivery_type  = $row['delivery_type'];
+            $ad_type        = $row['ad_type'];
 
             $user_id        = $row['USER_id'];
             $product_id     = $row['PRODUCT_id'];
@@ -51,7 +56,24 @@ $user_id = 1;
             while($row = mysqli_fetch_assoc($image_result)) {
                 $pic = $row['picture_url'];
             }
+
+             require_once 'product_pics.php';
             ?>
+        <div class="well ad-listing clearfix">
+            <div class="col-md-3 col-sm-5 col-xs-12 grid-style no-padding">
+                <!-- Image Box -->
+                <div class="img-box">
+                    <img src="<?php echo $picture_url; ?>" class="img-responsive" alt="">
+                    <div class="total-images"><strong><?php echo $pic_count; ?></strong> photos </div>
+                </div>
+                <?php if ($ad_type == 'FEATURED') {?>
+                <!-- Ad Status --><span class="ad-status"> Featured </span>
+                <?php }?>
+                <!-- User Preview -->
+                <div class="user-preview">
+                    <a href="#"> <img src="<?php echo $user_pic; ?>" class="avatar avatar-small" alt=""> </a>
+                </div>
+            </div>
             <div class="row">
                 <div class="content-area">
                     <div class="col-md-9 col-sm-12 col-xs-12">
@@ -85,7 +107,7 @@ $user_id = 1;
                         <!-- Ad Stats -->
                         <div class="short-info">
                             <div class="ad-stats hidden-xs"><span>Condition  : </span><?php echo $condition; ?></div>
-                            <div class="ad-stats hidden-xs"><span>Sub Category : </span>Mobiles</div>
+                            <div class="ad-stats hidden-xs"><span>Sub Category : </span></div>
                         </div>
                         <!-- Price -->
                         <div class="price"> <span><?php echo "€ ". $price; ?></span> </div>
@@ -94,6 +116,8 @@ $user_id = 1;
                     </div>
                 </div>
             </div>
+        </div>
+
             <?php
 
         }
