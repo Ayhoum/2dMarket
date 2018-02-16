@@ -47,50 +47,50 @@ if (isset($_GET['cat_id'])){
             while($row = mysqli_fetch_assoc($image_result)) {
                 $pic = $row['picture_url'];
             }
+
+            include 'user_info.php';
+            include 'product_pics.php';
             ?>
-            <!-- Listing Ad Grid -->
             <div class="col-md-6 col-xs-12 col-sm-6">
                 <!-- Ad Box -->
                 <div class="category-grid-box">
                     <!-- Ad Img -->
                     <div class="category-grid-img">
-                        <img class="img-responsive" alt="" src="<?php echo $pic; ?>">
+                        <img class="img-responsive" alt="" src="<?php echo $picture_url ;?>">
+                        <!-- Ad Status --><span class="ad-status"> PREMIUM </span>
+
+                        <!-- Ad Status -->
                         <!-- User Review -->
                         <div class="user-preview">
-                            <a href="#"> <img src="<?php //echo $user_pic; ?>" class="avatar avatar-small" alt=""> </a>
+                            <a href="profile_2.php?user_id=<?php echo $user_id;?>"> <img src="<?php echo $user_pic;?>" class="avatar avatar-small" alt=""> </a>
                         </div>
-                        <!-- View Details --><a href="ad_page?ad_id=<?php echo $ad_id ?>" class="view-details">View Details</a>
+                        <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id;?>" class="view-details">View Details</a>
                         <!-- Additional Info -->
                         <div class="additional-information">
-                            <p> <?php echo $title;?></p>
-                            <p> <?php echo $selling_type;?></p>
-                            <p> <?php echo $price ;?></p>
-                            <p> <?php echo $status;?></p>
+                            <p><?php echo $description; ?></p>
+
                         </div>
                         <!-- Additional Info End-->
                     </div>
                     <!-- Ad Img End -->
                     <div class="short-description">
                         <!-- Ad Category -->
-                        <div class="category-title"> <span><a href="#"><?php echo $cat_name ; ?></a></span> </div>
+                        <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
-                        <h3><a title="" href="single-page-listing.html"> <?php echo $title; ?></a></h3>
+                        <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                         <!-- Price -->
-                        <div class="price"><?php echo  $price; ?><!-- <span class="negotiable">(Negotiable)</span>--></div>
+                        <div class="price"><?php echo $price;?></div>
                     </div>
                     <!-- Addition Info -->
                     <div class="ad-info">
                         <ul>
-                            <li><i class="fa fa-map-marker"></i><?php //echo $location ;?></li>
-                            <li><i class="fa fa-clock-o"></i> <?php echo $date ?> </li>
+                            <li><i class="fa fa-map-marker"></i><?php echo $user_postcode. " | " . $user_city ; ?></li>
+                            <li><i class="fa fa-clock-o"></i> <?php echo $date;?> </li>
                         </ul>
                     </div>
                 </div>
                 <!-- Ad Box End -->
             </div>
-
-
-
             <!-- Listing Ad Grid -->
             <?php
 
@@ -158,7 +158,7 @@ if (isset($_GET['cat_id'])){
                     <!-- Ad Img End -->
                     <div class="short-description">
                         <!-- Ad Category -->
-                        <div class="category-title"> <span><a href="ad_per_cat.php?id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
+                        <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
                         <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                         <!-- Price -->
