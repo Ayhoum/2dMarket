@@ -67,6 +67,16 @@ if(isset($_SESSION['username'])){
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+
+       <style>
+           .redfont{
+               color: red;
+           }
+           .greenfont{
+               color: green;
+           }
+       </style>
+
    </head>
    <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -403,7 +413,7 @@ if(isset($_SESSION['username'])){
                            <div class="form-group">
                               <label>Email Address</label>
                               <input autocomplete="false" required placeholder="Enter Your Email" name="email" onchange="checkAvailability();" id="emailArea" class="form-control" type="email">
-                               <label id="checkEmailError"></label>
+                               <label id="checkEmailError" class=""></label>
                            </div>
                             <div class="row">
                            <div class="form-group col-sm-6">
@@ -605,9 +615,13 @@ if(isset($_SESSION['username'])){
 
         if (password != confirmPassword){
             $("#txtConfirm").html("Doesn't Match");
+            $("#txtConfirm").removeClass('greenfont');
+            $("#txtConfirm").addClass('redfont');
             $("#regBut").prop("disabled",true);
         }else{
             $("#txtConfirm").html("Passwords match.");
+            $("#txtConfirm").removeClass('redfont');
+            $("#txtConfirm").addClass('greenfont');
             $("#regBut").prop("disabled",false);
         }
     }
@@ -619,14 +633,20 @@ if(isset($_SESSION['username'])){
 
             if(response > 0){
                 $('#checkEmailError').html("This email is already registered!");
+                $('#checkEmailError').removeClass('greenfont');
+                $('#checkEmailError').addClass('redfont');
                 $("#regBut").prop("disabled",true);
             }else{
                 $('#checkEmailError').html("This email is available!");
+                $('#checkEmailError').removeClass('redfont');
+                $('#checkEmailError').addClass('greenfont');
                 $("#regBut").prop("disabled",false);
             }
         });
         }else{
             $('#checkEmailError').html("Enter a valid Email Address!");
+            $('#checkEmailError').removeClass('greenfont');
+            $('#checkEmailError').addClass('redfont');
             $("#regBut").prop("disabled",true);
 
         }
