@@ -7,7 +7,6 @@
  */
 require_once '../scripts/db_connection.php' ;
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -464,24 +463,163 @@ require_once '../scripts/db_connection.php' ;
                         <!-- Sorting Filters End-->
                         <div class="clearfix"></div>
                         <!-- Ads Archive -->
-                        <div class="posts-masonry">
-                            <!-- Listing Ad Grid -->
-                            <?php include 'scripts/personal_ads_script.php';?>
-                            <!-- Listing Ad Grid -->
-                        </div>
+                        <?php $ad_id = $_GET['ad_id'];
+                        $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `id` = '{$ad_id}'";
+                        $ad_result = mysqli_query($mysqli, $ad_query);
+
+                        if (mysqli_num_rows($ad_result) > 0 ) {
+                            while ($row = mysqli_fetch_assoc($ad_result)) {
+                                $ad_id = $row['id'];
+                                $title = $row['title'];
+                                $date = $row['date'];
+                                $price = $row['price'];
+                                $description = $row['description'];
+                                $condition = $row['condition'];
+
+                                $status = $row['status'];
+                                $selling_type = $row['selling_type'];
+                                $delivery_type = $row['delivery_type'];
+                                $ad_type = $row['ad_type'];
+
+                                $user_id = $row['USER_id'];
+                                $product_id = $row['PRODUCT_id'];
+                                $category_id = $row['CATEGORY_id'];
+
+// Category_info
+                                $cat_query = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";
+                                $cat_result = mysqli_query($mysqli, $cat_query);
+                                if (mysqli_num_rows($cat_result) > 0) {
+                                    while ($row = mysqli_fetch_assoc($cat_result)) {
+                                        $cat_name = $row['name'];
+                                    }
+                                }
+
+                                ?>
+                                <div class="post-ad-form postdetails">
+                                    <div class="heading-panel">
+                                        <h3 class="main-title text-left">
+                                            Edit AD NO. <span style="color: red">( <?php echo $ad_id; ?> )</span>
+                                        </h3>
+                                    </div>
+                                    <form method="post" name="update_form" action="scripts/edit_ad_script.php?ad_id=<?php echo $ad_id;?>" class="submit-form">
+                                        <!-- Title  -->
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                                <label  class="control-label">AD Title : <small style="color: red">( <?php echo $title; ?> )</small></label>
+
+                                                <input name="title" class="form-control" placeholder="<?php echo $title; ?>" type="text">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <!-- Category  -->
+                                            <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                                <label class="control-label">Category :
+                                                    <small style="color: red">( <?php echo $cat_name; ?> )</small>
+                                                </label>
+                                                <select class="category form-control">
+                                                    <option label="Select Option"></option>
+                                                    <?php
+                                                    // GET ALL CATEGORIES from DB
+                                                    $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'EN' ORDER BY `name` ASC  ";
+                                                    $cat_result= mysqli_query($mysqli, $cat_query);
+                                                    if (mysqli_num_rows($cat_result) > 0 ) {
+                                                        while ($row = mysqli_fetch_assoc($cat_result)) {
+                                                            $id = $row['id'];
+                                                            $name = $row['name'];
+                                                            // GET ALL RELATED SUB_CATEGORIES from DB
+                                                            $sub_cat_query = "SELECT * FROM `SUB_CATEGORY`  WHERE `CATEGORY_id` = '{$id}'  ";
+                                                            $sub_cat_result = mysqli_query($mysqli, $sub_cat_query);
+                                                            if (mysqli_num_rows($sub_cat_result) > 0) {
+                                                                while ($row = mysqli_fetch_assoc($sub_cat_result)) {
+                                                                    $sub_id = $row['id'];
+                                                                    $sub_name = $row['name'];
+                                                                    ?>
+                                                                    <option value="<?php echo $id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
+                                                                    <?php
+                                                                }
+                                                            } else {
+                                                                ?>
+                                                                <option value="<?php echo $id; ?>"><?php echo $name ; ?></option>
+                                                                <?php
+                                                            }
+                                                        }
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <!-- Price  -->
+                                            <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                                <label class="control-label">Price : <small style="color: red">( <?php echo $price; ?> )</small> </label>
+
+                                                <input name="price" class="form-control" placeholder="<?php echo $price; ?>" type="text">
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+                                        <!-- Ad Description  -->
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
+                                                <label class="control-label">Ad Description : </label>
+                                                <textarea name="description" id="editor1" rows="12" class="form-control"
+                                                          placeholder="<?php echo $description; ?>"></textarea>
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+                                        <!-- Ad Type  -->
+                                        <div class="row">
+                                            <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                                <label  class="control-label">Selling Type : <small style="color: red">( <?php echo $selling_type; ?> )</small></label>
+                                                <div class="skin-minimal">
+                                                    <select name="selling_type" class="category form-control">
+                                                        <option value=""> Select an option</option>
+                                                        <option value="BID"> Bid</option>
+                                                        <option value="FIXED_PRICE"> Fixed Price</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!-- Ad Condition  -->
+                                            <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                                                <label class="control-label">Condition : <small style="color: red">(<?php echo $condition; ?>)</small></label>
+                                                <div class="skin-minimal">
+                                                    <select name="condition" class="category form-control">
+                                                        <option value=""> Select an option</option>
+                                                        <option value="NEW"> New</option>
+                                                        <option value="USED"> Used</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                                <label class="control-label">Delivery Type : <small style="color: red">( <?php echo $delivery_type;?> )</small></label>
+                                                <select name="delivery_type" class="category form-control">
+                                                    <option value=""> Select an option</option>
+                                                    <option value="PICK_UP"> Pick Up</option>
+                                                    <option value="DELIVERY"> Post Delivery</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                                                <label class="control-label">Ad Type  <small style="color: red">( <?php echo $ad_type;  ?> )</small></label>
+                                                <select name="ad_type" class="category form-control">
+                                                    <option value=""> Select an option</option>
+                                                    <option value="NORMAL"> Normal</option>
+                                                    <option value="PREMIUM"> Premium</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <button type="submit" name="submit" class="btn btn-theme pull-right">Publish My Ad</button>
+                                    </form>
+                                </div>
+
+
+                                <?php
+                            }
+                        }
+                        ?>
                         <!-- Ads Archive End -->
                         <div class="clearfix"></div>
-                        <!-- Pagination -->
-                        <div class="col-md-12 col-xs-12 col-sm-12">
-                            <ul class="pagination pagination-lg">
-                                <li> <a href="#"> <i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
-                                <li class="active"> <a href="#">1</a> </li>
-                                <li> <a href="#">3</a> </li>
-                                <li> <a href="#">4</a> </li>
-                                <li><a href="#"> <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-                        <!-- Pagination End -->
                     </div>
                     <!-- Row End -->
                 </div>

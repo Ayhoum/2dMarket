@@ -65,35 +65,7 @@ session_start();
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
-<!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
-<div class="color-switcher" id="choose_color">
-    <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
-    <h5>STYLE SWITCHER</h5>
-    <div class="theme-colours">
-        <p> Choose Colour style </p>
-        <ul>
-            <li>
-                <a href="#." class="defualt" id="defualt"></a>
-            </li>
-            <li>
-                <a href="#." class="green" id="green"></a>
-            </li>
-            <li>
-                <a href="#." class="blue" id="blue"></a>
-            </li>
-            <li>
-                <a href="#." class="red" id="red"></a>
-            </li>
 
-            <li>
-                <a href="#." class="sea-green" id="sea-green"></a>
-            </li>
-
-        </ul>
-    </div>
-    <div class="clearfix"> </div>
-</div>
-<!-- =-=-=-=-=-=-= Colored Header =-=-=-=-=-=-= -->
 <div class="colored-header">
     <!-- Top Bar -->
     <div class="header-top">
@@ -428,19 +400,7 @@ session_start();
         <div class="row">
             <div class="col-lg-8 col-md-12 col-sm-5 col-xs-12">
                 <div class="header-page">
-                    <h1>Category Grid - 2</h1>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-7 col-xs-12">
-                <div class="small-breadcrumb">
-                    <div class=" breadcrumb-link">
-                        <ul>
-                            <li><a href="index.html">Home Page</a></li>
-                            <li><a href="#">Pages</a></li>
-                            <li><a href="elements.html">Category</a></li>
-                            <li><a class="active" href="#">Listing</a></li>
-                        </ul>
-                    </div>
+                    <h1>All Advertisements </h1>
                 </div>
             </div>
         </div>
