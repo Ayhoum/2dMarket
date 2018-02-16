@@ -18,9 +18,9 @@ while ($row = mysqli_fetch_assoc($select_result)){
     $user_first_name = $row['first_name'];
     $user_last_name = $row['last_name'];
     $user_email = $row['email'];
-    $user_phone = $row['phone'];
+    $user_phone = $row['phone_number'];
     $user_username = $row['username'];
-    $user_pic = $row['pic'];
+    $user_pic = $row['profile_picture'];
     $user_register_date = $row['register_date'];
     $online_status = $row['online_status'];
 
@@ -38,7 +38,10 @@ $address_query  = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$id}";
 $address_result = mysqli_query($mysqli, $address_query);
 if (mysqli_num_rows($address_result) > 0 ){
     while ($row = mysqli_fetch_assoc($address_result)){
+        $user_street_name = $row['street_name'];
         $user_postcode = $row['postcode'];
+        $user_house_number = $row['house_number'];
+        $user_region = $row['region'];
         $user_city = $row['city'];
 
     }
@@ -63,4 +66,5 @@ $statistics_result_1 = mysqli_query($mysqli, $statistics_query_1);
         $ad_count_sold = $row['ADVERTISEMENT_count1'];
     }
     ?>
+
 
