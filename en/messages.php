@@ -512,157 +512,13 @@ if (!isset($_SESSION['id'])) {
                     </div>
                     <div class="col-md-8 clearfix col-sm-5 col-xs-12 message-content">
                         <div class="message-details">
-                            <div class="author">
-                                <div class="image">
-                                    <img src="images/users/3.jpg" alt="">
-                                </div>
-                                <span class="author-name">Sonu Monu</span>
-                                <em>5 days ago</em>
-                            </div>
-                            <h2>Sony Xperia Z5 For Sale</h2>
-                            <ul class="messages">
-                                <li class="friend-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/1.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        Morning! How are you doing today?
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 8:53 AM</div>
-                                    </div>
-                                </li>
-                                <li class="my-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/2.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        Hey! I am doing good! What about you?
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 8:55 AM</div>
-                                    </div>
-                                </li>
-                                <li class="friend-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/1.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        Doing great!
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 8:56 AM</div>
-                                    </div>
-                                </li>
-                                <li class="friend-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/2.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        We just received a new project.
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 8:56 AM</div>
-                                    </div>
-                                </li>
-                                <li class="my-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/1.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        Sweet! What is it about?
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 9:00 AM</div>
-                                    </div>
-                                </li>
-                                <li class="friend-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/2.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        An Android and IOS app for client X.
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 9:03 AM</div>
-                                    </div>
-                                </li>
-                                <li class="my-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/1.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        Is it a complex project? What is the deadline?
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 9:07 AM</div>
-                                    </div>
-                                </li>
-                                <li class="friend-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/2.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        Nah! Rather simple for the team. We have 3 months to deliver the final product.
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 9:08 AM</div>
-                                    </div>
-                                </li>
-                                <li class="friend-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/1.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        The client has a budget of $5000 btw.
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 9:09 AM</div>
-                                    </div>
-                                </li>
-                                <li class="my-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/2.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        That is awesome!
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 9:12 AM</div>
-                                    </div>
-                                </li>
-                                <li class="my-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/1.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        With that budget we can make something pretty powerful. As soon as I get to the
-                                        office we can start the team briefing!
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 9:12 AM</div>
-                                    </div>
-                                </li>
-                                <li class="friend-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/2.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        Absolutely! Can't wait to get started!
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 9:14 AM</div>
-                                    </div>
-                                </li>
-                                <li class="my-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/1.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        I am just grabbing the coffee and doughnuts. I will be at the office ASAP.
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 9:17 AM</div>
-                                    </div>
-                                </li>
-                                <li class="friend-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/2.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        Sure. We are wrapping up the previous project, you have some time.
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 9:18 AM</div>
-                                    </div>
-                                </li>
-                                <li class="my-message clearfix">
-                                    <figure class="profile-picture">
-                                        <img src="images/users/1.jpg" class="img-circle" alt="Profile Pic">
-                                    </figure>
-                                    <div class="message">
-                                        Alrighty, cool!
-                                        <div class="time"><i class="fa fa-clock-o"></i> Today 9:17 AM</div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="chat-form ">
-                                <form role="form" class="form-inline">
+                            <div class="author authorData"></div>
+                            <h2 class="adTitle"></h2>
+                            <ul class="messages " id="messagesTxts"></ul>
+                            <div class="chat-form " id="formCont">
+                                <form id="chat_form" method="post" class="form-inline chat_form">
                                     <div class="form-group">
-                                        <input style="width: 100%" placeholder="Type a message here..."
-                                               class="form-control" type="text">
+                                        <textarea style="width: 100%" placeholder="Type a message here..." class="form-control msgTxt" id="msgTxt" rows="1"></textarea>
                                     </div>
                                     <button class="btn btn-theme" type="submit">Send</button>
                                 </form>
@@ -792,37 +648,41 @@ if (!isset($_SESSION['id'])) {
 <!-- For This Page Only -->
 <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
 <script type="text/javascript">
-    (function ($) {
-        "use strict";
-        $('.message-history').wrap('<div class="list-wrap"></div>');
+    function scrollbar() {
+        var $scrollbar = $('.message-inbox .list-wrap');
+        $scrollbar.perfectScrollbar({
+            maxScrollbarLength: 150,
+        });
+        $scrollbar.perfectScrollbar('update');
+    }
+    scrollbar();
 
-        function scrollbar() {
-            var $scrollbar = $('.message-inbox .list-wrap');
-            $scrollbar.perfectScrollbar({
-                maxScrollbarLength: 150,
-            });
-            $scrollbar.perfectScrollbar('update');
-        }
+    $('.messages').wrap('<div class="list-wraps"></div>');
+    var $scrollbar1 = $('.message-details .list-wraps');
 
-        scrollbar();
-        $('.messages').wrap('<div class="list-wraps"></div>');
-
-        function scrollbar1() {
-            var $scrollbar1 = $('.message-details .list-wraps');
-            $scrollbar1.perfectScrollbar({
-                maxScrollbarLength: 150,
-            });
-            $scrollbar1.perfectScrollbar('update');
-        }
-
-        scrollbar1();
-    })(jQuery);
+    function scrollbar1() {
+        $scrollbar1 = $('.message-details .list-wraps');
+        $scrollbar1.perfectScrollbar({
+            maxScrollbarLength: 150,
+        });
+        $scrollbar1.scrollTop($(".messages ").prop("scrollHeight"));
+        $scrollbar1.perfectScrollbar('update');
+    }
+    scrollbar1();
 
     var id = '0';
+    $('#formCont').hide();
 
     function setVar(val) {
         id = val;
+        $('#formCont').show();
+        document.getElementById('chat_form').reset();
         LoadChat();
+        scrollbar();
+        scrollbar1();
+        $scrollbar1.scrollTop($(".messages ").prop("scrollHeight"));
+        $scrollbar1.perfectScrollbar('update');
+
     }
 
 
@@ -830,26 +690,39 @@ if (!isset($_SESSION['id'])) {
         if(id > 0){
             LoadChat();
         }else if(id == 0){
-            $('.message-details').html("No Messages Selected!");
+            $('.messages').html("No Messages Selected!");
         }
     }, 1500);
 
     function LoadChat() {
+        $.post('scripts/handle_chat.php?action=getAuthor&id=' + id, function (response) {
+            $('.authorData').html(response);
+        });
+
+
         $.post('scripts/handle_chat.php?action=getMessages&id=' + id, function (response) {
-
-            var scrollpos = $('.message-details').scrollTop();
-            var scrollpos = parseInt(scrollpos) + 520;
-            var scrollHeight = $('.message-details').prop('scrollHeight');
-            $('.message-details').html(response);
-            if (scrollpos < scrollHeight) {
-
-            } else {
-                $('.message-details').scrollTop($('.message-details').prop('scrollHeight'));
-            }
-
+                $('#messagesTxts').html(response);
         });
     }
 
+
+    $('.msgTxt').keyup(function(e){
+        if(e.which == 13){
+            $('#chat_form').submit();
+            document.getElementById('chat_form').reset();
+        }
+    });
+
+    $('#chat_form').submit(function(){
+        var message = $('#msgTxt').val();
+        $.post('scripts/handle_chat.php?action=sendMessage&message='+message+'&id=' + id, function(response){
+            if(response == 1){
+                LoadChat();
+                document.getElementById('chat_form').reset();
+            }
+        });
+        return false;
+    });
 
 </script>
 </body>
