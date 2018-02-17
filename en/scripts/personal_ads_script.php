@@ -5,11 +5,11 @@
  * Date: 16-2-2018
  * Time: 21:59
  */
-//include 'sessions.php';
+include 'sessions.php';
 ?>
 <?php
-//    $user_id = $_SESSION['id'];
-    $user_id = 1;
+    $user_id = $_SESSION['id'];
+//    $user_id = 1;
     $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `USER_id` = '{$user_id}' ORDER BY `date` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);
 

@@ -438,7 +438,7 @@ $updateQueryFromTwoTabels="UPDATE USER u,ADDRESS a SET u.first_name='$firstname'
                         </div>
                         <ul>
                             <li  class="active"><a href="profile.html">Profile</a></li>
-                            <li ><a href="active-ads.html">My Ads <span class="badge">45</span></a></li>
+                            <li ><a href="personal_ads.php">My Ads <span class="badge">45</span></a></li>
                             <li><a href="favourite.html">Favourites Ads <span class="badge">15</span></a></li>
                             <li><a href="archives.html">Archives</a></li>
                             <li ><a href="messages.html">Messages</a></li>
