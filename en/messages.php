@@ -1,9 +1,17 @@
+<?php
+session_start();
+ob_start();
 
+require_once "../scripts/db_connection.php";
+if (!isset($_SESSION['id'])) {
+    header('Location: login.php');
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <!--[if IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
@@ -11,7 +19,7 @@
     <meta name="author" content="ScriptsBundle">
     <title>AdForest | Largest Classifieds Portal</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
@@ -29,7 +37,7 @@
     <!-- =-=-=-=-=-=-= Animation =-=-=-=-=-=-= -->
     <link rel="stylesheet" href="css/animate.min.css" type="text/css">
     <!-- =-=-=-=-=-=-= Select Options =-=-=-=-=-=-= -->
-    <link href="css/select2.min.css" rel="stylesheet" />
+    <link href="css/select2.min.css" rel="stylesheet"/>
     <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
     <link href="css/nouislider.min.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
@@ -44,7 +52,7 @@
     <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
     <link rel="stylesheet" id="color" href="css/colors/defualt.css">
     <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
-    <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
+    <link rel="stylesheet" id="theme-color" type="text/css" href="#"/>
     <!-- JavaScripts -->
     <script src="js/modernizr.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -61,82 +69,10 @@
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
-<!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
-<div class="color-switcher" id="choose_color">
-    <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
-    <h5>STYLE SWITCHER</h5>
-    <div class="theme-colours">
-        <p> Choose Colour style </p>
-        <ul>
-            <li>
-                <a href="#." class="defualt" id="defualt"></a>
-            </li>
-            <li>
-                <a href="#." class="green" id="green"></a>
-            </li>
-            <li>
-                <a href="#." class="blue" id="blue"></a>
-            </li>
-            <li>
-                <a href="#." class="red" id="red"></a>
-            </li>
-
-            <li>
-                <a href="#." class="sea-green" id="sea-green"></a>
-            </li>
-
-        </ul>
-    </div>
-    <div class="clearfix"> </div>
-</div>
 <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
 <div class="colored-header">
     <!-- Top Bar -->
-    <div class="header-top">
-        <div class="container">
-            <div class="row">
-                <!-- Header Top Left -->
-                <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
-                    <ul class="listnone">
-                        <li><a href="about.html"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
-                        <li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">Swedish</a></li>
-                                <li><a href="#">Arabic</a></li>
-                                <li><a href="#">Russian</a></li>
-                                <li><a href="#">chinese</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Header Top Right Social -->
-                <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
-                    <div class="pull-right">
-                        <ul class="listnone">
-                            <li><a href="login.html"><i class="fa fa-sign-in"></i> Log in</a></li>
-                            <li><a href="register.html"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> Umair <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="profile.html">User Profile</a></li>
-                                    <li><a href="profile-2.html">User Profile 2</a></li>
-                                    <li><a href="archives.html">Archives</a></li>
-                                    <li><a href="active-ads.html">Active Ads</a></li>
-                                    <li><a href="pending-ads.html">Pending Ads</a></li>
-                                    <li><a href="favourite.html">Favourite Ads</a></li>
-                                    <li><a href="messages.html">Message Panel</a></li>
-                                    <li><a href="deactive.html">Account Deactivation</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include "topbar-en.php"; ?>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
     <nav id="menu-1" class="mega-menu">
@@ -191,17 +127,21 @@
                                 <!-- drop down multilevel  -->
                                 <ul class="drop-down-multilevel">
                                     <li>
-                                        <a href="javascript:void(0)">Grid Style<i class="fa fa-angle-right fa-indicator"></i> <span class="label label-info">New</span></a>
+                                        <a href="javascript:void(0)">Grid Style<i
+                                                    class="fa fa-angle-right fa-indicator"></i> <span
+                                                    class="label label-info">New</span></a>
                                         <!-- drop down second level -->
                                         <ul class="drop-down-multilevel">
                                             <li><a href="listing.html">Listing Grid 1</a></li>
                                             <li><a href="listing-1.html">Listing Grid 2</a></li>
                                             <li><a href="listing-2.html">Listing Grid 3</a></li>
-                                            <li><a href="listing-7.html">Listing Featured <span class="label label-info">New</span></a></li>
+                                            <li><a href="listing-7.html">Listing Featured <span
+                                                            class="label label-info">New</span></a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0)">List Style<i class="fa fa-angle-right fa-indicator"></i> </a>
+                                        <a href="javascript:void(0)">List Style<i
+                                                    class="fa fa-angle-right fa-indicator"></i> </a>
                                         <!-- drop down second level -->
                                         <ul class="drop-down-multilevel">
                                             <li><a href="listing-3.html">List View 1</a></li>
@@ -211,11 +151,14 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0)">Single Ad<i class="fa fa-angle-right fa-indicator"></i> <span class="label label-info">New</span></a>
+                                        <a href="javascript:void(0)">Single Ad<i
+                                                    class="fa fa-angle-right fa-indicator"></i> <span
+                                                    class="label label-info">New</span></a>
                                         <!-- drop down second level -->
                                         <ul class="drop-down-multilevel">
                                             <li><a href="single-page-listing.html">Single Ad Detail</a></li>
-                                            <li><a href="single-page-listing-featured.html">Ad (Featured) <span class="label label-info">New</span></a></li>
+                                            <li><a href="single-page-listing-featured.html">Ad (Featured) <span
+                                                            class="label label-info">New</span></a></li>
                                             <li><a href="single-page-listing-2.html">Single Ad 2</a></li>
                                             <li><a href="single-page-listing-3.html">Single Ad (Adsense)</a></li>
                                             <li><a href="single-page-expired.html">Single Ad (Closed)</a></li>
@@ -225,7 +168,8 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">Categories <i class="fa fa-angle-down fa-indicator"></i></a>
+                                <a href="javascript:void(0)">Categories <i
+                                            class="fa fa-angle-down fa-indicator"></i></a>
                                 <!-- drop down multilevel  -->
                                 <ul class="drop-down-multilevel">
 
@@ -311,11 +255,13 @@
                                 <ul class="drop-down-multilevel">
                                     <li><a href="#">Item one</a></li>
                                     <li>
-                                        <a href="javascript:void(0)">Items Right Side <i class="fa fa-angle-right fa-indicator"></i> </a>
+                                        <a href="javascript:void(0)">Items Right Side <i
+                                                    class="fa fa-angle-right fa-indicator"></i> </a>
                                         <!-- drop down second level -->
                                         <ul class="drop-down-multilevel">
                                             <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-buysellads"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
+                                                <a href="javascript:void(0)"> <i class="fa fa-buysellads"></i> Level 2
+                                                    <i class="fa fa-angle-right fa-indicator"></i></a>
                                                 <!-- drop down third level -->
                                                 <ul class="drop-down-multilevel">
                                                     <li><a href="#">Level 3</a></li>
@@ -324,7 +270,8 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-dashcube"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
+                                                <a href="javascript:void(0)"> <i class="fa fa-dashcube"></i> Level 2 <i
+                                                            class="fa fa-angle-right fa-indicator"></i></a>
                                                 <!-- drop down third level -->
                                                 <ul class="drop-down-multilevel">
                                                     <li><a href="#">Level 3</a></li>
@@ -333,7 +280,8 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-heartbeat"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
+                                                <a href="javascript:void(0)"> <i class="fa fa-heartbeat"></i> Level 2 <i
+                                                            class="fa fa-angle-right fa-indicator"></i></a>
                                                 <!-- drop down third level -->
                                                 <ul class="drop-down-multilevel">
                                                     <li><a href="#">Level 3</a></li>
@@ -342,7 +290,8 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-medium"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
+                                                <a href="javascript:void(0)"> <i class="fa fa-medium"></i> Level 2 <i
+                                                            class="fa fa-angle-right fa-indicator"></i></a>
                                                 <!-- drop down third level -->
                                                 <ul class="drop-down-multilevel">
                                                     <li><a href="#">Level 3</a></li>
@@ -351,7 +300,8 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-leanpub"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i> </a>
+                                                <a href="javascript:void(0)"> <i class="fa fa-leanpub"></i> Level 2 <i
+                                                            class="fa fa-angle-right fa-indicator"></i> </a>
                                                 <!-- drop down third level -->
                                                 <ul class="drop-down-multilevel">
                                                     <li><a href="#">Level 3</a></li>
@@ -363,7 +313,8 @@
                                     </li>
                                     <li><a href="#">Item 2</a></li>
                                     <li>
-                                        <a href="javascript:void(0)">Items Left Side <i class="fa fa-angle-left fa-indicator"></i> </a>
+                                        <a href="javascript:void(0)">Items Left Side <i
+                                                    class="fa fa-angle-left fa-indicator"></i> </a>
                                         <!-- add class left-side -->
                                         <ul class="drop-down-multilevel left-side">
                                             <li>
@@ -376,7 +327,8 @@
                                                 <a href="#"> <i class="fa fa-automobile"></i> Level 2</a>
                                             </li>
                                             <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-heartbeat"></i> Level 2 <i class="fa fa-plus fa-indicator"></i> </a>
+                                                <a href="javascript:void(0)"> <i class="fa fa-heartbeat"></i> Level 2 <i
+                                                            class="fa fa-plus fa-indicator"></i> </a>
                                                 <!--drop down second level-->
                                                 <ul class="drop-down-multilevel">
                                                     <li><a href="#">Level 3</a></li>
@@ -407,7 +359,9 @@
                         </ul>
                         <ul class="menu-search-bar">
                             <li>
-                                <a href="post-ad-1.html" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> Post Free Ad</a>
+                                <a href="post-ad-1.html" class="btn btn-light"><i class="fa fa-plus"
+                                                                                  aria-hidden="true"></i> Post Free
+                                    Ad</a>
                             </li>
                         </ul>
                     </div>
@@ -459,114 +413,99 @@
                             </div>
                             <ul class="message-history">
                                 <!-- LIST ITEM -->
-                                <li class="message-grid">
-                                    <a href="#">
-                                        <div class="image">
-                                            <img src="images/users/1.jpg" alt="">
-                                        </div>
-                                        <div class="user-name">
-                                            <div class="author">
-                                                <span>John Doe</span><div class="user-status"></div>
-                                            </div>
-                                            <p>Xperia Z5 For Sale</p>
-                                            <div class="time">
-                                                <span>7 days ago</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!-- END / LIST ITEM -->
-                                <!-- LIST ITEM -->
-                                <li class="message-grid">
-                                    <a href="#">
-                                        <div class="image">
-                                            <img src="images/users/2.jpg" alt="">
-                                        </div>
-                                        <div class="user-name">
-                                            <div class="author">
-                                                <span>Alex Curt</span><div class="user-status"></div>
-                                            </div>
-                                            <p>BMW Car For Sale</p>
-                                            <div class="time">
-                                                <span>2 days ago</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!-- END / LIST ITEM -->
+                                <?php
+                                $msgQuery = "SELECT * FROM CHAT WHERE part_one = '{$_SESSION['id']}' OR part_two = '{$_SESSION['id']}'";
+                                $getMsgs = mysqli_query($mysqli, $msgQuery);
 
-                                <!-- LIST ITEM -->
-                                <li class="message-grid">
-                                    <a href="#">
-                                        <div class="image">
-                                            <img src="images/users/3.jpg" alt="">
-                                        </div>
-                                        <div class="user-name">
-                                            <div class="author">
-                                                <span>Sonu Monu</span><div class="user-status"></div>
-                                            </div>
-                                            <p>Xperia z5 for sale</p>
-                                            <div class="time">
-                                                <span>1 days ago</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!-- END / LIST ITEM -->
-                                <!-- LIST ITEM -->
-                                <li class="active">
-                                    <a href="#">
-                                        <div class="image">
-                                            <img src="images/users/4.jpg" alt="">
-                                        </div>
-                                        <div class="user-name">
-                                            <div class="author">
-                                                <span>Arslan Tariq</span><div class="user-status"></div>
-                                            </div>
-                                            <p>HHonda Civic 2017 Sports</p>
-                                            <div class="time">
-                                                <span>3 days ago</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <!-- END / LIST ITEM -->
-                                <!-- LIST ITEM -->
-                                <li class="message-grid">
-                                    <a href="#">
-                                        <div class="image">
-                                            <img src="images/users/5.jpg" alt="">
-                                        </div>
-                                        <div class="user-name">
-                                            <div class="author">
-                                                <span>Alexa Grey</span><div class="user-status"></div>
-                                            </div>
-                                            <p>Pet For Sale</p>
-                                            <div class="time">
-                                                <span>1 days ago</span>
-                                            </div>
+                                if (mysqli_num_rows($getMsgs) > 0) {
+                                    while ($row = mysqli_fetch_assoc($getMsgs)) {
+                                        $idChat = $row['id'];
+                                        $partOne = $row['part_one'];
+                                        $partTwo = $row['part_two'];
+                                        $ad_id = $row['ADVERTISMENT_id'];
+                                        $ad_pr_id = $row['ADVERTISMENT_PRODUCT_id'];
 
-                                        </div>
-                                    </a>
-                                </li>
-                                <!-- END / LIST ITEM -->
-                                <!-- LIST ITEM -->
-                                <li>
-                                    <a href="#">
-                                        <div class="image">
-                                            <img src="images/users/6.jpg" alt="">
-                                        </div>
+                                        if ($_SESSION['id'] == $partOne) {
+                                            $userQuery = "SELECT * FROM USER WHERE id = '{$partTwo}'";
+                                        } else {
+                                            $userQuery = "SELECT * FROM USER WHERE id = '{$partOne}'";
+                                        }
+                                        $getUser = mysqli_query($mysqli, $userQuery);
+                                        if (mysqli_num_rows($getUser) > 0) {
+                                            while ($row = mysqli_fetch_assoc($getUser)) {
+                                                $name = $row['first_name'] . " " . $row['last_name'];
+                                            }
+                                        } else {
+                                            echo "This account has been removed";
+                                        }
+                                        $adQuery = "SELECT * FROM ADVERTISEMENT WHERE id = '{$ad_id}'";
+                                        $getAd = mysqli_query($mysqli, $adQuery);
+                                        if (mysqli_num_rows($getAd) > 0) {
+                                            while ($row = mysqli_fetch_assoc($getAd)) {
+                                                $adName = $row['title'];
+                                            }
+                                        } else {
+                                            echo "This advertisement has been removed";
+
+                                        }
+                                        require_once 'scripts/time_elapse.php';
+                                        $chatInfoQuery = "SELECT * FROM MESSAGE WHERE CHAT_id = '{$idChat}' ORDER BY id DESC LIMIT 1;";
+                                        $getChatInfo = mysqli_query($mysqli, $chatInfoQuery);
+                                        if (mysqli_num_rows($getChatInfo) > 0) {
+                                            while ($row = mysqli_fetch_assoc($getChatInfo)) {
+                                                $time = $row['msg_time'];
+                                                $sender = $row['sender'];
+                                                $status = $row['status'];
+                                                $time = time_elapsed_string($time);
+                                            }
+                                        } else {
+                                            $time = "";
+                                        }
+                                        if ($sender == $_SESSION['id']) {
+                                            $statusClass = "active";
+                                        } else {
+                                            if ($status == "UNREAD") {
+                                                $statusClass = "message-grid";
+                                            } else {
+                                                $statusClass = "active";
+                                            }
+                                        }
+                                        ?>
+                                        <li class="<?php echo $statusClass; ?>">
+                                            <a onclick="setVar(<?php echo $idChat;?>)">
+                                                <div class="image">
+                                                    <img src="images/users/1.jpg" alt="">
+                                                </div>
+                                                <div class="user-name">
+                                                    <div class="author">
+                                                        <span><?php echo $name; ?></span>
+                                                        <div class="user-status"></div>
+                                                    </div>
+                                                    <p><?php echo $adName; ?></p>
+                                                    <div class="time">
+                                                        <span><?php echo $time; ?></span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <?php
+
+                                    }
+                                } else {
+                                    ?>
+
+                                    <li class="message-grid">
                                         <div class="user-name">
                                             <div class="author">
-                                                <span>Humayun</span><div class="user-status"></div>
-                                            </div>
-                                            <p>Lcd for sale</p>
-                                            <div class="time">
-                                                <span>5 days ago</span>
+                                                <span>No Messages!</span>
                                             </div>
                                         </div>
-                                    </a>
-                                </li>
+                                    </li>
+
+                                    <?php
+
+                                }
+                                ?>
                                 <!-- END / LIST ITEM -->
                             </ul>
                         </div>
@@ -677,7 +616,8 @@
                                         <img src="images/users/1.jpg" class="img-circle" alt="Profile Pic">
                                     </figure>
                                     <div class="message">
-                                        With that budget we can make something pretty powerful. As soon as I get to the office we can start the team briefing!
+                                        With that budget we can make something pretty powerful. As soon as I get to the
+                                        office we can start the team briefing!
                                         <div class="time"><i class="fa fa-clock-o"></i> Today 9:12 AM</div>
                                     </div>
                                 </li>
@@ -721,7 +661,8 @@
                             <div class="chat-form ">
                                 <form role="form" class="form-inline">
                                     <div class="form-group">
-                                        <input style="width: 100%" placeholder="Type a message here..." class="form-control" type="text">
+                                        <input style="width: 100%" placeholder="Type a message here..."
+                                               class="form-control" type="text">
                                     </div>
                                     <button class="btn btn-theme" type="submit">Send</button>
                                 </form>
@@ -743,8 +684,9 @@
                     <div class="col-md-3  col-sm-6 col-xs-12">
                         <!-- Info Widget -->
                         <div class="widget">
-                            <div class="logo"> <img alt="" src="images/logo-1.png"> </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
+                            <div class="logo"><img alt="" src="images/logo-1.png"></div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat
+                                fringilla port.</p>
                             <ul>
                                 <li><img src="images/appstore.png" alt=""></li>
                                 <li><img src="images/googleplay.png" alt=""></li>
@@ -758,9 +700,12 @@
                             <h5>Follow Us</h5>
                             <ul>
                                 <li><a class="fb" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                                <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                                <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                                <li><a class="googleplus" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
+                                <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span>
+                                </li>
+                                <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span>
+                                </li>
+                                <li><a class="googleplus" href=""><i
+                                                class="fa fa-google-plus"></i></a><span>Google+</span></li>
                             </ul>
                         </div>
                         <!-- Follow Us End -->
@@ -770,7 +715,8 @@
                         <div class="widget widget-newsletter">
                             <h5>Singup for Weekly Newsletter</h5>
                             <div class="fieldset">
-                                <p>We may send you information about related events, webinars, products and services which we believe.</p>
+                                <p>We may send you information about related events, webinars, products and services
+                                    which we believe.</p>
                                 <form>
                                     <input class="" value="Enter your email address" type="text">
                                     <input class="submit-btn" name="submit" value="Submit" type="submit">
@@ -788,7 +734,9 @@
                 <div class="copyright-content">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <p>© 2017 AForest All rights reserved. Design by <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
+                            <p>© 2017 AForest All rights reserved. Design by <a
+                                        href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -844,9 +792,10 @@
 <!-- For This Page Only -->
 <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
 <script type="text/javascript">
-    (function($) {
+    (function ($) {
         "use strict";
         $('.message-history').wrap('<div class="list-wrap"></div>');
+
         function scrollbar() {
             var $scrollbar = $('.message-inbox .list-wrap');
             $scrollbar.perfectScrollbar({
@@ -854,8 +803,10 @@
             });
             $scrollbar.perfectScrollbar('update');
         }
+
         scrollbar();
         $('.messages').wrap('<div class="list-wraps"></div>');
+
         function scrollbar1() {
             var $scrollbar1 = $('.message-details .list-wraps');
             $scrollbar1.perfectScrollbar({
@@ -863,8 +814,42 @@
             });
             $scrollbar1.perfectScrollbar('update');
         }
+
         scrollbar1();
     })(jQuery);
+
+    var id = '0';
+
+    function setVar(val) {
+        alert(val);
+        id = val;
+        alert(id);
+    }
+
+
+    setInterval(function () {
+        if(id > 0){
+            LoadChat();
+        }
+    }, 1500);
+
+    function LoadChat() {
+        $.post('scripts/handle_chat.php?action=getMessages&id=' + id, function (response) {
+
+            var scrollpos = $('.messages').scrollTop();
+            var scrollpos = parseInt(scrollpos) + 520;
+            var scrollHeight = $('.messages').prop('scrollHeight');
+            $('.messages').html(response);
+            if (scrollpos < scrollHeight) {
+
+            } else {
+                $('.messages').scrollTop($('.messages').prop('scrollHeight'));
+            }
+
+        });
+    }
+
+
 </script>
 </body>
 </html>
