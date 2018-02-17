@@ -821,9 +821,8 @@ if (!isset($_SESSION['id'])) {
     var id = '0';
 
     function setVar(val) {
-        alert(val);
         id = val;
-        alert(id);
+        LoadChat();
     }
 
 
