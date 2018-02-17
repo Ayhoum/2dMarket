@@ -5,7 +5,10 @@
  * Date: 13-2-2018
  * Time: 18:44
  */
+session_start();
 require_once '../scripts/db_connection.php' ;
+
+include 'scripts/sessions.php';
 ?>
 
 <!DOCTYPE html>

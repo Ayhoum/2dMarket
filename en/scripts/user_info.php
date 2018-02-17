@@ -6,9 +6,10 @@
  * Time: 08:49
  * here all the user info. are founded and ready to use in other pages.
  */
-
 ?>
 <?php
+if (isset($_GET['user_id'])){
+$user_id = $_GET['user_id'];
     $select_query = "SELECT * FROM `USER` WHERE `id` = '{$user_id}'";
     $select_result = mysqli_query($mysqli, $select_query);
     while ($row = mysqli_fetch_assoc($select_result)) {
@@ -25,11 +26,7 @@
     if (empty($user_pic)) {
         $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
     }
-//} else{
-//    header("Location: index.php");
-//}
-    ?>
-    <?php
+
 // Address info.
 
     $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$user_id}";
@@ -47,9 +44,7 @@
         $user_postcode = "unknown ";
         $user_city = "address";
     }
-    ?>
 
-    <?php
 //user's statistics
     $statistics_query = "SELECT COUNT(*) AS 'ADVERTISEMENT_count' FROM `ADVERTISEMENT` WHERE USER_id = '{$user_id}'";
     $statistics_result = mysqli_query($mysqli, $statistics_query);
@@ -64,6 +59,9 @@
         $ad_count_sold = $row['ADVERTISEMENT_count1'];
     }
 
-    ?>
 
+} else {
+    header("Location: all_product.php");
+}
+?>
 

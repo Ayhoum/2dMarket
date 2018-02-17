@@ -48,7 +48,41 @@ if (isset($_GET['cat_id'])){
                 $pic = $row['picture_url'];
             }
 
-            include 'user_info.php';
+            //user info.
+            $select_query = "SELECT * FROM `USER` WHERE `id` = '{$user_id}'";
+            $select_result = mysqli_query($mysqli, $select_query);
+            while ($row = mysqli_fetch_assoc($select_result)) {
+                $user_first_name = $row['first_name'];
+                $user_last_name = $row['last_name'];
+                $user_email = $row['email'];
+                $user_phone = $row['phone_number'];
+                $user_username = $row['username'];
+                $user_pic = $row['profile_picture'];
+                $user_register_date = $row['register_date'];
+                $online_status = $row['online_status'];
+
+            }
+            if (empty($user_pic)) {
+                $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
+            }
+
+// Address info.
+
+            $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$user_id}";
+            $address_result = mysqli_query($mysqli, $address_query);
+            if (mysqli_num_rows($address_result) > 0) {
+                while ($row = mysqli_fetch_assoc($address_result)) {
+                    $user_street_name = $row['street_name'];
+                    $user_postcode = $row['postcode'];
+                    $user_house_number = $row['house_number'];
+                    $user_region = $row['region'];
+                    $user_city = $row['city'];
+
+                }
+            } else {
+                $user_postcode = "unknown ";
+                $user_city = "address";
+            }
             include 'product_pics.php';
             ?>
             <div class="col-md-6 col-xs-12 col-sm-6">
@@ -131,7 +165,42 @@ if (isset($_GET['cat_id'])){
                 }
             }
 
-            include 'user_info.php';
+            //user info.
+            $select_query = "SELECT * FROM `USER` WHERE `id` = '{$user_id}'";
+            $select_result = mysqli_query($mysqli, $select_query);
+            while ($row = mysqli_fetch_assoc($select_result)) {
+                $user_first_name = $row['first_name'];
+                $user_last_name = $row['last_name'];
+                $user_email = $row['email'];
+                $user_phone = $row['phone_number'];
+                $user_username = $row['username'];
+                $user_pic = $row['profile_picture'];
+                $user_register_date = $row['register_date'];
+                $online_status = $row['online_status'];
+
+            }
+            if (empty($user_pic)) {
+                $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
+            }
+
+// Address info.
+
+            $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$user_id}";
+            $address_result = mysqli_query($mysqli, $address_query);
+            if (mysqli_num_rows($address_result) > 0) {
+                while ($row = mysqli_fetch_assoc($address_result)) {
+                    $user_street_name = $row['street_name'];
+                    $user_postcode = $row['postcode'];
+                    $user_house_number = $row['house_number'];
+                    $user_region = $row['region'];
+                    $user_city = $row['city'];
+
+                }
+            } else {
+                $user_postcode = "unknown ";
+                $user_city = "address";
+            }
+
             include 'product_pics.php';
             ?>
             <div class="col-md-6 col-xs-12 col-sm-6">
@@ -174,6 +243,7 @@ if (isset($_GET['cat_id'])){
                 </div>
                 <!-- Ad Box End -->
             </div>
+
             <?php
 
         }

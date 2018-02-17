@@ -8,9 +8,9 @@
  */
 ?>
 <?php
+$id             = $_SESSION['id'];
 $username       = $_SESSION['username'];
 $email          = $_SESSION['email'];
-$id             = $_SESSION['id'];
 $profile_pic    = $_SESSION['profile_pic'];
 $phone          = $_SESSION['phone'];
 $full_name      = $_SESSION['full_name'];
