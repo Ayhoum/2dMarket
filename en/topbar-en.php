@@ -36,16 +36,16 @@ $ar = $prefix.'/ar/'.$page;
                             <li><a href="register.php"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
                         <?php } else{ ?>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> Umair <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['full_name']?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="profile.html">User Profile</a></li>
+                                    <li><a href="profile.php">My Profile</a></li>
                                     <li><a href="profile-2.html">User Profile 2</a></li>
                                     <li><a href="archives.html">Archives</a></li>
                                     <li><a href="active-ads.html">Active Ads</a></li>
                                     <li><a href="pending-ads.html">Pending Ads</a></li>
                                     <li><a href="favourite.html">Favourite Ads</a></li>
                                     <li><a href="messages.html">Message Panel</a></li>
-                                    <li><a href="deactive.html">Account Deactivation</a></li>
+                                    <li><a href="logout.php">Logout</a></li>
                                 </ul>
                             </li>
                         <?php } ?>

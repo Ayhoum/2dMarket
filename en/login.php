@@ -58,56 +58,33 @@ require_once "../scripts/db_connection.php";
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+
+       <script>
+           var logIn = function () {
+               var email = $("#email_field").val();
+               var password = $("#password_field").val();
+
+               if(email == '' || password == ''){
+                   $("#fieldsError").modal();
+               }else{
+                   $.post('scripts/handle_login.php?email=' + email + '&pass=' + password, function (response) {
+
+                       if (response == "done") {
+                           window.location.href = "profile.php";
+                       } else if(response == "error_password"){
+                           $("#modalPassError").modal();
+
+                       }else if(response == "error_username"){
+                           $("#modalUserError").modal();
+
+                       }
+                   });
+               }
+
+           };
+       </script>
    </head>
 
-   <?php
-       //check if its logged in
-       if (isset($_POST['Log_in'])) {
-           $email = mysqli_real_escape_string($mysqli, $_POST['email']);
-           $password = mysqli_real_escape_string($mysqli, $_POST['password']);
-
-   //check for empty fields
-           if (!$_POST['email']) {
-               //header("location:../en/login.php");
-               echo(   "enter your email"  );
-           }
-           if (!$_POST['password']) {
-               echo(   "enter your password"  );
-
-           }else {
-   //if its nothing encrypt the pass and go ON
-
-
-               $password = md5($password);
-               $query = "SELECT * FROM USER WHERE email='$email' AND password='$password'";
-               $results = mysqli_query($mysqli, $query);
-
-               if (mysqli_num_rows($results) == 1) {
-                   while ($row = mysqli_fetch_assoc($results)) {
-                       $id = $row['id'];
-                       $email = $row['email'];
-                       $username = $row['username'];
-
-                       $_SESSION['username'] = $username;
-                       $_SESSION['email'] = $email;
-                       $_SESSION['id'] = $id;
-
-
-
-                   }
-
-
-
-               } else {
-                   echo(   "Wrong username/password combination"  );
-
-
-
-               }
-           }
-           header("location:index.php");
-       }
-   ?>
    <body>
 
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -440,19 +417,19 @@ require_once "../scripts/db_connection.php";
                   <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
                      <!--  Form -->
                      <div class="form-grid">
-                        <form   method="post">
+                        <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
                            <div class="form-group">
                               <label>Email</label>
-                              <input placeholder="Your Email" class="form-control" type="email" name="email">
+                              <input id="email_field" placeholder="Your Email" class="form-control" type="email" name="email">
                            </div>
                            <div class="form-group">
                               <label>Password</label>
-                              <input placeholder="Your Password" class="form-control" type="password" name="password">
+                              <input id="password_field" placeholder="Your Password" class="form-control" type="password" name="password">
 
                                <p><b><a href="scripts/RestorePassowrd/resotre_password.php" target="_blank">Have you forgot your password!</a></b></p>
                            </div>
 
-                           <button class="btn btn-theme btn-lg btn-block" name="Log_in">LoginIn</button>
+                           <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">Log In</button>
                         </form>
                      </div>
                      <!-- Form -->
@@ -527,7 +504,59 @@ require_once "../scripts/db_connection.php";
          </footer>
          <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
       </div>
-      <!-- Main Content Area End --> 
+      <!-- Main Content Area End -->
+
+      <div class="custom-modal">
+          <div id="modalPassError" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                      <div class="modal-header rte">
+                          <h2 class="modal-title text-center">You entered a wrong password!</h2>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="custom-modal">
+          <div id="modalUserError" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                      <div class="modal-header rte">
+                          <h2 class="modal-title text-center">Maybe you entered a wrong email</h2>
+                          <h2 class="modal-title text-center">Please, check it or make a new account!</h2>
+                      </div>
+                      <div class="modal-footer">
+                          <a href="register.php" type="button" class="btn btn-warning">Register</a>
+                          <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="custom-modal">
+          <div id="fieldsError" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                      <div class="modal-header rte">
+                          <h2 class="modal-title text-center">You left something empty!</h2>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
       <!-- Post Ad Sticky -->
       <a href="#" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
@@ -571,6 +600,9 @@ require_once "../scripts/db_connection.php";
       <script src="js/color-switcher.js"></script>
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
+
+
+
    </body>
 </html>
 
