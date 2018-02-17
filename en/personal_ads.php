@@ -20,7 +20,7 @@ include 'scripts/sessions.php';
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title>AdForest | Largest Classifieds Portal</title>
+    <title>2D Market |<?php  echo $fullname;?></title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -76,51 +76,7 @@ include 'scripts/sessions.php';
 </div>
 <div class="colored-header">
     <!-- Top Bar -->
-    <div class="header-top">
-        <div class="container">
-            <div class="row">
-                <!-- Header Top Left -->
-                <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
-                    <ul class="listnone">
-                        <li><a href="about.html"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
-                        <li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">Swedish</a></li>
-                                <li><a href="#">Arabic</a></li>
-                                <li><a href="#">Russian</a></li>
-                                <li><a href="#">chinese</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Header Top Right Social -->
-                <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
-                    <div class="pull-right">
-                        <ul class="listnone">
-                            <li><a href="login.html"><i class="fa fa-sign-in"></i> Log in</a></li>
-                            <li><a href="register.html"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> Umair <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="profile.html">User Profile</a></li>
-                                    <li><a href="profile-2.html">User Profile 2</a></li>
-                                    <li><a href="archives.html">Archives</a></li>
-                                    <li><a href="active-ads.html">Active Ads</a></li>
-                                    <li><a href="pending-ads.html">Pending Ads</a></li>
-                                    <li><a href="favourite.html">Favourite Ads</a></li>
-                                    <li><a href="messages.html">Message Panel</a></li>
-                                    <li><a href="deactive.html">Account Deactivation</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include 'topbar-en.php';?>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
     <nav id="menu-1" class="mega-menu">
@@ -402,9 +358,6 @@ include 'scripts/sessions.php';
 </div>
 <!-- Navigation Menu End -->
 <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
-<!-- Small Breadcrumb -->
-<?php //include 'scripts/user_menu.php';?>
-<!-- Small Breadcrumb -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
     <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
@@ -417,18 +370,18 @@ include 'scripts/sessions.php';
                 <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
                     <!-- Sidebar Widgets -->
                     <div class="user-profile">
-                        <a href="profile.html"><img src="images/users/9.jpg" alt=""></a>
+                        <a href="personal_ads.php"><img src="<?php echo $profile_pic; ?>" alt=""></a>
                         <div class="profile-detail">
-                            <h6>Sonu Monu</h6>
+                            <h6><?php echo $fullname;?></h6>
                             <ul class="contact-details">
                                 <li>
-                                    <i class="fa fa-map-marker"></i> UK London
+                                    <i class="fa fa-map-marker"></i> <?php //echo $location ;?>
                                 </li>
                                 <li>
-                                    <i class="fa fa-envelope"></i>contact@scriptsbundle.com
+                                    <i class="fa fa-envelope"></i><?php echo $email; ?>
                                 </li>
                                 <li>
-                                    <i class="fa fa-phone"></i> (123) 000-1234
+                                    <i class="fa fa-phone"></i> <?php echo $phone; ?>
                                 </li>
                             </ul>
                         </div>
