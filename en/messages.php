@@ -829,20 +829,22 @@ if (!isset($_SESSION['id'])) {
     setInterval(function () {
         if(id > 0){
             LoadChat();
+        }else if(id == 0){
+            $('.message-details').html("No Messages Selected!");
         }
     }, 1500);
 
     function LoadChat() {
         $.post('scripts/handle_chat.php?action=getMessages&id=' + id, function (response) {
 
-            var scrollpos = $('.messages').scrollTop();
+            var scrollpos = $('.message-details').scrollTop();
             var scrollpos = parseInt(scrollpos) + 520;
-            var scrollHeight = $('.messages').prop('scrollHeight');
-            $('.messages').html(response);
+            var scrollHeight = $('.message-details').prop('scrollHeight');
+            $('.message-details').html(response);
             if (scrollpos < scrollHeight) {
 
             } else {
-                $('.messages').scrollTop($('.messages').prop('scrollHeight'));
+                $('.message-details').scrollTop($('.message-details').prop('scrollHeight'));
             }
 
         });
