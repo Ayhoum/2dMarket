@@ -6,9 +6,26 @@
  * Time: 18:44
  */
 session_start();
+ob_start();
+
 require_once '../scripts/db_connection.php' ;
 
 include 'scripts/sessions.php';
+$address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$id}";
+$address_result = mysqli_query($mysqli, $address_query);
+if (mysqli_num_rows($address_result) > 0) {
+    while ($row = mysqli_fetch_assoc($address_result)) {
+        $user_street_name = $row['street_name'];
+        $user_postcode = $row['postcode'];
+        $user_house_number = $row['house_number'];
+        $user_region = $row['region'];
+        $user_city = $row['city'];
+
+    }
+   $location = $user_postcode . ", ". $user_city;
+} else {
+   $location = "Location unknown ";
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +37,7 @@ include 'scripts/sessions.php';
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title>2D Market |<?php  echo $fullname;?></title>
+    <title> 2D Market | <?php  echo $full_name;?></title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -372,10 +389,10 @@ include 'scripts/sessions.php';
                     <div class="user-profile">
                         <a href="personal_ads.php"><img src="<?php echo $profile_pic; ?>" alt=""></a>
                         <div class="profile-detail">
-                            <h6><?php echo $fullname;?></h6>
+                            <h6><?php echo $full_name;?></h6>
                             <ul class="contact-details">
                                 <li>
-                                    <i class="fa fa-map-marker"></i> <?php //echo $location ;?>
+                                    <i class="fa fa-map-marker"></i> <?php echo $location ;?>
                                 </li>
                                 <li>
                                     <i class="fa fa-envelope"></i><?php echo $email; ?>
@@ -386,27 +403,12 @@ include 'scripts/sessions.php';
                             </ul>
                         </div>
                         <ul>
-                            <li ><a href="profile.html">Profile</a></li>
-                            <li  class="active"><a href="active-ads.html">My Ads <span class="badge">45</span></a></li>
+                            <li ><a href="profile.php">Profile</a></li>
+                            <li  class="active"><a href="personal_ads.php">My Ads <span class="badge"></span></a></li>
                             <li><a href="favourite.html">Favourites Ads <span class="badge">15</span></a></li>
-                            <li><a href="archives.html">Archives</a></li>
-                            <li ><a href="messages.html">Messages</a></li>
-                            <li><a href="#">Logout</a></li>
+                            <li ><a href="messages.php">Messages</a></li>
+                            <li><a href="logout.php">Logout</a></li>
                         </ul>
-                    </div>
-                    <!-- Categories -->
-                    <div class="widget">
-                        <div class="widget-heading">
-                            <h4 class="panel-title"><a>Change Your Plan</a></h4>
-                        </div>
-                        <div class="widget-content">
-                            <select class=" form-control">
-                                <option label="Select Option"></option>
-                                <option value="0">Free</option>
-                                <option value="1">Premium</option>
-                                <option value="2">Featured</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-12 col-xs-12">

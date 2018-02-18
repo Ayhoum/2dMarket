@@ -5,7 +5,7 @@
  * Date: 16-2-2018
  * Time: 21:59
  */
-include 'sessions.php';
+
 ?>
 <?php
     $user_id = $_SESSION['id'];
@@ -44,7 +44,28 @@ include 'sessions.php';
                 }
             }
 
-            include 'user_info.php';
+            if (empty($user_pic)) {
+                $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
+            }
+
+// Address info.
+
+            $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$user_id}";
+            $address_result = mysqli_query($mysqli, $address_query);
+            if (mysqli_num_rows($address_result) > 0) {
+                while ($row = mysqli_fetch_assoc($address_result)) {
+                    $user_street_name = $row['street_name'];
+                    $user_postcode = $row['postcode'];
+                    $user_house_number = $row['house_number'];
+                    $user_region = $row['region'];
+                    $user_city = $row['city'];
+
+                }
+            } else {
+                $user_postcode = "unknown ";
+                $user_city = "address";
+            }
+
             include 'product_pics.php';
 
             ?>
@@ -64,7 +85,7 @@ include 'sessions.php';
                         <!-- Location -->
                         <p class="location"><i class="fa fa-map-marker"></i> <?php echo $user_postcode. " | " . $user_city?></p>
                         <!-- Rating -->
-                        <!-- Price --><span class="ad-price"><?php echo $price; ?></span>
+                        <!-- Price --><span class="ad-price" style="float: left"><?php echo $price; ?></span>
                     </div>
                     <!-- Ad Meta Stats -->
                     <div class="ad-info-1">

@@ -5,48 +5,27 @@
  * Date: 13-2-2018
  * Time: 16:31
  */
+
 session_start();
 ob_start();
 require_once "../scripts/db_connection.php";
-
-//$id=$_GET['id'];
-
-if(isset($_POST['updateInfo'])) {
-
-$email = mysqli_real_escape_string($mysqli, $_POST['email']);
-$firstname = mysqli_real_escape_string($mysqli, $_POST['firstName']);
-$lastname = mysqli_real_escape_string($mysqli, $_POST['lastName']);
-$userName = mysqli_real_escape_string($mysqli, $_POST['userName']);
-$phonenumber = mysqli_real_escape_string($mysqli, $_POST['numberContact']);
-$region = mysqli_real_escape_string($mysqli, $_POST['slct1']);
-$city = mysqli_real_escape_string($mysqli, $_POST['slct2']);
-$streetName = mysqli_real_escape_string($mysqli, $_POST['streetName']);
-$houseNumber = mysqli_real_escape_string($mysqli, $_POST['housenumber']);
-$extraHouseNumber = mysqli_real_escape_string($mysqli, $_POST['extraHousenumber']);
-$PostCode = mysqli_real_escape_string($mysqli, $_POST['Postcode']);
-
-
-
-$updateQueryFromTwoTabels="UPDATE USER u,ADDRESS a SET u.first_name='$firstname',u.last_name='$lastname',u.username='$userName'
-,u.email='$email',u.phone_number='$phonenumber' a.street_name= '$streetName',a.house_number='$houseNumber',a.extra_number='$extraHouseNumber'
-,a.postcode='$PostCode',a.region='$region',a.city='$city' where u.id='$id', a.id='$id' AND u.id=a.USER_id ";
-
-    $excte=mysqli_query($mysqli,$updateQueryFromTwoTabels);
-
-    if($excte){
-
-        echo "your info is updated";
-        header("location:profile.php");
+include 'scripts/sessions.php';
+$address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$id}";
+$address_result = mysqli_query($mysqli, $address_query);
+if (mysqli_num_rows($address_result) > 0) {
+    while ($row = mysqli_fetch_assoc($address_result)) {
+        $user_street_name = $row['street_name'];
+        $user_postcode = $row['postcode'];
+        $user_house_number = $row['house_number'];
+        $user_region = $row['region'];
+        $user_city = $row['city'];
 
     }
-
-
-
-
+    $location = $user_postcode . ", ". $user_city;
+} else {
+   $location = "Location unknown ";
 }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +35,7 @@ $updateQueryFromTwoTabels="UPDATE USER u,ADDRESS a SET u.first_name='$firstname'
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title>AdForest | Largest Classifieds Portal</title>
+    <title>2D Market | <?php echo $full_name; ?></title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -396,19 +375,6 @@ $updateQueryFromTwoTabels="UPDATE USER u,ADDRESS a SET u.first_name='$firstname'
 </div>
 <!-- Navigation Menu End -->
 <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
-<!-- Small Breadcrumb -->
-<div class="small-breadcrumb">
-    <div class="container">
-        <div class=" breadcrumb-link">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Pages</a></li>
-                <li><a class="active" href="#">Profile</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<!-- Small Breadcrumb -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
     <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
@@ -421,43 +387,28 @@ $updateQueryFromTwoTabels="UPDATE USER u,ADDRESS a SET u.first_name='$firstname'
                 <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
                     <!-- Sidebar Widgets -->
                     <div class="user-profile">
-                        <a href="profile.html"><img src="images/users/9.jpg" alt=""></a>
+                        <a href="personal_ads.php"><img src="<?php echo $profile_pic; ?>" alt=""></a>
                         <div class="profile-detail">
-                            <h6>Sonu Monu</h6>
+                            <h6><?php echo $full_name;?></h6>
                             <ul class="contact-details">
                                 <li>
-                                    <i class="fa fa-map-marker"></i> UK London
+                                    <i class="fa fa-map-marker"></i> <?php echo $location ;?>
                                 </li>
                                 <li>
-                                    <i class="fa fa-envelope"></i>contact@scriptsbundle.com
+                                    <i class="fa fa-envelope"></i><?php echo $email; ?>
                                 </li>
                                 <li>
-                                    <i class="fa fa-phone"></i> (123) 000-1234
+                                    <i class="fa fa-phone"></i> <?php echo $phone; ?>
                                 </li>
                             </ul>
                         </div>
                         <ul>
-                            <li  class="active"><a href="profile.html">Profile</a></li>
-                            <li ><a href="personal_ads.php">My Ads <span class="badge">45</span></a></li>
+                            <li class="active"><a href="profile.php">Profile</a></li>
+                            <li  ><a href="personal_ads.php">My Ads <span class="badge"></span></a></li>
                             <li><a href="favourite.html">Favourites Ads <span class="badge">15</span></a></li>
-                            <li><a href="archives.html">Archives</a></li>
-                            <li ><a href="messages.html">Messages</a></li>
-                            <li><a href="#">Logout</a></li>
+                            <li ><a href="messages.php">Messages</a></li>
+                            <li><a href="logout.php">Logout</a></li>
                         </ul>
-                    </div>
-                    <!-- Categories -->
-                    <div class="widget">
-                        <div class="widget-heading">
-                            <h4 class="panel-title"><a>Change Your Plan</a></h4>
-                        </div>
-                        <div class="widget-content">
-                            <select class=" form-control">
-                                <option label="Select Option"></option>
-                                <option value="0">Free</option>
-                                <option value="1">Premium</option>
-                                <option value="2">Featured</option>
-                            </select>
-                        </div>
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-12 col-xs-12">
@@ -471,12 +422,11 @@ $updateQueryFromTwoTabels="UPDATE USER u,ADDRESS a SET u.first_name='$firstname'
                             </ul>
                             <div class="tab-content">
                                 <div class="profile-edit tab-pane fade in active" id="profile">
-                                    <h2 class="heading-md">Manage your Name, ID and Email Addresses.</h2>
-                                    <p>Below are the name and email addresses on file for your account.</p>
+                                    <h2 class="heading-md">Your Personal info.</h2>
                                     <dl class="dl-horizontal">
                                         <dt><strong>Your name </strong></dt>
                                         <dd>
-                                            <?php echo $firstname ;?>
+                                            <?php echo $full_name ;?>
                                         </dd>
                                         <dt><strong>Email Address </strong></dt>
                                         <dd>
@@ -484,28 +434,18 @@ $updateQueryFromTwoTabels="UPDATE USER u,ADDRESS a SET u.first_name='$firstname'
                                         </dd>
                                         <dt><strong>Phone Number </strong></dt>
                                         <dd>
-                                            <?php echo $phonenumber ;?>
-                                        </dd>
-                                        <dt><strong>Region </strong></dt>
-                                        <dd>
-                                            <?php echo $region ;?>
-                                        </dd>
-                                        <dt><strong>City </strong></dt>
-                                        <dd>
-                                            <?php echo $city ;?>
+                                            <?php echo $phone ;?>
                                         </dd>
                                         <dt><strong>You are a </strong></dt>
                                         <dd>
-                                            <?php echo $userName ;?>
+                                            <?php echo $username ;?>
                                         </dd>
                                         <dt><strong>Address </strong></dt>
                                         <dd>
-                                            <?php echo $streetName." ".$houseNumber." ".$PostCode ;?>
+                                            <?php echo $user_street_name." ".$user_house_number."<br> ".$user_postcode . ", ". $user_region;?>
                                         </dd>
                                     </dl>
                                 </div>
-
-
                                 <script>
                                     function populate(s1,s2){
                                         var s1 = document.getElementById(s1);
@@ -556,37 +496,31 @@ $updateQueryFromTwoTabels="UPDATE USER u,ADDRESS a SET u.first_name='$firstname'
 
 
                                 </script>
-
-
-
-
-
-
                                 <div class="profile-edit tab-pane fade" id="edit">
                                     <h2 class="heading-md">Change your account information.</h2>
                                     <p>Manage Your Account</p>
                                     <div class="clearfix"></div>
-                                    <form method="post" >
+                                    <form method="post" action="scripts/edit_profile_info.php" >
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>First Name </label>
-                                                <input type="text" name="firstName" class="form-control margin-bottom-20">
+                                                <input type="text" name="first_name" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Last Name </label>
-                                                <input type="text" name="lastName" class="form-control margin-bottom-20">
+                                                <input type="text" name="last_name" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>user Name </label>
-                                                <input type="text" name="userName" class="form-control margin-bottom-20">
+                                                <label>Password </label>
+                                                <input type="text" name="password" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Email Address <span class="color-red">*</span></label>
                                                 <input type="text" name="email" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Contact Number <span class="color-red">*</span></label>
-                                                <input type="text" name="numberContact" class="form-control margin-bottom-20">
+                                                <label>Phone Number <span class="color-red">*</span></label>
+                                                <input type="text" name="phone_number" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
                                                 <label>region<span class="color-red">*</span></label>
@@ -608,32 +542,29 @@ $updateQueryFromTwoTabels="UPDATE USER u,ADDRESS a SET u.first_name='$firstname'
                                             </div>
                                             <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
                                                 <label>City <span class="color-red">*</span></label>
-
                                                 <select class="form-control"   id="slct2" name="slct2">
-
                                                 </select>
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Street Name</label>
-                                                <input type="text" name="lastName" class="form-control margin-bottom-20">
+                                                <input type="text" name="street_name" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>House Number</label>
-                                                <input type="text" name="housenumber" class="form-control margin-bottom-20">
+                                                <input type="text" name="house_number" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Etxra house Number</label>
-                                                <input type="text" name="extraHousenumber" class="form-control margin-bottom-20">
+                                                <input type="text" name="extra_house_number" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Postcode</label>
-                                                <input type="text" name="Postcode" class="form-control margin-bottom-20">
+                                                <input type="text" name="postcode" class="form-control margin-bottom-20">
                                             </div>
 
                                         <div class="row">
-
                                             <div class="col-md-4 col-sm-4 col-xs-12 text-right">
-                                                <button type="submit" class="btn btn-theme btn-sm" name="updateInfo">Update My Info</button>
+                                                <button type="submit" class="btn btn-theme btn-sm" name="update">Update My Info</button>
                                             </div>
                                         </div>
                                     </form>
