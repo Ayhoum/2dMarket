@@ -75,7 +75,7 @@ session_start();
     </div>
     <div class="colored-header">
         <!-- Top Bar -->
-        <?php include "topbar-en.php";?>
+        <?php include 'topbar-nl.php';?>
         <!-- Top Bar End -->
         <!-- Navigation Menu -->
         <nav id="menu-1" class="mega-menu">
