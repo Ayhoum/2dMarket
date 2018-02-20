@@ -107,6 +107,9 @@ if (isset($_GET['cat_id'])){
                     </div>
                     <!-- Ad Img End -->
                     <div class="short-description">
+                        <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo $status ;?></span></p>
+                        <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
+                        <?php }elseif ($status == "AVAILABLE "){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
                         <!-- Ad Category -->
                         <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
@@ -129,8 +132,16 @@ if (isset($_GET['cat_id'])){
             <?php
 
         }
-    }
-} else{
+    } else{
+            ?>
+            <div class="col-md-12 col-xs-12 col-sm-12">
+                <div role="alert" class="alert alert-danger alert-dismissible center-block">
+                    <strong>Warning! </strong> There are not any matched results, based on your search
+                </div>
+            </div>
+            <?php
+        }
+    } else{
 $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `ad_type` = 'NORMAL' ORDER BY `date` DESC";
 $ad_result = mysqli_query($mysqli, $ad_query);
 
@@ -217,12 +228,14 @@ if (mysqli_num_rows($ad_result) > 0 ){
                     <!-- Additional Info -->
                     <div class="additional-information">
                         <p><?php echo $description; ?></p>
-
                     </div>
                     <!-- Additional Info End-->
                 </div>
                 <!-- Ad Img End -->
                 <div class="short-description">
+                    <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo $status ;?></span></p>
+                    <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
+                    <?php }elseif ($status == "AVAILABLE "){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
                     <!-- Ad Category -->
                     <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                     <!-- Ad Title -->
@@ -243,8 +256,14 @@ if (mysqli_num_rows($ad_result) > 0 ){
         <?php
 
     }
+  } else{
+    ?>
+    <div class="col-md-12 col-xs-12 col-sm-12">
+        <div role="alert" class="alert alert-danger alert-dismissible center-block">
+            <strong>Warning! </strong> There are not any matched results, based on your search
+        </div>
+    </div>
+    <?php
   }
 }
 ?>
-
-

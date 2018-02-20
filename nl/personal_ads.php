@@ -93,7 +93,7 @@ if (mysqli_num_rows($address_result) > 0) {
 </div>
 <div class="colored-header">
     <!-- Top Bar -->
-    <?php include'tobbar-nl.php';?>
+    <?php include'topbar-nl.php';?>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
     <nav id="menu-1" class="mega-menu">
@@ -403,11 +403,11 @@ if (mysqli_num_rows($address_result) > 0) {
                             </ul>
                         </div>
                         <ul>
-                            <li ><a href="profile.php">Profile</a></li>
-                            <li  class="active"><a href="personal_ads.php">My Ads <span class="badge"></span></a></li>
-                            <li><a href="favourite.html">Favourites Ads <span class="badge">15</span></a></li>
-                            <li ><a href="messages.php">Messages</a></li>
-                            <li><a href="logout.php">Logout</a></li>
+                            <li class="active"><a href="profile.php">Mijn Profiel</a></li>
+                            <li  ><a href="personal_ads.php">Mijn Advertenties  <span class="badge"></span></a></li>
+                            <li><a href="favourite.html">Bewaarde Advertenties <span class="badge">15</span></a></li>
+                            <li ><a href="messages.php">Brichten</a></li>
+                            <li><a href="logout.php">uitloggen</a></li>
                         </ul>
                     </div>
                 </div>

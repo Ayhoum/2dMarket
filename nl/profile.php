@@ -403,7 +403,7 @@ if (mysqli_num_rows($address_result) > 0) {
                             </ul>
                         </div>
                         <ul>
-                            <li class="active"><a href="profile.php">Profile</a></li>
+                            <li class="active"><a href="profile.php">Mijn Profiel</a></li>
                             <li  ><a href="personal_ads.php">Mijn Advertenties  <span class="badge"></span></a></li>
                             <li><a href="favourite.html">Bewaarde Advertenties <span class="badge">15</span></a></li>
                             <li ><a href="messages.php">Brichten</a></li>
@@ -417,30 +417,30 @@ if (mysqli_num_rows($address_result) > 0) {
                         <div class="profile-tabs">
                             <ul class="nav nav-justified nav-tabs">
                                 <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-                                <li><a href="#edit" data-toggle="tab">Edit Profile</a></li>
+                                <li><a href="#edit" data-toggle="tab">Profiel Wijzigen </a></li>
 
                             </ul>
                             <div class="tab-content">
                                 <div class="profile-edit tab-pane fade in active" id="profile">
-                                    <h2 class="heading-md">Your Personal info.</h2>
+                                    <h2 class="heading-md">Mijn Profiel.</h2>
                                     <dl class="dl-horizontal">
-                                        <dt><strong>Your name </strong></dt>
+                                        <dt><strong>Uw Naam : </strong></dt>
                                         <dd>
                                             <?php echo $full_name ;?>
                                         </dd>
-                                        <dt><strong>Email Address </strong></dt>
+                                        <dt><strong>Email :  </strong></dt>
                                         <dd>
                                             <?php echo $email ;?>
                                         </dd>
-                                        <dt><strong>Phone Nummer </strong></dt>
+                                        <dt><strong>Telefoonnummer : </strong></dt>
                                         <dd>
                                             <?php echo $phone ;?>
                                         </dd>
-                                        <dt><strong>U bent : </strong></dt>
+                                        <dt><strong>Gebruiksnaam : </strong></dt>
                                         <dd>
                                             <?php echo $username ;?>
                                         </dd>
-                                        <dt><strong>Addres </strong></dt>
+                                        <dt><strong>Adres : </strong></dt>
                                         <dd>
                                             <?php echo $user_street_name." ".$user_house_number."<br> ".$user_postcode . ", ". $user_region;?>
                                         </dd>
@@ -503,27 +503,27 @@ if (mysqli_num_rows($address_result) > 0) {
                                     <form method="post" action="scripts/edit_profile_info.php" >
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>First Name </label>
+                                                <label>Naam :  </label>
                                                 <input type="text" name="first_name" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Last Name </label>
+                                                <label>Achter naam : </label>
                                                 <input type="text" name="last_name" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Password </label>
+                                                <label>Wachtwoord : </label>
                                                 <input type="text" name="password" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Email Address <span class="color-red">*</span></label>
+                                                <label>Email : <span class="color-red">*</span></label>
                                                 <input type="text" name="email" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Phone Number <span class="color-red">*</span></label>
+                                                <label>Telefoonnummer :  <span class="color-red">*</span></label>
                                                 <input type="text" name="phone_number" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
-                                                <label>region<span class="color-red">*</span></label>
+                                                <label>Province : <span class="color-red">*</span></label>
                                                 <select class="form-control" id="slct1" name="slct1" onchange="populate(this.id,'slct2')">
                                                     <option value="drenthe">Drenthe</option>
                                                     <option value="flevoland">Flevoland</option>
@@ -541,20 +541,20 @@ if (mysqli_num_rows($address_result) > 0) {
 
                                             </div>
                                             <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
-                                                <label>City <span class="color-red">*</span></label>
+                                                <label>Stad :  <span class="color-red">*</span></label>
                                                 <select class="form-control"   id="slct2" name="slct2">
                                                 </select>
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Street Name</label>
+                                                <label>Straatnaam : </label>
                                                 <input type="text" name="street_name" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>House Number</label>
+                                                <label>Housenummer : </label>
                                                 <input type="text" name="house_number" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Etxra house Number</label>
+                                                <label>Extra Housenummer : </label>
                                                 <input type="text" name="extra_house_number" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -564,7 +564,7 @@ if (mysqli_num_rows($address_result) > 0) {
 
                                         <div class="row">
                                             <div class="col-md-4 col-sm-4 col-xs-12 text-right">
-                                                <button type="submit" class="btn btn-theme btn-sm" name="update">Update My Info</button>
+                                                <button type="submit" class="btn btn-theme btn-sm" name="update">Opslaan</button>
                                             </div>
                                         </div>
                                     </form>

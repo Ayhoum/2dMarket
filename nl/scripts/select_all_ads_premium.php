@@ -7,7 +7,7 @@
  */
 if (isset($_GET['cat_id'])){
     $cat_id    = $_GET['cat_id'];
-    $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `CATEGORY_id` = '{$cat_id}'  && `ad_type` = 'PREMIUM' ORDER BY `date` DESC";
+    $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'NL' && `CATEGORY_id` = '{$cat_id}'  && `ad_type` = 'PREMIUM' ORDER BY `date` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);
 
     if (mysqli_num_rows($ad_result) > 0 ){
@@ -108,6 +108,9 @@ if (isset($_GET['cat_id'])){
                     </div>
                     <!-- Ad Img End -->
                     <div class="short-description">
+                        <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo $status ;?></span></p>
+                        <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
+                        <?php }elseif ($status == "AVAILABLE "){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
                         <!-- Ad Category -->
                         <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
@@ -129,9 +132,17 @@ if (isset($_GET['cat_id'])){
             <?php
 
         }
-    }
-} else{
-    $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `ad_type` = 'PREMIUM' ORDER BY `date` DESC";
+    } else{
+        ?>
+        <div class="col-md-12 col-xs-12 col-sm-12">
+            <div role="alert" class="alert alert-danger alert-dismissible center-block">
+                <strong>Letop! </strong> momenteel zijn er geen bassnede resultaten op basis van uw zoek
+            </div>
+        </div>
+        <?php
+        }
+    } else{
+    $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'NL' && `ad_type` = 'PREMIUM' ORDER BY `date` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);
 
     if (mysqli_num_rows($ad_result) > 0 ){
@@ -226,6 +237,9 @@ if (isset($_GET['cat_id'])){
                     </div>
                     <!-- Ad Img End -->
                     <div class="short-description">
+                        <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo $status ;?></span></p>
+                        <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
+                        <?php }elseif ($status == "AVAILABLE "){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
                         <!-- Ad Category -->
                         <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
@@ -247,8 +261,19 @@ if (isset($_GET['cat_id'])){
             <?php
 
         }
+    } else{
+        ?>
+        <div class="col-md-12 col-xs-12 col-sm-12">
+            <div role="alert" class="alert alert-danger alert-dismissible center-block">
+                <strong>Letop! </strong> momenteel zijn er geen bassnede resultaten op basis van uw zoek
+            </div>
+        </div>
+        <?php
     }
 }
 ?>
+
+
+
 
 

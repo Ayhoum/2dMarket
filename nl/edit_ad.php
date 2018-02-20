@@ -401,7 +401,7 @@ if (mysqli_num_rows($address_result) > 0) {
                             </ul>
                         </div>
                         <ul>
-                            <li class="active"><a href="profile.php">Profile</a></li>
+                            <li class="active"><a href="profile.php">Mijn Profiel</a></li>
                             <li  ><a href="personal_ads.php">Mijn Advertenties  <span class="badge"></span></a></li>
                             <li><a href="favourite.html">Bewaarde Advertenties <span class="badge">15</span></a></li>
                             <li ><a href="messages.php">Brichten</a></li>

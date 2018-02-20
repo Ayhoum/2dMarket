@@ -403,14 +403,15 @@ session_start();
                                     <a href="post-ad-1.html">
                                         <div class="banner">
                                             <div class="wrapper">
-                                                <span class="title">Hebt u iets te verkopen?</span>
-                                                <span class="submit">Submit it now! <i class="fa fa-plus-square"></i></span>
+                                                <span class="title">Wilt u iets snel en makelijk verkopen ?</span>
+                                                <span class="submit">Schrijf u nu in <i class="fa fa-plus-square"></i></span>
                                             </div>
                                         </div>
                                         <!-- /.banner-->
                                     </a>
                                 </section>
                             </div>
+                            <div class="clearfix"></div>
                             <!-- Advertizing End -->
                             <?php include 'scripts/select_all_ads_normal.php'; ?>
                         </div>

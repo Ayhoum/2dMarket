@@ -10,7 +10,7 @@
 <?php
     $user_id = $_SESSION['id'];
 //    $user_id = 1;
-    $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `USER_id` = '{$user_id}' ORDER BY `date` DESC";
+    $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `USER_id` = '{$user_id}' ORDER BY `date` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);
 
     if (mysqli_num_rows($ad_result) > 0 ) {
@@ -90,21 +90,20 @@
                     <!-- Ad Meta Stats -->
                     <div class="ad-info-1">
                         <ul class="pull-left">
-                            <li><i class="fa fa-eye"></i><a href="#">445 Views</a></li>
+                            <li><i class="fa fa-eye"></i><a href="#">445 Gezien </a></li>
                             <li><i class="fa fa-clock-o"></i><?php echo $date;?></li>
                         </ul>
                         <ul class="pull-right">
                             <li><a data-toggle="tooltip" data-placement="top" title=""
-                                   data-original-title="Edit this Ad"
+                                   data-original-title="Advertentie wijzigen"
                                    href="edit_ad.php?ad_id=<?php echo $ad_id;?>"><i class="fa fa-pencil edit"></i></a></li>
-                            <li><a data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Ad"
-                                   href="delete_ad.php?ad_id<?php echo $ad_id;?>"><i
+                            <li><a data-toggle="tooltip" data-placement="top" title="" data-original-title="Advertentie verwijderen"
+                                   href="../scripts/delete_ad.php?ad_id<?php echo $ad_id;?>"><i
                                         class="fa fa-times delete"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-
             <?php
         }
     }

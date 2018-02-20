@@ -7,7 +7,7 @@
  */
 if (isset($_GET['cat_id'])){
     $cat_id    = $_GET['cat_id'];
-    $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `CATEGORY_id` = '{$cat_id}'  && `ad_type` = 'NORMAL' ORDER BY `date` DESC";
+    $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'NL' && `CATEGORY_id` = '{$cat_id}'  && `ad_type` = 'NORMAL' ORDER BY `date` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);
 
     if (mysqli_num_rows($ad_result) > 0 ){
@@ -101,18 +101,20 @@ if (isset($_GET['cat_id'])){
                         <!-- Additional Info -->
                         <div class="additional-information">
                             <p><?php echo $description; ?></p>
-
                         </div>
                         <!-- Additional Info End-->
                     </div>
                     <!-- Ad Img End -->
                     <div class="short-description">
+                        <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo $status ;?></span></p>
+                        <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
+                        <?php }elseif ($status == "AVAILABLE "){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
                         <!-- Ad Category -->
                         <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
                         <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                         <!-- Price -->
-                        <div class="price"><?php echo $price;?></div>
+                        <div class="price"><?php echo "€ ".$price;?></div>
                     </div>
                     <!-- Addition Info -->
                     <div class="ad-info">
@@ -129,9 +131,17 @@ if (isset($_GET['cat_id'])){
             <?php
 
         }
-    }
-} else{
-$ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `ad_type` = 'NORMAL' ORDER BY `date` DESC";
+    } else{
+            ?>
+            <div class="col-md-12 col-xs-12 col-sm-12">
+                <div role="alert" class="alert alert-danger alert-dismissible center-block">
+                    <strong>Letop! </strong> momenteel zijn er geen bassnede resultaten op basis van uw zoek
+                </div>
+            </div>
+            <?php
+        }
+    } else{
+$ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'NL' && `ad_type` = 'NORMAL' ORDER BY `date` DESC";
 $ad_result = mysqli_query($mysqli, $ad_query);
 
 if (mysqli_num_rows($ad_result) > 0 ){
@@ -216,6 +226,7 @@ if (mysqli_num_rows($ad_result) > 0 ){
                     <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id;?>" class="view-details">View Details</a>
                     <!-- Additional Info -->
                     <div class="additional-information">
+
                         <p><?php echo $description; ?></p>
 
                     </div>
@@ -223,12 +234,14 @@ if (mysqli_num_rows($ad_result) > 0 ){
                 </div>
                 <!-- Ad Img End -->
                 <div class="short-description">
-                    <!-- Ad Category -->
+                    <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo $status ;?></span></p>
+                    <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
+                    <?php }elseif ($status == "AVAILABLE "){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>                    <!-- Ad Category -->
                     <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                     <!-- Ad Title -->
                     <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                     <!-- Price -->
-                    <div class="price"><?php echo $price;?></div>
+                    <div class="price"><?php echo "€ ". $price ;?></div>
                 </div>
                 <!-- Addition Info -->
                 <div class="ad-info">
@@ -243,6 +256,14 @@ if (mysqli_num_rows($ad_result) > 0 ){
         <?php
 
     }
+  } else{
+    ?>
+<div class="col-md-12 col-xs-12 col-sm-12">
+    <div role="alert" class="alert alert-danger alert-dismissible center-block">
+        <strong>Letop! </strong> momenteel zijn er geen bassnede resultaten op basis van uw zoek
+    </div>
+</div>
+  <?php
   }
 }
 ?>
