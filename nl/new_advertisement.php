@@ -10,7 +10,7 @@ require_once '../scripts/db_connection.php';
       <![endif]-->
       <meta name="description" content="">
       <meta name="author" content="ScriptsBundle">
-      <title>2D Market | Place a new Add</title>
+      <title>2D Market | Nieuwe Ad toevogen</title>
       <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
       <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
       <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -358,7 +358,7 @@ require_once '../scripts/db_connection.php';
             <div class="row">
                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="header-page">
-                     <h1>Place a new Advertisement </h1>
+                     <h1>Nieuw Advertentie Uploaden </h1>
                   </div>
                </div>
             </div>
@@ -391,22 +391,22 @@ require_once '../scripts/db_connection.php';
                      <div class="post-ad-form extra-padding postdetails">
                         <div class="heading-panel text-center">
                            <h3 class="main-title text-left">
-                              Post Your New Advertisement
+                               Nieuw Advertentie Uploaden
                            </h3>
                         </div>
-                        <p class="lead">Posting an ad on <a href="#">2dmarket.com</a> is free! However, all ads must follow our rules:</p>
+                        <p class="lead">Voeg uw advertentie toe <a href="#">2dmarket.com</a> is helmaal gratis :</p>
                         <form  name="add_new_ad" method="post" action="scripts/create_new_ad.php" class="submit-form">
                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                          <ul class="accordion">
                              <li>
-                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 1.</span> Select a category</a></h4>
+                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 1.</span> Een categorie kiezen : </a></h4>
                                      <div class="accordion-content">
                                          <div class="row">
                                              <!-- Category  -->
                                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                                 <label class="control-label">Category <small>Select suitable category for your ad</small></label>
+                                                 <label class="control-label">Category <small>Kies een categorie </small></label>
                                                  <select name="category_id" class="category form-control">
-                                                     <option label="Select Option"></option>
+                                                     <option label="kies een Optie"></option>
                                                      <?php
                                                      // GET ALL CATEGORIES from DB
                                                      $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'EN' ORDER BY `name` ASC  ";
@@ -440,54 +440,54 @@ require_once '../scripts/db_connection.php';
                                      </div>
                              </li>
                              <li>
-                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 2.</span> Advertisement information</a></h4>
+                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 2.</span> Advertentie  Informatie : </a></h4>
                                  <div class="accordion-content">
                                      <!-- Title-->
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                             <label class="control-label">Advertisment title <small>Enter a title for your ad.</small></label>
-                                             <input name= "title" class="form-control" placeholder="Brand new honda civic 2017 for sale" type="text">
+                                             <label class="control-label">Advertentie title <small> schrijf een title </small></label>
+                                             <input name= "title" class="form-control" placeholder="Honda civic 2017 te koop" type="text">
                                          </div>
                                      </div>
                                      <!-- end row-->
                                      <!-- Price  -->
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                             <label class="control-label">Price <small>Euro only </small></label>
-                                             <input name= "price" class="form-control" placeholder="e.g 350 " type="text">
+                                             <label class="control-label">Prijs <small>Allen Euro</small></label>
+                                             <input name= "price" class="form-control" placeholder="Bijvoorbeeld : 350 " type="text">
                                          </div>
                                      </div>
                                      <!-- Ad Type  -->
                                      <div class="row">
                                          <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                             <label  class="control-label">Type Of Ad<small>Bid or Fixed price</small></label>
+                                             <label  class="control-label">Advertntie Type<small>Bidden of Vast prijs</small></label>
                                              <div class="skin-minimal">
                                                  <select name="selling_type" class="category form-control">
-                                                     <option value=""> Select an option</option>
-                                                     <option value="BID"> Bid</option>
-                                                     <option value="FIXED_PRICE"> Fixed Price</option>
+                                                     <option value="">Kies een optie</option>
+                                                     <option value="BID"> Bidden </option>
+                                                     <option value="FIXED_PRICE"> Vast Prijs </option>
                                                  </select>
                                              </div>
                                          </div>
                                          <!-- Ad Condition  -->
                                          <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                                             <label class="control-label">Condition<small>Item Condition</small></label>
+                                             <label class="control-label">Conditie<small></small></label>
                                              <div class="skin-minimal">
                                                  <select name="condition" class="category form-control">
                                                      <option value=""> Select an option</option>
-                                                     <option value="NEW"> New</option>
-                                                     <option value="USED"> Used</option>
+                                                     <option value="NEW"> Nieuwe </option>
+                                                     <option value="USED"> Gebruikt </option>
                                                  </select>
                                              </div>
                                          </div>
                                      </div>
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                             <label class="control-label">Delivery Type  <small>Pick up or Post Delivery </small></label>
+                                             <label class="control-label">Bezorging <small>Ophalen of Versturen </small></label>
                                              <select name="delivery_type" class="category form-control">
                                                  <option value=""> Select an option</option>
-                                                 <option value="PICK_UP"> Pick Up</option>
-                                                 <option value="DELIVERY"> Post Delivery</option>
+                                                 <option value="PICK_UP"> Ophalen </option>
+                                                 <option value="DELIVERY"> Verzending </option>
                                              </select>
                                          </div>
                                      </div>
@@ -499,7 +499,7 @@ require_once '../scripts/db_connection.php';
                                  <div class="accordion-content">
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                             <label class="control-label">Photos of your product</label>
+                                             <label class="control-label">fotos van uw Produkt </label>
                                              <div id="dropzone" class="dropzone"></div>
                                          </div>
                                      </div>
@@ -508,7 +508,7 @@ require_once '../scripts/db_connection.php';
                                      <!-- Ad Description  -->
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
-                                             <label class="control-label">Product Description <small>Enter a description of the product</small></label>
+                                             <label class="control-label">Produkt Beschrijven <small></small></label>
                                              <textarea name="description" id="editor2" rows="12" class="form-control"></textarea>
                                          </div>
                                      </div>
@@ -516,13 +516,13 @@ require_once '../scripts/db_connection.php';
                                  </div>
                              </li>
                              <li>
-                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 4.</span> Advertisement Options</a></h4>
+                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 4.</span> Advertentie Opties</a></h4>
                                  <div class="accordion-content">
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                             <label class="control-label">Ad Type  <small>Choose between Free Or Premium</small></label>
+                                             <label class="control-label">Ad. Type  <small>Kiez Free Of Premium</small></label>
                                              <select name="ad_type" class="category form-control">
-                                                 <option value=""> Select an option</option>
+                                                 <option value=""> Kies een optie</option>
                                                  <option value="NORMAL"> Normal</option>
                                                  <option value="PREMIUM"> Premium</option>
                                              </select>
@@ -532,7 +532,7 @@ require_once '../scripts/db_connection.php';
                              </li>
                          </ul>
                              <div class="margin-top-20">
-                                 <button name="submit" class="btn btn-theme pull-right">Publish My Ad</button>
+                                 <button name="submit" class="btn btn-theme pull-right">Mijn Ad. Uploaden</button>
                              </div>
                         </form>
 
