@@ -28,13 +28,13 @@ if(isset($_POST['update'])) {
     $update_user_query ="UPDATE USER u  SET 
                               u.first_name    ='{$firstname}',
                               u.last_name     ='{$lastname}',
-                              u.username      ='{$password}',
+                              u.password      ='{$password}',
                               u.email         ='{$email}',
                               u.phone_number  ='{$phonenumber}'
                               where u.id='{$id}'";
 
     $update_user_result = mysqli_query($mysqli,$update_user_query);
-
+ echo  $update_user_query;
 
 
     if($update_user_result){

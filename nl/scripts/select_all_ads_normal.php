@@ -101,6 +101,8 @@ if (isset($_GET['cat_id'])){
                         <!-- Additional Info -->
                         <div class="additional-information">
                             <p><?php echo $description; ?></p>
+
+
                         </div>
                         <!-- Additional Info End-->
                     </div>
