@@ -28,7 +28,7 @@ if(isset($_POST['update'])) {
     $update_user_query ="UPDATE USER u  SET 
                               u.first_name    ='{$firstname}',
                               u.last_name     ='{$lastname}',
-                              u.password      ='{$password}',
+                              u.password      ='{$hash_pass}',
                               u.email         ='{$email}',
                               u.phone_number  ='{$phonenumber}'
                               where u.id='{$id}'";

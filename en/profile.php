@@ -11,6 +11,7 @@ ob_start();
 require_once "../scripts/db_connection.php";
 include 'scripts/sessions.php';
 $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$id}";
+echo $address_query;
 $address_result = mysqli_query($mysqli, $address_query);
 if (mysqli_num_rows($address_result) > 0) {
     while ($row = mysqli_fetch_assoc($address_result)) {
