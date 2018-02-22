@@ -2,15 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Alaa
- * Date: 14-2-2018
- * Time: 08:49
- * here all the user info. are founded and ready to use in other pages.
+ * Date: 22-2-2018
+ * Time: 20:17
  */
 ?>
+
 <?php
-if (isset($_GET['user_id'])){
-$user_id = $_GET['user_id'];
-    $select_query = "SELECT * FROM `USER` WHERE `id` = '{$user_id}'";
+$id = $_SESSION['id'];
+$select_query = "SELECT * FROM `USER` WHERE `id` = '{$id}'";
     $select_result = mysqli_query($mysqli, $select_query);
     while ($row = mysqli_fetch_assoc($select_result)) {
         $user_first_name = $row['first_name'];
@@ -22,7 +21,7 @@ $user_id = $_GET['user_id'];
         $user_register_date = $row['register_date'];
         $online_status = $row['online_status'];
 
-        $user_full_name = $user_first_name." ". $user_last_name;
+        $user_full_name = $user_first_name ." ". $user_last_name;
 
     }
     if (empty($user_pic)) {
@@ -31,39 +30,37 @@ $user_id = $_GET['user_id'];
 
 // Address info.
 
-    $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$user_id}";
+    $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$id}";
     $address_result = mysqli_query($mysqli, $address_query);
     if (mysqli_num_rows($address_result) > 0) {
         while ($row = mysqli_fetch_assoc($address_result)) {
             $user_street_name = $row['street_name'];
             $user_postcode = $row['postcode'];
             $user_house_number = $row['house_number'];
+            $user_extra_house_number = $row['extra_number'];
             $user_region = $row['region'];
             $user_city = $row['city'];
 
+            $location = $user_postcode . ", ". $user_street_name . " ". $user_extra_house_number;
+
         }
     } else {
-        $user_postcode = "unknown ";
-        $user_city = "address";
+        $user_street_name = "Unknown address info; Please fill in your info in edit info tap !";
+        $user_postcode = "Unknown address info; Please fill in your info in edit info tap !";
+        $user_house_number =  "Unknown address info; Please fill in your info in edit info tap !";
+        $user_region = "Unknown address info; Please fill in your info in edit info tap !";
+        $user_city = "Unknown address info; Please fill in your info in edit info tap !";
+        $location = "Unknown address info; Please fill in your info in edit info tap !";
     }
 
 //user's statistics
-    $statistics_query = "SELECT COUNT(*) AS 'ADVERTISEMENT_count' FROM `ADVERTISEMENT` WHERE USER_id = '{$user_id}'";
+    $statistics_query = "SELECT COUNT(*) AS 'ADVERTISEMENT_count' FROM `ADVERTISEMENT` WHERE USER_id = '{$id}'";
     $statistics_result = mysqli_query($mysqli, $statistics_query);
     while ($row = mysqli_fetch_assoc($statistics_result)) {
         $ad_count = $row['ADVERTISEMENT_count'];
     }
 
-    $statistics_query_1 = "SELECT COUNT(*) AS 'ADVERTISEMENT_count1' FROM `ADVERTISEMENT` WHERE USER_id = '{$user_id}' && status = 'SOLD'";
-    $statistics_result_1 = mysqli_query($mysqli, $statistics_query_1);
 
-    while ($row = mysqli_fetch_assoc($statistics_result_1)) {
-        $ad_count_sold = $row['ADVERTISEMENT_count1'];
-    }
-
-
-} else {
-    header("Location: all_product.php");
-}
 ?>
+
 

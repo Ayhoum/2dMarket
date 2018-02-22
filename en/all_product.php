@@ -1,9 +1,10 @@
 ﻿<?php
 include '../scripts/db_connection.php';
-ob_start();
-session_start();
-?>
 
+//ob_start();
+//session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -421,8 +422,8 @@ session_start();
                         <!-- Pagination -->
                         <div class="text-center margin-bottom-30">
                             <ul class="pagination ">
-                                <li class="active"><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                                <li><a href="#">1</a></li>
+                                <li class=""><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                                <li class="active"><a href="#">1</a></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
                                 <li><a href="#">4</a></li>
