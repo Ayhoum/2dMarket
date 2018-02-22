@@ -370,7 +370,7 @@ include 'scripts/user_profile.php';
                         </div>
                         <ul>
                            <li  class="active"><a href="profile.html">الملف الشخصي</a></li>
-                           <li ><a href="active-ads.html">الإعلانات الخاصة بي <span class="badge"><?php echo $ad_count; ?></span></a></li>
+                           <li ><a href="personal_ads.php">الإعلانات الخاصة بي <span class="badge"><?php echo $ad_count; ?></span></a></li>
                            <li><a href="favourite.html">إعلانات مفضلة <span class="badge">15</span></a></li>
                            <li ><a href="messages.html">رسائل</a></li>
                            <li><a href="#">تسجيـل الخروج</a></li>
