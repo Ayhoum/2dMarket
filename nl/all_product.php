@@ -1,7 +1,7 @@
 ﻿<?php
 include '../scripts/db_connection.php';
-ob_start();
-session_start();
+//ob_start();
+//session_start();
 ?>
 
 <!DOCTYPE html>
