@@ -1,4 +1,7 @@
 ﻿<?php
+ob_start();
+session_start();
+include 'scripts/sessions.php';
 require_once '../scripts/db_connection.php';
 ?>
 <!DOCTYPE html>

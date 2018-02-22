@@ -90,32 +90,31 @@
                     <!-- Ad Meta Stats -->
                     <div class="ad-info-1">
                         <ul class="pull-left">
-                            <li><i class="fa fa-eye"></i><a href="#">445 Views</a></li>
+                            <li><i class="fa fa-eye"></i><a href="#">445 مشاهدة</a></li>
                             <li><i class="fa fa-clock-o"></i><?php echo $date;?></li>
                         </ul>
                         <ul class="pull-right">
                             <li><a data-toggle="tooltip" data-placement="top" title=""
-                                   data-original-title="Edit this Ad"
+                                   data-original-title="تعديل الاعلان"
                                    href="edit_ad.php?ad_id=<?php echo $ad_id;?>"><i class="fa fa-pencil edit"></i></a></li>
-                            <li><a data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete Ad"
+                            <li><a data-toggle="tooltip" data-placement="top" title="" data-original-title="حذف الاعلان"
                                    href="delete_ad.php?ad_id<?php echo $ad_id;?>"><i
                                         class="fa fa-times delete"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-
             <?php
         }
     } else{
         ?>
         <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
             <section class="advertising">
-                <a href="new_advertisement.php">
+                <a href="create_new_ad.php">
                     <div class="banner">
                         <div class="wrapper">
-                            <span class="title">Oh no ! it seems that you didn't post any Ads on our website yet!</span>
-                            <span class="submit">Submit one now! <i class="fa fa-plus-square"></i></span>
+                            <span class="title"> يبدو انك لم تقم برفع اي اعلان حتى الان على موقعنا</span>
+                            <span class="submit">قم بتجربة موقعنا الان! <i class="fa fa-plus-square"></i></span>
                         </div>
                     </div>
                     <!-- /.banner-->

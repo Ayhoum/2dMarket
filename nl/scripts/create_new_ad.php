@@ -5,6 +5,8 @@
  * Date: 12-2-2018
  * Time: 19:05
  */
+session_start();
+include 'sessions.php';
 require_once '../../scripts/db_connection.php';
 
 
@@ -29,7 +31,7 @@ if(isset($_POST['submit'])){
     }
 
     $lang    = "EN";
-    $user_id =  "1";
+    $user_id =  $_SESSION['id'];
 
     $ins_ad_query  = "INSERT INTO `ADVERTISEMENT`";
     $ins_ad_query .= "(`title`, `lang`, `selling_type`, `delivery_type`, `description`, `ad_type`, `USER_id`, `PRODUCT_id`, `CATEGORY_id`, `condition`, `price`)";
@@ -48,16 +50,14 @@ if(isset($_POST['submit'])){
     $ins_ad_result = mysqli_query($mysqli,$ins_ad_query);
     if($ad_type == "NORMAL"){
 
-         header('Location: free.php?user_id='.$user_id);
+        header('Location: free.php?user_id='.$user_id);
 
     } elseif ($ad_type == "PREMIUM"){
 
-          header('Location: premium.php?user_id='.$user_id);
+        header('Location: premium.php?user_id='.$user_id);
     }
 } else{
     echo "Error";
-
-
 
 }
 ?>
