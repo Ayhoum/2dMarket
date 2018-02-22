@@ -417,7 +417,7 @@ include 'scripts/user_profile.php';
                                         </dd>
                                         <dt><strong>Email Address </strong></dt>
                                         <dd>
-                                            <?php echo  $user_full_name ;?>
+                                            <?php echo  $user_email ;?>
                                         </dd>
                                         <dt><strong>Phone Number </strong></dt>
                                         <dd>

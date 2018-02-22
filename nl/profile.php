@@ -10,21 +10,8 @@ session_start();
 ob_start();
 require_once "../scripts/db_connection.php";
 include 'scripts/sessions.php';
-$address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$id}";
-$address_result = mysqli_query($mysqli, $address_query);
-if (mysqli_num_rows($address_result) > 0) {
-    while ($row = mysqli_fetch_assoc($address_result)) {
-        $user_street_name = $row['street_name'];
-        $user_postcode = $row['postcode'];
-        $user_house_number = $row['house_number'];
-        $user_region = $row['region'];
-        $user_city = $row['city'];
+include 'scripts/user_profile.php';
 
-    }
-    $location = $user_postcode . ", ". $user_city;
-} else {
-   $location = "Location unknown ";
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -387,9 +374,9 @@ if (mysqli_num_rows($address_result) > 0) {
                 <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
                     <!-- Sidebar Widgets -->
                     <div class="user-profile">
-                        <a href="personal_ads.php"><img src="<?php echo $profile_pic; ?>" alt=""></a>
+                        <a href="personal_ads.php"><img src="<?php echo $user_pic; ?>" alt=""></a>
                         <div class="profile-detail">
-                            <h6><?php echo $full_name;?></h6>
+                            <h6><?php echo $user_full_name ;?></h6>
                             <ul class="contact-details">
                                 <li>
                                     <i class="fa fa-map-marker"></i> <?php echo $location ;?>
@@ -404,7 +391,7 @@ if (mysqli_num_rows($address_result) > 0) {
                         </div>
                         <ul>
                             <li class="active"><a href="profile.php">Mijn Profiel</a></li>
-                            <li  ><a href="personal_ads.php">Mijn Advertenties  <span class="badge"></span></a></li>
+                            <li  ><a href="personal_ads.php">Mijn Advertenties  <span class="badge"><?php echo $ad_count; ?></span></a></li>
                             <li><a href="favourite.html">Bewaarde Advertenties <span class="badge">15</span></a></li>
                             <li ><a href="messages.php">Brichten</a></li>
                             <li><a href="logout.php">uitloggen</a></li>
@@ -426,19 +413,19 @@ if (mysqli_num_rows($address_result) > 0) {
                                     <dl class="dl-horizontal">
                                         <dt><strong>Uw Naam : </strong></dt>
                                         <dd>
-                                            <?php echo $full_name ;?>
+                                            <?php echo  $user_full_name ;?>
                                         </dd>
                                         <dt><strong>Email :  </strong></dt>
                                         <dd>
-                                            <?php echo $email ;?>
+                                            <?php echo  $user_email ;?>
                                         </dd>
                                         <dt><strong>Telefoonnummer : </strong></dt>
                                         <dd>
-                                            <?php echo $phone ;?>
+                                            <?php echo $user_phone ;?>
                                         </dd>
                                         <dt><strong>Gebruiksnaam : </strong></dt>
                                         <dd>
-                                            <?php echo $username ;?>
+                                            <?php echo $user_username ;?>
                                         </dd>
                                         <dt><strong>Adres : </strong></dt>
                                         <dd>

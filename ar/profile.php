@@ -1,11 +1,9 @@
 ﻿<?php
-
 session_start();
 ob_start();
 require_once "../scripts/db_connection.php";
 include 'scripts/sessions.php';
 include 'scripts/user_profile.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="ar">
