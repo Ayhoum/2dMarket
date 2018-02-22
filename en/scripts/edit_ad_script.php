@@ -17,7 +17,7 @@ if ((isset($_POST['status_submit']))){
                       `status`='{$status}'
                       WHERE `id` = {$ad_id}";
     $status_result = mysqli_query($mysqli,$update_status_query);
-    header('Location: ../personal_ads.php');
+    header('Location: ../_.php');
 }
 if (isset($_POST['submit'])){
     $title          = mysqli_real_escape_string($mysqli,$_POST['title']);

@@ -107,5 +107,21 @@
 
             <?php
         }
+    } else{
+        ?>
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+            <section class="advertising">
+                <a href="create_new_ad.php">
+                    <div class="banner">
+                        <div class="wrapper">
+                            <span class="title">Oh no ! it seems that you didn't post any Ads on our website yet!</span>
+                            <span class="submit">Submit one now! <i class="fa fa-plus-square"></i></span>
+                        </div>
+                    </div>
+                    <!-- /.banner-->
+                </a>
+            </section>
+        </div>
+    <?php
     }
     ?>
