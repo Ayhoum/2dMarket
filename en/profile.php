@@ -513,11 +513,7 @@ if (mysqli_num_rows($address_result) > 0) {
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Password </label>
-                                                <input type="text" name="password" class="form-control margin-bottom-20">
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Email Address <span class="color-red">*</span></label>
-                                                <input type="text" name="email" class="form-control margin-bottom-20">
+                                                <input type="password" name="password" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Phone Number <span class="color-red">*</span></label>
@@ -547,6 +543,10 @@ if (mysqli_num_rows($address_result) > 0) {
                                                 </select>
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label>Postcode</label>
+                                                <input type="text" name="postcode" class="form-control margin-bottom-20">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Street Name</label>
                                                 <input type="text" name="street_name" class="form-control margin-bottom-20">
                                             </div>
@@ -558,10 +558,7 @@ if (mysqli_num_rows($address_result) > 0) {
                                                 <label>Etxra house Number</label>
                                                 <input type="text" name="extra_house_number" class="form-control margin-bottom-20">
                                             </div>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Postcode</label>
-                                                <input type="text" name="postcode" class="form-control margin-bottom-20">
-                                            </div>
+
 
                                         <div class="row">
                                             <div class="col-md-4 col-sm-4 col-xs-12 text-right">
