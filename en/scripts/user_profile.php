@@ -45,6 +45,13 @@ $select_query = "SELECT * FROM `USER` WHERE `id` = '{$id}'";
 
         }
     } else {
+
+        $user_street_name = " ";
+        $user_postcode = " ";
+        $user_house_number = " ";
+        $user_region = " ";
+        $user_city = " ";
+        $user_country = " ";
         $location = "Unknown address info; Please fill in your info in edit info tap !";
     }
 
