@@ -2,17 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: Alaa
- * Date: 13-2-2018
- * Time: 18:44
+ * Date: 4-3-2018
+ * Time: 16:16
  */
+
 session_start();
 ob_start();
 
 require_once '../scripts/db_connection.php' ;
-
-include 'scripts/sessions.php';
 include 'scripts/user_profile.php';
-
+include 'scripts/sessions.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +23,7 @@ include 'scripts/user_profile.php';
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title> 2D Market | Personal Ads</title>
+    <title> 2D Market |Favorite Ads. </title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -392,7 +391,7 @@ include 'scripts/user_profile.php';
                         <ul>
                             <li class="active"><a href="profile.php">Profile</a></li>
                             <li  ><a href="personal_ads.php">My Ads <span class="badge"><?php echo $ad_count; ?> </span></a></li>
-                            <li><a href="favourite_ads.php">Favourites Ads <span class="badge"><?php echo $fav_count; ?></span></a></li>
+                            <li><a href="favourite_ads.php">Favourites Ads <span class="badge">15</span></a></li>
                             <li ><a href="messages.php">Messages</a></li>
                             <li><a href="logout.php">Logout</a></li>
                         </ul>
@@ -411,7 +410,7 @@ include 'scripts/user_profile.php';
                         <!-- Ads Archive -->
                         <div class="posts-masonry">
                             <!-- Listing Ad Grid -->
-                            <?php include 'scripts/personal_ads_script.php';?>
+                            <?php include 'scripts/favorite_ads_script.php';?>
                             <!-- Listing Ad Grid -->
                         </div>
                         <!-- Ads Archive End -->

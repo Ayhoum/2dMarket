@@ -374,7 +374,7 @@ include 'scripts/user_profile.php';
                 <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
                     <!-- Sidebar Widgets -->
                     <div class="user-profile">
-                        <a href="personal_ads.php"><img src="<?php echo $user_pic; ?>" alt=""></a>
+                        <a href="profile.php"><img src="<?php echo $user_pic; ?>" alt=""></a>
                         <div class="profile-detail">
                             <h6><?php echo $user_full_name ;?></h6>
                             <ul class="contact-details">
@@ -392,7 +392,7 @@ include 'scripts/user_profile.php';
                         <ul>
                             <li class="active"><a href="profile.php">Profile</a></li>
                             <li  ><a href="personal_ads.php">My Ads <span class="badge"><?php echo $ad_count; ?> </span></a></li>
-                            <li><a href="favourite.html">Favourites Ads <span class="badge">15</span></a></li>
+                            <li><a href="favourite_ads.php">Favourites Ads <span class="badge"><?php echo $fav_count; ?></span></a></li>
                             <li ><a href="messages.php">Messages</a></li>
                             <li><a href="logout.php">Logout</a></li>
                         </ul>
@@ -429,7 +429,7 @@ include 'scripts/user_profile.php';
                                         </dd>
                                         <dt><strong>Address </strong></dt>
                                         <dd>
-                                            <?php echo $user_street_name." ".$user_house_number."<br> ".$user_postcode . ", ". $user_region;?>
+                                            <?php echo $user_street_name." ".$user_house_number."<br> ".$user_postcode . ", ". $user_region."<br> ".$user_country ;?>
                                         </dd>
                                     </dl>
                                 </div>
@@ -507,26 +507,29 @@ include 'scripts/user_profile.php';
                                             </div>
                                             <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
                                                 <label>region<span class="color-red">*</span></label>
-                                                <select class="form-control" id="slct1" name="slct1" onchange="populate(this.id,'slct2')">
-                                                    <option value="drenthe">Drenthe</option>
-                                                    <option value="flevoland">Flevoland</option>
-                                                    <option value="friesland">Friesland</option>
-                                                    <option value="gelderland">Gelderland</option>
-                                                    <option value="groningen">Groningen</option>
-                                                    <option value="limburg">Limburg</option>
-                                                    <option value="northBrabant">NorthBrabant</option>
-                                                    <option value="northHolland">NorthHolland</option>
-                                                    <option value="Overijssel">Overijssel</option>
-                                                    <option value="southHolland">SouthHolland</option>
-                                                    <option value="utrecht">Utrecht</option>
-                                                    <option value="zeeland">Zeeland</option>
-                                                </select>
+                                                <input type="text" name="region" class="form-control margin-bottom-20">
+                                                <!--                                                <select class="form-control" id="slct1" name="slct1" onchange="populate(this.id,'slct2')">-->
+<!--                                                    <option value="drenthe">Drenthe</option>-->
+<!--                                                    <option value="flevoland">Flevoland</option>-->
+<!--                                                    <option value="friesland">Friesland</option>-->
+<!--                                                    <option value="gelderland">Gelderland</option>-->
+<!--                                                    <option value="groningen">Groningen</option>-->
+<!--                                                    <option value="limburg">Limburg</option>-->
+<!--                                                    <option value="northBrabant">NorthBrabant</option>-->
+<!--                                                    <option value="northHolland">NorthHolland</option>-->
+<!--                                                    <option value="Overijssel">Overijssel</option>-->
+<!--                                                    <option value="southHolland">SouthHolland</option>-->
+<!--                                                    <option value="utrecht">Utrecht</option>-->
+<!--                                                    <option value="zeeland">Zeeland</option>-->
+<!--                                                </select>-->
 
                                             </div>
                                             <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
                                                 <label>City <span class="color-red">*</span></label>
-                                                <select class="form-control"   id="slct2" name="slct2">
-                                                </select>
+<!--                                                <select class="form-control"   id="slct2" name="slct2"></select>-->
+                                                <input type="text" name="City" class="form-control margin-bottom-20">
+                                            </div>
+                                            <div class="bfh-selectbox bfh-countries" data-country="US" data-flags="true">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Postcode</label>

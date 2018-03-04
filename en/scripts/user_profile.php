@@ -40,16 +40,12 @@ $select_query = "SELECT * FROM `USER` WHERE `id` = '{$id}'";
             $user_extra_house_number = $row['extra_number'];
             $user_region = $row['region'];
             $user_city = $row['city'];
+            $user_country = $row['country'];
 
-            $location = $user_postcode . ", ". $user_street_name . " ". $user_extra_house_number;
+            $location = $user_region . " ". $user_country;
 
         }
     } else {
-        $user_street_name = "Unknown address info; Please fill in your info in edit info tap !";
-        $user_postcode = "Unknown address info; Please fill in your info in edit info tap !";
-        $user_house_number =  "Unknown address info; Please fill in your info in edit info tap !";
-        $user_region = "Unknown address info; Please fill in your info in edit info tap !";
-        $user_city = "Unknown address info; Please fill in your info in edit info tap !";
         $location = "Unknown address info; Please fill in your info in edit info tap !";
     }
 
@@ -60,6 +56,11 @@ $select_query = "SELECT * FROM `USER` WHERE `id` = '{$id}'";
         $ad_count = $row['ADVERTISEMENT_count'];
     }
 
+$statistics_query_1  = "SELECT COUNT(*) AS 'FAV_count' FROM `FAV_ADS` WHERE user_id = '{$id}'";
+$statistics_result_1 = mysqli_query($mysqli, $statistics_query_1);
+while ($row = mysqli_fetch_assoc($statistics_result_1)) {
+    $fav_count = $row['FAV_count'];
+}
 
 ?>
 
