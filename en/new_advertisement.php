@@ -766,7 +766,6 @@ require_once '../scripts/db_connection.php';
 
                        $("#fieldsError").modal();
                    }else{
-
                        $.post('scripts/handle_addProduct.php?cat=' + categoryField
                            + '&title=' + titleField
                            + '&price=' + priceField
@@ -775,12 +774,11 @@ require_once '../scripts/db_connection.php';
                            + '&delivery=' + deliveryTypeField
                            + '&des=' + desField
                            + '&adType=' + adTypeField, function (response) {
+                           alert('Here1');
 
                            if (response != 'error') {
                             alert(response);
                                myDr.processQueue();
-                           } else {
-
                            }
                        });
 

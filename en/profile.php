@@ -378,7 +378,7 @@ include 'scripts/user_profile.php';
                 <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
                     <!-- Sidebar Widgets -->
                     <div class="user-profile">
-                        <a href="profile.php"><img class="center-block" style="margin-top: 20px;border-radius: 50%;width: 128px;height: 128px; " src="<?php echo $user_pic; ?>" alt=""></a>
+                        <a href="profile.php"><img id="img_preview" class="center-block" style="margin-top: 20px;border-radius: 50%;width: 128px;height: 128px; " src="<?php echo $user_pic; ?>" alt=""></a>
                         <div class="profile-detail">
                             <h6><?php echo $user_full_name ;?></h6>
                             <ul class="contact-details">
@@ -441,48 +441,48 @@ include 'scripts/user_profile.php';
                                     <h2 class="heading-md">Change your account information.</h2>
                                     <p>Manage Your Account</p>
                                     <div class="clearfix"></div>
-                                    <form method="post" action="scripts/edit_profile_info.php" >
+                                    <form method="post" action="scripts/edit_profile_info.php" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>First Name </label>
-                                                <input type="text" name="first_name" class="form-control margin-bottom-20">
+                                                <input type="text" name="first_name" placeholder="<?php echo $user_first_name;?>" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Last Name </label>
-                                                <input type="text" name="last_name" class="form-control margin-bottom-20">
+                                                <input type="text" name="last_name" placeholder="<?php echo $user_last_name;?>" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Password </label>
-                                                <input type="password" name="password" class="form-control margin-bottom-20">
+                                                <label>Your Photo </label>
+                                                <input type="file" id="upload_img" name="profile_img" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Phone Number <span class="color-red">*</span></label>
-                                                <input type="text" name="phone_number" class="form-control margin-bottom-20">
+                                                <label>Phone Number </label>
+                                                <input type="text" name="phone_number" placeholder="<?php echo $user_phone;?>" class="form-control margin-bottom-20">
                                             </div>
-                                            <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
-                                                <label>Country<span class="color-red">*</span></label>
-                                                    <select name="country" class="gds-cr gds-countryflag" country-data-region-id="gds-cr-four"></select>
+                                            <div class="col-md-6 col-sm-6 col-xs-12" style="clear: left;">
+                                                <label>Country </label>
+                                                <select name="country" class="gds-cr gds-countryflag margin-bottom-20" country-data-region-id="gds-cr-four"></select>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <label>Region </label>
+                                                <select name="region" class="form-control margin-bottom-20" id="gds-cr-four"></select>
                                             </div>
 
-                                            <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
-                                                <label>Region</label>
-                                                    <select name="region" class="form-control" id="gds-cr-four"></select>
-                                            </div>
-                                            <div class="col-md-6 col-sm-12 col-xs-12 ">
-                                                <label>City <span class="color-red">*</span></label>
-                                                <input type="text" name="city" class="form-control margin-bottom-20">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                                <label>City </label>
+                                                <input type="text" name="city" placeholder="<?php echo $user_city;?>" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Postcode</label>
-                                                <input type="text" name="postcode" class="form-control margin-bottom-20">
+                                                <input type="text" name="postcode" placeholder="<?php echo $user_postcode;?>" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Street Name</label>
-                                                <input type="text" name="street_name" class="form-control margin-bottom-20">
+                                                <input type="text" name="street_name" placeholder="<?php echo $user_street_name;?>" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>House Number</label>
-                                                <input type="text" name="house_number" class="form-control margin-bottom-20">
+                                                <input type="text" name="house_number" placeholder="<?php echo $user_house_number;?>" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="row ">
                                             <div class="col-md-12 col-sm-12 col-xs-12" >
@@ -610,6 +610,20 @@ include 'scripts/user_profile.php';
 <script src="js/color-switcher.js"></script>
 <!-- Template Core JS -->
 <script src="js/custom.js"></script>
+<script>
+    $('#upload_img').change(function(){
+        readImgUrlAndPreview(this);
+        function readImgUrlAndPreview(input){
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#img_preview').attr('src', e.target.result);
+                }
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    });
+</script>
 </body>
 </html>
 

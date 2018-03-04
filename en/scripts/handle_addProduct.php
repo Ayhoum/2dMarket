@@ -7,6 +7,7 @@
  */
 session_start();
 include '../../scripts/db_connection.php';
+
 if (isset($_GET['cat'])
     && isset($_GET['title'])
     && isset($_GET['price'])
@@ -33,7 +34,7 @@ if (isset($_GET['cat'])
         $status = "AVAILABLE";
         $zeroVal = 0;
         $ins_ad_query  = "INSERT INTO `ADVERTISEMENT`";
-        $ins_ad_query .= "(`title`, `lang`, `selling_type`, `status`, `delivery_type`, `description`, `ad_type`, `USER_id`, `CATEGORY_id`, `condition`, `price`, `fav_number`, `visits`)";
+        $ins_ad_query .= "(`title`, `lang`, `selling_type`, `status`, `delivery_type`, `description`, `ad_type`, `USER_id`, `CATEGORY_id`, `condition`, `price`, `visits`)";
         $ins_ad_query .= "VALUES (      '{$title}',
                                         '{$lang}',
                                         '{$selling_type}',
@@ -45,7 +46,6 @@ if (isset($_GET['cat'])
                                         '{$category_id}',
                                         '{$condition}',
                                         '{$price}',
-                                        '{$zeroVal}',
                                         '{$zeroVal}')";
 
         $ins_ad_result = mysqli_query($mysqli,$ins_ad_query);

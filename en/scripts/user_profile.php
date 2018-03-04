@@ -26,6 +26,8 @@ $select_query = "SELECT * FROM `USER` WHERE `id` = '{$id}'";
     }
     if (empty($user_pic)) {
         $user_pic = "images/portrait_placeholder.png";
+    }else{
+        $user_pic = "../uploads/users/$user_pic";
     }
 
 // Address info.
