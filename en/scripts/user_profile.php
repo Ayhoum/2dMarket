@@ -25,7 +25,7 @@ $select_query = "SELECT * FROM `USER` WHERE `id` = '{$id}'";
 
     }
     if (empty($user_pic)) {
-        $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
+        $user_pic = "images/portrait_placeholder.png";
     }
 
 // Address info.
