@@ -38,7 +38,7 @@ if(isset($_POST['update'])) {
     $profile_img = $date . $time . ".jpg";
     $profile_img_tmp = $_FILES['profile_img']['tmp_name'];
     if (!empty($profile_img_tmp)) {
-        if(file_exists('../'.$user_pic)){
+        if(file_exists('../'.$user_pic) && $user_pic != "images/portrait_placeholder.png"){
             unlink('../'.$user_pic);
         }
         move_uploaded_file($profile_img_tmp, "../../uploads/users/$profile_img");
