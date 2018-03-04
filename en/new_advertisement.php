@@ -398,7 +398,7 @@ require_once '../scripts/db_connection.php';
                            </h3>
                         </div>
                         <p class="lead">Posting an ad on <a href="#">2dmarket.com</a> is free! However, all ads must follow our rules:</p>
-                        <form  name="add_new_ad" method="post" action="scripts/create_new_ad.php" class="submit-form">
+                        <form  name="add_new_ad" method="post" id="advForm" class="submit-form" enctype="multipart/form-data">
                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                          <ul class="accordion">
                              <li>
@@ -408,7 +408,7 @@ require_once '../scripts/db_connection.php';
                                              <!-- Category  -->
                                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                                  <label class="control-label">Category <small>Select suitable category for your ad</small></label>
-                                                 <select name="category_id" class="category form-control">
+                                                 <select name="category_id" id="category"  class="category form-control">
                                                      <option label="Select Option"></option>
                                                      <?php
                                                      // GET ALL CATEGORIES from DB
@@ -426,12 +426,12 @@ require_once '../scripts/db_connection.php';
                                                                      $sub_id = $row['id'];
                                                                      $sub_name = $row['name'];
                                                                      ?>
-                                                                     <option value="<?php echo $id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
+                                                                     <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
                                                                      <?php
                                                                  }
                                                              } else {
                                                                  ?>
-                                                                 <option value="<?php echo $id; ?>"><?php echo $name ; ?></option>
+                                                                 <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name ; ?></option>
                                                                  <?php
                                                              }
                                                          }
@@ -449,7 +449,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">Advertisment title <small>Enter a title for your ad.</small></label>
-                                             <input name= "title" class="form-control" placeholder="Brand new honda civic 2017 for sale" type="text">
+                                             <input name= "title" class="form-control" id="title" placeholder="Brand new honda civic 2017 for sale" type="text">
                                          </div>
                                      </div>
                                      <!-- end row-->
@@ -457,7 +457,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">Price <small>Euro only </small></label>
-                                             <input name= "price" class="form-control" placeholder="e.g 350 " type="text">
+                                             <input name= "price" id="price" class="form-control" placeholder="e.g 350 " type="text">
                                          </div>
                                      </div>
                                      <!-- Ad Type  -->
@@ -465,7 +465,7 @@ require_once '../scripts/db_connection.php';
                                          <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                                              <label  class="control-label">Type Of Ad<small>Bid or Fixed price</small></label>
                                              <div class="skin-minimal">
-                                                 <select name="selling_type" class="category form-control">
+                                                 <select name="selling_type" id="sellType" class="category form-control">
                                                      <option value=""> Select an option</option>
                                                      <option value="BID"> Bid</option>
                                                      <option value="FIXED_PRICE"> Fixed Price</option>
@@ -476,7 +476,7 @@ require_once '../scripts/db_connection.php';
                                          <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                                              <label class="control-label">Condition<small>Item Condition</small></label>
                                              <div class="skin-minimal">
-                                                 <select name="condition" class="category form-control">
+                                                 <select name="condition" id="condition" class="category form-control">
                                                      <option value=""> Select an option</option>
                                                      <option value="NEW"> New</option>
                                                      <option value="USED"> Used</option>
@@ -487,7 +487,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">Delivery Type  <small>Pick up or Post Delivery </small></label>
-                                             <select name="delivery_type" class="category form-control">
+                                             <select name="delivery_type" id="deliveryType" class="category form-control">
                                                  <option value=""> Select an option</option>
                                                  <option value="PICK_UP"> Pick Up</option>
                                                  <option value="DELIVERY"> Post Delivery</option>
@@ -500,10 +500,14 @@ require_once '../scripts/db_connection.php';
                              <li>
                                  <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 3.</span> Product information</a></h4>
                                  <div class="accordion-content">
-                                     <div class="row">
+                                     <div class="row ">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">Photos of your product</label>
-                                             <div id="dropzone" class="dropzone"></div>
+                                             <div class="dropzone" id="my-dropzone" name="mainFileUploader">
+                                                 <div class="fallback">
+                                                     <input name="file[]" type="file" multiple="multiple" />
+                                                 </div>
+                                             </div>
                                          </div>
                                      </div>
                                      <hr>
@@ -524,7 +528,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">Ad Type  <small>Choose between Free Or Premium</small></label>
-                                             <select name="ad_type" class="category form-control">
+                                             <select name="ad_type" id="adType" class="category form-control">
                                                  <option value=""> Select an option</option>
                                                  <option value="NORMAL"> Normal</option>
                                                  <option value="PREMIUM"> Premium</option>
@@ -535,7 +539,7 @@ require_once '../scripts/db_connection.php';
                              </li>
                          </ul>
                              <div class="margin-top-20">
-                                 <button name="submit" class="btn btn-theme pull-right">Publish My Ad</button>
+                                 <button type="button" name="submit" id="submitBut" class="submitBut btn btn-theme pull-right">Publish My Ad</button>
                              </div>
                         </form>
 
@@ -550,6 +554,23 @@ require_once '../scripts/db_connection.php';
          </section>
          <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+          <div class="custom-modal">
+              <div id="fieldsError" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                          <div class="modal-header rte">
+                              <h2 class="modal-title text-center">You left the following fields empty:</h2>
+                          </div>
+                          <div class="modal-body" id="modal-body">
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-info" data-dismiss="modal">Continue</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
          <footer>
             <!-- Footer Content -->
             <div class="footer-top">
@@ -620,6 +641,8 @@ require_once '../scripts/db_connection.php';
          </span>
          <h4>SELL</h4>
       </a>
+
+
       <!-- Back To Top -->
       <a href="#0" class="cd-top">Top</a>
       <!-- Back To Top -->
@@ -669,7 +692,7 @@ require_once '../scripts/db_connection.php';
 	   "use strict";
 	   
 	   /*--------- Textarea Ck Editor --------*/
-	     CKEDITOR.replace( 'editor1' );
+	     CKEDITOR.replace( 'editor2' );
 		 
 	   /*--------- Ad Tags --------*/ 
 		 $('#tags').tagsInput({
@@ -677,24 +700,97 @@ require_once '../scripts/db_connection.php';
 		 });
 	   
          /*--------- create remove function in dropzone --------*/
-         Dropzone.autoDiscover = false;
-         var acceptedFileTypes = "image/*"; //dropzone requires this param be a comma separated list
-         var fileList = new Array;
-         var i = 0;
-         $("#dropzone").dropzone({
+
+
+
+       Dropzone.options.myDropzone = {
+           url: "scripts/uploadphotos.php",
+           autoProcessQueue: false,
+           uploadMultiple: true,
+           parallelUploads: 25,
+           maxFiles: 25,
            addRemoveLinks: true,
-           maxFiles: 5, //change limit as per your requirements
-           acceptedFiles: '.jpeg,.jpg,.png,.gif',
-           dictMaxFilesExceeded: "Maximum upload limit reached",
-           acceptedFiles: acceptedFileTypes,
-         url: "uploads",
-           dictInvalidFileType: "upload only JPG/PNG",
-           init: function () {
-               // Hack: Add the dropzone class to the element
-               $(this.element).addClass("dropzone");
+           acceptedFiles: "image/*",
+           success: function(){
+               window.location.href = "profile.php";
+           },
+           init: function() {
+               var submitButton = document.querySelector(".submitBut");
+               var myDr = this;
+               // First change the button to actually tell Dropzone to process the queue.
+               submitButton.addEventListener("click", function () {
+
+
+
+
+
+                   var categoryField        = $("#category").val();
+                   var titleField           = $("#title").val();
+                   var priceField           = $("#price").val();
+                   var sellTypeField        = $("#sellType").val();
+                   var conditionField       = $("#condition").val();
+                   var deliveryTypeField    = $("#deliveryType").val();
+                   var desField             = CKEDITOR.instances.editor2.getData();
+                   var adTypeField          = $("#adType").val();
+
+                   if(categoryField == ''
+                       || titleField == ''
+                       || priceField == ''
+                       || sellTypeField == ''
+                       || conditionField == ''
+                       || deliveryTypeField == ''
+                       || adTypeField == ''){
+                       document.getElementById('modal-body').innerHTML = "";
+
+                       if(categoryField == ''){
+                           document.getElementById('modal-body').innerHTML += "<p> Category </p>";
+                       }
+                       if(titleField == ''){
+                           document.getElementById('modal-body').innerHTML += "<p> Title </p>";
+                       }
+                       if(priceField == ''){
+                           document.getElementById('modal-body').innerHTML += "<p> Price </p>";
+                       }
+                       if(sellTypeField == ''){
+                           document.getElementById('modal-body').innerHTML += "<p> Type of selling </p>";
+                       }
+                       if(conditionField == ''){
+                           document.getElementById('modal-body').innerHTML += "<p> Product condition </p>";
+                       }
+                       if(deliveryTypeField == ''){
+                           document.getElementById('modal-body').innerHTML += "<p> Delivery method </p>";
+                       }
+                       if(adTypeField == ''){
+                           document.getElementById('modal-body').innerHTML += "<p> Advertisement type </p>";
+                       }
+
+                       $("#fieldsError").modal();
+                   }else{
+
+                       $.post('scripts/handle_addProduct.php?cat=' + categoryField
+                           + '&title=' + titleField
+                           + '&price=' + priceField
+                           + '&sellType=' + sellTypeField
+                           + '&cond=' + conditionField
+                           + '&delivery=' + deliveryTypeField
+                           + '&des=' + desField
+                           + '&adType=' + adTypeField, function (response) {
+
+                           if (response != 'error') {
+                            alert(response);
+                               myDr.processQueue();
+                           } else {
+
+                           }
+                       });
+
+
+                   }
+
+               });
            }
-         });
-		 (jQuery);
+       };
+
       </script>
       <!-- JS -->
    </body>
