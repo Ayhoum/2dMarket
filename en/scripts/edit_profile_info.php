@@ -38,9 +38,8 @@ if(isset($_POST['update'])) {
     $profile_img = $date . $time . ".jpg";
     $profile_img_tmp = $_FILES['profile_img']['tmp_name'];
     if (!empty($profile_img_tmp)) {
-        echo "not empty";
-        if(file_exists('../../uploads/users/'.$user_pic)){
-            unlink('../../uploads/users/'.$user_pic);
+        if(file_exists('../'.$user_pic)){
+            unlink('../'.$user_pic);
         }
         move_uploaded_file($profile_img_tmp, "../../uploads/users/$profile_img");
     }else{
@@ -107,7 +106,7 @@ if(isset($_POST['update'])) {
                               where a.User_id ='{$id}' ";
             $update_address_result = mysqli_query($mysqli,$update_address_query);
 
-            header("location: ../profile.php");
+           header("location: ../profile.php");
 
         } else {
             $region             = mysqli_real_escape_string($mysqli, $_POST['region']);
