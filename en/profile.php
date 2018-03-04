@@ -529,8 +529,7 @@ include 'scripts/user_profile.php';
 <!--                                                <select class="form-control"   id="slct2" name="slct2"></select>-->
                                                 <input type="text" name="City" class="form-control margin-bottom-20">
                                             </div>
-                                            <div class="bfh-selectbox bfh-countries" data-country="US" data-flags="true">
-                                            </div>
+
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Postcode</label>
                                                 <input type="text" name="postcode" class="form-control margin-bottom-20">
