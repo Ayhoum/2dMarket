@@ -43,17 +43,17 @@ if(isset($_POST['update'])) {
         $check_result = mysqli_query($mysqli, $check_query);
         if (mysqli_num_rows($check_result) > 0){
 
-            $region             = mysqli_real_escape_string($mysqli, $_POST['slct1']);
-            $city               = mysqli_real_escape_string($mysqli, $_POST['slct2']);
+            $region             = mysqli_real_escape_string($mysqli, $_POST['region']);
+            $city               = mysqli_real_escape_string($mysqli, $_POST['city']);
             $streetName         = mysqli_real_escape_string($mysqli, $_POST['street_name']);
             $houseNumber        = mysqli_real_escape_string($mysqli, $_POST['house_number']);
-            $extraHouseNumber   = mysqli_real_escape_string($mysqli, $_POST['extra_house_number']);
+            $country            = mysqli_real_escape_string($mysqli, $_POST['country']);
             $postCode           = mysqli_real_escape_string($mysqli, $_POST['postcode']);
 
             $update_address_query ="UPDATE ADDRESS a SET 
                               a.street_name   ='{$streetName}',
                               a.house_number  ='{$houseNumber}',
-                              a.extra_number  ='{$extraHouseNumber}',
+                              a.country       ='{$country}',
                               a.postcode      ='{$postCode}',
                               a.region        ='{$region}',
                               a.city          ='{$city}' 
@@ -63,17 +63,17 @@ if(isset($_POST['update'])) {
             header("location: ../profile.php");
 
         } else {
-            $region             = mysqli_real_escape_string($mysqli, $_POST['slct1']);
-            $city               = mysqli_real_escape_string($mysqli, $_POST['slct2']);
+            $region             = mysqli_real_escape_string($mysqli, $_POST['region']);
+            $city               = mysqli_real_escape_string($mysqli, $_POST['city']);
             $streetName         = mysqli_real_escape_string($mysqli, $_POST['street_name']);
             $houseNumber        = mysqli_real_escape_string($mysqli, $_POST['house_number']);
-            $extraHouseNumber   = mysqli_real_escape_string($mysqli, $_POST['extra_house_number']);
+            $country            = mysqli_real_escape_string($mysqli, $_POST['country']);
             $postCode           = mysqli_real_escape_string($mysqli, $_POST['postcode']);
 
-            $insert_address_query  ="INSERT INTO `ADDRESS` (street_name, house_number, extra_number, postcode, city, region, USER_id)";
+            $insert_address_query  ="INSERT INTO `ADDRESS` (street_name, house_number, country, postcode, city, region, USER_id)";
             $insert_address_query .="VALUES   ( '{$streetName}',
                                                 '{$houseNumber}',
-                                                '{$extraHouseNumber}',
+                                                '{$country}',
                                                 '{$postCode}',
                                                 '{$city}', 
                                                 '{$region}',

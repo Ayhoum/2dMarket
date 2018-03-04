@@ -22,7 +22,7 @@ include 'scripts/user_profile.php';
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title>2D Market | <?php echo $full_name; ?></title>
+    <title>2D Market | <?php echo $user_full_name; ?></title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -68,6 +68,10 @@ include 'scripts/user_profile.php';
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="dist/geodatasource-cr.min.js"></script>
+    <link rel="stylesheet" href="dist/geodatasource-countryflag.css">
+
+
 </head>
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -382,10 +386,10 @@ include 'scripts/user_profile.php';
                                     <i class="fa fa-map-marker"></i> <?php echo $location ;?>
                                 </li>
                                 <li>
-                                    <i class="fa fa-envelope"></i><?php echo $email; ?>
+                                    <i class="fa fa-envelope"></i><?php echo $user_email; ?>
                                 </li>
                                 <li>
-                                    <i class="fa fa-phone"></i> <?php echo $phone; ?>
+                                    <i class="fa fa-phone"></i> <?php echo $user_phone; ?>
                                 </li>
                             </ul>
                         </div>
@@ -433,56 +437,6 @@ include 'scripts/user_profile.php';
                                         </dd>
                                     </dl>
                                 </div>
-                                <script>
-                                    function populate(s1,s2){
-                                        var s1 = document.getElementById(s1);
-                                        var s2 = document.getElementById(s2);
-                                        s2.innerHTML = "";
-
-
-                                        if(s1.value == "drenthe"){
-                                            var optionArray = ["|","assen|Assen","coevorden|Coevorden","hoogeveen|Hoogeveen","meppel|Meppel",];
-                                        } else if(s1.value == "flevoland"){
-                                            var optionArray = ["|","almere|Almere","biddinghuizen|Biddinghuizen","emmeloord|Emmeloord","lelystad|Lelystad"];
-                                        }else if(s1.value == "friesland") {
-                                            var optionArray = ["|", "bolsward|Bolsward", "dokkum|Dokkum", "drachten|Drachten", "franeker|Franeker",
-                                                "harlingen|Harlingen", "heerenveen|Heerenveen", "hindeloopen|Hindeloopen", "iJlst|IJlst",
-                                                "leeuwarden|Leeuwarden", "sloten|Sloten", "sneek|Sneek", "stavoren|Stavoren", "workum|Workum"];
-                                        }
-
-// }else if(s1.value== "gelderland"){
-//            var optionArray = [];
-//        }else if(s1.value== "groningen"){
-//            var optionArray = [];
-//        }else if(s1.value== "limburg"){
-//            var optionArray = [];
-//        }else if(s1.value== "northBrabant"){
-//            var optionArray = [];
-//        }else if(s1.value== "northHolland"){
-//            var optionArray = [];
-//        }else if(s1.value== "Overijssel"){
-//            var optionArray = [];
-//        }else if(s1.value== "southHolland"){
-//            var optionArray = [];
-//        }else if(s1.value== "utrecht"){
-//            var optionArray = [];
-//        }else if(s1.value== "zeeland"){
-//            var optionArray = [];
-//        }
-
-                                        for(var option in optionArray){
-                                            var pair = optionArray[option].split("|");
-                                            var newOption = document.createElement("option");
-                                            newOption.value = pair[0];
-                                            newOption.innerHTML = pair[1];
-                                            s2.options.add(newOption);
-                                        }
-
-
-                                    }
-
-
-                                </script>
                                 <div class="profile-edit tab-pane fade" id="edit">
                                     <h2 class="heading-md">Change your account information.</h2>
                                     <p>Manage Your Account</p>
@@ -506,30 +460,18 @@ include 'scripts/user_profile.php';
                                                 <input type="text" name="phone_number" class="form-control margin-bottom-20">
                                             </div>
                                             <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
-                                                <label>region<span class="color-red">*</span></label>
-                                                <input type="text" name="region" class="form-control margin-bottom-20">
-                                                <!--                                                <select class="form-control" id="slct1" name="slct1" onchange="populate(this.id,'slct2')">-->
-<!--                                                    <option value="drenthe">Drenthe</option>-->
-<!--                                                    <option value="flevoland">Flevoland</option>-->
-<!--                                                    <option value="friesland">Friesland</option>-->
-<!--                                                    <option value="gelderland">Gelderland</option>-->
-<!--                                                    <option value="groningen">Groningen</option>-->
-<!--                                                    <option value="limburg">Limburg</option>-->
-<!--                                                    <option value="northBrabant">NorthBrabant</option>-->
-<!--                                                    <option value="northHolland">NorthHolland</option>-->
-<!--                                                    <option value="Overijssel">Overijssel</option>-->
-<!--                                                    <option value="southHolland">SouthHolland</option>-->
-<!--                                                    <option value="utrecht">Utrecht</option>-->
-<!--                                                    <option value="zeeland">Zeeland</option>-->
-<!--                                                </select>-->
-
+                                                <label>Country<span class="color-red">*</span></label>
+                                                    <select name="country" class="gds-cr gds-countryflag" country-data-region-id="gds-cr-four"></select>
                                             </div>
+
                                             <div class="col-md-6 col-sm-12 col-xs-12 margin-bottom-20">
-                                                <label>City <span class="color-red">*</span></label>
-<!--                                                <select class="form-control"   id="slct2" name="slct2"></select>-->
-                                                <input type="text" name="City" class="form-control margin-bottom-20">
+                                                <label>Region</label>
+                                                    <select name="region" class="form-control" id="gds-cr-four"></select>
                                             </div>
-
+                                            <div class="col-md-6 col-sm-12 col-xs-12 ">
+                                                <label>City <span class="color-red">*</span></label>
+                                                <input type="text" name="city" class="form-control margin-bottom-20">
+                                            </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <label>Postcode</label>
                                                 <input type="text" name="postcode" class="form-control margin-bottom-20">
@@ -542,15 +484,9 @@ include 'scripts/user_profile.php';
                                                 <label>House Number</label>
                                                 <input type="text" name="house_number" class="form-control margin-bottom-20">
                                             </div>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <label>Etxra house Number</label>
-                                                <input type="text" name="extra_house_number" class="form-control margin-bottom-20">
-                                            </div>
-
-
-                                        <div class="row">
-                                            <div class="col-md-4 col-sm-4 col-xs-12 text-right">
-                                                <button type="submit" class="btn btn-theme btn-sm" name="update">Update My Info</button>
+                                            <div class="row ">
+                                            <div class="col-md-12 col-sm-12 col-xs-12" >
+                                                <button style="width: 100%" type="submit" class="btn btn-theme btn-sm" name="update">Update My Info</button>
                                             </div>
                                         </div>
                                     </form>

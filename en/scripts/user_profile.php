@@ -37,7 +37,6 @@ $select_query = "SELECT * FROM `USER` WHERE `id` = '{$id}'";
             $user_street_name = $row['street_name'];
             $user_postcode = $row['postcode'];
             $user_house_number = $row['house_number'];
-            $user_extra_house_number = $row['extra_number'];
             $user_region = $row['region'];
             $user_city = $row['city'];
             $user_country = $row['country'];
