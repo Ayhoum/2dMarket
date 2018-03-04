@@ -1001,12 +1001,12 @@ ob_start();
     <div class="container">
         <div class="col-md-7 col-sm-12 col-xs-12 no-padding">
             <div class="">
-                <h3>Honda Civic Oriel 1.8 i-VTEC CVT 2017</h3>
+                <h3><?php echo $title;?></h3>
                 <div class="short-history">
                     <ul>
-                        <li>Published on: <b>07 Oct 2017</b></li>
-                        <li>Location: <b>London</b></li>
-                        <li>Category: <b><a href="#">Used Cars</a></b></li>
+                        <li>Published on: <b><?php echo $date;?></b></li>
+                        <li>Location: <b><?php echo $user_region. " | ". $user_country; ?></b></li>
+                        <li>Category: <b><a href="#"><?php echo $cat_name;?></a></b></li>
                     </ul>
                 </div>
             </div>
@@ -1014,7 +1014,7 @@ ob_start();
         <div class="col-md-5  col-sm-12 col-xs-12 no-padding">
             <div class="pull-left row">
                 <div class="col-md-6 col-sm-6 col-xs-12 ">
-                    <a href="javascript:void(0)" class="btn btn-block pull-left btn-phone number " data-last="111111X"><i class="fa fa-phone"></i> 0320<span>XXXXXXX</span></a>
+                    <a href="javascript:void(0)" class="btn btn-block pull-left btn-phone number " data-last="111111X"><i class="fa fa-phone"></i> <?php echo $user_phone;?></a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <a data-toggle="modal" data-target=".price-quote"  href="javascript:void(0)" class="btn btn-block pull-left btn-message"><i class="icon-envelope"></i> Message Seller</a>
