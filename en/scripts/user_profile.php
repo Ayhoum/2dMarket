@@ -41,7 +41,7 @@ $select_query = "SELECT * FROM `USER` WHERE `id` = '{$id}'";
             $user_city = $row['city'];
             $user_country = $row['country'];
 
-            $location = $user_region . " ". $user_country;
+            $location = $user_region . " / ". $user_country;
 
         }
     } else {

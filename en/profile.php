@@ -433,7 +433,7 @@ include 'scripts/user_profile.php';
                                         </dd>
                                         <dt><strong>Address </strong></dt>
                                         <dd>
-                                            <?php echo $user_street_name." ".$user_house_number."<br> ".$user_postcode . " ". $user_region."<br> ".$user_country ;?>
+                                            <?php echo $user_street_name." ".$user_house_number."<br> ".$user_postcode . " ". $user_city." / ".$user_country ;?>
                                         </dd>
                                     </dl>
                                 </div>
