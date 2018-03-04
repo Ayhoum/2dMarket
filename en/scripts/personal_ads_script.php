@@ -21,13 +21,13 @@
             $price = $row['price'];
             $description = $row['description'];
             $condition = $row['condition'];
+            $visits = $row['visits'];
 
             $status = $row['status'];
             $selling_type = $row['selling_type'];
             $delivery_type = $row['delivery_type'];
 
             $user_id = $row['USER_id'];
-            $product_id = $row['PRODUCT_id'];
             $category_id = $row['CATEGORY_id'];
 
 
@@ -44,9 +44,6 @@
                 }
             }
 
-            if (empty($user_pic)) {
-                $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
-            }
 
 // Address info.
 
@@ -66,13 +63,29 @@
                 $user_city = "address";
             }
 
-            include 'product_pics.php';
 
+            $pic_query  = " SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE ADVERTISEMENT_id = '{$ad_id}' LIMIT 1";
+            $pic_result = mysqli_query($mysqli,$pic_query);
+            if (mysqli_num_rows($pic_result) > 0 ){
+                while ($row = mysqli_fetch_assoc($pic_result)){
+                    $pic_id = $row['id'];
+                    $picture_name = $row['picture_name'];
+                    $picture_url = $row['picture_url'];
+                }
+
+            } else {
+                $picture_url = "http://www.nsrcel.org/wp-content/uploads/2018/01/product.png";
+            }
+            $pic_number     = "SELECT COUNT(*) AS 'pic_count' FROM `ADVERTISEMENT_PICTURE` WHERE ADVERTISEMENT_id = '{$ad_id}'";
+            $number_result  = mysqli_query($mysqli,$pic_number);
+            while ($row= mysqli_fetch_assoc($number_result)){
+                $pic_count = $row['pic_count'];
+            }
             ?>
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 ">
                 <div class="white category-grid-box-1 ">
                     <!-- Image Box -->
-                    <div class="image"><img alt="Tour Package" src="<?php echo $picture_url;?>" class="img-responsive">
+                    <div class="image"><img alt="Tour Package" src="en_ad_photo/<?php echo $picture_name;?>" class="img-responsive">
                     </div>
                     <!-- Short Description -->
                     <div class="short-description-1 ">
@@ -80,7 +93,7 @@
                         <div class="category-title"><span><a href=""><?php echo $cat_name;?></a></span></div>
                         <!-- Ad Title -->
                         <h3>
-                            <a title="" href="single-page-listing.html"><?php echo $title; ?></a>
+                            <a title="" href="ad_page.php?ad_id=<?php echo $ad_id; ?>"><?php echo $title; ?></a>
                         </h3>
                         <!-- Location -->
                         <p class="location"><i class="fa fa-map-marker"></i> <?php echo $user_postcode. " | " . $user_city?></p>
@@ -90,7 +103,7 @@
                     <!-- Ad Meta Stats -->
                     <div class="ad-info-1">
                         <ul class="pull-left">
-                            <li><i class="fa fa-eye"></i><a href="#">445 Views</a></li>
+                            <li><i class="fa fa-eye"></i><a href="#"><?php echo $visits;?> Views</a></li>
                             <li><i class="fa fa-clock-o"></i><?php echo $date;?></li>
                         </ul>
                         <ul class="pull-right">
