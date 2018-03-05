@@ -439,7 +439,7 @@ if (mysqli_num_rows($address_result) > 0) {
                                 $ad_type = $row['ad_type'];
 
                                 $user_id = $row['USER_id'];
-                                $product_id = $row['PRODUCT_id'];
+//                                $product_id = $row['PRODUCT_id'];
                                 $category_id = $row['CATEGORY_id'];
 
 // Category_info

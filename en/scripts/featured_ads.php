@@ -157,7 +157,6 @@ if (isset($_GET['cat_id'])){
                                 $delivery_type = $row['delivery_type'];
 
                                 $user_id = $row['USER_id'];
-                                $product_id = $row['PRODUCT_id'];
                                 $category_id = $row['CATEGORY_id'];
 
 
@@ -188,9 +187,7 @@ if (isset($_GET['cat_id'])){
                                     $online_status = $row['online_status'];
 
                                 }
-                                if (empty($user_pic)) {
-                                    $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
-                                }
+
 
 // Address info.
 
@@ -209,7 +206,14 @@ if (isset($_GET['cat_id'])){
                                     $user_postcode = "unknown ";
                                     $user_city = "address";
                                 }
-                                include 'product_pics.php';
+
+                                $image_query  = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE  `ADVERTISEMENT_id` = '{$ad_id}'";
+                                $image_result = mysqli_query($mysqli, $image_query);
+                                while($row = mysqli_fetch_assoc($image_result)) {
+                                    $pic = $row['picture_url'];
+                                    $pic_name = $row['picture_name'];
+                                }
+
                                 ?>
                                 <!-- Featured Ads -->
                                 <div class="item">
@@ -218,12 +222,12 @@ if (isset($_GET['cat_id'])){
                                         <div class="category-grid-box">
                                             <!-- Ad Img -->
                                             <div class="category-grid-img">
-                                                <img class="img-responsive" alt="" src="<?php echo $picture_url; ?>">
+                                                <img class="img-responsive" alt="" src="<?php echo $pic. $pic_name; ?>">
                                                 <!-- Ad Status -->
                                                 <!-- User Review -->
                                                 <div class="user-preview">
                                                     <a href="profile_2.php?user_id=<?php echo $user_id; ?>"> <img
-                                                                src="<?php echo $user_pic; ?>"
+                                                                src="../uploads/users/<?php echo $user_pic; ?>"
                                                                 class="avatar avatar-small" alt=""> </a>
                                                 </div>
                                                 <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id; ?>"
