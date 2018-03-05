@@ -21,6 +21,7 @@ if (mysqli_num_rows($ad_result) > 0 ) {
 
     if (mysqli_num_rows($ad_result_1) > 0 ) {
         while ($row = mysqli_fetch_assoc($ad_result_1)) {
+            $ad_id = $row['id'];
             $title = $row['title'];
             $date = $row['date'];
             $price = $row['price'];
@@ -92,7 +93,7 @@ if (mysqli_num_rows($ad_result) > 0 ) {
                     <div class="category-title"><span><a href=""><?php echo $cat_name;?></a></span></div>
                     <!-- Ad Title -->
                     <h3>
-                        <a title="" href="single-page-listing.html"><?php echo $title; ?></a>
+                        <a title="" href="ad_page.php?ad_id=<?php echo $ad_id; ?>"><?php echo $title; ?></a>
                     </h3>
                     <!-- Location -->
                     <p class="location"><i class="fa fa-map-marker"></i> <?php echo $user_postcode. " | " . $user_city?></p>
