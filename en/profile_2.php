@@ -451,7 +451,7 @@ include "scripts/user_info.php";
                   
                   <div class="col-md-12 col-xs-12 col-sm-12">
                     <section class="search-result-item">
-                       <a class="image-link" href="#"><img class="image" alt="" src="images/users/9.jpg"> </a>
+                       <a class="image-link" href="#"><img class="image" alt="" src="../uploads/users/<?php echo $user_pic;?>"> </a>
                        <div class="search-result-item-body">
                           <div class="row">
                              <div class="col-md-5 col-sm-12 col-xs-12">
@@ -490,46 +490,6 @@ include "scripts/user_info.php";
                           </div>
                        </div>
                     </section>
-
-                    <div class="dashboard-menu-container">
-                        <ul>
-                           <li class="active">
-                              <a href="profile.html">
-                                 <div class="menu-name"> Send A message </div>
-                              </a>
-                           </li>
-                           <li>
-                              <a href="archives.html">
-                                 <div class="menu-name">Archives</div>
-                              </a>
-                           </li>
-                           <li>
-                              <a href="active-ads.html">
-                                 <div class="menu-name">My Ads</div>
-                              </a>
-                           </li>
-                           <li>
-                              <a href="favourite.html">
-                                 <div class="menu-name">Favourites Ads</div>
-                              </a>
-                           </li>
-                            <li>
-                              <a href="messages.html">
-                                 <div class="menu-name">Messages</div>
-                              </a>
-                           </li>
-                           <li>
-                              <a href="#">
-                                 <div class="menu-name">Close Account</div>
-                              </a>
-                           </li>
-                           <li>
-                              <a href="#">
-                                 <div class="menu-name">Logout</div>
-                              </a>
-                           </li>
-                        </ul>
-                     </div>
                   </div>
                   <!-- Middle Content Area  End -->
                </div>
@@ -553,8 +513,8 @@ include "scripts/user_info.php";
                            </ul>
                            <div class="tab-content">
                               <div class="profile-edit tab-pane fade in active" id="ads">
-                                 <h2 class="heading-md">Manage your Name, ID and Email Addresses.</h2>
-                                 <?php include 'scripts/sellect_all_ads_user.php';?>
+                                 <h2 class="heading-md">Advertiesment of <?php echo $user_first_name. " " .$user_last_name;?>.</h2>
+                                 <?php include 'scripts/select_all_ads_user.php';?>
                               </div>
                               <div class="profile-edit tab-pane fade" id="edit">
                                  <h2 class="heading-md">Manage your Security Settings</h2>

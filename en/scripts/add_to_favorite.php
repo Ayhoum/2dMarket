@@ -1,0 +1,21 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Alaa
+ * Date: 5-3-2018
+ * Time: 21:58
+ */
+session_start();
+include '../../scripts/db_connection.php';
+
+?>
+
+<?php
+$user_id = $_SESSION['id'];
+$ad_id = $_GET['ad_id'];
+
+$add_query  = "INSERT INTO `FAV_ADS` (`user_id`,`ad_id`) VALUES ('{$user_id}','{$ad_id}')";
+$add_result = mysqli_query($mysqli, $add_query);
+
+header("Location :../favourite_ads.php ")
+?>

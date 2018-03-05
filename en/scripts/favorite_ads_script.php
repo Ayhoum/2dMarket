@@ -32,7 +32,6 @@ if (mysqli_num_rows($ad_result) > 0 ) {
             $delivery_type = $row['delivery_type'];
 
             $user_id = $row['USER_id'];
-            $product_id = $row['PRODUCT_id'];
             $category_id = $row['CATEGORY_id'];
 
 
@@ -49,9 +48,8 @@ if (mysqli_num_rows($ad_result) > 0 ) {
                 }
             }
 
-            if (empty($user_pic)) {
-                $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
-            }
+
+
 
 // Address info.
 
@@ -71,7 +69,12 @@ if (mysqli_num_rows($ad_result) > 0 ) {
                 $user_city = "address";
             }
 
-            include 'product_pics.php';
+            $image_query  = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE  `ADVERTISEMENT_id` = '{$ad_id}'";
+            $image_result = mysqli_query($mysqli, $image_query);
+            while($row = mysqli_fetch_assoc($image_result)) {
+                $pic = $row['picture_url'];
+                $pic_name = $row['picture_name'];
+            }
 
 
         }
@@ -81,7 +84,7 @@ if (mysqli_num_rows($ad_result) > 0 ) {
         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 ">
             <div class="white category-grid-box-1 ">
                 <!-- Image Box -->
-                <div class="image"><img alt="Tour Package" src="<?php echo $picture_url;?>" class="img-responsive">
+                <div class="image"><img alt="Tour Package" src="<?php echo $pic. $pic_name;?>" class="img-responsive">
                 </div>
                 <!-- Short Description -->
                 <div class="short-description-1 ">
