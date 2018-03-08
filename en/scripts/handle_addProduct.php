@@ -50,6 +50,10 @@ if (isset($_GET['cat'])
 
         $ins_ad_result = mysqli_query($mysqli,$ins_ad_query);
 
+
+
+
+
         if($ins_ad_result){
             $queryAd = "SELECT * FROM ADVERTISEMENT WHERE USER_id = '$user_id' ORDER BY id DESC LIMIT 1";
             $getIdFromAd = mysqli_query($mysqli, $queryAd);
@@ -60,6 +64,17 @@ if (isset($_GET['cat'])
                 setcookie("ad_id", $responseId, time()+400);
             }
             echo $responseId;
+
+
+            //Insert new auction :
+
+            if($selling_type == 'BID'){
+
+                $insert_auction_query   = "INSERT INTO `AUCTION` (`ADVERTISEMENT_id`)";
+                $insert_auction_query  .= "VALUES ('{$responseId}')";
+                $insert_auction_result  = mysqli_query($mysqli,$insert_auction_query);
+
+            }
         }else{
             echo "error";
         }

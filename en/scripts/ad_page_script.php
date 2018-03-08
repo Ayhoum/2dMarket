@@ -5,6 +5,7 @@
  * Date: 4-3-2018
  * Time: 21:37
  */
+include 'sessions.php';
 ?>
 
 <?php
@@ -211,6 +212,9 @@ if (isset($_GET['ad_id'])){
             <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
                 <span><strong>Price</strong> :</span> € <?php echo $price; ?>
             </div>
+            <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
+                <span><strong>Selling Type</strong> :</span>  <?php echo $selling_type; ?>
+            </div>
         </div>
         <!-- Short Features  -->
         <div class="desc-points">
@@ -260,6 +264,86 @@ if (isset($_GET['ad_id'])){
     </div>
     <div class="clearfix"></div>
 
-    <img alt="" class="center-block margin-top-30 margin-bottom-30" src="images/advertise-728x90.jpg">
+<!--    <img alt="" class="center-block margin-top-30 margin-bottom-30" src="images/advertise-728x90.jpg">-->
+
 
 </div>
+
+    <div class="alert-box-container  margin-top-30">
+     <div class="well">
+        <h3>Bids History </h3>
+    <table class="table">
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Amount </th>
+        <th>time</th>
+    </tr>
+    </thead>
+    <tbody>
+<?php if ($selling_type == 'BID'){
+    $get_auction_query = "SELECT * FROM `AUCTION` WHERE `ADVERTISEMENT_id`= '{$ad_id}'";
+    $get_auction_result = mysqli_query($mysqli,$get_auction_query);
+    while ($row = mysqli_fetch_assoc($get_auction_result)) {
+        $auction_id = $row['id'];
+    }
+    $get_bid_query = "SELECT * FROM `BID` WHERE `AUCTION_id`= '{$auction_id}' ORDER BY `amount` DESC";
+    $get_bid_result = mysqli_query($mysqli,$get_bid_query);
+    while ($row = mysqli_fetch_assoc($get_bid_result)) {
+        $bid_id  = $row['id'];
+        $amount  = $row['amount'];
+        $user_id = $row['user_id'];
+        $time    = $row['time'];
+
+//        $time = date('Y/m/d H:i:s', $time);
+
+        $get_user_query = "SELECT * FROM `USER` WHERE id = '{$user_id}'";
+        $get_user_result = mysqli_query($mysqli, $get_user_query);
+        while ($row = mysqli_fetch_assoc($get_user_result)) {
+            $username  = $row['username'];
+            ?>
+            <tr>
+                <td <?php if($username == $_SESSION['username']){?> style="color: green"<?php }?>><?php echo $username;?></td>
+                <td><?php echo $amount;?></td>
+                <td><?php echo $time ;?></td>
+            </tr>
+
+            <?php
+        }
+    }
+    ?>
+    </tbody>
+    </table>
+    </div>
+    <?php
+      if(isset($_POST['submit'])) {
+          $auction_id_query  = "SELECT * FROM `AUCTION` WHERE `ADVERTISEMENT_id`= '{$ad_id}'";
+          echo $auction_id_query;
+          $auction_id_result  = mysqli_query($mysqli, $auction_id_query);
+          while ($row = mysqli_fetch_assoc($auction_id_result)) {
+              $action_id = $row['id'];
+          }
+          $bid = $_POST['bid'];
+          $user_id = $_SESSION['id'];
+
+          $ins_bid_query  = "INSERT INTO `BID` (`amount`, `user_id`, `AUCTION_id`)";
+          $ins_bid_query .= "VALUES ({$bid},{$user_id},{$action_id})";
+          $ins_bid_result = mysqli_query($mysqli, $ins_bid_query);
+          echo $ins_bid_query;
+    }
+    ?>
+    <div class="well">
+        <h3>Submit a bid</h3>
+        <form action=" " method="post">
+            <div class="row">
+                <div class="col-md-5 col-xs-12 col-sm-12">
+                    <input name="bid" placeholder="Enter Your Bid " type="text" class="form-control">
+                </div>
+                <div class="col-md-3 col-xs-12 col-sm-12">
+                    <input name="submit" class="btn btn-theme btn-block" value="Submit" type="submit">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<?php }?>
