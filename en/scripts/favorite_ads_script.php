@@ -27,6 +27,7 @@ if (mysqli_num_rows($ad_result) > 0 ) {
             $price = $row['price'];
             $description = $row['description'];
             $condition = $row['condition'];
+            $visits = $row['visits'];
 
             $status = $row['status'];
             $selling_type = $row['selling_type'];
@@ -103,7 +104,7 @@ if (mysqli_num_rows($ad_result) > 0 ) {
                 <!-- Ad Meta Stats -->
                 <div class="ad-info-1">
                     <ul class="pull-left">
-                        <li><i class="fa fa-eye"></i><a href="#">445 Views</a></li>
+                        <li><i class="fa fa-eye"></i><a href="#"><?php echo $visits; ?> Views</a></li>
                         <li><i class="fa fa-clock-o"></i><?php echo $date;?></li>
                     </ul>
                 </div>

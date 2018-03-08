@@ -33,7 +33,8 @@ if (isset($_GET['ad_id'])){
             $category_id    = $row['CATEGORY_id'];
         }
 
-        $add_visit_query = "UPDATE `ADVERTISEMENT` SET `visits` = + 1  WHERE `id` = '{$ad_id}'";
+        $add_visit_query = "UPDATE `ADVERTISEMENT` SET `visits` = `visits` + 1  WHERE `id`= '{$ad_id}'";
+        $add_visit_result = mysqli_query($mysqli,$add_visit_query);
 
 
 
@@ -176,7 +177,7 @@ if (isset($_GET['ad_id'])){
         <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-4 col-sm-4 col-xs-12">
             <i class="fa fa-share-alt"></i> <span class="hidetext">Share</span>
         </div>
-        <a class="ad-box col-md-4 col-sm-4 col-xs-12" href="#"><i class="fa fa-star active"></i> <span class="hidetext">Add to Favorites </span></a>
+        <a class="ad-box col-md-4 col-sm-4 col-xs-12" href="scripts/add_to_favorite.php?ad_id=<?php echo $ad_id;?>"><i class="fa fa-star active"></i> <span class="hidetext">Add to Favorites </span></a>
         <div data-target=".report-quote" data-toggle="modal" class="ad-box col-md-4 col-sm-4 col-xs-12">
             <i class="fa fa-warning"></i> <span class="hidetext">Report</span>
         </div>
