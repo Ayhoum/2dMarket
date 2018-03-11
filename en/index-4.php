@@ -1,5 +1,8 @@
 ﻿
 <?php
+session_start();
+ob_start();
+require_once "../scripts/db_connection.php";
 require_once "scripts/time_elapse.php";
 
 
