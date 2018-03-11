@@ -9,6 +9,9 @@ ob_start();
 session_start();
 include 'scripts/sessions.php';
 require_once '../scripts/db_connection.php' ;
+if(!isset($_GET['ad_id'])){
+header("Location: personal_ads.php");
+}
 $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$id}";
 $address_result = mysqli_query($mysqli, $address_query);
 if (mysqli_num_rows($address_result) > 0) {
@@ -439,7 +442,6 @@ if (mysqli_num_rows($address_result) > 0) {
                                 $ad_type = $row['ad_type'];
 
                                 $user_id = $row['USER_id'];
-//                                $product_id = $row['PRODUCT_id'];
                                 $category_id = $row['CATEGORY_id'];
 
 // Category_info
@@ -455,12 +457,12 @@ if (mysqli_num_rows($address_result) > 0) {
                                 <div class="post-ad-form postdetails">
                                     <div class="heading-panel">
                                         <h3 class="main-title text-left">
-                                            Edit AD NO. <span style="color: red">( <?php echo $ad_id; ?> )</span>
+                                            Edit advertisement NO. <span style="color: red">( <?php echo $ad_id; ?> )</span>
                                         </h3>
                                     </div>
                                     <ul class="accordion">
                                         <li>
-                                            <h5 class="accordion-title"><a href="#">Edit the Status of your Advertisement</a></h5>
+                                            <h5 class="accordion-title"><a href="#">Edit the Status</a></h5>
                                             <div class="accordion-content">
                                                 <form method="post" name="update_status" action="scripts/edit_ad_script.php?ad_id=<?php echo $ad_id;?>" class="submit-form">
                                                     <div class="row">
@@ -485,7 +487,7 @@ if (mysqli_num_rows($address_result) > 0) {
                                     </ul>
                                     <ul class="accordion">
                                         <li>
-                                            <h5 class="accordion-title"><a href="#">Edit your Advertisement's information</a></h5>
+                                            <h5 class="accordion-title"><a href="#">Edit the information</a></h5>
                                             <div class="accordion-content">
                                                 <form method="post" name="update_form" action="scripts/edit_ad_script.php?ad_id=<?php echo $ad_id;?>" class="submit-form">
                                                     <!-- Title  -->
@@ -502,7 +504,7 @@ if (mysqli_num_rows($address_result) > 0) {
                                                             <label class="control-label">Category :
                                                                 <small style="color: red">( <?php echo $cat_name; ?> )</small>
                                                             </label>
-                                                            <select class="category form-control">
+                                                            <select name="category" class="category form-control">
                                                                 <option label="Select Option"></option>
                                                                 <?php
                                                                 // GET ALL CATEGORIES from DB
