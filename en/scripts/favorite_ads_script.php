@@ -120,8 +120,7 @@ if (mysqli_num_rows($ad_result) > 0 ) {
             <a href="all_product">
                 <div class="banner">
                     <div class="wrapper">
-                        <span class="title">Oh no ! it seems that you don't have any Favorite Ads on our website yet!</span>
-                        <span class="submit">Submit one now! <i class="fa fa-plus-square"></i></span>
+                        <span class="title">Oh no! it seems that you don't have any Favorite Ads on our website yet!</span>
                     </div>
                 </div>
                 <!-- /.banner-->
