@@ -389,9 +389,9 @@ include 'scripts/sessions.php';
                             </ul>
                         </div>
                         <ul>
-                            <li class="active"><a href="profile.php">Profile</a></li>
-                            <li  ><a href="personal_ads.php">My Ads <span class="badge"><?php echo $ad_count; ?> </span></a></li>
-                            <li><a href="favourite_ads.php">Favourites Ads <span class="badge">15</span></a></li>
+                            <li ><a href="profile.php">Profile</a></li>
+                            <li ><a href="personal_ads.php">My Ads <span class="badge"><?php echo $ad_count; ?> </span></a></li>
+                            <li class="active"><a href="favourite_ads.php">Favourites Ads <span class="badge"><?php echo $fav_count; ?></span></a></li>
                             <li ><a href="messages.php">Messages</a></li>
                             <li><a href="logout.php">Logout</a></li>
                         </ul>
