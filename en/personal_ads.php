@@ -374,7 +374,7 @@ include 'scripts/user_profile.php';
                 <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
                     <!-- Sidebar Widgets -->
                     <div class="user-profile">
-                        <a href="profile.php"><img src="<?php echo $user_pic; ?>" alt=""></a>
+                        <a href="profile.php"><img id="img_preview" class="center-block" style="margin-top: 20px;border-radius: 50%;width: 128px;height: 128px; " src="<?php echo $user_pic; ?>" alt=""></a>
                         <div class="profile-detail">
                             <h6><?php echo $user_full_name ;?></h6>
                             <ul class="contact-details">
