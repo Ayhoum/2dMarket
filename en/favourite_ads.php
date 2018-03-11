@@ -408,24 +408,10 @@ include 'scripts/sessions.php';
                         <!-- Sorting Filters End-->
                         <div class="clearfix"></div>
                         <!-- Ads Archive -->
-                        <div class="posts-masonry">
-                            <!-- Listing Ad Grid -->
+
                             <?php include 'scripts/favorite_ads_script.php';?>
                             <!-- Listing Ad Grid -->
-                        </div>
-                        <!-- Ads Archive End -->
-                        <div class="clearfix"></div>
-                        <!-- Pagination -->
-                        <div class="col-md-12 col-xs-12 col-sm-12">
-                            <ul class="pagination pagination-lg">
-                                <li> <a href="#"> <i class="fa fa-chevron-left" aria-hidden="true"></i></a></li>
-                                <li class="active"> <a href="#">1</a> </li>
-                                <li> <a href="#">3</a> </li>
-                                <li> <a href="#">4</a> </li>
-                                <li><a href="#"> <i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-                        <!-- Pagination End -->
+
                     </div>
                     <!-- Row End -->
                 </div>
