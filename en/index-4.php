@@ -1,5 +1,93 @@
 ﻿
+<?php
+require_once "scripts/time_elapse.php";
 
+
+$final ="var data = {'count': 1,'listings': [";
+
+
+$query_ad = "SELECT * FROM `ADVERTISEMENT`";
+$query_result = mysqli_query($mysqli,$query_ad);
+
+while($row = mysqli_fetch_assoc($query_result)) {
+    $ad_id=$row['id'];
+    $title=$row['title'];
+    $price=$row['price'];
+    $time = $row['date'];
+    $time = time_elapsed_string($time);
+    $category_id = $row['CATEGORY_id'];
+    $user_id = $row['USER_id'];
+
+    $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$user_id}";
+    $address_result = mysqli_query($mysqli, $address_query);
+    if (mysqli_num_rows($address_result) > 0) {
+        while ($row = mysqli_fetch_assoc($address_result)) {
+            $user_street_name = $row['street_name'];
+            $user_postcode = $row['postcode'];
+            $user_house_number = $row['house_number'];
+            $user_region = $row['region'];
+            $user_city = $row['city'];
+            $user_country = $row['country'];
+
+
+
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_URL, 'https://maps.googleapis.com/maps/api/geocode/json?address='.$user_street_name.'+'.$user_house_number.'+,+'.$user_city.'+'.$user_postcode.'&key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk');
+            $result = curl_exec($ch);
+            curl_close($ch);
+            $obj = json_decode($result);
+            $latVal = $obj->results[0]->geometry->location->lat;
+            $lngVal = $obj->results[0]->geometry->location->lng;
+
+
+        }
+    } else {
+        $user_postcode = "unknown ";
+        $user_city = "address";
+    }
+
+
+// Category_info
+    $cat_query = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";
+    $cat_result = mysqli_query($mysqli, $cat_query);
+    if (mysqli_num_rows($cat_result) > 0) {
+        while ($row = mysqli_fetch_assoc($cat_result)) {
+            $cat_name = $row['name'];
+        }
+    }
+
+
+    $pic_query = " SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE ADVERTISEMENT_id = '{$ad_id}' LIMIT 1";
+    $pic_result = mysqli_query($mysqli, $pic_query);
+    if (mysqli_num_rows($pic_result) > 0) {
+        while ($row = mysqli_fetch_assoc($pic_result)) {
+            $pic_id = $row['id'];
+            $picture_name = $row['picture_name'];
+            $picture_url = $row['picture_url'];
+        }
+
+    } else {
+        $picture_name = "";
+        $picture_url = "http://www.nsrcel.org/wp-content/uploads/2018/01/product.png";
+    }
+
+
+
+    $final .= "{'ad_id': $ad_id,'listings_title': '$title ','listings_url': 'ad_page.php?ad_id=$ad_id','listings_cover': '$picture_url.$picture_name','cat': '$cat_name','cat_url': 'ad_per_cat.php?cat_id=$category_id','latitude': $latVal,'longitude': $lngVal,'price': $price,'currency': '€','location': '$user_country','time': '$time'},";
+}
+
+
+$final .=" ]}";
+
+
+$fp = 'js/data.json';
+
+// Write the contents back to the file
+file_put_contents($fp, $final);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
