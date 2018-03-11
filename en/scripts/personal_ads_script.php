@@ -85,7 +85,13 @@
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 ">
                 <div class="white category-grid-box-1 ">
                     <!-- Image Box -->
-                    <div class="image"><img alt="Tour Package" src="en_ad_photo/<?php echo $picture_name;?>" class="img-responsive">
+                    <?php
+                    if(empty($picture_name)){
+                        $picture_name = "white.jpg";
+                    }
+                    ?>
+                    <div class="image"><img src="en_ad_photo/<?php echo $picture_name;?>" class="img-responsive">
+
                     </div>
                     <!-- Short Description -->
                     <div class="short-description-1 ">
