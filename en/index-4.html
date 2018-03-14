@@ -1,96 +1,5 @@
 ﻿
-<?php
-session_start();
-ob_start();
-require_once "../scripts/db_connection.php";
-require_once "scripts/time_elapse.php";
 
-
-$final ="var data = {'count': 1,'listings': [";
-
-
-$query_ad = "SELECT * FROM `ADVERTISEMENT`";
-$query_result = mysqli_query($mysqli,$query_ad);
-
-while($row = mysqli_fetch_assoc($query_result)) {
-    $ad_id=$row['id'];
-    $title=$row['title'];
-    $price=$row['price'];
-    $time = $row['date'];
-    $time = time_elapsed_string($time);
-    $category_id = $row['CATEGORY_id'];
-    $user_id = $row['USER_id'];
-
-    $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$user_id}";
-    $address_result = mysqli_query($mysqli, $address_query);
-    if (mysqli_num_rows($address_result) > 0) {
-        while ($row = mysqli_fetch_assoc($address_result)) {
-            $user_street_name = $row['street_name'];
-            $user_postcode = $row['postcode'];
-            $user_house_number = $row['house_number'];
-            $user_region = $row['region'];
-            $user_city = $row['city'];
-            $user_country = $row['country'];
-
-
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_URL, 'https://maps.googleapis.com/maps/api/geocode/json?address='.$user_street_name.'+'.$user_house_number.'+,+'.$user_city.'+'.$user_postcode.'&key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk');
-            $result = curl_exec($ch);
-            curl_close($ch);
-            $obj = json_decode($result);
-            $latVal = $obj->results[0]->geometry->location->lat;
-            $lngVal = $obj->results[0]->geometry->location->lng;
-
-
-        }
-    } else {
-        $user_postcode = "unknown ";
-        $user_city = "address";
-    }
-
-
-// Category_info
-    $cat_query = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";
-    $cat_result = mysqli_query($mysqli, $cat_query);
-    if (mysqli_num_rows($cat_result) > 0) {
-        while ($row = mysqli_fetch_assoc($cat_result)) {
-            $cat_name = $row['name'];
-        }
-    }
-
-
-    $pic_query = " SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE ADVERTISEMENT_id = '{$ad_id}' LIMIT 1";
-    $pic_result = mysqli_query($mysqli, $pic_query);
-    if (mysqli_num_rows($pic_result) > 0) {
-        while ($row = mysqli_fetch_assoc($pic_result)) {
-            $pic_id = $row['id'];
-            $picture_name = $row['picture_name'];
-            $picture_url = $row['picture_url'];
-        }
-
-    } else {
-        $picture_name = "";
-        $picture_url = "http://www.nsrcel.org/wp-content/uploads/2018/01/product.png";
-    }
-
-
-
-    $final .= "{'ad_id': $ad_id,'listings_title': '$title ','listings_url': 'ad_page.php?ad_id=$ad_id','listings_cover': '$picture_url.$picture_name','cat': '$cat_name','cat_url': 'ad_per_cat.php?cat_id=$category_id','latitude': $latVal,'longitude': $lngVal,'price': $price,'currency': '€','location': '$user_country','time': '$time'},";
-}
-
-
-$final .=" ]}";
-
-
-$fp = 'js/data.json';
-
-// Write the contents back to the file
-file_put_contents($fp, $final);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -100,7 +9,7 @@ file_put_contents($fp, $final);
       <![endif]-->
       <meta name="description" content="">
       <meta name="author" content="ScriptsBundle">
-      <title>2D Market | Home Page </title>
+      <title>AdForest | Largest Classifieds Portal</title>
       <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
       <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
       <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -530,33 +439,15 @@ file_put_contents($fp, $final);
                   <div class="col-md-3 col-xs-12 col-sm-3">
                      <select class="category form-control">
                         <option label="Select Option"></option>
-                         <?php
-                         // GET ALL CATEGORIES from DB
-                         $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'EN' ORDER BY `name` ASC  ";
-                         $cat_result= mysqli_query($mysqli, $cat_query);
-                         if (mysqli_num_rows($cat_result) > 0 ) {
-                         while ($row = mysqli_fetch_assoc($cat_result)) {
-                         $id = $row['id'];
-                         $name = $row['name'];
-                         // GET ALL RELATED SUB_CATEGORIES from DB
-                         $sub_cat_query = "SELECT * FROM `SUB_CATEGORY`  WHERE `CATEGORY_id` = '{$id}'  ";
-                         $sub_cat_result = mysqli_query($mysqli, $sub_cat_query);
-                         if (mysqli_num_rows($sub_cat_result) > 0) {
-                         while ($row = mysqli_fetch_assoc($sub_cat_result)) {
-                         $sub_id = $row['id'];
-                         $sub_name = $row['name'];
-                         ?>
-                         <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
-                         <?php
-                                                                 }
-                                                             } else {
-                                                                 ?>
-                         <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name ; ?></option>
-                         <?php
-                                                             }
-                                                         }
-                                                     }
-                                                     ?>
+                        <option value="0">Cars & Bikes</option>
+                        <option value="1">Mobile Phones</option>
+                        <option value="2">Home Appliances</option>
+                        <option value="3">Clothing</option>
+                        <option value="4">Human Resource</option>
+                        <option value="5">Information Technology</option>
+                        <option value="6">Marketing</option>
+                        <option value="7">Others</option>
+                        <option value="8">Sales</option>
                      </select>
                   </div>
                   <!-- Search Field -->
@@ -565,7 +456,7 @@ file_put_contents($fp, $final);
                   </div>
                   <!-- Price Range SLider -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <span class="price-slider-value">Price (€) <span id="price-min"></span> - <span id="price-max"></span></span>
+                     <span class="price-slider-value">Price ($) <span id="price-min"></span> - <span id="price-max"></span></span>
                      <div id="price-slider"></div>
                   </div>
                   <!-- Search Button -->
@@ -848,10 +739,242 @@ file_put_contents($fp, $final);
                   <div class="col-md-12 col-xs-12 col-sm-12">
                      <div id="products" class=" list-group">
                         <div class="row">
-                           <?php
-                           include '../scripts/db_connection.php';
-                           include 'scripts/index_1.php';
-                           ?>
+                           <!-- Listing Ad Grid -->
+                           <div class="item col-md-4 col-sm-6 col-xs-12 clearfix">
+                              <div class="category-grid-box-1">
+                                 <!-- Image Box -->
+                                 <div class="image">
+                                    <img alt="Tour Package" src="images/posting/list-1.jpg" class="img-responsive">
+                                    <div class="price-tag">
+                                       <div class="price"><span>$205,000</span></div>
+                                    </div>
+                                 </div>
+                                 <!-- Short Description -->
+                                 <div class="short-description-1 clearfix">
+                                    <!-- Category Title -->
+                                    <div class="category-title"> <span><a href="#">Sports & Equipment</a></span> </div>
+                                    <!-- Ad Title -->
+                                    <h3><a title="" href="single-page-listing.html">Honda Civic 2017 Sports Edition</a></h3>
+                                    <!-- Short Description -->
+                                    <p class="list-group-item-text"> Lorem ipsum dolor sit amet consectetur adiscing das elited ultricies facilisis lacinia pell das elited ultricies facilisis ... </p>
+                                    <!-- Ad Meta Info -->
+                                    <ul class="ad-meta-info">
+                                       <li>
+                                          <a href="#" data-toggle="tooltip" title="Warranty"> <i class="flaticon-ribbon-badge"></i>9 Months Warranty</a>
+                                       </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Condition"><i class="flaticon-check-square"></i>Used</a> </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Contact No"><i class="flaticon-phone-call"></i>+92-123-4567</a> </li>
+                                    </ul>
+                                 </div>
+                                 <!-- Ad Meta Stats -->
+                                 <div class="ad-info-1">
+                                    <ul>
+                                       <li> <i class="fa fa-map-marker"></i><a href="#">London</a> </li>
+                                       <li> <i class="fa fa-clock-o"></i>15 minutes ago </li>
+                                       <li class="views"> <i class="fa fa-eye"></i>445 Views </li>
+                                    </ul>
+                                    <!-- View All Button -->
+                                    <div class="detail-button"> <a href="#">View Details</a> </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- Listing Ad Grid -->
+                           <div class="item col-md-4 col-sm-6 col-xs-12 clearfix">
+                              <div class="category-grid-box-1">
+                                 <!-- Image Box -->
+                                 <div class="image">
+                                    <img alt="Tour Package" src="images/posting/list-10.jpg" class="img-responsive">
+                                    <div class="price-tag">
+                                       <div class="price"><span>$350</span></div>
+                                    </div>
+                                 </div>
+                                 <!-- Short Description -->
+                                 <div class="short-description-1 clearfix">
+                                    <!-- Category Title -->
+                                    <div class="category-title"> <span><a href="#">Mobiles</a></span> </div>
+                                    <!-- Ad Title -->
+                                    <h3><a title="" href="single-page-listing.html">Sony Xperia Z5 Waterproof</a></h3>
+                                    <!-- Short Description -->
+                                    <p class="list-group-item-text"> Lorem ipsum dolor sit amet consectetur adiscing das elited ultricies facilisis lacinia pell das elited ultricies facilisis ... </p>
+                                    <!-- Ad Meta Info -->
+                                    <ul class="ad-meta-info">
+                                       <li>
+                                          <a href="#" data-toggle="tooltip" title="Warranty"> <i class="flaticon-ribbon-badge"></i>1 Months Warranty</a>
+                                       </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Condition"><i class="flaticon-check-square"></i>Used</a> </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Contact No"><i class="flaticon-phone-call"></i>+92-123-4567</a> </li>
+                                    </ul>
+                                 </div>
+                                 <!-- Ad Meta Stats -->
+                                 <div class="ad-info-1">
+                                    <ul>
+                                       <li> <i class="fa fa-map-marker"></i><a href="#">London</a> </li>
+                                       <li> <i class="fa fa-clock-o"></i>15 minutes ago </li>
+                                       <li class="views"> <i class="fa fa-eye"></i>145 Views </li>
+                                    </ul>
+                                    <!-- View All Button -->
+                                    <div class="detail-button"> <a href="#">View Details</a> </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- Listing Ad Grid -->
+                           <div class="item col-md-4 col-sm-6 col-xs-12 clearfix">
+                              <div class="category-grid-box-1">
+                                 <!-- Image Box -->
+                                 <div class="image">
+                                    <img alt="Tour Package" src="images/posting/list-7.jpg" class="img-responsive">
+                                    <div class="price-tag">
+                                       <div class="price"><span>$205,000</span></div>
+                                    </div>
+                                 </div>
+                                 <!-- Short Description -->
+                                 <div class="short-description-1 clearfix">
+                                    <!-- Category Title -->
+                                    <div class="category-title"> <span><a href="#">Sports & Equipment</a></span> </div>
+                                    <!-- Ad Title -->
+                                    <h3><a title="" href="single-page-listing.html">Rolex Yacht-Master 40</a></h3>
+                                    <!-- Short Description -->
+                                    <p class="list-group-item-text"> Lorem ipsum dolor sit amet consectetur adiscing das elited ultricies facilisis lacinia pell das elited ultricies facilisis ... </p>
+                                    <!-- Ad Meta Info -->
+                                    <ul class="ad-meta-info">
+                                       <li>
+                                          <a href="#" data-toggle="tooltip" title="Warranty"> <i class="flaticon-ribbon-badge"></i>9 Months Warranty</a>
+                                       </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Condition"><i class="flaticon-check-square"></i>Used</a> </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Contact No"><i class="flaticon-phone-call"></i>+92-123-4567</a> </li>
+                                    </ul>
+                                 </div>
+                                 <!-- Ad Meta Stats -->
+                                 <div class="ad-info-1">
+                                    <ul>
+                                       <li> <i class="fa fa-map-marker"></i><a href="#">London</a> </li>
+                                       <li> <i class="fa fa-clock-o"></i>15 minutes ago </li>
+                                       <li class="views"> <i class="fa fa-eye"></i>445 Views </li>
+                                    </ul>
+                                    <!-- View All Button -->
+                                    <div class="detail-button"> <a href="#">View Details</a> </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <!-- Listing Ad Grid -->
+                           <div class="item col-md-4 col-sm-6 col-xs-12 clearfix">
+                              <div class="category-grid-box-1">
+                                 <!-- Image Box -->
+                                 <div class="image">
+                                    <img alt="Tour Package" src="images/posting/list-11.jpg" class="img-responsive">
+                                    <div class="price-tag">
+                                       <div class="price"><span>$466.25</span></div>
+                                    </div>
+                                 </div>
+                                 <!-- Short Description -->
+                                 <div class="short-description-1 clearfix">
+                                    <!-- Category Title -->
+                                    <div class="category-title"> <span><a href="#">Computer & Laptops</a></span> </div>
+                                    <!-- Ad Title -->
+                                    <h3><a title="" href="single-page-listing.html">Gaming PC Quad Core 8GB Graphics</a></h3>
+                                    <!-- Short Description -->
+                                    <p class="list-group-item-text"> Lorem ipsum dolor sit amet consectetur adiscing das elited ultricies facilisis lacinia pell das elited ultricies facilisis ... </p>
+                                    <!-- Ad Meta Info -->
+                                    <ul class="ad-meta-info">
+                                       <li>
+                                          <a href="#" data-toggle="tooltip" title="Warranty"> <i class="flaticon-ribbon-badge"></i>No Warranty</a>
+                                       </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Condition"><i class="flaticon-check-square"></i>Used</a> </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Contact No"><i class="flaticon-phone-call"></i>+92-123-4567</a> </li>
+                                    </ul>
+                                 </div>
+                                 <!-- Ad Meta Stats -->
+                                 <div class="ad-info-1">
+                                    <ul>
+                                       <li> <i class="fa fa-map-marker"></i><a href="#">London</a> </li>
+                                       <li> <i class="fa fa-clock-o"></i>15 minutes ago </li>
+                                       <li class="views"> <i class="fa fa-eye"></i>445 Views </li>
+                                    </ul>
+                                    <!-- View All Button -->
+                                    <div class="detail-button"> <a href="#">View Details</a> </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- Listing Ad Grid -->
+                           <div class="item col-md-4 col-sm-6 col-xs-12 clearfix">
+                              <div class="category-grid-box-1">
+                                 <!-- Image Box -->
+                                 <div class="image">
+                                    <img alt="Tour Package" src="images/posting/list-9.jpg" class="img-responsive">
+                                    <div class="price-tag">
+                                       <div class="price"><span>$12,229</span></div>
+                                    </div>
+                                 </div>
+                                 <!-- Short Description -->
+                                 <div class="short-description-1 clearfix">
+                                    <!-- Category Title -->
+                                    <div class="category-title"> <span><a href="#">Car & Bikes</a></span> </div>
+                                    <!-- Ad Title -->
+                                    <h3><a title="" href="single-page-listing.html">2015 Honda CBR 1000RR </a></h3>
+                                    <!-- Short Description -->
+                                    <p class="list-group-item-text"> Lorem ipsum dolor sit amet consectetur adiscing das elited ultricies facilisis lacinia pell das elited ultricies facilisis ... </p>
+                                    <!-- Ad Meta Info -->
+                                    <ul class="ad-meta-info">
+                                       <li>
+                                          <a href="#" data-toggle="tooltip" title="Warranty"> <i class="flaticon-ribbon-badge"></i>2 Months Warranty</a>
+                                       </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Condition"><i class="flaticon-check-square"></i>Used</a> </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Contact No"><i class="flaticon-phone-call"></i>+92-123-4567</a> </li>
+                                    </ul>
+                                 </div>
+                                 <!-- Ad Meta Stats -->
+                                 <div class="ad-info-1">
+                                    <ul>
+                                       <li> <i class="fa fa-map-marker"></i><a href="#">London</a> </li>
+                                       <li> <i class="fa fa-clock-o"></i>15 minutes ago </li>
+                                       <li class="views"> <i class="fa fa-eye"></i>45 Views </li>
+                                    </ul>
+                                    <!-- View All Button -->
+                                    <div class="detail-button"> <a href="#">View Details</a> </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- Listing Ad Grid -->
+                           <div class="item col-md-4 col-sm-6 col-xs-12 clearfix">
+                              <div class="category-grid-box-1">
+                                 <!-- Image Box -->
+                                 <div class="image">
+                                    <img alt="Tour Package" src="images/posting/house-4.jpg" class="img-responsive">
+                                    <div class="price-tag">
+                                       <div class="price"><span>$43,000</span></div>
+                                    </div>
+                                 </div>
+                                 <!-- Short Description -->
+                                 <div class="short-description-1 clearfix">
+                                    <!-- Category Title -->
+                                    <div class="category-title"> <span><a href="#">Real Estate</a></span> </div>
+                                    <!-- Ad Title -->
+                                    <h3><a title="" href="single-page-listing.html">Brand New House For Sale</a></h3>
+                                    <!-- Short Description -->
+                                    <p class="list-group-item-text"> Lorem ipsum dolor sit amet consectetur adiscing das elited ultricies facilisis lacinia pell das elited ultricies facilisis ... </p>
+                                    <!-- Ad Meta Info -->
+                                    <ul class="ad-meta-info">
+                                       <li>
+                                          <a href="#" data-toggle="tooltip" title="Warranty"> <i class="flaticon-ribbon-badge"></i>3 Months Warranty</a>
+                                       </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Condition"><i class="flaticon-check-square"></i>Used</a> </li>
+                                       <li> <a href="#" data-toggle="tooltip" title="Contact No"><i class="flaticon-phone-call"></i>+92-123-4567</a> </li>
+                                    </ul>
+                                 </div>
+                                 <!-- Ad Meta Stats -->
+                                 <div class="ad-info-1">
+                                    <ul>
+                                       <li> <i class="fa fa-map-marker"></i><a href="#">London</a> </li>
+                                       <li> <i class="fa fa-clock-o"></i>15 minutes ago </li>
+                                       <li class="views"> <i class="fa fa-eye"></i>1445 Views </li>
+                                    </ul>
+                                    <!-- View All Button -->
+                                    <div class="detail-button"> <a href="#">View Details</a> </div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -908,7 +1031,38 @@ file_put_contents($fp, $final);
                   <div class="col-md-12 col-xs-12 col-sm-12">
                      <div class="row">
                         <!-- Blog Post-->
-                         <?php include 'scripts/index_2.php';?>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                           <div class="blog-post">
+                              <div class="post-img">
+                                 <a href="#"> <img class="img-responsive" alt="" src="images/blog/1.jpg"> </a>
+                              </div>
+                              <div class="post-info"> <a href="">Aug 30, 2017</a> <a href="#">23 comments</a> </div>
+                              <h3 class="post-title"> <a href="#"> Sony Xperia XZ: Release date and everything you need to know</a> </h3>
+                              <p class="post-excerpt"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam neque tempora odit atque repellat est molestiae perferendis. </p>
+                           </div>
+                        </div>
+                        <!-- Blog Post-->
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                           <div class="blog-post">
+                              <div class="post-img">
+                                 <a href="#"> <img class="img-responsive" alt="" src="images/blog/2.jpg"> </a>
+                              </div>
+                              <div class="post-info"> <a href="">Aug 30, 2017</a> <a href="#">23 comments</a> </div>
+                              <h3 class="post-title"> <a href="#"> Review of the 2017 Honda Accord Sport </a> </h3>
+                              <p class="post-excerpt"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam neque tempora odit atque repellat est molestiae perferendis. </p>
+                           </div>
+                        </div>
+                        <!-- Blog Post-->
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                           <div class="blog-post">
+                              <div class="post-img">
+                                 <a href="#"> <img class="img-responsive" alt="" src="images/blog/3.jpg"> </a>
+                              </div>
+                              <div class="post-info"> <a href="">Aug 30, 2017</a> <a href="#">23 comments</a> </div>
+                              <h3 class="post-title"> <a href="#"> How to Buy a House 6 Must-Dos Before Buying A Home</a> </h3>
+                              <p class="post-excerpt"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam neque tempora odit atque repellat est molestiae perferendis. </p>
+                           </div>
+                        </div>
                      </div>
                   </div>
                   <!-- Middle Content Box End -->
@@ -1112,7 +1266,7 @@ file_put_contents($fp, $final);
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
       <!-- Googgle map For THis Page Only -->
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVj6yChAfe1ilA4YrZgn_UCAnei8AhQxQ&sensor=false"></script>
       <script src="js/infobox.js"></script>
       <!-- Parallax -->
       <script src="js/data.json"></script>

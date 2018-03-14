@@ -269,7 +269,7 @@ if (isset($_GET['ad_id'])){
 
 
 </div>
-
+<?php if ($selling_type == 'BID'){ ?>
     <div class="alert-box-container  margin-top-30">
      <div class="well">
         <h3>Bids History </h3>
@@ -282,7 +282,7 @@ if (isset($_GET['ad_id'])){
     </tr>
     </thead>
     <tbody>
-<?php if ($selling_type == 'BID'){
+<?php
     $get_auction_query = "SELECT * FROM `AUCTION` WHERE `ADVERTISEMENT_id`= '{$ad_id}'";
     $get_auction_result = mysqli_query($mysqli,$get_auction_query);
     while ($row = mysqli_fetch_assoc($get_auction_result)) {

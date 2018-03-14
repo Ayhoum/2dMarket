@@ -3,7 +3,7 @@
 ob_start();
 session_start();
 require_once "../../../scripts/db_connection.php";
-require_once '../../../phpmailer/class.phpmailer.php';
+require_once '../../phpmailer/class.phpmailer.php';
 
 
 
@@ -89,7 +89,7 @@ if(isset($_POST['restore'])) {
     <meta name="author" content="ScriptsBundle">
     <title>AdForest | Largest Classifieds Portal</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
-    <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
+    // <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="../../images/favicon.ico" type="image/x-icon" />
         <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
