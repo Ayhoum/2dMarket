@@ -420,7 +420,8 @@ if (isset($_GET['ad_id'])){
         $related_ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$category_id}' ";
         $related_ad_result  = mysqli_query($mysqli, $related_ad_query);
         if (mysqli_num_rows($related_ad_result) > 0 ){
-            while ($row= mysqli_fetch_assoc($ad_result)){
+            while ($row= mysqli_fetch_assoc($related_ad_result)){
+                $id             = $row['id'];
                 $title          = $row['title'];
                 $lang           = $row['lang'];
                 $selling_type   = $row['selling_type'];
@@ -435,7 +436,7 @@ if (isset($_GET['ad_id'])){
 
                 $user_id        = $row['USER_id'];
                 $category_id    = $row['CATEGORY_id'];
-            }
+
 
             $date = strtotime($date);
             $date = date('d/m/Y', $date);
@@ -490,9 +491,12 @@ if (isset($_GET['ad_id'])){
             }
 
 
-
-
-
+            $img_query  = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$id}'";
+            $img_result = mysqli_query($mysqli, $img_query);
+            if (mysqli_num_rows($img_result) > 0 ){
+            while ($row = mysqli_fetch_assoc($img_result)) {
+                $picture_name_1 = $row['picture_name'];
+                $picture_url_1 = $row['picture_url'];
 
 
 
@@ -504,7 +508,7 @@ if (isset($_GET['ad_id'])){
                     <div class="ad-archive-img">
                         <a href="#">
                             <div class="ribbon popular"></div>
-                            <img class="img-responsive" src="<?php echo $picture_url.$picture_name;?>" alt="">
+                            <img class="img-responsive" src="<?php echo $picture_url_1.$picture_name_1;?>" alt="">
                         </a>
                     </div>
                     <!-- Img Block -->
@@ -531,10 +535,10 @@ if (isset($_GET['ad_id'])){
                                 <div class="custom-tooltip tooltip-effect-4">
                                     <span class="tooltip-item"><i class="fa fa-phone"></i></span>
                                     <div class="tooltip-content">
-                                        <h4>Call Timings</h4>
-                                        <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM
-                                        <br> <strong>Saturday</strong> 09.00 AM - 5.30 PM
-                                        <br> <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>
+                                        <h4>Contact Info.</h4>
+                                        <strong><?php echo $user_username;?></strong>
+                                        <br> <strong>Email : </strong> <?php echo $user_email; ?>
+                                        <br> <strong>Phone : </strong> <span class="label label-success"><?php echo $user_phone; ?></span>
                                     </div>
                                 </div>
                             </li>
@@ -575,7 +579,10 @@ if (isset($_GET['ad_id'])){
             </div>
 
     <?php
-        } else {
+            }
+            }
+            }
+    } else {
             echo  " ";
         }
     ?>
