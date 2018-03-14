@@ -273,18 +273,19 @@ if (isset($_GET['ad_id'])){
     <div class="alert-box-container  margin-top-30">
      <div class="well">
         <h3>Bids History </h3>
-    <table class="table">
-    <thead>
-    <tr>
-        <th>Username</th>
-        <th>Amount </th>
-        <th>time</th>
-    </tr>
-    </thead>
-    <tbody>
+         <table class="table">
+             <thead>
+             <tr>
+                 <th>Username</th>
+                 <th>Amount </th>
+                 <th>time</th>
+             </tr>
+             </thead>
+             <tbody>
 <?php
     $get_auction_query = "SELECT * FROM `AUCTION` WHERE `ADVERTISEMENT_id`= '{$ad_id}'";
     $get_auction_result = mysqli_query($mysqli,$get_auction_query);
+    if (mysqli_num_rows($get_auction_result) > 0 ){
     while ($row = mysqli_fetch_assoc($get_auction_result)) {
         $auction_id = $row['id'];
     }
@@ -312,26 +313,56 @@ if (isset($_GET['ad_id'])){
             <?php
         }
     }
+    } else { ?>
+        <div role="alert" class="alert alert-warning alert-dismissible">
+            <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>
+            <strong>There are no bids currently</strong> Submit a bid to be the first one.
+        </div>
+    <?php
+    }
     ?>
     </tbody>
     </table>
     </div>
     <?php
       if(isset($_POST['submit'])) {
-          $auction_id_query  = "SELECT * FROM `AUCTION` WHERE `ADVERTISEMENT_id`= '{$ad_id}'";
-          echo $auction_id_query;
-          $auction_id_result  = mysqli_query($mysqli, $auction_id_query);
-          while ($row = mysqli_fetch_assoc($auction_id_result)) {
-              $action_id = $row['id'];
-          }
-          $bid = $_POST['bid'];
-          $user_id = $_SESSION['id'];
+          $auction_id_query = "SELECT * FROM `AUCTION` WHERE `ADVERTISEMENT_id`= '{$ad_id}'";
+          $auction_id_result = mysqli_query($mysqli, $auction_id_query);
+          if (mysqli_num_rows($auction_id_result) > 0) {
+              while ($row = mysqli_fetch_assoc($auction_id_result)) {
+                  $action_id = $row['id'];
+              }
+              $bid = $_POST['bid'];
+              $user_id = $_SESSION['id'];
 
-          $ins_bid_query  = "INSERT INTO `BID` (`amount`, `user_id`, `AUCTION_id`)";
-          $ins_bid_query .= "VALUES ({$bid},{$user_id},{$action_id})";
-          $ins_bid_result = mysqli_query($mysqli, $ins_bid_query);
-          echo $ins_bid_query;
-    }
+              $ins_bid_query = "INSERT INTO `BID` (`amount`, `user_id`, `AUCTION_id`)";
+              $ins_bid_query .= "VALUES ({$bid},{$user_id},{$action_id})";
+              $ins_bid_result = mysqli_query($mysqli, $ins_bid_query);
+
+              header("Location : ad_page_script.php");
+          } else {
+              $ins_auc_query = "insert into `AUCTION` (`ADVERTISEMENT_id`)VALUES ('{$ad_id}') ";
+              $ins_auc_result = mysqli_query($mysqli, $ins_auc_query);
+
+              $auction_id_query = "SELECT * FROM `AUCTION` WHERE `ADVERTISEMENT_id`= '{$ad_id}' ORDER BY `id` LIMIT 1";
+              $auction_id_result = mysqli_query($mysqli, $auction_id_query);
+              if (mysqli_num_rows($auction_id_result) > 0) {
+                  while ($row = mysqli_fetch_assoc($auction_id_result)) {
+                      $action_id = $row['id'];
+                  }
+                  $bid = $_POST['bid'];
+                  $user_id = $_SESSION['id'];
+
+                  $ins_bid_query = "INSERT INTO `BID` (`amount`, `user_id`, `AUCTION_id`)";
+                  $ins_bid_query .= "VALUES ({$bid},{$user_id},{$action_id})";
+                  $ins_bid_result = mysqli_query($mysqli, $ins_bid_query);
+
+                  header("Location : ad_page_script.php");
+              }
+          }
+
+      }
+
     ?>
     <div class="well">
         <h3>Submit a bid</h3>
@@ -348,3 +379,210 @@ if (isset($_GET['ad_id'])){
     </div>
 </div>
 <?php }?>
+<!-- Single Ad End -->
+<!-- Price Alert -->
+<div class="alert-box-container  margin-top-30">
+    <div class="well">
+        <h3>Create Alert</h3>
+        <p>Receive emails for the latest ads matching your search criteria</p>
+        <form>
+            <div class="row">
+                <div class="col-md-5 col-xs-12 col-sm-12">
+                    <input placeholder="Enter Your Email " type="text" class="form-control">
+                </div>
+                <div class="col-md-4 col-xs-12 col-sm-12">
+                    <select class="alerts">
+                        <option value="1">Daily</option>
+                        <option value="7">Weekly</option>
+                    </select>
+                </div>
+                <div class="col-md-3 col-xs-12 col-sm-12">
+                    <input class="btn btn-theme btn-block" value="Submit" type="submit">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Price Alert End -->
+<!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+<div class="grid-panel margin-top-30">
+    <div class="heading-panel">
+        <div class="col-xs-12 col-md-12 col-sm-12">
+            <h3 class="main-title text-left">
+                Related Ads
+            </h3>
+        </div>
+    </div>
+    <div class="posts-masonry">
+        <div class="col-md-12 col-xs-12 col-sm-12">
+    <!-- Ads Archive -->
+    <?php
+        $related_ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$category_id}' ";
+        $related_ad_result  = mysqli_query($mysqli, $related_ad_query);
+        if (mysqli_num_rows($related_ad_result) > 0 ){
+            while ($row= mysqli_fetch_assoc($ad_result)){
+                $title          = $row['title'];
+                $lang           = $row['lang'];
+                $selling_type   = $row['selling_type'];
+                $status         = $row['status'];
+                $delivery_type  = $row['delivery_type'];
+                $description    = $row['description'];
+                $ad_type        = $row['ad_type'];
+                $date           = $row['date'];
+                $price          = $row['price'];
+                $condition      = $row['condition'];
+                $visits         = $row['visits'];
+
+                $user_id        = $row['USER_id'];
+                $category_id    = $row['CATEGORY_id'];
+            }
+
+            $date = strtotime($date);
+            $date = date('d/m/Y', $date);
+
+            // Category_info
+            $cat_query  = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";
+            $cat_result = mysqli_query($mysqli, $cat_query);
+            if (mysqli_num_rows($cat_result) > 0) {
+                while ($row = mysqli_fetch_assoc($cat_result)) {
+                    $cat_name = $row['name'];
+                }
+            }
+
+
+
+            $select_query = "SELECT * FROM `USER` WHERE `id` = '{$user_id}'";
+            $select_result = mysqli_query($mysqli, $select_query);
+            while ($row = mysqli_fetch_assoc($select_result)) {
+                $user_first_name = $row['first_name'];
+                $user_last_name = $row['last_name'];
+                $user_email = $row['email'];
+                $user_phone = $row['phone_number'];
+                $user_username = $row['username'];
+                $user_pic = $row['profile_picture'];
+                $user_register_date = $row['register_date'];
+                $online_status = $row['online_status'];
+
+            }
+
+
+
+// Address info.
+
+            $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$user_id}";
+            $address_result = mysqli_query($mysqli, $address_query);
+            if (mysqli_num_rows($address_result) > 0) {
+                while ($row = mysqli_fetch_assoc($address_result)) {
+                    $user_street_name = $row['street_name'];
+                    $user_postcode = $row['postcode'];
+                    $user_house_number = $row['house_number'];
+                    $user_region = $row['region'];
+                    $user_city = $row['city'];
+                    $user_country = $row['country'];
+
+                    $location = $user_country. " | ". $user_country;
+
+
+                }
+            } else {
+                $user_postcode = "unknown ";
+                $user_city = "address";
+            }
+
+
+
+
+
+
+
+
+            ?>
+            <div class="ads-list-archive">
+                <!-- Image Block -->
+                <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
+                    <!-- Img Block -->
+                    <div class="ad-archive-img">
+                        <a href="#">
+                            <div class="ribbon popular"></div>
+                            <img class="img-responsive" src="<?php echo $picture_url.$picture_name;?>" alt="">
+                        </a>
+                    </div>
+                    <!-- Img Block -->
+                </div>
+                <!-- Ads Listing -->
+                <div class="clearfix visible-xs-block"></div>
+                <!-- Content Block -->
+                <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
+                    <!-- Ad Desc -->
+                    <div class="ad-archive-desc">
+                        <!-- Price -->
+                        <div class="ad-price"><?php echo $price; ?></div>
+                        <!-- Title -->
+                        <h3><?php echo $title; ?> </h3>
+                        <!-- Category -->
+                        <div class="category-title"> <span><a href="#"><?php echo $cat_name; ?></a></span> </div>
+                    <!-- Short Description -->
+                        <div class="clearfix visible-xs-block"></div>
+                        <p class="hidden-sm"><?php echo  $description; ?></p>
+                        <!-- Ad Features -->
+                        <ul class="add_info">
+                            <!-- Contact Details -->
+                            <li>
+                                <div class="custom-tooltip tooltip-effect-4">
+                                    <span class="tooltip-item"><i class="fa fa-phone"></i></span>
+                                    <div class="tooltip-content">
+                                        <h4>Call Timings</h4>
+                                        <strong>Monday to Friday</strong> 09.00 AM - 5.30 PM
+                                        <br> <strong>Saturday</strong> 09.00 AM - 5.30 PM
+                                        <br> <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Address -->
+                            <li>
+                                <div class="custom-tooltip tooltip-effect-4">
+                                    <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
+                                    <div class="tooltip-content">
+                                        <h4>Address</h4>
+                                        <?php echo $location ; ?>
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- Ad Type -->
+                            <li>
+                                <div class="custom-tooltip tooltip-effect-4">
+                                    <span class="tooltip-item"><i class="fa fa-cog"></i></span>
+                                    <div class="tooltip-content"> <strong>Condition</strong> <span class="label label-danger"><?php echo $condition; ?></span> </div>
+                                </div>
+                            </li>
+                            <!-- Ad Type -->
+                            <li>
+                                <div class="custom-tooltip tooltip-effect-4">
+                                    <span class="tooltip-item"><i class="fa fa-check-square-o"></i></span>
+                                    <div class="tooltip-content"> <strong>Ad info. </strong> <span class="label label-danger"><?php echo $selling_type. " | ". $delivery_type;?> </span> </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- Ad History -->
+                        <div class="clearfix archive-history">
+                            <div class="last-updated"><?php echo $date;?></div>
+                            <div class="ad-meta"> <a class="btn save-ad"><i class="fa fa-heart-o"></i> Add to Favorite</a> <a class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a> </div>
+                        </div>
+                    </div>
+                    <!-- Ad Desc End -->
+                </div>
+                <!-- Content Block End -->
+            </div>
+
+    <?php
+        } else {
+            echo  " ";
+        }
+    ?>
+
+            <!-- Ads Listing -->
+            <img alt="" class="center-block margin-top-30 margin-bottom-30" src="images/advertise-728x90.jpg">
+        </div>
+    </div>
+</div>
+<!-- =-=-=-=-=-=-= Latest Ads End =-=-=-=-=-=-= -->

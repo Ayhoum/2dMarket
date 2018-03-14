@@ -88,24 +88,55 @@ if (mysqli_num_rows($ad_result) > 0) {
         }
 
         ?>
-        <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="blog-post">
-                <div class="post-img">
-                    <a href="ad_page.php?ad_id=<?php echo $ad_id; ?>"> <img class="img-responsive" alt=""
-                                                                            src="<?php echo $pic . $pic_name; ?>"> </a>
+        <div class="item">
+            <div class="col-md-4 col-xs-4 col-sm-4 no-padding">
+                <!-- Ad Box -->
+                <div class="category-grid-box">
+                    <!-- Ad Img -->
+                    <div class="category-grid-img">
+                        <img class="img-responsive" alt="" src="<?php echo $pic. $pic_name; ?>">
+                        <!-- Ad Status -->
+                        <!-- User Review -->
+                        <div class="user-preview">
+                            <a href="profile_2.php?user_id=<?php echo $user_id; ?>"> <img
+                                    src="../uploads/users/<?php echo $user_pic; ?>"
+                                    class="avatar avatar-small" alt=""> </a>
+                        </div>
+                        <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id; ?>"
+                                                class="view-details">View Details</a>
+                    </div>
+                    <!-- Ad Img End -->
+                    <div class="short-description">
+                        <!-- Ad Category -->
+                        <div class="category-title"><span><a
+                                    href="ad_per_cat.php?id=<?php echo $category_id; ?>"><?php echo $cat_name; ?></a></span>
+                        </div>
+                        <!-- Ad Title -->
+                        <h3><a title=""
+                               href="ad_page.php?ad_id=<?php echo $ad_id; ?>"><?php echo $title; ?></a>
+                        </h3>
+                        <!-- Price -->
+                        <div class="price"><?php    if ($selling_type=="BID"){
+                                    echo "Bid";
+                                } else {
+                                    echo "€ ". $price;
+                                }
+                                ?></div>
+                    </div>
+                    <!-- Addition Info -->
+                    <div class="ad-info">
+                        <ul>
+                            <li>
+                                <i class="fa fa-map-marker"></i><?php echo $user_postcode . " | " . $user_city; ?>
+                            </li>
+                            <li><i class="fa fa-clock-o"></i><?php echo $date; ?></li>
+                        </ul>
+                    </div>
                 </div>
-            <h3 class="post-title"><a href="ad_page.php?ad_id=<?php echo $ad_id; ?>"> <?php echo $title; ?></a></h3>
-            <div class="post-info"><a href=""><?php if ($selling_type == "BID") {
-                                echo "Bid";
-                            } else {
-                                echo "€ " . $price;
-                            }
-                            ?></a></div>
-            <div class="post-info"><a href=""><?php echo $date; ?></a> <a href="#"><?php echo $location; ?></a></div>
-            <div class="post-info"><a href="#"> <?php echo $delivery_type . " | " . $selling_type; ?></a></div>
-            <p class="post-excerpt"><?php echo $description; ?> </p>
+                <!-- Ad Box End -->
+            </div>
         </div>
-        </div>
+
         <?php
     }
 }
