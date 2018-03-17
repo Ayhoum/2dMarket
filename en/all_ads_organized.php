@@ -385,7 +385,7 @@ include '../scripts/db_connection.php';
                                     <ul>
                                         <li><span>Sort by:</span></li>
                                         <li><a href="all_ads_organized.php?updatedate=recent">Updated date</a></li>
-                                        <li><a href="all_ads_organized.php?price=higtolow">Price</a></li>
+                                        <li><a href="all_ads_organzied.php?price=higtolow">Price</a></li>
                                         <li><a href="#">New</a></li>
                                         <li><a href="#">Used</a></li>
                                         <li><a href="#">Warranty</a></li>
@@ -399,7 +399,7 @@ include '../scripts/db_connection.php';
                         <!-- Ads Archive -->
                         <div class="posts-masonry">
                             <!-- Listing Ad Grid -->
-                            <?php include 'scripts/select_all_ads_premium.php';?>
+                            <?php include 'scripts/select_all_ads_organized.php';?>
                             <!-- Advertizing -->
                             <div class="col-md-12 col-xs-12 col-sm-12">
                                 <section class="advertising">
@@ -415,7 +415,6 @@ include '../scripts/db_connection.php';
                                 </section>
                             </div>
                             <!-- Advertizing End -->
-                            <?php include 'scripts/select_all_ads_normal.php'; ?>
                         </div>
                         <!-- Ads Archive End -->
                         <div class="clearfix"></div>

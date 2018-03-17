@@ -115,7 +115,7 @@ if (isset($_GET['cat_id'])){
                         <!-- Ad Title -->
                         <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                         <!-- Price -->
-                        <div class="price"><?php echo $price;?></div>
+                        <div class="price"><?php if ($selling_type == "BID"){ echo "Bid";} else{ echo $price;}?></div>
                     </div>
                     <!-- Addition Info -->
                     <div class="ad-info">
@@ -245,7 +245,7 @@ if (mysqli_num_rows($ad_result) > 0 ){
                     <!-- Ad Title -->
                     <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                     <!-- Price -->
-                    <div class="price"><?php echo $price;?></div>
+                    <div class="price"><?php if ($selling_type == "BID"){ echo "Bid";}else{ echo $price;}?></div>
                 </div>
                 <!-- Addition Info -->
                 <div class="ad-info">
