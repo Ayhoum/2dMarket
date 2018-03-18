@@ -36,8 +36,8 @@ if (isset($_GET['ad_id'])) {
         $add_visit_result = mysqli_query($mysqli, $add_visit_query);
 
 
-        $date = strtotime($date);
-        $date = date('d/m/Y', $date);
+        require_once 'time_elapse.php';
+        $date = time_elapsed_string($date);
 
         // Category_info
         $cat_query = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";
@@ -293,6 +293,8 @@ if (isset($_GET['ad_id'])) {
                             $amount = $row['amount'];
                             $user_id = $row['user_id'];
                             $time = $row['time'];
+                            require_once 'time_elapse.php';
+                            $time = time_elapsed_string($time);
 
                             $get_user_query = "SELECT * FROM `USER` WHERE id = '{$user_id}'";
                             $get_user_result = mysqli_query($mysqli, $get_user_query);
@@ -399,8 +401,8 @@ if (isset($_GET['ad_id'])) {
                         $category_id = $row['CATEGORY_id'];
 
 
-                        $date = strtotime($date);
-                        $date = date('d/m/Y', $date);
+                        require_once 'time_elapse.php';
+                        $date = time_elapsed_string($date);
 
                         // Category_info
                         $cat_query = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";

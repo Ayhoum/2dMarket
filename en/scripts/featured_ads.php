@@ -12,7 +12,9 @@ if (isset($_GET['cat_id'])){
 <div class="panel-collapse">
     <div class="panel-body recent-ads">
         <div class="featured-slider-3">
-            <?php $cat_id    = $_GET['cat_id'];
+            <?php
+
+            $cat_id    = $_GET['cat_id'];
             $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `CATEGORY_id` = '{$cat_id}'  && `ad_type` = 'PREMIUM' ORDER BY `date` DESC";
             $ad_result = mysqli_query($mysqli, $ad_query);
 
@@ -35,8 +37,8 @@ if (isset($_GET['cat_id'])){
 
 
             //extract date:
-            $date = strtotime($date);
-            $date = date('d/m/Y', $date);
+                require_once 'time_elapse.php';
+                $date = time_elapsed_string($date);
 
             // Category_info
             $cat_query  = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";
@@ -260,10 +262,9 @@ if (isset($_GET['cat_id'])){
                                     </div>
                                 </div>
                                 <?php
-
                             }
                         }
-                        }
+}
 ?>
                     </div>
                 </div>
