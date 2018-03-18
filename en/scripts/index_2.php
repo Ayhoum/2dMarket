@@ -95,7 +95,7 @@ if (mysqli_num_rows($ad_result) > 0) {
                 <div class="category-grid-box">
                     <!-- Ad Img -->
                     <div class="category-grid-img">
-                        <img class="img-responsive " style="width: 100%; height: 200px; object-fit: cover;" alt="" src="<?php echo $pic . $pic_name ;?>">
+                        <img class="img-responsive " style="width: 100%; height: 256px; object-fit: cover;" alt="" src="<?php echo $pic . $pic_name ;?>">
                         <!-- Ad Status --><?php if ($ad_type == "PREMIUM") {  ?><span class="ad-status"> PREMIUM </span><?php } ?>
                         <!-- User Review -->
                         <div class="user-preview">
