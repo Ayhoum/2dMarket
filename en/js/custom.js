@@ -304,24 +304,26 @@ Designed and Development by: ScriptsBundle
     });
 	
 	 /*==========  Price Range Slider  ==========*/
-    $('#price-slider').noUiSlider({
-        connect: true,
-        behaviour: 'tap',
-        margin: 5000,
-        start: [20000, 100000],
-        step: 2000,
+
+    var stepSlider = document.getElementById('price-slider');
+    noUiSlider.create(stepSlider, {
+        start: [ 0 ],
+        step: 10,
         range: {
-            'min': 0,
-            'max': 150000
+            'min': [  0 ],
+            'max': [ 100 ]
         }
     });
-		$('#price-slider').Link('lower').to($('#price-min'), null, wNumb({
-			decimals: 0
-		}));
-		$('#price-slider').Link('upper').to($('#price-max'), null, wNumb({
-			decimals: 0
-		}));
-		
+
+
+
+
+    var stepSliderValueElement = document.getElementById('price-min');
+
+    stepSlider.noUiSlider.on('update', function( values, handle ) {
+        stepSliderValueElement.value = values[handle];
+    });
+
 		
     /* ======= Template MegaMenu  ======= */
     $('#menu-1').megaMenu({

@@ -370,10 +370,10 @@ require_once "scripts/time_elapse.php";
                <div class="search-title">Browse Ads</div>
             </div>
             <div class="row">
-               <form method="post" class="search-form">
+               <form method="post" class="search-form" action="test5.php">
                   <!-- Category -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <select class="category form-control">
+                     <select name="cat" class="category form-control">
                         <option label="Select Option"></option>
                          <?php
                          // GET ALL CATEGORIES from DB
@@ -406,16 +406,16 @@ require_once "scripts/time_elapse.php";
                   </div>
                   <!-- Search Field -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <input type="text" class="form-control" placeholder="What Are You Looking For..." /> 
+                     <input type="text" name="query" class="form-control" placeholder="What Are You Looking For..." />
                   </div>
                   <!-- Price Range SLider -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <span class="price-slider-value">Price (€) <span id="price-min"></span> - <span id="price-max"></span></span>
+                     <span class="price-slider-value">Distance (Km) -<input type="text" name="dis" id="price-min" style="width: 110px;color: #363c48;" readonly="true"> </span>
                      <div id="price-slider"></div>
                   </div>
                   <!-- Search Button -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <button type="submit" class="btn btn-light">Search</button>
+                     <button type="submit" name="submit" class="btn btn-light">Search</button>
                   </div>
                   <!-- end .item -->
                </form>
