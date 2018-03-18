@@ -87,7 +87,8 @@ if (mysqli_num_rows($ad_result) > 0) {
             <div class="category-grid-box-1">
                 <!-- Image Box -->
                 <div class="image">
-                    <img alt="Tour Package" src="<?php echo $pic . $pic_name;?>" class="img-responsive" style="width: 313px; height: 234px">
+                    <img alt="Tour Package" src="<?php echo $pic . $pic_name;?>" class="img-responsive" style="width: 100%; height: 200px; object-fit: cover;">
+
                     <div class="price-tag">
                         <div class="price"><span><?php
                                 if ($selling_type=="BID"){
