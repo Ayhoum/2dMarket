@@ -189,7 +189,7 @@ function MarkerClusterer(map, opt_markers, opt_options) {
  */
 MarkerClusterer.prototype.MARKER_CLUSTER_IMAGE_PATH_ =
     'https://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/' +
-    'images/m';
+    'images/m1';
 
 
 /**
@@ -1062,22 +1062,23 @@ ClusterIcon.prototype.triggerClusterClick = function(event) {
  * Adding the cluster icon to the dom.
  * @ignore
  */
-ClusterIcon.prototype.onAdd = function() {
-  this.div_ = document.createElement('DIV');
-  if (this.visible_) {
-    var pos = this.getPosFromLatLng_(this.center_);
-    this.div_.style.cssText = this.createCss(pos);
-    this.div_.innerHTML = this.sums_.text;
-  }
-
-  var panes = this.getPanes();
-  panes.overlayMouseTarget.appendChild(this.div_);
-
-  var that = this;
-  google.maps.event.addDomListener(this.div_, 'click', function(event) {
-    that.triggerClusterClick(event);
-  });
-};
+// ClusterIcon.prototype.onAdd = function() {
+//   this.div_ = document.createElement('DIV');
+//   if (this.visible_) {
+//     var pos = this.getPosFromLatLng_(this.center_);
+//     this.div_.style.cssText = this.createCss(pos);
+//     this.div_.innerHTML = this.sums_.text;
+//   }
+//
+//   var panes = this.getPanes();
+//   panes.overlayMouseTarget.appendChild(this.div_);
+//
+//   var that = this;
+//   google.maps.event.addDomListener(this.div_, 'click', function(event) {
+//     that.triggerClusterClick(event);
+//     alert("3");
+//   });
+// };
 
 
 /**

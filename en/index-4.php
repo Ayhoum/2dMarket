@@ -6,89 +6,6 @@ require_once "../scripts/db_connection.php";
 require_once "scripts/time_elapse.php";
 
 
-$final ="var data = {'count': 1,'listings': [";
-
-
-$query_ad = "SELECT * FROM `ADVERTISEMENT`";
-$query_result = mysqli_query($mysqli,$query_ad);
-
-while($row = mysqli_fetch_assoc($query_result)) {
-    $ad_id=$row['id'];
-    $title=$row['title'];
-    $price=$row['price'];
-    $time = $row['date'];
-    $time = time_elapsed_string($time);
-    $category_id = $row['CATEGORY_id'];
-    $user_id = $row['USER_id'];
-
-    $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$user_id}";
-    $address_result = mysqli_query($mysqli, $address_query);
-    if (mysqli_num_rows($address_result) > 0) {
-        while ($row = mysqli_fetch_assoc($address_result)) {
-            $user_street_name = $row['street_name'];
-            $user_postcode = $row['postcode'];
-            $user_house_number = $row['house_number'];
-            $user_region = $row['region'];
-            $user_city = $row['city'];
-            $user_country = $row['country'];
-
-
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_URL, 'https://maps.googleapis.com/maps/api/geocode/json?address='.$user_street_name.'+'.$user_house_number.'+,+'.$user_city.'+'.$user_postcode.'&key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk');
-            $result = curl_exec($ch);
-            curl_close($ch);
-            $obj = json_decode($result);
-            $latVal = $obj->results[0]->geometry->location->lat;
-            $lngVal = $obj->results[0]->geometry->location->lng;
-
-
-        }
-    } else {
-        $user_postcode = "unknown ";
-        $user_city = "address";
-    }
-
-
-// Category_info
-    $cat_query = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";
-    $cat_result = mysqli_query($mysqli, $cat_query);
-    if (mysqli_num_rows($cat_result) > 0) {
-        while ($row = mysqli_fetch_assoc($cat_result)) {
-            $cat_name = $row['name'];
-        }
-    }
-
-
-    $pic_query = " SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE ADVERTISEMENT_id = '{$ad_id}' LIMIT 1";
-    $pic_result = mysqli_query($mysqli, $pic_query);
-    if (mysqli_num_rows($pic_result) > 0) {
-        while ($row = mysqli_fetch_assoc($pic_result)) {
-            $pic_id = $row['id'];
-            $picture_name = $row['picture_name'];
-            $picture_url = $row['picture_url'];
-        }
-
-    } else {
-        $picture_name = "";
-        $picture_url = "http://www.nsrcel.org/wp-content/uploads/2018/01/product.png";
-    }
-
-
-
-    $final .= "{'ad_id': $ad_id,'listings_title': '$title ','listings_url': 'ad_page.php?ad_id=$ad_id','listings_cover': '$picture_url.$picture_name','cat': '$cat_name','cat_url': 'ad_per_cat.php?cat_id=$category_id','latitude': $latVal,'longitude': $lngVal,'price': $price,'currency': '€','location': '$user_country','time': '$time'},";
-}
-
-
-$final .=" ]}";
-
-
-$fp = 'js/data.json';
-
-// Write the contents back to the file
-file_put_contents($fp, $final);
 
 ?>
 <!DOCTYPE html>
@@ -152,82 +69,10 @@ file_put_contents($fp, $final);
          <div class="loader-section section-left"></div>
          <div class="loader-section section-right"></div>
       </div>
-      <!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
-      <div class="color-switcher" id="choose_color">
-         <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
-         <h5>STYLE SWITCHER</h5>
-         <div class="theme-colours">
-            <p> Choose Colour style </p>
-            <ul>
-               <li>
-                  <a href="#." class="defualt" id="defualt"></a>
-               </li>
-               <li>
-                  <a href="#." class="green" id="green"></a>
-               </li>
-               <li>
-                  <a href="#." class="blue" id="blue"></a>
-               </li>
-               <li>
-                  <a href="#." class="red" id="red"></a>
-               </li>
-               
-               <li>
-                  <a href="#." class="sea-green" id="sea-green"></a>
-               </li>
-              
-            </ul>
-         </div>
-         <div class="clearfix"> </div>
-      </div>
       <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
       <div class="colored-header">
          <!-- Top Bar -->
-         <div class="header-top">
-            <div class="container">
-               <div class="row">
-                  <!-- Header Top Left -->
-                  <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
-                     <ul class="listnone">
-                        <li><a href="about.html"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
-                        <li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
-                        <li class="dropdown">
-                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>
-                           <ul class="dropdown-menu">
-                              <li><a href="#">English</a></li>
-                              <li><a href="#">Swedish</a></li>
-                              <li><a href="#">Arabic</a></li>
-                              <li><a href="#">Russian</a></li>
-                              <li><a href="#">chinese</a></li>
-                           </ul>
-                        </li>
-                     </ul>
-                  </div>
-                  <!-- Header Top Right Social -->
-                  <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
-                     <div class="pull-right">
-                        <ul class="listnone">
-                           <li><a href="login.html"><i class="fa fa-sign-in"></i> Log in</a></li>
-                           <li><a href="register.html"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
-                           <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> Umair <span class="caret"></span></a>
-                              <ul class="dropdown-menu">
-                                 <li><a href="profile.html">User Profile</a></li>
-                                 <li><a href="profile-2.html">User Profile 2</a></li>
-                                 <li><a href="archives.html">Archives</a></li>
-                                 <li><a href="active-ads.html">Active Ads</a></li>
-                              <li><a href="pending-ads.html">Pending Ads</a></li>
-                                 <li><a href="favourite.html">Favourite Ads</a></li>
-                                 <li><a href="messages.html">Message Panel</a></li>
-                                 <li><a href="deactive.html">Account Deactivation</a></li>
-                              </ul>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
+          <?php include 'topbar-en.php';?>
          <!-- Top Bar End -->
          <!-- Navigation Menu -->
          <nav id="menu-1" class="mega-menu">
