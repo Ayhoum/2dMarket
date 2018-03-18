@@ -694,7 +694,6 @@ require_once "scripts/time_elapse.php";
                      <div id="products" class=" list-group">
                         <div class="row">
                            <?php
-                           include '../scripts/db_connection.php';
                            include 'scripts/index_1.php';
                            ?>
                         </div>
@@ -735,73 +734,34 @@ require_once "scripts/time_elapse.php";
          <!-- /.funfacts -->
          <!-- =-=-=-=-=-=-= Statistics Counter End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= Blog Section =-=-=-=-=-=-= -->
-         <section class="custom-padding gray">
-            <!-- Main Container -->
-            <div class="container">
-               <!-- Content Box -->
-               <!-- Row -->
-               <div class="row">
-                  <!-- Heading Area -->
-                  <div class="heading-panel">
-                     <div class="col-xs-12 col-md-12 col-sm-12">
-                        <h3 class="main-title text-left">
-                           Latest Blog Post
-                        </h3>
-                     </div>
+          <section class="custom-padding">
+              <!-- Main Container -->
+              <div class="container">
+                  <!-- Row -->
+                  <div class="row">
+                      <!-- Heading Area -->
+                      <div class="heading-panel">
+                          <div class="col-xs-12 col-md-12 col-sm-12">
+                              <h3 class="main-title text-left">
+                                  Latest Ads
+                              </h3>
+                          </div>
+                      </div>
+                      <!-- Middle Content Box -->
+                      <div class="col-md-12 col-xs-12 col-sm-12">
+                          <div class="row">
+                              <div class="featured-slider owl-carousel owl-theme">
+                                  <?php include "scripts/index_2.php";?>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Middle Content Box End -->
                   </div>
-                  <!-- Middle Content Box -->
-                  <div class="col-md-12 col-xs-12 col-sm-12">
-                     <div class="row">
-                        <!-- Blog Post-->
-                         <?php include 'scripts/index_2.php';?>
-                     </div>
-                  </div>
-                  <!-- Middle Content Box End -->
-               </div>
-               <!-- Row End -->
-            </div>
-            <!-- Main Container End -->
-         </section>
-         <!-- =-=-=-=-=-=-= Blog Section End =-=-=-=-=-=-= -->
-         <!-- =-=-=-=-=-=-= Partner Section =-=-=-=-=-=-= -->
-         <section class="section-padding" id="partner">
-            <div class="container">
-               <!-- Row -->
-               <div class="row">
-                  <div class="col-sm-12 col-md-12 col-xs-12  no-padding">
-                     <ul>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_5.png"></a>
-                        </li>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_6.png"></a>
-                        </li>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_7.png"></a>
-                        </li>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_8.png"></a>
-                        </li>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_9.png"></a>
-                        </li>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_10.png"></a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-               <!-- Row End -->
-            </div>
-            <!-- end container -->
-         </section>
-         <!-- =-=-=-=-=-=-= Partner Section  End =-=-=-=-=-=-= -->
+                  <!-- Row End -->
+              </div>
+              <!-- Main Container End -->
+          </section>
+          <!-- =-=-=-=-=-=-= Blog Section End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
          <footer class="footer-area">
             <!--Footer Upper-->

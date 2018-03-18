@@ -9,7 +9,7 @@
 ?>
 <?php
 
-$ads = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' ORDER BY `id` DESC LIMIT 3";
+$ads = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' ORDER BY `id` DESC LIMIT 6";
 $ad_result = mysqli_query($mysqli, $ads);
 
 if (mysqli_num_rows($ad_result) > 0) {
@@ -21,6 +21,7 @@ if (mysqli_num_rows($ad_result) > 0) {
         $description = $row['description'];
         $condition = $row['condition'];
         $vistis = $row['visits'];
+        $ad_type = $row['ad_type'];
 
         $status = $row['status'];
         $selling_type = $row['selling_type'];
@@ -31,8 +32,8 @@ if (mysqli_num_rows($ad_result) > 0) {
 
 
         //extract date:
-        $date = strtotime($date);
-        $date = date('d/m/Y', $date);
+        require_once 'time_elapse.php';
+        $date = time_elapsed_string($date);
 
         // Category_info
         $cat_query = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";
@@ -89,47 +90,38 @@ if (mysqli_num_rows($ad_result) > 0) {
 
         ?>
         <div class="item">
-            <div class="col-md-4 col-xs-4 col-sm-4 no-padding">
+            <div class="col-md-12 col-xs-12 col-sm-12 clearfix">
                 <!-- Ad Box -->
                 <div class="category-grid-box">
                     <!-- Ad Img -->
                     <div class="category-grid-img">
-                        <img class="img-responsive" alt="" src="<?php echo $pic. $pic_name; ?>">
-                        <!-- Ad Status -->
+                        <img class="img-responsive" alt="" src="<?php echo $pic. $pic_name;?>">
+                        <!-- Ad Status --><?php if ($ad_type == "PREMIUM") {  ?><span class="ad-status"> PREMIUM </span><?php } ?>
                         <!-- User Review -->
                         <div class="user-preview">
-                            <a href="profile_2.php?user_id=<?php echo $user_id; ?>"> <img
-                                    src="../uploads/users/<?php echo $user_pic; ?>"
-                                    class="avatar avatar-small" alt=""> </a>
+                            <a href="profile_2.php?user_id=<?php  echo $user_id;?>"> <img src="<?php echo $user_pic;?>" class="avatar avatar-small" alt=""> </a>
                         </div>
-                        <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id; ?>"
-                                                class="view-details">View Details</a>
+                        <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id?>" class="view-details">View Details</a>
+                        <!-- Additional Info -->
+                        <div class="additional-information">
+                            <?php  echo $description;?>
+                        </div>
+                        <!-- Additional Info End-->
                     </div>
                     <!-- Ad Img End -->
                     <div class="short-description">
                         <!-- Ad Category -->
-                        <div class="category-title"><span><a
-                                    href="ad_per_cat.php?id=<?php echo $category_id; ?>"><?php echo $cat_name; ?></a></span>
-                        </div>
+                        <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
-                        <h3><a title=""
-                               href="ad_page.php?ad_id=<?php echo $ad_id; ?>"><?php echo $title; ?></a>
-                        </h3>
+                        <h3><a title="" href="single-page-listing.html"><?php echo $title;?></a></h3>
                         <!-- Price -->
-                        <div class="price"><?php    if ($selling_type=="BID"){
-                                    echo "Bid";
-                                } else {
-                                    echo "€ ". $price;
-                                }
-                                ?></div>
+                        <div class="price"><?php if ($selling_type == "FIXED_PRICE"){  echo "€ ". $price; }else { echo "(BID)";}?></div>
                     </div>
                     <!-- Addition Info -->
                     <div class="ad-info">
                         <ul>
-                            <li>
-                                <i class="fa fa-map-marker"></i><?php echo $user_postcode . " | " . $user_city; ?>
-                            </li>
-                            <li><i class="fa fa-clock-o"></i><?php echo $date; ?></li>
+                            <li><i class="fa fa-map-marker"></i><?php echo $location;?></li>
+                            <li><i class="fa fa-clock-o"></i> <?php echo  $date; ?> </li>
                         </ul>
                     </div>
                 </div>

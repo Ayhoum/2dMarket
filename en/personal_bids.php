@@ -391,8 +391,9 @@ include 'scripts/sessions.php';
                         <ul>
                             <li ><a href="profile.php">Profile</a></li>
                             <li ><a href="personal_ads.php">My Ads <span class="badge"><?php echo $ad_count; ?> </span></a></li>
-                            <li class="active"><a href="favourite_ads.php">Favourites Ads <span class="badge"><?php echo $fav_count; ?></span></a></li>
-                            <li><a href="personal_bids.php">My Bids <span class="badge"></span></a></li>
+                            <li ><a href="favourite_ads.php">Favourites Ads <span class="badge"><?php echo $fav_count; ?></span></a></li>
+                            <li class="active"><a href="personal_bids.php">My Bids <span class="badge"></span></a></li>
+
                             <li ><a href="messages.php">Messages</a></li>
                             <li><a href="logout.php">Logout</a></li>
                         </ul>
@@ -410,7 +411,7 @@ include 'scripts/sessions.php';
                         <div class="clearfix"></div>
                         <!-- Ads Archive -->
 
-                            <?php include 'scripts/favorite_ads_script.php';?>
+                            <?php include 'scripts/personal_bids.php';?>
                             <!-- Listing Ad Grid -->
 
                     </div>

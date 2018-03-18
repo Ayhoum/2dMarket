@@ -30,8 +30,8 @@ if (mysqli_num_rows($ad_result) > 0) {
 
 
         //extract date:
-        $date = strtotime($date);
-        $date = date('d/m/Y', $date);
+        require_once 'time_elapse.php';
+        $date = time_elapsed_string($date);
 
         // Category_info
         $cat_query = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";

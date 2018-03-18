@@ -21,7 +21,7 @@ session_start();
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="2D Market">
-    <title>AdForest | Largest Classifieds Portal</title>
+    <title>2D Market | Ads. Page </title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->

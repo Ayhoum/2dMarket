@@ -9,6 +9,7 @@ session_start();
 include '../../scripts/db_connection.php';
 
 if (isset($_GET['cat'])
+    && isset($_GET['subCat'])
     && isset($_GET['title'])
     && isset($_GET['price'])
     && isset($_GET['sellType'])
@@ -25,6 +26,7 @@ if (isset($_GET['cat'])
     $delivery_type  = mysqli_real_escape_string($mysqli,$_GET['delivery']);
     $condition      = mysqli_real_escape_string($mysqli,$_GET['cond']);
     $category_id    = mysqli_real_escape_string($mysqli,$_GET['cat']);
+    $sub_cat_id     = mysqli_real_escape_string($mysqli,$_GET['subCat']);
     $ad_type        = mysqli_real_escape_string($mysqli,$_GET['adType']);
     $price          = mysqli_real_escape_string($mysqli,$_GET['price']);
 
@@ -34,7 +36,7 @@ if (isset($_GET['cat'])
         $status = "AVAILABLE";
         $zeroVal = 0;
         $ins_ad_query  = "INSERT INTO `ADVERTISEMENT`";
-        $ins_ad_query .= "(`title`, `lang`, `selling_type`, `status`, `delivery_type`, `description`, `ad_type`, `USER_id`, `CATEGORY_id`, `condition`, `price`, `visits`)";
+        $ins_ad_query .= "(`title`, `lang`, `selling_type`, `status`, `delivery_type`, `description`, `ad_type`, `USER_id`, `CATEGORY_id`, `condition`, `price`, `visits`, `sub_cat_id`)";
         $ins_ad_query .= "VALUES (      '{$title}',
                                         '{$lang}',
                                         '{$selling_type}',
@@ -46,7 +48,8 @@ if (isset($_GET['cat'])
                                         '{$category_id}',
                                         '{$condition}',
                                         '{$price}',
-                                        '{$zeroVal}')";
+                                        '{$zeroVal}',
+                                        '{$sub_cat_id}')";
 
         $ins_ad_result = mysqli_query($mysqli,$ins_ad_query);
 

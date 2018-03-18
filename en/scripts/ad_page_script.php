@@ -240,8 +240,8 @@ if (isset($_GET['ad_id'])) {
 //should we delete the previous bids from the same user??. Also, don't forget to send email !
 
 
-                $ins_bid_query = "INSERT INTO `BID` (`amount`, `user_id`, `AUCTION_id`)";
-                $ins_bid_query .= "VALUES ({$bid},{$user_id},{$action_id})";
+                $ins_bid_query = "INSERT INTO `BID` (`amount`, `user_id`, `AUCTION_id`, `ad_id`)";
+                $ins_bid_query .= "VALUES ({$bid},{$user_id},{$action_id}, '{$ad_id}')";
                 $ins_bid_result = mysqli_query($mysqli, $ins_bid_query);
 
             } else {
@@ -257,8 +257,8 @@ if (isset($_GET['ad_id'])) {
                     $bid = $_POST['bid'];
                     $user_id = $_SESSION['id'];
 
-                    $ins_bid_query = "INSERT INTO `BID` (`amount`, `user_id`, `AUCTION_id`)";
-                    $ins_bid_query .= "VALUES ({$bid},{$user_id},{$action_id})";
+                    $ins_bid_query = "INSERT INTO `BID` (`amount`, `user_id`, `AUCTION_id`, `ad_id`)";
+                    $ins_bid_query .= "VALUES ({$bid},{$user_id},{$action_id}, {$ad_id})";
                     $ins_bid_result = mysqli_query($mysqli, $ins_bid_query);
 
                 }

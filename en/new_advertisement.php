@@ -732,6 +732,8 @@ require_once '../scripts/db_connection.php';
                    var deliveryTypeField    = $("#deliveryType").val();
                    var desField             = CKEDITOR.instances.editor2.getData();
                    var adTypeField          = $("#adType").val();
+                   var categoryId ;
+                   var subCategoryId ;
 
                    if(categoryField == ''
                        || titleField == ''
@@ -766,7 +768,15 @@ require_once '../scripts/db_connection.php';
 
                        $("#fieldsError").modal();
                    }else{
-                       $.post('scripts/handle_addProduct.php?cat=' + categoryField
+                       if (categoryField != ''){
+                           var resultCat = categoryField.split("-");
+                           categoryId    = resultCat[0];
+                           subCategoryId = resultCat[1];
+                       }
+
+                       $.post('scripts/handle_addProduct.php?cat=' + categoryId
+
+                           + '&subCat=' + subCategoryId
                            + '&title=' + titleField
                            + '&price=' + priceField
                            + '&sellType=' + sellTypeField
@@ -775,6 +785,7 @@ require_once '../scripts/db_connection.php';
                            + '&des=' + desField
                            + '&adType=' + adTypeField, function (response) {
 
+                           alert(response);
                            if (response != 'error') {
                                myDr.processQueue();
                            }
