@@ -89,7 +89,7 @@ if (isset($_GET['cat_id'])){
                 <div class="category-grid-box">
                     <!-- Ad Img -->
                     <div class="category-grid-img">
-                        <img class="img-responsive" alt="" src="<?php echo $pic . $pic_name; ?>">
+                        <img class="img-responsive " style="width: 100%; height: 200px; object-fit: cover;" alt="" src="<?php echo $pic . $pic_name ;?>">
                         <!-- Ad Status --><span class="ad-status"> PREMIUM </span>
 
                         <!-- Ad Status -->
@@ -230,7 +230,7 @@ if (isset($_GET['cat_id'])){
                 <div class="category-grid-box">
                     <!-- Ad Img -->
                     <div class="category-grid-img">
-                        <img class="img-responsive" alt="" src="<?php echo $pic . $pic_name ;?>">
+                        <img class="img-responsive " style="width: 100%; height: 200px; object-fit: cover;" alt="" src="<?php echo $pic . $pic_name ;?>">
                         <!-- Ad Status --><span class="ad-status"> PREMIUM </span>
 
                         <!-- Ad Status -->

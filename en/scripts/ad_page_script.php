@@ -538,10 +538,7 @@ if (isset($_GET['ad_id'])) {
                                             <!-- Ad History -->
                                             <div class="clearfix archive-history">
                                                 <div class="last-updated"><?php echo $date; ?></div>
-                                                <div class="ad-meta"><a class="btn save-ad"><i
-                                                                class="fa fa-heart-o"></i> Add to Favorite</a> <a
-                                                            class="btn btn-success"><i class="fa fa-phone"></i> View
-                                                        Details.</a></div>
+                                                <div class="ad-meta"><a class="btn save-ad"><i class="fa fa-heart-o"></i> Add to Favorite</a> <a class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a></div>
                                             </div>
                                         </div>
                                         <!-- Ad Desc End -->

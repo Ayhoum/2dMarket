@@ -14,7 +14,7 @@ include '../scripts/db_connection.php';
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="2D Market">
-    <title>AdForest | Largest Classifieds Portal</title>
+    <title>2D Market | Your search results </title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -58,13 +58,6 @@ include '../scripts/db_connection.php';
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-        .img-responsive img {
-            height:250px;
-            width:100%;
-        }
-
-    </style>
 </head>
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
