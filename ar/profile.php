@@ -178,7 +178,7 @@ include 'scripts/user_profile.php';
                                        </div>
                                        <div class="grid-col-4">
                                           <ul>
-                                             <li><a href="index-4.html">الرئيسية 5 (مع قائمة خريطة)</a></li>
+                                             <li><a href="index-4.php">الرئيسية 5 (مع قائمة خريطة)</a></li>
                                              <li><a href="index-5.html">الرئيسية 6 (مودرن ستايل)</a></li>
                                              <li><a href="index-6.html">الرئيسية 7 (التغيير)</a></li>
                                              <li><a href="index-7.html">الصفحة الرئيسية 8 (الفئة المتزلج)</a></li>

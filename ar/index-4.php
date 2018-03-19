@@ -1,12 +1,10 @@
 ﻿<?php
-session_start();
-ob_start();
-require_once "../scripts/db_connection.php";
-include 'scripts/sessions.php';
-include 'scripts/user_profile.php';
+
+include '../scripts/db_connection.php';
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
    <head>
       <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
       <!--[if IE]>
@@ -14,7 +12,7 @@ include 'scripts/user_profile.php';
       <![endif]-->
       <meta name="description" content="">
       <meta name="author" content="ScriptsBundle">
-      <title>2D Market | الاعلانـات الشخصيـة</title>
+      <title>2D Market | الصفحـة الرئيسيـة</title>
       <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
       <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
       <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -52,8 +50,6 @@ include 'scripts/user_profile.php';
       <link rel="stylesheet" id="color" href="css/colors/defualt.css">
       <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
       <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
-      <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
-      <link href="skins/minimal/minimal.css" rel="stylesheet">
       <!-- JavaScripts -->
       <script src="js/modernizr.js"></script>
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -65,13 +61,13 @@ include 'scripts/user_profile.php';
    </head>
    <body class="rtl">
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
-          <div id="loader-wrapper">
+      <div id="loader-wrapper">
          <div id="loader"></div>
          <div class="loader-section section-left"></div>
          <div class="loader-section section-right"></div>
       </div>
-     <!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
-    <div class="color-switcher" id="choose_color">
+      <!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
+      <div class="color-switcher" id="choose_color">
          <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
          <h5>STYLE SWITCHER</h5>
          <div class="theme-colours">
@@ -328,172 +324,439 @@ include 'scripts/user_profile.php';
       </div>
       <!-- Navigation Menu End -->
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
-      <!-- Small Breadcrumb -->
-      <div class="small-breadcrumb">
-         <div class="container">
-            <div class=" breadcrumb-link">
-               <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="#">الصفحات</a></li>
-                  <li><a href="#">الملف الشخصي</a></li>
-                  <li><a class="active" href="#">إعلانات نشطة</a></li>
-               </ul>
-            </div>
+      <!-- =-=-=-=-=-=-= Listing Map =-=-=-=-=-=-= -->
+      <section class="clearfix">
+         <div class="map">
+            <div id="map"></div>
          </div>
-      </div>
-      <!-- Small Breadcrumb -->
+         <!-- end map -->
+      </section>
+      <!-- =-=-=-=-=-=-= Listing Map End =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Advance Search =-=-=-=-=-=-= -->
+      <section class="search-2">
+         <div class="container">
+            <!-- Title -->
+            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+               <div class="search-title">Browse Ads</div>
+            </div>
+            <div class="row">
+               <form method="post" class="search-form">
+                  <!-- Category -->
+                  <div class="col-md-3 col-xs-12 col-sm-3">
+                     <select class="category form-control">
+                        <option label="">اختر من القائمة</option>
+                         <?php
+                         // GET ALL CATEGORIES from DB
+                         $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'AR' ORDER BY `id` ASC  ";
+                         $cat_result= mysqli_query($mysqli, $cat_query);
+                         if (mysqli_num_rows($cat_result) > 0 ) {
+                             while ($row = mysqli_fetch_assoc($cat_result)) {
+                                 $id = $row['id'];
+                                 $name = $row['name'];
+                                 // GET ALL RELATED SUB_CATEGORIES from DB
+                                 $sub_cat_query = "SELECT * FROM `SUB_CATEGORY`  WHERE `CATEGORY_id` = '{$id}'  ";
+                                 $sub_cat_result = mysqli_query($mysqli, $sub_cat_query);
+                                 if (mysqli_num_rows($sub_cat_result) > 0) {
+                                     while ($row = mysqli_fetch_assoc($sub_cat_result)) {
+                                         $sub_id = $row['id'];
+                                         $sub_name = $row['name'];
+                                         ?>
+                                         <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
+                                         <?php
+                                     }
+                                 } else {
+                                     ?>
+                                     <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name ; ?></option>
+                                     <?php
+                                 }
+                             }
+                         }
+                         ?>
+                     </select>
+                  </div>
+                  <!-- Search Field -->
+                  <div class="col-md-3 col-xs-12 col-sm-3">
+                     <input type="text" class="form-control" placeholder="عن ماذا تريد البحث..." />
+                  </div>
+                  <!-- Price Range SLider -->
+                  <div class="col-md-3 col-xs-12 col-sm-3">
+                     <span class="price-slider-value">Price ($) <span id="price-min"></span> - <span id="price-max"></span></span>
+                     <div id="price-slider"></div>
+                  </div>
+                  <!-- Search Button -->
+                  <div class="col-md-3 col-xs-12 col-sm-3">
+                     <button type="submit" class="btn btn-block btn-light">Search</button>
+                  </div>
+                  <!-- end .item -->
+               </form>
+               <!-- end .search-form -->
+            </div>
+            <!-- end .tab-panel -->
+         </div>
+         <!-- end .container -->
+      </section>
+      <!-- =-=-=-=-=-=-= Advance Search End =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
-         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
-         <section class="section-padding gray">
+         <!-- =-=-=-=-=-=-= الفئات =-=-=-=-=-=-= -->
+         <section class="custom-padding gray categories">
             <!-- Main Container -->
             <div class="container">
                <!-- Row -->
                <div class="row">
-                  <!-- Middle Content Area -->
-                  <div class="col-md-4 col-sm-12 col-xs-12 leftbar-stick blog-sidebar">
-                     <!-- Sidebar Widgets -->
-                      <div class="user-profile">
-                          <a href="profile.html"><img src="<?php echo $user_pic; ?>" alt=""></a>
-                          <div class="profile-detail">
-                              <h6><?php echo $user_full_name ;?></h6>
-                              <ul class="contact-details">
-                                  <li>
-                                      <i class="fa fa-map-marker"></i> <?php echo $location ;?>
-                                  </li>
-                                  <li>
-                                      <i class="fa fa-envelope"></i><?php echo $email; ?>
-                                  </li>
-                                  <li>
-                                      <i class="fa fa-phone"></i> <?php echo $phone; ?>
-                                  </li>
-                              </ul>
-                          </div>
-                          <ul>
-                              <li><a href="profile.html">الملف الشخصي</a></li>
-                              <li class="active"><a href="personal_ads.php">الإعلانات الخاصة بي <span class="badge"><?php echo $ad_count; ?></span></a></li>
-                              <li><a href="favourite.html">إعلانات مفضلة <span class="badge">15</span></a></li>
-                              <li ><a href="messages.html">رسائل</a></li>
-                              <li><a href="#">تسجيـل الخروج</a></li>
-                          </ul>
-                      </div>
-                  </div>
-                  <div class="col-md-8 col-sm-12 col-xs-12">
-                     <!-- Row -->
-                     <div class="row">
-                        <!-- Sorting Filters -->
-                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                           <!-- Sorting Filters Breadcrumb -->
-                           <!-- Sorting Filters Breadcrumb End -->
-                        </div>
-                        <!-- Sorting Filters End-->
-                        <div class="clearfix"></div>
-                        <!-- Ads Archive -->
-                        <div class="posts-masonry">
-                           <!-- Listing Ad Grid -->
-                           <?php include 'scripts/personal_ads_script.php' ;?>
-                           <!-- Listing Ad Grid -->
-                        </div>
-                        <!-- Ads Archive End -->  
-                        <div class="clearfix"></div>
-                        <!-- Pagination -->  
-                        <div class="col-md-12 col-xs-12 col-sm-12">
-                           <ul class="pagination pagination-lg">
-                              <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-                              <li><a href="#">1</a></li>
-                              <li class="active"><a href="#">2</a></li>
-                              <li><a href="#">3</a></li>
-                              <li><a href="#">4</a></li>
-                              <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                           </ul>
-                        </div>
-                        <!-- Pagination End -->   
+                  <!-- Category -->
+                  <div class="col-md-3 col-sm-6">
+                     <div class="box">
+                        <img alt="img" src="images/category/cars.png">
+                        <h4><a href="#">سيارات و دراجات</a></h4>
+                        <strong>1,265 وظائف</strong> 
                      </div>
-                     <!-- Row End -->
                   </div>
-                  <!-- Middle Content Area  End -->
+                  <!-- Category -->
+                  <div class="col-md-3 col-sm-6">
+                     <div class="box">
+                        <img alt="img" src="images/category/mobile-1.png">
+                        <h4><a href="#">الهواتف النقالة</a></h4>
+                        <strong>1,265 Ads</strong> 
+                     </div>
+                  </div>
+                  <!-- Category -->
+                  <div class="col-md-3 col-sm-6">
+                     <div class="box">
+                        <img alt="img" src="images/category/applinces.png">
+                        <h4><a href="#">الأجهزة المنزلية</a></h4>
+                        <strong>6,213 Ads</strong> 
+                     </div>
+                  </div>
+                  <!-- Category -->
+                  <div class="col-md-3 col-sm-6">
+                     <div class="box">
+                        <img alt="img" src="images/category/cloths.png">
+                        <h4><a href="#">ملابس</a></h4>
+                        <strong>3,750 Ads</strong> 
+                     </div>
+                  </div>
+                  <!-- Category -->
+                  <div class="col-md-3 col-sm-6">
+                     <div class="box">
+                        <img alt="img" src="images/category/education.png">
+                        <h4><a href="#">التعليم & Art</a></h4>
+                        <strong>5,913 Ads</strong> 
+                     </div>
+                  </div>
+                  <!-- Category -->
+                  <div class="col-md-3 col-sm-6">
+                     <div class="box">
+                        <img alt="img" src="images/category/computer-1.png">
+                        <h4><a href="#"> أجهزة الكمبيوتر المحمولة</a></h4>
+                        <strong>9,942 Ads</strong> 
+                     </div>
+                  </div>
+                  <!-- Category -->
+                  <div class="col-md-3 col-sm-6">
+                     <div class="box">
+                        <img alt="img" src="images/category/pets.png">
+                        <h4><a href="#">الحيوانات الأليفة و الحيوانات</a></h4>
+                        <strong>3,891 Ads</strong> 
+                     </div>
+                  </div>
+                  <!-- Category -->
+                  <div class="col-md-3 col-sm-6">
+                     <div class="box">
+                        <img alt="img" src="images/category/newspaper.png">
+                        <h4><a href="#">Newspaper وظائف</a></h4>
+                        <strong>7,418 Ads</strong> 
+                     </div>
+                  </div>
                </div>
                <!-- Row End -->
             </div>
             <!-- Main Container End -->
          </section>
-         <!-- =-=-=-=-=-=-= Ads أرشيف End =-=-=-=-=-=-= -->
-         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-         <footer>
-            <!-- Footer Content -->
-            <div class="footer-top">
-               <div class="container">
+         <!-- =-=-=-=-=-=-= الفئات =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= Call to Action =-=-=-=-=-=-= -->
+         <div class="parallex bg-img-3  section-padding">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-8 col-sm-12">
+                     <div class="call-action">
+                        <i class="flaticon-shapes"></i>
+                        <h4>قـم الان بالانضـمام الى موقعنا واستفد من المزايا الكثيرة </h4>
+                        <p>كن متأكداً دوماً بأن اعلانك سيصل الى اكبر عدد ممكن من المتصفحين</p>
+                     </div>
+                     <!-- end subsection-text -->
+                  </div>
+                  <!-- end col-md-8 -->
+                  <div class="col-md-4 col-sm-12">
+                     <div class="parallex-button"> <a href="login.php" class="btn btn-theme">انشر إعلانك مجانا <i class="fa fa-angle-double-right "></i></a> </div>
+                     <!-- end parallex-button -->
+                  </div>
+                  <!-- end col-md-4 -->
+               </div>
+               <!-- end row -->
+            </div>
+            <!-- end container -->
+         </div>
+         <!-- =-=-=-=-=-=-= Call to Action =-=-=-=-=-=-= -->
+
+         <!-- =-=-=-=-=-=-= إعلانات مميزة =-=-=-=-=-=-= -->
+         <section class="custom-padding">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <!-- Heading Area -->
+                  <div class="heading-panel">
+                     <div class="col-xs-12 col-md-12 col-sm-12">
+                        <h3 class="main-title text-left">
+                           إعلانات مميزة
+                        </h3>
+                        <!-- Style Switcher -->
+                        <div class="switcher pull-right flip">
+                           <a href="#" id="list" class="btn btn-theme">
+                           <span class="fa fa-list"></span>
+                           قائمـة
+                           </a> 
+                           <a href="#" id="grid" class="btn active btn-theme">
+                           <span class="fa fa-th"></span>
+                           شبكـة
+                           </a>
+                        </div>
+                        <!-- Style Switcher End -->
+                     </div>
+                  </div>
+                  <!-- Middle Content Box -->
+                  <div class="col-md-12 col-xs-12 col-sm-12">
+                     <div id="products" class=" list-group">
+                        <div class="row">
+                           <!-- Listing Ad Grid -->
+                          <?php include 'scripts/index_1.php';?>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Middle Content Box End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= إعلانات مميزة End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= Statistics Counter =-=-=-=-=-=-= -->
+         <div class="funfacts custom-padding parallex">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="number"><span class="timer" data-from="0" data-to="1238" data-speed="1500" data-refresh-interval="5">0</span>+</div>
+                     <h4>عدد لاعلانات <span>في 2D Market</span></h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="number"><span class="timer" data-from="0" data-to="820" data-speed="1500" data-refresh-interval="5">0</span>+</div>
+                     <h4>عدد المستخدمين<span>المسجلين</span></h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="number"><span class="timer" data-from="0" data-to="1042" data-speed="1500" data-refresh-interval="5">0</span>+</div>
+                     <h4>اعلانـات <span>السيارات </span></h4>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                     <div class="number"><span class="timer" data-from="0" data-to="34" data-speed="1500" data-refresh-interval="5">0</span>+</div>
+                     <h4>اعلانــات<span>الهواتف</span></h4>
+                  </div>
+               </div>
+               <!-- /.row -->
+            </div>
+            <!-- /.container -->
+         </div>
+         <!-- /.funfacts -->
+         <!-- =-=-=-=-=-=-= Statistics Counter End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= Blog Section =-=-=-=-=-=-= -->
+          <section class="custom-padding">
+              <!-- Main Container -->
+              <div class="container">
+                  <!-- Row -->
                   <div class="row">
-                     <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- Info Widget -->
-                        <div class="widget">
-                           <div class="logo"> <img alt="" src="images/logo-1.png"> </div>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
-                           <ul>
-                              <li><img src="images/appstore.png" alt=""></li>
-                              <li><img src="images/googleplay.png" alt=""></li>
-                           </ul>
-                        </div>
-                        <!-- Info Widget Exit -->
-                     </div>
-                     <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- تابعنا -->
-                        <div class="widget socail-icons">
-                           <h5>تابعنا</h5>
-                           <ul>
-                              <li><a class="fb" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                              <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                              <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                              <li><a class="googleplus" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
-                           </ul>
-                        </div>
-                        <!-- تابعنا End -->
-                     </div>
-                     <div class="col-md-6  col-sm-6 col-xs-12">
-                        <!-- Newslatter -->
-                        <div class="widget widget-newsletter">
-                           <h5>Singup عن النشرة الأسبوعية</h5>
-                           <div class="fieldset">
-                              <p>قد نرسل لك معلومات عن الأحداث، وندوات والمنتجات والخدمات ذات الصلة والتي نعتقد.</p>
-                              <form>
-                                 <input class="" value="Enter your email address" type="text">
-                                 <input class="submit-btn" name="submit" value="عرض" type="submit"> 
-                              </form>
+                      <!-- Heading Area -->
+                      <div class="heading-panel">
+                          <div class="col-xs-12 col-md-12 col-sm-12">
+                              <h3 class="main-title text-left">
+                                  الاعلانات المضافة حديثاً
+                              </h3>
+                          </div>
+                      </div>
+                      <!-- Middle Content Box -->
+                      <div class="col-md-12 col-xs-12 col-sm-12">
+                          <div class="row">
+                              <div class="featured-slider owl-carousel owl-theme">
+                                  <?php include "scripts/index_2.php";?>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Middle Content Box End -->
+                  </div>
+                  <!-- Row End -->
+              </div>
+              <!-- Main Container End -->
+          </section>
+         <!-- =-=-=-=-=-=-= Blog Section End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= Partner Section =-=-=-=-=-=-= -->
+         <section class="section-padding" id="partner">
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
+                  <div class="col-sm-12 col-md-12 col-xs-12  no-padding">
+                     <ul>
+                        <!-- Partners -->
+                        <li class="col-sm-2 col-xs-6 col-md-2">
+                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_5.png"></a>
+                        </li>
+                        <!-- Partners -->
+                        <li class="col-sm-2 col-xs-6 col-md-2">
+                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_6.png"></a>
+                        </li>
+                        <!-- Partners -->
+                        <li class="col-sm-2 col-xs-6 col-md-2">
+                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_7.png"></a>
+                        </li>
+                        <!-- Partners -->
+                        <li class="col-sm-2 col-xs-6 col-md-2">
+                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_8.png"></a>
+                        </li>
+                        <!-- Partners -->
+                        <li class="col-sm-2 col-xs-6 col-md-2">
+                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_9.png"></a>
+                        </li>
+                        <!-- Partners -->
+                        <li class="col-sm-2 col-xs-6 col-md-2">
+                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_10.png"></a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- end container -->
+         </section>
+         <!-- =-=-=-=-=-=-= Partner Section  End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <footer class="footer-area">
+            <!--Footer Upper-->
+            <div class="footer-content">
+               <div class="container">
+                  <div class="row clearfix">
+                     <!--Two 4th column-->
+                     <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix">
+                           <div class="col-lg-7 col-sm-6 col-xs-12 column">
+                              <div class="footer-widget about-widget">
+                                 <div class="logo">
+                                    <a href="index.html"><img alt="" class="img-responsive" src="images/logo-1.png"></a>
+                                 </div>
+                                 <div class="text">
+                                    <p>Lorem ipsum dolor sit amet, eu me.</p>
+                                 </div>
+                                 <ul class="contact-info">
+                                    <li><span class="icon fa fa-map-marker"></span> 60 Link Road Lhr. باكستان 54770</li>
+                                    <li><span class="icon fa fa-phone"></span> (042) 1234567890</li>
+                                    <li><span class="icon fa fa-envelope-o"></span> contant@scriptsbundle.com</li>
+                                    <li><span class="icon fa fa-fax"></span> (042) 1234 7777</li>
+                                 </ul>
+                                 <div class="social-links-two clearfix"> 
+                                    <a class="facebook img-circle" href="#"><span class="fa fa-facebook-f"></span></a>
+                                    <a class="twitter img-circle" href="#"><span class="fa fa-twitter"></span></a>
+                                    <a class="google-plus img-circle" href="#"><span class="fa fa-google-plus"></span></a>
+                                    <a class="linkedin img-circle" href="#"><span class="fa fa-pinterest-p"></span></a>
+                                    <a class="linkedin img-circle" href="#"><span class="fa fa-linkedin"></span></a> 
+                                 </div>
+                              </div>
+                           </div>
+                           <!--Footer Column-->
+                           <div class="col-lg-5 col-sm-6 col-xs-12 column">
+                              <div class="heading-panel">
+                                 <h3 class="main-title text-left">خدماتنا</h3>
+                              </div>
+                              <div class="footer-widget links-widget">
+                                 <ul>
+                                    <li><a href="#">Web Development</a></li>
+                                    <li><a href="#">Web Designing</a></li>
+                                    <li><a href="#">Android Development</a></li>
+                                    <li><a href="#">Theme Development</a></li>
+                                    <li><a href="#">IOS Development</a></li>
+                                 </ul>
+                              </div>
                            </div>
                         </div>
-                        <!-- Newslatter -->
                      </div>
+                     <!--Two 4th column End-->
+                     <!--Two 4th column-->
+                     <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class="row clearfix">
+                           <!--Footer Column-->
+                           <div class="col-lg-7 col-sm-6 col-xs-12 column">
+                              <div class="footer-widget news-widget">
+                                 <div class="heading-panel">
+                                    <h3 class="main-title text-left"> أحدث الأخبار</h3>
+                                 </div>
+                                 <!--News Post-->
+                                 <div class="news-post">
+                                    <div class="icon"></div>
+                                    <div class="news-content">
+                                       <figure class="image-thumb"><img alt="" src="images/blog/popular-2.jpg"></figure>
+                                       <a href="#">If you need a crown or lorem an implant you will pay it gap it</a>
+                                    </div>
+                                    <div class="time">July 2, 2014</div>
+                                 </div>
+                                 <!--News Post-->
+                                 <div class="news-post">
+                                    <div class="icon"></div>
+                                    <div class="news-content">
+                                       <figure class="image-thumb"><img alt="" src="images/blog/popular-1.jpg"></figure>
+                                       <a href="#">If you need a crown or lorem an implant you will pay it gap it</a>
+                                    </div>
+                                    <div class="time">July 2, 2014</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <!--Footer Column-->
+                           <div class="col-lg-5 col-sm-6 col-xs-12 column">
+                              <div class="footer-widget links-widget">
+                                 <div class="heading-panel">
+                                    <h3 class="main-title text-left"> روابط سريعة</h3>
+                                 </div>
+                                 <ul>
+                                    <li><a href="about.html">معلومات عنا</a></li>
+                                    <li><a href="#">Our Team</a></li>
+                                    <li><a href="#">خدماتنا</a></li>
+                                    <li><a href="index-7.html">One Page</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--Two 4th column End-->
                   </div>
                </div>
             </div>
-            <!-- Copyrights -->
-            <div class="copyrights">
-               <div class="container">
-                  <div class="copyright-content">
-                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                           <p>© 2017 AForest جميع الحقوق محفوظة. تصميم بواسطة <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
-                        </div>
-                     </div>
-                  </div>
+            <!--Footer Bottom-->
+            <div class="footer-copyright">
+               <div class="container clearfix">
+                  <!--Copyright-->
+                  <div class="copyright text-center">حقوق التأليف والنشر 2017 © موضوع أنشأتها <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> كل الحقوق محفوظة</div>
                </div>
             </div>
          </footer>
          <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
       </div>
-      <!-- Main Content Area End --> 
+      <!-- =-=-=-=-=-=-= Main Content Area End =-=-=-=-=-=-= -->
       <!-- Post Ad Sticky -->
-      <a href="#" class="sticky-post-button hidden-xs">
+      <a href="#" class="sticky-post-button">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>
          <h4>يبيع</h4>
       </a>
-      <!-- Back To Top -->
       <a href="#0" class="cd-top">Top</a>
-      <!-- Back To Top -->
-
-     <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
       <script src="js/jquery.min.js"></script>
       <!-- Bootstrap Core Css  -->
       <script src="js/bootstrap.min.js"></script>
@@ -527,5 +790,17 @@ include 'scripts/user_profile.php';
       <script src="js/color-switcher.js"></script>
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
+      <!-- Googgle map For THis Page Only -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVj6yChAfe1ilA4YrZgn_UCAnei8AhQxQ&sensor=false"></script>      <script src="js/infobox.js"></script>
+      <!-- Parallax -->
+      <script src="js/data.json"></script>
+      <script src="js/markerclusterer.js"></script>
+      <script src="js/markers-map.js"></script>
+      <script type="text/javascript">
+	      "use strict";
+         google.maps.event.addDomListener(window, 'load', speedTest.init);
+		 (jQuery);
+      </script>
    </body>
 </html>
+
