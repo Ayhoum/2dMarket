@@ -5,6 +5,8 @@ include '../scripts/db_connection.php';
 //session_start();
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,7 @@ include '../scripts/db_connection.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
     <meta name="description" content="">
-    <meta name="author" content="2D Market">
+    <meta name="author" content="ScriptsBundle">
     <title>AdForest | Largest Classifieds Portal</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
@@ -37,6 +39,8 @@ include '../scripts/db_connection.php';
     <link href="css/select2.min.css" rel="stylesheet" />
     <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
     <link href="css/nouislider.min.css" rel="stylesheet">
+    <!-- =-=-=-=-=-=-= Bootstrap Rtl Style =-=-=-=-=-=-= -->
+    <link href="css/bootstrap-rtl.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
     <link href="css/slider.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
@@ -58,25 +62,89 @@ include '../scripts/db_connection.php';
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-        .img-responsive img {
-            height:250px;
-            width:100%;
-        }
-
-    </style>
 </head>
-<body>
+<body class="rtl">
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
     <div id="loader"></div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
+<!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
+<div class="color-switcher" id="choose_color">
+    <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
+    <h5>STYLE SWITCHER</h5>
+    <div class="theme-colours">
+        <p> Choose Colour style </p>
+        <ul>
+            <li>
+                <a href="#." class="defualt" id="defualt"></a>
+            </li>
+            <li>
+                <a href="#." class="green" id="green"></a>
+            </li>
+            <li>
+                <a href="#." class="blue" id="blue"></a>
+            </li>
+            <li>
+                <a href="#." class="red" id="red"></a>
+            </li>
 
+            <li>
+                <a href="#." class="sea-green" id="sea-green"></a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!-- =-=-=-=-=-=-= Colored Header =-=-=-=-=-=-= -->
 <div class="colored-header">
     <!-- Top Bar -->
-    <?php include "topbar-en.php";?>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <!-- Header Top Left -->
+                <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
+                    <ul class="listnone">
+                        <li><a href="about.html"><i class="fa fa-heart-o" aria-hidden="true"></i> حول</a></li>
+                        <li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> الأسئلة الأكثر شيوعا</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> لغة <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">الإنجليزية</a></li>
+                                <li><a href="#">اللغة السويدية</a></li>
+                                <li><a href="#">العربية</a></li>
+                                <li><a href="#">الروسية</a></li>
+                                <li><a href="#">الصينية</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Header Top Right Social -->
+                <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
+                    <div class="pull-right flip">
+                        <ul class="listnone">
+                            <li><a href="login.html"><i class="fa fa-sign-in"></i> تسجيل الدخول</a></li>
+                            <li><a href="register.html"><i class="fa fa-unlock" aria-hidden="true"></i> تسجيل</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> عمير <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.html">ملف تعريفي للمستخدم</a></li>
+                                    <li><a href="profile-2.html">ملف تعريفي للمستخدم 2</a></li>
+                                    <li><a href="archives.html">أرشيف</a></li>
+                                    <li><a href="active-ads.html">إعلانات نشطة</a></li>
+                                    <li><a href="favourite.html">إعلانات المفضلة</a></li>
+                                    <li><a href="messages.html">لوحة رسالة</a></li>
+                                    <li><a href="deactive.html">التعطيل حساب</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
     <nav id="menu-1" class="mega-menu">
@@ -95,259 +163,161 @@ include '../scripts/db_connection.php';
                         <ul class="menu-links">
                             <!-- active class -->
                             <li>
-                                <a href="javascript:void(0)"> Home <i class="fa fa-angle-down fa-indicator"></i></a>
+                                <a href="javascript:void(0)"> الصفحة الرئيسية <i class="fa fa-angle-down fa-indicator"></i></a>
                                 <div class="drop-down grid-col-8">
                                     <!--grid row-->
                                     <div class="grid-row">
                                         <!--grid column 3-->
                                         <div class="grid-col-4">
                                             <ul>
-                                                <li><a href="index.html">Home 1 - Default </a></li>
-                                                <li><a href="index-transparent.html">Home 2 (Transparent)</a></li>
-                                                <li><a href="index-2.html">Home 3 (Variation)</a></li>
-                                                <li><a href="index-3.html">Home 4 (Master Slider)</a></li>
+                                                <li><a href="index.html">الصفحة 1 - افتراضي </a></li>
+                                                <li><a href="index-transparent.html">منزل 2 (شفاف)</a></li>
+                                                <li><a href="index-2.html">الصفحة 3 (التغيير)</a></li>
+                                                <li><a href="index-3.html">الصفحة 4 (ماجستير المتزلج)</a></li>
                                             </ul>
                                         </div>
                                         <div class="grid-col-4">
                                             <ul>
-                                                <li><a href="index-4.html">Home 5 (With Map Listing)</a></li>
-                                                <li><a href="index-5.html">Home 6 (Modern Style)</a></li>
-                                                <li><a href="index-6.html">Home 7 (Variation)</a></li>
-                                                <li><a href="index-7.html">Home 8 (Category Slider)</a></li>
+                                                <li><a href="index-4.html">الرئيسية 5 (مع قائمة خريطة)</a></li>
+                                                <li><a href="index-5.html">الرئيسية 6 (مودرن ستايل)</a></li>
+                                                <li><a href="index-6.html">الرئيسية 7 (التغيير)</a></li>
+                                                <li><a href="index-7.html">الصفحة الرئيسية 8 (الفئة المتزلج)</a></li>
                                             </ul>
                                         </div>
                                         <div class="grid-col-4">
                                             <ul>
-                                                <li><a href="index-10.html">Home 11 (Modern Home)</a></li>
-                                                <li><a href="index-8.html">Home 9 (Landing Page)</a></li>
-                                                <li><a href="index-9.html">Home 10 (Variation)</a></li>
+                                                <li><a href="index-10.html">منزل 11 (البيت الحديث)</a></li>
+                                                <li><a href="index-8.html">الصفحة 9 (الصفحة المقصودة)</a></li>
+                                                <li><a href="index-9.html">منزل 10 (التغيير)</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">Listing <i class="fa fa-angle-down fa-indicator"></i></a>
+                                <a href="javascript:void(0)">قائمة <i class="fa fa-angle-down fa-indicator"></i></a>
                                 <!-- drop down multilevel  -->
                                 <ul class="drop-down-multilevel">
                                     <li>
-                                        <a href="javascript:void(0)">Grid Style<i class="fa fa-angle-right fa-indicator"></i> <span class="label label-info">New</span></a>
+                                        <a href="javascript:void(0)">شبكة نمط<i class="fa fa-angle-left fa-indicator"></i> <span class="label label-info">الجديد</span></a>
                                         <!-- drop down second level -->
                                         <ul class="drop-down-multilevel">
-                                            <li><a href="listing.html">Listing Grid 1</a></li>
-                                            <li><a href="listing-1.html">Listing Grid 2</a></li>
-                                            <li><a href="listing-2.html">Listing Grid 3</a></li>
-                                            <li><a href="listing-7.html">Listing Featured <span class="label label-info">New</span></a></li>
+                                            <li><a href="listing.html">قائمة الشبكة 1</a></li>
+                                            <li><a href="listing-1.html">قائمة الشبكة 2</a></li>
+                                            <li><a href="listing-2.html">قائمة الشبكة 3</a></li>
+                                            <li><a href="listing-7.html">متميز الشبكة <span class="label label-info">الجديد</span></a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0)">List Style<i class="fa fa-angle-right fa-indicator"></i> </a>
+                                        <a href="javascript:void(0)">قائمة نمط<i class="fa fa-angle-left fa-indicator"></i> </a>
                                         <!-- drop down second level -->
                                         <ul class="drop-down-multilevel">
-                                            <li><a href="listing-3.html">List View 1</a></li>
-                                            <li><a href="listing-4.html">List View 2</a></li>
-                                            <li><a href="listing-5.html">List View 3</a></li>
-                                            <li><a href="listing-6.html">List View 4</a></li>
+                                            <li><a href="listing-3.html">عرض قائمة 1</a></li>
+                                            <li><a href="listing-4.html">عرض قائمة 2</a></li>
+                                            <li><a href="listing-5.html">عرض قائمة 3</a></li>
+                                            <li><a href="listing-6.html">عرض قائمة 4</a></li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0)">Single Ad<i class="fa fa-angle-right fa-indicator"></i> <span class="label label-info">New</span></a>
+                                        <a href="javascript:void(0)">إعلان واحد<i class="fa fa-angle-left fa-indicator"></i> <span class="label label-info">الجديد</span></a>
                                         <!-- drop down second level -->
                                         <ul class="drop-down-multilevel">
-                                            <li><a href="single-page-listing.html">Single Ad Detail</a></li>
-                                            <li><a href="single-page-listing-featured.html">Ad (Featured) <span class="label label-info">New</span></a></li>
-                                            <li><a href="single-page-listing-2.html">Single Ad 2</a></li>
-                                            <li><a href="single-page-listing-3.html">Single Ad (Adsense)</a></li>
-                                            <li><a href="single-page-expired.html">Single Ad (Closed)</a></li>
+                                            <li><a href="single-page-listing.html">واحد التفاصيل الإعلان</a></li>
+                                            <li><a href="single-page-listing-featured.html">إعلان (مميزة) <span class="label label-info">الجديد</span></a></li>
+                                            <li><a href="single-page-listing-2.html">إعلان واحد 2</a></li>
+                                            <li><a href="single-page-listing-3.html">إعلان واحد (ادسنس)</a></li>
+                                            <li><a href="single-page-expired.html">إعلان واحد (مقفلة)</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="icons.html">Classified Icons </a></li>
+                                    <li><a href="icons.html">الرموز السرية </a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">Categories <i class="fa fa-angle-down fa-indicator"></i></a>
+                                <a href="javascript:void(0)">الفئات <i class="fa fa-angle-down fa-indicator"></i></a>
                                 <!-- drop down multilevel  -->
                                 <ul class="drop-down-multilevel">
 
-                                    <li><a href="category-2.html">Modern Variation</a></li>
-                                    <li><a href="category-3.html">Minimal Variation</a></li>
-                                    <li><a href="category-4.html">Fancy Variation</a></li>
+                                    <li><a href="category-2.html">تباين الحديثة</a></li>
+                                    <li><a href="category-3.html">تباين الحد الأدنى</a></li>
+                                    <li><a href="category-4.html">يتوهم التغيير</a></li>
 
-                                    <li><a href="category-6.html">Flat Variation</a></li>
+                                    <li><a href="category-6.html">الاختلاف شقة</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">Dashboard <i class="fa fa-angle-down fa-indicator"></i></a>
+                                <a href="javascript:void(0)">لوحة القيادة <i class="fa fa-angle-down fa-indicator"></i></a>
                                 <!-- drop down multilevel  -->
                                 <ul class="drop-down-multilevel">
-                                    <li><a href="profile.html">User Profile</a></li>
-                                    <li><a href="profile-2.html">User Profile 2</a></li>
-                                    <li><a href="archives.html">Archives</a></li>
-                                    <li><a href="active-ads.html">Active Ads</a></li>
-                                    <li><a href="pending-ads.html">Pending Ads</a></li>
-                                    <li><a href="favourite.html">Favourite Ads</a></li>
-                                    <li><a href="messages.html">Message Panel</a></li>
-                                    <li><a href="deactive.html">Account Deactivation</a></li>
+                                    <li><a href="profile.html">ملف تعريفي للمستخدم</a></li>
+                                    <li><a href="profile-2.html">ملف تعريفي للمستخدم 2</a></li>
+                                    <li><a href="archives.html">أرشيف</a></li>
+                                    <li><a href="active-ads.html">إعلانات نشطة</a></li>
+                                    <li><a href="favourite.html">إعلانات المفضلة</a></li>
+                                    <li><a href="messages.html">لوحة رسالة</a></li>
+                                    <li><a href="deactive.html">التعطيل حساب</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)">Pages <i class="fa fa-angle-down fa-indicator"></i></a>
+                                <a href="javascript:void(0)">الصفحات <i class="fa fa-angle-down fa-indicator"></i></a>
                                 <!-- drop down full width -->
                                 <div class="drop-down grid-col-12">
                                     <!--grid row-->
                                     <div class="grid-row">
                                         <!--grid column 2-->
                                         <div class="grid-col-3">
-                                            <h4>Blog</h4>
+                                            <h4>مدونة</h4>
                                             <ul>
-                                                <li><a href="blog.html">Blog With Right Sidebar</a></li>
-                                                <li><a href="blog-1.html">Blog With Masonry Style</a></li>
-                                                <li><a href="blog-2.html">Blog Without Sidebar</a></li>
-                                                <li><a href="blog-details.html">Single Blog </a></li>
-                                                <li><a href="blog-details-1.html">Single Blog (Adsense) </a></li>
+                                                <li><a href="blog.html">بلوق مع الحق في الشريط الجانبي</a></li>
+                                                <li><a href="blog-1.html">بلوق مع الماسونية نمط</a></li>
+                                                <li><a href="blog-2.html">بلوق من دون الشريط الجانبي</a></li>
+                                                <li><a href="blog-details.html">مدونة واحدة</a></li>
+                                                <li><a href="blog-details-1.html">مدونة واحدة (ادسنس) </a></li>
                                             </ul>
                                         </div>
                                         <!--grid column 2-->
                                         <div class="grid-col-3">
-                                            <h4>Miscellaneous</h4>
+                                            <h4>متفرقات</h4>
                                             <ul>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="cooming-soon.html">Comming Soon</a></li>
-                                                <li><a href="elements.html">Shortcodes</a></li>
-                                                <li><a href="error.html">404 Page</a></li>
-                                                <li><a href="faqs.html">FAQS</a></li>
+                                                <li><a href="about.html">معلومات عنا</a></li>
+                                                <li><a href="cooming-soon.html">قريبا</a></li>
+                                                <li><a href="elements.html">الهاتفية القصيرة</a></li>
+                                                <li><a href="error.html">404 صفحة</a></li>
+                                                <li><a href="faqs.html">الأسئلة الأكثر شيوعا</a></li>
                                             </ul>
                                         </div>
                                         <!--grid column 2-->
 
                                         <div class="grid-col-3">
-                                            <h4>Others</h4>
+                                            <h4>آخرون</h4>
                                             <ul>
-                                                <li><a href="login.html">Login</a></li>
-                                                <li><a href="register.html">Register</a></li>
-                                                <li><a href="pricing.html">Pricing</a></li>
-                                                <li><a href="site-map.html">Site Map</a></li>
-                                                <li><a href="post-ad-1.html">Post Ad</a></li>
+                                                <li><a href="login.html">تسجيل الدخول</a></li>
+                                                <li><a href="register.html">تسجيل</a></li>
+                                                <li><a href="pricing.html">التسعير</a></li>
+                                                <li><a href="site-map.html">خريطة الموقع</a></li>
+                                                <li><a href="post-ad-1.html">إضافة إعلان</a></li>
                                             </ul>
                                         </div>
                                         <!--grid column 2-->
                                         <div class="grid-col-3">
-                                            <h4>Detail Page</h4>
+                                            <h4>التفاصيل صفحة</h4>
                                             <ul>
-                                                <li><a href="post-ad-2.html">Post Ad 2</a></li>
-                                                <li><a href="single-page-listing.html">Single Ad Detail</a></li>
-                                                <li><a href="single-page-listing-2.html">Single Ad 2</a></li>
-                                                <li><a href="single-page-listing-3.html">Single Ad (Adsense)</a></li>
-                                                <li><a href="single-page-expired.html">Single Ad (Closed)</a></li>
+                                                <li><a href="post-ad-2.html">آخر الإعلان 2</a></li>
+                                                <li><a href="single-page-listing.html">واحد التفاصيل الإعلان</a></li>
+                                                <li><a href="single-page-listing-2.html">إعلان واحد 2</a></li>
+                                                <li><a href="single-page-listing-3.html">إعلان واحد (ادسنس)</a></li>
+                                                <li><a href="single-page-expired.html">إعلان واحد (مقفلة)</a></li>
                                             </ul>
                                         </div>
                                         <!--grid column 2-->
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <a href="javascript:void(0)">Drop Down <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <!-- drop down multilevel  -->
-                                <ul class="drop-down-multilevel">
-                                    <li><a href="#">Item one</a></li>
-                                    <li>
-                                        <a href="javascript:void(0)">Items Right Side <i class="fa fa-angle-right fa-indicator"></i> </a>
-                                        <!-- drop down second level -->
-                                        <ul class="drop-down-multilevel">
-                                            <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-buysellads"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
-                                                <!-- drop down third level -->
-                                                <ul class="drop-down-multilevel">
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-dashcube"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
-                                                <!-- drop down third level -->
-                                                <ul class="drop-down-multilevel">
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-heartbeat"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
-                                                <!-- drop down third level -->
-                                                <ul class="drop-down-multilevel">
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-medium"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
-                                                <!-- drop down third level -->
-                                                <ul class="drop-down-multilevel">
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-leanpub"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i> </a>
-                                                <!-- drop down third level -->
-                                                <ul class="drop-down-multilevel">
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Item 2</a></li>
-                                    <li>
-                                        <a href="javascript:void(0)">Items Left Side <i class="fa fa-angle-left fa-indicator"></i> </a>
-                                        <!-- add class left-side -->
-                                        <ul class="drop-down-multilevel left-side">
-                                            <li>
-                                                <a href="#"> <i class="fa fa-forumbee"></i> Level 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"> <i class="fa fa-hotel"></i> Level 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"> <i class="fa fa-automobile"></i> Level 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)"> <i class="fa fa-heartbeat"></i> Level 2 <i class="fa fa-plus fa-indicator"></i> </a>
-                                                <!--drop down second level-->
-                                                <ul class="drop-down-multilevel">
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                    <li><a href="#">Level 3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#"> <i class="fa fa-bookmark"></i> Level 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"> <i class="fa fa-bell"></i> Level 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"> <i class="fa fa-soccer-ball-o"></i> Level 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="#"> <i class="fa fa-life-ring"></i> Level 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Item 4</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a href="contact.html">Contact </a></li>
+
+                            <li><a href="contact.html">اتصال </a></li>
                         </ul>
                         <ul class="menu-search-bar">
                             <li>
-                                <a href="post-ad-1.html" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> Post Free Ad</a>
+                                <a href="post-ad-1.html" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> انشر إعلانك مجانا</a>
                             </li>
                         </ul>
                     </div>
@@ -364,7 +334,19 @@ include '../scripts/db_connection.php';
         <div class="row">
             <div class="col-lg-8 col-md-12 col-sm-5 col-xs-12">
                 <div class="header-page">
-                    <h1>All Advertisements </h1>
+                    <h1>Category Grid - 2</h1>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-7 col-xs-12">
+                <div class="small-breadcrumb">
+                    <div class=" breadcrumb-link">
+                        <ul>
+                            <li><a href="index.html">Home Page</a></li>
+                            <li><a href="#">الصفحات</a></li>
+                            <li><a href="elements.html">Category</a></li>
+                            <li><a class="active" href="#">Listing</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -387,15 +369,15 @@ include '../scripts/db_connection.php';
                         <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
                             <!-- Sorting Filters Breadcrumb -->
                             <div class="filter-brudcrums">
-                                <span>Showing <span class="showed">1 - 20</span> of <span class="showed">42211</span> results</span>
+                                <span>عرض <span class="showed">1 - 20</span> of <span class="showed">42211</span>النتائج</span>
                                 <div class="filter-brudcrums-sort">
                                     <ul>
-                                        <li><span>Sort by:</span></li>
-                                        <li><a href="all_ads_organized.php?updatedate=recent">Updated date</a></li>
-                                        <li><a href="all_ads_organized.php?price=higtolow">Price</a></li>
-                                        <li><a href="#">New</a></li>
-                                        <li><a href="#">Used</a></li>
-                                        <li><a href="#">Warranty</a></li>
+                                        <li><span>ترتيب حسب:</span></li>
+                                        <li><a href="#">تاريخ التحديث</a></li>
+                                        <li><a href="#">السعر</a></li>
+                                        <li><a href="#">جديد</a></li>
+                                        <li><a href="#">مستعمل</a></li>
+                                        <li><a href="#">ضمان</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -405,9 +387,7 @@ include '../scripts/db_connection.php';
                         <div class="clearfix"></div>
                         <!-- Ads Archive -->
                         <div class="posts-masonry">
-                            <!-- Listing Ad Grid -->
                             <?php include 'scripts/select_all_ads_premium.php';?>
-                            <!-- Advertizing -->
                             <div class="col-md-12 col-xs-12 col-sm-12">
                                 <section class="advertising">
                                     <a href="post-ad-1.html">
@@ -429,12 +409,12 @@ include '../scripts/db_connection.php';
                         <!-- Pagination -->
                         <div class="text-center margin-bottom-30">
                             <ul class="pagination ">
-                                <li class=""><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
+                                <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                                <li><a href="#">1</a></li>
+                                <li class="active"><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
                                 <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                                <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
                             </ul>
                         </div>
                         <!-- Pagination End -->
@@ -448,7 +428,7 @@ include '../scripts/db_connection.php';
                     <div class="sidebar">
                         <!-- Panel group -->
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <!-- Categories Panel -->
+                            <!-- الفئات Panel -->
                             <div class="panel panel-default">
                                 <!-- Heading -->
                                 <div class="panel-heading" role="tab" id="headingOne">
@@ -456,7 +436,7 @@ include '../scripts/db_connection.php';
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Categories
+                                            الفئات
                                         </a>
                                     </h4>
                                     <!-- Title End -->
@@ -465,12 +445,73 @@ include '../scripts/db_connection.php';
                                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body categories">
                                         <ul>
-                                        <?php include 'scripts/category.php';?>
+                                            <?php include 'scripts/category.php';?>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Categories Panel End -->
+                            <!-- الفئات Panel End -->
+                            <!-- Brands Panel -->
+                            <div class="panel panel-default">
+                                <!-- Heading -->
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="more-less glyphicon glyphicon-plus"></i>
+                                            العلامات التجارية
+                                        </a>
+                                    </h4>
+                                </div>
+                                <!-- Content -->
+                                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        <!-- Search -->
+                                        <div class="search-widget">
+                                            <input placeholder="search" type="text">
+                                            <button type="submit"><i class="fa fa-search"></i></button>
+                                        </div>
+                                        <!-- Brands List -->
+                                        <div class="skin-minimal">
+                                            <ul class="list">
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-1">
+                                                    <label for="minimal-checkbox-1">جميع العلامات التجارية</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-2">
+                                                    <label for="minimal-checkbox-2">سامسونج</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-3">
+                                                    <label for="minimal-checkbox-3">تفاحة</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-4">
+                                                    <label for="minimal-checkbox-4">نوكيا</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-5">
+                                                    <label for="minimal-checkbox-5">سوني</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-6">
+                                                    <label for="minimal-checkbox-6">بلاك بيري</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-7">
+                                                    <label for="minimal-checkbox-7">HTC</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-8">
+                                                    <label for="minimal-checkbox-8">موتورولا</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- Brands List End -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Brands Panel End -->
                             <!-- Condition Panel -->
                             <div class="panel panel-default">
                                 <!-- Heading -->
@@ -478,7 +519,7 @@ include '../scripts/db_connection.php';
                                     <h4 class="panel-title">
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Condition
+                                            شرط
                                         </a>
                                     </h4>
                                 </div>
@@ -489,11 +530,11 @@ include '../scripts/db_connection.php';
                                             <ul class="list">
                                                 <li>
                                                     <input tabindex="7" type="radio" id="minimal-radio-1" name="minimal-radio">
-                                                    <label for="minimal-radio-1">New</label>
+                                                    <label for="minimal-radio-1">جديد</label>
                                                 </li>
                                                 <li>
                                                     <input tabindex="8" type="radio" id="minimal-radio-2" name="minimal-radio" checked>
-                                                    <label for="minimal-radio-2">Used</label>
+                                                    <label for="minimal-radio-2">مستعمل</label>
                                                 </li>
                                             </ul>
                                         </div>
@@ -501,14 +542,14 @@ include '../scripts/db_connection.php';
                                 </div>
                             </div>
                             <!-- Condition Panel End -->
-                            <!-- Pricing Panel -->
+                            <!-- التسعير Panel -->
                             <div class="panel panel-default">
                                 <!-- Heading -->
                                 <div class="panel-heading" role="tab" id="headingfour">
                                     <h4 class="panel-title">
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Price
+                                            السعر
                                         </a>
                                     </h4>
                                 </div>
@@ -520,29 +561,28 @@ include '../scripts/db_connection.php';
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Pricing Panel End -->
-                            <!-- Featured Ads Panel -->
+                            <!-- التسعير Panel End -->
+                            <!-- إعلانات مميزة Panel -->
                             <div class="panel panel-default">
                                 <!-- Heading -->
                                 <div class="panel-heading" >
                                     <h4 class="panel-title">
                                         <a>
-                                            Featured Ads
+                                            إعلانات مميزة
                                         </a>
                                     </h4>
                                 </div>
                                 <!-- Content -->
                                 <?php include 'scripts/featured_ads.php';?>
                             </div>
-                            <!-- Featured Ads Panel End -->
+                            <!-- إعلانات مميزة Panel End -->
                             <!-- Latest Ads Panel -->
                             <div class="panel panel-default">
                                 <!-- Heading -->
                                 <div class="panel-heading" >
                                     <h4 class="panel-title">
                                         <a>
-                                            Recent Ads
+                                            الإعلانات الأخيرة
                                         </a>
                                     </h4>
                                 </div>
@@ -560,11 +600,11 @@ include '../scripts/db_connection.php';
                                                 <!-- /.recent-ads-list-image -->
                                                 <div class="recent-ads-list-content">
                                                     <h3 class="recent-ads-list-title">
-                                                        <a href="#">Sony Xperia Z1</a>
+                                                        <a href="#">سوني Xperia Z1</a>
                                                     </h3>
                                                     <ul class="recent-ads-list-location">
-                                                        <li><a href="#">New York</a>,</li>
-                                                        <li><a href="#">Brooklyn</a></li>
+                                                        <li><a href="#">نيويورك</a>,</li>
+                                                        <li><a href="#">بروكلين</a></li>
                                                     </ul>
                                                     <div class="recent-ads-list-price">
                                                         $ 17,000
@@ -586,11 +626,11 @@ include '../scripts/db_connection.php';
                                                 <!-- /.recent-ads-list-image -->
                                                 <div class="recent-ads-list-content">
                                                     <h3 class="recent-ads-list-title">
-                                                        <a href="#">2017 BMW i8</a>
+                                                        <a href="#">2017 بي ام دبليو I8</a>
                                                     </h3>
                                                     <ul class="recent-ads-list-location">
-                                                        <li><a href="#">New York</a>,</li>
-                                                        <li><a href="#">Brooklyn</a></li>
+                                                        <li><a href="#">نيويورك</a>,</li>
+                                                        <li><a href="#">بروكلين</a></li>
                                                     </ul>
                                                     <div class="recent-ads-list-price">
                                                         $ 66,000
@@ -612,11 +652,11 @@ include '../scripts/db_connection.php';
                                                 <!-- /.recent-ads-list-image -->
                                                 <div class="recent-ads-list-content">
                                                     <h3 class="recent-ads-list-title">
-                                                        <a href="#">Dell Latitude e7440</a>
+                                                        <a href="#">ديل خط العرض e7440</a>
                                                     </h3>
                                                     <ul class="recent-ads-list-location">
-                                                        <li><a href="#">New York</a>,</li>
-                                                        <li><a href="#">Brooklyn</a></li>
+                                                        <li><a href="#">نيويورك</a>,</li>
+                                                        <li><a href="#">بروكلين</a></li>
                                                     </ul>
                                                     <div class="recent-ads-list-price">
                                                         $ 37,000
@@ -638,11 +678,11 @@ include '../scripts/db_connection.php';
                                                 <!-- /.recent-ads-list-image -->
                                                 <div class="recent-ads-list-content">
                                                     <h3 class="recent-ads-list-title">
-                                                        <a href="#">Sport Stylish Steering</a>
+                                                        <a href="#">الرياضة التوجيهية أنيق</a>
                                                     </h3>
                                                     <ul class="recent-ads-list-location">
-                                                        <li><a href="#">New York</a>,</li>
-                                                        <li><a href="#">Brooklyn</a></li>
+                                                        <li><a href="#">نيويورك</a>,</li>
+                                                        <li><a href="#">بروكلين</a></li>
                                                     </ul>
                                                     <div class="recent-ads-list-price">
                                                         $ 11,000
@@ -664,11 +704,11 @@ include '../scripts/db_connection.php';
                                                 <!-- /.recent-ads-list-image -->
                                                 <div class="recent-ads-list-content">
                                                     <h3 class="recent-ads-list-title">
-                                                        <a href="#">Apple Wrist Watches</a>
+                                                        <a href="#">تفاحة ساعات اليد</a>
                                                     </h3>
                                                     <ul class="recent-ads-list-location">
-                                                        <li><a href="#">New York</a>,</li>
-                                                        <li><a href="#">Brooklyn</a></li>
+                                                        <li><a href="#">نيويورك</a>,</li>
+                                                        <li><a href="#">بروكلين</a></li>
                                                     </ul>
                                                     <div class="recent-ads-list-price">
                                                         $ 20,000
@@ -694,7 +734,7 @@ include '../scripts/db_connection.php';
         </div>
         <!-- Main Container End -->
     </section>
-    <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+    <!-- =-=-=-=-=-=-= Ads أرشيف End =-=-=-=-=-=-= -->
     <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
     <footer class="footer-area">
         <!--Footer Upper-->
@@ -713,7 +753,7 @@ include '../scripts/db_connection.php';
                                         <p>Lorem ipsum dolor sit amet, eu me.</p>
                                     </div>
                                     <ul class="contact-info">
-                                        <li><span class="icon fa fa-map-marker"></span> 60 Link Road Lhr. Pakistan 54770</li>
+                                        <li><span class="icon fa fa-map-marker"></span> 60 Link Road Lhr. باكستان 54770</li>
                                         <li><span class="icon fa fa-phone"></span> (042) 1234567890</li>
                                         <li><span class="icon fa fa-envelope-o"></span> contant@scriptsbundle.com</li>
                                         <li><span class="icon fa fa-fax"></span> (042) 1234 7777</li>
@@ -730,7 +770,7 @@ include '../scripts/db_connection.php';
                             <!--Footer Column-->
                             <div class="col-lg-5 col-sm-6 col-xs-12 column">
                                 <div class="heading-panel">
-                                    <h3 class="main-title text-left">Our Services</h3>
+                                    <h3 class="main-title text-left">خدماتنا</h3>
                                 </div>
                                 <div class="footer-widget links-widget">
                                     <ul>
@@ -752,7 +792,7 @@ include '../scripts/db_connection.php';
                             <div class="col-lg-7 col-sm-6 col-xs-12 column">
                                 <div class="footer-widget news-widget">
                                     <div class="heading-panel">
-                                        <h3 class="main-title text-left"> Latest News</h3>
+                                        <h3 class="main-title text-left"> أحدث الأخبار</h3>
                                     </div>
                                     <!--News Post-->
                                     <div class="news-post">
@@ -778,12 +818,12 @@ include '../scripts/db_connection.php';
                             <div class="col-lg-5 col-sm-6 col-xs-12 column">
                                 <div class="footer-widget links-widget">
                                     <div class="heading-panel">
-                                        <h3 class="main-title text-left"> Quick Links</h3>
+                                        <h3 class="main-title text-left"> روابط سريعة</h3>
                                     </div>
                                     <ul>
-                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="about.html">معلومات عنا</a></li>
                                         <li><a href="#">Our Team</a></li>
-                                        <li><a href="#">Our Services</a></li>
+                                        <li><a href="#">خدماتنا</a></li>
                                         <li><a href="index-7.html">One Page</a></li>
                                         <li><a href="contact.html">Contact Us</a></li>
                                     </ul>
@@ -799,7 +839,7 @@ include '../scripts/db_connection.php';
         <div class="footer-copyright">
             <div class="container clearfix">
                 <!--Copyright-->
-                <div class="copyright text-center">Copyright 2017 © Theme Created By <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> All Rights Reserved</div>
+                <div class="copyright text-center">حقوق التأليف والنشر 2017 © موضوع أنشأتها <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> كل الحقوق محفوظة</div>
             </div>
         </div>
     </footer>
@@ -811,7 +851,7 @@ include '../scripts/db_connection.php';
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>
-    <h4>SELL</h4>
+    <h4>يبيع</h4>
 </a>
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>
@@ -821,31 +861,31 @@ include '../scripts/db_connection.php';
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="lineModalLabel">Email for Price</h3>
+                <h3 class="modal-title" id="lineModalLabel">البريد الإلكتروني لمعرفة السعر</h3>
             </div>
             <div class="modal-body">
                 <!-- content goes here -->
                 <form>
                     <div class="form-group  col-md-6">
-                        <label>Your Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Your Name">
+                        <label>اسمك</label>
+                        <input type="text" class="form-control" placeholder="Enter اسمك">
                     </div>
                     <div class="form-group  col-md-6">
-                        <label>Email Address</label>
+                        <label>عنوان البريد الإلكتروني</label>
                         <input type="email" class="form-control" placeholder="Enter email">
                     </div>
                     <div class="form-group  col-md-12">
-                        <label>Contact No</label>
-                        <input type="text" class="form-control" placeholder="Contact No">
+                        <label>رقم الاتصال</label>
+                        <input type="text" class="form-control" placeholder="رقم الاتصال">
                     </div>
                     <div class="form-group  col-md-12">
-                        <label>Comments</label>
-                        <textarea placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control">What is the price of the 2015 Honda Accord EX-L you have in your inventory?</textarea>
+                        <label>تعليقات</label>
+                        <textarea placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control">ما هو سعر 2015 هوندا أكورد EX-L لديك في المخزون الخاص بك?</textarea>
                     </div>
                     <div class="col-md-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>
                     <div class="clearfix"></div>
                     <div class="col-md-12 margin-bottom-20 margin-top-20">
-                        <button type="submit" class="btn btn-theme btn-block">Submit</button>
+                        <button type="submit" class="btn btn-theme btn-block">عرض</button>
                     </div>
                 </form>
             </div>
@@ -888,3 +928,4 @@ include '../scripts/db_connection.php';
 <script src="js/custom.js"></script>
 </body>
 </html>
+
