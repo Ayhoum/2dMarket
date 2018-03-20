@@ -394,10 +394,10 @@ require_once '../scripts/db_connection.php';
                      <div class="post-ad-form extra-padding postdetails">
                         <div class="heading-panel text-center">
                            <h3 class="main-title text-left">
-                              Post Your New Advertisement
+                              نشـر اعـلان جـديـــد
                            </h3>
                         </div>
-                        <p class="lead">Posting an ad on <a href="#">2dmarket.com</a> is free! However, all ads must follow our rules:</p>
+                        <p class="lead" style="direction: rtl">النشر على موقعنا مجاني ولكن عليك التـأكد من اعلانك لا يخـالف <a style="direction: rtl" href="#">سياســات الموقــع</a>  </p>
                         <form  name="add_new_ad" method="post" id="advForm" class="submit-form" enctype="multipart/form-data">
                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                          <ul class="accordion">

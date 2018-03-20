@@ -302,43 +302,57 @@ if(isset($_SESSION['username'])){
                   <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
                      <!--  Form -->
                      <div class="form-grid">
-                        <form>
-                           <div class="form-group">
-                              <label>اسم</label>
-                              <input placeholder="Enter اسمك" class="form-control" type="text">
-                           </div>
-                           <div class="form-group">
-                              <label>رقم الاتصال</label>
-                              <input placeholder="Enter Your Contact Number" class="form-control" type="text">
-                           </div>
-                           <div class="form-group">
-                              <label>البريد الإلكتروني</label>
-                              <input placeholder="Your Email" class="form-control" type="email">
-                           </div>
-                           <div class="form-group">
-                              <label>كلمه السر</label>
-                              <input placeholder="Your Password" class="form-control" type="password">
-                           </div>
-                           <div class="form-group">
-                              <div class="row">
-                                 <div class="col-xs-12 col-sm-7">
-                                    <div class="skin-minimal">
-                                       <ul class="list">
-                                          <li>
-                                             <input  type="checkbox" id="minimal-checkbox-1">
-                                             <label for="minimal-checkbox-1">أنا أتفق <a href="#">حيث الخدمات</a></label>
-                                          </li>
-                                       </ul>
-                                    </div>
+                         <form name="signup" id="signupForm" method="post" action="scripts/signup.php" data-toggle="validator">
+                             <div class="form-group">
+                                 <label>البريد الالكتروني</label>
+                                 <input autocomplete="false" required placeholder="قم بادخـال بريدك الالكتروني" name="email" onchange="checkAvailability();" id="emailArea" class="form-control" type="email">
+                                 <label id="checkEmailError" class=""></label>
+                             </div>
+                             <div class="row">
+                                 <div class="form-group col-sm-6">
+                                     <label>الاســم </label>
+                                     <input required placeholder="قم بادخـال اسـمك" name="fname" class="form-control" type="text">
                                  </div>
-                                 <div class="col-xs-12 col-sm-5 text-right">
-                                    <p class="help-block"><a data-target="#myModal" data-toggle="modal">هل نسيت كلمة المرور؟</a>
-                                    </p>
+                                 <div class="form-group col-sm-6">
+                                     <label>الكنيــة</label>
+                                     <input required placeholder="قم بادخـال كنيتـك" name="lname" class="form-control" type="text">
                                  </div>
-                              </div>
-                           </div>
-                           <button class="btn btn-theme btn-lg btn-block">تسجيل</button>
-                        </form>
+                             </div>
+                             <div class="form-group">
+                                 <label>اسم المسـتخدم</label>
+                                 <input required placeholder="قم بادخال اسم مستخدم خاص بك" name="username" class="form-control" type="text">
+                             </div>
+                             <div class="row">
+                                 <div class="form-group col-sm-6">
+                                     <label>كلمـة المـرور</label>
+                                     <input required placeholder="قم بادخـال كلمة المرور الخاصة بك" id="inputPassword" name="password" class="form-control" type="password">
+                                 </div>
+                                 <div class="form-group col-sm-6">
+                                     <label>تأكيـد كلـمة المرور</label>
+                                     <input required placeholder="ادخل كلمة المرور مرة اخرى للتأكيد" name="repassword" class="form-control" onChange="checkPasswordMatch();" id="inputPasswordConfirm" type="password">
+                                     <label id="txtConfirm"></label>
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <div class="row">
+                                     <div class="col-xs-12 col-sm-7">
+                                         <div class="skin-minimal">
+                                             <ul class="list">
+                                                 <li>
+                                                     <input required type="checkbox" id="minimal-checkbox-1">
+                                                     <label for="minimal-checkbox-1">أنا أقبل<a href="#">بشروط واحكام استخدام الموقع</a></label>
+                                                 </li>
+                                             </ul>
+                                         </div>
+                                     </div>
+                                     <div class="col-xs-12 col-sm-5 text-right">
+                                         <p class="help-block"><a data-target="#myModal" data-toggle="modal">هل لديك حسـاب ؟</a>
+                                         </p>
+                                     </div>
+                                 </div>
+                             </div>
+                             <button class="btn btn-theme btn-lg btn-block" name="submit" type="submit" id="regBut" disabled>تسجيـل الحسـاب</button>
+                         </form>
                      </div>
                      <!-- Form -->
                   </div>
@@ -483,5 +497,64 @@ if(isset($_SESSION['username'])){
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
    </body>
+   <script>
+       function validateEmail(email) {
+           var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+           return re.test(email);
+       }
+
+       function checkPasswordMatch() {
+           var password = $("#inputPassword").val();
+           var confirmPassword = $("#inputPasswordConfirm").val();
+
+           if (password != confirmPassword){
+               $("#txtConfirm").html("Doesn't Match");
+               $("#txtConfirm").removeClass('greenfont');
+               $("#txtConfirm").addClass('redfont');
+               $("#regBut").prop("disabled",true);
+           }else{
+               $("#txtConfirm").html("Passwords match.");
+               $("#txtConfirm").removeClass('redfont');
+               $("#txtConfirm").addClass('greenfont');
+               $("#regBut").prop("disabled",false);
+           }
+       }
+
+       function checkAvailability(){
+           var email = $("#emailArea").val();
+           if(validateEmail(email)){
+               $.post('scripts/handle_email.php?email='+email,function(response){
+
+                   if(response > 0){
+                       $('#checkEmailError').html("This email is already registered!");
+                       $('#checkEmailError').removeClass('greenfont');
+                       $('#checkEmailError').addClass('redfont');
+                       $("#regBut").prop("disabled",true);
+                   }else{
+                       $('#checkEmailError').html("This email is available!");
+                       $('#checkEmailError').removeClass('redfont');
+                       $('#checkEmailError').addClass('greenfont');
+                       $("#regBut").prop("disabled",false);
+                   }
+               });
+           }else{
+               $('#checkEmailError').html("Enter a valid Email Address!");
+               $('#checkEmailError').removeClass('greenfont');
+               $('#checkEmailError').addClass('redfont');
+               $("#regBut").prop("disabled",true);
+
+           }
+       }
+
+       $(document).ready(function () {
+           $("#inputPasswordConfirm").keyup(checkPasswordMatch);
+           $("#emailArea").keyup(checkAvailability);
+       });
+
+
+
+
+   </script>
+
 </html>
 
