@@ -6,62 +6,60 @@ require_once "../scripts/db_connection.php";
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-      <!--[if IE]>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <![endif]-->
-      <meta name="description" content="">
-      <meta name="author" content="ScriptsBundle">
-      <title>AdForest | Largest Classifieds Portal</title>
-      <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-      <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-      <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-      <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
-      <link rel="stylesheet" href="css/bootstrap.css">
-      <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
-      <link rel="stylesheet" href="css/style.css">
-      <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
-      <link rel="stylesheet" href="css/font-awesome.css" type="text/css">
-      <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
-      <link href="css/flaticon.css" rel="stylesheet">
-      <!-- =-=-=-=-=-=-= Et Line Fonts =-=-=-=-=-=-= -->
-      <link rel="stylesheet" href="css/et-line-fonts.css" type="text/css">
-      <!-- =-=-=-=-=-=-= Menu Drop Down =-=-=-=-=-=-= -->
-      <link rel="stylesheet" href="css/forest-menu.css" type="text/css">
-      <!-- =-=-=-=-=-=-= Animation =-=-=-=-=-=-= -->
-      <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-      <!-- =-=-=-=-=-=-= Select Options =-=-=-=-=-=-= -->
-      <link href="css/select2.min.css" rel="stylesheet" />
-      <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
-      <link href="css/nouislider.min.css" rel="stylesheet">
-      <!-- =-=-=-=-=-=-= Bootstrap Rtl Style =-=-=-=-=-=-= -->
-      <link href="css/bootstrap-rtl.css" rel="stylesheet">
-      <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
-      <link href="css/slider.css" rel="stylesheet">
-      <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
-      <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
-      <link rel="stylesheet" type="text/css" href="css/owl.theme.css">
-      <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
-      <link href="skins/minimal/minimal.css" rel="stylesheet">
-      <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
-      <link href="css/responsive-media.css" rel="stylesheet">
-      <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
-      <link rel="stylesheet" id="color" href="css/colors/defualt.css">
-      <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
-      <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
-      <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
-      <link href="skins/minimal/minimal.css" rel="stylesheet">
-      <!-- JavaScripts -->
-      <script src="js/modernizr.js"></script>
-      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
+       <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+       <!--[if IE]>
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <![endif]-->
+       <meta name="description" content="">
+       <meta name="author" content="ScriptsBundle">
+       <title>AdForest | Largest Classifieds Portal</title>
+       <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
+       <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+       <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
+       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+       <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
+       <link rel="stylesheet" href="css/bootstrap.css">
+       <!-- =-=-=-=-=-=-= Template CSS Style =-=-=-=-=-=-= -->
+       <link rel="stylesheet" href="css/style.css">
+       <!-- =-=-=-=-=-=-= Font Awesome =-=-=-=-=-=-= -->
+       <link rel="stylesheet" href="css/font-awesome.css" type="text/css">
+       <!-- =-=-=-=-=-=-= Flat Icon =-=-=-=-=-=-= -->
+       <link href="css/flaticon.css" rel="stylesheet">
+       <!-- =-=-=-=-=-=-= Et Line Fonts =-=-=-=-=-=-= -->
+       <link rel="stylesheet" href="css/et-line-fonts.css" type="text/css">
+       <!-- =-=-=-=-=-=-= Menu Drop Down =-=-=-=-=-=-= -->
+       <link rel="stylesheet" href="css/forest-menu.css" type="text/css">
+       <!-- =-=-=-=-=-=-= Animation =-=-=-=-=-=-= -->
+       <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+       <!-- =-=-=-=-=-=-= Select Options =-=-=-=-=-=-= -->
+       <link href="css/select2.min.css" rel="stylesheet" />
+       <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
+       <link href="css/nouislider.min.css" rel="stylesheet">
+       <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
+       <link href="css/slider.css" rel="stylesheet">
+       <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
+       <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+       <link rel="stylesheet" type="text/css" href="css/owl.theme.css">
+       <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
+       <link href="skins/minimal/minimal.css" rel="stylesheet">
+       <!-- =-=-=-=-=-=-= Responsive Media =-=-=-=-=-=-= -->
+       <link href="css/responsive-media.css" rel="stylesheet">
+       <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
+       <link rel="stylesheet" id="color" href="css/colors/defualt.css">
+       <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
+       <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
+       <!-- =-=-=-=-=-=-= Check boxes =-=-=-=-=-=-= -->
+       <link href="skins/minimal/minimal.css" rel="stylesheet">
+       <!-- JavaScripts -->
+       <script src="js/modernizr.js"></script>
+       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+       <!--[if lt IE 9]>
+       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+       <![endif]-->
       <!--login script-->
-      <script>
+       <script>
            var logIn = function () {
                var email = $("#email_field").val();
                var password = $("#password_field").val();
@@ -85,7 +83,6 @@ require_once "../scripts/db_connection.php";
 
            };
        </script>
-
    </head>
    <body class="rtl">
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -309,113 +306,102 @@ require_once "../scripts/db_connection.php";
       <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
-         <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
-         <section class="section-padding-140 error-page pattern-bg " style="margin-top: -60px;">
-            <!-- Main Container -->
-            <div class="container">
-               <!-- Row -->
-               <div class="row">
-                  <!-- Middle Content Area -->
-                  <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
-                     <!--  Form -->
-                     <div class="form-grid">
-                         <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
-                           <div class="form-group">
-                              <label>البريد الإلكتروني</label>
-                              <input  id="email_field" placeholder="قم بادخال البريد الالكتروني الخاص بك !" class="form-control" type="email">
-                           </div>
-                           <div class="form-group">
-                              <label>كلمه السر</label>
-                              <input id="password_field" placeholder="قم بادخال كلمة المرور الخاصة بك !" class="form-control" type="password">
-                           </div>
-                           <div class="form-group">
-                              <div class="row">
-                                 <div class="col-xs-12">
-                                    <div class="skin-minimal">
-                                       <ul class="list">
-                                          <li>
-                                             <input  type="checkbox" id="minimal-checkbox-1">
-                                             <label for="minimal-checkbox-1">تذكرنى</label>
-                                          </li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in"> تسجيل الدخول معنا</button>
-                        </form>
-                     </div>
-                     <!-- Form -->
-                  </div>
-                  <!-- Middle Content Area  End -->
-               </div>
-               <!-- Row End -->
-            </div>
-            <!-- Main Container End -->
-         </section>
-         <!-- =-=-=-=-=-=-= Ads أرشيف End =-=-=-=-=-=-= -->
-         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-         <footer>
-            <!-- Footer Content -->
-            <div class="footer-top">
-               <div class="container">
+          <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
+          <section class="section-padding-140 error-page pattern-bg " style="margin-top: -60px;">
+              <!-- Main Container -->
+              <div class="container">
+                  <!-- Row -->
                   <div class="row">
-                     <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- Info Widget -->
-                        <div class="widget">
-                           <div class="logo"> <img alt="" src="images/logo-1.png"> </div>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
-                           <ul>
-                              <li><img src="images/appstore.png" alt=""></li>
-                              <li><img src="images/googleplay.png" alt=""></li>
-                           </ul>
-                        </div>
-                        <!-- Info Widget Exit -->
-                     </div>
-                     <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- تابعنا -->
-                        <div class="widget socail-icons">
-                           <h5>تابعنا</h5>
-                           <ul>
-                              <li><a class="fb" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                              <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                              <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                              <li><a class="googleplus" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
-                           </ul>
-                        </div>
-                        <!-- تابعنا End -->
-                     </div>
-                     <div class="col-md-6  col-sm-6 col-xs-12">
-                        <!-- Newslatter -->
-                        <div class="widget widget-newsletter">
-                           <h5>Singup عن النشرة الأسبوعية</h5>
-                           <div class="fieldset">
-                              <p>قد نرسل لك معلومات عن الأحداث، وندوات والمنتجات والخدمات ذات الصلة والتي نعتقد.</p>
-                              <form>
-                                 <input class="" value="Enter your email address" type="text">
-                                 <input class="submit-btn" name="submit" value="عرض" type="submit"> 
+                      <!-- Middle Content Area -->
+                      <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
+                          <!--  Form -->
+                          <div class="form-grid">
+                              <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
+                                  <div class="form-group">
+                                      <label>Email</label>
+                                      <input id="email_field" placeholder="Your Email" class="form-control" type="email" name="email">
+                                  </div>
+                                  <div class="form-group">
+                                      <label>Password</label>
+                                      <input id="password_field" placeholder="Your Password" class="form-control" type="password" name="password">
+
+                                      <p><b><a href="scripts/RestorePassowrd/resotre_password.php" target="_blank">Have you forgot your password!</a></b></p>
+                                  </div>
+
+                                  <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">Log In</button>
                               </form>
-                           </div>
-                        </div>
-                        <!-- Newslatter -->
-                     </div>
+                          </div>
+                          <!-- Form -->
+                      </div>
+                      <!-- Middle Content Area  End -->
                   </div>
-               </div>
-            </div>
-            <!-- Copyrights -->
-            <div class="copyrights">
-               <div class="container">
-                  <div class="copyright-content">
-                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                           <p>© 2017 AForest جميع الحقوق محفوظة. تصميم بواسطة <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
-                        </div>
-                     </div>
+                  <!-- Row End -->
+              </div>
+              <!-- Main Container End -->
+          </section>
+          <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
+          <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+          <footer>
+              <!-- Footer Content -->
+              <div class="footer-top">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-md-3  col-sm-6 col-xs-12">
+                              <!-- Info Widget -->
+                              <div class="widget">
+                                  <div class="logo"> <img alt="" src="images/logo-1.png"> </div>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
+                                  <ul>
+                                      <li><img src="images/appstore.png" alt=""></li>
+                                      <li><img src="images/googleplay.png" alt=""></li>
+                                  </ul>
+                              </div>
+                              <!-- Info Widget Exit -->
+                          </div>
+                          <div class="col-md-3  col-sm-6 col-xs-12">
+                              <!-- Follow Us -->
+                              <div class="widget socail-icons">
+                                  <h5>Follow Us</h5>
+                                  <ul>
+                                      <li><a class="fb" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
+                                      <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
+                                      <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
+                                      <li><a class="googleplus" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
+                                  </ul>
+                              </div>
+                              <!-- Follow Us End -->
+                          </div>
+                          <div class="col-md-6  col-sm-6 col-xs-12">
+                              <!-- Newslatter -->
+                              <div class="widget widget-newsletter">
+                                  <h5>Singup for Weekly Newsletter</h5>
+                                  <div class="fieldset">
+                                      <p>We may send you information about related events, webinars, products and services which we believe.</p>
+                                      <form>
+                                          <input class="" value="Enter your email address" type="text">
+                                          <input class="submit-btn" name="submit" value="Submit" type="submit">
+                                      </form>
+                                  </div>
+                              </div>
+                              <!-- Newslatter -->
+                          </div>
+                      </div>
                   </div>
-               </div>
-            </div>
-         </footer>
-         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+              </div>
+              <!-- Copyrights -->
+              <div class="copyrights">
+                  <div class="container">
+                      <div class="copyright-content">
+                          <div class="row">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                  <p>© 2017 AForest All rights reserved. Design by <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </footer>
+          <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
       </div>
       <!-- Main Content Area End --> 
       <!-- Post Ad Sticky -->
@@ -424,6 +410,12 @@ require_once "../scripts/db_connection.php";
          <i class="flaticon-transport-9"></i>
          </span>
          <h4>يبيع</h4>
+      </a>
+      <a href="#" class="sticky-post-button hidden-xs">
+         <span class="sell-icons">
+         <i class="flaticon-transport-9"></i>
+         </span>
+          <h4>SELL</h4>
       </a>
       <!-- Back To Top -->
       <a href="#0" class="cd-top">Top</a>
@@ -461,6 +453,9 @@ require_once "../scripts/db_connection.php";
       <script src="js/color-switcher.js"></script>
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
+
+
+
    </body>
 </html>
 

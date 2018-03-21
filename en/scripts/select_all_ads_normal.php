@@ -83,7 +83,6 @@ if (isset($_GET['cat_id'])){
                 $user_postcode = "unknown ";
                 $user_city = "address";
             }
-            include 'product_pics.php';
             ?>
             <!-- Listing Ad Grid -->
             <div class="col-md-6 col-xs-12 col-sm-6">
