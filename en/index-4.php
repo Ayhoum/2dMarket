@@ -76,7 +76,7 @@ require_once "scripts/time_elapse.php";
          <!-- Top Bar End -->
          <!-- Navigation Menu -->
 
-          <?php include "nav_bar-en.php";?>
+          <?php include "nav_bar_en.php";?>
       </div>
       <!-- Navigation Menu End -->
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
@@ -136,7 +136,7 @@ require_once "scripts/time_elapse.php";
                   </div>
                   <!-- Price Range SLider -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <span class="price-slider-value">Distance (Km) -<input type="text" name="dis" id="price-min" style="width: 110px;color: #363c48;" readonly="true"> </span>
+                     <span class="price-slider-value">Distance (Km) - <input type="text" name="dis" id="price-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true"> </span>
                      <div id="price-slider"></div>
                   </div>
                   <!-- Search Button -->

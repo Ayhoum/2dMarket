@@ -5596,7 +5596,7 @@ ul.category-list-data li:hover a span {
 	position: absolute;
 	text-transform: uppercase;
 	top: -87px;
-	z-index: 999;
+	z-index: 99;
 	width: 20%;
 	text-align: center;
 }
