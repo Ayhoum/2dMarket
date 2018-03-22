@@ -131,13 +131,17 @@ if(isset($_GET['lon']) && isset($_GET['lat']) && $_GET['dis']){
                             $pic = $row['picture_url'];
                             $pic_name = $row['picture_name'];
                             }
+                            if(empty($pic_name)){
+                                $pic = 'en_ad_photo';
+                                $pic_name = 'white.jpg';
+                            }
                        $responseHolder .= "<!-- Listing Ad Grid -->
                         <div class='col-md-6 col-xs-12 col-sm-6'>
                             <!-- Ad Box -->
                             <div class='category-grid-box'>
                                 <!-- Ad Img -->
                                 <div class='category-grid-img'>
-                                    <img class='img-responsive ' style='width: 100%; height: 200px; object-fit: cover;' alt='' src='$pic.$pic_name'>
+                                    <img class='img-responsive ' style='width: 100%; height: 200px; object-fit: cover;' alt='' src='$pic/$pic_name'>
                                     <!-- Ad Status -->
                                     <!-- User Review -->
                                     <div class='user-preview'>
