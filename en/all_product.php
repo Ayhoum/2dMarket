@@ -5,7 +5,6 @@ include '../scripts/db_connection.php';
 //session_start();
 
 ?>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -13,7 +12,7 @@ include '../scripts/db_connection.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
     <meta name="description" content="">
-    <meta name="author" content="2D Market">
+    <meta name="author" content="ScriptsBundle">
     <title>AdForest | Largest Classifieds Portal</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
@@ -58,13 +57,6 @@ include '../scripts/db_connection.php';
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-        .img-responsive img {
-            height:250px;
-            width:100%;
-        }
-
-    </style>
 </head>
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -73,10 +65,81 @@ include '../scripts/db_connection.php';
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
+<!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
+<div class="color-switcher" id="choose_color">
+    <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
+    <h5>STYLE SWITCHER</h5>
+    <div class="theme-colours">
+        <p> Choose Colour style </p>
+        <ul>
+            <li>
+                <a href="#." class="defualt" id="defualt"></a>
+            </li>
+            <li>
+                <a href="#." class="green" id="green"></a>
+            </li>
+            <li>
+                <a href="#." class="blue" id="blue"></a>
+            </li>
+            <li>
+                <a href="#." class="red" id="red"></a>
+            </li>
 
+            <li>
+                <a href="#." class="sea-green" id="sea-green"></a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
 <div class="colored-header">
     <!-- Top Bar -->
-    <?php include "topbar-en.php";?>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <!-- Header Top Left -->
+                <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
+                    <ul class="listnone">
+                        <li><a href="about.html"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
+                        <li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">Swedish</a></li>
+                                <li><a href="#">Arabic</a></li>
+                                <li><a href="#">Russian</a></li>
+                                <li><a href="#">chinese</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Header Top Right Social -->
+                <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
+                    <div class="pull-right">
+                        <ul class="listnone">
+                            <li><a href="login.html"><i class="fa fa-sign-in"></i> Log in</a></li>
+                            <li><a href="register.html"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> Umair <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.html">User Profile</a></li>
+                                    <li><a href="profile-2.html">User Profile 2</a></li>
+                                    <li><a href="archives.html">Archives</a></li>
+                                    <li><a href="active-ads.html">Active Ads</a></li>
+                                    <li><a href="favourite.html">Favourite Ads</a></li>
+                                    <li><a href="messages.html">Message Panel</a></li>
+                                    <li><a href="deactive.html">Account Deactivation</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
     <nav id="menu-1" class="mega-menu">
@@ -357,19 +420,33 @@ include '../scripts/db_connection.php';
     </nav>
 </div>
 <!-- Navigation Menu End -->
+<!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Transparent Breadcrumb =-=-=-=-=-=-= -->
-<!-- Small Breadcrumb -->
-<div class="bread-2 page-header-area">
+<div class="page-header-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-12 col-sm-5 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="header-page">
-                    <h1>All Advertisements </h1>
+                    <h1>Category Grid - 1</h1>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Small Breadcrumb -->
+<div class="small-breadcrumb">
+    <div class="container">
+        <div class=" breadcrumb-link">
+            <ul>
+                <li><a href="index.html">Home Page</a></li>
+                <li><a href="#">Pages</a></li>
+                <li><a href="elements.html">Category</a></li>
+                <li><a class="active" href="#">Listing</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Small Breadcrumb -->
 <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
@@ -380,37 +457,45 @@ include '../scripts/db_connection.php';
             <!-- Row -->
             <div class="row">
                 <!-- Middle Content Area -->
-                <div class="col-md-8 col-md-push-4 col-lg-8 col-sx-12 white-bg">
+                <div class="col-md-8 col-md-push-4 col-lg-8 col-sx-12">
                     <!-- Row -->
                     <div class="row">
                         <!-- Sorting Filters -->
+                        <!-- Sorting Filters -->
                         <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                            <!-- Sorting Filters Breadcrumb -->
-                            <div class="filter-brudcrums">
-                                <span>Showing <span class="showed">1 - 20</span> of <span class="showed">42211</span> results</span>
-                                <div class="filter-brudcrums-sort">
-                                    <ul>
-                                        <li><span>Sort by:</span></li>
-                                        <li><a href="all_ads_organized.php?updatedate=recent">Updated date</a></li>
-                                        <li><a href="all_ads_organized.php?price=higtolow">Price</a></li>
-                                        <li><a href="#">New</a></li>
-                                        <li><a href="#">Used</a></li>
-                                        <li><a href="#">Warranty</a></li>
+                            <div class="clearfix"></div>
+                            <div class="listingTopFilterBar">
+                                <div class="col-md-7 col-xs-12 col-sm-6 no-padding">
+                                    <ul class="filterAdType">
+                                        <li class="active"><a href="">All ads <small>(1)</small></a> </li>
+                                        <li class=""><a href="">Featured <small>(35)</small></a> </li>
                                     </ul>
                                 </div>
+                                <div class="col-md-5 col-xs-12 col-sm-6 no-padding">
+                                    <div class="header-listing">
+                                        <h6>Sort by :</h6>
+                                        <div class="custom-select-box">
+                                            <select name="order" class="custom-select">
+                                                <option value="0">Most popular</option>
+                                                <option value="1">The latest</option>
+                                                <option value="2">The best rating</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- Sorting Filters Breadcrumb End -->
                         </div>
                         <!-- Sorting Filters End-->
                         <div class="clearfix"></div>
+
                         <!-- Ads Archive -->
                         <div class="posts-masonry">
                             <!-- Listing Ad Grid -->
-                            <?php include 'scripts/select_all_ads_premium.php';?>
+                            <?php include  'scripts/all_ads_script.php';?>
                             <!-- Advertizing -->
                             <div class="col-md-12 col-xs-12 col-sm-12">
                                 <section class="advertising">
-                                    <a href="<?php if(isset($_SESSION['id'])) {echo "new_advertisement.php" ;} else {echo "login.php";}  ?>">
+                                    <a href="post-ad-1.html">
                                         <div class="banner">
                                             <div class="wrapper">
                                                 <span class="title">Do you want your property to be listed here?</span>
@@ -422,16 +507,15 @@ include '../scripts/db_connection.php';
                                 </section>
                             </div>
                             <!-- Advertizing End -->
-                            <?php include 'scripts/select_all_ads_normal.php'; ?>
                         </div>
                         <!-- Ads Archive End -->
                         <div class="clearfix"></div>
                         <!-- Pagination -->
-                        <div class="text-center margin-bottom-30">
+                        <div class="text-center margin-top-30">
                             <ul class="pagination ">
-                                <li class=""><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
+                                <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                                <li><a href="#">1</a></li>
+                                <li class="active"><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
                                 <li><a href="#">4</a></li>
                                 <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
@@ -465,12 +549,118 @@ include '../scripts/db_connection.php';
                                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body categories">
                                         <ul>
-                                        <?php include 'scripts/category.php';?>
+                                            <li><a href="#"><i class="flaticon-data"></i>Electronics & Gedget<span>(1029)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-transport-6"></i>Cars & Vehicles<span>(1228)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-mortgage"></i>Property<span>(178)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-technology-8"></i>Mobile & Tablets<span>(2178)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-suitcase"></i>Jobs<span>(7178)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-search"></i>Home & Garden<span>(7163)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-dog"></i>Pets & Animals<span>(8709)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-science"></i>Health & Beauty<span>(3129)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-game"></i>Hobby, Sport & Kids<span>(2019)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-food"></i>Food & Agriculture<span>(323)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-blouse"></i>Women & Children Cloths<span>(425)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-technology-22"></i>Cameras & Security<span>(3223)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-technology-45"></i>Office Product<span>(3283)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-wrench"></i>Arts, Crafts & Sewing<span>(3221)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-cogwheel-2"></i>Others<span>(3129)</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <!-- Categories Panel End -->
+                            <!-- Brands Panel -->
+                            <div class="panel panel-default">
+                                <!-- Heading -->
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="more-less glyphicon glyphicon-plus"></i>
+                                            Brands
+                                        </a>
+                                    </h4>
+                                </div>
+                                <!-- Content -->
+                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        <!-- Search -->
+                                        <div class="search-widget">
+                                            <input placeholder="search" type="text">
+                                            <button type="submit"><i class="fa fa-search"></i></button>
+                                        </div>
+                                        <!-- Brands List -->
+                                        <div class="skin-minimal">
+                                            <ul class="list">
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-1">
+                                                    <label for="minimal-checkbox-1">All Brands</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-2">
+                                                    <label for="minimal-checkbox-2">Samsung</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-3">
+                                                    <label for="minimal-checkbox-3">Apple</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-4">
+                                                    <label for="minimal-checkbox-4">Nokia</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-5">
+                                                    <label for="minimal-checkbox-5">Sony</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-6">
+                                                    <label for="minimal-checkbox-6">Blackberry</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-7">
+                                                    <label for="minimal-checkbox-7">HTC</label>
+                                                </li>
+                                                <li>
+                                                    <input  type="checkbox" id="minimal-checkbox-8">
+                                                    <label for="minimal-checkbox-8">Motorola</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- Brands List End -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Brands Panel End -->
+                            <!-- Location Panel -->
+                            <div class="panel panel-default">
+                                <!-- Heading -->
+                                <div class="panel-heading" role="tab" id="cities">
+                                    <!-- Title -->
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">
+                                            <i class="more-less glyphicon glyphicon-plus"></i>
+                                            Cities
+                                        </a>
+                                    </h4>
+                                    <!-- Title End -->
+                                </div>
+                                <!-- Content -->
+                                <div id="citiesheading" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cities">
+                                    <div class="panel-body categories">
+                                        <ul>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> London </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> Birmingham </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> Leeds </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> Glasgow </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> Sheffield </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> Bradford </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> Liverpool </a></li>
+                                        </ul>
+                                        <h5><a class="pull-right" data-target=".cat_modal" data-toggle="modal"  href="#">View All</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Location Panel End -->
+
                             <!-- Condition Panel -->
                             <div class="panel panel-default">
                                 <!-- Heading -->
@@ -520,7 +710,6 @@ include '../scripts/db_connection.php';
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Pricing Panel End -->
                             <!-- Featured Ads Panel -->
                             <div class="panel panel-default">
@@ -533,7 +722,187 @@ include '../scripts/db_connection.php';
                                     </h4>
                                 </div>
                                 <!-- Content -->
-                                <?php include 'scripts/featured_ads.php';?>
+                                <div class="panel-collapse">
+                                    <div class="panel-body recent-ads">
+                                        <div class="featured-slider-3">
+                                            <!-- Featured Ads -->
+                                            <div class="item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                                    <!-- Ad Box -->
+                                                    <div class="category-grid-box">
+                                                        <!-- Ad Img -->
+                                                        <div class="category-grid-img">
+                                                            <img class="img-responsive" alt="" src="images/posting/car-3.jpg">
+                                                            <!-- Ad Status -->
+                                                            <!-- User Review -->
+                                                            <div class="user-preview">
+                                                                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                                            </div>
+                                                            <!-- View Details --><a href="" class="view-details">View Details</a>
+                                                        </div>
+                                                        <!-- Ad Img End -->
+                                                        <div class="short-description">
+                                                            <!-- Ad Category -->
+                                                            <div class="category-title"> <span><a href="#">Cars</a></span> </div>
+                                                            <!-- Ad Title -->
+                                                            <h3><a title="" href="single-page-listing.html">2017 Honda Civic EX</a></h3>
+                                                            <!-- Price -->
+                                                            <div class="price">$18,200 <span class="negotiable">(Negotiable)</span></div>
+                                                        </div>
+                                                        <!-- Addition Info -->
+                                                        <div class="ad-info">
+                                                            <ul>
+                                                                <li><i class="fa fa-map-marker"></i>London</li>
+                                                                <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ad Box End -->
+                                                </div>
+                                            </div>
+                                            <!-- Featured Ads -->
+                                            <div class="item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                                    <!-- Ad Box -->
+                                                    <div class="category-grid-box">
+                                                        <!-- Ad Img -->
+                                                        <div class="category-grid-img">
+                                                            <img class="img-responsive" alt="" src="images/posting/fur-3.jpg">
+                                                            <!-- Ad Status -->
+                                                            <!-- User Review -->
+                                                            <div class="user-preview">
+                                                                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                                            </div>
+                                                            <!-- View Details --><a href="" class="view-details">View Details</a>
+                                                        </div>
+                                                        <!-- Ad Img End -->
+                                                        <div class="short-description">
+                                                            <!-- Ad Category -->
+                                                            <div class="category-title"> <span><a href="#">Cameras & Accessories</a></span> </div>
+                                                            <!-- Ad Title -->
+                                                            <h3><a title="" href="single-page-listing.html">Office Furniture For Sale </a></h3>
+                                                            <!-- Price -->
+                                                            <div class="price">$250 <span class="negotiable">(Negotiable)</span></div>
+                                                        </div>
+                                                        <!-- Addition Info -->
+                                                        <div class="ad-info">
+                                                            <ul>
+                                                                <li><i class="fa fa-map-marker"></i>London</li>
+                                                                <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ad Box End -->
+                                                </div>
+                                            </div>
+                                            <!-- Featured Ads -->
+                                            <div class="item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                                    <!-- Ad Box -->
+                                                    <div class="category-grid-box">
+                                                        <!-- Ad Img -->
+                                                        <div class="category-grid-img">
+                                                            <img class="img-responsive" alt="" src="images/posting/mob-6.jpg">
+                                                            <!-- Ad Status -->
+                                                            <!-- User Review -->
+                                                            <div class="user-preview">
+                                                                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                                            </div>
+                                                            <!-- View Details --><a href="" class="view-details">View Details</a>
+                                                        </div>
+                                                        <!-- Ad Img End -->
+                                                        <div class="short-description">
+                                                            <!-- Ad Category -->
+                                                            <div class="category-title"> <span><a href="#">Cameras & Accessories</a></span> </div>
+                                                            <!-- Ad Title -->
+                                                            <h3><a title="" href="single-page-listing.html">Sony Xperia Z5 </a></h3>
+                                                            <!-- Price -->
+                                                            <div class="price">$250 <span class="negotiable">(Negotiable)</span></div>
+                                                        </div>
+                                                        <!-- Addition Info -->
+                                                        <div class="ad-info">
+                                                            <ul>
+                                                                <li><i class="fa fa-map-marker"></i>London</li>
+                                                                <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ad Box End -->
+                                                </div>
+                                            </div>
+                                            <!-- Featured Ads -->
+                                            <div class="item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                                    <!-- Ad Box -->
+                                                    <div class="category-grid-box">
+                                                        <!-- Ad Img -->
+                                                        <div class="category-grid-img">
+                                                            <img class="img-responsive" alt="" src="images/posting/cam-2.jpg">
+                                                            <!-- Ad Status -->
+                                                            <!-- User Review -->
+                                                            <div class="user-preview">
+                                                                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                                            </div>
+                                                            <!-- View Details --><a href="" class="view-details">View Details</a>
+                                                        </div>
+                                                        <!-- Ad Img End -->
+                                                        <div class="short-description">
+                                                            <!-- Ad Category -->
+                                                            <div class="category-title"> <span><a href="#">Cameras & Accessories</a></span> </div>
+                                                            <!-- Ad Title -->
+                                                            <h3><a title="" href="single-page-listing.html">Sony Xperia Z5 </a></h3>
+                                                            <!-- Price -->
+                                                            <div class="price">$250 <span class="negotiable">(Negotiable)</span></div>
+                                                        </div>
+                                                        <!-- Addition Info -->
+                                                        <div class="ad-info">
+                                                            <ul>
+                                                                <li><i class="fa fa-map-marker"></i>London</li>
+                                                                <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ad Box End -->
+                                                </div>
+                                            </div>
+                                            <!-- Featured Ads -->
+                                            <div class="item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                                    <!-- Ad Box -->
+                                                    <div class="category-grid-box">
+                                                        <!-- Ad Img -->
+                                                        <div class="category-grid-img">
+                                                            <img class="img-responsive" alt="" src="images/posting/cam-2.jpg">
+                                                            <!-- Ad Status -->
+                                                            <!-- User Review -->
+                                                            <div class="user-preview">
+                                                                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                                            </div>
+                                                            <!-- View Details --><a href="" class="view-details">View Details</a>
+                                                        </div>
+                                                        <!-- Ad Img End -->
+                                                        <div class="short-description">
+                                                            <!-- Ad Category -->
+                                                            <div class="category-title"> <span><a href="#">Cameras & Accessories</a></span> </div>
+                                                            <!-- Ad Title -->
+                                                            <h3><a title="" href="single-page-listing.html">Sony Xperia Z5 </a></h3>
+                                                            <!-- Price -->
+                                                            <div class="price">$250 <span class="negotiable">(Negotiable)</span></div>
+                                                        </div>
+                                                        <!-- Addition Info -->
+                                                        <div class="ad-info">
+                                                            <ul>
+                                                                <li><i class="fa fa-map-marker"></i>London</li>
+                                                                <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ad Box End -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- Featured Ads Panel End -->
                             <!-- Latest Ads Panel -->
@@ -815,43 +1184,59 @@ include '../scripts/db_connection.php';
 </a>
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>
-<!-- =-=-=-=-=-=-= Quote Modal =-=-=-=-=-=-= -->
-<div class="modal fade price-quote" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="search-modal modal fade cat_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="lineModalLabel">Email for Price</h3>
+                <h3 class="modal-title text-center"> <i class="icon-gears"></i> Select Your Location </h3>
             </div>
             <div class="modal-body">
                 <!-- content goes here -->
-                <form>
-                    <div class="form-group  col-md-6">
-                        <label>Your Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Your Name">
+                <div class="search-block">
+                    <div class="row">
+                        <div class="col-md-12 text-box">
+                            <input class="form-control" placeholder="Type your city here" type="text">
+                            <i class="icon-search icon-magnifying-glass"></i>
+                        </div>
                     </div>
-                    <div class="form-group  col-md-6">
-                        <label>Email Address</label>
-                        <input type="email" class="form-control" placeholder="Enter email">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 col-sm-12 popular-search">
+                            <label>Popular Locations</label>
+                            <ul class="city-select-city">
+                                <li class="col-sm-4 col-xs-6"><a href="#"> London </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Birmingham </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Leeds </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Glasgow </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Sheffield </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Bradford </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Liverpool </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Edinburgh </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Manchester </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Bristol </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Kirklees </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Fife </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Wirral </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> North Lanarkshire </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Wakefield </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Cardiff </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Dudley </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Wigan </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> East Riding </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> South Lanarkshire </a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="form-group  col-md-12">
-                        <label>Contact No</label>
-                        <input type="text" class="form-control" placeholder="Contact No">
-                    </div>
-                    <div class="form-group  col-md-12">
-                        <label>Comments</label>
-                        <textarea placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control">What is the price of the 2015 Honda Accord EX-L you have in your inventory?</textarea>
-                    </div>
-                    <div class="col-md-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>
-                    <div class="clearfix"></div>
-                    <div class="col-md-12 margin-bottom-20 margin-top-20">
-                        <button type="submit" class="btn btn-theme btn-block">Submit</button>
-                    </div>
-                </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-lg btn-block">View All Cities</button>
             </div>
         </div>
     </div>
 </div>
+
 <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
 <script src="js/jquery.min.js"></script>
 <!-- Bootstrap Core Css  -->
