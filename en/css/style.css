@@ -1856,7 +1856,6 @@ ul.category-list-style li a span {
 }
 .category-grid-box .user-preview img {
 	border-radius: 50%;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
 	display: inline-block;
 	height: 40px;
 	vertical-align: middle;

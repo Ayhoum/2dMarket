@@ -10,8 +10,8 @@
 
 session_start();
 //ob_start();
-require_once "../scripts/db_connection.php";
-include 'scripts/sessions.php';
+require_once "../../scripts/db_connection.php";
+include 'sessions.php';
 
 $responseHolder = "";
 
@@ -77,7 +77,7 @@ if(isset($_GET['lon']) && isset($_GET['lat']) && $_GET['dis']){
 
 
                         //extract date:
-                        require_once 'scripts/time_elapse.php';
+                        require_once 'time_elapse.php';
                         $date = time_elapsed_string($date);
 
                         // Category_info
@@ -104,8 +104,10 @@ if(isset($_GET['lon']) && isset($_GET['lat']) && $_GET['dis']){
                             $online_status = $row['online_status'];
 
                         }
-                        if (empty($user_pic)) {
-                            $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
+                        if (empty($user_pic) || !file_exists('../../uploads/users/'.$user_pic)) {
+                            $user_pic = "https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Account-256.png";
+                        }else{
+                            $user_pic = '../../uploads/users/'.$user_pic;
                         }
 
 // Address info.
@@ -145,7 +147,7 @@ if(isset($_GET['lon']) && isset($_GET['lat']) && $_GET['dis']){
                                     <!-- Ad Status -->
                                     <!-- User Review -->
                                     <div class='user-preview'>
-                                        <a href='profile_2.php?user_id=$user_id'> <img src='../uploads/users/$user_pic' class='avatar avatar-small' alt='$user_username'> </a>
+                                        <a href='profile_2.php?user_id=$user_id'> <img src='$user_pic' class='avatar avatar-small'> </a>
                                     </div>
                                     <!-- View Details --><a href='ad_page.php?ad_id=$ad_id' class='view-details'>View Details</a>
                                     <!-- Additional Info -->

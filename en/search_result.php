@@ -1,9 +1,13 @@
 ﻿<?php
+/**
+ * Created by PhpStorm.
+ * User: aylos
+ * Date: 18/3/2018
+ * Time: 4:51 م
+ */
 include '../scripts/db_connection.php';
-
-//ob_start();
-//session_start();
-
+ob_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +18,7 @@ include '../scripts/db_connection.php';
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="2D Market">
-    <title>2D Market | Your search results </title>
+    <title>AdForest | Largest Classifieds Portal</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -58,6 +62,13 @@ include '../scripts/db_connection.php';
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .img-responsive img {
+            height:250px;
+            width:100%;
+        }
+
+    </style>
 </head>
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -399,23 +410,7 @@ include '../scripts/db_connection.php';
                         <!-- Ads Archive -->
                         <div class="posts-masonry">
                             <!-- Listing Ad Grid -->
-                            <?php include 'scripts/select_all_ads_premium.php';?>
-                            <!-- Advertizing -->
-                            <div class="col-md-12 col-xs-12 col-sm-12">
-                                <section class="advertising">
-                                    <a href="post-ad-1.html">
-                                        <div class="banner">
-                                            <div class="wrapper">
-                                                <span class="title">Do you want your property to be listed here?</span>
-                                                <span class="submit">Submit it now! <i class="fa fa-plus-square"></i></span>
-                                            </div>
-                                        </div>
-                                        <!-- /.banner-->
-                                    </a>
-                                </section>
-                            </div>
-                            <!-- Advertizing End -->
-                            <?php include 'scripts/select_all_ads_normal.php'; ?>
+
                         </div>
                         <!-- Ads Archive End -->
                         <div class="clearfix"></div>
@@ -458,7 +453,7 @@ include '../scripts/db_connection.php';
                                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body categories">
                                         <ul>
-                                    <?php include 'scripts/category.php';?>
+                                            <?php include 'scripts/category.php';?>
                                         </ul>
                                     </div>
                                 </div>
@@ -879,5 +874,107 @@ include '../scripts/db_connection.php';
 <script src="js/color-switcher.js"></script>
 <!-- Template Core JS -->
 <script src="js/custom.js"></script>
+
+
+<?php
+/**
+ * Created by PhpStorm.
+ * User: aylos
+ * Date: 18/3/2018
+ * Time: 6:59 م
+ */
+
+if(isset($_POST['submit'])){
+
+    $dis = $_POST['dis'];
+    $cat = $_POST['cat'];
+    $query = $_POST['query'];
+
+
+    echo $dis;
+    echo $cat;
+    echo $query;
+
+}?>
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+    var long;
+    var lati;
+    $(document).ready(function() {
+        var currgeocoder;
+
+        //Set geo location lat and long
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+            geo_loc = processGeolocationResult(position);
+            currLatLong = geo_loc.split(",");
+            initializeCurrent(currLatLong[0], currLatLong[1]);
+
+        });
+
+        //Get geo location result
+
+        function processGeolocationResult(position) {
+            html5Lat = position.coords.latitude; //Get latitude
+            html5Lon = position.coords.longitude; //Get longitude
+            html5TimeStamp = position.timestamp; //Get timestamp
+            html5Accuracy = position.coords.accuracy; //Get accuracy in meters
+            return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);
+        }
+
+
+        function initializeCurrent(latcurr, longcurr) {
+            currgeocoder = new google.maps.Geocoder();
+            console.log(latcurr + "-- ######## --" + longcurr);
+
+            if (latcurr != '' && longcurr != '') {
+                var myLatlng = new google.maps.LatLng(latcurr, longcurr);
+                long = longcurr;
+                lati = latcurr;
+
+                $.post('scripts/handleSearch.php?lat=' + lati + '&lon=' + long + '&dis=<?php echo $dis;?>', function (response) {
+
+                    if (response == "error") {
+                        $(".posts-masonry").html('error');
+                    } else{
+                        $(".posts-masonry").html(response);
+                    }
+                });
+
+                return getCurrentAddress(myLatlng);
+            }
+        }
+
+        //Get current address
+
+        function getCurrentAddress(location) {
+            currgeocoder.geocode({
+                'location': location
+
+            }, function(results, status) {
+
+                if (status == google.maps.GeocoderStatus.OK) {
+                    console.log(results[0]);
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    });
+
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&callback=initMap">
+</script>
+
+
+
+
+
 </body>
 </html>
