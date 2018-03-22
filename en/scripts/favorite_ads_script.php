@@ -19,6 +19,7 @@ $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
 $num_Ads = mysqli_num_rows($ad_result_get_num);
 
 ?>
+
 <div class="posts-masonry">
     <!-- Listing Ad Grid -->
     <?php

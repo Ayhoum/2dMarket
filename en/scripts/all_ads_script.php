@@ -6,8 +6,28 @@
  * Time: 18:29
  */
 ?>
+<div class="posts-masonry">
+
 <?php
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = 0;
+}
+$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'EN' ";
+$ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
+$num_Ads = mysqli_num_rows($ad_result_get_num);
+
+if($num_Ads <= 10){
     $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC";
+}else if($page == 0 || $page == 1){
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC LIMIT 10";
+}else if($page > 1){
+    $start = (($page - 1) * 10);
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
+
+}
+//    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);
 
     if (mysqli_num_rows($ad_result) > 0) {
@@ -145,3 +165,51 @@
         }
     }
     ?>
+    <div class="col-md-12 col-xs-12 col-sm-12">
+        <section class="advertising">
+            <a href="post-ad-1.html">
+                <div class="banner">
+                    <div class="wrapper">
+                        <span class="title">Do you want your property to be listed here?</span>
+                        <span class="submit">Submit it now! <i class="fa fa-plus-square"></i></span>
+                    </div>
+                </div>
+                <!-- /.banner-->
+            </a>
+        </section>
+    </div>
+
+</div>
+
+
+<div class="clearfix"></div>
+<!-- Pagination -->
+<div class="text-center margin-top-30 block-center">
+    <ul class="pagination ">
+        <?php
+        if ($page != 0 && $page != 1) {
+            ?>
+            <li><a href="favourite_ads.php?page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
+                                                                              aria-hidden="true"></i></a></li>
+            <?php
+        }
+        $num_Ads = ceil($num_Ads / 10);
+        for ($i = 1; $i <= $num_Ads; $i++) {
+            ?>
+            <li <?php if ($i == $page || ($i == 1 && $page == 0)) {
+                echo 'class="active"';
+            } ?>><a href="all_product.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+
+        <?php } ?>
+        <?php
+        if ($page != $num_Ads) {
+            ?>
+            <li><a href="all_product.php?page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
+                                                                              aria-hidden="true"></i></a></li>
+            <?php
+        }
+        ?>
+
+    </ul>
+</div>
+<!-- Pagination End -->
