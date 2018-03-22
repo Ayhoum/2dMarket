@@ -8,12 +8,12 @@
 
 
 
-//session_start();
+session_start();
 //ob_start();
-//require_once "../scripts/db_connection.php";
+require_once "../scripts/db_connection.php";
 include 'scripts/sessions.php';
 
-
+$responseHolder = "";
 
 
 $usersArr = array();
@@ -131,52 +131,57 @@ if(isset($_GET['lon']) && isset($_GET['lat']) && $_GET['dis']){
                             $pic = $row['picture_url'];
                             $pic_name = $row['picture_name'];
                             }
-                        ?>
-                        <!-- Listing Ad Grid -->
-                        <div class="col-md-6 col-xs-12 col-sm-6">
+                       $responseHolder .= "<!-- Listing Ad Grid -->
+                        <div class='col-md-6 col-xs-12 col-sm-6'>
                             <!-- Ad Box -->
-                            <div class="category-grid-box">
+                            <div class='category-grid-box'>
                                 <!-- Ad Img -->
-                                <div class="category-grid-img">
-                                    <img class="img-responsive " style="width: 100%; height: 200px; object-fit: cover;" alt="" src="<?php echo $pic.$pic_name ;?>">
+                                <div class='category-grid-img'>
+                                    <img class='img-responsive ' style='width: 100%; height: 200px; object-fit: cover;' alt='' src='$pic.$pic_name'>
                                     <!-- Ad Status -->
                                     <!-- User Review -->
-                                    <div class="user-preview">
-                                        <a href="profile_2.php?user_id=<?php echo $user_id;?>"> <img src="../uploads/users<?php echo $user_pic;?>" class="avatar avatar-small" alt="<?php echo $user_username; ?>"> </a>
+                                    <div class='user-preview'>
+                                        <a href='profile_2.php?user_id=$user_id'> <img src='../uploads/users/$user_pic' class='avatar avatar-small' alt='$user_username'> </a>
                                     </div>
-                                    <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id;?>" class="view-details">View Details</a>
+                                    <!-- View Details --><a href='ad_page.php?ad_id=$ad_id' class='view-details'>View Details</a>
                                     <!-- Additional Info -->
-                                    <div class="additional-information">
-                                        <p><?php echo $description; ?></p>
+                                    <div class='additional-information'>
+                                        <p>$description</p>
 
                                     </div>
                                     <!-- Additional Info End-->
                                 </div>
                                 <!-- Ad Img End -->
-                                <div class="short-description">
-                                    <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo $status ;?></span></p>
-                                    <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
-                                    <?php }elseif ($status == "AVAILABLE "){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
-                                    <!-- Ad Category -->
-                                    <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
+                                <div class='short-description'>";
+
+                                    if ($status == 'SOLD'){
+                                        $responseHolder .= "<p> <span class='label label-danger'>$status</span></p>";
+                                    }elseif ($status == 'RESERVED'){
+                                        $responseHolder .= "<p> <span class='label label-warning'>$status</span></p>";
+                                    }elseif ($status == 'AVAILABLE'){
+                                        $responseHolder .= "<p> <span class='label label-success'>$status</span></p>";
+                                    }
+                                    $responseHolder .= "<!-- Ad Category -->
+                                    <div class='category-title'> <span><a href='ad_per_cat.php?cat_id=$category_id'>$cat_name</a></span> </div>
                                     <!-- Ad Title -->
-                                    <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
+                                    <h3><a title='' href='ad_page.php?ad_id=$ad_id'>$title</a></h3>
                                     <!-- Price -->
-                                    <div class="price"><?php if ($selling_type == "BID"){ echo "Bid";} else{ echo $price;}?></div>
+                                    <div class='price'>";
+                                    if ($selling_type == 'BID'){ $responseHolder .= 'Bid';} else{ $responseHolder .= $price;}
+                                    $responseHolder .= "</div>
                                 </div>
                                 <!-- Addition Info -->
-                                <div class="ad-info">
+                                <div class='ad-info'>
                                     <ul>
-                                        <li><i class="fa fa-map-marker"></i><?php echo $user_postcode. " | " . $user_city ; ?></li>
-                                        <li><i class="fa fa-clock-o"></i> <?php echo $date;?> </li>
+                                        <li><i class='fa fa-map-marker'></i>$user_postcode | $user_city</li>
+                                        <li><i class='fa fa-clock-o'></i>$date</li>
                                     </ul>
                                 </div>
                             </div>
                             <!-- Ad Box End -->
                         </div>
 
-                        <!-- Listing Ad Grid -->
-                        <?php
+                        <!-- Listing Ad Grid -->";
 
                     }
                 }
@@ -185,6 +190,21 @@ if(isset($_GET['lon']) && isset($_GET['lat']) && $_GET['dis']){
         }
     }
 }
+$responseHolder .="<!-- Advertizing -->
+                            <div class='col-md-12 col-xs-12 col-sm-12'>
+                                <section class='advertising'>
+                                    <a href='new_advertisement.php'>
+                                        <div class='banner'>
+                                            <div class='wrapper'>
+                                                <span class='title'>Do you want your property to be listed here?</span>
+                                                <span class='submit'>Submit it now! <i class='fa fa-plus-square'></i></span>
+                                            </div>
+                                        </div>
+                                        <!-- /.banner-->
+                                    </a>
+                                </section>
+                            </div>
+                            <!-- Advertizing End -->";
 
-
+echo $responseHolder;
 ?>

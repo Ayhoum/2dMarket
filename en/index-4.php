@@ -96,7 +96,7 @@ require_once "scripts/time_elapse.php";
                <div class="search-title">Browse Ads</div>
             </div>
             <div class="row">
-               <form method="post" class="search-form" action="test5.php">
+               <form method="post" class="search-form" action="test4.php">
                   <!-- Category -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
                      <select name="cat" class="category form-control">
