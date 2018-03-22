@@ -403,6 +403,58 @@ require_once "../scripts/db_connection.php";
           </footer>
           <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
       </div>
+
+
+      <div class="custom-modal">
+          <div id="modalPassError" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                      <div class="modal-header rte">
+                          <h2 class="modal-title text-center">You entered a wrong password!</h2>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="custom-modal">
+          <div id="modalUserError" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                      <div class="modal-header rte">
+                          <h2 class="modal-title text-center">Maybe you entered a wrong email</h2>
+                          <h2 class="modal-title text-center">Please, check it or make a new account!</h2>
+                      </div>
+                      <div class="modal-footer">
+                          <a href="register.php" type="button" class="btn btn-warning">Register</a>
+                          <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="custom-modal">
+          <div id="fieldsError" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                      <div class="modal-header rte">
+                          <h2 class="modal-title text-center">You left something empty!</h2>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
       <!-- Main Content Area End --> 
       <!-- Post Ad Sticky -->
       <a href="#" class="sticky-post-button hidden-xs">
