@@ -1,15 +1,10 @@
 ﻿<?php
-/**
- * Created by PhpStorm.
- * User: aylos
- * Date: 18/3/2018
- * Time: 4:51 م
- */
 include '../scripts/db_connection.php';
-ob_start();
-session_start();
+
+//ob_start();
+//session_start();
+
 ?>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -17,7 +12,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
     <meta name="description" content="">
-    <meta name="author" content="2D Market">
+    <meta name="author" content="ScriptsBundle">
     <title>AdForest | Largest Classifieds Portal</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
@@ -62,13 +57,6 @@ session_start();
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-        .img-responsive img {
-            height:250px;
-            width:100%;
-        }
-
-    </style>
 </head>
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -78,9 +66,53 @@ session_start();
     <div class="loader-section section-right"></div>
 </div>
 
+<!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
 <div class="colored-header">
     <!-- Top Bar -->
-    <?php include "topbar-en.php";?>
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <!-- Header Top Left -->
+                <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
+                    <ul class="listnone">
+                        <li><a href="about.html"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>
+                        <li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">Swedish</a></li>
+                                <li><a href="#">Arabic</a></li>
+                                <li><a href="#">Russian</a></li>
+                                <li><a href="#">chinese</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Header Top Right Social -->
+                <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
+                    <div class="pull-right">
+                        <ul class="listnone">
+                            <li><a href="login.html"><i class="fa fa-sign-in"></i> Log in</a></li>
+                            <li><a href="register.html"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> Umair <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.html">User Profile</a></li>
+                                    <li><a href="profile-2.html">User Profile 2</a></li>
+                                    <li><a href="archives.html">Archives</a></li>
+                                    <li><a href="active-ads.html">Active Ads</a></li>
+                                    <li><a href="favourite.html">Favourite Ads</a></li>
+                                    <li><a href="messages.html">Message Panel</a></li>
+                                    <li><a href="deactive.html">Account Deactivation</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
     <nav id="menu-1" class="mega-menu">
@@ -361,19 +393,33 @@ session_start();
     </nav>
 </div>
 <!-- Navigation Menu End -->
+<!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Transparent Breadcrumb =-=-=-=-=-=-= -->
-<!-- Small Breadcrumb -->
-<div class="bread-2 page-header-area">
+<div class="page-header-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-12 col-sm-5 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="header-page">
-                    <h1>All Advertisements </h1>
+                    <h1>Category Grid - 1</h1>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Small Breadcrumb -->
+<div class="small-breadcrumb">
+    <div class="container">
+        <div class=" breadcrumb-link">
+            <ul>
+                <li><a href="index.html">Home Page</a></li>
+                <li><a href="#">Pages</a></li>
+                <li><a href="elements.html">Category</a></li>
+                <li><a class="active" href="#">Listing</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Small Breadcrumb -->
 <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
@@ -384,48 +430,32 @@ session_start();
             <!-- Row -->
             <div class="row">
                 <!-- Middle Content Area -->
-                <div class="col-md-8 col-md-push-4 col-lg-8 col-sx-12 white-bg">
+                <div class='col-md-8 col-md-push-4 col-lg-8 col-sx-12'>
                     <!-- Row -->
-                    <div class="row">
+                    <div class='row'>
                         <!-- Sorting Filters -->
-                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                            <!-- Sorting Filters Breadcrumb -->
-                            <div class="filter-brudcrums">
-                                <span>Showing <span class="showed">1 - 20</span> of <span class="showed">42211</span> results</span>
-                                <div class="filter-brudcrums-sort">
-                                    <ul>
-                                        <li><span>Sort by:</span></li>
-                                        <li><a href="all_ads_organized.php?updatedate=recent">Updated date</a></li>
-                                        <li><a href="all_ads_organized.php?price=higtolow">Price</a></li>
-                                        <li><a href="#">New</a></li>
-                                        <li><a href="#">Used</a></li>
-                                        <li><a href="#">Warranty</a></li>
-                                    </ul>
+                        <!-- Sorting Filters -->
+                        <div class='col-md-12 col-xs-12 col-sm-12 col-lg-12'>
+                            <div class='clearfix'></div>
+                            <div class='listingTopFilterBar'>
+                                <div class='col-md-5 col-xs-12 col-sm-6 no-padding'>
+                                    <div class='header-listing'>
+                                        <h6>Sort by :</h6>
+                                        <div class='custom-select-box'>
+                                            <select name='order' class='custom-select'>
+                                                <option value='1'>The latest</option>
+                                                <option value='2'>Price (low to high) </option>
+                                                <option value='3'>Price (high to low) </option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- Sorting Filters Breadcrumb End -->
                         </div>
                         <!-- Sorting Filters End-->
-                        <div class="clearfix"></div>
-                        <!-- Ads Archive -->
-                        <div class="posts-masonry">
-                            <!-- Listing Ad Grid -->
+                        <div class='clearfix'></div>
+                <div class="posts-masonry"></div>
 
-                        </div>
-                        <!-- Ads Archive End -->
-                        <div class="clearfix"></div>
-                        <!-- Pagination -->
-                        <div class="text-center margin-bottom-30">
-                            <ul class="pagination ">
-                                <li class=""><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
-                        <!-- Pagination End -->
                     </div>
                     <!-- Row End -->
                 </div>
@@ -453,42 +483,62 @@ session_start();
                                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body categories">
                                         <ul>
-                                            <?php include 'scripts/category.php';?>
+                                            <?php
+                                            $cat_query  = "SELECT * FROM `CATEGORY` WHERE `lang` = 'EN'";
+                                            $cat_result = mysqli_query($mysqli, $cat_query);
+                                            while ($row = mysqli_fetch_assoc($cat_result)) {
+                                                $cat_id     = $row['id'];
+                                                $cat_name   = $row['name'];
+                                                $icon_name  = $row['icon_name'];
+
+                                                $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$cat_id}' ";
+                                                $count_result = mysqli_query($mysqli,$count_query);
+                                                while ($row = mysqli_fetch_assoc($count_result)){
+                                                    $cat_count = $row['CAT_count'];
+                                                }
+
+                                                ?>
+
+                                                <li><a href="ad_per_cat.php?cat_id=<?php echo $cat_id; ?>"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span style="color: #985f0d">(<?php echo $cat_count;?>)</span></a></li>
+                                                <?php
+                                            }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <!-- Categories Panel End -->
-                            <!-- Condition Panel -->
+                            <!-- Location Panel -->
                             <div class="panel panel-default">
                                 <!-- Heading -->
-                                <div class="panel-heading" role="tab" id="headingThree">
+                                <div class="panel-heading" role="tab" id="cities">
+                                    <!-- Title -->
                                     <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Condition
+                                            Away From You
                                         </a>
                                     </h4>
+                                    <!-- Title End -->
                                 </div>
                                 <!-- Content -->
-                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                    <div class="panel-body">
-                                        <div class="skin-minimal">
-                                            <ul class="list">
-                                                <li>
-                                                    <input tabindex="7" type="radio" id="minimal-radio-1" name="minimal-radio">
-                                                    <label for="minimal-radio-1">New</label>
-                                                </li>
-                                                <li>
-                                                    <input tabindex="8" type="radio" id="minimal-radio-2" name="minimal-radio" checked>
-                                                    <label for="minimal-radio-2">Used</label>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                <div id="citiesheading" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cities">
+                                    <div class="panel-body categories">
+                                        <ul>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> 10 KM </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> 20 KM </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> 30 KM </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> 40 KM </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> 50 KM </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> 60 KM </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> 70 KM </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> 80 KM </a></li>
+                                            <li><a href="#"><i class="flaticon-signs-1"></i> 90 KM </a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Condition Panel End -->
+                            <!-- Location Panel End -->
                             <!-- Pricing Panel -->
                             <div class="panel panel-default">
                                 <!-- Heading -->
@@ -503,12 +553,11 @@ session_start();
                                 <!-- Content -->
                                 <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
                                     <div class="panel-body">
-                                        <span class="price-slider-value">Price ($) <span id="price-min"></span> - <span id="price-max"></span></span>
+                                        <span class="price-slider-value">Price (€) <span id="price-min"></span> - <span id="price-max"></span></span>
                                         <div id="price-slider"></div>
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Pricing Panel End -->
                             <!-- Featured Ads Panel -->
                             <div class="panel panel-default">
@@ -524,153 +573,6 @@ session_start();
                                 <?php include 'scripts/featured_ads.php';?>
                             </div>
                             <!-- Featured Ads Panel End -->
-                            <!-- Latest Ads Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" >
-                                    <h4 class="panel-title">
-                                        <a>
-                                            Recent Ads
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- Content -->
-                                <div class="panel-collapse">
-                                    <div class="panel-body recent-ads">
-                                        <!-- Ads -->
-                                        <div class="recent-ads-list">
-                                            <div class="recent-ads-container">
-                                                <div class="recent-ads-list-image">
-                                                    <a href="#" class="recent-ads-list-image-inner">
-                                                        <img src="images/posting/thumb-1.jpg" alt="">
-                                                    </a><!-- /.recent-ads-list-image-inner -->
-                                                </div>
-                                                <!-- /.recent-ads-list-image -->
-                                                <div class="recent-ads-list-content">
-                                                    <h3 class="recent-ads-list-title">
-                                                        <a href="#">Sony Xperia Z1</a>
-                                                    </h3>
-                                                    <ul class="recent-ads-list-location">
-                                                        <li><a href="#">New York</a>,</li>
-                                                        <li><a href="#">Brooklyn</a></li>
-                                                    </ul>
-                                                    <div class="recent-ads-list-price">
-                                                        $ 17,000
-                                                    </div>
-                                                    <!-- /.recent-ads-list-price -->
-                                                </div>
-                                                <!-- /.recent-ads-list-content -->
-                                            </div>
-                                            <!-- /.recent-ads-container -->
-                                        </div>
-                                        <!-- Ads -->
-                                        <div class="recent-ads-list">
-                                            <div class="recent-ads-container">
-                                                <div class="recent-ads-list-image">
-                                                    <a href="#" class="recent-ads-list-image-inner">
-                                                        <img src="images/posting/thumb-2.jpg" alt="">
-                                                    </a><!-- /.recent-ads-list-image-inner -->
-                                                </div>
-                                                <!-- /.recent-ads-list-image -->
-                                                <div class="recent-ads-list-content">
-                                                    <h3 class="recent-ads-list-title">
-                                                        <a href="#">2017 BMW i8</a>
-                                                    </h3>
-                                                    <ul class="recent-ads-list-location">
-                                                        <li><a href="#">New York</a>,</li>
-                                                        <li><a href="#">Brooklyn</a></li>
-                                                    </ul>
-                                                    <div class="recent-ads-list-price">
-                                                        $ 66,000
-                                                    </div>
-                                                    <!-- /.recent-ads-list-price -->
-                                                </div>
-                                                <!-- /.recent-ads-list-content -->
-                                            </div>
-                                            <!-- /.recent-ads-container -->
-                                        </div>
-                                        <!-- Ads -->
-                                        <div class="recent-ads-list">
-                                            <div class="recent-ads-container">
-                                                <div class="recent-ads-list-image">
-                                                    <a href="#" class="recent-ads-list-image-inner">
-                                                        <img src="images/posting/thumb-3.jpg" alt="">
-                                                    </a><!-- /.recent-ads-list-image-inner -->
-                                                </div>
-                                                <!-- /.recent-ads-list-image -->
-                                                <div class="recent-ads-list-content">
-                                                    <h3 class="recent-ads-list-title">
-                                                        <a href="#">Dell Latitude e7440</a>
-                                                    </h3>
-                                                    <ul class="recent-ads-list-location">
-                                                        <li><a href="#">New York</a>,</li>
-                                                        <li><a href="#">Brooklyn</a></li>
-                                                    </ul>
-                                                    <div class="recent-ads-list-price">
-                                                        $ 37,000
-                                                    </div>
-                                                    <!-- /.recent-ads-list-price -->
-                                                </div>
-                                                <!-- /.recent-ads-list-content -->
-                                            </div>
-                                            <!-- /.recent-ads-container -->
-                                        </div>
-                                        <!-- Ads -->
-                                        <div class="recent-ads-list">
-                                            <div class="recent-ads-container">
-                                                <div class="recent-ads-list-image">
-                                                    <a href="#" class="recent-ads-list-image-inner">
-                                                        <img src="images/posting/thumb-4.jpg" alt="">
-                                                    </a><!-- /.recent-ads-list-image-inner -->
-                                                </div>
-                                                <!-- /.recent-ads-list-image -->
-                                                <div class="recent-ads-list-content">
-                                                    <h3 class="recent-ads-list-title">
-                                                        <a href="#">Sport Stylish Steering</a>
-                                                    </h3>
-                                                    <ul class="recent-ads-list-location">
-                                                        <li><a href="#">New York</a>,</li>
-                                                        <li><a href="#">Brooklyn</a></li>
-                                                    </ul>
-                                                    <div class="recent-ads-list-price">
-                                                        $ 11,000
-                                                    </div>
-                                                    <!-- /.recent-ads-list-price -->
-                                                </div>
-                                                <!-- /.recent-ads-list-content -->
-                                            </div>
-                                            <!-- /.recent-ads-container -->
-                                        </div>
-                                        <!-- Ads -->
-                                        <div class="recent-ads-list">
-                                            <div class="recent-ads-container">
-                                                <div class="recent-ads-list-image">
-                                                    <a href="#" class="recent-ads-list-image-inner">
-                                                        <img src="images/posting/thumb-5.jpg" alt="">
-                                                    </a><!-- /.recent-ads-list-image-inner -->
-                                                </div>
-                                                <!-- /.recent-ads-list-image -->
-                                                <div class="recent-ads-list-content">
-                                                    <h3 class="recent-ads-list-title">
-                                                        <a href="#">Apple Wrist Watches</a>
-                                                    </h3>
-                                                    <ul class="recent-ads-list-location">
-                                                        <li><a href="#">New York</a>,</li>
-                                                        <li><a href="#">Brooklyn</a></li>
-                                                    </ul>
-                                                    <div class="recent-ads-list-price">
-                                                        $ 20,000
-                                                    </div>
-                                                    <!-- /.recent-ads-list-price -->
-                                                </div>
-                                                <!-- /.recent-ads-list-content -->
-                                            </div>
-                                            <!-- /.recent-ads-container -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Latest Ads Panel End -->
                         </div>
                         <!-- panel-group end -->
                     </div>
@@ -803,43 +705,59 @@ session_start();
 </a>
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>
-<!-- =-=-=-=-=-=-= Quote Modal =-=-=-=-=-=-= -->
-<div class="modal fade price-quote" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="search-modal modal fade cat_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="lineModalLabel">Email for Price</h3>
+                <h3 class="modal-title text-center"> <i class="icon-gears"></i> Select Your Location </h3>
             </div>
             <div class="modal-body">
                 <!-- content goes here -->
-                <form>
-                    <div class="form-group  col-md-6">
-                        <label>Your Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Your Name">
+                <div class="search-block">
+                    <div class="row">
+                        <div class="col-md-12 text-box">
+                            <input class="form-control" placeholder="Type your city here" type="text">
+                            <i class="icon-search icon-magnifying-glass"></i>
+                        </div>
                     </div>
-                    <div class="form-group  col-md-6">
-                        <label>Email Address</label>
-                        <input type="email" class="form-control" placeholder="Enter email">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 col-sm-12 popular-search">
+                            <label>Popular Locations</label>
+                            <ul class="city-select-city">
+                                <li class="col-sm-4 col-xs-6"><a href="#"> London </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Birmingham </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Leeds </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Glasgow </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Sheffield </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Bradford </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Liverpool </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Edinburgh </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Manchester </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Bristol </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Kirklees </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Fife </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Wirral </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> North Lanarkshire </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Wakefield </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Cardiff </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Dudley </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> Wigan </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> East Riding </a></li>
+                                <li class="col-sm-4 col-xs-6"><a href="#"> South Lanarkshire </a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="form-group  col-md-12">
-                        <label>Contact No</label>
-                        <input type="text" class="form-control" placeholder="Contact No">
-                    </div>
-                    <div class="form-group  col-md-12">
-                        <label>Comments</label>
-                        <textarea placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control">What is the price of the 2015 Honda Accord EX-L you have in your inventory?</textarea>
-                    </div>
-                    <div class="col-md-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>
-                    <div class="clearfix"></div>
-                    <div class="col-md-12 margin-bottom-20 margin-top-20">
-                        <button type="submit" class="btn btn-theme btn-block">Submit</button>
-                    </div>
-                </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-lg btn-block">View All Cities</button>
             </div>
         </div>
     </div>
 </div>
+
 <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
 <script src="js/jquery.min.js"></script>
 <!-- Bootstrap Core Css  -->
@@ -874,8 +792,8 @@ session_start();
 <script src="js/color-switcher.js"></script>
 <!-- Template Core JS -->
 <script src="js/custom.js"></script>
-
-
+</body>
+</html>
 <?php
 /**
  * Created by PhpStorm.
@@ -890,6 +808,7 @@ if(isset($_POST['submit'])){
     $cat = $_POST['cat'];
     $query = $_POST['query'];
 
+    $_SESSION['dis_ses'] = $dis;
 
     echo $dis;
     echo $cat;
@@ -938,6 +857,7 @@ if(isset($_POST['submit'])){
 
                 $.post('scripts/handleSearch.php?lat=' + lati + '&lon=' + long + '&dis=<?php echo $dis;?>', function (response) {
 
+                    alert(response);
                     if (response == "error") {
                         $(".posts-masonry").html('error');
                     } else{
@@ -974,7 +894,3 @@ if(isset($_POST['submit'])){
 
 
 
-
-
-</body>
-</html>

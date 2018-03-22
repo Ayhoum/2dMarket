@@ -15,8 +15,8 @@ $pic_result = mysqli_query($mysqli,$pic_query);
 if (mysqli_num_rows($pic_result) > 0 ){
     while ($row = mysqli_fetch_assoc($pic_result)){
         $pic_id = $row['id'];
-        $picture_name = $row['picture_name'];
-        $picture_url = $row['picture_url'];
+        $pic_name = $row['picture_name'];
+        $pic = $row['picture_url'];
     }
 
 } else {
