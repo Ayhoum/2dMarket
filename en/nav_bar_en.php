@@ -17,7 +17,7 @@
                     <ul class="menu-logo">
                         <li>
                             <a class="navbar-brand" href="#">
-                                <img src="images/logo_png.png" style="width: 100px;height: 100px;margin-top: -25px" class="d-inline-block align-top" alt="">
+                                <img src="images/design.gif" style="width: 80px;height: 80px;margin-top: -15px" class="d-inline-block align-top" alt="">
 
                             </a>                        </li>
                     </ul>

@@ -14,22 +14,22 @@ if (isset($_GET['page'])) {
 } else {
     $page = 0;
 }
-$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'EN' ";
+
+$category_id = $_GET['cat_id'];
+$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'EN' && `CATEGORY_id` = '{$category_id}' ";
 $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
 $num_Ads = mysqli_num_rows($ad_result_get_num);
 
 if($num_Ads <= 10){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'EN' && `CATEGORY_id` = '{$category_id}' ORDER BY `ad_type` DESC";
 }else if($page == 0 || $page == 1){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC LIMIT 10";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `CATEGORY_id` = '{$category_id}' ORDER BY `ad_type` DESC LIMIT 10";
 }else if($page > 1){
     $start = (($page - 1) * 10);
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `CATEGORY_id` = '{$category_id}' ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
 
 }
-//    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);
-
     if (mysqli_num_rows($ad_result) > 0) {
         while ($row = mysqli_fetch_assoc($ad_result)) {
             $ad_id = $row['id'];
@@ -119,6 +119,7 @@ if($num_Ads <= 10){
                     $pic_name = $row['picture_name'];
                 }
             }else{
+                $pic = "en_ad_photo/";
                 $pic_name = "white.jpg";
             }
             ?>
@@ -193,7 +194,7 @@ if($num_Ads <= 10){
         <?php
         if ($page != 0 && $page != 1) {
             ?>
-            <li><a href="favourite_ads.php?page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
+            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }
@@ -202,13 +203,13 @@ if($num_Ads <= 10){
             ?>
             <li <?php if ($i == $page || ($i == 1 && $page == 0)) {
                 echo 'class="active"';
-            } ?>><a href="all_product.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            } ?>><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 
         <?php } ?>
         <?php
         if ($page != $num_Ads) {
             ?>
-            <li><a href="all_product.php?page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
+            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&?age=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }

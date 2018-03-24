@@ -32,7 +32,6 @@ if (isset($_GET['cat_id'])){
             $delivery_type  = $row['delivery_type'];
 
             $user_id        = $row['USER_id'];
-            $product_id     = $row['PRODUCT_id'];
             $category_id    = $row['CATEGORY_id'];
 
 
@@ -47,13 +46,6 @@ if (isset($_GET['cat_id'])){
                 while ($row = mysqli_fetch_assoc($cat_result)) {
                     $cat_name = $row['name'];
                 }
-            }
-
-
-            $image_query  = "SELECT * FROM `PRODUCT_PICTURE` WHERE  `PRODUCT_id` = '{$product_id}'";
-            $image_result = mysqli_query($mysqli, $image_query);
-            while($row = mysqli_fetch_assoc($image_result)) {
-                $pic = $row['picture_url'];
             }
 
                 //user info.
