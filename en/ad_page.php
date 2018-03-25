@@ -486,7 +486,7 @@ ob_start();
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="lineModalLabel">Email for Price</h3>
+                <h3 class="modal-title" id="lineModalLabel">Send <?php echo $user_username;?> a message </h3>
             </div>
             <div class="modal-body">
                 <div class="recent-ads">
@@ -494,20 +494,19 @@ ob_start();
                         <div class="recent-ads-container">
                             <div class="recent-ads-list-image">
                                 <a href="#" class="recent-ads-list-image-inner">
-                                    <img src="images/car.png" alt="">
+                                    <img src="<?php// echo  $picture_url . $picture_name;;?>" alt="">
                                 </a><!-- /.recent-ads-list-image-inner -->
                             </div>
                             <!-- /.recent-ads-list-image -->
                             <div class="recent-ads-list-content">
                                 <h3 class="recent-ads-list-title">
-                                    <a href="#">Honda Civic Oriel 1.8 i-VTEC CVT 2017</a>
+                                    <a href="#"><?php echo $title;?></a>
                                 </h3>
                                 <ul class="recent-ads-list-location">
-                                    <li><a href="#">New York</a>,</li>
-                                    <li><a href="#">Brooklyn</a></li>
+                                    <li><a href="#"><?php echo $location; ?></a>,</li>
                                 </ul>
                                 <div class="recent-ads-list-price">
-                                    $ 17,000
+                                    <?php echo $price; ?>
                                 </div>
                                 <!-- /.recent-ads-list-price -->
                             </div>
@@ -517,27 +516,27 @@ ob_start();
                     </div>
                 </div>
                 <!-- content goes here -->
-                <form>
-                    <div class="form-group  col-md-6  col-sm-6">
-                        <label>Your Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Your Name">
-                    </div>
-                    <div class="form-group  col-md-6  col-sm-6">
-                        <label>Email Address</label>
-                        <input type="email" class="form-control" placeholder="Enter email">
-                    </div>
+                <form action="scripts/send_message.php?user_id=<?php echo $user_userid;?>&ad_id=<?php echo $ad_id; ?>" method="post">
+<!--                    <div class="form-group  col-md-6  col-sm-6">-->
+<!--                        <label>Your Name</label>-->
+<!--                        <input type="text" class="form-control" placeholder="Enter Your Name">-->
+<!--                    </div>-->
+<!--                    <div class="form-group  col-md-6  col-sm-6">-->
+<!--                        <label>Email Address</label>-->
+<!--                        <input type="email" class="form-control" placeholder="Enter email">-->
+<!--                    </div>-->
+<!--                    <div class="form-group  col-md-12  col-sm-12">-->
+<!--                        <label>Contact No</label>-->
+<!--                        <input type="text" class="form-control" placeholder="Contact No">-->
+<!--                    </div>-->
                     <div class="form-group  col-md-12  col-sm-12">
-                        <label>Contact No</label>
-                        <input type="text" class="form-control" placeholder="Contact No">
-                    </div>
-                    <div class="form-group  col-md-12  col-sm-12">
-                        <label>Comments</label>
-                        <textarea placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control">What is the price of the 2015 Honda Accord EX-L you have in your inventory?</textarea>
+                        <label>Your message</label>
+                        <textarea name="message" placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control"></textarea>
                     </div>
                     <div class="col-md-12  col-sm-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>
                     <div class="clearfix"></div>
                     <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
-                        <button type="submit" class="btn btn-theme btn-block">Submit</button>
+                        <button type="submit" class="btn btn-theme btn-block" name="submit">Send</button>
                     </div>
                 </form>
             </div>

@@ -52,6 +52,7 @@ if (isset($_GET['ad_id'])) {
         $select_query = "SELECT * FROM `USER` WHERE `id` = '{$user_id}'";
         $select_result = mysqli_query($mysqli, $select_query);
         while ($row = mysqli_fetch_assoc($select_result)) {
+            $user_userid = $row['id'];
             $user_first_name = $row['first_name'];
             $user_last_name = $row['last_name'];
             $user_email = $row['email'];

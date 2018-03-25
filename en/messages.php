@@ -422,8 +422,7 @@ if (!isset($_SESSION['id'])) {
                                         $idChat = $row['id'];
                                         $partOne = $row['part_one'];
                                         $partTwo = $row['part_two'];
-                                        $ad_id = $row['ADVERTISMENT_id'];
-                                        $ad_pr_id = $row['ADVERTISMENT_PRODUCT_id'];
+                                        $ad_id = $row['ADVERTISEMENT_id'];
 
                                         if ($_SESSION['id'] == $partOne) {
                                             $userQuery = "SELECT * FROM USER WHERE id = '{$partTwo}'";
