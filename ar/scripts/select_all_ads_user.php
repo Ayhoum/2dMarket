@@ -16,20 +16,20 @@ if (isset($_GET['page'])) {
     $page = 0;
 }
 
-$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE `lang`= 'EN' && `USER_id` = '{$user_id}' ORDER BY `date` DESC";
+$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE `lang`= 'AR' && `USER_id` = '{$user_id}' ORDER BY `date` DESC";
 $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
 $num_Ads = mysqli_num_rows($ad_result_get_num);
 
 if($num_Ads <= 5){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang`= 'EN' && `USER_id` = '{$user_id}' ORDER BY `date` DESC";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang`= 'AR' && `USER_id` = '{$user_id}' ORDER BY `date` DESC";
 }else if($page == 0 || $page == 1){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang`= 'EN' && `USER_id` = '{$user_id}' ORDER BY `date` DESC LIMIT 5";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang`= 'AR' && `USER_id` = '{$user_id}' ORDER BY `date` DESC LIMIT 5";
 }else if($page > 1){
     $start = (($page - 1) * 5);
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang`= 'EN' && `USER_id` = '{$user_id}' ORDER BY `date` DESC LIMIT 5 OFFSET $start";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang`= 'AR' && `USER_id` = '{$user_id}' ORDER BY `date` DESC LIMIT 5 OFFSET $start";
 
 }
-    $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang`= 'EN' && `USER_id` = '{$user_id}' ORDER BY `date` DESC";
+    $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang`= 'AR' && `USER_id` = '{$user_id}' ORDER BY `date` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);
 
     if (mysqli_num_rows($ad_result) > 0 ){
@@ -182,7 +182,7 @@ if($num_Ads <= 5){
         <?php
         if ($page != 0 && $page != 1) {
             ?>
-            <li><a href="profile_2.php?user_id=<?php echo $user_id;?>&&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
+            <li><a href="profile_2.php?user_id=<?php echo $user_id;?>&&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-right"
                                                                                                                       aria-hidden="true"></i></a></li>
             <?php
         }
@@ -197,7 +197,7 @@ if($num_Ads <= 5){
         <?php
         if ($page != $num_Ads) {
             ?>
-            <li><a href="profile_2.php?user_id=<?php echo $user_id;?>&&page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
+            <li><a href="profile_2.php?user_id=<?php echo $user_id;?>&&page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-lift"
                                                                                                                       aria-hidden="true"></i></a></li>
             <?php
         }

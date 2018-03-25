@@ -14,22 +14,22 @@ if (isset($_GET['page'])) {
 } else {
     $page = 0;
 }
-$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'EN' ";
+
+$category_id = $_GET['cat_id'];
+$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'AR' && `CATEGORY_id` = '{$category_id}' ";
 $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
 $num_Ads = mysqli_num_rows($ad_result_get_num);
 
 if($num_Ads <= 10){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'AR' && `CATEGORY_id` = '{$category_id}' ORDER BY `ad_type` DESC";
 }else if($page == 0 || $page == 1){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC LIMIT 10";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'AR' && `CATEGORY_id` = '{$category_id}' ORDER BY `ad_type` DESC LIMIT 10";
 }else if($page > 1){
     $start = (($page - 1) * 10);
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'AR' && `CATEGORY_id` = '{$category_id}' ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
 
 }
-//    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);
-
     if (mysqli_num_rows($ad_result) > 0) {
         while ($row = mysqli_fetch_assoc($ad_result)) {
             $ad_id = $row['id'];
@@ -119,6 +119,7 @@ if($num_Ads <= 10){
                     $pic_name = $row['picture_name'];
                 }
             }else{
+                $pic = "en_ad_photo/";
                 $pic_name = "white.jpg";
             }
             ?>
@@ -131,7 +132,7 @@ if($num_Ads <= 10){
                         <img class="img-responsive " style="width: 100%; height: 200px; object-fit: cover;" alt="" src="<?php echo $pic . $pic_name ;?>">
                         <!-- Ad Status -->
                         <!-- User Review -->
-                        <div class="user-preview" style="float: ">
+                        <div class="user-preview">
                             <a href="profile_2.php?user_id=<?php echo $user_id;?>"> <img src="../uploads/users/<?php echo $user_pic;?>" class="avatar avatar-small" alt="<?php echo $user_username;?>"> </a>
                         </div>
                         <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id;?>" class="view-details">View Details</a>
@@ -143,9 +144,9 @@ if($num_Ads <= 10){
                     </div>
                     <!-- Ad Img End -->
                     <div class="short-description">
-                        <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo $status ;?></span></p>
-                        <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
-                        <?php }elseif ($status == "AVAILABLE"){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
+                        <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo "مبـاع" ;?></span></p>
+                        <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo "محجـوز" ;?></span></p>
+                        <?php }elseif ($status == "AVAILABLE"){?>  <p> <span class="label label-success"><?php echo  "متـاح";?></span></p><?php }?>
                         <!-- Ad Category -->
                         <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
@@ -174,8 +175,8 @@ if($num_Ads <= 10){
             <a href="post-ad-1.html">
                 <div class="banner">
                     <div class="wrapper">
-                        <span class="title">Do you want your property to be listed here?</span>
-                        <span class="submit">Submit it now! <i class="fa fa-plus-square"></i></span>
+                        <span class="title">هل تريد ان ترى منتجك ضمنك هذه القـائمة</span>
+                        <span class="submit">انشر اعلانـك الان! <i class="fa fa-plus-square"></i></span>
                     </div>
                 </div>
                 <!-- /.banner-->
@@ -193,7 +194,7 @@ if($num_Ads <= 10){
         <?php
         if ($page != 0 && $page != 1) {
             ?>
-            <li><a href="favourite_ads.php?page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
+            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }
@@ -202,13 +203,13 @@ if($num_Ads <= 10){
             ?>
             <li <?php if ($i == $page || ($i == 1 && $page == 0)) {
                 echo 'class="active"';
-            } ?>><a href="all_product.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            } ?>><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 
         <?php } ?>
         <?php
         if ($page != $num_Ads) {
             ?>
-            <li><a href="all_product.php?page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
+            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&?age=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }

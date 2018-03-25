@@ -1,11 +1,9 @@
 ﻿<?php
+
 include '../scripts/db_connection.php';
-
-//ob_start();
-//session_start();
-
+session_start();
+ob_start();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +14,9 @@ include '../scripts/db_connection.php';
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title>AdForest | Largest Classifieds Portal</title>
+    <title>2D Market | جميع الاعلانات</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/logo_png.png" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
@@ -70,283 +68,23 @@ include '../scripts/db_connection.php';
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
-<!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
-<div class="color-switcher" id="choose_color">
-    <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
-    <h5>STYLE SWITCHER</h5>
-    <div class="theme-colours">
-        <p> Choose Colour style </p>
-        <ul>
-            <li>
-                <a href="#." class="defualt" id="defualt"></a>
-            </li>
-            <li>
-                <a href="#." class="green" id="green"></a>
-            </li>
-            <li>
-                <a href="#." class="blue" id="blue"></a>
-            </li>
-            <li>
-                <a href="#." class="red" id="red"></a>
-            </li>
-
-            <li>
-                <a href="#." class="sea-green" id="sea-green"></a>
-            </li>
-
-        </ul>
-    </div>
-    <div class="clearfix"> </div>
-</div>
-<!-- =-=-=-=-=-=-= Colored Header =-=-=-=-=-=-= -->
+<!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
 <div class="colored-header">
     <!-- Top Bar -->
-    <div class="header-top">
-        <div class="container">
-            <div class="row">
-                <!-- Header Top Left -->
-                <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
-                    <ul class="listnone">
-                        <li><a href="about.html"><i class="fa fa-heart-o" aria-hidden="true"></i> حول</a></li>
-                        <li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> الأسئلة الأكثر شيوعا</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> لغة <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">الإنجليزية</a></li>
-                                <li><a href="#">اللغة السويدية</a></li>
-                                <li><a href="#">العربية</a></li>
-                                <li><a href="#">الروسية</a></li>
-                                <li><a href="#">الصينية</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Header Top Right Social -->
-                <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
-                    <div class="pull-right flip">
-                        <ul class="listnone">
-                            <li><a href="login.html"><i class="fa fa-sign-in"></i> تسجيل الدخول</a></li>
-                            <li><a href="register.html"><i class="fa fa-unlock" aria-hidden="true"></i> تسجيل</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> عمير <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="profile.html">ملف تعريفي للمستخدم</a></li>
-                                    <li><a href="profile-2.html">ملف تعريفي للمستخدم 2</a></li>
-                                    <li><a href="archives.html">أرشيف</a></li>
-                                    <li><a href="active-ads.html">إعلانات نشطة</a></li>
-                                    <li><a href="favourite.html">إعلانات المفضلة</a></li>
-                                    <li><a href="messages.html">لوحة رسالة</a></li>
-                                    <li><a href="deactive.html">التعطيل حساب</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include 'topbar-ar.php';?>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
-    <nav id="menu-1" class="mega-menu">
-        <!-- menu list items container -->
-        <section class="menu-list-items">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <!-- menu logo -->
-                        <ul class="menu-logo">
-                            <li>
-                                <a href="index.html"><img src="images/logo.png" alt="logo"> </a>
-                            </li>
-                        </ul>
-                        <!-- menu links -->
-                        <ul class="menu-links">
-                            <!-- active class -->
-                            <li>
-                                <a href="javascript:void(0)"> الصفحة الرئيسية <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <div class="drop-down grid-col-8">
-                                    <!--grid row-->
-                                    <div class="grid-row">
-                                        <!--grid column 3-->
-                                        <div class="grid-col-4">
-                                            <ul>
-                                                <li><a href="index.html">الصفحة 1 - افتراضي </a></li>
-                                                <li><a href="index-transparent.html">منزل 2 (شفاف)</a></li>
-                                                <li><a href="index-2.html">الصفحة 3 (التغيير)</a></li>
-                                                <li><a href="index-3.html">الصفحة 4 (ماجستير المتزلج)</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="grid-col-4">
-                                            <ul>
-                                                <li><a href="index-4.html">الرئيسية 5 (مع قائمة خريطة)</a></li>
-                                                <li><a href="index-5.html">الرئيسية 6 (مودرن ستايل)</a></li>
-                                                <li><a href="index-6.html">الرئيسية 7 (التغيير)</a></li>
-                                                <li><a href="index-7.html">الصفحة الرئيسية 8 (الفئة المتزلج)</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="grid-col-4">
-                                            <ul>
-                                                <li><a href="index-10.html">منزل 11 (البيت الحديث)</a></li>
-                                                <li><a href="index-8.html">الصفحة 9 (الصفحة المقصودة)</a></li>
-                                                <li><a href="index-9.html">منزل 10 (التغيير)</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">قائمة <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <!-- drop down multilevel  -->
-                                <ul class="drop-down-multilevel">
-                                    <li>
-                                        <a href="javascript:void(0)">شبكة نمط<i class="fa fa-angle-left fa-indicator"></i> <span class="label label-info">الجديد</span></a>
-                                        <!-- drop down second level -->
-                                        <ul class="drop-down-multilevel">
-                                            <li><a href="listing.html">قائمة الشبكة 1</a></li>
-                                            <li><a href="listing-1.html">قائمة الشبكة 2</a></li>
-                                            <li><a href="listing-2.html">قائمة الشبكة 3</a></li>
-                                            <li><a href="listing-7.html">متميز الشبكة <span class="label label-info">الجديد</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">قائمة نمط<i class="fa fa-angle-left fa-indicator"></i> </a>
-                                        <!-- drop down second level -->
-                                        <ul class="drop-down-multilevel">
-                                            <li><a href="listing-3.html">عرض قائمة 1</a></li>
-                                            <li><a href="listing-4.html">عرض قائمة 2</a></li>
-                                            <li><a href="listing-5.html">عرض قائمة 3</a></li>
-                                            <li><a href="listing-6.html">عرض قائمة 4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">إعلان واحد<i class="fa fa-angle-left fa-indicator"></i> <span class="label label-info">الجديد</span></a>
-                                        <!-- drop down second level -->
-                                        <ul class="drop-down-multilevel">
-                                            <li><a href="single-page-listing.html">واحد التفاصيل الإعلان</a></li>
-                                            <li><a href="single-page-listing-featured.html">إعلان (مميزة) <span class="label label-info">الجديد</span></a></li>
-                                            <li><a href="single-page-listing-2.html">إعلان واحد 2</a></li>
-                                            <li><a href="single-page-listing-3.html">إعلان واحد (ادسنس)</a></li>
-                                            <li><a href="single-page-expired.html">إعلان واحد (مقفلة)</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="icons.html">الرموز السرية </a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">الفئات <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <!-- drop down multilevel  -->
-                                <ul class="drop-down-multilevel">
-
-                                    <li><a href="category-2.html">تباين الحديثة</a></li>
-                                    <li><a href="category-3.html">تباين الحد الأدنى</a></li>
-                                    <li><a href="category-4.html">يتوهم التغيير</a></li>
-
-                                    <li><a href="category-6.html">الاختلاف شقة</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">لوحة القيادة <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <!-- drop down multilevel  -->
-                                <ul class="drop-down-multilevel">
-                                    <li><a href="profile.html">ملف تعريفي للمستخدم</a></li>
-                                    <li><a href="profile-2.html">ملف تعريفي للمستخدم 2</a></li>
-                                    <li><a href="archives.html">أرشيف</a></li>
-                                    <li><a href="active-ads.html">إعلانات نشطة</a></li>
-                                    <li><a href="favourite.html">إعلانات المفضلة</a></li>
-                                    <li><a href="messages.html">لوحة رسالة</a></li>
-                                    <li><a href="deactive.html">التعطيل حساب</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">الصفحات <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <!-- drop down full width -->
-                                <div class="drop-down grid-col-12">
-                                    <!--grid row-->
-                                    <div class="grid-row">
-                                        <!--grid column 2-->
-                                        <div class="grid-col-3">
-                                            <h4>مدونة</h4>
-                                            <ul>
-                                                <li><a href="blog.html">بلوق مع الحق في الشريط الجانبي</a></li>
-                                                <li><a href="blog-1.html">بلوق مع الماسونية نمط</a></li>
-                                                <li><a href="blog-2.html">بلوق من دون الشريط الجانبي</a></li>
-                                                <li><a href="blog-details.html">مدونة واحدة</a></li>
-                                                <li><a href="blog-details-1.html">مدونة واحدة (ادسنس) </a></li>
-                                            </ul>
-                                        </div>
-                                        <!--grid column 2-->
-                                        <div class="grid-col-3">
-                                            <h4>متفرقات</h4>
-                                            <ul>
-                                                <li><a href="about.html">معلومات عنا</a></li>
-                                                <li><a href="cooming-soon.html">قريبا</a></li>
-                                                <li><a href="elements.html">الهاتفية القصيرة</a></li>
-                                                <li><a href="error.html">404 صفحة</a></li>
-                                                <li><a href="faqs.html">الأسئلة الأكثر شيوعا</a></li>
-                                            </ul>
-                                        </div>
-                                        <!--grid column 2-->
-
-                                        <div class="grid-col-3">
-                                            <h4>آخرون</h4>
-                                            <ul>
-                                                <li><a href="login.html">تسجيل الدخول</a></li>
-                                                <li><a href="register.html">تسجيل</a></li>
-                                                <li><a href="pricing.html">التسعير</a></li>
-                                                <li><a href="site-map.html">خريطة الموقع</a></li>
-                                                <li><a href="post-ad-1.html">إضافة إعلان</a></li>
-                                            </ul>
-                                        </div>
-                                        <!--grid column 2-->
-                                        <div class="grid-col-3">
-                                            <h4>التفاصيل صفحة</h4>
-                                            <ul>
-                                                <li><a href="post-ad-2.html">آخر الإعلان 2</a></li>
-                                                <li><a href="single-page-listing.html">واحد التفاصيل الإعلان</a></li>
-                                                <li><a href="single-page-listing-2.html">إعلان واحد 2</a></li>
-                                                <li><a href="single-page-listing-3.html">إعلان واحد (ادسنس)</a></li>
-                                                <li><a href="single-page-expired.html">إعلان واحد (مقفلة)</a></li>
-                                            </ul>
-                                        </div>
-                                        <!--grid column 2-->
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li><a href="contact.html">اتصال </a></li>
-                        </ul>
-                        <ul class="menu-search-bar">
-                            <li>
-                                <a href="post-ad-1.html" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> انشر إعلانك مجانا</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </nav>
+    <?php //include ''; ?>
 </div>
 <!-- Navigation Menu End -->
+<!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Transparent Breadcrumb =-=-=-=-=-=-= -->
-<!-- Small Breadcrumb -->
-<div class="bread-2 page-header-area">
+<div class="page-header-area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-12 col-sm-5 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="header-page">
-                    <h1>Category Grid - 2</h1>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-7 col-xs-12">
-                <div class="small-breadcrumb">
-                    <div class=" breadcrumb-link">
-                        <ul>
-                            <li><a href="index.html">Home Page</a></li>
-                            <li><a href="#">الصفحات</a></li>
-                            <li><a href="elements.html">Category</a></li>
-                            <li><a class="active" href="#">Listing</a></li>
-                        </ul>
-                    </div>
+                    <h1>جميـــع الاعلانـــات</h1>
                 </div>
             </div>
         </div>
@@ -362,61 +100,33 @@ include '../scripts/db_connection.php';
             <!-- Row -->
             <div class="row">
                 <!-- Middle Content Area -->
-                <div class="col-md-8 col-md-push-4 col-lg-8 col-sx-12 white-bg">
+                <div class="col-md-8 col-md-push-4 col-lg-8 col-sx-12">
                     <!-- Row -->
                     <div class="row">
                         <!-- Sorting Filters -->
+                        <!-- Sorting Filters Breadcrumb -->
                         <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                            <!-- Sorting Filters Breadcrumb -->
-                            <div class="filter-brudcrums">
-                                <span>عرض <span class="showed">1 - 20</span> of <span class="showed">42211</span>النتائج</span>
-                                <div class="filter-brudcrums-sort">
-                                    <ul>
-                                        <li><span>ترتيب حسب:</span></li>
-                                        <li><a href="#">تاريخ التحديث</a></li>
-                                        <li><a href="#">السعر</a></li>
-                                        <li><a href="#">جديد</a></li>
-                                        <li><a href="#">مستعمل</a></li>
-                                        <li><a href="#">ضمان</a></li>
-                                    </ul>
+                            <div class="clearfix"></div>
+                            <div class="listingTopFilterBar">
+                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                                    <div class="header-listing">
+                                        <h6>ترتيـب حسـب :</h6>
+                                        <div class="custom-select-box">
+                                            <select name="order" class="custom-select">
+                                                <option value="0">تـاريخ النشر</option>
+                                                <option value="1">السعر(الأقل-الاكثر)</option>
+                                                <option value="2">السعر (الاكثر- الاقل)</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- Sorting Filters Breadcrumb End -->
                         </div>
+                        <!-- Sorting Filters Breadcrumb End -->
                         <!-- Sorting Filters End-->
                         <div class="clearfix"></div>
                         <!-- Ads Archive -->
-                        <div class="posts-masonry">
-                            <?php include 'scripts/select_all_ads_premium.php';?>
-                            <div class="col-md-12 col-xs-12 col-sm-12">
-                                <section class="advertising">
-                                    <a href="<?php if(isset($_SESSION['id'])) {echo "new_advertisement.php" ;} else {echo "login.php";}  ?>">
-                                        <div class="banner">
-                                            <div class="wrapper">
-                                                <span class="title">هل تريد ان ترى اعلانـك هنـا؟</span>
-                                                <span class="submit">قم بمشاركـة اعلانك الان<i class="fa fa-plus-square"></i></span>
-                                            </div>
-                                        </div>
-                                        <!-- /.banner-->
-                                    </a>
-                                </section>
-                            </div>
-                            <!-- Advertizing End -->
-                            <?php include 'scripts/select_all_ads_normal.php'; ?>
-                        </div>
-                        <!-- Ads Archive End -->
-                        <div class="clearfix"></div>
-                        <!-- Pagination -->
-                        <div class="text-center margin-bottom-30">
-                            <ul class="pagination ">
-                                <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-                                <li><a href="#">1</a></li>
-                                <li class="active"><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                            </ul>
-                        </div>
+                        <?php include 'scripts/all_ads_script.php';?>
                         <!-- Pagination End -->
                     </div>
                     <!-- Row End -->
@@ -445,7 +155,21 @@ include '../scripts/db_connection.php';
                                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body categories">
                                         <ul>
-                                            <?php include 'scripts/category.php';?>
+                                            <li><a href="#"><i class="flaticon-data"></i>الالكترونيات و Gedget<span>(1029)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-transport-6"></i>السيارات و المركبات<span>(1228)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-mortgage"></i>الملكية<span>(178)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-technology-8"></i>المحمول وكمبيوتر لوحي<span>(2178)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-suitcase"></i>وظائف<span>(7178)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-search"></i>المنزل والحديقة<span>(7163)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-dog"></i>الحيوانات الأليفة و الحيوانات<span>(8709)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-science"></i>الصحة والجمال<span>(3129)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-game"></i>هواية، رياضة و الاطفال<span>(2019)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-food"></i>الغذاء والزراعة<span>(323)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-blouse"></i>الملابس النساء والأطفال<span>(425)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-technology-22"></i>كاميرات و الأمن<span>(3223)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-technology-45"></i>مكتب المنتج<span>(3283)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-wrench"></i>الفنون، الحرف اليدوية والخياطة<span>(3221)</span></a></li>
+                                            <li><a href="#"><i class="flaticon-cogwheel-2"></i>آخرون<span>(3129)</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -573,7 +297,187 @@ include '../scripts/db_connection.php';
                                     </h4>
                                 </div>
                                 <!-- Content -->
-                                <?php include 'scripts/featured_ads.php';?>
+                                <div class="panel-collapse">
+                                    <div class="panel-body recent-ads">
+                                        <div class="featured-slider-3">
+                                            <!-- إعلانات مميزة -->
+                                            <div class="item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                                    <!-- Ad Box -->
+                                                    <div class="category-grid-box">
+                                                        <!-- Ad Img -->
+                                                        <div class="category-grid-img">
+                                                            <img class="img-responsive" alt="" src="images/posting/car-3.jpg">
+                                                            <!-- Ad Status -->
+                                                            <!-- User Review -->
+                                                            <div class="user-preview">
+                                                                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                                            </div>
+                                                            <!-- تفاصيل --><a href="" class="view-details">تفاصيل</a>
+                                                        </div>
+                                                        <!-- Ad Img End -->
+                                                        <div class="short-description">
+                                                            <!-- Ad Category -->
+                                                            <div class="category-title"> <span><a href="#">سيارات</a></span> </div>
+                                                            <!-- Ad Title -->
+                                                            <h3><a title="" href="single-page-listing.html">2017 هوندا سيفيك EX</a></h3>
+                                                            <!-- Price -->
+                                                            <div class="price">$18,200 <span class="negotiable">(قابل للتفاوض)</span></div>
+                                                        </div>
+                                                        <!-- Addition Info -->
+                                                        <div class="ad-info">
+                                                            <ul>
+                                                                <li><i class="fa fa-map-marker"></i>London</li>
+                                                                <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ad Box End -->
+                                                </div>
+                                            </div>
+                                            <!-- إعلانات مميزة -->
+                                            <div class="item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                                    <!-- Ad Box -->
+                                                    <div class="category-grid-box">
+                                                        <!-- Ad Img -->
+                                                        <div class="category-grid-img">
+                                                            <img class="img-responsive" alt="" src="images/posting/fur-3.jpg">
+                                                            <!-- Ad Status -->
+                                                            <!-- User Review -->
+                                                            <div class="user-preview">
+                                                                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                                            </div>
+                                                            <!-- تفاصيل --><a href="" class="view-details">تفاصيل</a>
+                                                        </div>
+                                                        <!-- Ad Img End -->
+                                                        <div class="short-description">
+                                                            <!-- Ad Category -->
+                                                            <div class="category-title"> <span><a href="#">الكاميرات و ملحقاتها</a></span> </div>
+                                                            <!-- Ad Title -->
+                                                            <h3><a title="" href="single-page-listing.html">Office أثاث For Sale </a></h3>
+                                                            <!-- Price -->
+                                                            <div class="price">$250 <span class="negotiable">(قابل للتفاوض)</span></div>
+                                                        </div>
+                                                        <!-- Addition Info -->
+                                                        <div class="ad-info">
+                                                            <ul>
+                                                                <li><i class="fa fa-map-marker"></i>London</li>
+                                                                <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ad Box End -->
+                                                </div>
+                                            </div>
+                                            <!-- إعلانات مميزة -->
+                                            <div class="item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                                    <!-- Ad Box -->
+                                                    <div class="category-grid-box">
+                                                        <!-- Ad Img -->
+                                                        <div class="category-grid-img">
+                                                            <img class="img-responsive" alt="" src="images/posting/mob-6.jpg">
+                                                            <!-- Ad Status -->
+                                                            <!-- User Review -->
+                                                            <div class="user-preview">
+                                                                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                                            </div>
+                                                            <!-- تفاصيل --><a href="" class="view-details">تفاصيل</a>
+                                                        </div>
+                                                        <!-- Ad Img End -->
+                                                        <div class="short-description">
+                                                            <!-- Ad Category -->
+                                                            <div class="category-title"> <span><a href="#">الكاميرات و ملحقاتها</a></span> </div>
+                                                            <!-- Ad Title -->
+                                                            <h3><a title="" href="single-page-listing.html">سوني Xperia Z5 </a></h3>
+                                                            <!-- Price -->
+                                                            <div class="price">$250 <span class="negotiable">(قابل للتفاوض)</span></div>
+                                                        </div>
+                                                        <!-- Addition Info -->
+                                                        <div class="ad-info">
+                                                            <ul>
+                                                                <li><i class="fa fa-map-marker"></i>London</li>
+                                                                <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ad Box End -->
+                                                </div>
+                                            </div>
+                                            <!-- إعلانات مميزة -->
+                                            <div class="item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                                    <!-- Ad Box -->
+                                                    <div class="category-grid-box">
+                                                        <!-- Ad Img -->
+                                                        <div class="category-grid-img">
+                                                            <img class="img-responsive" alt="" src="images/posting/cam-2.jpg">
+                                                            <!-- Ad Status -->
+                                                            <!-- User Review -->
+                                                            <div class="user-preview">
+                                                                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                                            </div>
+                                                            <!-- تفاصيل --><a href="" class="view-details">تفاصيل</a>
+                                                        </div>
+                                                        <!-- Ad Img End -->
+                                                        <div class="short-description">
+                                                            <!-- Ad Category -->
+                                                            <div class="category-title"> <span><a href="#">الكاميرات و ملحقاتها</a></span> </div>
+                                                            <!-- Ad Title -->
+                                                            <h3><a title="" href="single-page-listing.html">سوني Xperia Z5 </a></h3>
+                                                            <!-- Price -->
+                                                            <div class="price">$250 <span class="negotiable">(قابل للتفاوض)</span></div>
+                                                        </div>
+                                                        <!-- Addition Info -->
+                                                        <div class="ad-info">
+                                                            <ul>
+                                                                <li><i class="fa fa-map-marker"></i>London</li>
+                                                                <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ad Box End -->
+                                                </div>
+                                            </div>
+                                            <!-- إعلانات مميزة -->
+                                            <div class="item">
+                                                <div class="col-md-12 col-xs-12 col-sm-12 no-padding">
+                                                    <!-- Ad Box -->
+                                                    <div class="category-grid-box">
+                                                        <!-- Ad Img -->
+                                                        <div class="category-grid-img">
+                                                            <img class="img-responsive" alt="" src="images/posting/cam-2.jpg">
+                                                            <!-- Ad Status -->
+                                                            <!-- User Review -->
+                                                            <div class="user-preview">
+                                                                <a href="#"> <img src="images/users/2.jpg" class="avatar avatar-small" alt=""> </a>
+                                                            </div>
+                                                            <!-- تفاصيل --><a href="" class="view-details">تفاصيل</a>
+                                                        </div>
+                                                        <!-- Ad Img End -->
+                                                        <div class="short-description">
+                                                            <!-- Ad Category -->
+                                                            <div class="category-title"> <span><a href="#">الكاميرات و ملحقاتها</a></span> </div>
+                                                            <!-- Ad Title -->
+                                                            <h3><a title="" href="single-page-listing.html">سوني Xperia Z5 </a></h3>
+                                                            <!-- Price -->
+                                                            <div class="price">$250 <span class="negotiable">(قابل للتفاوض)</span></div>
+                                                        </div>
+                                                        <!-- Addition Info -->
+                                                        <div class="ad-info">
+                                                            <ul>
+                                                                <li><i class="fa fa-map-marker"></i>London</li>
+                                                                <li><i class="fa fa-clock-o"></i> 15 minutes ago </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Ad Box End -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- إعلانات مميزة Panel End -->
                             <!-- Latest Ads Panel -->
@@ -736,113 +640,7 @@ include '../scripts/db_connection.php';
     </section>
     <!-- =-=-=-=-=-=-= Ads أرشيف End =-=-=-=-=-=-= -->
     <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-    <footer class="footer-area">
-        <!--Footer Upper-->
-        <div class="footer-content">
-            <div class="container">
-                <div class="row ">
-                    <!--Two 4th column-->
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <div class="row clearfix">
-                            <div class="col-lg-7 col-sm-6 col-xs-12 column">
-                                <div class="footer-widget about-widget">
-                                    <div class="logo">
-                                        <a href="index.html"><img alt="" class="img-responsive" src="images/logo-1.png"></a>
-                                    </div>
-                                    <div class="text">
-                                        <p>Lorem ipsum dolor sit amet, eu me.</p>
-                                    </div>
-                                    <ul class="contact-info">
-                                        <li><span class="icon fa fa-map-marker"></span> 60 Link Road Lhr. باكستان 54770</li>
-                                        <li><span class="icon fa fa-phone"></span> (042) 1234567890</li>
-                                        <li><span class="icon fa fa-envelope-o"></span> contant@scriptsbundle.com</li>
-                                        <li><span class="icon fa fa-fax"></span> (042) 1234 7777</li>
-                                    </ul>
-                                    <div class="social-links-two clearfix">
-                                        <a class="facebook img-circle" href="#"><span class="fa fa-facebook-f"></span></a>
-                                        <a class="twitter img-circle" href="#"><span class="fa fa-twitter"></span></a>
-                                        <a class="google-plus img-circle" href="#"><span class="fa fa-google-plus"></span></a>
-                                        <a class="linkedin img-circle" href="#"><span class="fa fa-pinterest-p"></span></a>
-                                        <a class="linkedin img-circle" href="#"><span class="fa fa-linkedin"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Footer Column-->
-                            <div class="col-lg-5 col-sm-6 col-xs-12 column">
-                                <div class="heading-panel">
-                                    <h3 class="main-title text-left">خدماتنا</h3>
-                                </div>
-                                <div class="footer-widget links-widget">
-                                    <ul>
-                                        <li><a href="#">Web Development</a></li>
-                                        <li><a href="#">Web Designing</a></li>
-                                        <li><a href="#">Android Development</a></li>
-                                        <li><a href="#">Theme Development</a></li>
-                                        <li><a href="#">IOS Development</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Two 4th column End-->
-                    <!--Two 4th column-->
-                    <div class="col-md-6 col-sm-12 col-xs-12">
-                        <div class="row clearfix">
-                            <!--Footer Column-->
-                            <div class="col-lg-7 col-sm-6 col-xs-12 column">
-                                <div class="footer-widget news-widget">
-                                    <div class="heading-panel">
-                                        <h3 class="main-title text-left"> أحدث الأخبار</h3>
-                                    </div>
-                                    <!--News Post-->
-                                    <div class="news-post">
-                                        <div class="icon"></div>
-                                        <div class="news-content">
-                                            <figure class="image-thumb"><img alt="" src="images/blog/popular-2.jpg"></figure>
-                                            <a href="#">If you need a crown or lorem an implant you will pay it gap it</a>
-                                        </div>
-                                        <div class="time">July 2, 2014</div>
-                                    </div>
-                                    <!--News Post-->
-                                    <div class="news-post">
-                                        <div class="icon"></div>
-                                        <div class="news-content">
-                                            <figure class="image-thumb"><img alt="" src="images/blog/popular-1.jpg"></figure>
-                                            <a href="#">If you need a crown or lorem an implant you will pay it gap it</a>
-                                        </div>
-                                        <div class="time">July 2, 2014</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Footer Column-->
-                            <div class="col-lg-5 col-sm-6 col-xs-12 column">
-                                <div class="footer-widget links-widget">
-                                    <div class="heading-panel">
-                                        <h3 class="main-title text-left"> روابط سريعة</h3>
-                                    </div>
-                                    <ul>
-                                        <li><a href="about.html">معلومات عنا</a></li>
-                                        <li><a href="#">Our Team</a></li>
-                                        <li><a href="#">خدماتنا</a></li>
-                                        <li><a href="index-7.html">One Page</a></li>
-                                        <li><a href="contact.html">Contact Us</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Two 4th column End-->
-                </div>
-            </div>
-        </div>
-        <!--Footer Bottom-->
-        <div class="footer-copyright">
-            <div class="container clearfix">
-                <!--Copyright-->
-                <div class="copyright text-center">حقوق التأليف والنشر 2017 © موضوع أنشأتها <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> كل الحقوق محفوظة</div>
-            </div>
-        </div>
-    </footer>
+
     <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
 </div>
 <!-- Main Content Area End -->
@@ -855,43 +653,6 @@ include '../scripts/db_connection.php';
 </a>
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>
-<!-- =-=-=-=-=-=-= Quote Modal =-=-=-=-=-=-= -->
-<div class="modal fade price-quote" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="lineModalLabel">البريد الإلكتروني لمعرفة السعر</h3>
-            </div>
-            <div class="modal-body">
-                <!-- content goes here -->
-                <form>
-                    <div class="form-group  col-md-6">
-                        <label>اسمك</label>
-                        <input type="text" class="form-control" placeholder="Enter اسمك">
-                    </div>
-                    <div class="form-group  col-md-6">
-                        <label>عنوان البريد الإلكتروني</label>
-                        <input type="email" class="form-control" placeholder="Enter email">
-                    </div>
-                    <div class="form-group  col-md-12">
-                        <label>رقم الاتصال</label>
-                        <input type="text" class="form-control" placeholder="رقم الاتصال">
-                    </div>
-                    <div class="form-group  col-md-12">
-                        <label>تعليقات</label>
-                        <textarea placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control">ما هو سعر 2015 هوندا أكورد EX-L لديك في المخزون الخاص بك?</textarea>
-                    </div>
-                    <div class="col-md-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>
-                    <div class="clearfix"></div>
-                    <div class="col-md-12 margin-bottom-20 margin-top-20">
-                        <button type="submit" class="btn btn-theme btn-block">عرض</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
 <script src="js/jquery.min.js"></script>
 <!-- Bootstrap Core Css  -->

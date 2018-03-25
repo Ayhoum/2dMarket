@@ -35,6 +35,10 @@ if (isset($_GET['email']) && isset($_GET['pass'])) {
                 $_SESSION['full_name']      = $full_name;
                 echo "done";
 
+
+                $update_status_query = "UPDATE `USER`  SET `online_status` = 'ONLINE' WHERE `id` = '{$id}'";
+                $update_status_result = mysqli_query($mysqli,$update_status_query);
+
             }else{
                 echo "error_password";
             }

@@ -7,6 +7,15 @@
  */
 session_start();
 
-session_destroy();
+$id = $_SESSION['id'];
+$update_status_query = "UPDATE `USER`  SET `online_status` = 'OFFLINE' WHERE `id` = '{$id}'";
+$update_status_result = mysqli_query($mysqli,$update_status_query);
+if ($update_status_query){
 
-header("Location: index.php");
+    session_destroy();
+
+    header("Location: index.php");
+} else{
+    echo "ERROR";
+}
+
