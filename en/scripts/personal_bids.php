@@ -7,7 +7,7 @@
  */
 include 'sessions.php';
 //include '../../scripts/db_connection.php';
-session_start();
+//session_start();
 ob_start();
 ?>
 <div class="posts-masonry">
@@ -15,7 +15,7 @@ ob_start();
         <?php
         $user_id    = $_SESSION['id'];
 
-        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `Selling_type` = 'BID' ";
+        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `Selling_type` = 'BID' && `USER_id` = '{$user_id}' ";
         $ad_result = mysqli_query($mysqli, $ad_query);
         while ($row= mysqli_fetch_assoc($ad_result)) {
                     $ad_id = $row['id'];
