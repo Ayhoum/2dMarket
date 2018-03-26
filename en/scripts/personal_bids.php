@@ -5,13 +5,15 @@
  * Date: 15-3-2018
  * Time: 20:06
  */
-//include 'sessions.php';
-//include '../../scripts/db_connection.php';
+include 'sessions.php';
+include '../../scripts/db_connection.php';
+session_start();
+ob_start();
 ?>
 <div class="posts-masonry">
         <ul class="list-unstyled">
         <?php
-        $user_id    = 10;
+        $user_id    = $_SESSION['id'];
 
         $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `Selling_type` = 'BID' ";
         $ad_result = mysqli_query($mysqli, $ad_query);
