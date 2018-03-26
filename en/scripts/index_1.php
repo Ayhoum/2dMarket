@@ -20,6 +20,8 @@ if (mysqli_num_rows($ad_result) > 0) {
         $description = $row['description'];
         $condition = $row['condition'];
         $vistis = $row['visits'];
+        $description = strip_tags($description);
+        $description = substr($description, 0, 200);
 
         $status = $row['status'];
         $selling_type = $row['selling_type'];
@@ -80,7 +82,10 @@ if (mysqli_num_rows($ad_result) > 0) {
             $pic = $row['picture_url'];
             $pic_name = $row['picture_name'];
         }
-
+        if(empty($pic_name) || !file_exists('../en_ad_photo/'.$pic_name)){
+            $pic = 'en_ad_photo/';
+            $pic_name = 'white.jpg';
+        }
         ?>
 
         <div class="item col-md-4 col-sm-6 col-xs-12 clearfix">
@@ -106,7 +111,7 @@ if (mysqli_num_rows($ad_result) > 0) {
                     <!-- Ad Title -->
                     <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                     <!-- Short Description -->
-                    <p class="list-group-item-text"> <?php echo $description;?> </p>
+                    <p class="list-group-item-text"> <?php echo $description; ?> </p>
                     <!-- Ad Meta Info -->
                     <ul class="ad-meta-info">
                         <li>

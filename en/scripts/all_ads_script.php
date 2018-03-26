@@ -88,8 +88,10 @@ if($num_Ads <= 10){
                 $online_status = $row['online_status'];
 
             }
-            if (empty($user_pic)) {
-                $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
+            if (empty($user_pic) || !file_exists('../../uploads/users/'.$user_pic)) {
+                $user_pic = "https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Account-256.png";
+            }else{
+                $user_pic = '../../uploads/users/'.$user_pic;
             }
 
             // Address info.
@@ -118,8 +120,10 @@ if($num_Ads <= 10){
                     $pic = $row['picture_url'];
                     $pic_name = $row['picture_name'];
                 }
-            }else{
-                $pic_name = "white.jpg";
+            }
+            if(empty($pic_name) || !file_exists('../en_ad_photo/'.$pic_name)){
+                $pic = 'en_ad_photo/';
+                $pic_name = 'white.jpg';
             }
             ?>
 
@@ -132,7 +136,7 @@ if($num_Ads <= 10){
                         <!-- Ad Status -->
                         <!-- User Review -->
                         <div class="user-preview" style="float: ">
-                            <a href="profile_2.php?user_id=<?php echo $user_id;?>"> <img src="../uploads/users/<?php echo $user_pic;?>" class="avatar avatar-small" alt="<?php echo $user_username;?>"> </a>
+                            <a href="profile_2.php?user_id=<?php echo $user_id;?>"> <img src="<?php echo $user_pic;?>" class="avatar avatar-small" alt="<?php echo $user_username;?>"> </a>
                         </div>
                         <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id;?>" class="view-details">View Details</a>
                         <!-- Additional Info -->
