@@ -25,12 +25,12 @@ function time_elapsed_string($datetime, $full = false) {
     );
     foreach ($string as $k => &$v) {
         if ($diff->$k) {
-            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : 'منذ');
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? '' : ' ');
         } else {
             unset($string[$k]);
         }
     }
 
     if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? implode(', ', $string) . ' مضـت' : 'للتو';
+    return $string ? implode(', ', $string) . ' ' : 'للتو';
 }
