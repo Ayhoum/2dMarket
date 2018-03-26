@@ -20,6 +20,7 @@ if (isset($_POST['submit'])){
     $ad_id = $_GET['ad_id'];
 
 
+
     $select_query = "SELECT * FROM `CHAT` WHERE `part_one` = '{$part_one}' && `part_two` =  '{$part_two} ' && `ADVERTISEMENT_id` = '{$ad_id})' LIMIT 1 ";
     $select_result = mysqli_query($mysqli, $select_query);
     if (mysqli_num_rows($select_result) > 0) {
@@ -27,7 +28,8 @@ if (isset($_POST['submit'])){
             $chat_id = $row['id'];
         }
 
-        $msg_query  = "INSERT INTO `MESSAGE` (`msg_text`, `CHAT_id`) VALUES ('{$message}','{$chat_id}')";
+
+        $msg_query  = "INSERT INTO `MESSAGE` (`msg_text`, `sender`, `CHAT_id`) VALUES ('{$message}', '{$part_one}','{$chat_id}')";
         $msg_result = mysqli_query($mysqli, $msg_query);
         header("Location: ../ad_page.php?ad_id=$ad_id");
     } else {
@@ -42,7 +44,7 @@ if (isset($_POST['submit'])){
                 $chat_id = $row['id'];
             }
 
-            $msg_query = "INSERT INTO `MESSAGE` (`msg_text`, `CHAT_id`) VALUES ('{$message}','{$chat_id}')";
+            $msg_query  = "INSERT INTO `MESSAGE` (`msg_text`, `sender`, `CHAT_id`) VALUES ('{$message}', '{$part_one}','{$chat_id}')";
             $msg_result = mysqli_query($mysqli, $msg_query);
         }
 
