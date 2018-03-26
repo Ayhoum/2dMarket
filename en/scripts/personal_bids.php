@@ -6,7 +6,7 @@
  * Time: 20:06
  */
 include 'sessions.php';
-include '../../scripts/db_connection.php';
+//include '../../scripts/db_connection.php';
 session_start();
 ob_start();
 ?>
@@ -164,7 +164,8 @@ ob_start();
             }
 
 
-        }        ?>
+        }
+        ?>
         </ul>
 
 </div>
