@@ -19,10 +19,6 @@ if (mysqli_num_rows($bid_result)) {
         $auction_id = $row['AUCTION_id'];
         $ad_id = $row['ad_id'];
 
-        echo $ad_id . " | ". $amount . " | ". $time ;
-
-
-
 
         $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `id` = '{$ad_id}'";
         $ad_result = mysqli_query($mysqli, $ad_query);
@@ -157,8 +153,7 @@ if (mysqli_num_rows($bid_result)) {
                                             <!-- Ad Content End -->
                                         </div>
                                     </div>
-                                </li>
-
+            </li>
             <?php
 
         }
@@ -166,7 +161,5 @@ if (mysqli_num_rows($bid_result)) {
     }
 
 }
-
-
 
 ?>
