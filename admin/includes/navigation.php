@@ -48,22 +48,22 @@ session_start();
 
 
                     <li>
-                        <a href="../cat.php"><i class="fa fa-fw fa-tasks"></i> Categories </a>
+                        <a href="cat.php"><i class="fa fa-fw fa-tasks"></i> Categories </a>
                     </li>
                     <li>
                         <a href="javascript:" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-user"></i> USERS <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="../accounts_users.php">Accounts Control</a>
+                                <a href="accounts_users.php">Accounts Control</a>
                             </li>
                             <li>
-                                <a href="../ADS.php">Ads Control </a>
+                                <a href="ADS.php">Ads Control </a>
                             </li>
 
                         </ul>
                     </li>
                     <li>
-                        <a href="../dash.php"><i class="fa fa-fw fa-pie-chart"></i> Dashboard </a>
+                        <a href="dash.php"><i class="fa fa-fw fa-pie-chart"></i> Dashboard </a>
                     </li>
 
                 </ul>
