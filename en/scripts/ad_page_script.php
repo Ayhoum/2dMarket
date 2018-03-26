@@ -118,14 +118,12 @@ if (isset($_GET['ad_id'])) {
 
                             <?php
                         }
-                    } else {
+                    }
+                    if(empty($picture_name) || !file_exists('../en_ad_photo/'.$picture_name)){
                         ?>
-                        <li class=""><img alt="" src="images/single-page/1.jpg" title=""></li>
-                        <li><img alt="" src="images/single-page/2.jpg" title=""></li>
-                        <li class="flex-active-slide"><img alt="" src="images/single-page/3.jpg" title=""></li>
-                        <li><img alt="" src="images/single-page/4.jpg" title=""></li>
-                        <li><img alt="" src="images/single-page/5.jpg" title=""></li>
-                        <li><img alt="" src="images/single-page/6.jpg" title=""></li>
+                        <li class="flex-active-slide"><img alt="" style="width: 750px; height: 420px"
+                                                           src="<?php echo "en_ad_photo/white.jpg"; ?>"
+                                                           ></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -151,16 +149,13 @@ if (isset($_GET['ad_id'])) {
 
                             <?php
                         }
-                    } else {
+                    }
+
+                    if(empty($picture_name) || !file_exists('../en_ad_photo/'.$picture_name)){
                         ?>
-                        <li><img alt="" draggable="false" src="images/single-page/1_thumb.jpg"></li>
-                        <li><img alt="" draggable="false" src="images/single-page/2_thumb.jpg"></li>
-                        <li class="flex-active-slide"><img alt="" draggable="false"
-                                                           src="images/single-page/3_thumb.jpg"></li>
-                        <li><img alt="" draggable="false" src="images/single-page/4_thumb.jpg"></li>
-                        <li><img alt="" draggable="false" src="images/single-page/5_thumb.jpg"></li>
-                        <li><img alt="" draggable="false" src="images/single-page/6_thumb.jpg"></li>
-                        <!-- items mirrored twice, total of 12 -->
+                        <li class="flex-active-slide"><img alt="" style="width: 200px; height: 112px"
+                                                           src="<?php echo "en_ad_photo/white.jpg"; ?>"
+                                                           ></li>
                     <?php } ?>
 
                 </ul>
@@ -201,10 +196,10 @@ if (isset($_GET['ad_id'])) {
                     <span><strong>Delivery Type </strong> :</span> <?php echo $delivery_type; ?>
                 </div>
                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                    <span><strong>Category </strong>:</span> <?php $cat_name; ?>
+                    <span><strong>Category </strong>:</span> <?php echo $cat_name; ?>
                 </div>
                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                    <span><strong>Date</strong> :</span> <?php $date; ?>
+                    <span><strong>Date</strong> :</span> <?php echo $date; ?>
                 </div>
                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
                     <span><strong>Price</strong> :</span> € <?php echo $price; ?>
@@ -461,7 +456,8 @@ if (isset($_GET['ad_id'])) {
                                 $picture_url_1 = $row['picture_url'];
 
 
-                                ?>
+                           ?>
+
                                 <div class="ads-list-archive">
                                     <!-- Image Block -->
                                     <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
@@ -470,7 +466,7 @@ if (isset($_GET['ad_id'])) {
                                             <a href="#">
                                                 <div class="ribbon popular"></div>
                                                 <img class="img-responsive"
-                                                     src="<?php echo $picture_url_1 . $picture_name_1; ?>" alt="">
+                                                     src="<?php echo $picture_name_1; ?>" alt="">
                                             </a>
                                         </div>
                                         <!-- Img Block -->
@@ -549,6 +545,7 @@ if (isset($_GET['ad_id'])) {
 
                                 <?php
                             }
+
                         }
                     }
                 } else {
