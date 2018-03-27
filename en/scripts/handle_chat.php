@@ -126,7 +126,6 @@ if (isset($_GET['id'])) {
                     $partOne = $row['part_one'];
                     $partTwo = $row['part_two'];
                     $ad_id = $row['ADVERTISMENT_id'];
-                    $ad_pr_id = $row['ADVERTISMENT_PRODUCT_id'];
 
                 }
             }

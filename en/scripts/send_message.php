@@ -19,6 +19,9 @@ if (isset($_POST['submit'])){
     $part_two = $_GET['user_id'];
     $ad_id = $_GET['ad_id'];
 
+    date_default_timezone_set('Europe/Amsterdam');
+    $date = date('Y-m-d H:i:s');
+
 
 
     $select_query = "SELECT * FROM `CHAT` WHERE `part_one` = '{$part_one}' && `part_two` =  '{$part_two} ' && `ADVERTISEMENT_id` = '{$ad_id})' LIMIT 1 ";
@@ -29,7 +32,7 @@ if (isset($_POST['submit'])){
         }
 
 
-        $msg_query  = "INSERT INTO `MESSAGE` (`msg_text`, `sender`, `CHAT_id`) VALUES ('{$message}', '{$part_one}','{$chat_id}')";
+        $msg_query  = "INSERT INTO `MESSAGE` (`msg_text`, `sender`, `msg_time`, `CHAT_id`) VALUES ('{$message}', '{$part_one}', '{$date}','{$chat_id}')";
         $msg_result = mysqli_query($mysqli, $msg_query);
         header("Location: ../ad_page.php?ad_id=$ad_id");
     } else {

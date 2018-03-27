@@ -84,7 +84,6 @@ if (isset($_GET['ad_id'])) {
 
     ?>
 
-
     <div class="single-ad">
         <!-- Title -->
         <div class="ad-box">
@@ -92,7 +91,8 @@ if (isset($_GET['ad_id'])) {
             <div class="short-history">
                 <ul>
                     <li>Published on: <b><?php echo $date; ?></b></li>
-                    <li>Category: <b><a href="#"><?php echo $cat_name; ?></a></b></li>
+                    <li>Published by: <b><a href="profile_2.php?user_id=<?php echo $user_id;?>"><?php echo $user_username; ?></a></b></li>
+<!--                    <li>Category: <b><a href="ads_per_cat.php?cat_id=--><?php //echo $category_id;?><!--">--><?php //echo $cat_name; ?><!--</a></b></li>-->
                     <li>Location: <b><?php echo $user_region . " | " . $user_country; ?></b></li>
                 </ul>
             </div>
@@ -111,19 +111,14 @@ if (isset($_GET['ad_id'])) {
 
 
                             ?>
-                            <li class="flex-active-slide"><img alt="" style="width: 750px; height: 420px"
-                                                               src="<?php echo $picture_url . $picture_name; ?>"
-                                                               title="<?php
-                                                               $picture_name ?>"></li>
+                            <li class="flex-active-slide"><img alt="" style="width: 750px; height: 420px object-fit: cover;" src="<?php echo $picture_url . $picture_name; ?>" title="<?php$picture_name ?>"></li>
 
                             <?php
                         }
                     }
-                    if(empty($picture_name) || !file_exists('../en_ad_photo/'.$picture_name)){
+                    elseif (empty($picture_name) || !file_exists('../en_ad_photo/'.$picture_name)){
                         ?>
-                        <li class="flex-active-slide"><img alt="" style="width: 750px; height: 420px"
-                                                           src="<?php echo "en_ad_photo/white.jpg"; ?>"
-                                                           ></li>
+                        <li class="flex-active-slide"><img alt="" style="width: 750px; height: 420px object-fit: cover;" src="<?php echo "en_ad_photo/white.jpg"; ?>"></li>
                     <?php } ?>
                 </ul>
             </div>
@@ -142,7 +137,7 @@ if (isset($_GET['ad_id'])) {
 
 
                             ?>
-                            <li class="flex-active-slide"><img style="width: 200px; height: 112px" alt=""
+                            <li class="flex-active-slide"><img style="width: 200px; height: 112px object-fit: cover;" alt=""
                                                                src="<?php echo $picture_url . $picture_name; ?>"
                                                                title="<?php
                                                                $picture_name ?>"></li>
@@ -153,7 +148,7 @@ if (isset($_GET['ad_id'])) {
 
                     if(empty($picture_name) || !file_exists('../en_ad_photo/'.$picture_name)){
                         ?>
-                        <li class="flex-active-slide"><img alt="" style="width: 200px; height: 112px"
+                        <li class="flex-active-slide"><img alt="" style="width: 200px; height: 112px object-fit: cover;"
                                                            src="<?php echo "en_ad_photo/white.jpg"; ?>"
                                                            ></li>
                     <?php } ?>
@@ -339,30 +334,7 @@ if (isset($_GET['ad_id'])) {
         </div>
     <?php } ?>
     <!-- Single Ad End -->
-    <!-- Price Alert -->
-    <div class="alert-box-container  margin-top-30">
-        <div class="well">
-            <h3>Create Alert</h3>
-            <p>Receive emails for the latest ads matching your search criteria</p>
-            <form>
-                <div class="row">
-                    <div class="col-md-5 col-xs-12 col-sm-12">
-                        <input placeholder="Enter Your Email " type="text" class="form-control">
-                    </div>
-                    <div class="col-md-4 col-xs-12 col-sm-12">
-                        <select class="alerts">
-                            <option value="1">Daily</option>
-                            <option value="7">Weekly</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 col-xs-12 col-sm-12">
-                        <input class="btn btn-theme btn-block" value="Submit" type="submit">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Price Alert End -->
+
     <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
     <div class="grid-panel margin-top-30">
         <div class="heading-panel">
@@ -372,11 +344,12 @@ if (isset($_GET['ad_id'])) {
                 </h3>
             </div>
         </div>
+
         <div class="posts-masonry">
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <!-- Ads Archive -->
                 <?php
-                $related_ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$category_id}' ";
+                $related_ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$category_id}' ORDER BY `id` DESC LIMIT 4";
                 $related_ad_result = mysqli_query($mysqli, $related_ad_query);
                 if (mysqli_num_rows($related_ad_result) > 0) {
                     while ($row = mysqli_fetch_assoc($related_ad_result)) {
@@ -395,6 +368,9 @@ if (isset($_GET['ad_id'])) {
 
                         $user_id = $row['USER_id'];
                         $category_id = $row['CATEGORY_id'];
+
+                        $description = strip_tags($description);
+                        $description = substr($description, 0, 200);
 
 
                         require_once 'time_elapse.php';
@@ -455,18 +431,17 @@ if (isset($_GET['ad_id'])) {
                                 $picture_name_1 = $row['picture_name'];
                                 $picture_url_1 = $row['picture_url'];
 
-
+                            }
+                        }
                            ?>
-
                                 <div class="ads-list-archive">
                                     <!-- Image Block -->
                                     <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
                                         <!-- Img Block -->
                                         <div class="ad-archive-img">
                                             <a href="#">
-                                                <div class="ribbon popular"></div>
-                                                <img class="img-responsive"
-                                                     src="<?php echo $picture_name_1; ?>" alt="">
+                                                <?php if ($ad_type == "PREMIUM"){?><div class="ribbon popular"></div> <?php }?>
+                                                <img class="img-responsive" src="<?php echo $picture_url_1. $picture_name_1?>" alt="">
                                             </a>
                                         </div>
                                         <!-- Img Block -->
@@ -478,15 +453,14 @@ if (isset($_GET['ad_id'])) {
                                         <!-- Ad Desc -->
                                         <div class="ad-archive-desc">
                                             <!-- Price -->
-                                            <div class="ad-price"><?php echo $price; ?></div>
+                                            <div class="ad-price"> € <?php echo $price; ?></div>
                                             <!-- Title -->
-                                            <h3><?php echo $title; ?> </h3>
+                                            <h3><?php echo $title;?> </h3>
                                             <!-- Category -->
-                                            <div class="category-title"><span><a
-                                                            href="#"><?php echo $cat_name; ?></a></span></div>
+                                            <div class="category-title"> <span><a href="ads_per_cat.php?cat_id=<?php echo $category_id;?>"><?php echo $cat_name?></a></span> </div>
                                             <!-- Short Description -->
                                             <div class="clearfix visible-xs-block"></div>
-                                            <p class="hidden-sm"><?php echo $description; ?></p>
+                                            <p class="hidden-sm"><?php echo $description;?></p>
                                             <!-- Ad Features -->
                                             <ul class="add_info">
                                                 <!-- Contact Details -->
@@ -494,19 +468,17 @@ if (isset($_GET['ad_id'])) {
                                                     <div class="custom-tooltip tooltip-effect-4">
                                                         <span class="tooltip-item"><i class="fa fa-phone"></i></span>
                                                         <div class="tooltip-content">
-                                                            <h4>Contact Info.</h4>
-                                                            <strong><?php echo $user_username; ?></strong>
-                                                            <br> <strong>Email : </strong> <?php echo $user_email; ?>
-                                                            <br> <strong>Phone : </strong> <span
-                                                                    class="label label-success"><?php echo $user_phone; ?></span>
+                                                            <h4>Contact Info,</h4>
+                                                            <strong>Username : </strong> <?php echo $user_username; ?>
+                                                            <br> <strong>Email : </strong> <?php echo $user_email;?>
+<!--                                                            <br> <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>-->
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <!-- Address -->
                                                 <li>
                                                     <div class="custom-tooltip tooltip-effect-4">
-                                                        <span class="tooltip-item"><i
-                                                                    class="fa fa-map-marker"></i></span>
+                                                        <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
                                                         <div class="tooltip-content">
                                                             <h4>Address</h4>
                                                             <?php echo $location; ?>
@@ -517,36 +489,22 @@ if (isset($_GET['ad_id'])) {
                                                 <li>
                                                     <div class="custom-tooltip tooltip-effect-4">
                                                         <span class="tooltip-item"><i class="fa fa-cog"></i></span>
-                                                        <div class="tooltip-content"><strong>Condition</strong> <span
-                                                                    class="label label-danger"><?php echo $condition; ?></span>
-                                                        </div>
+                                                        <div class="tooltip-content"> <strong>Product Info.</strong> <span class="label label-danger"><?php echo $status . " | ". $delivery_type;?></span> </div>
                                                     </div>
                                                 </li>
                                                 <!-- Ad Type -->
-                                                <li>
-                                                    <div class="custom-tooltip tooltip-effect-4">
-                                                        <span class="tooltip-item"><i class="fa fa-check-square-o"></i></span>
-                                                        <div class="tooltip-content"><strong>Ad info. </strong> <span
-                                                                    class="label label-danger"><?php echo $selling_type . " | " . $delivery_type; ?> </span>
-                                                        </div>
-                                                    </div>
-                                                </li>
                                             </ul>
                                             <!-- Ad History -->
                                             <div class="clearfix archive-history">
-                                                <div class="last-updated"><?php echo $date; ?></div>
-                                                <div class="ad-meta"><a class="btn save-ad"><i class="fa fa-heart-o"></i> Add to Favorite</a> <a class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a></div>
+                                                <div class="last-updated">Added : <?php echo $date;?></div>
+                                                <div class="ad-meta"> <a href="scripts/add_to_favorite.php?ad_id<?php echo $id;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> Save Ad.</a> <a href="ad_page.php?ad_id<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a> </div>
                                             </div>
                                         </div>
                                         <!-- Ad Desc End -->
                                     </div>
                                     <!-- Content Block End -->
                                 </div>
-
-                                <?php
-                            }
-
-                        }
+                        <?php
                     }
                 } else {
                     echo " ";

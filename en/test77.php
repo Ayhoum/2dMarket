@@ -5,7 +5,11 @@
  * Date: 21-3-2018
  * Time: 19:09
  */
+date_default_timezone_set('Europe/Amsterdam');
+echo $date = date('Y-m-d H:i:s');
 ?>
+
+
 
 <div class="col-md-4 col-md-pull-8 col-sx-12">
     <!-- Sidebar Widgets -->
