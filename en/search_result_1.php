@@ -391,8 +391,8 @@ include '../scripts/db_connection.php';
                                 <div class="filter-brudcrums-sort">
                                     <ul>
                                         <li><span>Sort by:</span></li>
-                                        <li><a href="all_ads_organized.php?updatedate=recent">Updated date</a></li>
-                                        <li><a href="all_ads_organized.php?price=higtolow">Price</a></li>
+                                        <li><a href="ads_per_country.php?updatedate=recent">Updated date</a></li>
+                                        <li><a href="ads_per_country.php?price=higtolow">Price</a></li>
                                         <li><a href="#">New</a></li>
                                         <li><a href="#">Used</a></li>
                                         <li><a href="#">Warranty</a></li>

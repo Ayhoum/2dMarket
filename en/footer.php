@@ -15,7 +15,7 @@
                 <div class="col-md-3  col-sm-6 col-xs-12">
                     <!-- Info Widget -->
                     <div class="widget">
-                        <div class="logo"> <img alt="" src="images/design.gif" style="height: 180px; width: 180px;"> </div>
+                        <div class="logo"> <img alt="" src="images/logo_files/2Dmarket_dark%20(1).gif" style="height: 180px; width: 180px;"> </div>
                         <h7 style="color: #00a9da">The best place to sell all your goods </h7>
 <!--                        <ul>-->
 <!--                            <li><img src="images/appstore.png" alt=""></li>-->

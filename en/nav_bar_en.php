@@ -17,7 +17,7 @@
                     <ul class="menu-logo">
                         <li>
                             <a class="navbar-brand" href="#">
-                                <img src="images/design.gif" style="width: 80px;height: 80px;margin-top: -15px" class="d-inline-block align-top" alt="">
+                                <img src="images/logo_files/2Dmarket_white%20(1).gif" style="width: 80px;height: 80px;margin-top: -15px" class="d-inline-block align-top" alt="">
 
                             </a>                        </li>
                     </ul>
@@ -78,11 +78,11 @@
                         <li><a href="all_product.php">All Ads </a></li>
                         <li><a href="contact_us.php">Contact </a></li>
                     </ul>
-                    <ul class="menu-search-bar">
-                        <li>
-                            <a href="new_advertisement.php" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> Post Free Ad</a>
-                        </li>
-                    </ul>
+<!--                    <ul class="menu-search-bar">-->
+<!--                        <li>-->
+<!--                            <a href="new_advertisement.php" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> Post Free Ad</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
                 </div>
             </div>
         </div>
