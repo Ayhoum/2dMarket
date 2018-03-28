@@ -400,8 +400,8 @@ require_once '../scripts/db_connection.php';
                         <p class="lead">Posting an ad on <a href="#">2dmarket.com</a> is free! However, all ads must follow our rules:</p>
                         <form  name="add_new_ad" method="post" id="advForm" class="submit-form" enctype="multipart/form-data">
                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                         <ul class="accordion">
-                             <li>
+                         <ul class="accordion ">
+                             <li class="panel-collapse collapse in">
                                  <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 1.</span> Select a category</a></h4>
                                      <div class="accordion-content">
                                          <div class="row">

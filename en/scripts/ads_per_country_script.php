@@ -208,7 +208,7 @@ if($num_Ads <= 10){
         <?php
         if ($page != 0 && $page != 1) {
             ?>
-            <li><a href="ads_per_country.php?page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
+            <li><a href="ads_per_country.php?country=<?php echo $country;?>&&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }
@@ -217,13 +217,13 @@ if($num_Ads <= 10){
             ?>
             <li <?php if ($i == $page || ($i == 1 && $page == 0)) {
                 echo 'class="active"';
-            } ?>><a href="ads_per_country.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            } ?>><a href="ads_per_country.php?country=<?php echo $country;?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 
         <?php } ?>
         <?php
         if ($page != $num_Ads) {
             ?>
-            <li><a href="ads_per_country.php?page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
+            <li><a href="ads_per_country.php?country=<?php echo $country;?>&&page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }

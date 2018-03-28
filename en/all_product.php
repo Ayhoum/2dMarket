@@ -160,7 +160,7 @@ session_start();
                                     <!-- Title End -->
                                 </div>
                                 <!-- Content -->
-                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body categories">
                                         <ul>
                                             <?php
@@ -231,7 +231,7 @@ session_start();
                                     </h4>
                                 </div>
                                 <!-- Content -->
-                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
+                                <div id="collapsefour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingfour">
                                     <div class="panel-body">
                                         <span class="price-slider-value">Price (€) <span id="price-min"></span> - <span id="price-max"></span></span>
                                         <div id="price-slider"></div>
