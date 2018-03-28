@@ -14,7 +14,7 @@ ob_start();
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title>2D Market | جميع الاعلانات</title>
+    <title>2D Market | جميع الاعلانات في <?php echo $_GET['country'];?></title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/logo_png.png" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -84,7 +84,7 @@ ob_start();
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="header-page">
-                    <h1>جميـــع الاعلانـــات</h1>
+                    <h1> جميـــع الاعلانـــات في <?php echo $_GET['country'];?></h1>
                 </div>
             </div>
         </div>
@@ -126,7 +126,7 @@ ob_start();
                         <!-- Sorting Filters End-->
                         <div class="clearfix"></div>
                         <!-- Ads Archive -->
-                        <?php include 'scripts/all_ads_script.php';?>
+                        <?php include 'scripts/ads_per_country_script.php';?>
                         <!-- Pagination End -->
                     </div>
                     <!-- Row End -->
@@ -155,7 +155,7 @@ ob_start();
                                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body categories">
                                         <ul>
-                                            <?php include 'scripts/category.php';?>
+                                           <?php include 'scripts/category.php';?>
                                         </ul>
                                     </div>
                                 </div>

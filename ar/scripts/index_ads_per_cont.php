@@ -17,7 +17,7 @@
             <div class="heading-panel">
                 <div class="col-xs-12 col-md-12 col-sm-12">
                     <h3 class="main-title text-left">
-                        Browse Ads By Countries
+                        اعلانــات حسـب  الدولـة
                     </h3>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                             $country_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country = '{$country}' && ADVERTISEMENT.lang = 'EN'";
+                                          WHERE ADDRESS.country = '{$country}' && ADVERTISEMENT.lang = 'AR'";
                             $country_result = mysqli_query($mysqli, $country_query);
                             $num_ads = mysqli_num_rows($country_result);
                         ?>

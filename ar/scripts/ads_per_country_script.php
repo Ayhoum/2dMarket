@@ -17,7 +17,7 @@ $country = $_GET['country'];
 $ad_query_get_num = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'EN' ORDER BY ADVERTISEMENT.id DESC";
+                                          WHERE ADDRESS.country LIKE '%{$country}%'&& ADVERTISEMENT.lang = 'AR' ORDER BY ADVERTISEMENT.id DESC";
 $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
 $num_Ads = mysqli_num_rows($ad_result_get_num);
 
@@ -25,18 +25,18 @@ if($num_Ads <= 10){
     $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'EN' ORDER BY ADVERTISEMENT.id DESC";
+                                          WHERE ADDRESS.country LIKE '%{$country}%'&& ADVERTISEMENT.lang = 'AR' ORDER BY ADVERTISEMENT.id DESC";
 }else if($page == 0 || $page == 1){
     $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' ORDER BY ADVERTISEMENT.id DESC LIMIT 10";
+                                          WHERE ADDRESS.country LIKE '%{$country}%'&& ADVERTISEMENT.lang = 'AR' ORDER BY ADVERTISEMENT.id DESC LIMIT 10";
 }else if($page > 1){
     $start = (($page - 1) * 10);
     $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'EN' ORDER BY ADVERTISEMENT.id DESC LIMIT 10 OFFSET $start";
+                                          WHERE ADDRESS.country LIKE '%{$country}%'&& ADVERTISEMENT.lang = 'AR' ORDER BY ADVERTISEMENT.id DESC LIMIT 10 OFFSET $start";
 
 }
     $ad_result = mysqli_query($mysqli, $ad_query);
@@ -158,9 +158,9 @@ if($num_Ads <= 10){
                     </div>
                     <!-- Ad Img End -->
                     <div class="short-description">
-                        <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo $status ;?></span></p>
-                        <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
-                        <?php }elseif ($status == "AVAILABLE"){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
+                        <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo "مبـاع" ;?></span></p>
+                        <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo "محجـوز" ;?></span></p>
+                        <?php }elseif ($status == "AVAILABLE"){?>  <p> <span class="label label-success"><?php echo "متـاح" ;?></span></p><?php }?>
                         <!-- Ad Category -->
                         <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
@@ -186,11 +186,11 @@ if($num_Ads <= 10){
     ?>
     <div class="col-md-12 col-xs-12 col-sm-12">
         <section class="advertising">
-            <a href="post-ad-1.html">
+            <a href="new_advertisement.php">
                 <div class="banner">
                     <div class="wrapper">
-                        <span class="title">Do you want your property to be listed here?</span>
-                        <span class="submit">Submit it now! <i class="fa fa-plus-square"></i></span>
+                        <span class="title">هل تريد مشاهدة اعلانـك ضمن هذه القـائمة ؟</span>
+                        <span class="submit">قم بنشر اعلانك الاًن! <i class="fa fa-plus-square"></i></span>
                     </div>
                 </div>
                 <!-- /.banner-->

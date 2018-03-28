@@ -12,7 +12,6 @@
 if (isset($_POST['search_submit'])){
     $price_low = $_POST['price_low'];
     $price_high = $_POST['price_high'];
-    $condition = $_POST['condition'];
     $price_low = $_POST['price_low'];
     $price_low = $_POST['price_low'];
     $price_low = $_POST['price_low'];

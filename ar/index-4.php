@@ -498,7 +498,9 @@ include '../scripts/db_connection.php';
             <!-- end container -->
          </div>
          <!-- =-=-=-=-=-=-= Call to Action =-=-=-=-=-=-= -->
-
+          <!-- =-=-=-=-=-=-= Abs By Countries =-=-=-=-=-=-= -->
+          <?php include 'scripts/index_ads_per_cont.php';?>
+          <!-- =-=-=-=-=-=-= Abs By Countries End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= إعلانات مميزة =-=-=-=-=-=-= -->
          <section class="custom-padding">
             <!-- Main Container -->
