@@ -25,7 +25,6 @@ if($num_Ads <= 10){
 }else if($page > 1){
     $start = (($page - 1) * 10);
     $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
-
 }
 //    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);

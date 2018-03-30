@@ -97,10 +97,10 @@ require_once "scripts/time_elapse.php";
                <div class="search-title">Browse Ads</div>
             </div>
             <div class="row">
-               <form method="post" class="search-form" action="search_result.php">
+               <form method="post" class="search-form">
                   <!-- Category -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <select name="cat" class="category form-control">
+                     <select name="cat" class="category form-control" id="catSelect">
                         <option label="Select Option"></option>
                          <?php
                          // GET ALL CATEGORIES from DB
@@ -133,7 +133,7 @@ require_once "scripts/time_elapse.php";
                   </div>
                   <!-- Search Field -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <input type="text" name="query" class="form-control" placeholder="What Are You Looking For..." />
+                     <input type="text" name="query" id="querySearch" class="form-control" placeholder="What Are You Looking For..." />
                   </div>
                   <!-- Price Range SLider -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
@@ -142,7 +142,7 @@ require_once "scripts/time_elapse.php";
                   </div>
                   <!-- Search Button -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <button type="submit" name="submit" class="btn btn-light">Search</button>
+                     <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Search</button>
                   </div>
                   <!-- end .item -->
                </form>
@@ -417,6 +417,93 @@ require_once "scripts/time_elapse.php";
          google.maps.event.addDomListener(window, 'load', speedTest.init);
 		 (jQuery);
       </script>
+
+<script>
+
+    var long;
+    var lati;
+    $(document).ready(function() {
+        var currgeocoder;
+
+        //Set geo location lat and long
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+            geo_loc = processGeolocationResult(position);
+            currLatLong = geo_loc.split(",");
+            initializeCurrent(currLatLong[0], currLatLong[1]);
+
+        });
+
+        //Get geo location result
+
+        function processGeolocationResult(position) {
+            html5Lat = position.coords.latitude; //Get latitude
+            html5Lon = position.coords.longitude; //Get longitude
+            html5TimeStamp = position.timestamp; //Get timestamp
+            html5Accuracy = position.coords.accuracy; //Get accuracy in meters
+            return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);
+        }
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays*60*60*24*1000));
+            var expires = "expires="+ d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+
+        function initializeCurrent(latcurr, longcurr) {
+            currgeocoder = new google.maps.Geocoder();
+            console.log(latcurr + "-- ######## --" + longcurr);
+
+            if (latcurr != '' && longcurr != '') {
+                var myLatlng = new google.maps.LatLng(latcurr, longcurr);
+                long = longcurr;
+                lati = latcurr;
+                setCookie("longC",long,2);
+                setCookie("latiC",lati,2);
+
+                return getCurrentAddress(myLatlng);
+            }
+        }
+
+        //Get current address
+
+        function getCurrentAddress(location) {
+            currgeocoder.geocode({
+                'location': location
+
+            }, function(results, status) {
+
+                if (status == google.maps.GeocoderStatus.OK) {
+                    console.log(results[0]);
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    });
+
+</script>
+
+<script>
+
+    var cat;
+    var query;
+    var dis;
+
+    var submitBut = function () {
+        cat   = $("#catSelect").val();
+        query = $("#querySearch").val();
+        dis   = $("#price-min").val();
+
+        window.open("search_result.php?dis=" + dis,"_self");
+
+    };
+
+</script>
+
    </body>
 </html>
 

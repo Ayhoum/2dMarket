@@ -2,7 +2,7 @@
 include '../scripts/db_connection.php';
 
 //ob_start();
-//session_start();
+session_start();
 
 ?>
 <html lang="en">
@@ -430,22 +430,22 @@ include '../scripts/db_connection.php';
             <!-- Row -->
             <div class="row">
                 <!-- Middle Content Area -->
-                <div class='col-md-8 col-md-push-4 col-lg-8 col-sx-12'>
+                <div class="col-md-8 col-md-push-4 col-lg-8 col-sx-12">
                     <!-- Row -->
-                    <div class='row'>
+                    <div class="row">
                         <!-- Sorting Filters -->
                         <!-- Sorting Filters -->
-                        <div class='col-md-12 col-xs-12 col-sm-12 col-lg-12'>
-                            <div class='clearfix'></div>
-                            <div class='listingTopFilterBar'>
-                                <div class='col-md-5 col-xs-12 col-sm-6 no-padding'>
-                                    <div class='header-listing'>
+                        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                            <div class="clearfix"></div>
+                            <div class="listingTopFilterBar">
+                                <div class="col-md-5 col-xs-12 col-sm-6 no-padding">
+                                    <div class="header-listing">
                                         <h6>Sort by :</h6>
-                                        <div class='custom-select-box'>
-                                            <select name='order' class='custom-select'>
-                                                <option value='1'>The latest</option>
-                                                <option value='2'>Price (low to high) </option>
-                                                <option value='3'>Price (high to low) </option>
+                                        <div class="custom-select-box">
+                                            <select name="order" class="custom-select">
+                                                <option value="1">The latest</option>
+                                                <option value="2">Price (low to high) </option>
+                                                <option value="3">Price (high to low) </option>
                                             </select>
                                         </div>
                                     </div>
@@ -453,8 +453,26 @@ include '../scripts/db_connection.php';
                             </div>
                         </div>
                         <!-- Sorting Filters End-->
-                        <div class='clearfix'></div>
-                <div class="posts-masonry"></div>
+                        <div class="clearfix"></div>
+                        <?php
+
+
+
+                            $dis = $_GET['dis'];
+                            //$cat = $_POST['cat'];
+                            //$query = $_POST['query'];
+
+                            $valLong = $_COOKIE['longC'];
+                            $valLati = $_COOKIE['latiC'];
+                        ?>
+                        <?php
+                        if(empty($valLati) || empty($valLong)){
+                            echo "Your search process has been terminated";
+                        }else{
+                            include 'scripts/handleSearch.php';
+                        }
+                        ?>
+
 
                     </div>
                     <!-- Row End -->
@@ -794,100 +812,8 @@ include '../scripts/db_connection.php';
 <script src="js/custom.js"></script>
 </body>
 </html>
-<?php
-/**
- * Created by PhpStorm.
- * User: aylos
- * Date: 18/3/2018
- * Time: 6:59 م
- */
-
-if(isset($_POST['submit'])){
-
-    $dis = $_POST['dis'];
-    $cat = $_POST['cat'];
-    $query = $_POST['query'];
-
-    $_SESSION['dis_ses'] = $dis;
-
-    echo $dis;
-    echo $cat;
-    echo $query;
-
-}?>
 
 
-
-
-<script type="text/javascript" charset="utf-8">
-    var long;
-    var lati;
-    $(document).ready(function() {
-        var currgeocoder;
-
-        //Set geo location lat and long
-
-        navigator.geolocation.getCurrentPosition(function(position) {
-
-            geo_loc = processGeolocationResult(position);
-            currLatLong = geo_loc.split(",");
-            initializeCurrent(currLatLong[0], currLatLong[1]);
-
-        });
-
-        //Get geo location result
-
-        function processGeolocationResult(position) {
-            html5Lat = position.coords.latitude; //Get latitude
-            html5Lon = position.coords.longitude; //Get longitude
-            html5TimeStamp = position.timestamp; //Get timestamp
-            html5Accuracy = position.coords.accuracy; //Get accuracy in meters
-            return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);
-        }
-
-
-        function initializeCurrent(latcurr, longcurr) {
-            currgeocoder = new google.maps.Geocoder();
-            console.log(latcurr + "-- ######## --" + longcurr);
-
-            if (latcurr != '' && longcurr != '') {
-                var myLatlng = new google.maps.LatLng(latcurr, longcurr);
-                long = longcurr;
-                lati = latcurr;
-
-                $.post('scripts/handleSearch.php?lat=' + lati + '&lon=' + long + '&dis=<?php echo $dis;?>', function (response) {
-
-                    alert(response);
-                    if (response == "error") {
-                        $(".posts-masonry").html('error');
-                    } else{
-                        $(".posts-masonry").html(response);
-                    }
-                });
-
-                return getCurrentAddress(myLatlng);
-            }
-        }
-
-        //Get current address
-
-        function getCurrentAddress(location) {
-            currgeocoder.geocode({
-                'location': location
-
-            }, function(results, status) {
-
-                if (status == google.maps.GeocoderStatus.OK) {
-                    console.log(results[0]);
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
-                }
-            });
-        }
-    });
-
-
-</script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&callback=initMap">
 </script>
