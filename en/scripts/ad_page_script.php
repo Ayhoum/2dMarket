@@ -8,7 +8,6 @@
 ?>
 <?php
 if (isset($_GET['ad_id'])) {
-    include 'sessions.php';
 
     $ad_id = $_GET['ad_id'];
     $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `id` = {$ad_id}";
@@ -216,7 +215,12 @@ if (isset($_GET['ad_id'])) {
 
 
     </div>
-    <?php if ($selling_type == 'BID') {
+
+    <?php
+    include 'sessions.php';
+
+    include 'not_logged_test.php';
+    if ($selling_type == 'BID') {
 
         if (isset($_POST['submit'])) {
 

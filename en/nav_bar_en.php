@@ -16,13 +16,13 @@
                     <!-- menu logo -->
                     <ul class="menu-logo">
                         <li>
-                            <a class="navbar-brand" href="#">
-                                <img src="images/logo_files/2Dmarket_white%20(1).gif" style="width: 80px;height: 80px;margin-top: -15px" class="d-inline-block align-top" alt="">
-
-                            </a>                        </li>
+                            <a class="navbar-brand" href="index.php">
+                                <img src="images/logo_files/2Dmarket_white%20(1).gif" style="width: 80px;height: 80px;margin-top: -15px" class="d-inline-block align-top" alt="2D Market">
+                            </a>
+                        </li>
                     </ul>
                     <!-- menu links -->
-                    <ul class="menu-links">
+                    <ul class="menu-links center-block">
                         <!-- active class -->
 
                         <li>
@@ -76,7 +76,7 @@
                             </div>
                         </li>
                         <li><a href="all_product.php">All Ads </a></li>
-                        <li><a href="contact_us.php">Contact </a></li>
+                        <li><a href="contact_us.php">Contact Us</a></li>
                     </ul>
 <!--                    <ul class="menu-search-bar">-->
 <!--                        <li>-->

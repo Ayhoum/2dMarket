@@ -653,7 +653,7 @@ margin-bottom: 30px;
         font-size: 34px;
     }
     .home-tabs .tabs-container .nav.nav-tabs li.active a {
-        border-bottom: 5px solid #f58936;
+        border-bottom: 5px solid ##00a9da;
         height: 65px;
         line-height: 48px;
     }

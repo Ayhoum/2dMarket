@@ -19,7 +19,7 @@ require_once "scripts/time_elapse.php";
       <meta name="author" content="ScriptsBundle">
       <title>2D Market | Home Page </title>
       <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-      <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+      <link rel="icon" href="images/logo_png.png" type="image/x-icon" />
       <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
@@ -65,7 +65,8 @@ require_once "scripts/time_elapse.php";
    <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <div id="loader-wrapper">
-         <div id="loader"></div>
+         <div id="loader"><img class="img-responsive"  src="images/design.gif">
+         <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
          <div class="loader-section section-left"></div>
          <div class="loader-section section-right"></div>
       </div>

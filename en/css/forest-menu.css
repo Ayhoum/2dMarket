@@ -201,7 +201,7 @@
 
 @media screen and (min-width: 993px) {
   .mega-menu .menu-links > li.activeTrigger {
-    background-color: #f58936;
+    background-color: #00a9da;
   }
 }
 
@@ -383,7 +383,7 @@
 }
 
 .mega-menu .menu-search-bar li:hover i.fa.fa-search {
-  background: #f58936;
+  background: #00a9da;
 }
 
 .mega-menu .menu-search-bar input {
@@ -402,7 +402,7 @@
 
 .mega-menu .menu-search-bar input:focus {
   max-width: 170px;
-  background: #f58936;
+  background: #00a9da;
   padding-left: 20px;
 }
 
@@ -1250,7 +1250,7 @@
 .mega-menu .drop-down-tab-bar input[type="button"],
 .mega-menu .drop-down-tab-bar button[type=submit],
 .mega-menu .drop-down-tab-bar button[type=reset] {
-  background: #f58936;
+  background: #00a9da;
   padding: 10px 20px;
   margin: 5px 10px 0 0;
   
@@ -1864,7 +1864,7 @@ box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   .mega-menu.vertical-left .menu-search-bar input, .mega-menu.vertical-left .menu-search-bar li, .mega-menu.vertical-left .menu-search-bar form, .mega-menu.vertical-left .menu-search-bar label, .mega-menu.vertical-right .menu-search-bar input, .mega-menu.vertical-right .menu-search-bar li, .mega-menu.vertical-right .menu-search-bar form, .mega-menu.vertical-right .menu-search-bar label {
     width: 100%;
     max-width: 100%;
-    background: #f58936;
+    background: #00a9da;
     transition: none;
   }
   .mega-menu.vertical-left .menu-search-bar input, .mega-menu.vertical-right .menu-search-bar input {
