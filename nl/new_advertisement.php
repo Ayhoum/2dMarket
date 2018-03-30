@@ -73,282 +73,7 @@ require_once '../scripts/db_connection.php';
           <?php include 'topbar-nl.php';?>
           <!-- Top Bar End -->
          <!-- Navigation Menu -->
-         <nav id="menu-1" class="mega-menu">
-               <!-- menu list items container -->
-               <section class="menu-list-items">
-                  <div class="container">
-                     <div class="row">
-                        <div class="col-lg-12 col-md-12">
-                           <!-- menu logo -->
-                           <ul class="menu-logo">
-                              <li>
-                                 <a href="index.html"><img src="images/logo.png" alt="logo"> </a>
-                              </li>
-                           </ul>
-                           <!-- menu links -->
-                           <ul class="menu-links">
-                              <!-- active class -->
-                              <li>
-                                 <a href="javascript:void(0)"> Home <i class="fa fa-angle-down fa-indicator"></i></a>
-                                 <div class="drop-down grid-col-8">
-                                    <!--grid row-->
-                                    <div class="grid-row">
-                                       <!--grid column 3-->
-                                       <div class="grid-col-4">
-                                          <ul>
-                                             <li><a href="index.html">Home 1 - Default </a></li>
-                                             <li><a href="index-transparent.html">Home 2 (Transparent)</a></li>
-                                             <li><a href="index-2.html">Home 3 (Variation)</a></li>
-                                             <li><a href="index-3.html">Home 4 (Master Slider)</a></li>
-                                          </ul>
-                                       </div>
-                                       <div class="grid-col-4">
-                                          <ul>
-                                             <li><a href="index-4.html">Home 5 (With Map Listing)</a></li>
-                                             <li><a href="index-5.html">Home 6 (Modern Style)</a></li>
-                                             <li><a href="index-6.html">Home 7 (Variation)</a></li>
-                                             <li><a href="index-7.html">Home 8 (Category Slider)</a></li>
-                                          </ul>
-                                       </div>
-                                       <div class="grid-col-4">
-                                          <ul>
-                                             <li><a href="index-10.html">Home 11 (Modern Home)</a></li>
-                                             <li><a href="index-8.html">Home 9 (Landing Page)</a></li>
-                                             <li><a href="index-9.html">Home 10 (Variation)</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </li>
-                              <li>
-                                 <a href="javascript:void(0)">Listing <i class="fa fa-angle-down fa-indicator"></i></a>
-                                 <!-- drop down multilevel  -->
-                                 <ul class="drop-down-multilevel">
-                                    <li>
-                                       <a href="javascript:void(0)">Grid Style<i class="fa fa-angle-right fa-indicator"></i> <span class="label label-info">New</span></a>
-                                       <!-- drop down second level -->
-                                       <ul class="drop-down-multilevel">
-                                          <li><a href="listing.html">Listing Grid 1</a></li>
-                                          <li><a href="listing-1.html">Listing Grid 2</a></li>
-                                          <li><a href="listing-2.html">Listing Grid 3</a></li>
-                                          <li><a href="listing-7.html">Listing Featured <span class="label label-info">New</span></a></li>
-                                       </ul>
-                                    </li>
-                                    <li>
-                                       <a href="javascript:void(0)">List Style<i class="fa fa-angle-right fa-indicator"></i> </a>
-                                       <!-- drop down second level -->
-                                       <ul class="drop-down-multilevel">
-                                          <li><a href="listing-3.html">List View 1</a></li>
-                                          <li><a href="listing-4.html">List View 2</a></li>
-                                          <li><a href="listing-5.html">List View 3</a></li>
-                                          <li><a href="listing-6.html">List View 4</a></li>
-                                       </ul>
-                                    </li>
-                                    <li>
-                                       <a href="javascript:void(0)">Single Ad<i class="fa fa-angle-right fa-indicator"></i> <span class="label label-info">New</span></a>
-                                       <!-- drop down second level -->
-                                       <ul class="drop-down-multilevel">
-                                          <li><a href="single-page-listing.html">Single Ad Detail</a></li>
-                                          <li><a href="single-page-listing-featured.html">Ad (Featured) <span class="label label-info">New</span></a></li>
-                                          <li><a href="single-page-listing-2.html">Single Ad 2</a></li>
-                                          <li><a href="single-page-listing-3.html">Single Ad (Adsense)</a></li>
-                                          <li><a href="single-page-expired.html">Single Ad (Closed)</a></li>
-                                       </ul>
-                                    </li>
-                                    <li><a href="icons.html">Classified Icons </a></li>
-                                 </ul>
-                              </li>
-                              <li>
-                                 <a href="javascript:void(0)">Categories <i class="fa fa-angle-down fa-indicator"></i></a>
-                                 <!-- drop down multilevel  -->
-                                 <ul class="drop-down-multilevel">
-                                    
-                                    <li><a href="category-2.html">Modern Variation</a></li>
-                                    <li><a href="category-3.html">Minimal Variation</a></li>
-                                    <li><a href="category-4.html">Fancy Variation</a></li>
-                                    
-                                    <li><a href="category-6.html">Flat Variation</a></li>
-                                 </ul>
-                              </li>
-                              <li>
-                                 <a href="javascript:void(0)">Dashboard <i class="fa fa-angle-down fa-indicator"></i></a>
-                                 <!-- drop down multilevel  -->
-                                 <ul class="drop-down-multilevel">
-                                    <li><a href="profile.html">User Profile</a></li>
-                                    <li><a href="profile-2.html">User Profile 2</a></li>
-                                    <li><a href="archives.html">Archives</a></li>
-                                    <li><a href="active-ads.html">Active Ads</a></li>
-                              <li><a href="pending-ads.html">Pending Ads</a></li>
-                                    <li><a href="favourite.html">Favourite Ads</a></li>
-                                    <li><a href="messages.html">Message Panel</a></li>
-                                    <li><a href="deactive.html">Account Deactivation</a></li>
-                                 </ul>
-                              </li>
-                              <li>
-                                 <a href="javascript:void(0)">Pages <i class="fa fa-angle-down fa-indicator"></i></a>
-                                 <!-- drop down full width -->
-                                 <div class="drop-down grid-col-12">
-                                    <!--grid row-->
-                                    <div class="grid-row">
-                                       <!--grid column 2-->
-                                       <div class="grid-col-3">
-                                          <h4>Blog</h4>
-                                          <ul>
-                                             <li><a href="blog.html">Blog With Right Sidebar</a></li>
-                                             <li><a href="blog-1.html">Blog With Masonry Style</a></li>
-                                             <li><a href="blog-2.html">Blog Without Sidebar</a></li>
-                                             <li><a href="blog-details.html">Single Blog </a></li>
-                                             <li><a href="blog-details-1.html">Single Blog (Adsense) </a></li>
-                                          </ul>
-                                       </div>
-                                       <!--grid column 2-->
-                                       <div class="grid-col-3">
-                                          <h4>Miscellaneous</h4>
-                                          <ul>
-                                             <li><a href="about.html">About Us</a></li>
-                                             <li><a href="cooming-soon.html">Comming Soon</a></li>
-                                             <li><a href="elements.html">Shortcodes</a></li>
-                                             <li><a href="error.html">404 Page</a></li>
-                                             <li><a href="faqs.html">FAQS</a></li>
-                                          </ul>
-                                       </div>
-                                       <!--grid column 2-->
-            
-                                       <div class="grid-col-3">
-                                          <h4>Others</h4>
-                                          <ul>
-                                             <li><a href="login.html">Login</a></li>
-                                             <li><a href="register.html">Register</a></li>
-                                             <li><a href="pricing.html">Pricing</a></li>
-                                             <li><a href="site-map.html">Site Map</a></li>
-                                             <li><a href="post-ad-1.html">Post Ad</a></li>
-                                          </ul>
-                                       </div>
-                                       <!--grid column 2-->
-                                       <div class="grid-col-3">
-                                          <h4>Detail Page</h4>
-                                          <ul>
-                                             <li><a href="post-ad-2.html">Post Ad 2</a></li>
-                                             <li><a href="single-page-listing.html">Single Ad Detail</a></li>
-                                             <li><a href="single-page-listing-2.html">Single Ad 2</a></li>
-                                             <li><a href="single-page-listing-3.html">Single Ad (Adsense)</a></li>
-                                             <li><a href="single-page-expired.html">Single Ad (Closed)</a></li>
-                                          </ul>
-                                       </div>
-                                       <!--grid column 2-->
-                                    </div>
-                                 </div>
-                              </li>
-                              <li>
-                                 <a href="javascript:void(0)">Drop Down <i class="fa fa-angle-down fa-indicator"></i></a>
-                                 <!-- drop down multilevel  -->
-                                 <ul class="drop-down-multilevel">
-                                    <li><a href="#">Item one</a></li>
-                                    <li>
-                                       <a href="javascript:void(0)">Items Right Side <i class="fa fa-angle-right fa-indicator"></i> </a>
-                                       <!-- drop down second level -->
-                                       <ul class="drop-down-multilevel">
-                                          <li>
-                                             <a href="javascript:void(0)"> <i class="fa fa-buysellads"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
-                                             <!-- drop down third level -->
-                                             <ul class="drop-down-multilevel">
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                             </ul>
-                                          </li>
-                                          <li>
-                                             <a href="javascript:void(0)"> <i class="fa fa-dashcube"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
-                                             <!-- drop down third level -->
-                                             <ul class="drop-down-multilevel">
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                             </ul>
-                                          </li>
-                                          <li>
-                                             <a href="javascript:void(0)"> <i class="fa fa-heartbeat"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
-                                             <!-- drop down third level -->
-                                             <ul class="drop-down-multilevel">
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                             </ul>
-                                          </li>
-                                          <li>
-                                             <a href="javascript:void(0)"> <i class="fa fa-medium"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i></a>
-                                             <!-- drop down third level -->
-                                             <ul class="drop-down-multilevel">
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                             </ul>
-                                          </li>
-                                          <li>
-                                             <a href="javascript:void(0)"> <i class="fa fa-leanpub"></i> Level 2 <i class="fa fa-angle-right fa-indicator"></i> </a>
-                                             <!-- drop down third level -->
-                                             <ul class="drop-down-multilevel">
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                             </ul>
-                                          </li>
-                                       </ul>
-                                    </li>
-                                    <li><a href="#">Item 2</a></li>
-                                    <li>
-                                       <a href="javascript:void(0)">Items Left Side <i class="fa fa-angle-left fa-indicator"></i> </a>
-                                       <!-- add class left-side -->
-                                       <ul class="drop-down-multilevel left-side">
-                                          <li>
-                                             <a href="#"> <i class="fa fa-forumbee"></i> Level 2</a>
-                                          </li>
-                                          <li>
-                                             <a href="#"> <i class="fa fa-hotel"></i> Level 2</a>
-                                          </li>
-                                          <li>
-                                             <a href="#"> <i class="fa fa-automobile"></i> Level 2</a>
-                                          </li>
-                                          <li>
-                                             <a href="javascript:void(0)"> <i class="fa fa-heartbeat"></i> Level 2 <i class="fa fa-plus fa-indicator"></i> </a>
-                                             <!--drop down second level-->
-                                             <ul class="drop-down-multilevel">
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                                <li><a href="#">Level 3</a></li>
-                                             </ul>
-                                          </li>
-                                          <li>
-                                             <a href="#"> <i class="fa fa-bookmark"></i> Level 2</a>
-                                          </li>
-                                          <li>
-                                             <a href="#"> <i class="fa fa-bell"></i> Level 2</a>
-                                          </li>
-                                          <li>
-                                             <a href="#"> <i class="fa fa-soccer-ball-o"></i> Level 2</a>
-                                          </li>
-                                          <li>
-                                             <a href="#"> <i class="fa fa-life-ring"></i> Level 2</a>
-                                          </li>
-                                       </ul>
-                                    </li>
-                                    <li><a href="#">Item 4</a>
-                                    </li>
-                                 </ul>
-                              </li>
-                              <li><a href="contact.html">Contact </a></li>
-                           </ul>
-                           <ul class="menu-search-bar">
-                              <li>
-                                 <a href="post-ad-1.html" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> Post Free Ad</a>
-                              </li>
-                           </ul>
-                        </div>
-                     </div>
-                  </div>
-               </section>
-            </nav>
+        <?php include 'nav_bar_nl.php';?>
       </div>
       <!-- Navigation Menu End -->
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
@@ -395,7 +120,7 @@ require_once '../scripts/db_connection.php';
                            </h3>
                         </div>
                         <p class="lead">Voeg uw advertentie toe <a href="#">2dmarket.com</a> is helmaal gratis :</p>
-                        <form  name="add_new_ad" method="post" action="scripts/create_new_ad.php" class="submit-form">
+                         <form  name="add_new_ad" method="post" id="advForm" class="submit-form" enctype="multipart/form-data">
                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                          <ul class="accordion">
                              <li>
@@ -497,10 +222,14 @@ require_once '../scripts/db_connection.php';
                              <li>
                                  <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 3.</span> Product information</a></h4>
                                  <div class="accordion-content">
-                                     <div class="row">
+                                     <div class="row ">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                             <label class="control-label">fotos van uw Produkt </label>
-                                             <div id="dropzone" class="dropzone"></div>
+                                             <label class="control-label">Photos of your product</label>
+                                             <div class="dropzone" id="my-dropzone" name="mainFileUploader">
+                                                 <div class="fallback">
+                                                     <input name="file[]" type="file" multiple="multiple" />
+                                                 </div>
+                                             </div>
                                          </div>
                                      </div>
                                      <hr>
@@ -508,12 +237,13 @@ require_once '../scripts/db_connection.php';
                                      <!-- Ad Description  -->
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
-                                             <label class="control-label">Produkt Beschrijven <small></small></label>
+                                             <label class="control-label">Product Description <small>Enter a description of the product</small></label>
                                              <textarea name="description" id="editor2" rows="12" class="form-control"></textarea>
                                          </div>
                                      </div>
                                      <!-- end row -->
                                  </div>
+
                              </li>
                              <li>
                                  <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 4.</span> Advertentie Opties</a></h4>
@@ -547,66 +277,24 @@ require_once '../scripts/db_connection.php';
          </section>
          <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-         <footer>
-            <!-- Footer Content -->
-            <div class="footer-top">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- Info Widget -->
-                        <div class="widget">
-                           <div class="logo"> <img alt="" src="images/logo-1.png"> </div>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
-                           <ul>
-                              <li><img src="images/appstore.png" alt=""></li>
-                              <li><img src="images/googleplay.png" alt=""></li>
-                           </ul>
-                        </div>
-                        <!-- Info Widget Exit -->
-                     </div>
-                     <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- Follow Us -->
-                        <div class="widget socail-icons">
-                           <h5>Follow Us</h5>
-                           <ul>
-                              <li><a class="fb" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                              <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                              <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                              <li><a class="googleplus" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
-                           </ul>
-                        </div>
-                        <!-- Follow Us End -->
-                     </div>
-                     <div class="col-md-6  col-sm-6 col-xs-12">
-                        <!-- Newslatter -->
-                        <div class="widget widget-newsletter">
-                           <h5>Singup for Weekly Newsletter</h5>
-                           <div class="fieldset">
-                              <p>We may send you information about related events, webinars, products and services which we believe.</p>
-                              <form>
-                                 <input class="" value="Enter your email address" type="text">
-                                 <input class="submit-btn" name="submit" value="Submit" type="submit"> 
-                              </form>
-                           </div>
-                        </div>
-                        <!-- Newslatter -->
-                     </div>
+          <div class="custom-modal">
+              <div id="fieldsError" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                          <div class="modal-header rte">
+                              <h2 class="modal-title text-center">You left the following fields empty:</h2>
+                          </div>
+                          <div class="modal-body" id="modal-body">
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-info" data-dismiss="modal">Continue</button>
+                          </div>
+                      </div>
                   </div>
-               </div>
-            </div>
-            <!-- Copyrights -->
-            <div class="copyrights">
-               <div class="container">
-                  <div class="copyright-content">
-                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                           <p>© 2018 <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </footer>
+              </div>
+          </div>
+          <?php include 'footer.php';?>
          <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
       </div>
       <!-- Main Content Area End --> 
@@ -663,35 +351,115 @@ require_once '../scripts/db_connection.php';
       <script src="js/dropzone.js" ></script>
       <script src="js/form-dropzone.js" ></script>
       <script type="text/javascript">
-	   "use strict";
-	   
-	   /*--------- Textarea Ck Editor --------*/
-	     CKEDITOR.replace( 'editor1' );
-		 
-	   /*--------- Ad Tags --------*/ 
-		 $('#tags').tagsInput({
-   			'width':'100%'
-		 });
-	   
-         /*--------- create remove function in dropzone --------*/
-         Dropzone.autoDiscover = false;
-         var acceptedFileTypes = "image/*"; //dropzone requires this param be a comma separated list
-         var fileList = new Array;
-         var i = 0;
-         $("#dropzone").dropzone({
-           addRemoveLinks: true,
-           maxFiles: 5, //change limit as per your requirements
-           acceptedFiles: '.jpeg,.jpg,.png,.gif',
-           dictMaxFilesExceeded: "Maximum upload limit reached",
-           acceptedFiles: acceptedFileTypes,
-         url: "uploads",
-           dictInvalidFileType: "upload only JPG/PNG",
-           init: function () {
-               // Hack: Add the dropzone class to the element
-               $(this.element).addClass("dropzone");
-           }
-         });
-		 (jQuery);
+          "use strict";
+
+          /*--------- Textarea Ck Editor --------*/
+          CKEDITOR.replace( 'editor2' );
+
+          /*--------- Ad Tags --------*/
+          $('#tags').tagsInput({
+              'width':'100%'
+          });
+
+          /*--------- create remove function in dropzone --------*/
+
+
+
+          Dropzone.options.myDropzone = {
+              url: "scripts/uploadphotos.php",
+              autoProcessQueue: false,
+              uploadMultiple: true,
+              parallelUploads: 25,
+              maxFiles: 25,
+              addRemoveLinks: true,
+              acceptedFiles: "image/*",
+              success: function(){
+                  window.location.href = "profile.php";
+              },
+              init: function() {
+                  var submitButton = document.querySelector(".submitBut");
+                  var myDr = this;
+                  // First change the button to actually tell Dropzone to process the queue.
+                  submitButton.addEventListener("click", function () {
+
+
+
+
+
+                      var categoryField        = $("#category").val();
+                      var titleField           = $("#title").val();
+                      var priceField           = $("#price").val();
+                      var sellTypeField        = $("#sellType").val();
+                      var conditionField       = $("#condition").val();
+                      var deliveryTypeField    = $("#deliveryType").val();
+                      var desField             = CKEDITOR.instances.editor2.getData();
+                      var adTypeField          = $("#adType").val();
+                      var categoryId ;
+                      var subCategoryId ;
+
+                      if(categoryField == ''
+                          || titleField == ''
+                          || priceField == ''
+                          || sellTypeField == ''
+                          || conditionField == ''
+                          || deliveryTypeField == ''
+                          || adTypeField == ''){
+                          document.getElementById('modal-body').innerHTML = "";
+
+                          if(categoryField == ''){
+                              document.getElementById('modal-body').innerHTML += "<p> Category </p>";
+                          }
+                          if(titleField == ''){
+                              document.getElementById('modal-body').innerHTML += "<p> Title </p>";
+                          }
+                          if(priceField == ''){
+                              document.getElementById('modal-body').innerHTML += "<p> Price </p>";
+                          }
+                          if(sellTypeField == ''){
+                              document.getElementById('modal-body').innerHTML += "<p> Type of selling </p>";
+                          }
+                          if(conditionField == ''){
+                              document.getElementById('modal-body').innerHTML += "<p> Product condition </p>";
+                          }
+                          if(deliveryTypeField == ''){
+                              document.getElementById('modal-body').innerHTML += "<p> Delivery method </p>";
+                          }
+                          if(adTypeField == ''){
+                              document.getElementById('modal-body').innerHTML += "<p> Advertisement type </p>";
+                          }
+
+                          $("#fieldsError").modal();
+                      }else{
+                          if (categoryField != ''){
+                              var resultCat = categoryField.split("-");
+                              categoryId    = resultCat[0];
+                              subCategoryId = resultCat[1];
+                          }
+
+                          $.post('scripts/handle_addProduct.php?cat=' + categoryId
+
+                              + '&subCat=' + subCategoryId
+                              + '&title=' + titleField
+                              + '&price=' + priceField
+                              + '&sellType=' + sellTypeField
+                              + '&cond=' + conditionField
+                              + '&delivery=' + deliveryTypeField
+                              + '&des=' + desField
+                              + '&adType=' + adTypeField, function (response) {
+
+                              alert(response);
+                              if (response != 'error') {
+                                  myDr.processQueue();
+                              }
+                          });
+
+
+                      }
+
+                  });
+              }
+          };
+
       </script>
       <!-- JS -->
    </body>
