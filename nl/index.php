@@ -19,7 +19,7 @@ require_once "scripts/time_elapse.php";
       <meta name="author" content="ScriptsBundle">
       <title>2D Market | Homepagina </title>
       <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-      <link rel="icon" href="images/logo_png.png" type="image/x-icon" />
+      <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
       <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
@@ -363,7 +363,7 @@ require_once "scripts/time_elapse.php";
       </div>
       <!-- =-=-=-=-=-=-= Main Content Area End =-=-=-=-=-=-= -->
       <!-- Post Ad Sticky -->
-      <a href="#" class="sticky-post-button">
+      <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>

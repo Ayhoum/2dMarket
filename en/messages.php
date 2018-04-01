@@ -19,7 +19,7 @@ if (!isset($_SESSION['id'])) {
     <meta name="author" content="ScriptsBundle">
     <title>2D Market | Messages' page</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-    <link rel="icon" href="images/logo_png.png" type="image/x-icon"/>
+    <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon"/>
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
@@ -65,7 +65,8 @@ if (!isset($_SESSION['id'])) {
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
-    <div id="loader"></div>
+    <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
+        <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>

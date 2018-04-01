@@ -15,7 +15,7 @@ if (isset($_GET['cat_id'])){
             <?php
 
             $cat_id    = $_GET['cat_id'];
-            $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'AR' && `CATEGORY_id` = '{$cat_id}'  && `ad_type` = 'PREMIUM' ORDER BY `date` DESC";
+            $ad_query  = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `CATEGORY_id` = '{$cat_id}'  && `ad_type` = 'PREMIUM' ORDER BY `date` DESC";
             $ad_result = mysqli_query($mysqli, $ad_query);
 
             if (mysqli_num_rows($ad_result) > 0 ){
@@ -32,7 +32,6 @@ if (isset($_GET['cat_id'])){
             $delivery_type  = $row['delivery_type'];
 
             $user_id        = $row['USER_id'];
-            $product_id     = $row['PRODUCT_id'];
             $category_id    = $row['CATEGORY_id'];
 
 
@@ -49,13 +48,6 @@ if (isset($_GET['cat_id'])){
                 }
             }
 
-
-            $image_query  = "SELECT * FROM `PRODUCT_PICTURE` WHERE  `PRODUCT_id` = '{$product_id}'";
-            $image_result = mysqli_query($mysqli, $image_query);
-            while($row = mysqli_fetch_assoc($image_result)) {
-                $pic = $row['picture_url'];
-            }
-
                 //user info.
                 $select_query = "SELECT * FROM `USER` WHERE `id` = '{$user_id}'";
                 $select_result = mysqli_query($mysqli, $select_query);
@@ -70,8 +62,10 @@ if (isset($_GET['cat_id'])){
                     $online_status = $row['online_status'];
 
                 }
-                if (empty($user_pic)) {
-                    $user_pic = "https://cdn1.iconfinder.com/data/icons/freeline/32/account_friend_human_man_member_person_profile_user_users-256.png";
+                if (empty($user_pic) || !file_exists('../../uploads/users/'.$user_pic)) {
+                    $user_pic = "https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Account-256.png";
+                }else{
+                    $user_pic = '../../uploads/users/'.$user_pic;
                 }
 
 // Address info.
@@ -92,7 +86,16 @@ if (isset($_GET['cat_id'])){
                     $user_city = "address";
                 }
 
-            include 'product_pics.php';
+                $image_query  = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE  `ADVERTISEMENT_id` = '{$ad_id}'";
+                $image_result = mysqli_query($mysqli, $image_query);
+                while($row = mysqli_fetch_assoc($image_result)) {
+                    $pic = $row['picture_url'];
+                    $pic_name = $row['picture_name'];
+                }
+                if(empty($pic_name) || !file_exists('../en_ad_photo/'.$pic_name)){
+                    $pic = 'en_ad_photo/';
+                    $pic_name = 'white.jpg';
+                }
             ?>
                 <!-- Featured Ads -->
                 <div class="item">
@@ -101,7 +104,7 @@ if (isset($_GET['cat_id'])){
                         <div class="category-grid-box">
                             <!-- Ad Img -->
                             <div class="category-grid-img">
-                                <img class="img-responsive " style="width: 100%; height: 200px; object-fit: cover;" alt="" src="<?php echo $pic . $pic_name ;?>">
+                                <img class="img-responsive " style="width: 100%; height: 200px; object-fit: cover;" alt="" src="<?php echo $pic.$pic_name ;?>">
                                 <!-- Ad Status -->
                                 <!-- User Review -->
                                 <div class="user-preview">
@@ -142,7 +145,7 @@ if (isset($_GET['cat_id'])){
                 <div class="panel-body recent-ads">
                     <div class="featured-slider-3">
                         <?php
-                        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'AR' && `ad_type` = 'PREMIUM' ORDER BY `date` DESC";
+                        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `ad_type` = 'PREMIUM' ORDER BY `date` DESC";
                         $ad_result = mysqli_query($mysqli, $ad_query);
 
                         if (mysqli_num_rows($ad_result) > 0) {
@@ -189,6 +192,11 @@ if (isset($_GET['cat_id'])){
                                     $online_status = $row['online_status'];
 
                                 }
+                                if (empty($user_pic) || !file_exists('../../uploads/users/'.$user_pic)) {
+                                    $user_pic = "https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Account-256.png";
+                                }else{
+                                    $user_pic = '../../uploads/users/'.$user_pic;
+                                }
 
 
 // Address info.
@@ -215,6 +223,10 @@ if (isset($_GET['cat_id'])){
                                     $pic = $row['picture_url'];
                                     $pic_name = $row['picture_name'];
                                 }
+                                if(empty($pic_name) || !file_exists('../en_ad_photo/'.$pic_name)){
+                                    $pic = 'en_ad_photo/';
+                                    $pic_name = 'white.jpg';
+                                }
 
                                 ?>
                                 <!-- Featured Ads -->
@@ -224,12 +236,12 @@ if (isset($_GET['cat_id'])){
                                         <div class="category-grid-box">
                                             <!-- Ad Img -->
                                             <div class="category-grid-img">
-                                                <img class="img-responsive " style="width: 100%; height: 200px; object-fit: cover;" alt="" src="<?php echo $pic . $pic_name ;?>">
+                                                <img class="img-responsive " style="width: 100%; height: 200px; object-fit: cover;" alt="" src="<?php echo $pic.$pic_name ;?>">
                                                 <!-- Ad Status -->
                                                 <!-- User Review -->
                                                 <div class="user-preview">
                                                     <a href="profile_2.php?user_id=<?php echo $user_id; ?>"> <img
-                                                                src="../uploads/users/<?php echo $user_pic; ?>"
+                                                                src="<?php echo $user_pic; ?>"
                                                                 class="avatar avatar-small" alt=""> </a>
                                                 </div>
                                                 <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id; ?>"

@@ -411,6 +411,7 @@ if (isset($_GET['ad_id'])) {
                         $address_result = mysqli_query($mysqli, $address_query);
                         if (mysqli_num_rows($address_result) > 0) {
                             while ($row = mysqli_fetch_assoc($address_result)) {
+                                $user_userid = $row['id'];
                                 $user_street_name = $row['street_name'];
                                 $user_postcode = $row['postcode'];
                                 $user_house_number = $row['house_number'];

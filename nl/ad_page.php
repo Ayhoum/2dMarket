@@ -15,7 +15,7 @@ ob_start();
     <meta name="author" content="ScriptsBundle">
     <title>2D Market| Ad Pagina</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
@@ -61,7 +61,8 @@ ob_start();
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
-    <div id="loader"></div>
+    <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
+        <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
@@ -124,7 +125,7 @@ ob_start();
 </div>
 <!-- Main Content Area End -->
 <!-- Post Ad Sticky -->
-<a href="#" class="sticky-post-button hidden-xs">
+<a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>

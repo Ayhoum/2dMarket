@@ -22,7 +22,7 @@ while($row = mysqli_fetch_assoc($result)){
     <meta name="author" content="ScriptsBundle">
     <title>2D Market |  جميع الاعلانات في <?php echo $cat_name;?></title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-    <link rel="icon" href="images/logo_png.png" type="image/x-icon" />
+    <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
@@ -70,17 +70,17 @@ while($row = mysqli_fetch_assoc($result)){
 <body class="rtl">
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
-    <div id="loader"></div>
+    <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
+        <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
-</div>
-<!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
+</div><!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
 <div class="colored-header">
     <!-- Top Bar -->
     <?php include 'topbar-ar.php';?>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
-    <?php //include ''; ?>
+    <?php include 'nav_bar_ar.php'; ?>
 </div>
 <!-- Navigation Menu End -->
 <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
@@ -264,16 +264,16 @@ while($row = mysqli_fetch_assoc($result)){
     </section>
     <!-- =-=-=-=-=-=-= Ads أرشيف End =-=-=-=-=-=-= -->
     <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-
+<?php include 'footer.php';?>
     <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
 </div>
 <!-- Main Content Area End -->
 <!-- Post Ad Sticky -->
-<a href="#" class="sticky-post-button hidden-xs">
+<a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>
-    <h4>يبيع</h4>
+    <h4>قم بالبيع الان</h4>
 </a>
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>

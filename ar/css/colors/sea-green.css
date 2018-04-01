@@ -37,12 +37,12 @@ span.app-store-btn:hover, .social-links-two a:hover , .search-section .search-op
 .popup-cls.close::before {
 	border-color: rgba(0, 0, 0, 0) #7dba21;
 	border-style: solid;
-	border-width: 0 0 70px 70px;
+	border-width: 0 70px 70px 0;
 	content: "";
 	display: block;
 	height: 0;
 	position: absolute;
-	left: 0;
+	right: 0;
 	top: 0;
 	width: 0;
 	z-index: -1;

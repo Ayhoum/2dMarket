@@ -15,9 +15,9 @@ ob_start();
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title>AdForest | Largest Classifieds Portal</title>
+    <title>2D Market | منتج رقـم : <?php echo $_GET['ad_id'];?></title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
@@ -65,265 +65,18 @@ ob_start();
 <body class="rtl">
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
-    <div id="loader"></div>
+    <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
+        <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
-</div>
-<!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
-<div class="color-switcher" id="choose_color">
-    <a href="#." class="picker_close"><i class="fa fa-gear"></i></a>
-    <h5>STYLE SWITCHER</h5>
-    <div class="theme-colours">
-        <p> Choose Colour style </p>
-        <ul>
-            <li>
-                <a href="#." class="defualt" id="defualt"></a>
-            </li>
-            <li>
-                <a href="#." class="green" id="green"></a>
-            </li>
-            <li>
-                <a href="#." class="blue" id="blue"></a>
-            </li>
-            <li>
-                <a href="#." class="red" id="red"></a>
-            </li>
-
-            <li>
-                <a href="#." class="sea-green" id="sea-green"></a>
-            </li>
-
-        </ul>
-    </div>
-    <div class="clearfix"> </div>
 </div>
 <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
 <div class="colored-header">
     <!-- Top Bar -->
-    <div class="header-top">
-        <div class="container">
-            <div class="row">
-                <!-- Header Top Left -->
-                <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
-                    <ul class="listnone">
-                        <li><a href="about.html"><i class="fa fa-heart-o" aria-hidden="true"></i> حول</a></li>
-                        <li><a href="faqs.html"><i class="fa fa-folder-open-o" aria-hidden="true"></i> الأسئلة الأكثر شيوعا</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> لغة <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">الإنجليزية</a></li>
-                                <li><a href="#">اللغة السويدية</a></li>
-                                <li><a href="#">العربية</a></li>
-                                <li><a href="#">الروسية</a></li>
-                                <li><a href="#">الصينية</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Header Top Right Social -->
-                <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
-                    <div class="pull-right flip">
-                        <ul class="listnone">
-                            <li><a href="login.html"><i class="fa fa-sign-in"></i> تسجيل الدخول</a></li>
-                            <li><a href="register.html"><i class="fa fa-unlock" aria-hidden="true"></i> تسجيل</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> عمير <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="profile.html">ملف تعريفي للمستخدم</a></li>
-                                    <li><a href="profile-2.html">ملف تعريفي للمستخدم 2</a></li>
-                                    <li><a href="archives.html">أرشيف</a></li>
-                                    <li><a href="active-ads.html">إعلانات نشطة</a></li>
-                                    <li><a href="favourite.html">إعلانات المفضلة</a></li>
-                                    <li><a href="messages.html">لوحة رسالة</a></li>
-                                    <li><a href="deactive.html">التعطيل حساب</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include 'topbar-ar.php';?>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
-    <nav id="menu-1" class="mega-menu">
-        <!-- menu list items container -->
-        <section class="menu-list-items">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <!-- menu logo -->
-                        <ul class="menu-logo">
-                            <li>
-                                <a href="index.html"><img src="images/logo.png" alt="logo"> </a>
-                            </li>
-                        </ul>
-                        <!-- menu links -->
-                        <ul class="menu-links">
-                            <!-- active class -->
-                            <li>
-                                <a href="javascript:void(0)"> الصفحة الرئيسية <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <div class="drop-down grid-col-8">
-                                    <!--grid row-->
-                                    <div class="grid-row">
-                                        <!--grid column 3-->
-                                        <div class="grid-col-4">
-                                            <ul>
-                                                <li><a href="index.html">الصفحة 1 - افتراضي </a></li>
-                                                <li><a href="index-transparent.html">منزل 2 (شفاف)</a></li>
-                                                <li><a href="index-2.html">الصفحة 3 (التغيير)</a></li>
-                                                <li><a href="index-3.html">الصفحة 4 (ماجستير المتزلج)</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="grid-col-4">
-                                            <ul>
-                                                <li><a href="index-4.html">الرئيسية 5 (مع قائمة خريطة)</a></li>
-                                                <li><a href="index-5.html">الرئيسية 6 (مودرن ستايل)</a></li>
-                                                <li><a href="index-6.html">الرئيسية 7 (التغيير)</a></li>
-                                                <li><a href="index-7.html">الصفحة الرئيسية 8 (الفئة المتزلج)</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="grid-col-4">
-                                            <ul>
-                                                <li><a href="index-10.html">منزل 11 (البيت الحديث)</a></li>
-                                                <li><a href="index-8.html">الصفحة 9 (الصفحة المقصودة)</a></li>
-                                                <li><a href="index-9.html">منزل 10 (التغيير)</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">قائمة <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <!-- drop down multilevel  -->
-                                <ul class="drop-down-multilevel">
-                                    <li>
-                                        <a href="javascript:void(0)">شبكة نمط<i class="fa fa-angle-left fa-indicator"></i> <span class="label label-info">الجديد</span></a>
-                                        <!-- drop down second level -->
-                                        <ul class="drop-down-multilevel">
-                                            <li><a href="listing.html">قائمة الشبكة 1</a></li>
-                                            <li><a href="listing-1.html">قائمة الشبكة 2</a></li>
-                                            <li><a href="listing-2.html">قائمة الشبكة 3</a></li>
-                                            <li><a href="listing-7.html">متميز الشبكة <span class="label label-info">الجديد</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">قائمة نمط<i class="fa fa-angle-left fa-indicator"></i> </a>
-                                        <!-- drop down second level -->
-                                        <ul class="drop-down-multilevel">
-                                            <li><a href="listing-3.html">عرض قائمة 1</a></li>
-                                            <li><a href="listing-4.html">عرض قائمة 2</a></li>
-                                            <li><a href="listing-5.html">عرض قائمة 3</a></li>
-                                            <li><a href="listing-6.html">عرض قائمة 4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">إعلان واحد<i class="fa fa-angle-left fa-indicator"></i> <span class="label label-info">الجديد</span></a>
-                                        <!-- drop down second level -->
-                                        <ul class="drop-down-multilevel">
-                                            <li><a href="single-page-listing.html">واحد التفاصيل الإعلان</a></li>
-                                            <li><a href="single-page-listing-featured.html">إعلان (مميزة) <span class="label label-info">الجديد</span></a></li>
-                                            <li><a href="single-page-listing-2.html">إعلان واحد 2</a></li>
-                                            <li><a href="single-page-listing-3.html">إعلان واحد (ادسنس)</a></li>
-                                            <li><a href="single-page-expired.html">إعلان واحد (مقفلة)</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="icons.html">الرموز السرية </a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">الفئات <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <!-- drop down multilevel  -->
-                                <ul class="drop-down-multilevel">
-
-                                    <li><a href="category-2.html">تباين الحديثة</a></li>
-                                    <li><a href="category-3.html">تباين الحد الأدنى</a></li>
-                                    <li><a href="category-4.html">يتوهم التغيير</a></li>
-
-                                    <li><a href="category-6.html">الاختلاف شقة</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">لوحة القيادة <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <!-- drop down multilevel  -->
-                                <ul class="drop-down-multilevel">
-                                    <li><a href="profile.html">ملف تعريفي للمستخدم</a></li>
-                                    <li><a href="profile-2.html">ملف تعريفي للمستخدم 2</a></li>
-                                    <li><a href="archives.html">أرشيف</a></li>
-                                    <li><a href="active-ads.html">إعلانات نشطة</a></li>
-                                    <li><a href="favourite.html">إعلانات المفضلة</a></li>
-                                    <li><a href="messages.html">لوحة رسالة</a></li>
-                                    <li><a href="deactive.html">التعطيل حساب</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">الصفحات <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <!-- drop down full width -->
-                                <div class="drop-down grid-col-12">
-                                    <!--grid row-->
-                                    <div class="grid-row">
-                                        <!--grid column 2-->
-                                        <div class="grid-col-3">
-                                            <h4>مدونة</h4>
-                                            <ul>
-                                                <li><a href="blog.html">بلوق مع الحق في الشريط الجانبي</a></li>
-                                                <li><a href="blog-1.html">بلوق مع الماسونية نمط</a></li>
-                                                <li><a href="blog-2.html">بلوق من دون الشريط الجانبي</a></li>
-                                                <li><a href="blog-details.html">مدونة واحدة</a></li>
-                                                <li><a href="blog-details-1.html">مدونة واحدة (ادسنس) </a></li>
-                                            </ul>
-                                        </div>
-                                        <!--grid column 2-->
-                                        <div class="grid-col-3">
-                                            <h4>متفرقات</h4>
-                                            <ul>
-                                                <li><a href="about.html">معلومات عنا</a></li>
-                                                <li><a href="cooming-soon.html">قريبا</a></li>
-                                                <li><a href="elements.html">الهاتفية القصيرة</a></li>
-                                                <li><a href="error.html">404 صفحة</a></li>
-                                                <li><a href="faqs.html">الأسئلة الأكثر شيوعا</a></li>
-                                            </ul>
-                                        </div>
-                                        <!--grid column 2-->
-
-                                        <div class="grid-col-3">
-                                            <h4>آخرون</h4>
-                                            <ul>
-                                                <li><a href="login.html">تسجيل الدخول</a></li>
-                                                <li><a href="register.html">تسجيل</a></li>
-                                                <li><a href="pricing.html">التسعير</a></li>
-                                                <li><a href="site-map.html">خريطة الموقع</a></li>
-                                                <li><a href="post-ad-1.html">إضافة إعلان</a></li>
-                                            </ul>
-                                        </div>
-                                        <!--grid column 2-->
-                                        <div class="grid-col-3">
-                                            <h4>التفاصيل صفحة</h4>
-                                            <ul>
-                                                <li><a href="post-ad-2.html">آخر الإعلان 2</a></li>
-                                                <li><a href="single-page-listing.html">واحد التفاصيل الإعلان</a></li>
-                                                <li><a href="single-page-listing-2.html">إعلان واحد 2</a></li>
-                                                <li><a href="single-page-listing-3.html">إعلان واحد (ادسنس)</a></li>
-                                                <li><a href="single-page-expired.html">إعلان واحد (مقفلة)</a></li>
-                                            </ul>
-                                        </div>
-                                        <!--grid column 2-->
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li><a href="contact.html">اتصال </a></li>
-                        </ul>
-                        <ul class="menu-search-bar">
-                            <li>
-                                <a href="post-ad-1.html" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> انشر إعلانك مجانا</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </nav>
+    <?php include 'nav_bar_ar.php';?>
 </div>
 <!-- Navigation Menu End -->
 <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
@@ -333,25 +86,12 @@ ob_start();
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="header-page">
-                    <h1>إعلان واحد Detial</h1>
+                    <h1 style="direction: rtl">اعـلان رقــم : <?php echo $_GET['ad_id']; ?></h1>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Small Breadcrumb -->
-<div class="small-breadcrumb">
-    <div class="container">
-        <div class=" breadcrumb-link">
-            <ul>
-                <li><a href="index.html">Home Page</a></li>
-                <li><a href="#">الصفحات</a></li>
-                <li><a class="active" href="#">Ad Detail</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-<!-- Small Breadcrumb -->
 <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
@@ -383,71 +123,12 @@ ob_start();
     </section>
     <!-- =-=-=-=-=-=-= Ads أرشيف End =-=-=-=-=-=-= -->
     <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-    <footer>
-        <!-- Footer Content -->
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- Info Widget -->
-                        <div class="widget">
-                            <div class="logo"> <img alt="" src="images/logo-1.png"> </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
-                            <ul>
-                                <li><img src="images/appstore.png" alt=""></li>
-                                <li><img src="images/googleplay.png" alt=""></li>
-                            </ul>
-                        </div>
-                        <!-- Info Widget Exit -->
-                    </div>
-                    <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- تابعنا -->
-                        <div class="widget socail-icons">
-                            <h5>تابعنا</h5>
-                            <ul>
-                                <li><a class="fb" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                                <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                                <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                                <li><a class="googleplus" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
-                            </ul>
-                        </div>
-                        <!-- تابعنا End -->
-                    </div>
-                    <div class="col-md-6  col-sm-6 col-xs-12">
-                        <!-- Newslatter -->
-                        <div class="widget widget-newsletter">
-                            <h5>Singup عن النشرة الأسبوعية</h5>
-                            <div class="fieldset">
-                                <p>قد نرسل لك معلومات عن الأحداث، وندوات والمنتجات والخدمات ذات الصلة والتي نعتقد.</p>
-                                <form>
-                                    <input class="" value="Enter your email address" type="text">
-                                    <input class="submit-btn" name="submit" value="عرض" type="submit">
-                                </form>
-                            </div>
-                        </div>
-                        <!-- Newslatter -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Copyrights -->
-        <div class="copyrights">
-            <div class="container">
-                <div class="copyright-content">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <p>© 2017 AForest جميع الحقوق محفوظة. تصميم بواسطة <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+   <?php include 'footer.php'; ?>
     <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
 </div>
 <!-- Main Content Area End -->
 <!-- Post Ad Sticky -->
-<a href="#" class="sticky-post-button hidden-xs">
+<a href="new_advertisement.php" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>
@@ -461,8 +142,8 @@ ob_start();
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="lineModalLabel">البريد الإلكتروني لمعرفة السعر</h3>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">اغـلاق</span></button>
+                <h3 class="modal-title" id="lineModalLabel">ارسـل رسـالة لـ :  <?php echo $user_username;?> </h3>
             </div>
             <div class="modal-body">
                 <div class="recent-ads">
@@ -470,20 +151,19 @@ ob_start();
                         <div class="recent-ads-container">
                             <div class="recent-ads-list-image">
                                 <a href="#" class="recent-ads-list-image-inner">
-                                    <img src="images/car.png" alt="">
+                                    <img src="<?php// echo  $picture_url . $picture_name;;?>" alt="">
                                 </a><!-- /.recent-ads-list-image-inner -->
                             </div>
                             <!-- /.recent-ads-list-image -->
                             <div class="recent-ads-list-content">
                                 <h3 class="recent-ads-list-title">
-                                    <a href="#">هوندا سيفيك اوريل 1.8 I-VTEC CVT 2017</a>
+                                    <a href="#"><?php echo $title;?></a>
                                 </h3>
                                 <ul class="recent-ads-list-location">
-                                    <li><a href="#">نيويورك</a>,</li>
-                                    <li><a href="#">بروكلين</a></li>
+                                    <li><a href="#"><?php echo $location; ?></a></li>
                                 </ul>
                                 <div class="recent-ads-list-price">
-                                    $ 17,000
+                                    <?php echo $price; ?>
                                 </div>
                                 <!-- /.recent-ads-list-price -->
                             </div>
@@ -493,34 +173,21 @@ ob_start();
                     </div>
                 </div>
                 <!-- content goes here -->
-                <form>
-                    <div class="form-group  col-md-6  col-sm-6">
-                        <label>اسمك</label>
-                        <input type="text" class="form-control" placeholder="Enter اسمك">
-                    </div>
-                    <div class="form-group  col-md-6  col-sm-6">
-                        <label>عنوان البريد الإلكتروني</label>
-                        <input type="email" class="form-control" placeholder="Enter email">
-                    </div>
+                <form action="scripts/send_message.php?user_id=<?php echo $user_userid;?>&ad_id=<?php echo $ad_id; ?>" method="post">
                     <div class="form-group  col-md-12  col-sm-12">
-                        <label>رقم الاتصال</label>
-                        <input type="text" class="form-control" placeholder="رقم الاتصال">
-                    </div>
-                    <div class="form-group  col-md-12  col-sm-12">
-                        <label>تعليقات</label>
-                        <textarea placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control">ما هو سعر 2015 هوندا أكورد EX-L لديك في المخزون الخاص بك?</textarea>
+                        <label>الرسـالة:</label>
+                        <textarea name="message" placeholder="هل يمكنـك ارسـال المزيد من الصـور للمنتج؟" rows="3" class="form-control"></textarea>
                     </div>
                     <div class="col-md-12  col-sm-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>
                     <div class="clearfix"></div>
                     <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
-                        <button type="submit" class="btn btn-theme btn-block">عرض</button>
+                        <button type="submit" class="btn btn-theme btn-block" name="submit">ارسـال</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
 <!-- =-=-=-=-=-=-= Share Modal =-=-=-=-=-=-= -->
 <div class="modal fade share-ad" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
@@ -587,11 +254,11 @@ ob_start();
                             <ul class="list">
                                 <li >
                                     <input type="radio" id="spam" name="minimal-radio">
-                                    <label for="spam">Spam</label>
+                                    <label for="spam">اعلان وهمـي</label>
                                 </li>
                                 <li>
                                     <input  type="radio" id="duplicated" name="minimal-radio" >
-                                    <label for="duplicated">Duplicated</label>
+                                    <label for="duplicated">متكرر</label>
                                 </li>
                             </ul>
                         </div>
@@ -599,23 +266,19 @@ ob_start();
                             <ul class="list">
                                 <li >
                                     <input  type="radio" id="offensive" name="minimal-radio">
-                                    <label for="offensive">Offensive</label>
-                                </li>
-                                <li>
-                                    <input  type="radio" id="expired" name="minimal-radio" checked>
-                                    <label for="expired">Expired</label>
+                                    <label for="offensive">مؤذي</label>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="form-group  col-md-12 col-sm-12">
-                        <label>تعليقات</label>
-                        <textarea placeholder="This ad not belong to me" rows="3" class="form-control">This ad not belong to me</textarea>
+                        <label>السبب</label>
+                        <textarea placeholder="This ad not belong to me" rows="3" class="form-control">قم بكتابة السبب وراء قيامك بعملية التبليغ</textarea>
                     </div>
                     <div class="col-md-12 col-sm-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>
                     <div class="clearfix"></div>
                     <div class="col-md-12 col-sm-12 margin-bottom-20 margin-top-20">
-                        <button type="submit" class="btn btn-theme btn-block">عرض</button>
+                        <button type="submit" class="btn btn-theme btn-block">بلـغ</button>
                     </div>
                 </form>
             </div>
@@ -628,12 +291,12 @@ ob_start();
     <div class="container">
         <div class="col-md-7 col-sm-12 col-xs-12 no-padding">
             <div class="">
-                <h3>هوندا سيفيك اوريل 1.8 I-VTEC CVT 2017</h3>
+                <h3><?php echo $title; ?></h3>
                 <div class="short-history">
                     <ul>
-                        <li>منشور على: <b>07 Oct 2017</b></li>
+                        <li>منشور منذ: <b>  <?php echo $date;?> </b></li>
                         <li>موقع: <b>لندن</b></li>
-                        <li>فئة: <b><a href="#">السيارات المستعملة</a></b></li>
+                        <li>فئة: <b><a href="#"><?php echo $cat_name; ?></a></b></li>
                     </ul>
                 </div>
             </div>
@@ -641,10 +304,10 @@ ob_start();
         <div class="col-md-5  col-sm-12 col-xs-12 no-padding">
             <div class="pull-left row">
                 <div class="col-md-6 col-sm-6 col-xs-12 ">
-                    <a href="javascript:void(0)" class="btn btn-block pull-left btn-phone number " data-last="111111X"><i class="fa fa-phone"></i> 0320<span>XXXXXXX</span></a>
+                    <a href="javascript:void(0)" class="btn btn-block pull-left btn-phone number " data-last="111111X"><i class="fa fa-phone"></i> <span><?php echo $user_phone;?> </span></a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <a data-toggle="modal" data-target=".price-quote"  href="javascript:void(0)" class="btn btn-block pull-left btn-message"><i class="icon-envelope"></i> Message Seller</a>
+                    <a data-toggle="modal" data-target=".price-quote"  href="javascript:void(0)" class="btn btn-block pull-left btn-message"><i class="icon-envelope"></i> تواصـل مع البـائع</a>
                 </div>
             </div>
         </div>

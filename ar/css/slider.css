@@ -26,7 +26,7 @@ html[xmlns] .slides{display:block;}
 * html .slides{height:1%;}
 .no-js .slides > li:first-child{display:block;}
 .flexslider{margin:0 0 0px;background:#fff;border:4px solid #fff;position:relative;zoom:1;}
-.flex-viewport{max-height:2000px;-webkit-transition:all 1s ease;-moz-transition:all 1s ease;-o-transition:all 1s ease;transition:all 1s ease;direction: ltr}
+.flex-viewport{max-height:2000px;-webkit-transition:all 1s ease;-moz-transition:all 1s ease;-o-transition:all 1s ease;transition:all 1s ease;}
 .loading .flex-viewport{max-height:300px;}
 .flexslider .slides{zoom:1;}
 .carousel li{margin-right:5px;}

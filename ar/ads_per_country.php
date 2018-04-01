@@ -64,7 +64,8 @@ ob_start();
 <body class="rtl">
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
-    <div id="loader"></div>
+    <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
+        <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
@@ -74,7 +75,7 @@ ob_start();
     <?php include 'topbar-ar.php';?>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
-    <?php //include ''; ?>
+    <?php include 'nav_bar_ar.php'; ?>
 </div>
 <!-- Navigation Menu End -->
 <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
@@ -248,11 +249,11 @@ ob_start();
 </div>
 <!-- Main Content Area End -->
 <!-- Post Ad Sticky -->
-<a href="#" class="sticky-post-button hidden-xs">
+<a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>
-    <h4>يبيع</h4>
+    <h4>قم بالبيع الان</h4>
 </a>
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>
