@@ -34,7 +34,7 @@ if (isset($_GET['cat'])
 
         date_default_timezone_set('Europe/Amsterdam');
         $date = date('Y-m-d H:i:s');
-        $lang    = "EN";
+        $lang    = "NL";
         $user_id =  $_SESSION['id'];
         $status = "AVAILABLE";
         $zeroVal = 0;

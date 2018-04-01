@@ -65,7 +65,7 @@ require_once "scripts/time_elapse.php";
    <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <div id="loader-wrapper">
-         <div id="loader"><img class="img-responsive"  src="images/design.gif">
+         <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
          <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
          <div class="loader-section section-left"></div>
          <div class="loader-section section-right"></div>

@@ -345,30 +345,6 @@ if (isset($_GET['ad_id'])) {
         </div>
     <?php } ?>
     <!-- Single Ad End -->
-    <!-- Price Alert -->
-    <div class="alert-box-container  margin-top-30">
-        <div class="well">
-            <h3>انشئ اشـعاراَ</h3>
-            <p>الاشعارات تمكنك من الحصول على رسائل الكترونية تحتوي تحديثات حول هذا الاعلان</p>
-            <form>
-                <div class="row">
-                    <div class="col-md-5 col-xs-12 col-sm-12">
-                        <input placeholder="Enter Your Email " type="text" class="form-control">
-                    </div>
-                    <div class="col-md-4 col-xs-12 col-sm-12">
-                        <select class="alerts">
-                            <option value="1">اسبوعي</option>
-                            <option value="7">يومي</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 col-xs-12 col-sm-12">
-                        <input class="btn btn-theme btn-block" value="Submit" type="submit">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Price Alert End -->
     <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
     <div class="grid-panel margin-top-30">
         <div class="heading-panel">
@@ -465,87 +441,76 @@ if (isset($_GET['ad_id'])) {
                                 ?>
 
                                         <!-- Ads Listing -->
-                                        <div class="ads-list-archive">
-                                            <!-- Image Block -->
-                                            <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
-                                                <!-- Img Block -->
-                                                <div class="ad-archive-img">
-                                                    <a href="#">
-                                                        <div class="ribbon popular"></div>
-                                                        <img class="img-responsive" src="<?php echo $picture_url_1 . $picture_name_1; ?>" alt="">
-                                                    </a>
-                                                </div>
-                                                <!-- Img Block -->
-                                            </div>
-                                            <!-- Ads Listing -->
-                                            <div class="clearfix visible-xs-block"></div>
-                                            <!-- Content Block -->
-                                            <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
-                                                <!-- Ad Desc -->
-                                                <div class="ad-archive-desc">
-                                                    <!-- Price -->
-                                                    <div class="ad-price"><?php echo $price;?></div>
-                                                    <!-- Title -->
-                                                    <h3><?php echo $title; ?> </h3>
-                                                    <!-- Category -->
-                                                    <div class="category-title"> <span><a href="ads_per_cat.php?cat_id=<?php echo $category_id;?>"><?php echo $cat_name; ?></a></span> </div>
-                                                    <!-- Short Description -->
-                                                    <div class="clearfix visible-xs-block"></div>
-                                                    <p class="hidden-sm"><?php echo $description;?></p>
-                                                    <!-- Ad Features -->
-                                                    <ul class="add_info">
-                                                        <!-- Contact Details -->
-                                                        <li>
-                                                            <div class="custom-tooltip tooltip-effect-4">
-                                                                <span class="tooltip-item"><i class="fa fa-phone"></i></span>
-                                                                <div class="tooltip-content">
-                                                                    <h4>معلومـات التواصل</h4>
-                                                                    <br> <strong>اسم المستخدم  : </strong> <?php echo $user_username; ?>
-                                                                    <br> <strong>البريد الالكتروني : </strong> <?php echo $user_email; ?>
-                                                                    <br> <strong>رقم الهاتف : </strong><?php echo $user_phone; ?>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <!-- Address -->
-                                                        <li>
-                                                            <div class="custom-tooltip tooltip-effect-4">
-                                                        <span class="tooltip-item"><i
-                                                                    class="fa fa-map-marker"></i></span>
-                                                                <div class="tooltip-content">
-                                                                    <h4>العنوان</h4>
-                                                                    <?php echo $location; ?>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <!-- Ad Type -->
-                                                        <li>
-                                                            <div class="custom-tooltip tooltip-effect-4">
-                                                                <span class="tooltip-item"><i class="fa fa-cog"></i></span>
-                                                                <div class="tooltip-content"><strong>حـالة المنتج</strong> <span
-                                                                            class="label label-danger"><?php echo $condition; ?></span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <!-- Ad Type -->
-                                                        <li>
-                                                            <div class="custom-tooltip tooltip-effect-4">
-                                                                <span class="tooltip-item"><i class="fa fa-check-square-o"></i></span>
-                                                                <div class="tooltip-content"><strong>معلومـات الاعلان  </strong> <span
-                                                                            class="label label-danger"><?php echo $selling_type . " | " . $delivery_type; ?> </span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                    <!-- Ad History -->
-                                                    <div class="clearfix archive-history">
-                                                        <div class="last-updated"><?php echo $date; ?></div>
-                                                        <div class="ad-meta"><a href="scripts/add_to_favorite.php?ad_id<?php echo $id;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> اضافة الى المفضلة </a> <a class="btn btn-success"><i class="fa fa-phone"></i> مشاهدة الاعلان </a></div>
-                                                    </div>
-                                                </div>
-                                                <!-- Ad Desc End -->
-                                            </div>
-                                            <!-- Content Block End -->
+                                <div class="ads-list-archive">
+                                    <!-- Image Block -->
+                                    <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
+                                        <!-- Img Block -->
+                                        <div class="ad-archive-img">
+                                            <a href="#">
+                                                <?php if ($ad_type == "PREMIUM"){?><div class="ribbon popular"></div> <?php }?>
+                                                <img class="img-responsive" src="<?php echo $picture_url_1. $picture_name_1?>" alt="">
+                                            </a>
                                         </div>
+                                        <!-- Img Block -->
+                                    </div>
+                                    <!-- Ads Listing -->
+                                    <div class="clearfix visible-xs-block"></div>
+                                    <!-- Content Block -->
+                                    <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
+                                        <!-- Ad Desc -->
+                                        <div class="ad-archive-desc">
+                                            <!-- Price -->
+                                            <div style="direction: rtl" class="ad-price"> € <?php echo $price; ?></div> <br>
+                                            <!-- Title -->
+                                            <h3> <a href="ad_page.php?ad_id=<?php echo $id;?>"><?php echo $title;?> </a></h3>
+                                            <!-- Category -->
+                                            <div class="category-title"> <span><a href="ads_per_cat.php?cat_id=<?php echo $category_id;?>"><?php echo $cat_name?></a></span> </div>
+                                            <!-- Short Description -->
+                                            <div class="clearfix visible-xs-block"></div>
+                                            <p class="hidden-sm"><?php echo $description;?></p>
+                                            <!-- Ad Features -->
+                                            <ul class="add_info">
+                                                <!-- Contact Details -->
+                                                <li>
+                                                    <div class="custom-tooltip tooltip-effect-4">
+                                                        <span class="tooltip-item"><i class="fa fa-phone"></i></span>
+                                                        <div class="tooltip-content">
+                                                            <h4>Contact Info,</h4>
+                                                            <strong>Username : </strong> <?php echo $user_username; ?>
+                                                            <br> <strong>Email : </strong> <?php echo $user_email;?>
+                                                            <!--                                                            <br> <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>-->
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <!-- Address -->
+                                                <li>
+                                                    <div class="custom-tooltip tooltip-effect-4">
+                                                        <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
+                                                        <div class="tooltip-content">
+                                                            <h4>Address</h4>
+                                                            <?php echo $location; ?>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <!-- Ad Type -->
+                                                <li>
+                                                    <div class="custom-tooltip tooltip-effect-4">
+                                                        <span class="tooltip-item"><i class="fa fa-cog"></i></span>
+                                                        <div class="tooltip-content"> <strong>Product Info.</strong> <span class="label label-danger"><?php echo $status . " | ". $delivery_type;?></span> </div>
+                                                    </div>
+                                                </li>
+                                                <!-- Ad Type -->
+                                            </ul>
+                                            <!-- Ad History -->
+                                            <div class="clearfix archive-history">
+                                                <div class="last-updated">Added : <?php echo $date;?></div>
+                                                <div class="ad-meta"> <a href="scripts/add_to_favorite.php?ad_id=<?php echo $id;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> Save Ad.</a> <a href="ad_page.php?ad_id=<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a> </div>
+                                            </div>
+                                        </div>
+                                        <!-- Ad Desc End -->
+                                    </div>
+                                    <!-- Content Block End -->
+                                </div>
                                         <!-- Ads Listing -->
                                 <?php
                             }

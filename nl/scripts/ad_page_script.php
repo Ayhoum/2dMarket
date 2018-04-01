@@ -219,7 +219,6 @@ if (isset($_GET['ad_id'])) {
     <?php
     include 'sessions.php';
 
-//    include 'not_logged_test.php';
     if ($selling_type == 'BID') {
 
         if (isset($_POST['submit'])) {
@@ -459,7 +458,7 @@ if (isset($_GET['ad_id'])) {
                                             <!-- Price -->
                                             <div class="ad-price"> € <?php echo $price; ?></div>
                                             <!-- Title -->
-                                            <h3><?php echo $title;?> </h3>
+                                            <h3> <a href="ad_page.php?ad_id=<?php echo $id;?>"><?php echo $title;?> </a></h3>
                                             <!-- Category -->
                                             <div class="category-title"> <span><a href="ads_per_cat.php?cat_id=<?php echo $category_id;?>"><?php echo $cat_name?></a></span> </div>
                                             <!-- Short Description -->
@@ -501,7 +500,7 @@ if (isset($_GET['ad_id'])) {
                                             <!-- Ad History -->
                                             <div class="clearfix archive-history">
                                                 <div class="last-updated">Added : <?php echo $date;?></div>
-                                                <div class="ad-meta"> <a href="scripts/add_to_favorite.php?ad_id<?php echo $id;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> Save Ad.</a> <a href="ad_page.php?ad_id<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a> </div>
+                                                <div class="ad-meta"> <a href="scripts/add_to_favorite.php?ad_id=<?php echo $id;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> Save Ad.</a> <a href="ad_page.php?ad_id=<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a> </div>
                                             </div>
                                         </div>
                                         <!-- Ad Desc End -->

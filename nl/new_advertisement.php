@@ -366,6 +366,7 @@ require_once '../scripts/db_connection.php';
 
 
 
+
           Dropzone.options.myDropzone = {
               url: "scripts/uploadphotos.php",
               autoProcessQueue: false,
@@ -464,4 +465,3 @@ require_once '../scripts/db_connection.php';
       </script>
       <!-- JS -->
    </body>
-</html>
