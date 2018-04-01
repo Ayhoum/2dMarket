@@ -36,7 +36,7 @@
                             $country_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country = '{$country}' && ADVERTISEMENT.lang = 'EN'";
+                                          WHERE ADDRESS.country = '{$country}' && ADVERTISEMENT.lang = 'NL'";
                             $country_result = mysqli_query($mysqli, $country_query);
                             $num_ads = mysqli_num_rows($country_result);
                         ?>
@@ -44,7 +44,7 @@
                         <div class="col-sm-6 col-xs-12 col-md-4">
                             <a href="ads_per_country.php?country=<?php echo $country;?>">
                                 <div class="country-box">
-                                    <img class="img-responsive" src="images/logo_png.png" alt="">
+                                    <img class="img-responsive" src="images/logo_files/logo_png.png" alt="">
                                     <div class="country-description">
                                         <h2 class="country-name"><?php echo $country;?></h2>
                                         <p class="country-ads"><span><?php echo $num_ads;?></span> Ads</p>

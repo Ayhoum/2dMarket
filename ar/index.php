@@ -69,7 +69,14 @@ include '../scripts/db_connection.php';
       </div>
 
       <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
-      <?php include 'nav_bar_ar.php';?>
+      <div class="colored-header">
+          <!-- Top Bar -->
+          <?php include 'topbar-ar.php';?>
+          <!-- Top Bar End -->
+          <!-- Navigation Menu -->
+
+          <?php include "nav_bar_ar.php";?>
+      </div>
       <!-- Navigation Menu End -->
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Listing Map =-=-=-=-=-=-= -->
