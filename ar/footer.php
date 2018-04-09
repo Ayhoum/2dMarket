@@ -29,10 +29,10 @@
                     <div class="widget socail-icons">
                         <h5>تـابعنـا:</h5>
                         <ul>
-                            <li><a class="fb" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                            <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                            <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                            <li><a class="googleplus" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
+                            <li><a class="fb" href="https://www.facebook.com/2Dmarket"><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
+                            <li><a class="twitter" href="https://twitter.com/2DmarKet1"><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
+                            <li><a class="linkedin" href="https://www.linkedin.com/in/2d-market-b05189161/"><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
+                            <li><a class="instagram" href="https://www.instagram.com/2dmarket"><i class="fa fa-instagram"></i></a><span>Instagram</span></li>
                         </ul>
                     </div>
                     <!-- Follow Us End -->
