@@ -124,9 +124,9 @@ while($row = mysqli_fetch_assoc($result)){
                                         <h6>Sort by :</h6>
                                         <div class="custom-select-box">
                                             <select name="order" class="custom-select">
-                                                <option value="1">The latest</option>
-                                                <option value="2">Price (low to high) </option>
-                                                <option value="3">Price (high to low) </option>
+                                                <option value="1">Nieuwste</option>
+                                                <option value="2">Prijs (laag naar hoog) </option>
+                                                <option value="3">Prijs (hoog naar laag) </option>
                                             </select>
                                         </div>
                                     </div>
@@ -154,7 +154,7 @@ while($row = mysqli_fetch_assoc($result)){
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Sub Categories
+                                            Subcategorieën
                                         </a>
                                     </h4>
                                     <!-- Title End -->
@@ -196,7 +196,7 @@ while($row = mysqli_fetch_assoc($result)){
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Away From You
+                                            Afstand van u
                                         </a>
                                     </h4>
                                     <!-- Title End -->
@@ -233,7 +233,7 @@ while($row = mysqli_fetch_assoc($result)){
                                 <!-- Content -->
                                 <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
                                     <div class="panel-body">
-                                        <span class="price-slider-value">Price (€) <span id="price-min"></span> - <span id="price-max"></span></span>
+                                        <span class="price-slider-value">Prijs (€) <span id="price-min"></span> - <span id="price-max"></span></span>
                                         <div id="price-slider"></div>
                                     </div>
                                 </div>
