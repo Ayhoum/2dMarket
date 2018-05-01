@@ -88,11 +88,42 @@ require_once "scripts/time_elapse.php";
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Listing Map =-=-=-=-=-=-= -->
       <section class="clearfix">
-         <div class="map">
-            <div id="map"></div>
-         </div>
+
+
+<!--         <div class="map">-->
+<!--             <div id="map"></div>-->
+<!--         </div>-->
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" >
+                  <div class="itemFill imgLiquid item active" style="width:100%; height:400px;">
+                      <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-skin-care-products-1512649738.jpg" alt="Los Angeles">
+                  </div>
+
+                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
+                      <img src="http://www.quatic.com/images/Products.jpg" alt="Chicago">
+                  </div>
+
+                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
+                      <img src="http://www.latimes.com/resizer/iz8B8R_NTXrEgKRR535blGIQJyg=/1400x0/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/GKNFKPTKZ5HOBGQXDOCUMTLZUU.jpg" alt="New York">
+                  </div>
+              </div>
+
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <span class="sr-only">Next</span>
+              </a>
+          </div>
+
          <!-- end map -->
       </section>
+
       <!-- =-=-=-=-=-=-= Listing Map End =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Advance Search =-=-=-=-=-=-= -->
       <section class="search-2">
@@ -414,6 +445,7 @@ require_once "scripts/time_elapse.php";
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>
       <script src="js/infobox.js"></script>
       <!-- Parallax -->
+      <script src="js/imgLiquid-min.js"></script>
       <script src="js/data.json"></script>
       <script src="js/markerclusterer.js"></script>
       <script src="js/markers-map.js"></script>
@@ -424,11 +456,23 @@ require_once "scripts/time_elapse.php";
       </script>
 
 <script>
+    $(function() {
+
+        $(".itemFill").imgLiquid({
+            fill: true,
+            horizontalAlign: "center",
+            verticalAlign: "center"
+        });
+
+    });
+
 
     var long;
     var lati;
     $(document).ready(function() {
         var currgeocoder;
+
+
 
         //Set geo location lat and long
 
