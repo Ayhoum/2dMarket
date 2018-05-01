@@ -443,9 +443,9 @@ session_start();
                                         <h6>Sort by :</h6>
                                         <div class="custom-select-box">
                                             <select name="order" class="custom-select">
-                                                <option value="1">The latest</option>
-                                                <option value="2">Price (low to high) </option>
-                                                <option value="3">Price (high to low) </option>
+                                                <option value="latest">The latest</option>
+                                                <option value="priceLow">Price (low to high) </option>
+                                                <option value="priceHigh">Price (high to low) </option>
                                             </select>
                                         </div>
                                     </div>
@@ -458,9 +458,13 @@ session_start();
 
 
 
-                            $dis = $_GET['dis'];
-                            //$cat = $_POST['cat'];
-                            //$query = $_POST['query'];
+                            $dis   = $_GET['dis'];
+                            $cat   = $_GET['cat'];
+                            $searchTxt = $_GET['query'];
+                            $order = $_GET['order'];
+                            $cat_parts = $pieces = explode("-", $cat);
+                            $cat = $cat_parts[0];
+                            $subCat = $cat_parts[1];
 
                             $valLong = $_COOKIE['longC'];
                             $valLati = $_COOKIE['latiC'];

@@ -61,6 +61,11 @@ require_once "scripts/time_elapse.php";
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+       <style>
+           .shadow{
+               box-shadow: 0 0 12px red;
+           }
+       </style>
    </head>
    <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -97,11 +102,11 @@ require_once "scripts/time_elapse.php";
                <div class="search-title">Browse Ads</div>
             </div>
             <div class="row">
-               <form method="post" class="search-form">
+               <form method="post" class="search-form validation">
                   <!-- Category -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <select name="cat" class="category form-control" id="catSelect">
-                        <option label="Select Option"></option>
+                     <select name="cat" class="category form-control" id="catSelect" required>
+                        <option selected disabled value="dis">Select Option</option>
                          <?php
                          // GET ALL CATEGORIES from DB
                          $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'EN' ORDER BY `name` ASC  ";
@@ -133,11 +138,11 @@ require_once "scripts/time_elapse.php";
                   </div>
                   <!-- Search Field -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <input type="text" name="query" id="querySearch" class="form-control" placeholder="What Are You Looking For..." />
+                     <input type="text" name="query" id="querySearch" class="form-control" placeholder="What Are You Looking For..." required/>
                   </div>
                   <!-- Price Range SLider -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <span class="price-slider-value">Distance (Km) - <input type="text" name="dis" id="price-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true"> </span>
+                     <span class="price-slider-value">Distance (Km) - <input type="text" name="dis" id="price-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
                      <div id="price-slider"></div>
                   </div>
                   <!-- Search Button -->
@@ -492,14 +497,28 @@ require_once "scripts/time_elapse.php";
     var cat;
     var query;
     var dis;
+    var order;
 
     var submitBut = function () {
         cat   = $("#catSelect").val();
         query = $("#querySearch").val();
         dis   = $("#price-min").val();
+        order = "latest";
+        if(cat == null || cat == "dis"){
+            $(".select2Class").addClass('shadow');
+        }
+        if(query == ""){
+            $("#querySearch").addClass('shadow');
+        }
+        if(dis == 0.00){
+            $(".noUi-connects").addClass('shadow');
+        }
+        if(cat != null && cat != "dis" && query != "" && dis != 0.00){
 
-        window.open("search_result.php?dis=" + dis,"_self");
 
+
+        window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat,"_self");
+        }
     };
 
 </script>
