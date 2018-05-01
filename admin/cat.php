@@ -33,6 +33,14 @@ include "../scripts/db_connection.php";?>
                                 <label for="cat-title">Add category</label>
                                 <input class="form-control" type="text" name="cat_title">
                             </div>
+                            <div class="form-group">
+                                <label for="cat-title">Add lANG</label>
+                                <input class="form-control" type="text" name="cat_lang">
+                            </div>
+                            <div class="form-group">
+                                <label for="cat-title">Add ICON</label>
+                                <input class="form-control" type="text" name="cat_ICON">
+                            </div>
 
                             <div class="form-group">
                                 <input class="btn-btn-primary" type="submit" name="submit" value="Add category" >
@@ -62,6 +70,7 @@ include "../scripts/db_connection.php";?>
                         <th>ID</th>
                         <th>Category Title</th>
                         <th>Category language</th>
+                        <th>icon</th>
                         </thead>
 
                         <TBODY>

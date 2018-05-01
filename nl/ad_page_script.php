@@ -8,8 +8,7 @@
 ?>
 <?php
 if (isset($_GET['ad_id'])) {
-    include 'sessions.php';
-
+  include 'sessions.php';
     $ad_id = $_GET['ad_id'];
     $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `id` = {$ad_id}";
     $ad_result = mysqli_query($mysqli, $ad_query);
@@ -52,7 +51,6 @@ if (isset($_GET['ad_id'])) {
         $select_query = "SELECT * FROM `USER` WHERE `id` = '{$user_id}'";
         $select_result = mysqli_query($mysqli, $select_query);
         while ($row = mysqli_fetch_assoc($select_result)) {
-
             $user_userid = $row['id'];
             $user_first_name = $row['first_name'];
             $user_last_name = $row['last_name'];
@@ -84,7 +82,6 @@ if (isset($_GET['ad_id'])) {
 
 
     ?>
-
 
     <div class="single-ad">
         <!-- Title -->
@@ -220,7 +217,7 @@ if (isset($_GET['ad_id'])) {
     </div>
 
     <?php
-
+  
 
     if ($selling_type == 'BID') {
 

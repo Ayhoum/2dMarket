@@ -13,13 +13,14 @@ function add_categories()
     //ADD CATEGORY
     if (isset($_POST['submit'])) {
         $cat_title = mysqli_real_escape_string($mysqli, ($_POST['cat_title']));
-//                            $cat_lang = mysqli_real_escape_string($mysqli,($_POST['cat_lang']));
-        if ($cat_title == "" || empty($cat_title)) {
-//                                || $cat_lang == "" || empty($cat_lang)
+        $cat_lang = mysqli_real_escape_string($mysqli,($_POST['cat_lang']));
+        $cat_ICON = mysqli_real_escape_string($mysqli,($_POST['cat_ICON']));
+        if ($cat_title == "" || empty($cat_title) || $cat_lang == "" || empty($cat_lang) ||$cat_ICON == "" || empty($cat_ICON) ) {
+//
+            echo '<strong style="color: red">'." Please, Fill all the fields! ".'</strong> <hr>';
 
-//                                echo '<strong>'."No category is added!".'</strong>';
         } else {
-            $query = "INSERT INTO `CATEGORY`(`name`) VALUES ('{$cat_title}') ";
+            $query = "INSERT INTO `CATEGORY`(`name`,`lang`,`icon_name`) VALUES ('{$cat_title}','{$cat_lang}','{$cat_ICON}') ";
             $create_category_query = mysqli_query($mysqli, $query);
 
             if (!$create_category_query) {
@@ -39,14 +40,17 @@ function findAllCategories()
         $category_title = $row['name'];
         $category_language = $row['lang'];
         $cat_id = $row['id'];
+        $icon_name= $row['icon_name'];
 
 
         echo "<tr>";
         echo " <td>{$cat_id}</td>";
         echo " <td>{$category_title}</td>";
         echo " <td>{$category_language}</td>";
+        echo " <td>$icon_name</td>";
         echo " <td><a href='cat.php?delete={$cat_id}'>Delete</td>";
         echo " <td><a href='cat.php?edit={$cat_id}'>Edit</td>";
+        echo " <td><a href='sub-category.php?category-id={$cat_id}'>Show Sub-categories</td>";
 
         echo "</tr>";
     }
@@ -67,6 +71,80 @@ function deletCategories()
     }
 }
 
+
+
+//############################//
+
+function findAllSubCategories()
+{
+    global $mysqli;
+    //SHOW ALL CATEGORY
+    $cat_id=$_GET['category-id'];
+
+    $query = "SELECT * FROM SUB_CATEGORY WHERE  `CATEGORY_id`= '{$cat_id}' ";
+    $select_cat = mysqli_query($mysqli, $query);
+    While ($row = mysqli_fetch_assoc($select_cat)) {
+        $sub_category_title = $row['name'];
+
+        $sub_cat_id = $row['id'];
+        $sub_icon_name= $row['icon_name'];
+
+
+        echo "<tr>";
+        echo " <td>{$sub_cat_id}</td>";
+        echo " <td>{$sub_category_title}</td>";
+        echo " <td>$sub_icon_name</td>";
+
+        echo " <td><a href='sub-category.php?deleteSUB={$sub_cat_id}'>Delete</td>";
+        echo " <td><a href='sub-category.php?editSUB={$sub_cat_id}'>Edit</td>";
+
+
+        echo "</tr>";
+    }
+
+
+}
+function add_SUB_categories()
+{
+    global $mysqli;
+
+    //ADD sub CATEGORY
+   global $cat_id;
+    if (isset($_POST['submit_SUB'])) {
+        $sub_cat_title = mysqli_real_escape_string($mysqli, ($_POST['SUB_cat_title']));
+
+        $sub_cat_ICON = mysqli_real_escape_string($mysqli,($_POST['SUB_ICON']));
+        if ($sub_cat_title == "" || empty($sub_cat_title) ||$sub_cat_ICON == "" || empty($sub_cat_ICON) ) {
+//ss
+            echo '<strong style="color: red">'." Please, fill all the fields! ".'</strong>';
+        } else {
+            $query = "INSERT INTO `SUB_CATEGORY`(`name`,`icon_name`,`CATEGORY_id`) VALUES ('{$sub_cat_title}','{$sub_cat_ICON}','{$cat_id}') ";
+
+            $create_category_query = mysqli_query($mysqli, $query);
+
+            if (!$create_category_query) {
+                die('QUERY FAILED' ." ". mysqli_error($mysqli));
+            }
+        }
+    }
+}
+
+function delet_SUB_Categories()
+{
+    global $mysqli;
+    //DELETE CATEGORY
+    if (isset($_GET['deleteSUB'])) {
+        $the_SUB_cat_id = $_GET['deleteSUB'];
+        $delete_query = "DELETE FROM SUB_CATEGORY WHERE id = {$the_SUB_cat_id} ";
+
+        $delete_excut = mysqli_query($mysqli, $delete_query);
+
+    }
+}
+
+
+
+//#################################//
 
 function findAllAds()
 {
@@ -134,7 +212,7 @@ function findUsersAdmin()
         echo "<td>$email</td>";
         echo "<td>$profile_status</td>";
 
-        echo " <td><a href='accounts_users.php?editAD={$user_id}'>Edit Profile Status</td>\";</td>";
+        echo " <td><a href='accounts_users.php?editAD={$user_id}'>Edit Profile Status</td>";
 
 
         echo "</tr>";
