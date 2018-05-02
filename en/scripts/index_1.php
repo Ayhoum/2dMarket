@@ -8,7 +8,7 @@
 ?>
 <?php
 
-$featured_ads = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `ad_type` = 'PREMIUM' ORDER BY `date` DESC LIMIT 6";
+$featured_ads = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `date` DESC LIMIT 6";
 $ad_result = mysqli_query($mysqli, $featured_ads);
 
 if (mysqli_num_rows($ad_result) > 0) {

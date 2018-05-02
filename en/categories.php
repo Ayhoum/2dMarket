@@ -133,75 +133,16 @@ include '../scripts/db_connection.php'
          </section>
          <!-- =-=-=-=-=-=-= Featured Listing End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-         <footer>
-            <!-- Footer Content -->
-            <div class="footer-top">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- Info Widget -->
-                        <div class="widget">
-                           <div class="logo"> <img alt="" src="images/logo-1.png"> </div>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
-                           <ul>
-                              <li><img src="images/appstore.png" alt=""></li>
-                              <li><img src="images/googleplay.png" alt=""></li>
-                           </ul>
-                        </div>
-                        <!-- Info Widget Exit -->
-                     </div>
-                     <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- Follow Us -->
-                        <div class="widget socail-icons">
-                           <h5>Follow Us</h5>
-                           <ul>
-                              <li><a class="fb" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                              <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                              <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                              <li><a class="googleplus" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
-                           </ul>
-                        </div>
-                        <!-- Follow Us End -->
-                     </div>
-                     <div class="col-md-6  col-sm-6 col-xs-12">
-                        <!-- Newslatter -->
-                        <div class="widget widget-newsletter">
-                           <h5>Singup for Weekly Newsletter</h5>
-                           <div class="fieldset">
-                              <p>We may send you information about related events, webinars, products and services which we believe.</p>
-                              <form>
-                                 <input class="" value="Enter your email address" type="text">
-                                 <input class="submit-btn" name="submit" value="Submit" type="submit">
-                              </form>
-                           </div>
-                        </div>
-                        <!-- Newslatter -->
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Copyrights -->
-            <div class="copyrights">
-               <div class="container">
-                  <div class="copyright-content">
-                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                           <p>© 2017 AForest All rights reserved. Design by <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </footer>
+         <?php include "footer.php";?>
          <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
       </div>
       <!-- Main Content Area End -->
       <!-- Post Ad Sticky -->
-      <a href="#" class="sticky-post-button hidden-xs">
+      <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>
-         <h4>SELL</h4>
+          <h4>SELL</h4>
       </a>
       <!-- Back To Top -->
       <a href="#0" class="cd-top">Top</a>

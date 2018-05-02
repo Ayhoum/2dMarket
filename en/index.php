@@ -198,69 +198,33 @@ require_once "scripts/time_elapse.php";
                <!-- Row -->
                <div class="row">
                   <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/cars.png">
-                        <h4><a href="#">Cars & Bikes</a></h4>
-                        <strong>1,265 Jobs</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/mobile-1.png">
-                        <h4><a href="#">Mobile Phones</a></h4>
-                        <strong>1,265 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/applinces.png">
-                        <h4><a href="#">Home Appliances</a></h4>
-                        <strong>6,213 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/cloths.png">
-                        <h4><a href="#">Clothing</a></h4>
-                        <strong>3,750 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/education.png">
-                        <h4><a href="#">Education & Art</a></h4>
-                        <strong>5,913 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/computer-1.png">
-                        <h4><a href="#">Computer & Laptops</a></h4>
-                        <strong>9,942 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/pets.png">
-                        <h4><a href="#">Pets & Animals</a></h4>
-                        <strong>3,891 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/newspaper.png">
-                        <h4><a href="#">Newspaper Jobs</a></h4>
-                        <strong>7,418 Ads</strong> 
-                     </div>
-                  </div>
+                   <ul class="category-list-style">
+                       <!-- Category -->
+                       <!-- Category List -->
+                       <?php
+
+                       $query = "SELECT * FROM `CATEGORY` WHERE `lang` = 'EN' LIMIT 8";
+                       $result = mysqli_query($mysqli, $query);
+                       While($row = mysqli_fetch_assoc($result)){
+                           $id = $row['id'];
+                           $name = $row['name'];
+                           $icon = $row['icon_name'];
+
+                           $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$id}' ";
+                           $count_result = mysqli_query($mysqli,$count_query);
+                           while ($row = mysqli_fetch_assoc($count_result)){
+                               $cat_count = $row['CAT_count'];
+                           }
+                           ?>
+
+                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                               <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>"><?php echo $name;?><span>(<?php echo $cat_count; ?> Ads)</span>
+                                   <i class="<?php echo $icon;?>"></i>
+                               </a>
+                           </li>
+
+                       <?php }?>
+                   </ul>
                </div>
                <!-- Row End -->
             </div>
@@ -274,14 +238,13 @@ require_once "scripts/time_elapse.php";
                   <div class="col-md-8 col-sm-12">
                      <div class="call-action">
                         <i class="flaticon-shapes"></i>
-                        <h4>Post featured ad and get great exposure </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
+                        <h4>Post featured Ad. and get great exposure </h4>
                      </div>
                      <!-- end subsection-text -->
                   </div>
                   <!-- end col-md-8 -->
                   <div class="col-md-4 col-sm-12">
-                     <div class="parallex-button"> <a href="#" class="btn btn-theme">Post Free Ad <i class="fa fa-angle-double-right "></i></a> </div>
+                     <div class="parallex-button"> <a href="<?php if (isset($_SESSION['username'])) {?>new_advertisement.php<?php } else {echo "login.php"; } ?>" class="btn btn-theme">Post Free Ad <i class="fa fa-angle-double-right "></i></a> </div>
                      <!-- end parallex-button -->
                   </div>
                   <!-- end col-md-4 -->
@@ -304,7 +267,7 @@ require_once "scripts/time_elapse.php";
                   <div class="heading-panel">
                      <div class="col-xs-12 col-md-12 col-sm-12">
                         <h3 class="main-title text-left">
-                           Featured Ads
+                           Latest Ads
                         </h3>
                         <!-- Style Switcher -->
                         <div class="switcher pull-right">
@@ -365,33 +328,33 @@ require_once "scripts/time_elapse.php";
          <!-- /.funfacts -->
          <!-- =-=-=-=-=-=-= Statistics Counter End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= Blog Section =-=-=-=-=-=-= -->
-          <section class="custom-padding">
-              <!-- Main Container -->
-              <div class="container">
-                  <!-- Row -->
-                  <div class="row">
-                      <!-- Heading Area -->
-                      <div class="heading-panel">
-                          <div class="col-xs-12 col-md-12 col-sm-12">
-                              <h3 class="main-title text-left">
-                                  Latest Ads
-                              </h3>
-                          </div>
-                      </div>
-                      <!-- Middle Content Box -->
-                      <div class="col-md-12 col-xs-12 col-sm-12">
-                          <div class="row">
-                              <div class="featured-slider owl-carousel owl-theme">
-                                  <?php include "scripts/index_2.php";?>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- Middle Content Box End -->
-                  </div>
-                  <!-- Row End -->
-              </div>
-              <!-- Main Container End -->
-          </section>
+<!--          <section class="custom-padding">-->
+<!--              <!-- Main Container -->
+<!--              <div class="container">-->
+<!--                  <!-- Row -->
+<!--                  <div class="row">-->
+<!--                      <!-- Heading Area -->
+<!--                      <div class="heading-panel">-->
+<!--                          <div class="col-xs-12 col-md-12 col-sm-12">-->
+<!--                              <h3 class="main-title text-left">-->
+<!--                                  Latest Ads-->
+<!--                              </h3>-->
+<!--                          </div>-->
+<!--                      </div>-->
+<!--                      <!-- Middle Content Box -->
+<!--                      <div class="col-md-12 col-xs-12 col-sm-12">-->
+<!--                          <div class="row">-->
+<!--                              <div class="featured-slider owl-carousel owl-theme">-->
+<!--                                  --><?php //include "scripts/index_2.php";?>
+<!--                              </div>-->
+<!--                          </div>-->
+<!--                      </div>-->
+<!--                      <!-- Middle Content Box End -->
+<!--                  </div>-->
+<!--                  <!-- Row End -->
+<!--              </div>-->
+<!--              <!-- Main Container End -->
+<!--          </section>-->
           <!-- =-=-=-=-=-=-= Blog Section End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
           <?php include 'footer.php';?>
