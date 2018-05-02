@@ -3,7 +3,7 @@
 ob_start();
 session_start();
 require_once "../../../scripts/db_connection.php";
-require_once '../../phpmailer/class.phpmailer.php';
+require_once '../../../phpmailer/class.phpmailer.php';
 
 
 

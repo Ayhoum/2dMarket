@@ -143,7 +143,7 @@
                         <li><a href="all_product.php">All Ads </a></li>
                         <li><a href="contact_us.php">Contact Us</a></li>
                     </ul>
-                                        <ul class="menu-search-bar">
+                    <ul class="menu-search-bar">
                                             <?php if(!isset($_SESSION['username'])){?>
                                             <li>
                                                 <a href="login.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Login</a>

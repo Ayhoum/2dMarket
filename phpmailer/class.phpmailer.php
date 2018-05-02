@@ -70,13 +70,13 @@ class PHPMailer
      * The From email address for the message.
      * @var string
      */
-    public $From = 'suleiman.obied@gmail.com';
+    public $From = '2dmarketweb@gmail.com';
 
     /**
      * The From name of the message.
      * @var string
      */
-    public $FromName = '2dmarkt';
+    public $FromName = '2D Market';
 
     /**
      * The Sender email (Return-Path) of the message.

@@ -98,29 +98,36 @@ require_once "scripts/time_elapse.php";
               <!-- Wrapper for slides -->
               <div class="carousel-inner" >
                   <div class="itemFill imgLiquid item active" style="width:100%; height:400px;">
-                      <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-skin-care-products-1512649738.jpg" alt="Los Angeles">
+                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/comprar-e-vender-dolares-e-investimento-933x445.jpeg" alt="">
                   </div>
 
                   <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img src="http://www.quatic.com/images/Products.jpg" alt="Chicago">
+                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/compraSegura.png" alt="">
                   </div>
 
                   <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img src="http://www.latimes.com/resizer/iz8B8R_NTXrEgKRR535blGIQJyg=/1400x0/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/GKNFKPTKZ5HOBGQXDOCUMTLZUU.jpg" alt="New York">
+                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/comprar-por-internet-barato-y-seguro-800x410.jpg" alt="">
+                  </div>
+
+                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
+                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/ecommerce-marketing-automation-best-practices-1.jpg" alt="">
+                  </div>
+
+                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
+                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/shoping-on-line.jpg" alt="">
                   </div>
               </div>
 
               <!-- Left and right controls -->
-              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left"></span>
-                  <span class="sr-only">Previous</span>
-              </a>
-              <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                  <span class="sr-only">Next</span>
-              </a>
+              <!--              <a class="left carousel-control" href="#myCarousel" data-slide="prev">-->
+              <!--                  <span class="glyphicon glyphicon-chevron-left"></span>-->
+              <!--                  <span class="sr-only">Previous</span>-->
+              <!--              </a>-->
+              <!--              <a class="right carousel-control" href="#myCarousel" data-slide="next">-->
+              <!--                  <span class="glyphicon glyphicon-chevron-right"></span>-->
+              <!--                  <span class="sr-only">Next</span>-->
+              <!--              </a>-->
           </div>
-
          <!-- end map -->
       </section>
 

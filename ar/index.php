@@ -81,9 +81,44 @@ include '../scripts/db_connection.php';
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Listing Map =-=-=-=-=-=-= -->
       <section class="clearfix">
-         <div class="map">
-            <div id="map"></div>
-         </div>
+<!--         <div class="map">-->
+<!--            <div id="map"></div>-->
+<!--         </div>-->
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" >
+                  <div class="itemFill imgLiquid item active" style="width:100%; height:400px;">
+                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/comprar-e-vender-dolares-e-investimento-933x445.jpeg" alt="">
+                  </div>
+
+                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
+                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/compraSegura.png" alt="">
+                  </div>
+
+                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
+                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/comprar-por-internet-barato-y-seguro-800x410.jpg" alt="">
+                  </div>
+
+                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
+                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/ecommerce-marketing-automation-best-practices-1.jpg" alt="">
+                  </div>
+
+                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
+                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/shoping-on-line.jpg" alt="">
+                  </div>
+              </div>
+
+              <!-- Left and right controls -->
+<!--              <a class="left carousel-control" href="#myCarousel" data-slide="prev">-->
+<!--                  <span class="glyphicon glyphicon-chevron-left"></span>-->
+<!--                  <span class="sr-only">Previous</span>-->
+<!--              </a>-->
+<!--              <a class="right carousel-control" href="#myCarousel" data-slide="next">-->
+<!--                  <span class="glyphicon glyphicon-chevron-right"></span>-->
+<!--                  <span class="sr-only">Next</span>-->
+<!--              </a>-->
+          </div>
          <!-- end map -->
       </section>
       <!-- =-=-=-=-=-=-= Listing Map End =-=-=-=-=-=-= -->
@@ -135,14 +170,27 @@ include '../scripts/db_connection.php';
                   </div>
                   <!-- Price Range SLider -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <span class="price-slider-value">Price ($) <span id="price-min"></span> - <span id="price-max"></span></span>
+                     <span class="price-slider-value">المسافة (كـم) <span id="price-min"></span> - <span id="price-max"></span></span>
                      <div id="price-slider"></div>
                   </div>
                   <!-- Search Button -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <button type="submit" class="btn btn-block btn-light">Search</button>
+                     <button type="submit" class="btn btn-block btn-light">ابحث</button>
                   </div>
                   <!-- end .item -->
+                   <div class="hero-form-sub">
+                       <strong class="hidden-sm-down">اشهر عمليات البحث</strong>
+                       <ul>
+                           <li><a href="pop_search.php?tag=Iphone 7">ايفون 7</a></li>
+                           <li><a href="pop_search.php?tag=Cars">سيارات</a></li>
+                           <li><a href="pop_search.php?tag=Samsung S8">سامسونج اس 8</a></li>
+                           <li><a href="pop_search.php?tag=Wash Machine">غسالات</a></li>
+                           <li><a href="pop_search.php?tag=Shorts">ملابس رجالية</a></li>
+                           <li><a href="pop_search.php?tag=Bike">العاب اطفال</a></li>
+                           <li><a href="pop_search.php?tag=Laptop">لابتوب</a></li>
+                           <li><a href="pop_search.php?tag=Xbox Games">العاب اكس بوكس</a></li>
+                       </ul>
+                   </div>
                </form>
                <!-- end .search-form -->
             </div>
@@ -154,75 +202,39 @@ include '../scripts/db_connection.php';
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
          <!-- =-=-=-=-=-=-= الفئات =-=-=-=-=-=-= -->
-         <section class="custom-padding gray categories">
+         <section class="custom-padding gray ">
             <!-- Main Container -->
             <div class="container">
                <!-- Row -->
                <div class="row">
                   <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/cars.png">
-                        <h4><a href="#">سيارات و دراجات</a></h4>
-                        <strong>1,265 وظائف</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/mobile-1.png">
-                        <h4><a href="#">الهواتف النقالة</a></h4>
-                        <strong>1,265 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/applinces.png">
-                        <h4><a href="#">الأجهزة المنزلية</a></h4>
-                        <strong>6,213 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/cloths.png">
-                        <h4><a href="#">ملابس</a></h4>
-                        <strong>3,750 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/education.png">
-                        <h4><a href="#">التعليم & Art</a></h4>
-                        <strong>5,913 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/computer-1.png">
-                        <h4><a href="#"> أجهزة الكمبيوتر المحمولة</a></h4>
-                        <strong>9,942 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/pets.png">
-                        <h4><a href="#">الحيوانات الأليفة و الحيوانات</a></h4>
-                        <strong>3,891 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/newspaper.png">
-                        <h4><a href="#">Newspaper وظائف</a></h4>
-                        <strong>7,418 Ads</strong> 
-                     </div>
-                  </div>
+                   <ul class="category-list-style" style="direction: rtl">
+                       <!-- Category -->
+                       <!-- Category List -->
+                       <?php
+
+                       $query = "SELECT * FROM `CATEGORY` WHERE `lang` = 'AR' LIMIT 8";
+                       $result = mysqli_query($mysqli, $query);
+                       While($row = mysqli_fetch_assoc($result)){
+                           $id = $row['id'];
+                           $name = $row['name'];
+                           $icon = $row['icon_name'];
+
+                           $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$id}' ";
+                           $count_result = mysqli_query($mysqli,$count_query);
+                           while ($row = mysqli_fetch_assoc($count_result)){
+                               $cat_count = $row['CAT_count'];
+                           }
+                           ?>
+
+                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                               <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>"><?php echo $name;?><span>(<?php echo $cat_count; ?>  اعلان )</span>
+                                   <i class="<?php echo $icon;?>"></i>
+                               </a>
+                           </li>
+
+                       <?php }?>
+                   </ul>
                </div>
                <!-- Row End -->
             </div>
@@ -243,7 +255,7 @@ include '../scripts/db_connection.php';
                   </div>
                   <!-- end col-md-8 -->
                   <div class="col-md-4 col-sm-12">
-                     <div class="parallex-button"> <a href="login.php" class="btn btn-theme">انشر إعلانك مجانا <i class="fa fa-angle-double-right "></i></a> </div>
+                     <div class="parallex-button"> <a href="<?php if (isset($_SESSION['username'])) {?>new_advertisement.php<?php } else {echo "login.php"; } ?>" class="btn btn-theme">انشر إعلانك مجانا <i class="fa fa-angle-double-right "></i></a> </div>
                      <!-- end parallex-button -->
                   </div>
                   <!-- end col-md-4 -->
@@ -266,7 +278,7 @@ include '../scripts/db_connection.php';
                   <div class="heading-panel">
                      <div class="col-xs-12 col-md-12 col-sm-12">
                         <h3 class="main-title text-left">
-                           إعلانات مميزة
+                           إعلانات جديدة
                         </h3>
                         <!-- Style Switcher -->
                         <div class="switcher pull-right flip">
@@ -343,7 +355,7 @@ include '../scripts/db_connection.php';
                       <div class="col-md-12 col-xs-12 col-sm-12">
                           <div class="row">
                               <div class="featured-slider owl-carousel owl-theme">
-                                  <?php include "scripts/index_2.php";?>
+<!--                                  --><?php //include "scripts/index_2.php";?>
                               </div>
                           </div>
                       </div>
