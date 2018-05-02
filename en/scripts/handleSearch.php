@@ -196,7 +196,7 @@ if (mysqli_num_rows($run_queryAD) > 0) {
         }
         ?>
 
-        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 " >
+        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 ">
             <div class="category-grid-box" style="background-color: white">
                 <!-- Ad Img -->
                 <?php if ($ad_type == "PREMIUM") { ?>
@@ -259,12 +259,28 @@ if (mysqli_num_rows($run_queryAD) > 0) {
         <?php
 
     }
-}
-?>
+} else {
+        ?>
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+            <section class="advertising">
+                <a href="all_product">
+                    <div class="banner">
+                        <div class="wrapper">
+                            <span class="title">Oh no! it seems that there is no matching Ads for your search; Try something else!</span>
+                        </div>
+                    </div>
+                    <!-- /.banner-->
+                </a>
+            </section>
+        </div>
+
+        <?php
+    }
+    ?>
 
     <div class="col-md-12 col-xs-12 col-sm-12">
         <section class="advertising">
-            <a href="post-ad-1.html">
+            <a href="">
                 <div class="banner">
                     <div class="wrapper">
                         <span class="title">Do you want your property to be listed here?</span>

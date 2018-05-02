@@ -168,11 +168,27 @@ if($num_Ads <= 10){
             <?php
 
         }
+    } else {
+        ?>
+        <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+            <section class="advertising">
+                <a href="all_product">
+                    <div class="banner">
+                        <div class="wrapper">
+                            <span class="title">Oh no! it seems that There is no Ads in this Category yet; Try something else!</span>
+                        </div>
+                    </div>
+                    <!-- /.banner-->
+                </a>
+            </section>
+        </div>
+
+    <?php
     }
     ?>
     <div class="col-md-12 col-xs-12 col-sm-12">
         <section class="advertising">
-            <a href="post-ad-1.html">
+            <a href="new_advertisement.php">
                 <div class="banner">
                     <div class="wrapper">
                         <span class="title">Do you want your property to be listed here?</span>

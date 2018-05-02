@@ -181,6 +181,19 @@ require_once "scripts/time_elapse.php";
                      <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Search</button>
                   </div>
                   <!-- end .item -->
+                   <div class="hero-form-sub">
+                       <strong class="hidden-sm-down">Popular Searches</strong>
+                       <ul>
+                           <li><a href="pop_search.php?tag=Iphone 7">Iphone 7</a></li>
+                           <li><a href="pop_search.php?tag=Cars">Cars</a></li>
+                           <li><a href="pop_search.php?tag=Samsung S8">Samsung S8</a></li>
+                           <li><a href="pop_search.php?tag=Wash Machine">Wash machine</a></li>
+                           <li><a href="pop_search.php?tag=Shorts">Shorts</a></li>
+                           <li><a href="pop_search.php?tag=Bike">Bikes</a></li>
+                           <li><a href="pop_search.php?tag=Laptop">Laptops</a></li>
+                           <li><a href="pop_search.php?tag=Xbox Games">Xbox Games</a></li>
+                       </ul>
+                   </div>
                </form>
                <!-- end .search-form -->
             </div>
