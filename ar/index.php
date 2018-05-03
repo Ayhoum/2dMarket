@@ -134,11 +134,11 @@ require_once "scripts/time_elapse.php";
             <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                <div class="search-title">استعرض الإعلانات</div>
             </div>
-            <div class="row">
+             <div class="row" style="margin-left: 0;margin-right: 0;">
                <form method="post" class="search-form">
                   <!-- Category -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <select class="category form-control">
+                      <select name="cat" class="category form-control" id="catSelect" required>
                         <option label="">اختر من القائمة</option>
                          <?php
                          // GET ALL CATEGORIES from DB
@@ -171,18 +171,20 @@ require_once "scripts/time_elapse.php";
                   </div>
                   <!-- Search Field -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <input type="text" class="form-control" placeholder="عن ماذا تريد البحث..." />
+                      <input type="text" name="query" id="querySearch" class="form-control" placeholder="عن ماذا تريد البحث..." required/>
                   </div>
                   <!-- Price Range SLider -->
-                   <div class="col-md-3 col-xs-12 col-sm-3">
-                       <span class="price-slider-value">المسافة (كم) - <input type="text" name="dis" id="price-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
-                       <div id="price-slider"></div>
+                   <div class="col-md-3 col-xs-12 col-sm-6">
+                       <span class="price-slider-value">المسافة (Km) - <input type="text" name="dis" id="dis-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
+                       <input type="text" id="example_id" name="example_name" value="" />
                    </div>
                   <!-- Search Button -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <button type="submit" class="btn btn-block btn-light">بحث</button>
+                      <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">بحث</button>
                   </div>
                   <!-- end .item -->
+             </div>
+             <div class="row">
                    <div class="hero-form-sub">
                        <strong class="hidden-sm-down">أشهر عمليات البحث</strong>
                        <ul>
@@ -471,6 +473,53 @@ require_once "scripts/time_elapse.php";
 <!--         google.maps.event.addDomListener(window, 'load', speedTest.init);-->
 <!--		 (jQuery);-->
 <!--      </script>-->
+      <script>
+          var stepSliderValueElement = document.getElementById('dis-min');
+          stepSliderValueElement.value = 10;
+          $("#example_id").ionRangeSlider({
+              grid: false,
+              min: 10,
+              max: 100,
+              from: 0,
+              step: 10,
+              hide_min_max: true,
+              prettify_enabled: false,
+              onChange: function (data) {
+                  stepSliderValueElement.value = data.from;
+              }
+          });
+
+
+          var cat;
+          var query;
+          var dis;
+          var order;
+          var price;
+
+          var submitBut = function () {
+              cat   = $("#catSelect").val();
+              query = $("#querySearch").val();
+              dis   = $("#price-min").val();
+              order = "latest";
+              price = "all";
+              if(cat == null || cat == "dis"){
+                  $(".select2Class").addClass('shadow');
+              }
+              if(query == ""){
+                  $("#querySearch").addClass('shadow');
+              }
+              if(dis == 0.00){
+                  $(".noUi-connects").addClass('shadow');
+              }
+              if(cat != null && cat != "dis" && query != "" && dis != 0.00){
+
+
+
+                  window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
+              }
+          };
+
+      </script>
    </body>
 </html>
 
