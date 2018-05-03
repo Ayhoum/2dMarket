@@ -8,7 +8,9 @@
 ?>
 <?php
 if (isset($_GET['ad_id'])) {
-    include 'sessions.php';
+    if(isset($_SESSION['id'])){
+        include 'sessions.php';
+    }
 
     $ad_id = $_GET['ad_id'];
     $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `id` = {$ad_id}";
@@ -299,7 +301,19 @@ if (isset($_GET['ad_id'])) {
                                 $username = $row['username'];
                                 ?>
                                 <tr>
-                                    <td <?php if ($username == $_SESSION['username']) { ?> style="color: green"<?php } ?>><?php echo $username; ?></td>
+                                    <?php
+                                    if(isset($_SESSION['username'])){
+                                        ?>
+                                        <td <?php if ($username == $_SESSION['username']) { ?> style="color: green"<?php } ?>><?php echo $username; ?></td>
+
+                                        <?php
+                                    }else{
+?>
+                                        <td><?php echo $username; ?></td>
+
+                                        <?php
+                                    }
+                                    ?>
                                     <td><?php echo $amount; ?></td>
                                     <td><?php echo $time; ?></td>
                                 </tr>
@@ -439,6 +453,10 @@ if (isset($_GET['ad_id'])) {
                                 $picture_url_1 = $row['picture_url'];
 
                             }
+                        }
+                        if(empty($picture_name_1) || !file_exists('../en_ad_photo/'.$picture_name_1)){
+                            $picture_url_1 = 'en_ad_photo/';
+                            $picture_name_1 = 'white.jpg';
                         }
                            ?>
                                 <div class="ads-list-archive">
