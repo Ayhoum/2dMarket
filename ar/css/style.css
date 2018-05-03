@@ -1357,7 +1357,7 @@ ul.category-list-style li a i {
 	font-size: 45px;
 	opacity: 0.5;
 	position: absolute;
-	right: 11px;
+	left: 11px;
 	top: 35%;
 	font-weight: normal;
 }

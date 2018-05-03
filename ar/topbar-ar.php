@@ -12,41 +12,21 @@ $ar = "HTTP://".$prefix.'/website/2dMarket/ar/'.$page;
     <div class="container">
         <div class="row">
             <!-- Header Top Left -->
-            <div class="header-top-left col-md-8 col-sm-6 col-xs-12 hidden-xs">
-                <ul class="listnone">
-                    <li><a href="about.php"><i class="fa fa-heart-o" aria-hidden="true"></i> حول الموقع</a></li>
-                    <li><a href="faqs.php"><i class="fa fa-folder-open-o" aria-hidden="true"></i> سياستنا</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="<?php echo $en;?>">English</a></li>
-                            <li><a href="<?php echo $nl;?>">Dutch</a></li>
-                            <li><a href="<?php echo $ar;?>">Arabic</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- Header Top Right Social -->
-            <div class="header-right col-md-4 col-sm-6 col-xs-12 ">
-                <div class="pull-right">
+            <div class="header-top-left col-md-12 col-sm-12 col-xs-12">
+                <div class="pull-left">
                     <ul class="listnone">
-                        <!--Check if logged in-->
-                        <?php if(!isset($_SESSION['username'])){?>
-                            <li><a href="login.php"><i class="fa fa-sign-in"></i> Log in</a></li>
-                            <li><a href="register.php"><i class="fa fa-unlock" aria-hidden="true"></i> Register</a></li>
-                        <?php } else{ ?>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['full_name']?> <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="profile.php">الصفـحة الشخصيـة</a></li>
-                                    <li><a href="personal_ads.php">اعـلانـاتي</a></li>
-                                    <li><a href="messages.php">رسـائلي</a></li>
-                                    <li><a href="logout.php">تسجيـل الخروج</a></li>
-                                </ul>
-                            </li>
-                        <?php } ?>
+                        <!--                    <li><a href="about.php"><i class="fa fa-heart-o" aria-hidden="true"></i> About</a></li>-->
+                        <!--                    <li><a href="faqs.php"><i class="fa fa-folder-open-o" aria-hidden="true"></i> FAQS</a></li>-->
+                        <li><a href="<?php echo $en;?>">English</a></li>
+                        <li><a href="<?php echo $nl;?>">Nederlands</a></li>
+                        <li><a href="<?php echo $ar;?>">العربيـة</a></li>
+                        <!--                    <li class="dropdown">-->
+                        <!--                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe" aria-hidden="true"></i> Language <span class="caret"></span></a>-->
+                        <!--                        <ul class="dropdown-menu">-->
+                        <!--                           -->
+                        <!--                        </ul>-->
+                        <!--                    </li>-->
                     </ul>
-
                 </div>
             </div>
         </div>

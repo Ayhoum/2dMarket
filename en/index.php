@@ -1,13 +1,10 @@
-﻿
-<?php
+﻿<?php
 session_start();
 ob_start();
 require_once "../scripts/db_connection.php";
 require_once "scripts/time_elapse.php";
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -65,13 +62,16 @@ require_once "scripts/time_elapse.php";
            .shadow{
                box-shadow: 0 0 12px red;
            }
+           .carousel-control.left, .carousel-control.right {
+               background-image: none
+           }
        </style>
    </head>
    <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <div id="loader-wrapper">
          <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-         <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+         <h4 class="text-center" style="color: #00a9da">Loading..</h4> </div>
          <div class="loader-section section-left"></div>
          <div class="loader-section section-right"></div>
       </div>
@@ -97,26 +97,26 @@ require_once "scripts/time_elapse.php";
 
               <!-- Wrapper for slides -->
               <div class="carousel-inner" >
-                  <div class="itemFill imgLiquid item active" style="width:100%; height:400px;">
-                      <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-skin-care-products-1512649738.jpg" alt="Los Angeles">
+                  <div class="item active" style="width:100%; background-size: cover">
+                      <img src="../slider/1.jpg" alt="Los Angeles">
                   </div>
 
-                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img src="http://www.quatic.com/images/Products.jpg" alt="Chicago">
+                  <div class="item" style="width:100%; background-size: cover">
+                      <img src="../slider/2.jpg" alt="Chicago">
                   </div>
 
-                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img src="http://www.latimes.com/resizer/iz8B8R_NTXrEgKRR535blGIQJyg=/1400x0/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/GKNFKPTKZ5HOBGQXDOCUMTLZUU.jpg" alt="New York">
+                  <div class="item" style="width:100%; background-size: cover">
+                      <img src="../slider/3.jpg" alt="New York">
                   </div>
               </div>
 
               <!-- Left and right controls -->
               <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="glyphicon glyphicon-triangle-left" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
                   <span class="sr-only">Previous</span>
               </a>
               <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <span class="glyphicon glyphicon-triangle-right" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
                   <span class="sr-only">Next</span>
               </a>
           </div>
@@ -173,15 +173,15 @@ require_once "scripts/time_elapse.php";
                   </div>
                   <!-- Price Range SLider -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <span class="price-slider-value">Distance (Km) - <input type="text" name="dis" id="price-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
-                     <div id="price-slider"></div>
+                     <span class="price-slider-value">Distance (Km) - <input type="text" name="dis" id="dis-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
+                     <div id="dis-slider"></div>
                   </div>
                   <!-- Search Button -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
                      <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Search</button>
                   </div>
                   <!-- end .item -->
-                   <div class="hero-form-sub">
+                   <div class="hero-form-sub col-md-12">
                        <strong class="hidden-sm-down">Popular Searches</strong>
                        <ul>
                            <li><a href="pop_search.php?tag=Iphone 7">Iphone 7</a></li>
@@ -418,18 +418,18 @@ require_once "scripts/time_elapse.php";
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
       <!-- Googgle map For THis Page Only -->
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>
+<!--      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>-->
       <script src="js/infobox.js"></script>
       <!-- Parallax -->
       <script src="js/imgLiquid-min.js"></script>
       <script src="js/data.json"></script>
       <script src="js/markerclusterer.js"></script>
       <script src="js/markers-map.js"></script>
-      <script type="text/javascript">
-	      "use strict";
-         google.maps.event.addDomListener(window, 'load', speedTest.init);
-		 (jQuery);
-      </script>
+<!--      <script type="text/javascript">-->
+<!--	      "use strict";-->
+<!--         google.maps.event.addDomListener(window, 'load', speedTest.init);-->
+<!--		 (jQuery);-->
+<!--      </script>-->
 
 <script>
     $(function() {
@@ -514,16 +514,37 @@ require_once "scripts/time_elapse.php";
 
 <script>
 
+    var stepSlider = document.getElementById('dis-slider');
+    noUiSlider.create(stepSlider, {
+        start: [ 0 ],
+        step: 10,
+        range: {
+            'min': [  0 ],
+            'max': [ 100 ]
+        }
+    });
+
+
+
+
+    var stepSliderValueElement = document.getElementById('dis-min');
+
+    stepSlider.noUiSlider.on('update', function( values, handle ) {
+        stepSliderValueElement.value = values[handle];
+    });
+
     var cat;
     var query;
     var dis;
     var order;
+    var price;
 
     var submitBut = function () {
         cat   = $("#catSelect").val();
         query = $("#querySearch").val();
         dis   = $("#price-min").val();
         order = "latest";
+        price = "all";
         if(cat == null || cat == "dis"){
             $(".select2Class").addClass('shadow');
         }
@@ -537,7 +558,7 @@ require_once "scripts/time_elapse.php";
 
 
 
-        window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat,"_self");
+        window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
         }
     };
 

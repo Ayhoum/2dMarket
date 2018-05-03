@@ -305,7 +305,7 @@ Designed and Development by: ScriptsBundle
 	
 	 /*==========  Price Range Slider  ==========*/
 
-    var stepSlider = document.getElementById('price-slider');
+    var stepSlider = document.getElementById('dis-slider');
     noUiSlider.create(stepSlider, {
         start: [ 0 ],
         step: 10,
@@ -318,7 +318,7 @@ Designed and Development by: ScriptsBundle
 
 
 
-    var stepSliderValueElement = document.getElementById('price-min');
+    var stepSliderValueElement = document.getElementById('dis-min');
 
     stepSlider.noUiSlider.on('update', function( values, handle ) {
         stepSliderValueElement.value = values[handle];
