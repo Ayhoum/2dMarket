@@ -23,7 +23,6 @@
                             </a>
                         </li>
                     </ul>
-
                     <!-- menu links -->
                     <ul class="menu-links center-block">
                         <!-- active class -->

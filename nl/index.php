@@ -1,13 +1,10 @@
-﻿
-<?php
+﻿<?php
 session_start();
 ob_start();
 require_once "../scripts/db_connection.php";
 require_once "scripts/time_elapse.php";
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -40,6 +37,8 @@ require_once "scripts/time_elapse.php";
       <link href="css/select2.min.css" rel="stylesheet" />
       <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
       <link href="css/nouislider.min.css" rel="stylesheet">
+      <link href="css/ion.rangeSlider.css" rel="stylesheet">
+      <link href="css/ion.rangeSlider.skinRound.css" rel="stylesheet">
       <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
       <link href="css/slider.css" rel="stylesheet">
       <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
@@ -61,12 +60,20 @@ require_once "scripts/time_elapse.php";
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+       <style>
+           .shadow{
+               box-shadow: 0 0 12px red;
+           }
+           .carousel-control.left, .carousel-control.right {
+               background-image: none
+           }
+       </style>
    </head>
    <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <div id="loader-wrapper">
          <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-         <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+         <h4 class="text-center" style="color: #00a9da">Aan het laden..</h4> </div>
          <div class="loader-section section-left"></div>
          <div class="loader-section section-right"></div>
       </div>
@@ -83,10 +90,34 @@ require_once "scripts/time_elapse.php";
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Listing Map =-=-=-=-=-=-= -->
       <section class="clearfix">
-         <div class="map">
-            <div id="map"></div>
-         </div>
-         <!-- end map -->
+<!--         <div class="map">-->
+<!--            <div id="map"></div>-->
+<!--         </div>-->
+
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" >
+                  <div class="item active" style="width:100%; background-size: cover">
+                      <img src="../slider/2.jpg" alt="Chicago">
+                  </div>
+
+                  <div class="item" style="width:100%; background-size: cover">
+                      <img src="../slider/3.jpg" alt="New York">
+                  </div>
+              </div>
+
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-triangle-left" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-triangle-right" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
+                  <span class="sr-only">Next</span>
+              </a>
+          </div>
+          <!-- end map -->
       </section>
       <!-- =-=-=-=-=-=-= Listing Map End =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Advance Search =-=-=-=-=-=-= -->
@@ -96,12 +127,12 @@ require_once "scripts/time_elapse.php";
             <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
                <div class="search-title">Zoek een Ad.</div>
             </div>
-            <div class="row">
-               <form method="post" class="search-form" action="search_result.php">
+            <div class="row" style="margin-left: 0;margin-right: 0;">
+               <form method="post" class="search-form validation">
                   <!-- Category -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
+                  <div class="col-md-3 col-xs-12 col-sm-6">
                      <select name="cat" class="category form-control">
-                        <option label="Select Option"></option>
+                         <option selected disabled value="dis">Kies een optie</option>
                          <?php
                          // GET ALL CATEGORIES from DB
                          $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'NL' ORDER BY `name` ASC  ";
@@ -132,18 +163,34 @@ require_once "scripts/time_elapse.php";
                      </select>
                   </div>
                   <!-- Search Field -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
-                     <input type="text" name="query" class="form-control" placeholder="What Are You Looking For..." />
-                  </div>
+                   <div class="col-md-3 col-xs-12 col-sm-6">
+                       <input type="text" name="query" id="querySearch" class="form-control" placeholder="Wat zoekt u.." required/>
+                   </div>
                   <!-- Price Range SLider -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
-                     <span class="price-slider-value">Distance (Km) - <input type="text" name="dis" id="price-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true"> </span>
-                     <div id="price-slider"></div>
-                  </div>
+                   <div class="col-md-3 col-xs-12 col-sm-6">
+                       <span class="price-slider-value">Afstand (Km) - <input type="text" name="dis" id="dis-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
+                       <input type="text" id="example_id" name="example_name" value="" />
+                   </div>
                   <!-- Search Button -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
-                     <button type="submit" name="submit" class="btn btn-light">Zoek</button>
-                  </div>
+                   <div class="col-md-3 col-xs-12 col-sm-6">
+                       <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Zoek</button>
+                   </div>
+            </div>
+             <div class="row">
+                 <div class="hero-form-sub col-md-12">
+                     <strong class="hidden-sm-down">Zoekopdrachten</strong>
+                     <ul>
+                         <li><a href="pop_search.php?tag=Iphone 7">Iphone 7</a></li>
+                         <li><a href="pop_search.php?tag=Autos">Autos</a></li>
+                         <li><a href="pop_search.php?tag=Samsung S8">Samsung S8</a></li>
+                         <li><a href="pop_search.php?tag=Vaatwassers">Vaatwassers</a></li>
+                         <li><a href="pop_search.php?tag=Shorts">Shorts</a></li>
+                         <li><a href="pop_search.php?tag=Fietsen">Fietsen</a></li>
+                         <li><a href="pop_search.php?tag=Laptop">Laptops</a></li>
+                         <li><a href="pop_search.php?tag=Xbox Spelen">Xbox Spelen</a></li>
+                     </ul>
+                 </div>
+             </div>
                   <!-- end .item -->
                </form>
                <!-- end .search-form -->
@@ -156,81 +203,44 @@ require_once "scripts/time_elapse.php";
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
          <!-- =-=-=-=-=-=-= Categories =-=-=-=-=-=-= -->
-         <section class="custom-padding gray categories">
-            <!-- Main Container -->
-            <div class="container">
-               <!-- Row -->
-               <div class="row">
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/cars.png">
-                        <h4><a href="#">Cars & Bikes</a></h4>
-                        <strong>1,265 Jobs</strong> 
-                     </div>
+          <section class="custom-padding gray categories">
+              <!-- Main Container -->
+              <div class="container">
+                  <!-- Row -->
+                  <div class="row">
+                      <!-- Category -->
+                      <ul class="category-list-style">
+                          <!-- Category -->
+                          <!-- Category List -->
+                          <?php
+
+                          $query = "SELECT * FROM `CATEGORY` WHERE `lang` = 'NL' LIMIT 8";
+                          $result = mysqli_query($mysqli, $query);
+                          While($row = mysqli_fetch_assoc($result)){
+                              $id = $row['id'];
+                              $name = $row['name'];
+                              $icon = $row['icon_name'];
+
+                              $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$id}' ";
+                              $count_result = mysqli_query($mysqli,$count_query);
+                              while ($row = mysqli_fetch_assoc($count_result)){
+                                  $cat_count = $row['CAT_count'];
+                              }
+                              ?>
+
+                              <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                  <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>"><?php echo $name;?><span>(<?php echo $cat_count; ?> Ads)</span>
+                                      <i class="<?php echo $icon;?>"></i>
+                                  </a>
+                              </li>
+
+                          <?php }?>
+                      </ul>
                   </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/mobile-1.png">
-                        <h4><a href="#">Mobile Phones</a></h4>
-                        <strong>1,265 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/applinces.png">
-                        <h4><a href="#">Home Appliances</a></h4>
-                        <strong>6,213 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/cloths.png">
-                        <h4><a href="#">Clothing</a></h4>
-                        <strong>3,750 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/education.png">
-                        <h4><a href="#">Education & Art</a></h4>
-                        <strong>5,913 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/computer-1.png">
-                        <h4><a href="#">Computer & Laptops</a></h4>
-                        <strong>9,942 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/pets.png">
-                        <h4><a href="#">Pets & Animals</a></h4>
-                        <strong>3,891 Ads</strong> 
-                     </div>
-                  </div>
-                  <!-- Category -->
-                  <div class="col-md-3 col-sm-6">
-                     <div class="box">
-                        <img alt="img" src="images/category/newspaper.png">
-                        <h4><a href="#">Newspaper Jobs</a></h4>
-                        <strong>7,418 Ads</strong> 
-                     </div>
-                  </div>
-               </div>
-               <!-- Row End -->
-            </div>
-            <!-- Main Container End -->
-         </section>
-         <!-- =-=-=-=-=-=-= Categories =-=-=-=-=-=-= -->
+                  <!-- Row End -->
+              </div>
+              <!-- Main Container End -->
+          </section>         <!-- =-=-=-=-=-=-= Categories =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= Call to Action =-=-=-=-=-=-= -->
          <div class="parallex bg-img-3  section-padding">
             <div class="container">
@@ -245,7 +255,7 @@ require_once "scripts/time_elapse.php";
                   </div>
                   <!-- end col-md-8 -->
                   <div class="col-md-4 col-sm-12">
-                     <div class="parallex-button"> <a href="#" class="btn btn-theme">Nu uploaden !<i class="fa fa-angle-double-right "></i></a> </div>
+                      <div class="parallex-button"> <a href="<?php if (isset($_SESSION['username'])) {?>new_advertisement.php<?php } else {echo "login.php"; } ?>" class="btn btn-theme">Plaats een advertentie <i class="fa fa-angle-double-right "></i></a> </div>
                      <!-- end parallex-button -->
                   </div>
                   <!-- end col-md-4 -->
@@ -268,7 +278,7 @@ require_once "scripts/time_elapse.php";
                   <div class="heading-panel">
                      <div class="col-xs-12 col-md-12 col-sm-12">
                         <h3 class="main-title text-left">
-                           Featured Advertenties
+                            Laatste advertenties
                         </h3>
                         <!-- Style Switcher -->
                         <div class="switcher pull-right">
@@ -329,33 +339,33 @@ require_once "scripts/time_elapse.php";
          <!-- /.funfacts -->
          <!-- =-=-=-=-=-=-= Statistics Counter End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= Blog Section =-=-=-=-=-=-= -->
-          <section class="custom-padding">
-              <!-- Main Container -->
-              <div class="container">
-                  <!-- Row -->
-                  <div class="row">
-                      <!-- Heading Area -->
-                      <div class="heading-panel">
-                          <div class="col-xs-12 col-md-12 col-sm-12">
-                              <h3 class="main-title text-left">
-                                  Laatste Advertenties
-                              </h3>
-                          </div>
-                      </div>
-                      <!-- Middle Content Box -->
-                      <div class="col-md-12 col-xs-12 col-sm-12">
-                          <div class="row">
-                              <div class="featured-slider owl-carousel owl-theme">
-                                  <?php include "scripts/index_2.php";?>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- Middle Content Box End -->
-                  </div>
-                  <!-- Row End -->
-              </div>
-              <!-- Main Container End -->
-          </section>
+<!--          <section class="custom-padding">-->
+<!--              <!-- Main Container -->
+<!--              <div class="container">-->
+<!--                  <!-- Row -->
+<!--                  <div class="row">-->
+<!--                      <!-- Heading Area -->
+<!--                      <div class="heading-panel">-->
+<!--                          <div class="col-xs-12 col-md-12 col-sm-12">-->
+<!--                              <h3 class="main-title text-left">-->
+<!--                                  Laatste Advertenties-->
+<!--                              </h3>-->
+<!--                          </div>-->
+<!--                      </div>-->
+<!--                      <!-- Middle Content Box -->
+<!--                      <div class="col-md-12 col-xs-12 col-sm-12">-->
+<!--                          <div class="row">-->
+<!--                              <div class="featured-slider owl-carousel owl-theme">-->
+<!--                                  --><?php //include "scripts/index_2.php";?>
+<!--                              </div>-->
+<!--                          </div>-->
+<!--                      </div>-->
+<!--                      <!-- Middle Content Box End -->
+<!--                  </div>-->
+<!--                  <!-- Row End -->
+<!--              </div>-->
+<!--              <!-- Main Container End -->
+<!--          </section>-->
           <!-- =-=-=-=-=-=-= Blog Section End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
           <?php include 'footer.php';?>
@@ -388,7 +398,8 @@ require_once "scripts/time_elapse.php";
       <!-- Jquery Select Options  -->
       <script src="js/select2.min.js"></script>
       <!-- noUiSlider -->
-      <script src="js/nouislider.all.min.js"></script>
+      <script src="js/ion.rangeSlider.js"></script>
+      <script src="js/ion.rangeSlider.min.js"></script>
       <!-- Carousel Slider  -->
       <script src="js/carousel.min.js"></script>
       <script src="js/slide.js"></script>
@@ -417,6 +428,51 @@ require_once "scripts/time_elapse.php";
          google.maps.event.addDomListener(window, 'load', speedTest.init);
 		 (jQuery);
       </script>
+   <script>
+       var stepSliderValueElement = document.getElementById('dis-min');
+       stepSliderValueElement.value = 10;
+       $("#example_id").ionRangeSlider({
+           grid: false,
+           min: 10,
+           max: 100,
+           from: 0,
+           step: 10,
+           hide_min_max: true,
+           prettify_enabled: false,
+           onChange: function (data) {
+               stepSliderValueElement.value = data.from;
+           }
+       });
+
+       var cat;
+       var query;
+       var dis;
+       var order;
+       var price;
+
+       var submitBut = function () {
+           cat   = $("#catSelect").val();
+           query = $("#querySearch").val();
+           dis   = $("#price-min").val();
+           order = "latest";
+           price = "all";
+           if(cat == null || cat == "dis"){
+               $(".select2Class").addClass('shadow');
+           }
+           if(query == ""){
+               $("#querySearch").addClass('shadow');
+           }
+           if(dis == 0.00){
+               $(".noUi-connects").addClass('shadow');
+           }
+           if(cat != null && cat != "dis" && query != "" && dis != 0.00){
+
+
+
+               window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
+           }
+       };
+   </script>
    </body>
 </html>
 
