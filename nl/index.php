@@ -417,17 +417,17 @@ require_once "scripts/time_elapse.php";
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
       <!-- Googgle map For THis Page Only -->
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>
+<!--      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>-->
       <script src="js/infobox.js"></script>
       <!-- Parallax -->
       <script src="js/data.json"></script>
       <script src="js/markerclusterer.js"></script>
       <script src="js/markers-map.js"></script>
-      <script type="text/javascript">
-	      "use strict";
-         google.maps.event.addDomListener(window, 'load', speedTest.init);
-		 (jQuery);
-      </script>
+<!--      <script type="text/javascript">-->
+<!--	      "use strict";-->
+<!--         google.maps.event.addDomListener(window, 'load', speedTest.init);-->
+<!--		 (jQuery);-->
+<!--      </script>-->
    <script>
        var stepSliderValueElement = document.getElementById('dis-min');
        stepSliderValueElement.value = 10;
