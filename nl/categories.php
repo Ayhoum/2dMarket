@@ -74,11 +74,11 @@ include '../scripts/db_connection.php'
       <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
       <div class="colored-header">
           <!-- Top Bar -->
-          <?php include 'topbar-en.php';?>
+          <?php include 'topbar-nl.php';?>
           <!-- Top Bar End -->
           <!-- Navigation Menu -->
 
-          <?php include "nav_bar_en.php";?>
+          <?php include "nav_bar_nl.php";?>
       </div>
       <!-- Small Breadcrumb -->
       <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
