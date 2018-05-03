@@ -85,6 +85,7 @@ require_once "scripts/time_elapse.php";
          <!-- Navigation Menu -->
 
           <?php include "nav_bar_en.php";?>
+
       </div>
       <!-- Navigation Menu End -->
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
@@ -131,13 +132,14 @@ require_once "scripts/time_elapse.php";
       <section class="search-2">
          <div class="container">
             <!-- Title -->
-            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+             <div class="row" style="margin-left: 0;margin-right: 0;">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                <div class="search-title">Browse Ads</div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-left: 0;margin-right: 0;">
                <form method="post" class="search-form validation">
                   <!-- Category -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
+                  <div class="col-md-3 col-xs-12 col-sm-6">
                      <select name="cat" class="category form-control" id="catSelect" required>
                         <option selected disabled value="dis">Select Option</option>
                          <?php
@@ -170,19 +172,21 @@ require_once "scripts/time_elapse.php";
                      </select>
                   </div>
                   <!-- Search Field -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
+                  <div class="col-md-3 col-xs-12 col-sm-6">
                      <input type="text" name="query" id="querySearch" class="form-control" placeholder="What Are You Looking For..." required/>
                   </div>
                   <!-- Price Range SLider -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
+                  <div class="col-md-3 col-xs-12 col-sm-6">
                      <span class="price-slider-value">Distance (Km) - <input type="text" name="dis" id="dis-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
                       <input type="text" id="example_id" name="example_name" value="" />
                   </div>
                   <!-- Search Button -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
+                  <div class="col-md-3 col-xs-12 col-sm-6">
                      <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Search</button>
                   </div>
                   <!-- end .item -->
+            </div>
+                   <div class="row">
                    <div class="hero-form-sub col-md-12">
                        <strong class="hidden-sm-down">Popular Searches</strong>
                        <ul>
@@ -195,6 +199,7 @@ require_once "scripts/time_elapse.php";
                            <li><a href="pop_search.php?tag=Laptop">Laptops</a></li>
                            <li><a href="pop_search.php?tag=Xbox Games">Xbox Games</a></li>
                        </ul>
+                   </div>
                    </div>
                </form>
                <!-- end .search-form -->
@@ -402,7 +407,6 @@ require_once "scripts/time_elapse.php";
       <!-- Jquery Select Options  -->
       <script src="js/select2.min.js"></script>
       <!-- noUiSlider -->
-      <script src="js/nouislider.all.min.js"></script>
       <script src="js/ion.rangeSlider.js"></script>
       <script src="js/ion.rangeSlider.min.js"></script>
       <!-- Carousel Slider  -->
@@ -435,86 +439,86 @@ require_once "scripts/time_elapse.php";
 <!--		 (jQuery);-->
 <!--      </script>-->
 
-<script>
-    $(function() {
-
-        $(".itemFill").imgLiquid({
-            fill: true,
-            horizontalAlign: "center",
-            verticalAlign: "center"
-        });
-
-    });
-
-
-    var long;
-    var lati;
-    $(document).ready(function() {
-        var currgeocoder;
-
-
-
-        //Set geo location lat and long
-
-        navigator.geolocation.getCurrentPosition(function(position) {
-
-            geo_loc = processGeolocationResult(position);
-            currLatLong = geo_loc.split(",");
-            initializeCurrent(currLatLong[0], currLatLong[1]);
-
-        });
-
-        //Get geo location result
-
-        function processGeolocationResult(position) {
-            html5Lat = position.coords.latitude; //Get latitude
-            html5Lon = position.coords.longitude; //Get longitude
-            html5TimeStamp = position.timestamp; //Get timestamp
-            html5Accuracy = position.coords.accuracy; //Get accuracy in meters
-            return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);
-        }
-
-        function setCookie(cname, cvalue, exdays) {
-            var d = new Date();
-            d.setTime(d.getTime() + (exdays*60*60*24*1000));
-            var expires = "expires="+ d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-
-
-        function initializeCurrent(latcurr, longcurr) {
-            currgeocoder = new google.maps.Geocoder();
-            console.log(latcurr + "-- ######## --" + longcurr);
-
-            if (latcurr != '' && longcurr != '') {
-                var myLatlng = new google.maps.LatLng(latcurr, longcurr);
-                long = longcurr;
-                lati = latcurr;
-                setCookie("longC",long,2);
-                setCookie("latiC",lati,2);
-
-                return getCurrentAddress(myLatlng);
-            }
-        }
-
-        //Get current address
-
-        function getCurrentAddress(location) {
-            currgeocoder.geocode({
-                'location': location
-
-            }, function(results, status) {
-
-                if (status == google.maps.GeocoderStatus.OK) {
-                    console.log(results[0]);
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
-                }
-            });
-        }
-    });
-
-</script>
+<!--<script>-->
+<!--    $(function() {-->
+<!---->
+<!--        $(".itemFill").imgLiquid({-->
+<!--            fill: true,-->
+<!--            horizontalAlign: "center",-->
+<!--            verticalAlign: "center"-->
+<!--        });-->
+<!---->
+<!--    });-->
+<!---->
+<!---->
+<!--    var long;-->
+<!--    var lati;-->
+<!--    $(document).ready(function() {-->
+<!--        var currgeocoder;-->
+<!---->
+<!---->
+<!---->
+<!--        //Set geo location lat and long-->
+<!---->
+<!--        navigator.geolocation.getCurrentPosition(function(position) {-->
+<!---->
+<!--            geo_loc = processGeolocationResult(position);-->
+<!--            currLatLong = geo_loc.split(",");-->
+<!--            initializeCurrent(currLatLong[0], currLatLong[1]);-->
+<!---->
+<!--        });-->
+<!---->
+<!--        //Get geo location result-->
+<!---->
+<!--        function processGeolocationResult(position) {-->
+<!--            html5Lat = position.coords.latitude; //Get latitude-->
+<!--            html5Lon = position.coords.longitude; //Get longitude-->
+<!--            html5TimeStamp = position.timestamp; //Get timestamp-->
+<!--            html5Accuracy = position.coords.accuracy; //Get accuracy in meters-->
+<!--            return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);-->
+<!--        }-->
+<!---->
+<!--        function setCookie(cname, cvalue, exdays) {-->
+<!--            var d = new Date();-->
+<!--            d.setTime(d.getTime() + (exdays*60*60*24*1000));-->
+<!--            var expires = "expires="+ d.toUTCString();-->
+<!--            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";-->
+<!--        }-->
+<!---->
+<!---->
+<!--        function initializeCurrent(latcurr, longcurr) {-->
+<!--            currgeocoder = new google.maps.Geocoder();-->
+<!--            console.log(latcurr + "-- ######## --" + longcurr);-->
+<!---->
+<!--            if (latcurr != '' && longcurr != '') {-->
+<!--                var myLatlng = new google.maps.LatLng(latcurr, longcurr);-->
+<!--                long = longcurr;-->
+<!--                lati = latcurr;-->
+<!--                setCookie("longC",long,2);-->
+<!--                setCookie("latiC",lati,2);-->
+<!---->
+<!--                return getCurrentAddress(myLatlng);-->
+<!--            }-->
+<!--        }-->
+<!---->
+<!--        //Get current address-->
+<!---->
+<!--        function getCurrentAddress(location) {-->
+<!--            currgeocoder.geocode({-->
+<!--                'location': location-->
+<!---->
+<!--            }, function(results, status) {-->
+<!---->
+<!--                if (status == google.maps.GeocoderStatus.OK) {-->
+<!--                    console.log(results[0]);-->
+<!--                } else {-->
+<!--                    alert('Geocode was not successful for the following reason: ' + status);-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+<!--    });-->
+<!---->
+<!--</script>-->
 
 <script>
     var stepSliderValueElement = document.getElementById('dis-min');
@@ -526,7 +530,6 @@ require_once "scripts/time_elapse.php";
         from: 0,
         step: 10,
         hide_min_max: true,
-        ,
         prettify_enabled: false,
         onChange: function (data) {
             stepSliderValueElement.value = data.from;
