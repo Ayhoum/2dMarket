@@ -37,6 +37,8 @@ require_once "scripts/time_elapse.php";
       <link href="css/select2.min.css" rel="stylesheet" />
       <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
       <link href="css/nouislider.min.css" rel="stylesheet">
+      <link href="css/ion.rangeSlider.css" rel="stylesheet">
+      <link href="css/ion.rangeSlider.skinRound.css" rel="stylesheet">
       <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
       <link href="css/slider.css" rel="stylesheet">
       <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
@@ -174,7 +176,7 @@ require_once "scripts/time_elapse.php";
                   <!-- Price Range SLider -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
                      <span class="price-slider-value">Distance (Km) - <input type="text" name="dis" id="dis-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
-                     <div id="dis-slider"></div>
+                      <input type="text" id="example_id" name="example_name" value="" />
                   </div>
                   <!-- Search Button -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
@@ -401,6 +403,8 @@ require_once "scripts/time_elapse.php";
       <script src="js/select2.min.js"></script>
       <!-- noUiSlider -->
       <script src="js/nouislider.all.min.js"></script>
+      <script src="js/ion.rangeSlider.js"></script>
+      <script src="js/ion.rangeSlider.min.js"></script>
       <!-- Carousel Slider  -->
       <script src="js/carousel.min.js"></script>
       <script src="js/slide.js"></script>
@@ -513,25 +517,22 @@ require_once "scripts/time_elapse.php";
 </script>
 
 <script>
-
-    var stepSlider = document.getElementById('dis-slider');
-    noUiSlider.create(stepSlider, {
-        start: [ 0 ],
+    var stepSliderValueElement = document.getElementById('dis-min');
+    stepSliderValueElement.value = 10;
+    $("#example_id").ionRangeSlider({
+        grid: false,
+        min: 10,
+        max: 100,
+        from: 0,
         step: 10,
-        range: {
-            'min': [  0 ],
-            'max': [ 100 ]
+        hide_min_max: true,
+        ,
+        prettify_enabled: false,
+        onChange: function (data) {
+            stepSliderValueElement.value = data.from;
         }
     });
 
-
-
-
-    var stepSliderValueElement = document.getElementById('dis-min');
-
-    stepSlider.noUiSlider.on('update', function( values, handle ) {
-        stepSliderValueElement.value = values[handle];
-    });
 
     var cat;
     var query;
