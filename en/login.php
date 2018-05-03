@@ -1,4 +1,4 @@
-﻿﻿<?php
+﻿<?php
 session_start();
 require_once "../scripts/db_connection.php";
 ?>
@@ -87,7 +87,6 @@ require_once "../scripts/db_connection.php";
    </head>
 
    <body>
-
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <div id="loader-wrapper">
           <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
