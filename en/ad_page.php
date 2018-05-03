@@ -48,7 +48,6 @@ ob_start();
     <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
     <link rel="stylesheet" id="color" href="css/colors/defualt.css">
     <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
-    <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
     <!-- JavaScripts -->
     <script src="js/modernizr.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
