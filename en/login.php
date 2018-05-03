@@ -152,7 +152,7 @@ require_once "../scripts/db_connection.php";
                               <label>Password</label>
                               <input id="password_field" placeholder="Your Password" class="form-control" type="password" name="password">
 
-                               <p><b><a href="scripts/RestorePassowrd/resotre_password.php" target="_blank">Have you forgot your password!</a></b></p>
+                               <p><b><a href="resotre_password.php" target="_blank">Have you forgot your password!</a></b></p>
                                <p><b><a href="register.php" target="_blank">Are new here? Register now ! </a></b></p>
 
                            </div>
