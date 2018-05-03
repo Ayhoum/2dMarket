@@ -36,7 +36,9 @@ require_once "scripts/time_elapse.php";
       <!-- =-=-=-=-=-=-= Select Options =-=-=-=-=-=-= -->
       <link href="css/select2.min.css" rel="stylesheet" />
       <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
-      <link href="css/nouislider.min.css" rel="stylesheet">
+       <link href="css/nouislider.min.css" rel="stylesheet">
+       <link href="css/ion.rangeSlider.css" rel="stylesheet">
+       <link href="css/ion.rangeSlider.skinRound.css" rel="stylesheet">
       <!-- =-=-=-=-=-=-= Bootstrap Rtl Style =-=-=-=-=-=-= -->
       <link href="css/bootstrap-rtl.css" rel="stylesheet">
       <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
@@ -440,6 +442,8 @@ require_once "scripts/time_elapse.php";
       <script src="js/select2.min.js"></script>
       <!-- noUiSlider -->
       <script src="js/nouislider.all.min.js"></script>
+      <script src="js/ion.rangeSlider.js"></script>
+      <script src="js/ion.rangeSlider.min.js"></script>
       <!-- Carousel Slider  -->
       <script src="js/carousel.min.js"></script>
       <script src="js/slide.js"></script>
@@ -457,16 +461,16 @@ require_once "scripts/time_elapse.php";
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
       <!-- Googgle map For THis Page Only -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVj6yChAfe1ilA4YrZgn_UCAnei8AhQxQ&sensor=false"></script>      <script src="js/infobox.js"></script>
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVj6yChAfe1ilA4YrZgn_UCAnei8AhQxQ&sensor=false"></script>      <script src="js/infobox.js"></script>-->
       <!-- Parallax -->
-      <script src="js/data.json"></script>
-      <script src="js/markerclusterer.js"></script>
-      <script src="js/markers-map.js"></script>
-      <script type="text/javascript">
-	      "use strict";
-         google.maps.event.addDomListener(window, 'load', speedTest.init);
-		 (jQuery);
-      </script>
+<!--      <script src="js/data.json"></script>-->
+<!--      <script src="js/markerclusterer.js"></script>-->
+<!--      <script src="js/markers-map.js"></script>-->
+<!--      <script type="text/javascript">-->
+<!--	      "use strict";-->
+<!--         google.maps.event.addDomListener(window, 'load', speedTest.init);-->
+<!--		 (jQuery);-->
+<!--      </script>-->
    </body>
 </html>
 

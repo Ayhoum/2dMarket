@@ -426,9 +426,9 @@ require_once "scripts/time_elapse.php";
       <script src="js/infobox.js"></script>
       <!-- Parallax -->
       <script src="js/imgLiquid-min.js"></script>
-      <script src="js/data.json"></script>
-      <script src="js/markerclusterer.js"></script>
-      <script src="js/markers-map.js"></script>
+<!--      <script src="js/data.json"></script>-->
+<!--      <script src="js/markerclusterer.js"></script>-->
+<!--      <script src="js/markers-map.js"></script>-->
 <!--      <script type="text/javascript">-->
 <!--	      "use strict";-->
 <!--         google.maps.event.addDomListener(window, 'load', speedTest.init);-->
