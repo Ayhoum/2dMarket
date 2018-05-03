@@ -13,7 +13,7 @@ require_once "../scripts/db_connection.php";
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title>2D Market | Restore Password</title>
+    <title>2D Market | Wrong Email</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -86,7 +86,7 @@ require_once "../scripts/db_connection.php";
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="header-page text-center">
-                    <h1>Restore Your Password</h1>
+                    <h1>Wrong Email</h1>
                 </div>
             </div>
         </div>
@@ -118,9 +118,9 @@ require_once "../scripts/db_connection.php";
                 <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
                     <!--  Form -->
                     <div class="form-grid">
-                        <form action="index.php" name="login" id="login_form" method="post" data-toggle="validator">
+                        <form action="register.php" name="login" id="login_form" method="post" data-toggle="validator">
                             <div class="form-group">
-                                <label>If you are registered by us, a mail would have been sent to your email address</label>
+                                <label>This email seems to be not registered by us, please create a new account</label>
                             </div>
 
                             <button type="submit" class="btn btn-theme btn-lg btn-block" name="okay">Okay</button>

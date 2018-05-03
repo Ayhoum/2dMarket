@@ -1,53 +1,60 @@
 <?php
 session_start();
-ob_start();
 require_once "../scripts/db_connection.php";
 
-//taking the email from the url
-$email=$_GET['email'];
+if(isset($type) && $type == 'Fmatch'){
+    echo "<script>$('#modalPassError').modal();</script>";
+}
 
-//getting the id from the database
-$query = "SELECT * From User WHERE email ='{$email}' ";
+if(isset($_GET['code'])){
+    $code = $_GET['code'];
+}else{
+    header("Location: index.php");
+}
+if(isset($_GET['email'])){
+    $email = $_GET['email'];
+}else{
+    header("Location: index.php");
+}
+
+$query = "SELECT * From USER WHERE email = '{$email}' ";
 $getAgent = mysqli_query($mysqli, $query);
 if (mysqli_num_rows($getAgent) == 1) {
     while ($row = mysqli_fetch_assoc($getAgent)) {
         $id = $row['id'];
     }
+}else{
+    header("Location: wrong_email.php");
 }
 
-//dealing with the form
-if(isset($_POST['Rest'])){
+$query = "SELECT * From PASSWORD_RESET WHERE CODE = '{$code}' ";
+$getCode = mysqli_query($mysqli,$query);
+if (mysqli_num_rows($getCode) <= 0) {
+    header("Location: wrong_code.php");
+}
 
-    $n_pass=$_POST['password1'];//new pass
-    $c_pass=$_POST['password2'];//confirm pass
 
+if(isset($_POST['updatePass'])){
+    $pass = $_POST['passwordf'];
+    $pass2 = $_POST['passwords'];
 
-    if(strlen($n_pass)<25){
-        echo "password length should be max 25 characters";
-        exit();
+    if($pass == $pass2){
+        $encCode = ['cost' => 12];
+        $encPassword = password_hash($pass2, PASSWORD_BCRYPT, $encCode);
+        $queryUpdate = "UPDATE USER SET password = '{$encPassword}' WHERE email = '{$email}'";
+        $run = mysqli_query($mysqli,$queryUpdate);
+
+        $deleteQuery = "DELETE FROM PASSWORD_RESET WHERE USER_ID = '{$id}'";
+        $runDelete=mysqli_query($mysqli,$deleteQuery);
+
+        header("Location: login.php");
     }else{
-        if ($n_pass == $c_pass){
-            $option=["COST"=> 12];
-            $hash_pass == hash_password($n_pass,DEFAULT_PASSWORD,$option);
-            $change_pass_SQL="UPDATE USER SET password ='$hash_pass' WHERE id ='$id'
-         AND email='$email' AND code='' ";
-            //making the code empty after filling it
-            $query=mysqli_query($mysqli,$change_pass_SQL)
-            or die(mysqli_error($mysqli));
-            if($query){
-
-
-                echo "your password is rest";
-                header("location:../../index.php");
-            }else{header("location:update_password.php");}
-        }
-
+        header("Location: update_password.php?code=<?php echo $code;?>&email=<?php echo $email;?>&type='Fmatch'");
     }
-
 }
 ?>
 
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +65,7 @@ if(isset($_POST['Rest'])){
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title>2D Market</title>
+    <title>2D Market | Update Password</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -104,12 +111,14 @@ if(isset($_POST['Rest'])){
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
+
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
     <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-        <h4 class="text-center" style="color: #00a9da">Loading..</h4> </div>
+        <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
@@ -128,84 +137,59 @@ if(isset($_POST['Rest'])){
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="header-page">
-                    <h1>Restore your password!</h1>
+                <div class="header-page text-center">
+                    <h1>Update your password</h1>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Small Breadcrumb -->
-<div class="small-breadcrumb">
-    <div class="container">
-        <div class=" breadcrumb-link">
-            <ul>
-                <li><a href="index.php">Home Page</a></li>
-                <li><a href="#">Pages</a></li>
-                <li><a class="active" href="#">Restore</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+<!--      <div class="small-breadcrumb">-->
+<!--         <div class="container">-->
+<!--            <div class=" breadcrumb-link">-->
+<!--               <ul>-->
+<!--                  <li><a href="index.html">Home Page</a></li>-->
+<!--                  <li><a href="#">Pages</a></li>-->
+<!--                  <li><a class="active" href="#">Sign In</a></li>-->
+<!--               </ul>-->
+<!--            </div>-->
+<!--         </div>-->
+<!--      </div>-->
 <!-- Small Breadcrumb -->
 <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
     <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
-    <section class="section-padding error-page pattern-bg ">
+    <section class="section-padding-140 error-page pattern-bg " style="margin-top: -60px;">
         <!-- Main Container -->
         <div class="container">
             <!-- Row -->
             <div class="row">
                 <!-- Middle Content Area -->
-                <div class="col-md-5 col-md-push-7 col-sm-6 col-xs-12">
+                <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
                     <!--  Form -->
                     <div class="form-grid">
-                        <form  method="post">
+                        <form action="update_password.php?code=<?php echo $code;?>&email=<?php echo $email;?>" name="login" id="login_form" method="post" data-toggle="validator">
                             <div class="form-group">
-                                <label>Enter your new Password</label>
-                                <input placeholder="Your password" class="form-control" type="password" name="password1">
-                            </div><div class="form-group">
-                                <label>Confirm your password</label>
-                                <input placeholder="confirm the password" class="form-control" type="password" name="password2">
+                                <label>New Password</label>
+                                <input id="passwordf" placeholder="New Password" class="form-control" type="password" name="passwordf" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Re-enter New Password</label>
+                                <input id="passwords" placeholder="New Password" class="form-control" type="password" name="passwords" required>
+
+                                <p><b><a href="resotre_password.php" target="_blank">Have you forgot your password!</a></b></p>
+                                <p><b><a href="register.php" target="_blank">Are new here? Register now ! </a></b></p>
+
                             </div>
 
-                            <button class="btn btn-theme btn-lg btn-block" name="rest">Rest the password</button>
+                            <button type="submit" class="btn btn-theme btn-lg btn-block" name="updatePass">Update Password</button>
+
                         </form>
                     </div>
+
                     <!-- Form -->
-                </div>
-                <div class="col-md-7  col-md-pull-5  col-xs-12 col-sm-6">
-                    <div class="heading-panel">
-                        <h3 class="main-title text-left">
-                            Sign In to your account
-                        </h3>
-                    </div>
-                    <div class="content-info">
-                        <div class="features">
-                            <div class="features-icons">
-                                <img src="images/icons/chat.png" alt="img">
-                            </div>
-                            <div class="features-text">
-                                <h3>Chat & Messaging</h3>
-                                <p>
-                                    Access your chats and account info from any device.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="features">
-                            <div class="features-icons">
-                                <img src="images/icons/panel.png" alt="img">
-                            </div>
-                            <div class="features-text">
-                                <h3>User Dashboard</h3>
-                                <p>
-                                    Maintain a wishlist by saving your favourite items.
-                                </p>
-                            </div>
-                        </div>
-                        <span class="arrowsign hidden-sm hidden-xs"><img src="images/arrow.png" alt="" ></span>
-                    </div>
                 </div>
                 <!-- Middle Content Area  End -->
             </div>
@@ -215,69 +199,28 @@ if(isset($_POST['Rest'])){
     </section>
     <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
     <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-    <footer>
-        <!-- Footer Content -->
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- Info Widget -->
-                        <div class="widget">
-                            <div class="logo"> <img alt="" src="images/logo-1.png"> </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
-                            <ul>
-                                <li><img src="images/appstore.png" alt=""></li>
-                                <li><img src="images/googleplay.png" alt=""></li>
-                            </ul>
-                        </div>
-                        <!-- Info Widget Exit -->
-                    </div>
-                    <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- Follow Us -->
-                        <div class="widget socail-icons">
-                            <h5>Follow Us</h5>
-                            <ul>
-                                <li><a class="fb" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                                <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                                <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                                <li><a class="googleplus" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
-                            </ul>
-                        </div>
-                        <!-- Follow Us End -->
-                    </div>
-                    <div class="col-md-6  col-sm-6 col-xs-12">
-                        <!-- Newslatter -->
-                        <div class="widget widget-newsletter">
-                            <h5>Singup for Weekly Newsletter</h5>
-                            <div class="fieldset">
-                                <p>We may send you information about related events, webinars, products and services which we believe.</p>
-                                <form>
-                                    <input class="" value="Enter your email address" type="text">
-                                    <input class="submit-btn" name="submit" value="Submit" type="submit">
-                                </form>
-                            </div>
-                        </div>
-                        <!-- Newslatter -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Copyrights -->
-        <div class="copyrights">
-            <div class="container">
-                <div class="copyright-content">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <p>© 2017 AForest All rights reserved. Design by <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php include "footer.php";?>
     <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
 </div>
 <!-- Main Content Area End -->
+
+
+<div class="custom-modal">
+    <div id="modalPassError" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header rte">
+                    <h2 class="modal-title text-center">You entered two different passwords!</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Post Ad Sticky -->
 <a href="#" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
@@ -321,12 +264,9 @@ if(isset($_POST['Rest'])){
 <script src="js/color-switcher.js"></script>
 <!-- Template Core JS -->
 <script src="js/custom.js"></script>
+
+
+
 </body>
 </html>
-
-
-
-
-
-
 

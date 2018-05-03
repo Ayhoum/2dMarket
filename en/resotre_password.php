@@ -14,7 +14,7 @@ if(isset($_POST['forgot_submit'])) {
     $getAgent = mysqli_query($mysqli, $query);
     if (mysqli_num_rows($getAgent) == 1) {
         while ($row = mysqli_fetch_assoc($getAgent)) {
-            $id = $row['ID'];
+            $id = $row['id'];
         }
     }
 
@@ -214,11 +214,11 @@ if(isset($_POST['forgot_submit'])) {
 						<!-- / Hero subheader -->
 						<table class=\"container hero-subheader\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" style=\"width: 620px;\">
 							<tr>
-								<td class=\"hero-subheader__title\" style=\"direction:rtl;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;\" align=\"center\">Restore Password</td>
+								<td class=\"hero-subheader__title\" style=\"direction:ltr;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;\" align=\"center\">Restore Password</td>
 							</tr>
 
 							<tr>
-								<td class=\"hero-subheader__content\" style=\"direction:rtl;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">To reset your password:<br>
+								<td class=\"hero-subheader__content\" style=\"direction:ltr;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">To reset your password:<br>
 								<a href='$link'>Click Here!</a>
 								</td>
 							</tr>
