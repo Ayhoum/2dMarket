@@ -214,12 +214,12 @@ if(isset($_POST['forgot_submit'])) {
 						<!-- / Hero subheader -->
 						<table class=\"container hero-subheader\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" style=\"width: 620px;\">
 							<tr>
-								<td class=\"hero-subheader__title\" style=\"direction:rtl;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;\" align=\"center\">إعادة تعيين كلمة المرور</td>
+								<td class=\"hero-subheader__title\" style=\"direction:rtl;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;\" align=\"center\">Restore Password</td>
 							</tr>
 
 							<tr>
-								<td class=\"hero-subheader__content\" style=\"direction:rtl;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">لاستعادة كلمة المرور:<br>
-								<a href='$link'>إضغط هنا</a>
+								<td class=\"hero-subheader__content\" style=\"direction:rtl;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">To reset your password:<br>
+								<a href='$link'>Click Here!</a>
 								</td>
 							</tr>
 						</table>
@@ -329,14 +329,14 @@ if(isset($_POST['forgot_submit'])) {
     $address1= $email;
     $mail->AddAddress($address1);
 
-    $mail->Subject    = "إستعادة كلمة المرور";
+    $mail->Subject    = "Password Restore";
 
     $mail->MsgHTML($body);
 
     if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }
-    header("Location: password_reset.php");
+    header("Location: password_email.php");
 
 }
 
@@ -483,13 +483,6 @@ if(isset($_POST['forgot_submit'])) {
 </div>
 <!-- Main Content Area End -->
 
-<!-- Post Ad Sticky -->
-<a href="#" class="sticky-post-button hidden-xs">
-         <span class="sell-icons">
-         <i class="flaticon-transport-9"></i>
-         </span>
-    <h4>SELL</h4>
-</a>
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>
 <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
