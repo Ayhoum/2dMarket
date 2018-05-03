@@ -88,7 +88,7 @@ require_once "../scripts/db_connection.php";
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <div id="loader-wrapper">
           <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-              <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+              <h4 class="text-center" style="color: #00a9da">جاري التحميل.. </h4> </div>
           <div class="loader-section section-left"></div>
           <div class="loader-section section-right"></div>
       </div>
@@ -136,7 +136,7 @@ require_once "../scripts/db_connection.php";
                                       <label>كلـمة المـرور</label>
                                       <input id="password_field" placeholder="قم بادخال كلمة المرور" class="form-control" type="password" name="password">
 
-                                      <p><b><a href="scripts/RestorePassowrd/resotre_password.php" target="_blank">Have you forgot your password!</a></b></p>
+                                      <p><b><a href="resotre_password.php" target="_blank">نسيت كلمة المرور الخاصة بك؟</a></b></p>
                                   </div>
 
                                   <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">تسجيـل الدخـول </button>

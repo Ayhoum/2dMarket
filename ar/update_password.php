@@ -57,7 +57,7 @@ if(isset($_POST['updatePass'])){
 ?>
 
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <!--[if IE]>
@@ -65,7 +65,7 @@ if(isset($_POST['updatePass'])){
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title>2D Market | Wachtwoord vernieuwen</title>
+    <title>2D Market | إعادة تعيين كلمة المرور</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -88,6 +88,7 @@ if(isset($_POST['updatePass'])){
     <link href="css/select2.min.css" rel="stylesheet" />
     <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
     <link href="css/nouislider.min.css" rel="stylesheet">
+    <link href="css/bootstrap-rtl.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
     <link href="css/slider.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
@@ -118,17 +119,17 @@ if(isset($_POST['updatePass'])){
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
     <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-        <h4 class="text-center" style="color: #00a9da"> Aan het laden..</h4> </div>
+        <h4 class="text-center" style="color: #00a9da">جاري التحميل.. </h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
 <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
 <div class="colored-header">
     <!-- Top Bar -->
-    <?php include "topbar-nl.php";?>
+    <?php include "topbar-ar.php";?>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
-    <?php include "nav_bar_nl.php";?>
+    <?php include "nav_bar_ar.php";?>
 </div>
 <!-- Navigation Menu End -->
 <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
@@ -138,7 +139,7 @@ if(isset($_POST['updatePass'])){
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="header-page text-center">
-                    <h1>Update jouw wachtwoord</h1>
+                    <h1>إعادة تعيين كلمة المرور</h1>
                 </div>
             </div>
         </div>
@@ -172,16 +173,17 @@ if(isset($_POST['updatePass'])){
                     <div class="form-grid">
                         <form action="update_password.php?code=<?php echo $code;?>&email=<?php echo $email;?>" name="login" id="login_form" method="post" data-toggle="validator">
                             <div class="form-group">
-                                <label>Nieuwe wachtwoord</label>
+                                <label>كلمة مرور جديدة</label>
                                 <input id="passwordf" placeholder="New Password" class="form-control" type="password" name="passwordf" required>
                             </div>
                             <div class="form-group">
-                                <label>Re-enter Nieuwe wachtwoord</label>
+                                <label>إعادة كلمة المرور الجديدة</label>
                                 <input id="passwords" placeholder="New Password" class="form-control" type="password" name="passwords" required>
+
 
                             </div>
 
-                            <button type="submit" class="btn btn-theme btn-lg btn-block" name="updatePass">Wachtwoord vernieuwen</button>
+                            <button type="submit" class="btn btn-theme btn-lg btn-block" name="updatePass">إعادة تعيين كلمة المرور</button>
 
                         </form>
                     </div>
@@ -208,10 +210,10 @@ if(isset($_POST['updatePass'])){
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header rte">
-                    <h2 class="modal-title text-center">Jij hebt twee verschillende wachtwoorden ingevoerd!</h2>
+                    <h2 class="modal-title text-center">لقد أدخلت كلمتي مرور مختلفتين</h2>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Opnieuw proberen</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">إعادة المحاولة</button>
                 </div>
             </div>
         </div>
@@ -223,7 +225,7 @@ if(isset($_POST['updatePass'])){
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>
-    <h4>Verkoop</h4>
+    <h4>قم بالبيع الآن</h4>
 </a>
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>

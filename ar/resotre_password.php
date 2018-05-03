@@ -214,12 +214,12 @@ if(isset($_POST['forgot_submit'])) {
 						<!-- / Hero subheader -->
 						<table class=\"container hero-subheader\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"620\" style=\"width: 620px;\">
 							<tr>
-								<td class=\"hero-subheader__title\" style=\"direction:ltr;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;\" align=\"center\">Wachtwoord herstellen</td>
+								<td class=\"hero-subheader__title\" style=\"direction:ltr;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;\" align=\"center\">Restore Password</td>
 							</tr>
 
 							<tr>
-								<td class=\"hero-subheader__content\" style=\"direction:ltr;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">Om uw wachtwoord opnieuw in te stellen:<br>
-								<a href='$link'>Klik hier!</a>
+								<td class=\"hero-subheader__content\" style=\"direction:ltr;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;\" align=\"right\">لاستعادة كلمة المرور:<br>
+								<a href='$link'>إضغط هنا!</a>
 								</td>
 							</tr>
 						</table>
@@ -352,7 +352,7 @@ if(isset($_POST['forgot_submit'])) {
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
-    <title>2D Market | Wachtwoord herstellen</title>
+    <title>2D Market | استعادة كلمة المرور</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -375,6 +375,7 @@ if(isset($_POST['forgot_submit'])) {
     <link href="css/select2.min.css" rel="stylesheet" />
     <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
     <link href="css/nouislider.min.css" rel="stylesheet">
+    <link href="css/bootstrap-rtl.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
     <link href="css/slider.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
@@ -405,17 +406,17 @@ if(isset($_POST['forgot_submit'])) {
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
     <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-        <h4 class="text-center" style="color: #00a9da"> Aan het laden..</h4> </div>
+        <h4 class="text-center" style="color: #00a9da">جاري التحميل.. </h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
 <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
 <div class="colored-header">
     <!-- Top Bar -->
-    <?php include "topbar-nl.php";?>
+    <?php include "topbar-ar.php";?>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
-    <?php include "nav_bar_nl.php";?>
+    <?php include "nav_bar_ar.php";?>
 </div>
 <!-- Navigation Menu End -->
 <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
@@ -425,7 +426,7 @@ if(isset($_POST['forgot_submit'])) {
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="header-page text-center">
-                    <h1>Herstel uw wachtwoord</h1>
+                    <h1>استعادة كلمة المرور الخاصة بك</h1>
                 </div>
             </div>
         </div>
@@ -459,11 +460,11 @@ if(isset($_POST['forgot_submit'])) {
                     <div class="form-grid">
                         <form action="resotre_password.php" name="login" id="login_form" method="post" data-toggle="validator">
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>البريد الإلكتروني</label>
                                 <input id="forgot_username" placeholder="Your Email" class="form-control" type="email" name="forgot_username">
                             </div>
 
-                            <button type="submit" class="btn btn-theme btn-lg btn-block" name="forgot_submit">Herstellen</button>
+                            <button type="submit" class="btn btn-theme btn-lg btn-block" name="forgot_submit">إستعادة</button>
 
                         </form>
                     </div>

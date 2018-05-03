@@ -293,44 +293,44 @@ Designed and Development by: ScriptsBundle
     });
 
     /*==========  Single Page SLider With Thumb ==========*/
-    $('#carousels').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: false,
-        itemWidth: 110,
-        itemMargin: 50,
-		rtl: true,
-        asNavFor: '.single-page-slider'
-    });
-    $('.single-page-slider').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: true,
-		rtl: true,
-        sync: "#carousel"
-    });
+    // $('#carousels').flexslider({
+    //     animation: "slide",
+    //     controlNav: false,
+    //     animationLoop: false,
+    //     slideshow: false,
+    //     itemWidth: 110,
+    //     itemMargin: 50,
+		// rtl: true,
+    //     asNavFor: '.single-page-slider'
+    // });
+    // $('.single-page-slider').flexslider({
+    //     animation: "slide",
+    //     controlNav: false,
+    //     animationLoop: false,
+    //     slideshow: true,
+		// rtl: true,
+    //     sync: "#carousel"
+    // });
 	
 	 /*==========  Price Range Slider  ==========*/
-    var stepSlider = document.getElementById('price-slider');
-    noUiSlider.create(stepSlider, {
-        start: [ 0 ],
-        step: 10,
-        range: {
-            'min': [  0 ],
-            'max': [ 100 ]
-        }
-    });
-
-
-
-
-    var stepSliderValueElement = document.getElementById('price-min');
-
-    stepSlider.noUiSlider.on('update', function( values, handle ) {
-        stepSliderValueElement.value = values[handle];
-    });
+    // var stepSlider = document.getElementById('price-slider');
+    // noUiSlider.create(stepSlider, {
+    //     start: [ 0 ],
+    //     step: 10,
+    //     range: {
+    //         'min': [  0 ],
+    //         'max': [ 100 ]
+    //     }
+    // });
+    //
+    //
+    //
+    //
+    // var stepSliderValueElement = document.getElementById('price-min');
+    //
+    // stepSlider.noUiSlider.on('update', function( values, handle ) {
+    //     stepSliderValueElement.value = values[handle];
+    // });
 
 
     /* ======= Template MegaMenu  ======= */
