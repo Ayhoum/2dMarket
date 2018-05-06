@@ -149,7 +149,7 @@ require_once "../scripts/db_connection.php";
             <div class="row">
                 <!-- Middle Content Area -->
 <!--                <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">-->
-<!--                    <!--  Form -->-->
+<!--                    <!--  Form -->
 <!--                    <div class="form-grid">-->
 <!--                        <form action="#" name="login" id="login_form" method="post" data-toggle="validator">-->
 <!--                            <div class="form-group">-->
@@ -170,7 +170,7 @@ require_once "../scripts/db_connection.php";
 <!--                        </form>-->
 <!--                    </div>-->
 <!---->
-<!--                    <!-- Form -->-->
+<!--                    <!-- Form -->
 <!--                </div>-->
                 <!-- Middle Content Area  End -->
                 <div class="row">
@@ -255,10 +255,6 @@ require_once "../scripts/db_connection.php";
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="col-xs-12 col-sm-5 text-right">
-                                                        <p class="help-block"><a data-target="#myModal" data-toggle="modal">Forgot password?</a>
-                                                        </p>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <button class="btn btn-theme btn-lg btn-block" name="submit" type="submit" id="regBut" disabled>Register</button>
@@ -333,7 +329,7 @@ require_once "../scripts/db_connection.php";
 
 
 <!-- Post Ad Sticky -->
-<a href="#" class="sticky-post-button hidden-xs">
+<a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>

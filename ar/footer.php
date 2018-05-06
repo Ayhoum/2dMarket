@@ -7,7 +7,7 @@
  */
 ?>
 
-<footer style="background-color: white">
+<footer style="background-color: white; direction: rtl">
     <!-- Footer Content -->
     <div class="footer-top">
         <div class="container">
@@ -26,13 +26,13 @@
                 </div>
                 <div class="col-md-3  col-sm-6 col-xs-12">
                     <!-- Follow Us -->
-                    <div class="widget socail-icons">
+                    <div class="widget socail-icons" style="direction: rtl">
                         <h5>تـابعنـا:</h5>
                         <ul>
-                            <li><a class="fb" href="https://www.facebook.com/2Dmarket" target="_blank"><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                            <li><a class="twitter" href="https://twitter.com/2DmarKet1" target="_blank"><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                            <li><a class="linkedin" href="https://www.linkedin.com/in/2d-market-b05189161/" target="_blank"><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                            <li><a class="instagram" href="https://www.instagram.com/2dmarket" target="_blank"><i class="fa fa-instagram"></i></a><span>Instagram</span></li>
+                            <li><a class="fb" href="https://www.facebook.com/2Dmarket" target="_blank"><i class="fa fa-facebook"></i></a><span> Facebook </span></li>
+                            <li><a class="twitter" href="https://twitter.com/2DmarKet1" target="_blank"><i class="fa fa-twitter"></i></a><span> Twitter </span></li>
+                            <li><a class="linkedin" href="https://www.linkedin.com/in/2d-market-b05189161/" target="_blank"><i class="fa fa-linkedin"></i></a><span> Linkedin </span></li>
+                            <li><a class="instagram" href="https://www.instagram.com/2dmarket" target="_blank"><i class="fa fa-instagram"></i></a><span> Instagram </span></li>
                         </ul>
                     </div>
                     <!-- Follow Us End -->
@@ -42,9 +42,9 @@
                     <div class="widget widget-newsletter">
                         <h5>معلومـات عن 2D Market</h5>
                             <ul >
-                                <li><a style="color: #00a9da" href="about.html">معلومـات عن الموقـع</a></li> <br>
+                                <li><a style="color: #00a9da" href="#">معلومـات عن الموقـع</a></li> <br>
                                 <li><a style="color: #00a9da" href="#">سيـاستنـا</a></li> <br>
-                                <li><a style="color: #00a9da" href="#">بلغ عن مشكلـة تقنيـة</a></li>
+                                <li><a style="color: #00a9da" href="contact.php">بلغ عن مشكلـة تقنيـة</a></li>
                             </ul>
                         </div>
                     </div>
@@ -58,8 +58,8 @@
         <div class="container">
             <div class="copyright-content">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                        <p>© 2018 جميـع الحقوق محفوظـة لـ <a href="http://2dmarket.com" target="_blank">2D Market</a> </p>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="direction: rtl">
+                        <p>© 2018 جميـع الحقوق محفوظـة لـ <a href="http://2dmarket.com" target="_blank"> 2D Market </a> </p>
                     </div>
                 </div>
             </div>

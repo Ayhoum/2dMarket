@@ -152,7 +152,7 @@
                     <!--                                            --><?php //}?>
                     <!--                                        </ul>-->
 
-                    <ul class="menu-search-bar" style="float: right">
+                    <ul class="menu-search-bar" style="float: left">
                         <?php if(!isset($_SESSION['username'])){?>
                             <li><a href="login.php"><i class="fa fa-sign-in"></i> Log in  </a> </li>
                         <?php } else { ?>

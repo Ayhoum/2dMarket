@@ -124,27 +124,116 @@ require_once "../scripts/db_connection.php";
                   <!-- Row -->
                   <div class="row">
                       <!-- Middle Content Area -->
-                      <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
-                          <!--  Form -->
-                          <div class="form-grid">
-                              <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
-                                  <div class="form-group">
-                                      <label>البريـد الالكترونـي</label>
-                                      <input id="email_field" placeholder="قم بادخال بريدك الالكتروني" class="form-control" type="email" name="email">
-                                  </div>
-                                  <div class="form-group">
-                                      <label>كلـمة المـرور</label>
-                                      <input id="password_field" placeholder="قم بادخال كلمة المرور" class="form-control" type="password" name="password">
-
-                                      <p><b><a href="resotre_password.php" target="_blank">نسيت كلمة المرور الخاصة بك؟</a></b></p>
-                                  </div>
-
-                                  <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">تسجيـل الدخـول </button>
-                              </form>
-                          </div>
-                          <!-- Form -->
-                      </div>
+<!--                      <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">-->
+<!--                          <!--  Form -->
+<!--                          <div class="form-grid">-->
+<!--                              <form action="#" name="login" id="login_form" method="post" data-toggle="validator">-->
+<!--                                  <div class="form-group">-->
+<!--                                      <label>البريـد الالكترونـي</label>-->
+<!--                                      <input id="email_field" placeholder="قم بادخال بريدك الالكتروني" class="form-control" type="email" name="email">-->
+<!--                                  </div>-->
+<!--                                  <div class="form-group">-->
+<!--                                      <label>كلـمة المـرور</label>-->
+<!--                                      <input id="password_field" placeholder="قم بادخال كلمة المرور" class="form-control" type="password" name="password">-->
+<!---->
+<!--                                      <p><b><a href="resotre_password.php" target="_blank">نسيت كلمة المرور الخاصة بك؟</a></b></p>-->
+<!--                                  </div>-->
+<!---->
+<!--                                  <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">تسجيـل الدخـول </button>-->
+<!--                              </form>-->
+<!--                          </div>-->
+<!--                          <!-- Form -->
+<!--                      </div>-->
                       <!-- Middle Content Area  End -->
+                          <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
+                              <div class="heading-title text-center">
+                                  <h2>أهـلا بكم في موقعنـا </h2>
+                              </div>
+                              <!-- Nav tabs -->
+                              <div class="card" style="direction: rtl">
+                                  <ul class="nav nav-tabs" role="tablist">
+                                      <li role="presentation" class="active"><a href="#login" aria-controls="home" role="tab" data-toggle="tab">تسجيـل الدخـول</a></li>
+                                      <li role="presentation"><a href="#register" aria-controls="profile" role="tab" data-toggle="tab">تسجيـل حسـاب جديد</a></li>
+                                  </ul>
+                                  <!-- Tab panes -->
+                                  <div class="tab-content">
+                                      <div role="tabpanel" class="tab-pane active" id="login">
+
+                                          <div class="form-grid">
+                                              <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
+                                                  <div class="form-group">
+                                                      <label>البريد الالكتروني</label>
+                                                      <input id="email_field" placeholder="Your Email" class="form-control" type="email" name="email">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label>كلمة السر</label>
+                                                      <input id="password_field" placeholder="Your Password" class="form-control" type="password" name="password">
+
+                                                      <p><b><a href="resotre_password.php" target="_blank">هل نسيت كلمة المرور الخاصة بك؟ </a></b></p>
+                                                  </div>
+
+                                                  <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">سجل الدخول</button>
+
+                                              </form>
+                                          </div>
+
+                                      </div>
+                                      <div role="tabpanel" class="tab-pane" id="register">
+
+                                          <div class="form-grid">
+                                              <form name="signup" id="signupForm" method="post" action="scripts/signup.php" data-toggle="validator">
+                                                  <div class="form-group">
+                                                      <label>البريـد الالكتروني</label>
+                                                      <input autocomplete="false" required placeholder="Enter Your Email" name="email" onchange="checkAvailability();" id="emailArea" class="form-control" type="email">
+                                                      <label id="checkEmailError" class=""></label>
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="form-group col-sm-6">
+                                                          <label>الاسـم</label>
+                                                          <input required placeholder="قم بادخال اسمك " name="fname" class="form-control" type="text">
+                                                      </div>
+                                                      <div class="form-group col-sm-6">
+                                                          <label>الكنيـة</label>
+                                                          <input required placeholder="قم بادخال كنيتك" name="lname" class="form-control" type="text">
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label>اسم المستخدم</label>
+                                                      <input required placeholder="قم باختيار اسم مستخدم خاص بك" name="username" class="form-control" type="text">
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="form-group col-sm-6">
+                                                          <label>كلمة السر</label>
+                                                          <input required placeholder="قم بادخال كلمة السر الخاصة بك" id="inputPassword" name="password" class="form-control" type="password">
+                                                      </div>
+                                                      <div class="form-group col-sm-6">
+                                                          <label>تأكيد كلمة السر</label>
+                                                          <input required placeholder="قم بتأكيد كلمة السر" name="repassword" class="form-control" onChange="checkPasswordMatch();" id="inputPasswordConfirm" type="password">
+                                                          <label id="txtConfirm"></label>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <div class="row">
+                                                          <div class="col-xs-12 col-sm-7">
+                                                              <div class="skin-minimal">
+                                                                  <ul class="list">
+                                                                      <li>
+                                                                          <input required type="checkbox" id="minimal-checkbox-1">
+                                                                          <label for="minimal-checkbox-1">انـا اوافق على <a href="#">شروط الاستخدام</a></label>
+                                                                      </li>
+                                                                  </ul>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <button class="btn btn-theme btn-lg btn-block" name="submit" type="submit" id="regBut" disabled>سجل حساب جديد</button>
+                                              </form>
+                                          </div>
+
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
                   </div>
                   <!-- Row End -->
               </div>
@@ -163,10 +252,10 @@ require_once "../scripts/db_connection.php";
                   <!-- Modal content-->
                   <div class="modal-content">
                       <div class="modal-header rte">
-                          <h2 class="modal-title text-center">You entered a wrong password!</h2>
+                          <h2 class="modal-title text-center">لقد قمت بادخال كلمة سر خاطئة</h2>
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                          <button type="button" class="btn btn-info" data-dismiss="modal">اعادة المحاولة</button>
                       </div>
                   </div>
               </div>
@@ -179,12 +268,12 @@ require_once "../scripts/db_connection.php";
                   <!-- Modal content-->
                   <div class="modal-content">
                       <div class="modal-header rte">
-                          <h2 class="modal-title text-center">Maybe you entered a wrong email</h2>
-                          <h2 class="modal-title text-center">Please, check it or make a new account!</h2>
+                          <h2 class="modal-title text-center">من المحتمل من انك قد قمت بادخال ايميل خاطئ</h2>
+                          <h2 class="modal-title text-center">من فضلك قم بالتأكد من الايميل , أو قم بتسجيل حساب جديد</h2>
                       </div>
                       <div class="modal-footer">
                           <a href="register.php" type="button" class="btn btn-warning">Register</a>
-                          <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                          <button type="button" class="btn btn-info" data-dismiss="modal">اعادة المحاولة</button>
                       </div>
                   </div>
               </div>
@@ -197,10 +286,10 @@ require_once "../scripts/db_connection.php";
                   <!-- Modal content-->
                   <div class="modal-content">
                       <div class="modal-header rte">
-                          <h2 class="modal-title text-center">You left something empty!</h2>
+                          <h2 class="modal-title text-center">لقد تركت حقلاً فارغًا!</h2>
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                          <button type="button" class="btn btn-info" data-dismiss="modal">اعادة المحاولة</button>
                       </div>
                   </div>
               </div>
@@ -209,12 +298,6 @@ require_once "../scripts/db_connection.php";
 
       <!-- Main Content Area End --> 
       <!-- Post Ad Sticky -->
-      <a href="#" class="sticky-post-button hidden-xs">
-         <span class="sell-icons">
-         <i class="flaticon-transport-9"></i>
-         </span>
-         <h4>يبيع</h4>
-      </a>
       <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
@@ -258,6 +341,64 @@ require_once "../scripts/db_connection.php";
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
 
+      <script>
+          function validateEmail(email) {
+              var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+              return re.test(email);
+          }
+
+          function checkPasswordMatch() {
+              var password = $("#inputPassword").val();
+              var confirmPassword = $("#inputPasswordConfirm").val();
+
+              if (password != confirmPassword){
+                  $("#txtConfirm").html("Doesn't Match");
+                  $("#txtConfirm").removeClass('greenfont');
+                  $("#txtConfirm").addClass('redfont');
+                  $("#regBut").prop("disabled",true);
+              }else{
+                  $("#txtConfirm").html("Passwords match.");
+                  $("#txtConfirm").removeClass('redfont');
+                  $("#txtConfirm").addClass('greenfont');
+                  $("#regBut").prop("disabled",false);
+              }
+          }
+
+          function checkAvailability(){
+              var email = $("#emailArea").val();
+              if(validateEmail(email)){
+                  $.post('scripts/handle_email.php?email='+email,function(response){
+
+                      if(response > 0){
+                          $('#checkEmailError').html("This email is already registered!");
+                          $('#checkEmailError').removeClass('greenfont');
+                          $('#checkEmailError').addClass('redfont');
+                          $("#regBut").prop("disabled",true);
+                      }else{
+                          $('#checkEmailError').html("This email is available!");
+                          $('#checkEmailError').removeClass('redfont');
+                          $('#checkEmailError').addClass('greenfont');
+                          $("#regBut").prop("disabled",false);
+                      }
+                  });
+              }else{
+                  $('#checkEmailError').html("Enter a valid Email Address!");
+                  $('#checkEmailError').removeClass('greenfont');
+                  $('#checkEmailError').addClass('redfont');
+                  $("#regBut").prop("disabled",true);
+
+              }
+          }
+
+          $(document).ready(function () {
+              $("#inputPasswordConfirm").keyup(checkPasswordMatch);
+              $("#emailArea").keyup(checkAvailability);
+          });
+
+
+
+
+      </script>
 
 
    </body>

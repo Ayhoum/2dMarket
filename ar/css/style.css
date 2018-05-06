@@ -6246,7 +6246,7 @@ ul.category-list-data li:hover a span {
 /* =-=-=-=-=-=-= Funfacts  =-=-=-=-=-=-= */
 
 .funfacts {
-	background: rgba(0, 0, 0, 0) url("../images/banner-8.jpg") no-repeat scroll center center;
+	background: rgba(0, 0, 0, 0) ;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;

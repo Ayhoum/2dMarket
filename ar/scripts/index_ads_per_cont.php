@@ -39,6 +39,12 @@
                                           WHERE ADDRESS.country = '{$country}' && ADVERTISEMENT.lang = 'AR'";
                             $country_result = mysqli_query($mysqli, $country_query);
                             $num_ads = mysqli_num_rows($country_result);
+
+                            if   ($country == "Netherlands") { $country = "هـولاندا";}
+                            elseif ($country == "Syrian Arab Republic"){ $country = "سـوريـا";}
+                            elseif ($country == "Germany"){  $country = "ألمـانيـا";}
+                            else { $country = "بلدان أخرى";}
+
                         ?>
                         <!-- Country Ads -->
                         <div class="col-sm-6 col-xs-12 col-md-4">

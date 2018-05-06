@@ -83,6 +83,16 @@ require_once "../scripts/db_connection.php";
 
         };
     </script>
+
+    <style>
+        .redfont{
+            color: red;
+        }
+        .greenfont{
+            color: green;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -126,27 +136,127 @@ require_once "../scripts/db_connection.php";
             <!-- Row -->
             <div class="row">
                 <!-- Middle Content Area -->
-                <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
-                    <!--  Form -->
-                    <div class="form-grid">
-                        <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input id="email_field" placeholder="voor uw Email in !" class="form-control" type="email" name="email">
-                            </div>
-                            <div class="form-group">
-                                <label>Wachtwoord</label>
-                                <input id="password_field" placeholder="voor uw wachtwoord in !" class="form-control" type="password" name="password">
-
-                                <p><b><a href="scripts/RestorePassowrd/resotre_password.php" target="_blank">Uw wachtwoord vergeten! </a></b></p>
-                            </div>
-
-                            <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">Inloggen</button>
-                        </form>
-                    </div>
-                    <!-- Form -->
-                </div>
+<!--                <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">-->
+<!--                    <!--  Form -->
+<!--                    <div class="form-grid">-->
+<!--                        <form action="#" name="login" id="login_form" method="post" data-toggle="validator">-->
+<!--                            <div class="form-group">-->
+<!--                                <label>Email</label>-->
+<!--                                <input id="email_field" placeholder="voor uw Email in !" class="form-control" type="email" name="email">-->
+<!--                            </div>-->
+<!--                            <div class="form-group">-->
+<!--                                <label>Wachtwoord</label>-->
+<!--                                <input id="password_field" placeholder="voor uw wachtwoord in !" class="form-control" type="password" name="password">-->
+<!---->
+<!--                                <p><b><a href="scripts/RestorePassowrd/resotre_password.php" target="_blank">Uw wachtwoord vergeten! </a></b></p>-->
+<!--                            </div>-->
+<!---->
+<!--                            <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">Inloggen</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                    <!-- Form -->
+<!--                </div>-->
                 <!-- Middle Content Area  End -->
+                <div class="row">
+                    <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
+                        <div class="heading-title">
+                            <h2>Welkom bij 2D Market </h2>
+                        </div>
+                        <!-- Nav tabs -->
+                        <div class="card">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#login" aria-controls="home" role="tab" data-toggle="tab">Inloggen</a></li>
+                                <li role="presentation"><a href="#register" aria-controls="profile" role="tab" data-toggle="tab">Inschrijven</a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="login">
+
+                                    <div class="form-grid">
+                                        <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
+                                            <div class="form-group">
+                                                <label>Email</label>
+                                                <input id="email_field" placeholder="Uw Email" class="form-control" type="email" name="email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Wachtwoord</label>
+                                                <input id="password_field" placeholder="Uw Wachtwoord" class="form-control" type="password" name="password">
+
+                                                <p><b><a href="resotre_password.php" target="_blank">Bent u uw wachtwoord vergeten?</a></b></p>
+<!--                                                <p><b><a href="register.php" target="_blank">Are new here? Register now ! </a></b></p>-->
+
+                                            </div>
+
+                                            <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">Inloggen</button>
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="register">
+
+                                    <div class="form-grid">
+                                        <form name="signup" id="signupForm" method="post" action="scripts/signup.php" data-toggle="validator">
+                                            <div class="form-group">
+                                                <label>Uw Email</label>
+                                                <input autocomplete="false" required placeholder="Voer uw e-mailadres in" name="email" onchange="checkAvailability();" id="emailArea" class="form-control" type="email">
+                                                <label id="checkEmailError" class=""></label>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    <label>First Name</label>
+                                                    <input required placeholder="Voer uw voornaam in" name="fname" class="form-control" type="text">
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label>Last Name</label>
+                                                    <input required placeholder="Voer uw achternaam in" name="lname" class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Username</label>
+                                                <input required placeholder="Voer uw gebruikersnaam in" name="username" class="form-control" type="text">
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    <label>Password</label>
+                                                    <input required placeholder="Voer uw wachtwoord in" id="inputPassword" name="password" class="form-control" type="password">
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label>Repeate The Password</label>
+                                                    <input required placeholder="Voer uw wachtwoord opnieuw in" name="repassword" class="form-control" onChange="checkPasswordMatch();" id="inputPasswordConfirm" type="password">
+                                                    <label id="txtConfirm"></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-7">
+                                                        <div class="skin-minimal">
+                                                            <ul class="list">
+                                                                <li>
+                                                                    <input required type="checkbox" id="minimal-checkbox-1">
+                                                                    <label for="minimal-checkbox-1">Ik ga akkoord met de <a href="#">Algemene voorwaarden</a></label>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+<!--                                                    <div class="col-xs-12 col-sm-5 text-right">-->
+<!--                                                        <p class="help-block"><a data-target="#myModal" data-toggle="modal">Forgot password?</a>-->
+<!--                                                        </p>-->
+<!--                                                    </div>-->
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-theme btn-lg btn-block" name="submit" type="submit" id="regBut" disabled>Inschrijven</button>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Row End -->
+                </div>
+
             </div>
             <!-- Row End -->
         </div>
@@ -165,10 +275,10 @@ require_once "../scripts/db_connection.php";
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header rte">
-                    <h2 class="modal-title text-center">You entered a wrong password!</h2>
+                    <h2 class="modal-title text-center">U hebt een verkeerd wachtwoord ingevoerd</h2>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Probeer het nog eens</button>
                 </div>
             </div>
         </div>
@@ -181,12 +291,12 @@ require_once "../scripts/db_connection.php";
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header rte">
-                    <h2 class="modal-title text-center">Maybe you entered a wrong email</h2>
-                    <h2 class="modal-title text-center">Please, check it or make a new account!</h2>
+                    <h2 class="modal-title text-center">Misschien hebt u een verkeerde e-mail ingevoerd</h2>
+                    <h2 class="modal-title text-center">Alsjeblieft, controleer het of maak een nieuw account!</h2>
                 </div>
                 <div class="modal-footer">
-                    <a href="register.php" type="button" class="btn btn-warning">Register</a>
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                    <a href="register.php" type="button" class="btn btn-warning">Inschrijven</a>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Probeer het nog eens</button>
                 </div>
             </div>
         </div>
@@ -199,10 +309,10 @@ require_once "../scripts/db_connection.php";
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header rte">
-                    <h2 class="modal-title text-center">You left something empty!</h2>
+                    <h2 class="modal-title text-center">U hebt iets leeg achtergelaten!</h2>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Try again</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Probeer het nog eens</button>
                 </div>
             </div>
         </div>
@@ -211,7 +321,7 @@ require_once "../scripts/db_connection.php";
 
 
 <!-- Post Ad Sticky -->
-<a href="#" class="sticky-post-button hidden-xs">
+<a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>
@@ -255,6 +365,64 @@ require_once "../scripts/db_connection.php";
 <script src="js/custom.js"></script>
 
 
+<script>
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    function checkPasswordMatch() {
+        var password = $("#inputPassword").val();
+        var confirmPassword = $("#inputPasswordConfirm").val();
+
+        if (password != confirmPassword){
+            $("#txtConfirm").html("Doesn't Match");
+            $("#txtConfirm").removeClass('greenfont');
+            $("#txtConfirm").addClass('redfont');
+            $("#regBut").prop("disabled",true);
+        }else{
+            $("#txtConfirm").html("Passwords match.");
+            $("#txtConfirm").removeClass('redfont');
+            $("#txtConfirm").addClass('greenfont');
+            $("#regBut").prop("disabled",false);
+        }
+    }
+
+    function checkAvailability(){
+        var email = $("#emailArea").val();
+        if(validateEmail(email)){
+            $.post('scripts/handle_email.php?email='+email,function(response){
+
+                if(response > 0){
+                    $('#checkEmailError').html("This email is already registered!");
+                    $('#checkEmailError').removeClass('greenfont');
+                    $('#checkEmailError').addClass('redfont');
+                    $("#regBut").prop("disabled",true);
+                }else{
+                    $('#checkEmailError').html("This email is available!");
+                    $('#checkEmailError').removeClass('redfont');
+                    $('#checkEmailError').addClass('greenfont');
+                    $("#regBut").prop("disabled",false);
+                }
+            });
+        }else{
+            $('#checkEmailError').html("Enter a valid Email Address!");
+            $('#checkEmailError').removeClass('greenfont');
+            $('#checkEmailError').addClass('redfont');
+            $("#regBut").prop("disabled",true);
+
+        }
+    }
+
+    $(document).ready(function () {
+        $("#inputPasswordConfirm").keyup(checkPasswordMatch);
+        $("#emailArea").keyup(checkAvailability);
+    });
+
+
+
+
+</script>
 
 </body>
 </html>

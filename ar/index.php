@@ -285,7 +285,7 @@ require_once "scripts/time_elapse.php";
                   <div class="heading-panel">
                      <div class="col-xs-12 col-md-12 col-sm-12">
                         <h3 class="main-title text-left">
-                           إعلانات مميزة
+                           أخر الاعلانـات
                         </h3>
                         <!-- Style Switcher -->
                         <div class="switcher pull-right flip">
