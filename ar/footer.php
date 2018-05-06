@@ -42,8 +42,8 @@
                     <div class="widget widget-newsletter">
                         <h5>معلومـات عن 2D Market</h5>
                             <ul >
-                                <li><a style="color: #00a9da" href="#">معلومـات عن الموقـع</a></li> <br>
-                                <li><a style="color: #00a9da" href="#">سيـاستنـا</a></li> <br>
+                                <li><a style="color: #00a9da" href="terms.php">شروط واحكـام الاستخدام</a></li> <br>
+                                <li><a style="color: #00a9da" href="policies.php">سيـاستنـا</a></li> <br>
                                 <li><a style="color: #00a9da" href="contact.php">بلغ عن مشكلـة تقنيـة</a></li>
                             </ul>
                         </div>

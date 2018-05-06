@@ -250,7 +250,7 @@ require_once "../scripts/db_connection.php";
                                                             <ul class="list">
                                                                 <li>
                                                                     <input required type="checkbox" id="minimal-checkbox-1">
-                                                                    <label for="minimal-checkbox-1">I agree <a href="#">Terms of Services</a></label>
+                                                                    <label for="minimal-checkbox-1">I agree <a href="terms.php">Terms of Services</a></label>
                                                                 </li>
                                                             </ul>
                                                         </div>

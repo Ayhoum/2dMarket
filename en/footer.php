@@ -42,9 +42,9 @@
                     <div class="widget widget-newsletter">
                         <h5>About Our website</h5>
                             <ul >
-                                <li><a style="color: #00a9da" href="about.html">About Us</a></li> <br>
-                                <li><a style="color: #00a9da" href="#">Disclaimer</a></li> <br>
-                                <li><a style="color: #00a9da" href="#">Report a Technical Problem</a></li>
+                                <li><a style="color: #00a9da" href="terms.php">Terms & Conditions</a></li> <br>
+                                <li><a style="color: #00a9da" href="policies.php">Disclaimer</a></li> <br>
+                                <li><a style="color: #00a9da" href="contact.php">Report a Technical Problem</a></li>
                             </ul>
                         </div>
                     </div>

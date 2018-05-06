@@ -50,7 +50,7 @@ function findAllCategories()
         echo " <td>$icon_name</td>";
         echo " <td><a href='cat.php?delete={$cat_id}'>Delete</td>";
         echo " <td><a href='cat.php?edit={$cat_id}'>Edit</td>";
-        echo " <td><a href='sub-category.php?category-id={$cat_id}'>Show Sub-categories</td>";
+        echo " <td><a href='sub-categories.php?category-id={$cat_id}'>Show Sub-categories</td>";
 
         echo "</tr>";
     }
@@ -95,8 +95,8 @@ function findAllSubCategories()
         echo " <td>{$sub_category_title}</td>";
         echo " <td>$sub_icon_name</td>";
 
-        echo " <td><a href='sub-category.php?deleteSUB={$sub_cat_id}'>Delete</td>";
-        echo " <td><a href='sub-category.php?editSUB={$sub_cat_id}'>Edit</td>";
+        echo " <td><a href='sub-categories.php?deleteSUB={$sub_cat_id}'>Delete</td>";
+        echo " <td><a href='sub-categories.php?editSUB={$sub_cat_id}'>Edit</td>";
 
 
         echo "</tr>";

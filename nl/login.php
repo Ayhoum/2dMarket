@@ -234,7 +234,7 @@ require_once "../scripts/db_connection.php";
                                                             <ul class="list">
                                                                 <li>
                                                                     <input required type="checkbox" id="minimal-checkbox-1">
-                                                                    <label for="minimal-checkbox-1">Ik ga akkoord met de <a href="#">Algemene voorwaarden</a></label>
+                                                                    <label for="minimal-checkbox-1">Ik ga akkoord met de <a href="terms.php">Algemene voorwaarden</a></label>
                                                                 </li>
                                                             </ul>
                                                         </div>
