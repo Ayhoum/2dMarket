@@ -8,7 +8,7 @@
 ?>
 <?php
 
-$featured_ads = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'NL' && `ad_type` = 'PREMIUM' ORDER BY `date` DESC LIMIT 6";
+$featured_ads = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'NL'  ORDER BY `date` DESC LIMIT 6";
 $ad_result = mysqli_query($mysqli, $featured_ads);
 
 if (mysqli_num_rows($ad_result) > 0) {
@@ -82,8 +82,8 @@ if (mysqli_num_rows($ad_result) > 0) {
             $pic = $row['picture_url'];
             $pic_name = $row['picture_name'];
         }
-        if(empty($pic_name) || !file_exists('../en_ad_photo/'.$pic_name)){
-            $pic = 'en_ad_photo/';
+        if(empty($pic_name) || !file_exists('../nl_ad_photo/'.$pic_name)){
+            $pic = 'nl_ad_photo/';
             $pic_name = 'white.jpg';
         }
         ?>

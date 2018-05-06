@@ -7,6 +7,8 @@
  */
 ?>
 
+
+
 <nav id="menu-1" class="mega-menu">
     <!-- menu list items container -->
     <section class="menu-list-items">
@@ -26,9 +28,9 @@
                         <!-- active class -->
 
                         <li>
-                            <a href="javascript:void(0)">Categorieën <i class="fa fa-angle-down fa-indicator"></i></a>
+                            <a href="#">Categorieën <i class="fa fa-angle-down fa-indicator"></i></a>
                             <!-- drop down multilevel  -->
-                            <ul class="drop-down-multilevel">
+                            <ul class="drop-down-multilevel" role='menu'>
                                 <li>
                                     <a href="javascript:void(0)">Elektronica <i class="fa fa-angle-right fa-indicator"></i> </a>
                                     <!-- drop down second level -->
@@ -140,16 +142,16 @@
                             </ul>
                         </li>
 
-                        <li><a href="all_product.php">Alle Advertenties  </a></li>
+                        <li><a href="all_product.php">Alle Ads. </a></li>
                         <li><a href="contact_us.php">Contact Us</a></li>
                     </ul>
                     <ul class="menu-search-bar">
                         <?php if(!isset($_SESSION['username'])){?>
                             <li>
-                                <a href="login.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                                <a href="login.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Aanmelden</a>
                             </li>
                         <?php } else{ ?>
-                            <a href="profile.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+                            <a href="profile.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Profiel</a>
                         <?php }?>
                     </ul>
 <!--                    <ul class="menu-search-bar">-->

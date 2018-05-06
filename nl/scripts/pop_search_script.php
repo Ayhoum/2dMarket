@@ -16,7 +16,7 @@
     }
 
     $tag = $_GET['tag'];
-    $ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'EN' && `title` LIKE '%{$tag}%' ";
+    $ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'NL' && `title` LIKE '%{$tag}%' ";
     $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
     $num_Ads = mysqli_num_rows($ad_result_get_num);
 
@@ -119,7 +119,7 @@
                     $pic_name = $row['picture_name'];
                 }
             }else{
-                $pic = "en_ad_photo/";
+                $pic = "nl_ad_photo/";
                 $pic_name = "white.jpg";
             }
             ?>
@@ -174,7 +174,7 @@
                 <a href="all_product">
                     <div class="banner">
                         <div class="wrapper">
-                            <span class="title">Oops! Er Zijn geen Advertenties die past bij uw zoekopdracht! Graag probeer iets anders</span>
+                            <span class="title">Oh no! it seems that there is no matching Ads for your search; Try something else!</span>
                         </div>
                     </div>
                     <!-- /.banner-->
@@ -188,11 +188,11 @@
 
     <div class="col-md-12 col-xs-12 col-sm-12">
         <section class="advertising">
-            <a href="<?php if (isset($_SESSION['username'])) {?> new_advertisement.php <?php } else {echo "login.php"; } ?>">
+            <a href="new_advertisement.php">
                 <div class="banner">
                     <div class="wrapper">
-                        <span class="title">Wilt u uw advertentie hier zitten ?</span>
-                        <span class="submit"> Nu uploaden! <i class="fa fa-plus-square"></i></span>
+                        <span class="title">Do you want your property to be listed here?</span>
+                        <span class="submit">Submit it now! <i class="fa fa-plus-square"></i></span>
                     </div>
                 </div>
                 <!-- /.banner-->

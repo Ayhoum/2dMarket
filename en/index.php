@@ -1,13 +1,10 @@
-﻿
-<?php
+﻿<?php
 session_start();
 ob_start();
 require_once "../scripts/db_connection.php";
 require_once "scripts/time_elapse.php";
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -19,7 +16,7 @@ require_once "scripts/time_elapse.php";
       <meta name="author" content="ScriptsBundle">
       <title>2D Market | Home Page </title>
       <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-      <link rel="icon" href="images/logo_png.png" type="image/x-icon" />
+      <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
       <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
       <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
@@ -40,6 +37,8 @@ require_once "scripts/time_elapse.php";
       <link href="css/select2.min.css" rel="stylesheet" />
       <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
       <link href="css/nouislider.min.css" rel="stylesheet">
+      <link href="css/ion.rangeSlider.css" rel="stylesheet">
+      <link href="css/ion.rangeSlider.skinRound.css" rel="stylesheet">
       <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
       <link href="css/slider.css" rel="stylesheet">
       <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
@@ -65,13 +64,16 @@ require_once "scripts/time_elapse.php";
            .shadow{
                box-shadow: 0 0 12px red;
            }
+           .carousel-control.left, .carousel-control.right {
+               background-image: none
+           }
        </style>
    </head>
    <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <div id="loader-wrapper">
          <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-         <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+         <h4 class="text-center" style="color: #00a9da">Loading..</h4> </div>
          <div class="loader-section section-left"></div>
          <div class="loader-section section-right"></div>
       </div>
@@ -83,6 +85,7 @@ require_once "scripts/time_elapse.php";
          <!-- Navigation Menu -->
 
           <?php include "nav_bar_en.php";?>
+
       </div>
       <!-- Navigation Menu End -->
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
@@ -97,37 +100,26 @@ require_once "scripts/time_elapse.php";
 
               <!-- Wrapper for slides -->
               <div class="carousel-inner" >
-                  <div class="itemFill imgLiquid item active" style="width:100%; height:400px;">
-                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/comprar-e-vender-dolares-e-investimento-933x445.jpeg" alt="">
+                  <div class="item active" style="width:100%; background-size: cover">
+                      <img src="../slider/2.jpg" alt="Chicago">
                   </div>
 
-                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/compraSegura.png" alt="">
-                  </div>
-
-                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/comprar-por-internet-barato-y-seguro-800x410.jpg" alt="">
-                  </div>
-
-                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/ecommerce-marketing-automation-best-practices-1.jpg" alt="">
-                  </div>
-
-                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/shoping-on-line.jpg" alt="">
+                  <div class="item" style="width:100%; background-size: cover">
+                      <img src="../slider/3.jpg" alt="New York">
                   </div>
               </div>
 
               <!-- Left and right controls -->
-              <!--              <a class="left carousel-control" href="#myCarousel" data-slide="prev">-->
-              <!--                  <span class="glyphicon glyphicon-chevron-left"></span>-->
-              <!--                  <span class="sr-only">Previous</span>-->
-              <!--              </a>-->
-              <!--              <a class="right carousel-control" href="#myCarousel" data-slide="next">-->
-              <!--                  <span class="glyphicon glyphicon-chevron-right"></span>-->
-              <!--                  <span class="sr-only">Next</span>-->
-              <!--              </a>-->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-triangle-left" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-triangle-right" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
+                  <span class="sr-only">Next</span>
+              </a>
           </div>
+
          <!-- end map -->
       </section>
 
@@ -136,13 +128,14 @@ require_once "scripts/time_elapse.php";
       <section class="search-2">
          <div class="container">
             <!-- Title -->
-            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+             <div class="row" style="margin-left: 0;margin-right: 0;">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                <div class="search-title">Browse Ads</div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-left: 0;margin-right: 0;">
                <form method="post" class="search-form validation">
                   <!-- Category -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
+                  <div class="col-md-3 col-xs-12 col-sm-6">
                      <select name="cat" class="category form-control" id="catSelect" required>
                         <option selected disabled value="dis">Select Option</option>
                          <?php
@@ -175,20 +168,22 @@ require_once "scripts/time_elapse.php";
                      </select>
                   </div>
                   <!-- Search Field -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
+                  <div class="col-md-3 col-xs-12 col-sm-6">
                      <input type="text" name="query" id="querySearch" class="form-control" placeholder="What Are You Looking For..." required/>
                   </div>
                   <!-- Price Range SLider -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
-                     <span class="price-slider-value">Distance (Km) - <input type="text" name="dis" id="price-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
-                     <div id="price-slider"></div>
+                  <div class="col-md-3 col-xs-12 col-sm-6">
+                     <span class="price-slider-value">Distance (Km) - <input type="text" name="dis" id="dis-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
+                      <input type="text" id="example_id" name="example_name" value="" />
                   </div>
                   <!-- Search Button -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
+                  <div class="col-md-3 col-xs-12 col-sm-6">
                      <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Search</button>
                   </div>
                   <!-- end .item -->
-                   <div class="hero-form-sub">
+            </div>
+                   <div class="row">
+                   <div class="hero-form-sub col-md-12">
                        <strong class="hidden-sm-down">Popular Searches</strong>
                        <ul>
                            <li><a href="pop_search.php?tag=Iphone 7">Iphone 7</a></li>
@@ -200,6 +195,7 @@ require_once "scripts/time_elapse.php";
                            <li><a href="pop_search.php?tag=Laptop">Laptops</a></li>
                            <li><a href="pop_search.php?tag=Xbox Games">Xbox Games</a></li>
                        </ul>
+                   </div>
                    </div>
                </form>
                <!-- end .search-form -->
@@ -407,7 +403,8 @@ require_once "scripts/time_elapse.php";
       <!-- Jquery Select Options  -->
       <script src="js/select2.min.js"></script>
       <!-- noUiSlider -->
-      <script src="js/nouislider.all.min.js"></script>
+      <script src="js/ion.rangeSlider.js"></script>
+      <script src="js/ion.rangeSlider.min.js"></script>
       <!-- Carousel Slider  -->
       <script src="js/carousel.min.js"></script>
       <script src="js/slide.js"></script>
@@ -425,112 +422,129 @@ require_once "scripts/time_elapse.php";
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
       <!-- Googgle map For THis Page Only -->
-      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>
+<!--      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>-->
       <script src="js/infobox.js"></script>
       <!-- Parallax -->
       <script src="js/imgLiquid-min.js"></script>
-      <script src="js/data.json"></script>
-      <script src="js/markerclusterer.js"></script>
-      <script src="js/markers-map.js"></script>
-      <script type="text/javascript">
-	      "use strict";
-         google.maps.event.addDomListener(window, 'load', speedTest.init);
-		 (jQuery);
-      </script>
+<!--      <script src="js/data.json"></script>-->
+<!--      <script src="js/markerclusterer.js"></script>-->
+<!--      <script src="js/markers-map.js"></script>-->
+<!--      <script type="text/javascript">-->
+<!--	      "use strict";-->
+<!--         google.maps.event.addDomListener(window, 'load', speedTest.init);-->
+<!--		 (jQuery);-->
+<!--      </script>-->
+
+<!--<script>-->
+<!--    $(function() {-->
+<!---->
+<!--        $(".itemFill").imgLiquid({-->
+<!--            fill: true,-->
+<!--            horizontalAlign: "center",-->
+<!--            verticalAlign: "center"-->
+<!--        });-->
+<!---->
+<!--    });-->
+<!---->
+<!---->
+<!--    var long;-->
+<!--    var lati;-->
+<!--    $(document).ready(function() {-->
+<!--        var currgeocoder;-->
+<!---->
+<!---->
+<!---->
+<!--        //Set geo location lat and long-->
+<!---->
+<!--        navigator.geolocation.getCurrentPosition(function(position) {-->
+<!---->
+<!--            geo_loc = processGeolocationResult(position);-->
+<!--            currLatLong = geo_loc.split(",");-->
+<!--            initializeCurrent(currLatLong[0], currLatLong[1]);-->
+<!---->
+<!--        });-->
+<!---->
+<!--        //Get geo location result-->
+<!---->
+<!--        function processGeolocationResult(position) {-->
+<!--            html5Lat = position.coords.latitude; //Get latitude-->
+<!--            html5Lon = position.coords.longitude; //Get longitude-->
+<!--            html5TimeStamp = position.timestamp; //Get timestamp-->
+<!--            html5Accuracy = position.coords.accuracy; //Get accuracy in meters-->
+<!--            return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);-->
+<!--        }-->
+<!---->
+<!--        function setCookie(cname, cvalue, exdays) {-->
+<!--            var d = new Date();-->
+<!--            d.setTime(d.getTime() + (exdays*60*60*24*1000));-->
+<!--            var expires = "expires="+ d.toUTCString();-->
+<!--            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";-->
+<!--        }-->
+<!---->
+<!---->
+<!--        function initializeCurrent(latcurr, longcurr) {-->
+<!--            currgeocoder = new google.maps.Geocoder();-->
+<!--            console.log(latcurr + "-- ######## --" + longcurr);-->
+<!---->
+<!--            if (latcurr != '' && longcurr != '') {-->
+<!--                var myLatlng = new google.maps.LatLng(latcurr, longcurr);-->
+<!--                long = longcurr;-->
+<!--                lati = latcurr;-->
+<!--                setCookie("longC",long,2);-->
+<!--                setCookie("latiC",lati,2);-->
+<!---->
+<!--                return getCurrentAddress(myLatlng);-->
+<!--            }-->
+<!--        }-->
+<!---->
+<!--        //Get current address-->
+<!---->
+<!--        function getCurrentAddress(location) {-->
+<!--            currgeocoder.geocode({-->
+<!--                'location': location-->
+<!---->
+<!--            }, function(results, status) {-->
+<!---->
+<!--                if (status == google.maps.GeocoderStatus.OK) {-->
+<!--                    console.log(results[0]);-->
+<!--                } else {-->
+<!--                    alert('Geocode was not successful for the following reason: ' + status);-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+<!--    });-->
+<!---->
+<!--</script>-->
 
 <script>
-    $(function() {
-
-        $(".itemFill").imgLiquid({
-            fill: true,
-            horizontalAlign: "center",
-            verticalAlign: "center"
-        });
-
-    });
-
-
-    var long;
-    var lati;
-    $(document).ready(function() {
-        var currgeocoder;
-
-
-
-        //Set geo location lat and long
-
-        navigator.geolocation.getCurrentPosition(function(position) {
-
-            geo_loc = processGeolocationResult(position);
-            currLatLong = geo_loc.split(",");
-            initializeCurrent(currLatLong[0], currLatLong[1]);
-
-        });
-
-        //Get geo location result
-
-        function processGeolocationResult(position) {
-            html5Lat = position.coords.latitude; //Get latitude
-            html5Lon = position.coords.longitude; //Get longitude
-            html5TimeStamp = position.timestamp; //Get timestamp
-            html5Accuracy = position.coords.accuracy; //Get accuracy in meters
-            return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);
-        }
-
-        function setCookie(cname, cvalue, exdays) {
-            var d = new Date();
-            d.setTime(d.getTime() + (exdays*60*60*24*1000));
-            var expires = "expires="+ d.toUTCString();
-            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-
-
-        function initializeCurrent(latcurr, longcurr) {
-            currgeocoder = new google.maps.Geocoder();
-            console.log(latcurr + "-- ######## --" + longcurr);
-
-            if (latcurr != '' && longcurr != '') {
-                var myLatlng = new google.maps.LatLng(latcurr, longcurr);
-                long = longcurr;
-                lati = latcurr;
-                setCookie("longC",long,2);
-                setCookie("latiC",lati,2);
-
-                return getCurrentAddress(myLatlng);
-            }
-        }
-
-        //Get current address
-
-        function getCurrentAddress(location) {
-            currgeocoder.geocode({
-                'location': location
-
-            }, function(results, status) {
-
-                if (status == google.maps.GeocoderStatus.OK) {
-                    console.log(results[0]);
-                } else {
-                    alert('Geocode was not successful for the following reason: ' + status);
-                }
-            });
+    var stepSliderValueElement = document.getElementById('dis-min');
+    stepSliderValueElement.value = 10;
+    $("#example_id").ionRangeSlider({
+        grid: false,
+        min: 10,
+        max: 100,
+        from: 0,
+        step: 10,
+        hide_min_max: true,
+        prettify_enabled: false,
+        onChange: function (data) {
+            stepSliderValueElement.value = data.from;
         }
     });
 
-</script>
-
-<script>
 
     var cat;
     var query;
     var dis;
     var order;
+    var price;
 
     var submitBut = function () {
         cat   = $("#catSelect").val();
         query = $("#querySearch").val();
         dis   = $("#price-min").val();
         order = "latest";
+        price = "all";
         if(cat == null || cat == "dis"){
             $(".select2Class").addClass('shadow');
         }
@@ -544,7 +558,7 @@ require_once "scripts/time_elapse.php";
 
 
 
-        window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat,"_self");
+        window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
         }
     };
 

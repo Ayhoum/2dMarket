@@ -131,6 +131,15 @@ session_start();
                             $cat   = $_GET['cat'];
                             $searchTxt = $_GET['query'];
                             $order = $_GET['order'];
+                            $price = $_GET['price'];
+
+                            if($price != "all"){
+                                $price_parts = explode("-", $price);
+                                $minPrice = $price_parts[0];
+                                $maxPrice = $price_parts[1];
+
+                            }
+
                             $cat_parts = $pieces = explode("-", $cat);
                             $cat = $cat_parts[0];
                             $subCat = $cat_parts[1];
@@ -216,15 +225,33 @@ session_start();
                                 <div id="citiesheading" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cities">
                                     <div class="panel-body categories">
                                         <ul>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 10 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 20 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 30 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 40 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 50 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 60 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 70 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 80 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 90 KM </a></li>
+                                            <?php
+                                            if($price != "all") {
+                                            ?>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=10.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 10 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=20.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 20 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=30.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 30 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=40.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 40 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=50.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 50 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=60.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 60 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=70.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 70 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=80.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 80 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=90.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 90 KM </a></li>
+                                            <?php
+                                            }else{
+                                                ?>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=10.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 10 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=20.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 20 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=30.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 30 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=40.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 40 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=50.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 50 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=60.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 60 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=70.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 70 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=80.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 80 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=90.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 90 KM </a></li>
+                                            <?php
+                                            }
+                                            ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -244,25 +271,38 @@ session_start();
                                 <!-- Content -->
                                 <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
                                     <div class="panel-body">
-                                        <span class="price-slider-value">Price (€) <span id="price-min"></span> - <span id="price-max"></span></span>
-                                        <div id="price-slider"></div>
+                                        <?php
+                                        if($price == "all"){
+                                            ?>
+                                            min <input type="text" name="min" id="price-min-range" class="min" style="width:110px;"> -
+                                            max <input type="text" name="max" id="price-min-range" class="max" style="width:110px;"><br><br>
+                                            <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
+                                            <?php
+                                        }else{
+                                            ?>
+                                            min <input type="text" name="min" value="<?php echo $price_parts[0];?>" id="price-min-range" class="min" style="width:110px;"> -
+                                            max <input type="text" name="max" value="<?php echo $price_parts[1];?>" id="price-max-range" class="max" style="width:110px;"><br><br>
+                                            <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
+
+                                            <?php
+                                        }?>
                                     </div>
                                 </div>
                             </div>
                             <!-- Pricing Panel End -->
                             <!-- Featured Ads Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" >
-                                    <h4 class="panel-title">
-                                        <a>
-                                            Featured Ads
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- Content -->
-                                <?php include 'scripts/featured_ads.php';?>
-                            </div>
+<!--                            <div class="panel panel-default">-->
+<!--                                <!-- Heading -->
+<!--                                <div class="panel-heading" >-->
+<!--                                    <h4 class="panel-title">-->
+<!--                                        <a>-->
+<!--                                            Featured Ads-->
+<!--                                        </a>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <!-- Content -->
+<!--                                --><?php //include 'scripts/featured_ads.php';?>
+<!--                            </div>-->
                             <!-- Featured Ads Panel End -->
                         </div>
                         <!-- panel-group end -->
@@ -381,10 +421,33 @@ session_start();
 </body>
 </html>
 
+<!--<script async defer-->
+<!--        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&callback=initMap">-->
+<!--</script>-->
+<script>
+    var order = '<?php echo $order?>';
+    var dis = <?php echo $dis?>;
+    var query = '<?php echo $searchTxt?>';
+    var cat = <?php echo $cat?>;
+    var subCat = <?php echo $subCat?>;
+    $('#submit').click(function () {
+        var price;
+        var min = $('.min').val();
+        var max = $('.max').val();
+        if(min == '' && max == ''){
+            price = "all";
+        }else if(min == ''){
+            min = 0;
+            price = min + "-" + max ;
+        }else if(max == ''){
+            price = min + "-max";
+        }else{
+            price = min + "-" + max ;
+        }
+        window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat +"-"+subCat + "&price=" + price,"_self");
 
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&callback=initMap">
+
+    });
 </script>
-
 
 

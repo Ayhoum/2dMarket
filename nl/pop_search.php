@@ -1,18 +1,10 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Alaa
- * Date: 15-2-2018
- * Time: 19:58
- */
-?>
-<?php
+﻿<?php
 include '../scripts/db_connection.php';
-ob_start();
-session_start();
+
+//ob_start();
+//session_start();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +14,7 @@ session_start();
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="2D Market">
-    <title>2D Market | <?php echo $_GET['tag']; ?> </title>
+    <title>2D Market | Alle <?php echo $_GET['tag']; ?></title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -71,7 +63,7 @@ session_start();
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
     <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-        <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+        <h4 class="text-center" style="color: #00a9da"> Aan het laden..</h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
@@ -80,23 +72,10 @@ session_start();
     <?php include "topbar-nl.php";?>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
-    <?php include 'nav_bar_nl.php'; ?>
+    <?php include 'nav_bar_nl.php';?>
 </div>
 <!-- Navigation Menu End -->
 <!-- =-=-=-=-=-=-= Transparent Breadcrumb =-=-=-=-=-=-= -->
-<!-- Small Breadcrumb -->
-<div class="bread-2 page-header-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-12 col-sm-5 col-xs-12">
-                <div class="header-page">
-                    <h1>Alle Ads met <?php echo $_GET['tag']; ?></h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
     <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
@@ -116,12 +95,12 @@ session_start();
                             <div class="listingTopFilterBar">
                                 <div class="col-md-5 col-xs-12 col-sm-6 no-padding">
                                     <div class="header-listing">
-                                        <h6>Sort by :</h6>
+                                        <h6>Sorteer op :</h6>
                                         <div class="custom-select-box">
                                             <select name="order" class="custom-select">
-                                                <option value="1">Het lateste </option>
+                                                <option value="1">De laatste</option>
                                                 <option value="2">Prijs (laag naar hoog) </option>
-                                                <option value="3">Prijs (hoog naar laag) </option>
+                                                <option value="3">Price (hoog naar laag) </option>
                                             </select>
                                         </div>
                                     </div>
@@ -159,22 +138,22 @@ session_start();
                                     <div class="panel-body categories">
                                         <ul>
                                             <?php
-                                            $cat_query  = "SELECT * FROM `CATEGORY` WHERE `lang` ='NL'";
+                                            $cat_query  = "SELECT * FROM `CATEGORY` WHERE `lang` = 'NL'";
                                             $cat_result = mysqli_query($mysqli, $cat_query);
                                             while ($row = mysqli_fetch_assoc($cat_result)) {
-                                                $sub_cat_id = $row['id'];
+                                                $cat_id     = $row['id'];
                                                 $cat_name   = $row['name'];
                                                 $icon_name  = $row['icon_name'];
 
-                                                $count_query = "SELECT COUNT(*) AS 'SUB_CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$sub_cat_id}' ";
+                                                $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$cat_id}' ";
                                                 $count_result = mysqli_query($mysqli,$count_query);
                                                 while ($row = mysqli_fetch_assoc($count_result)){
-                                                    $cat_count = $row['SUB_CAT_count'];
+                                                    $cat_count = $row['CAT_count'];
                                                 }
 
                                                 ?>
 
-                                                <li><a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $sub_cat_id; ?>"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span style="color: #985f0d">(<?php echo $cat_count;?>)</span></a></li>
+                                                <li><a href="ad_per_cat.php?cat_id=<?php echo $cat_id; ?>"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span style="color: #985f0d">(<?php echo $cat_count;?>)</span></a></li>
                                                 <?php
                                             }
                                             ?>
@@ -191,7 +170,7 @@ session_start();
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Afstand van u
+                                            Afstand van jou
                                         </a>
                                     </h4>
                                     <!-- Title End -->
@@ -215,36 +194,36 @@ session_start();
                             </div>
                             <!-- Location Panel End -->
                             <!-- Pricing Panel -->
-<!--                            <div class="panel panel-default">-->
-<!--                                <!-- Heading -->-->
-<!--                                <div class="panel-heading" role="tab" id="headingfour">-->
-<!--                                    <h4 class="panel-title">-->
-<!--                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">-->
-<!--                                            <i class="more-less glyphicon glyphicon-plus"></i>-->
-<!--                                            Prijs-->
-<!--                                        </a>-->
-<!--                                    </h4>-->
-<!--                                </div>-->
-<!--                                <!-- Content -->-->
-<!--                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">-->
-<!--                                    <div class="panel-body">-->
-<!--                                        <span class="price-slider-value">Price (€) <span id="price-min"></span> - <span id="price-max"></span></span>-->
-<!--                                        <div id="price-slider"></div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <div class="panel panel-default">
+                                <!-- Heading -->
+                                <div class="panel-heading" role="tab" id="headingfour">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                            <i class="more-less glyphicon glyphicon-plus"></i>
+                                            Price
+                                        </a>
+                                    </h4>
+                                </div>
+                                <!-- Content -->
+                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
+                                    <div class="panel-body">
+                                        <span class="price-slider-value">Prijs (€) <span id="price-min"></span> - <span id="price-max"></span></span>
+                                        <div id="price-slider"></div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Pricing Panel End -->
                             <!-- Featured Ads Panel -->
 <!--                            <div class="panel panel-default">-->
-<!--                                <!-- Heading -->-->
+<!--                                <!-- Heading -->
 <!--                                <div class="panel-heading" >-->
 <!--                                    <h4 class="panel-title">-->
 <!--                                        <a>-->
-<!--                                            Featured Ads-->
+<!--                                            Premium Ads-->
 <!--                                        </a>-->
 <!--                                    </h4>-->
 <!--                                </div>-->
-<!--                                <!-- Content -->-->
+<!--                                <!-- Content -->
 <!--                                --><?php //include 'scripts/featured_ads.php';?>
 <!--                            </div>-->
                             <!-- Featured Ads Panel End -->
@@ -259,12 +238,12 @@ session_start();
         </div>
         <!-- Main Container End -->
     </section>
-
     <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
     <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-    <?php include 'footer.php'; ?>
+    <?php include 'footer.php';?>
     <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
 </div>
+
 <!-- Main Content Area End -->
 <!-- Post Ad Sticky -->
 <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
@@ -280,18 +259,18 @@ session_start();
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="lineModalLabel">Email for Price</h3>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Sluiten</span></button>
+                <h3 class="modal-title" id="lineModalLabel">Email voor een prijs</h3>
             </div>
             <div class="modal-body">
                 <!-- content goes here -->
                 <form>
                     <div class="form-group  col-md-6">
-                        <label>Your Name</label>
+                        <label>Jouw Naam</label>
                         <input type="text" class="form-control" placeholder="Enter Your Name">
                     </div>
                     <div class="form-group  col-md-6">
-                        <label>Email Address</label>
+                        <label>Email Adres</label>
                         <input type="email" class="form-control" placeholder="Enter email">
                     </div>
                     <div class="form-group  col-md-12">

@@ -29,10 +29,10 @@
                     <div class="widget socail-icons">
                         <h5>Follow Us</h5>
                         <ul>
-                            <li><a class="fb" href="https://www.facebook.com/2Dmarket" target="_blank"><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                            <li><a class="twitter" href="https://twitter.com/2DmarKet1" target="_blank"><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                            <li><a class="linkedin" href="https://www.linkedin.com/in/2d-market-b05189161/" target="_blank"><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                            <li><a class="instagram" href="https://www.instagram.com/2dmarket" target="_blank"><i class="fa fa-instagram"></i></a><span>Instagram</span></li>
+                            <li><a class="fb" href="https://www.facebook.com/2Dmarket" target="_blank"><i class="fa fa-facebook"></i></a><a style="background-color: #202020;color: #999;" class="fb" href="https://www.facebook.com/2Dmarket" target="_blank"><span>Facebook</span></a></li>
+                            <li><a class="twitter" href="https://twitter.com/2DmarKet1" target="_blank"><i class="fa fa-twitter"></i></a><a style="background-color: #202020;color: #999;" class="fb" href="https://www.facebook.com/2Dmarket" target="_blank"><span>Twitter</span></a></li>
+                            <li><a class="linkedin" href="https://www.linkedin.com/in/2d-market-b05189161/" target="_blank"><i class="fa fa-linkedin"></i></a><a style="background-color: #202020;color: #999;" class="fb" href="https://www.facebook.com/2Dmarket" target="_blank"><span>Linkedin</span></a></li>
+                            <li><a class="instagram" href="https://www.instagram.com/2dmarket" target="_blank"><i class="fa fa-instagram"></i></a><a style="background-color: #202020;color: #999;" class="instagram" href="https://www.instagram.com/2dmarket" target="_blank"><span>Instagram</span></a></li>
                         </ul>
                     </div>
                     <!-- Follow Us End -->

@@ -1,5 +1,12 @@
-﻿<?php include '../scripts/db_connection.php';?>
-
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Alaa
+ * Date: 1-5-2018
+ * Time: 23:58
+ */
+include '../scripts/db_connection.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -9,7 +16,7 @@
       <![endif]-->
       <meta name="description" content="">
       <meta name="author" content="ScriptsBundle">
-      <title>2D Market | Alle Categorieen </title>
+      <title>2D Market | Categorieën</title>
       <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
       <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
       <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -56,72 +63,78 @@
    </head>
    <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
-          <div id="loader-wrapper">
-         <div id="loader"></div>
-         <div class="loader-section section-left"></div>
-         <div class="loader-section section-right"></div>
+      <div id="loader-wrapper">
+          <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
+              <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+          <div class="loader-section section-left"></div>
+          <div class="loader-section section-right"></div>
       </div>
+     <!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
+
+      <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
       <div class="colored-header">
-         <!-- Top Bar -->
+          <!-- Top Bar -->
           <?php include 'topbar-nl.php';?>
           <!-- Top Bar End -->
-         <!-- Navigation Menu -->
-         <?php include "nav_bar_nl.php";?>
+          <!-- Navigation Menu -->
+
+          <?php include "nav_bar_nl.php";?>
       </div>
-      <!-- Navigation Menu End -->
-      <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
+      <!-- Small Breadcrumb -->
+      <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
+      <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
-          <!-- =-=-=-=-=-=-= Featured Listing =-=-=-=-=-=-= -->
-          <section class="custom-padding gray">
-              <!-- Main Container -->
-              <div class="container">
-                  <!-- Row -->
-                  <div class="row">
+         <!-- =-=-=-=-=-=-= Featured Listing =-=-=-=-=-=-= -->
+         <section class="custom-padding gray">
+            <!-- Main Container -->
+            <div class="container">
+               <!-- Row -->
+               <div class="row">
 
-                      <!-- Middle Content Box -->
-                      <div class="col-md-12 col-xs-12 col-sm-12 ">
-                          <div class="row">
-                              <!-- Category List -->
-                              <ul class="category-list-style">
-                                  <!-- Category -->
-                                  <!-- Category List -->
-                                  <?php
+                  <!-- Middle Content Box -->
+                  <div class="col-md-12 col-xs-12 col-sm-12 ">
+                     <div class="row">
+                        <!-- Category List -->
+                         <ul class="category-list-style">
+                             <!-- Category -->
+                             <!-- Category List -->
+                             <?php
 
-                                  $query = "SELECT * FROM `CATEGORY` WHERE `lang` = 'NL'";
-                                  $result = mysqli_query($mysqli, $query);
-                                  While($row = mysqli_fetch_assoc($result)){
-                                      $id = $row['id'];
-                                      $name = $row['name'];
-                                      $icon = $row['icon_name'];
+                             $query = "SELECT * FROM `CATEGORY` WHERE `lang` = 'NL'";
+                             $result = mysqli_query($mysqli, $query);
+                             While($row = mysqli_fetch_assoc($result)){
+                                 $id = $row['id'];
+                                 $name = $row['name'];
+                                 $icon = $row['icon_name'];
 
-                                      $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$id}' ";
-                                      $count_result = mysqli_query($mysqli,$count_query);
-                                      while ($row = mysqli_fetch_assoc($count_result)){
-                                          $cat_count = $row['CAT_count'];
-                                      }
-                                      ?>
+                                 $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$id}' ";
+                                 $count_result = mysqli_query($mysqli,$count_query);
+                                 while ($row = mysqli_fetch_assoc($count_result)){
+                                     $cat_count = $row['CAT_count'];
+                                 }
+                                 ?>
 
-                                      <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                          <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>"><?php echo $name;?><span>(<?php echo $cat_count; ?> Ads)</span>
-                                              <i class="<?php echo $icon;?>"></i>
-                                          </a>
-                                      </li>
+                                 <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                     <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>"><?php echo $name;?><span>(<?php echo $cat_count; ?> Ads)</span>
+                                         <i class="<?php echo $icon;?>"></i>
+                                     </a>
+                                 </li>
 
-                                  <?php }?>
-                              </ul>
-                              <!-- Category List End -->
-                          </div>
-                      </div>
-                      <!-- Middle Content Box End -->
+                             <?php }?>
+                         </ul>
+                        <!-- Category List End -->
+                     </div>
                   </div>
-                  <!-- Row End -->
-              </div>
-              <!-- Main Container End -->
-          </section>
-          <!-- =-=-=-=-=-=-= Featured Listing End =-=-=-=-=-=-= -->
-          <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-          <?php include "footer.php";?>
-          <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
+                  <!-- Middle Content Box End -->
+               </div>
+               <!-- Row End -->
+            </div>
+            <!-- Main Container End -->
+         </section>
+         <!-- =-=-=-=-=-=-= Featured Listing End =-=-=-=-=-=-= -->
+         <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
+         <?php include "footer.php";?>
+         <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
       </div>
       <!-- Main Content Area End -->
       <!-- Post Ad Sticky -->
@@ -135,76 +148,12 @@
       <a href="#0" class="cd-top">Top</a>
       <!-- Back To Top -->
       <div class="custom-modal">
-          <div id="myModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                      <div class="modal-header rte">
-                          <h2 class="modal-title">Forgot Your Password ?</h2>
-                      </div>
-                      <form>
-                          <div class="modal-body">
-                              <div class="form-group">
-                                  <label>Email</label>
-                                  <input placeholder="Enter Your Email Adress" class="form-control" type="email">
-                              </div>
-                          </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-default">Reset My Account</button>
-                              <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
-      <script src="js/jquery.min.js"></script>
-      <!-- Bootstrap Core Css  -->
-      <script src="js/bootstrap.min.js"></script>
-      <!-- Jquery Easing -->
-      <script src="js/easing.js"></script>
-      <!-- Menu Hover  -->
-      <script src="js/forest-megamenu.js"></script>
-      <!-- Jquery Appear Plugin -->
-      <script src="js/jquery.appear.min.js"></script>
-      <!-- Numbers Animation   -->
-      <script src="js/jquery.countTo.js"></script>
-      <!-- Jquery Smooth Scroll  -->
-      <script src="js/jquery.smoothscroll.js"></script>
-      <!-- Jquery Select Options  -->
-      <script src="js/select2.min.js"></script>
-      <!-- noUiSlider -->
-      <script src="js/nouislider.all.min.js"></script>
-      <!-- Carousel Slider  -->
-      <script src="js/carousel.min.js"></script>
-      <script src="js/slide.js"></script>
-      <!-- Image Loaded  -->
-      <script src="js/imagesloaded.js"></script>
-      <script src="js/isotope.min.js"></script>
-      <!-- CheckBoxes  -->
-      <script src="js/icheck.min.js"></script>
-      <!-- Jquery Migration  -->
-      <script src="js/jquery-migrate.min.js"></script>
-      <!-- Sticky Bar  -->
-      <script src="js/theia-sticky-sidebar.js"></script>
-      <!-- Style Switcher -->
-      <script src="js/color-switcher.js"></script>
-      <!-- Template Core JS -->
-      <script src="js/custom.js"></script>
-   </body>
-</html>
-
-      <!-- Back To Top -->
-      <a href="#0" class="cd-top">Top</a>
-      <!-- Back To Top -->
-      <div class="custom-modal">
          <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                <!-- Modal content-->
                <div class="modal-content">
                   <div class="modal-header rte">
-                     <h2 class="modal-title">Forgot Your Password ?</h2>
+                     <h2 class="modal-title">Jou wachtwoord vergeten?</h2>
                   </div>
                   <form>
                      <div class="modal-body">
@@ -214,8 +163,8 @@
                         </div>
                      </div>
                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default">Reset My Account</button>
-                        <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-default">Mijn account herstellen</button>
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Annuleer</button>
                      </div>
                   </form>
                </div>
@@ -258,4 +207,3 @@
       <script src="js/custom.js"></script>
    </body>
 </html>
-

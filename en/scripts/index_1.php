@@ -93,7 +93,6 @@ if (mysqli_num_rows($ad_result) > 0) {
                 <!-- Image Box -->
                 <div class="image">
                     <img alt="Tour Package" src="<?php echo $pic . $pic_name;?>" class="img-responsive" style="width: 100%; height: 256px; object-fit: cover;">
-
                     <div class="price-tag">
                         <div class="price"><span><?php
                                 if ($selling_type=="BID"){
@@ -107,7 +106,7 @@ if (mysqli_num_rows($ad_result) > 0) {
                 <!-- Short Description -->
                 <div class="short-description-1 clearfix">
                     <!-- Category Title -->
-                    <div class="category-title"> <span><a href="#"><?php  echo $cat_name;?></a></span> </div>
+                    <div class="category-title"> <span><a href="all_product.php?cat_id=<?php echo  $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                     <!-- Ad Title -->
                     <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                     <!-- Short Description -->

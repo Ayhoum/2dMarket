@@ -7,6 +7,8 @@
  */
 ?>
 
+
+
 <nav id="menu-1" class="mega-menu">
     <!-- menu list items container -->
     <section class="menu-list-items">
@@ -26,9 +28,9 @@
                         <!-- active class -->
 
                         <li>
-                            <a href="javascript:void(0)">Categories <i class="fa fa-angle-down fa-indicator"></i></a>
+                            <a href="#">Categories <i class="fa fa-angle-down fa-indicator"></i></a>
                             <!-- drop down multilevel  -->
-                            <ul class="drop-down-multilevel">
+                            <ul class="drop-down-multilevel" role='menu'>
                                 <li>
                                     <a href="javascript:void(0)">Electronics <i class="fa fa-angle-right fa-indicator"></i> </a>
                                     <!-- drop down second level -->

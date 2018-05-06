@@ -8,27 +8,27 @@
 ?>
 <div class="posts-masonry">
 
-<?php
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-} else {
-    $page = 0;
-}
+    <?php
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+    } else {
+        $page = 0;
+    }
 
-$tag = $_GET['tag'];
-$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'AR' && `title` LIKE '%{$tag}%' ";
-$ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
-$num_Ads = mysqli_num_rows($ad_result_get_num);
+    $tag = $_GET['tag'];
+    $ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'AR' && `title` LIKE '%{$tag}%' ";
+    $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
+    $num_Ads = mysqli_num_rows($ad_result_get_num);
 
-if($num_Ads <= 10){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'AR' && `title` LIKE '%{$tag}%' ORDER BY `ad_type` DESC";
-}else if($page == 0 || $page == 1){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'AR' && `title` LIKE '%{$tag}%' ORDER BY `ad_type` DESC LIMIT 10";
-}else if($page > 1){
-    $start = (($page - 1) * 10);
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'AR' && `title` LIKE '%{$tag}%' ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
+    if($num_Ads <= 10){
+        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'AR' && `title` LIKE '%{$tag}%' ORDER BY `ad_type` DESC";
+    }else if($page == 0 || $page == 1){
+        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'AR' &&`title` LIKE '%{$tag}%' ORDER BY `ad_type` DESC LIMIT 10";
+    }else if($page > 1){
+        $start = (($page - 1) * 10);
+        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'AR' && `title` LIKE '%{$tag}%' ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
 
-}
+    }
     $ad_result = mysqli_query($mysqli, $ad_query);
     if (mysqli_num_rows($ad_result) > 0) {
         while ($row = mysqli_fetch_assoc($ad_result)) {
@@ -119,7 +119,7 @@ if($num_Ads <= 10){
                     $pic_name = $row['picture_name'];
                 }
             }else{
-                $pic = "en_ad_photo/";
+                $pic = "ar_ad_photo/";
                 $pic_name = "white.jpg";
             }
             ?>
@@ -144,9 +144,9 @@ if($num_Ads <= 10){
                     </div>
                     <!-- Ad Img End -->
                     <div class="short-description">
-                        <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo "مبـاع" ;?></span></p>
-                        <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo "محجـوز" ;?></span></p>
-                        <?php }elseif ($status == "AVAILABLE"){?>  <p> <span class="label label-success"><?php echo  "متـاح";?></span></p><?php }?>
+                        <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo $status ;?></span></p>
+                        <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
+                        <?php }elseif ($status == "AVAILABLE"){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
                         <!-- Ad Category -->
                         <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
@@ -164,18 +164,17 @@ if($num_Ads <= 10){
                 </div>
             </div>
 
-
             <?php
 
         }
-    }else {
+    } else {
         ?>
         <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
             <section class="advertising">
                 <a href="all_product">
                     <div class="banner">
                         <div class="wrapper">
-                            <span class="title">للاسف ليس هناك اي اعلانات تطابق البحث الخاص بك ! جرب شيء اخر</span>
+                            <span class="title">Oh no! it seems that there is no matching Ads for your search; Try something else!</span>
                         </div>
                     </div>
                     <!-- /.banner-->
@@ -185,15 +184,15 @@ if($num_Ads <= 10){
 
         <?php
     }
-?>
+    ?>
 
     <div class="col-md-12 col-xs-12 col-sm-12">
         <section class="advertising">
-            <a href="<?php if (isset($_SESSION['username'])) {?>new_advertisement.php<?php } else {echo "login.php"; } ?>">
+            <a href="new_advertisement.php">
                 <div class="banner">
                     <div class="wrapper">
-                        <span class="title">هل تريد ان ترى منتجك ضمنك هذه القـائمة</span>
-                        <span class="submit">انشر اعلانـك الان! <i class="fa fa-plus-square"></i></span>
+                        <span class="title">Do you want your property to be listed here?</span>
+                        <span class="submit">Submit it now! <i class="fa fa-plus-square"></i></span>
                     </div>
                 </div>
                 <!-- /.banner-->
@@ -212,7 +211,7 @@ if($num_Ads <= 10){
         if ($page != 0 && $page != 1) {
             ?>
             <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
-                                                                              aria-hidden="true"></i></a></li>
+                                                                                                              aria-hidden="true"></i></a></li>
             <?php
         }
         $num_Ads = ceil($num_Ads / 10);
@@ -227,7 +226,7 @@ if($num_Ads <= 10){
         if ($page != $num_Ads) {
             ?>
             <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&?age=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
-                                                                              aria-hidden="true"></i></a></li>
+                                                                                                              aria-hidden="true"></i></a></li>
             <?php
         }
         ?>

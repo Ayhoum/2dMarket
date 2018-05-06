@@ -1,6 +1,12 @@
-﻿
-<?php include '../scripts/db_connection.php';?>
-
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Alaa
+ * Date: 1-5-2018
+ * Time: 23:58
+ */
+include '../scripts/db_connection.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -10,7 +16,7 @@
       <![endif]-->
       <meta name="description" content="">
       <meta name="author" content="ScriptsBundle">
-      <title>2D Market | جميـع التصنيـفات</title>
+      <title>AdForest | Largest Classifieds Portal</title>
       <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
       <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
       <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -33,9 +39,8 @@
       <link href="css/select2.min.css" rel="stylesheet" />
       <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
       <link href="css/nouislider.min.css" rel="stylesheet">
-      <!-- =-=-=-=-=-=-= Bootstrap Rtl Style =-=-=-=-=-=-= -->
-      <link href="css/bootstrap-rtl.css" rel="stylesheet">
-      <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
+       <link href="css/bootstrap-rtl.css" rel="stylesheet">
+       <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
       <link href="css/slider.css" rel="stylesheet">
       <!-- =-=-=-=-=-=-= Owl carousel =-=-=-=-=-=-= -->
       <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
@@ -57,14 +62,15 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
    </head>
-   <body class="rtl">
+   <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <div id="loader-wrapper">
-          <div id="loader"><img class="img-responsive"  src="images/design.gif">
-              <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+          <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
+              <h4 class="text-center" style="color: #00a9da;direction: rtl">جاري التحميل.. </h4> </div>
           <div class="loader-section section-left"></div>
           <div class="loader-section section-right"></div>
       </div>
+     <!-- =-=-=-=-=-=-= Color Switcher =-=-=-=-=-=-= -->
 
       <!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
       <div class="colored-header">
@@ -75,20 +81,7 @@
 
           <?php include "nav_bar_ar.php";?>
       </div>
-      <!-- Navigation Menu End -->
-      <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
-      <!-- =-=-=-=-=-=-= Transparent Breadcrumb =-=-=-=-=-=-= -->
-      <div class="page-header-area">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="header-page">
-                     <h1>جميـع التصنيفات</h1>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+      <!-- Small Breadcrumb -->
       <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
@@ -98,37 +91,39 @@
             <div class="container">
                <!-- Row -->
                <div class="row">
-            
+
                   <!-- Middle Content Box -->
                   <div class="col-md-12 col-xs-12 col-sm-12 ">
                      <div class="row">
                         <!-- Category List -->
-                        <ul class="category-list-style">
-                           <!-- Category -->
-                            <?php
+                         <ul class="category-list-style">
+                             <!-- Category -->
+                             <!-- Category List -->
+                             <?php
 
-                            $query = "SELECT * FROM `CATEGORY` WHERE `lang` = 'AR'";
-                            $result = mysqli_query($mysqli, $query);
-                            While($row = mysqli_fetch_assoc($result)){
-                            $id = $row['id'];
-                            $name = $row['name'];
-                            $icon = $row['icon_name'];
+                             $query = "SELECT * FROM `CATEGORY` WHERE `lang` = 'AR'";
+                             $result = mysqli_query($mysqli, $query);
+                             While($row = mysqli_fetch_assoc($result)){
+                                 $id = $row['id'];
+                                 $name = $row['name'];
+                                 $icon = $row['icon_name'];
 
-                            $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$id}' ";
-                            $count_result = mysqli_query($mysqli,$count_query);
-                            while ($row = mysqli_fetch_assoc($count_result)){
-                                $cat_count = $row['CAT_count'];
-                            }
-                            ?>
-                            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                              <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>"><?php echo $name;?><span>(<?php echo $cat_count;?>) </span>
-                              <i class="<?php echo $icon;?>"></i>
-                              </a> 
-                           </li>
-                            <?php }?>
+                                 $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$id}' ";
+                                 $count_result = mysqli_query($mysqli,$count_query);
+                                 while ($row = mysqli_fetch_assoc($count_result)){
+                                     $cat_count = $row['CAT_count'];
+                                 }
+                                 ?>
 
-                        </ul>
-                        <!-- Category List End -->    
+                                 <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                     <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>"><?php echo $name;?><span>(<?php echo $cat_count; ?> Ads)</span>
+                                         <i class="<?php echo $icon;?>"></i>
+                                     </a>
+                                 </li>
+
+                             <?php }?>
+                         </ul>
+                        <!-- Category List End -->
                      </div>
                   </div>
                   <!-- Middle Content Box End -->
@@ -139,75 +134,16 @@
          </section>
          <!-- =-=-=-=-=-=-= Featured Listing End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-         <footer>
-            <!-- Footer Content -->
-            <div class="footer-top">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- Info Widget -->
-                        <div class="widget">
-                           <div class="logo"> <img alt="" src="images/logo-1.png"> </div>
-                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et dolor eget erat fringilla port.</p>
-                           <ul>
-                              <li><img src="images/appstore.png" alt=""></li>
-                              <li><img src="images/googleplay.png" alt=""></li>
-                           </ul>
-                        </div>
-                        <!-- Info Widget Exit -->
-                     </div>
-                     <div class="col-md-3  col-sm-6 col-xs-12">
-                        <!-- تابعنا -->
-                        <div class="widget socail-icons">
-                           <h5>تابعنا</h5>
-                           <ul>
-                              <li><a class="fb" href=""><i class="fa fa-facebook"></i></a><span>Facebook</span></li>
-                              <li><a class="twitter" href=""><i class="fa fa-twitter"></i></a><span>Twitter</span></li>
-                              <li><a class="linkedin" href=""><i class="fa fa-linkedin"></i></a><span>Linkedin</span></li>
-                              <li><a class="googleplus" href=""><i class="fa fa-google-plus"></i></a><span>Google+</span></li>
-                           </ul>
-                        </div>
-                        <!-- تابعنا End -->
-                     </div>
-                     <div class="col-md-6  col-sm-6 col-xs-12">
-                        <!-- Newslatter -->
-                        <div class="widget widget-newsletter">
-                           <h5>Singup عن النشرة الأسبوعية</h5>
-                           <div class="fieldset">
-                              <p>قد نرسل لك معلومات عن الأحداث، وندوات والمنتجات والخدمات ذات الصلة والتي نعتقد.</p>
-                              <form>
-                                 <input class="" value="Enter your email address" type="text">
-                                 <input class="submit-btn" name="submit" value="عرض" type="submit"> 
-                              </form>
-                           </div>
-                        </div>
-                        <!-- Newslatter -->
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Copyrights -->
-            <div class="copyrights">
-               <div class="container">
-                  <div class="copyright-content">
-                     <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                           <p>© 2017 AForest جميع الحقوق محفوظة. تصميم بواسطة <a href="http://themeforest.net/user/scriptsbundle/portfolio" target="_blank">Scriptsbundle</a> </p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </footer>
+         <?php include "footer.php";?>
          <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
       </div>
-      <!-- Main Content Area End --> 
+      <!-- Main Content Area End -->
       <!-- Post Ad Sticky -->
-      <a href="#" class="sticky-post-button hidden-xs">
+      <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>
-         <h4>يبيع</h4>
+          <h4>SELL</h4>
       </a>
       <!-- Back To Top -->
       <a href="#0" class="cd-top">Top</a>
@@ -218,17 +154,17 @@
                <!-- Modal content-->
                <div class="modal-content">
                   <div class="modal-header rte">
-                     <h2 class="modal-title">نسيت رقمك السري ؟</h2>
+                     <h2 class="modal-title">Forgot Your Password ?</h2>
                   </div>
                   <form>
                      <div class="modal-body">
                         <div class="form-group">
-                           <label>البريد الإلكتروني</label>
-                           <input placeholder="أدخل البريد الإلكتروني العنوان الخاص بك" class="form-control" type="email">
+                           <label>Email</label>
+                           <input placeholder="Enter Your Email Adress" class="form-control" type="email">
                         </div>
                      </div>
                      <div class="modal-footer">
-                        <button type="button" class="btn btn-default">إعادة حسابي</button>
+                        <button type="button" class="btn btn-default">Reset My Account</button>
                         <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
                      </div>
                   </form>
@@ -272,4 +208,3 @@
       <script src="js/custom.js"></script>
    </body>
 </html>
-

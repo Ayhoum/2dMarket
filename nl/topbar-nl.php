@@ -29,6 +29,7 @@ $ar = "HTTP://".$prefix.'/website/2dMarket/ar/'.$page;
                     </ul>
                 </div>
             </div>
+            <!-- Header Top Right Social -->
         </div>
     </div>
 </div>

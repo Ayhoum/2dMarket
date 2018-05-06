@@ -286,41 +286,41 @@ Designed and Development by: ScriptsBundle
     });
 
     /*==========  Single Page SLider With Thumb ==========*/
-    $('#carousels').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: false,
-        itemWidth: 110,
-        itemMargin: 50,
-        asNavFor: '.single-page-slider'
-    });
-    $('.single-page-slider').flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: true,
-        sync: "#carousel"
-    });
+    // $('#carousels').flexslider({
+    //     animation: "slide",
+    //     controlNav: false,
+    //     animationLoop: false,
+    //     slideshow: false,
+    //     itemWidth: 110,
+    //     itemMargin: 50,
+    //     asNavFor: '.single-page-slider'
+    // });
+    // $('.single-page-slider').flexslider({
+    //     animation: "slide",
+    //     controlNav: false,
+    //     animationLoop: false,
+    //     slideshow: true,
+    //     sync: "#carousel"
+    // });
 	
 	 /*==========  Price Range Slider  ==========*/
-    $('#price-slider').noUiSlider({
-        connect: true,
-        behaviour: 'tap',
-        margin: 5000,
-        start: [20000, 100000],
-        step: 2000,
-        range: {
-            'min': 0,
-            'max': 150000
-        }
-    });
-		$('#price-slider').Link('lower').to($('#price-min'), null, wNumb({
-			decimals: 0
-		}));
-		$('#price-slider').Link('upper').to($('#price-max'), null, wNumb({
-			decimals: 0
-		}));
+    // $('#price-slider').noUiSlider({
+    //     connect: true,
+    //     behaviour: 'tap',
+    //     margin: 5000,
+    //     start: [20000, 100000],
+    //     step: 2000,
+    //     range: {
+    //         'min': 0,
+    //         'max': 150000
+    //     }
+    // });
+		// $('#price-slider').Link('lower').to($('#price-min'), null, wNumb({
+		// 	decimals: 0
+		// }));
+		// $('#price-slider').Link('upper').to($('#price-max'), null, wNumb({
+		// 	decimals: 0
+		// }));
 		
 		
     /* ======= Template MegaMenu  ======= */

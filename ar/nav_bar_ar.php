@@ -7,14 +7,14 @@
  */
 ?>
 
-<nav id="menu-1" class="mega-menu" >
+<nav id="menu-1" class="mega-menu">
     <!-- menu list items container -->
     <section class="menu-list-items">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <!-- menu logo -->
-                    <ul class="menu-logo" >
+                    <ul class="menu-logo pull-right">
                         <li>
                             <a class="navbar-brand" href="index.php">
                                 <img src="images/logo_files/2Dmarket_white%20(1).gif" style="width: 80px;height: 80px;margin-top: -15px" class="d-inline-block align-top" alt="2D Market">
@@ -22,18 +22,15 @@
                         </li>
                     </ul>
                     <!-- menu links -->
-                    <ul class="menu-links center-block">
+                    <ul class="menu-links center-block pull-right">
                         <!-- active class -->
-                        <li><a href="contact_us.php">تواصـل معنـا</a></li>
 
-                        <li><a href="all_product.php">جميـع الاعلانـات </a></li>
-
-                        <li>
-                            <a href="javascript:void(0)">التصنيـفات<i class="fa fa-angle-down fa-indicator"></i></a>
+                        <li class="pull-right">
+                            <a href="javascript:void(0)"> التصنيـفات<i class="fa fa-angle-down fa-indicator"></i></a>
                             <!-- drop down full width -->
                             <ul class="drop-down-multilevel">
                                 <li>
-                                    <a href="javascript:void(0)">الكترونيـات <i class="fa fa-angle-right fa-indicator"></i> </a>
+                                    <a href="javascript:void(0)">أجهزة إلكترونية <i class="fa fa-angle-right fa-indicator"></i> </a>
                                     <!-- drop down second level -->
                                     <ul class="drop-down-multilevel">
                                         <?php
@@ -60,7 +57,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"> سيارات و دراجات ألية<i class="fa fa-angle-left fa-indicator"></i> </a>
+                                    <a href="javascript:void(0)">سيارات ودراجات آلية <i class="fa fa-angle-left fa-indicator"></i> </a>
                                     <!-- add class left-side -->
                                     <ul class="drop-down-multilevel left-side">
                                         <?php
@@ -86,7 +83,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">ازيـاء <i class="fa fa-angle-right fa-indicator"></i> </a>
+                                    <a href="javascript:void(0)">أزياء <i class="fa fa-angle-right fa-indicator"></i> </a>
                                     <!-- drop down second level -->
                                     <ul class="drop-down-multilevel">
                                         <?php
@@ -113,7 +110,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)">االاجهزة المنزلية <i class="fa fa-angle-left fa-indicator"></i> </a>
+                                    <a href="javascript:void(0)">الأجهزة المنزلية <i class="fa fa-angle-left fa-indicator"></i> </a>
                                     <!-- add class left-side -->
                                     <ul class="drop-down-multilevel left-side">
                                         <?php
@@ -138,26 +135,27 @@
                                         <?php }?>
                                     </ul>
                                 </li>
-                                <li><a href="categories.php">جميـع التصنيفـات</a>
+                                <li><a href="categories.php">جميع التصنيفات</a>
                                 </li>
                             </ul>
                         </li>
-
-                    </ul>
-                    <ul class="menu-search-bar" style="float: left">
-                        <?php if(!isset($_SESSION['username'])){?>
-                            <li>
-                                <a href="login.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
-                            </li>
-                        <?php } else{ ?>
-                            <a href="profile.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
-                        <?php }?>
+                        <li class="pull-right"><a href="all_product.php">جميـع الاعلانـات </a></li>
+                        <li class="pull-right"><a href="contact_us.php">تواصـل معنـا</a></li>
                     </ul>
 <!--                    <ul class="menu-search-bar">-->
 <!--                        <li>-->
 <!--                            <a href="new_advertisement.php" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> Post Free Ad</a>-->
 <!--                        </li>-->
 <!--                    </ul>-->
+                    <ul class="menu-search-bar pull-left">
+                        <?php if(!isset($_SESSION['username'])){?>
+                            <li>
+                                <a href="login.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> تسجيل الدخول</a>
+                            </li>
+                        <?php } else{ ?>
+                            <a href="profile.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i>الملف الشخصي </a>
+                        <?php }?>
+                    </ul>
                 </div>
             </div>
         </div>

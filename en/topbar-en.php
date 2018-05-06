@@ -11,7 +11,7 @@ $ar = "HTTP://".$prefix.'/website/2dMarket/ar/'.$page;
 <div class="header-top">
     <div class="container">
         <div class="row">
-            <!-- Header Top Left -->
+            <!-- Header Top Right -->
             <div class="header-top-right col-md-12 col-sm-12 col-xs-12">
                 <div class="pull-right">
                 <ul class="listnone">

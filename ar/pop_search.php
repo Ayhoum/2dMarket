@@ -1,11 +1,10 @@
 ﻿<?php
-
 include '../scripts/db_connection.php';
-ob_start();
-session_start();
+
+//ob_start();
+//session_start();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +13,8 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
     <meta name="description" content="">
-    <meta name="author" content="ScriptsBundle">
-    <title>2D Market |  نتائج البحث عن <?php echo $_GET['tag'];?></title>
+    <meta name="author" content="2D Market">
+    <title>2D Market | كل <?php echo $_GET['tag']; ?></title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
@@ -38,7 +37,6 @@ session_start();
     <link href="css/select2.min.css" rel="stylesheet" />
     <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
     <link href="css/nouislider.min.css" rel="stylesheet">
-    <!-- =-=-=-=-=-=-= Bootstrap Rtl Style =-=-=-=-=-=-= -->
     <link href="css/bootstrap-rtl.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
     <link href="css/slider.css" rel="stylesheet">
@@ -62,36 +60,23 @@ session_start();
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="rtl">
+<body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
     <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-        <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+        <h4 class="text-center" style="color: #00a9da">جاري التحميل</h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
-</div><!-- =-=-=-=-=-=-= Light Header =-=-=-=-=-=-= -->
+</div>
 <div class="colored-header">
     <!-- Top Bar -->
-    <?php include 'topbar-ar.php';?>
+    <?php include "topbar-ar.php";?>
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
-    <?php include 'nav_bar_ar.php'; ?>
+    <?php include 'nav_bar_ar.php';?>
 </div>
 <!-- Navigation Menu End -->
-<!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Transparent Breadcrumb =-=-=-=-=-=-= -->
-<div class="page-header-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="header-page">
-                    <h1>نتائج البحث عن <?php echo $_GET['tag'];?></h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
     <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
@@ -105,30 +90,27 @@ session_start();
                     <!-- Row -->
                     <div class="row">
                         <!-- Sorting Filters -->
-                        <!-- Sorting Filters Breadcrumb -->
+                        <!-- Sorting Filters -->
                         <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
                             <div class="clearfix"></div>
                             <div class="listingTopFilterBar">
-                                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                                <div class="col-md-5 col-xs-12 col-sm-6 no-padding">
                                     <div class="header-listing">
-                                        <h6>ترتيـب حسـب :</h6>
+                                        <h6>الترتيب بحسب :</h6>
                                         <div class="custom-select-box">
                                             <select name="order" class="custom-select">
-                                                <option value="0">تـاريخ النشر</option>
-                                                <option value="1">السعر(الأقل-الاكثر)</option>
-                                                <option value="2">السعر (الاكثر- الاقل)</option>
+                                                <option value="1">الأخيرة</option>
+                                                <option value="2">السعر (الأرخص حتى الأغلى) </option>
+                                                <option value="3">السعر (الأغلى حتى الأرخص) </option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Sorting Filters Breadcrumb End -->
                         <!-- Sorting Filters End-->
                         <div class="clearfix"></div>
-                        <!-- Ads Archive -->
-                        <?php include 'scripts/pop_search_script.php';?>
-                        <!-- Pagination End -->
+                        <?php include  'scripts/pop_search_script.php';?>
                     </div>
                     <!-- Row End -->
                 </div>
@@ -136,7 +118,7 @@ session_start();
                 <!-- Left Sidebar -->
                 <div class="col-md-4 col-md-pull-8 col-sx-12">
                     <!-- Sidebar Widgets -->
-                    <div class="sidebar" style="direction: rtl">
+                    <div class="sidebar">
                         <!-- Panel group -->
                         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                             <!-- Categories Panel -->
@@ -147,7 +129,7 @@ session_start();
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            التصنيفات الفرعيـة
+                                            التصنيفات
                                         </a>
                                     </h4>
                                     <!-- Title End -->
@@ -157,22 +139,22 @@ session_start();
                                     <div class="panel-body categories">
                                         <ul>
                                             <?php
-                                            $cat_query  = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` ='{$_GET['cat_id']}'";
+                                            $cat_query  = "SELECT * FROM `CATEGORY` WHERE `lang` = 'AR'";
                                             $cat_result = mysqli_query($mysqli, $cat_query);
                                             while ($row = mysqli_fetch_assoc($cat_result)) {
-                                                $sub_cat_id = $row['id'];
+                                                $cat_id     = $row['id'];
                                                 $cat_name   = $row['name'];
                                                 $icon_name  = $row['icon_name'];
 
-                                                $count_query = "SELECT COUNT(*) AS 'SUB_CAT_count' FROM `ADVERTISEMENT` WHERE sub_cat_id = '{$sub_cat_id}' ";
+                                                $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$cat_id}' ";
                                                 $count_result = mysqli_query($mysqli,$count_query);
                                                 while ($row = mysqli_fetch_assoc($count_result)){
-                                                    $cat_count = $row['SUB_CAT_count'];
+                                                    $cat_count = $row['CAT_count'];
                                                 }
 
                                                 ?>
 
-                                                <li><a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $sub_cat_id; ?>"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span style="color: #985f0d">(<?php echo $cat_count;?>)</span></a></li>
+                                                <li><a href="ad_per_cat.php?cat_id=<?php echo $cat_id; ?>"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span style="color: #985f0d">(<?php echo $cat_count;?>)</span></a></li>
                                                 <?php
                                             }
                                             ?>
@@ -189,14 +171,14 @@ session_start();
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            اعلانـات تبعد عنـك مسافـة :
+                                            البعد عنك
                                         </a>
                                     </h4>
                                     <!-- Title End -->
                                 </div>
                                 <!-- Content -->
                                 <div id="citiesheading" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cities">
-                                    <div class="panel-body categories" style="direction: rtl">
+                                    <div class="panel-body categories">
                                         <ul>
                                             <li><a href="#"><i class="flaticon-signs-1"></i> 10 KM </a></li>
                                             <li><a href="#"><i class="flaticon-signs-1"></i> 20 KM </a></li>
@@ -219,32 +201,32 @@ session_start();
                                     <h4 class="panel-title">
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            السـعر
+                                            Price
                                         </a>
                                     </h4>
                                 </div>
                                 <!-- Content -->
                                 <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
                                     <div class="panel-body">
-                                        <span class="price-slider-value">السـعر (€) <span id="price-min"></span> - <span id="price-max"></span></span>
+                                        <span class="price-slider-value">السعر (€) <span id="price-min"></span> - <span id="price-max"></span></span>
                                         <div id="price-slider"></div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Pricing Panel End -->
                             <!-- Featured Ads Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" >
-                                    <h4 class="panel-title">
-                                        <a>
-                                            اعلانـات متميزة
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- Content -->
-                                <?php include 'scripts/featured_ads.php';?>
-                            </div>
+<!--                            <div class="panel panel-default">-->
+<!--                                <!-- Heading -->
+<!--                                <div class="panel-heading" >-->
+<!--                                    <h4 class="panel-title">-->
+<!--                                        <a>-->
+<!--                                            Featured Ads-->
+<!--                                        </a>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <!-- Content -->
+<!--                                --><?php //include 'scripts/featured_ads.php';?>
+<!--                            </div>-->
                             <!-- Featured Ads Panel End -->
                         </div>
                         <!-- panel-group end -->
@@ -257,21 +239,59 @@ session_start();
         </div>
         <!-- Main Container End -->
     </section>
-    <!-- =-=-=-=-=-=-= Ads أرشيف End =-=-=-=-=-=-= -->
+    <!-- =-=-=-=-=-=-= Ads Archives End =-=-=-=-=-=-= -->
     <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
-<?php include 'footer.php';?>
+    <?php include 'footer.php';?>
     <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
 </div>
+
 <!-- Main Content Area End -->
 <!-- Post Ad Sticky -->
 <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
          <i class="flaticon-transport-9"></i>
          </span>
-    <h4>قم بالبيع الان</h4>
+    <h4>SELL</h4>
 </a>
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>
+<!-- =-=-=-=-=-=-= Quote Modal =-=-=-=-=-=-= -->
+<div class="modal fade price-quote" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">إغلاق</span></button>
+                <h3 class="modal-title" id="lineModalLabel">أرسل بريداً بالسعر</h3>
+            </div>
+            <div class="modal-body">
+                <!-- content goes here -->
+                <form>
+                    <div class="form-group  col-md-6">
+                        <label>اسمك</label>
+                        <input type="text" class="form-control" placeholder="Enter Your Name">
+                    </div>
+                    <div class="form-group  col-md-6">
+                        <label>بريدك الإلكتروني</label>
+                        <input type="email" class="form-control" placeholder="Enter email">
+                    </div>
+                    <div class="form-group  col-md-12">
+                        <label>رقم الإتصال بك</label>
+                        <input type="text" class="form-control" placeholder="Contact No">
+                    </div>
+                    <div class="form-group  col-md-12">
+                        <label>التعليقات</label>
+                        <textarea placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control">What is the price of the 2015 Honda Accord EX-L you have in your inventory?</textarea>
+                    </div>
+                    <div class="col-md-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-12 margin-bottom-20 margin-top-20">
+                        <button type="submit" class="btn btn-theme btn-block">إرسال</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
 <script src="js/jquery.min.js"></script>
 <!-- Bootstrap Core Css  -->
@@ -308,4 +328,3 @@ session_start();
 <script src="js/custom.js"></script>
 </body>
 </html>
-

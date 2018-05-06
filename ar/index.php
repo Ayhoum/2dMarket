@@ -1,6 +1,8 @@
 ﻿<?php
-
-include '../scripts/db_connection.php';
+session_start();
+ob_start();
+require_once '../scripts/db_connection.php';
+require_once "scripts/time_elapse.php";
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +36,9 @@ include '../scripts/db_connection.php';
       <!-- =-=-=-=-=-=-= Select Options =-=-=-=-=-=-= -->
       <link href="css/select2.min.css" rel="stylesheet" />
       <!-- =-=-=-=-=-=-= noUiSlider =-=-=-=-=-=-= -->
-      <link href="css/nouislider.min.css" rel="stylesheet">
+       <link href="css/nouislider.min.css" rel="stylesheet">
+       <link href="css/ion.rangeSlider.css" rel="stylesheet">
+       <link href="css/ion.rangeSlider.skinRound.css" rel="stylesheet">
       <!-- =-=-=-=-=-=-= Bootstrap Rtl Style =-=-=-=-=-=-= -->
       <link href="css/bootstrap-rtl.css" rel="stylesheet">
       <!-- =-=-=-=-=-=-= Listing Slider =-=-=-=-=-=-= -->
@@ -58,12 +62,20 @@ include '../scripts/db_connection.php';
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+       <style>
+           .shadow{
+               box-shadow: 0 0 12px red;
+           }
+           .carousel-control.left, .carousel-control.right {
+               background-image: none
+           }
+       </style>
    </head>
    <body class="rtl">
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <div id="loader-wrapper">
           <div id="loader"><img class="img-responsive"  src="images/design.gif">
-              <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+              <h4 class="text-center" style="color: #00a9da">جاري التحميل.. </h4> </div>
           <div class="loader-section section-left"></div>
           <div class="loader-section section-right"></div>
       </div>
@@ -84,42 +96,35 @@ include '../scripts/db_connection.php';
 <!--         <div class="map">-->
 <!--            <div id="map"></div>-->
 <!--         </div>-->
+
           <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
               <!-- Wrapper for slides -->
               <div class="carousel-inner" >
-                  <div class="itemFill imgLiquid item active" style="width:100%; height:400px;">
-                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/comprar-e-vender-dolares-e-investimento-933x445.jpeg" alt="">
+                  <div class="itemFill imgLiquid item active" style="width:100%; height:600px;">
+                      <img src="../slider/1.jpg" alt="Los Angeles">
                   </div>
 
-                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/compraSegura.png" alt="">
+                  <div class="itemFill imgLiquid item" style="width:100%; height:600px;">
+                      <img src="../slider/2.jpg" alt="Chicago">
                   </div>
 
-                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/comprar-por-internet-barato-y-seguro-800x410.jpg" alt="">
-                  </div>
-
-                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/ecommerce-marketing-automation-best-practices-1.jpg" alt="">
-                  </div>
-
-                  <div class="itemFill imgLiquid item" style="width:100%; height:400px;">
-                      <img style="width: 100%; height: 100%; object-fit: cover;" src="images/New%20folder/shoping-on-line.jpg" alt="">
+                  <div class="itemFill imgLiquid item" style="width:100%; height:600px;">
+                      <img src="../slider/3.jpg" alt="New York">
                   </div>
               </div>
 
               <!-- Left and right controls -->
-<!--              <a class="left carousel-control" href="#myCarousel" data-slide="prev">-->
-<!--                  <span class="glyphicon glyphicon-chevron-left"></span>-->
-<!--                  <span class="sr-only">Previous</span>-->
-<!--              </a>-->
-<!--              <a class="right carousel-control" href="#myCarousel" data-slide="next">-->
-<!--                  <span class="glyphicon glyphicon-chevron-right"></span>-->
-<!--                  <span class="sr-only">Next</span>-->
-<!--              </a>-->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-triangle-left" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-triangle-right" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
+                  <span class="sr-only">Next</span>
+              </a>
           </div>
-         <!-- end map -->
+          <!-- end map -->
       </section>
       <!-- =-=-=-=-=-=-= Listing Map End =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Advance Search =-=-=-=-=-=-= -->
@@ -127,13 +132,13 @@ include '../scripts/db_connection.php';
          <div class="container">
             <!-- Title -->
             <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
-               <div class="search-title">Browse Ads</div>
+               <div class="search-title">استعرض الإعلانات</div>
             </div>
-            <div class="row">
+             <div class="row" style="margin-left: 0;margin-right: 0;">
                <form method="post" class="search-form">
                   <!-- Category -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <select class="category form-control">
+                      <select name="cat" class="category form-control" id="catSelect" required>
                         <option label="">اختر من القائمة</option>
                          <?php
                          // GET ALL CATEGORIES from DB
@@ -166,29 +171,31 @@ include '../scripts/db_connection.php';
                   </div>
                   <!-- Search Field -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <input type="text" class="form-control" placeholder="عن ماذا تريد البحث..." />
+                      <input type="text" name="query" id="querySearch" class="form-control" placeholder="عن ماذا تريد البحث..." required/>
                   </div>
                   <!-- Price Range SLider -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
-                     <span class="price-slider-value">المسافة (كـم) <span id="price-min"></span> - <span id="price-max"></span></span>
-                     <div id="price-slider"></div>
-                  </div>
+                   <div class="col-md-3 col-xs-12 col-sm-6">
+                       <span class="price-slider-value">المسافة (Km) - <input type="text" name="dis" id="dis-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
+                       <input type="text" id="example_id" name="example_name" value="" />
+                   </div>
                   <!-- Search Button -->
                   <div class="col-md-3 col-xs-12 col-sm-3">
-                     <button type="submit" class="btn btn-block btn-light">ابحث</button>
+                      <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">بحث</button>
                   </div>
                   <!-- end .item -->
+             </div>
+             <div class="row">
                    <div class="hero-form-sub">
-                       <strong class="hidden-sm-down">اشهر عمليات البحث</strong>
+                       <strong class="hidden-sm-down">أشهر عمليات البحث</strong>
                        <ul>
-                           <li><a href="pop_search.php?tag=Iphone 7">ايفون 7</a></li>
-                           <li><a href="pop_search.php?tag=Cars">سيارات</a></li>
-                           <li><a href="pop_search.php?tag=Samsung S8">سامسونج اس 8</a></li>
-                           <li><a href="pop_search.php?tag=Wash Machine">غسالات</a></li>
-                           <li><a href="pop_search.php?tag=Shorts">ملابس رجالية</a></li>
-                           <li><a href="pop_search.php?tag=Bike">العاب اطفال</a></li>
-                           <li><a href="pop_search.php?tag=Laptop">لابتوب</a></li>
-                           <li><a href="pop_search.php?tag=Xbox Games">العاب اكس بوكس</a></li>
+                           <li><a href="pop_search.php?tag=Iphone 7">Iphone 7</a></li>
+                           <li><a href="pop_search.php?tag=سيارات">سيارات</a></li>
+                           <li><a href="pop_search.php?tag=سامسونج S8">سامسونج S8</a></li>
+                           <li><a href="pop_search.php?tag=غسالة">غسالة</a></li>
+                           <li><a href="pop_search.php?tag=شاشة">شاشة</a></li>
+                           <li><a href="pop_search.php?tag=دراجات">دراجات</a></li>
+                           <li><a href="pop_search.php?tag=لابتوب">لابتوب</a></li>
+                           <li><a href="pop_search.php?tag=ألعاب إكسبوكس">ألعاب إكسبوكس</a></li>
                        </ul>
                    </div>
                </form>
@@ -202,44 +209,44 @@ include '../scripts/db_connection.php';
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
          <!-- =-=-=-=-=-=-= الفئات =-=-=-=-=-=-= -->
-         <section class="custom-padding gray ">
-            <!-- Main Container -->
-            <div class="container">
-               <!-- Row -->
-               <div class="row">
-                  <!-- Category -->
-                   <ul class="category-list-style" style="direction: rtl">
-                       <!-- Category -->
-                       <!-- Category List -->
-                       <?php
+         <section class="custom-padding gray categories">
+              <!-- Main Container -->
+              <div class="container">
+                  <!-- Row -->
+                  <div class="row">
+                      <!-- Category -->
+                      <ul class="category-list-style">
+                          <!-- Category -->
+                          <!-- Category List -->
+                          <?php
 
-                       $query = "SELECT * FROM `CATEGORY` WHERE `lang` = 'AR' LIMIT 8";
-                       $result = mysqli_query($mysqli, $query);
-                       While($row = mysqli_fetch_assoc($result)){
-                           $id = $row['id'];
-                           $name = $row['name'];
-                           $icon = $row['icon_name'];
+                          $query = "SELECT * FROM `CATEGORY` WHERE `lang` = 'AR' LIMIT 8";
+                          $result = mysqli_query($mysqli, $query);
+                          While($row = mysqli_fetch_assoc($result)){
+                              $id = $row['id'];
+                              $name = $row['name'];
+                              $icon = $row['icon_name'];
 
-                           $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$id}' ";
-                           $count_result = mysqli_query($mysqli,$count_query);
-                           while ($row = mysqli_fetch_assoc($count_result)){
-                               $cat_count = $row['CAT_count'];
-                           }
-                           ?>
+                              $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$id}' ";
+                              $count_result = mysqli_query($mysqli,$count_query);
+                              while ($row = mysqli_fetch_assoc($count_result)){
+                                  $cat_count = $row['CAT_count'];
+                              }
+                              ?>
 
-                           <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                               <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>"><?php echo $name;?><span>(<?php echo $cat_count; ?>  اعلان )</span>
-                                   <i class="<?php echo $icon;?>"></i>
-                               </a>
-                           </li>
+                              <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                  <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>"><?php echo $name;?><span>(<?php echo $cat_count; ?> إعلانات)</span>
+                                      <i class="<?php echo $icon;?>"></i>
+                                  </a>
+                              </li>
 
-                       <?php }?>
-                   </ul>
-               </div>
-               <!-- Row End -->
-            </div>
-            <!-- Main Container End -->
-         </section>
+                          <?php }?>
+                      </ul>
+                  </div>
+                  <!-- Row End -->
+              </div>
+              <!-- Main Container End -->
+          </section>
          <!-- =-=-=-=-=-=-= الفئات =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= Call to Action =-=-=-=-=-=-= -->
          <div class="parallex bg-img-3  section-padding">
@@ -255,7 +262,7 @@ include '../scripts/db_connection.php';
                   </div>
                   <!-- end col-md-8 -->
                   <div class="col-md-4 col-sm-12">
-                     <div class="parallex-button"> <a href="<?php if (isset($_SESSION['username'])) {?>new_advertisement.php<?php } else {echo "login.php"; } ?>" class="btn btn-theme">انشر إعلانك مجانا <i class="fa fa-angle-double-right "></i></a> </div>
+                     <div class="parallex-button"> <a href="login.php" class="btn btn-theme">انشر إعلانك مجانا <i class="fa fa-angle-double-left "></i></a> </div>
                      <!-- end parallex-button -->
                   </div>
                   <!-- end col-md-4 -->
@@ -278,7 +285,7 @@ include '../scripts/db_connection.php';
                   <div class="heading-panel">
                      <div class="col-xs-12 col-md-12 col-sm-12">
                         <h3 class="main-title text-left">
-                           إعلانات جديدة
+                           إعلانات مميزة
                         </h3>
                         <!-- Style Switcher -->
                         <div class="switcher pull-right flip">
@@ -338,72 +345,72 @@ include '../scripts/db_connection.php';
          <!-- /.funfacts -->
          <!-- =-=-=-=-=-=-= Statistics Counter End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= Blog Section =-=-=-=-=-=-= -->
-          <section class="custom-padding">
-              <!-- Main Container -->
-              <div class="container">
-                  <!-- Row -->
-                  <div class="row">
-                      <!-- Heading Area -->
-                      <div class="heading-panel">
-                          <div class="col-xs-12 col-md-12 col-sm-12">
-                              <h3 class="main-title text-left">
-                                  الاعلانات المضافة حديثاً
-                              </h3>
-                          </div>
-                      </div>
-                      <!-- Middle Content Box -->
-                      <div class="col-md-12 col-xs-12 col-sm-12">
-                          <div class="row">
-                              <div class="featured-slider owl-carousel owl-theme">
+<!--          <section class="custom-padding">-->
+<!--              <!-- Main Container -->
+<!--              <div class="container">-->
+<!--                  <!-- Row -->
+<!--                  <div class="row">-->
+<!--                      <!-- Heading Area -->
+<!--                      <div class="heading-panel">-->
+<!--                          <div class="col-xs-12 col-md-12 col-sm-12">-->
+<!--                              <h3 class="main-title text-left">-->
+<!--                                  الاعلانات المضافة حديثاً-->
+<!--                              </h3>-->
+<!--                          </div>-->
+<!--                      </div>-->
+<!--                      <!-- Middle Content Box -->
+<!--                      <div class="col-md-12 col-xs-12 col-sm-12">-->
+<!--                          <div class="row">-->
+<!--                              <div class="featured-slider owl-carousel owl-theme">-->
 <!--                                  --><?php //include "scripts/index_2.php";?>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- Middle Content Box End -->
-                  </div>
-                  <!-- Row End -->
-              </div>
-              <!-- Main Container End -->
-          </section>
+<!--                              </div>-->
+<!--                          </div>-->
+<!--                      </div>-->
+<!--                      <!-- Middle Content Box End -->
+<!--                  </div>-->
+<!--                  <!-- Row End -->
+<!--              </div>-->
+<!--              <!-- Main Container End -->
+<!--          </section>-->
          <!-- =-=-=-=-=-=-= Blog Section End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= Partner Section =-=-=-=-=-=-= -->
-         <section class="section-padding" id="partner">
-            <div class="container">
-               <!-- Row -->
-               <div class="row">
-                  <div class="col-sm-12 col-md-12 col-xs-12  no-padding">
-                     <ul>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_5.png"></a>
-                        </li>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_6.png"></a>
-                        </li>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_7.png"></a>
-                        </li>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_8.png"></a>
-                        </li>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_9.png"></a>
-                        </li>
-                        <!-- Partners -->
-                        <li class="col-sm-2 col-xs-6 col-md-2">
-                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_10.png"></a>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-               <!-- Row End -->
-            </div>
-            <!-- end container -->
-         </section>
+<!--         <section class="section-padding" id="partner">-->
+<!--            <div class="container">-->
+<!--               <!-- Row -->
+<!--               <div class="row">-->
+<!--                  <div class="col-sm-12 col-md-12 col-xs-12  no-padding">-->
+<!--                     <ul>-->
+<!--                        <!-- Partners -->
+<!--                        <li class="col-sm-2 col-xs-6 col-md-2">-->
+<!--                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_5.png"></a>-->
+<!--                        </li>-->
+<!--                        <!-- Partners -->
+<!--                        <li class="col-sm-2 col-xs-6 col-md-2">-->
+<!--                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_6.png"></a>-->
+<!--                        </li>-->
+<!--                        <!-- Partners -->
+<!--                        <li class="col-sm-2 col-xs-6 col-md-2">-->
+<!--                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_7.png"></a>-->
+<!--                        </li>-->
+<!--                        <!-- Partners -->
+<!--                        <li class="col-sm-2 col-xs-6 col-md-2">-->
+<!--                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_8.png"></a>-->
+<!--                        </li>-->
+<!--                        <!-- Partners -->
+<!--                        <li class="col-sm-2 col-xs-6 col-md-2">-->
+<!--                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_9.png"></a>-->
+<!--                        </li>-->
+<!--                        <!-- Partners -->
+<!--                        <li class="col-sm-2 col-xs-6 col-md-2">-->
+<!--                           <a href="#"><img class="img-responsive" alt="" src="images/clients/client_10.png"></a>-->
+<!--                        </li>-->
+<!--                     </ul>-->
+<!--                  </div>-->
+<!--               </div>-->
+<!--               <!-- Row End -->
+<!--            </div>-->
+<!--            <!-- end container -->
+<!--         </section>-->
          <!-- =-=-=-=-=-=-= Partner Section  End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= FOOTER =-=-=-=-=-=-= -->
          <?php include 'footer.php';?>
@@ -437,6 +444,8 @@ include '../scripts/db_connection.php';
       <script src="js/select2.min.js"></script>
       <!-- noUiSlider -->
       <script src="js/nouislider.all.min.js"></script>
+      <script src="js/ion.rangeSlider.js"></script>
+      <script src="js/ion.rangeSlider.min.js"></script>
       <!-- Carousel Slider  -->
       <script src="js/carousel.min.js"></script>
       <script src="js/slide.js"></script>
@@ -454,15 +463,62 @@ include '../scripts/db_connection.php';
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
       <!-- Googgle map For THis Page Only -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVj6yChAfe1ilA4YrZgn_UCAnei8AhQxQ&sensor=false"></script>      <script src="js/infobox.js"></script>
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCVj6yChAfe1ilA4YrZgn_UCAnei8AhQxQ&sensor=false"></script>      <script src="js/infobox.js"></script>-->
       <!-- Parallax -->
-      <script src="js/data.json"></script>
-      <script src="js/markerclusterer.js"></script>
-      <script src="js/markers-map.js"></script>
-      <script type="text/javascript">
-	      "use strict";
-         google.maps.event.addDomListener(window, 'load', speedTest.init);
-		 (jQuery);
+<!--      <script src="js/data.json"></script>-->
+<!--      <script src="js/markerclusterer.js"></script>-->
+<!--      <script src="js/markers-map.js"></script>-->
+<!--      <script type="text/javascript">-->
+<!--	      "use strict";-->
+<!--         google.maps.event.addDomListener(window, 'load', speedTest.init);-->
+<!--		 (jQuery);-->
+<!--      </script>-->
+      <script>
+          var stepSliderValueElement = document.getElementById('dis-min');
+          stepSliderValueElement.value = 10;
+          $("#example_id").ionRangeSlider({
+              grid: false,
+              min: 10,
+              max: 100,
+              from: 0,
+              step: 10,
+              hide_min_max: true,
+              prettify_enabled: false,
+              onChange: function (data) {
+                  stepSliderValueElement.value = data.from;
+              }
+          });
+
+
+          var cat;
+          var query;
+          var dis;
+          var order;
+          var price;
+
+          var submitBut = function () {
+              cat   = $("#catSelect").val();
+              query = $("#querySearch").val();
+              dis   = $("#price-min").val();
+              order = "latest";
+              price = "all";
+              if(cat == null || cat == "dis"){
+                  $(".select2Class").addClass('shadow');
+              }
+              if(query == ""){
+                  $("#querySearch").addClass('shadow');
+              }
+              if(dis == 0.00){
+                  $(".noUi-connects").addClass('shadow');
+              }
+              if(cat != null && cat != "dis" && query != "" && dis != 0.00){
+
+
+
+                  window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
+              }
+          };
+
       </script>
    </body>
 </html>
