@@ -7,6 +7,7 @@
  */
 session_start();
 require_once "../../scripts/db_connection.php";
+require_once "../../phpmailer/class.phpmailer.php";
 
 
 if (isset($_GET['id'])) {
@@ -137,6 +138,11 @@ if (isset($_GET['id'])) {
                 echo 1;
                 exit;
             }
+
+
+
+
+
             break;
 
 

@@ -633,7 +633,7 @@ if (mysqli_num_rows($run_queryAD) > 0) {
 
 <div class="col-md-12 col-xs-12 col-sm-12">
     <section class="advertising">
-        <a href="post-ad-1.html">
+        <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>">
             <div class="banner">
                 <div class="wrapper">
                     <span class="title">Do you want your property to be listed here?</span>

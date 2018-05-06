@@ -139,8 +139,8 @@ ob_start();
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title" id="lineModalLabel">Send <?php echo $user_username;?> a message </h3>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Sluit</span></button>
+                <h3 class="modal-title" id="lineModalLabel">Stuur <?php echo $user_username;?> een bricht </h3>
             </div>
             <div class="modal-body">
                 <div class="recent-ads">
@@ -184,13 +184,13 @@ ob_start();
 <!--                        <input type="text" class="form-control" placeholder="Contact No">-->
 <!--                    </div>-->
                     <div class="form-group  col-md-12  col-sm-12">
-                        <label>Your message</label>
-                        <textarea name="message" placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control"></textarea>
+                        <label>Uw Bricht</label>
+                        <textarea name="message" placeholder="B.v Wat is het laatste prijs ? " rows="3" class="form-control"></textarea>
                     </div>
                     <div class="col-md-12  col-sm-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>
                     <div class="clearfix"></div>
                     <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
-                        <button type="submit" class="btn btn-theme btn-block" name="submit">Send</button>
+                        <button type="submit" class="btn btn-theme btn-block" name="submit">Stuur</button>
                     </div>
                 </form>
             </div>
@@ -308,9 +308,9 @@ ob_start();
                 <h3><?php echo $title;?></h3>
                 <div class="short-history">
                     <ul>
-                        <li>Published on: <b><?php echo $date;?></b></li>
-                        <li>Location: <b><?php echo $user_region. " | ". $user_country; ?></b></li>
-                        <li>Category: <b><a href="#"><?php echo $cat_name;?></a></b></li>
+                        <li>Gepubliceerd op: <b><?php echo $date;?></b></li>
+                        <li>Plaats: <b><?php echo $user_region. " | ". $user_country; ?></b></li>
+                        <li>Categorie: <b><?php echo $cat_name;?></b></li>
                     </ul>
                 </div>
             </div>

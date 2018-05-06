@@ -143,22 +143,34 @@
                         </li>
 
                         <li><a href="all_product.php">Alle Ads. </a></li>
-                        <li><a href="contact_us.php">Contact Us</a></li>
+                        <li><a href="contact.php">Contact Us</a></li>
                     </ul>
-                    <ul class="menu-search-bar">
+                    <!--                    <ul class="menu-search-bar">-->
+                    <!--                                            --><?php //if(!isset($_SESSION['username'])){?>
+                    <!--                                            <li>-->
+                    <!--                                                <a href="login.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Login</a>-->
+                    <!--                                            </li>-->
+                    <!--                                            --><?php //} else{ ?>
+                    <!--                                                <a href="profile.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i>--><?php //echo $_SESSION['username']; ?><!-- </a>-->
+                    <!--                                            --><?php //}?>
+                    <!--                                        </ul>-->
+
+                    <ul class="menu-search-bar" style="float: right">
                         <?php if(!isset($_SESSION['username'])){?>
-                            <li>
-                                <a href="login.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Aanmelden</a>
+                            <li><a href="login.php"><i class="fa fa-sign-in"></i> Log in  </a> </li>
+                        <?php } else { ?>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.php">Mijn Profile</a></li>
+                                    <li><a href="personal_ads.php">Mijn Advertenties</a></li>
+                                    <li><a href="favourite_ads.php">Favoriete Advertenties</a></li>
+                                    <li><a href="messages.php">Mijn Brichten</a></li>
+                                    <li><a href="logout.php">Uitloggen</a></li>
+                                </ul>
                             </li>
-                        <?php } else{ ?>
-                            <a href="profile.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Profiel</a>
-                        <?php }?>
+                        <?php } ?>
                     </ul>
-<!--                    <ul class="menu-search-bar">-->
-<!--                        <li>-->
-<!--                            <a href="new_advertisement.php" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> Post Free Ad</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
                 </div>
             </div>
         </div>

@@ -145,10 +145,10 @@ if (isset($_GET['ad_id'])) {
                         }
                     }
 
-                    if(empty($picture_name) || !file_exists('../en_ad_photo/'.$picture_name)){
+                    if(empty($picture_name) || !file_exists('../nl_ad_photo/'.$picture_name)){
                         ?>
                         <li class="flex-active-slide"><img alt="" style="width: 200px; height: 112px object-fit: cover;"
-                                                           src="<?php echo "en_ad_photo/white.jpg"; ?>"
+                                                           src="<?php echo "nl_ad_photo/white.jpg"; ?>"
                                                            ></li>
                     <?php } ?>
 
@@ -157,15 +157,15 @@ if (isset($_GET['ad_id'])) {
         </div>
         <!-- Share Ad  -->
         <div class="ad-share text-center">
-            <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-4 col-sm-4 col-xs-12">
-                <i class="fa fa-share-alt"></i> <span class="hidetext">Delen</span>
-            </div>
-            <a class="ad-box col-md-4 col-sm-4 col-xs-12"
+<!--            <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-4 col-sm-4 col-xs-12">-->
+<!--                <i class="fa fa-share-alt"></i> <span class="hidetext">Delen</span>-->
+<!--            </div>-->
+            <a class="ad-box col-md-12 col-sm-12 col-xs-12"
                href="scripts/add_to_favorite.php?ad_id=<?php echo $ad_id; ?>"><i class="fa fa-star active"></i> <span
                         class="hidetext"> Aan Favorieten Toevoegen </span></a>
-            <div data-target=".report-quote" data-toggle="modal" class="ad-box col-md-4 col-sm-4 col-xs-12">
-                <i class="fa fa-warning"></i> <span class="hidetext">Report</span>
-            </div>
+<!--            <div data-target=".report-quote" data-toggle="modal" class="ad-box col-md-4 col-sm-4 col-xs-12">-->
+<!--                <i class="fa fa-warning"></i> <span class="hidetext">Report</span>-->
+<!--            </div>-->
         </div>
         <div class="clearfix"></div>
 
@@ -177,17 +177,17 @@ if (isset($_GET['ad_id'])) {
                 <!-- Heading Area -->
                 <div class="heading-panel">
                     <h3 class="main-title text-left">
-                        Omschrijven
+                        Beschrijving
                     </h3>
                 </div>
                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
                     <span><strong>Conditie</strong> :</span> <?php echo $condition; ?>
                 </div>
                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                    <span><strong>Status</strong> :</span> <?php echo $status; ?>
+                    <span><strong>Staat</strong> :</span> <?php echo $status; ?>
                 </div>
                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
-                    <span><strong>Bezorg Type </strong> :</span> <?php echo $delivery_type; ?>
+                    <span><strong>Delivery Methode</strong> :</span> <?php echo $delivery_type; ?>
                 </div>
                 <div class="col-sm-4 col-md-4 col-xs-12 no-padding">
                     <span><strong>Categorie </strong>:</span> <?php echo $cat_name; ?>
@@ -263,13 +263,13 @@ if (isset($_GET['ad_id'])) {
         ?>
         <div class="alert-box-container  margin-top-30">
             <div class="well">
-                <h3>Bids History </h3>
+                <h3>Biedingen geschiedenis </h3>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Username</th>
-                        <th>Amount</th>
-                        <th>time</th>
+                        <th>Gebruikersnaam</th>
+                        <th>Bedrag</th>
+                        <th>Tijd</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -312,7 +312,7 @@ if (isset($_GET['ad_id'])) {
                         <div role="alert" class="alert alert-warning alert-dismissible">
                             <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span
                                         aria-hidden="true">×</span></button>
-                            <strong>There are no bids currently</strong> Submit a bid to be the first one.
+                            <strong>Er Zijn nog geen biedingen</strong> Do Maar een eentje!
                         </div>
                         <?php
                     }
@@ -322,14 +322,14 @@ if (isset($_GET['ad_id'])) {
 
             ?>
             <div class="well">
-                <h3>Submit a bid</h3>
+                <h3>Doe een bod</h3>
                 <form action=" " method="post">
                     <div class="row">
                         <div class="col-md-5 col-xs-12 col-sm-12">
-                            <input name="bid" placeholder="Enter Your Bid " type="text" class="form-control">
+                            <input name="bid" placeholder="Uw bod hier plaatsen " type="text" class="form-control">
                         </div>
                         <div class="col-md-3 col-xs-12 col-sm-12">
-                            <input name="submit" class="btn btn-theme btn-block" value="Submit" type="submit"">
+                            <input name="submit" class="btn btn-theme btn-block" value="Akkoord" type="submit"">
                         </div>
                     </div>
                 </form>
@@ -343,7 +343,7 @@ if (isset($_GET['ad_id'])) {
         <div class="heading-panel">
             <div class="col-xs-12 col-md-12 col-sm-12">
                 <h3 class="main-title text-left">
-                    Related Ads
+                    Vergelijkbare Advertenties
                 </h3>
             </div>
         </div>
@@ -435,6 +435,9 @@ if (isset($_GET['ad_id'])) {
                                 $picture_url_1 = $row['picture_url'];
 
                             }
+                        } else{
+                            $picture_name_1 = " ";
+                            $picture_url_1 = " ";
                         }
                            ?>
                                 <div class="ads-list-archive">
@@ -472,7 +475,7 @@ if (isset($_GET['ad_id'])) {
                                                         <span class="tooltip-item"><i class="fa fa-phone"></i></span>
                                                         <div class="tooltip-content">
                                                             <h4>Contact Info,</h4>
-                                                            <strong>Username : </strong> <?php echo $user_username; ?>
+                                                            <strong>Gebruiksnaam : </strong> <?php echo $user_username; ?>
                                                             <br> <strong>Email : </strong> <?php echo $user_email;?>
 <!--                                                            <br> <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>-->
                                                         </div>
@@ -483,7 +486,7 @@ if (isset($_GET['ad_id'])) {
                                                     <div class="custom-tooltip tooltip-effect-4">
                                                         <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
                                                         <div class="tooltip-content">
-                                                            <h4>Address</h4>
+                                                            <h4>Adres</h4>
                                                             <?php echo $location; ?>
                                                         </div>
                                                     </div>
@@ -492,15 +495,15 @@ if (isset($_GET['ad_id'])) {
                                                 <li>
                                                     <div class="custom-tooltip tooltip-effect-4">
                                                         <span class="tooltip-item"><i class="fa fa-cog"></i></span>
-                                                        <div class="tooltip-content"> <strong>Product Info.</strong> <span class="label label-danger"><?php echo $status . " | ". $delivery_type;?></span> </div>
+                                                        <div class="tooltip-content"> <strong>Artikel Info.</strong> <span class="label label-danger"><?php echo $status . " | ". $delivery_type;?></span> </div>
                                                     </div>
                                                 </li>
                                                 <!-- Ad Type -->
                                             </ul>
                                             <!-- Ad History -->
                                             <div class="clearfix archive-history">
-                                                <div class="last-updated">Added : <?php echo $date;?></div>
-                                                <div class="ad-meta"> <a href="scripts/add_to_favorite.php?ad_id=<?php echo $id;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> Save Ad.</a> <a href="ad_page.php?ad_id=<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a> </div>
+                                                <div class="last-updated">Datum : <?php echo $date;?></div>
+                                                <div class="ad-meta"> <a href="scripts/add_to_favorite.php?ad_id=<?php echo $id;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> Bewaar</a> <a href="ad_page.php?ad_id=<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-phone"></i> Meer Weergeven</a> </div>
                                             </div>
                                         </div>
                                         <!-- Ad Desc End -->

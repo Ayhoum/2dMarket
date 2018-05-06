@@ -140,21 +140,33 @@
                             </ul>
                         </li>
                         <li class="pull-right"><a href="all_product.php">جميـع الاعلانـات </a></li>
-                        <li class="pull-right"><a href="contact_us.php">تواصـل معنـا</a></li>
+                        <li class="pull-right"><a href="contact.php">تواصـل معنـا</a></li>
                     </ul>
-<!--                    <ul class="menu-search-bar">-->
-<!--                        <li>-->
-<!--                            <a href="new_advertisement.php" class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i> Post Free Ad</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-                    <ul class="menu-search-bar pull-left">
+                    <!--                    <ul class="menu-search-bar">-->
+                    <!--                                            --><?php //if(!isset($_SESSION['username'])){?>
+                    <!--                                            <li>-->
+                    <!--                                                <a href="login.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Login</a>-->
+                    <!--                                            </li>-->
+                    <!--                                            --><?php //} else{ ?>
+                    <!--                                                <a href="profile.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i>--><?php //echo $_SESSION['username']; ?><!-- </a>-->
+                    <!--                                            --><?php //}?>
+                    <!--                                        </ul>-->
+
+                    <ul class="menu-search-bar" style="float: right">
                         <?php if(!isset($_SESSION['username'])){?>
-                            <li>
-                                <a href="login.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> تسجيل الدخول</a>
+                            <li><a href="login.php"><i class="fa fa-sign-in"></i> Log in  </a> </li>
+                        <?php } else { ?>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.php">الصفحة الشخصيـة</a></li>
+                                    <li><a href="personal_ads.php">اعلانـاتي</a></li>
+                                    <li><a href="favourite_ads.php">الاعلانـات المفضلة</a></li>
+                                    <li><a href="messages.php">الرسـائل</a></li>
+                                    <li><a href="logout.php">تسجيـل الخروج</a></li>
+                                </ul>
                             </li>
-                        <?php } else{ ?>
-                            <a href="profile.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i>الملف الشخصي </a>
-                        <?php }?>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>

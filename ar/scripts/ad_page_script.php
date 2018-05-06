@@ -169,15 +169,15 @@ if (isset($_GET['ad_id'])) {
         </div>
         <!-- Share Ad  -->
         <div class="ad-share text-center">
-            <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-4 col-sm-4 col-xs-12">
-                <i class="fa fa-share-alt"></i> <span class="hidetext">مشــاركـة</span>
-            </div>
-            <a class="ad-box col-md-4 col-sm-4 col-xs-12"
+<!--            <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-4 col-sm-4 col-xs-12">-->
+<!--                <i class="fa fa-share-alt"></i> <span class="hidetext">مشــاركـة</span>-->
+<!--            </div>-->
+            <a class="ad-box col-md-12 col-sm-12 col-xs-12"
                href="scripts/add_to_favorite.php?ad_id=<?php echo $ad_id; ?>"><i class="fa fa-star active"></i> <span
                         class="hidetext">اضـافة الى المفضلـة </span></a>
-            <div data-target=".report-quote" data-toggle="modal" class="ad-box col-md-4 col-sm-4 col-xs-12">
-                <i class="fa fa-warning"></i> <span class="hidetext">تبـليغ</span>
-            </div>
+<!--            <div data-target=".report-quote" data-toggle="modal" class="ad-box col-md-4 col-sm-4 col-xs-12">-->
+<!--                <i class="fa fa-warning"></i> <span class="hidetext">تبـليغ</span>-->
+<!--            </div>-->
         </div>
         <div class="clearfix"></div>
 

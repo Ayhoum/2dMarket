@@ -143,17 +143,34 @@
                         </li>
 
                         <li><a href="all_product.php">All Ads </a></li>
-                        <li><a href="contact_us.php">Contact Us</a></li>
+                        <li><a href="contact.php">Contact Us</a></li>
                     </ul>
-                    <ul class="menu-search-bar">
-                                            <?php if(!isset($_SESSION['username'])){?>
-                                            <li>
-                                                <a href="login.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
-                                            </li>
-                                            <?php } else{ ?>
-                                            <a href="profile.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
-                                            <?php }?>
-                                        </ul>
+<!--                    <ul class="menu-search-bar">-->
+<!--                                            --><?php //if(!isset($_SESSION['username'])){?>
+<!--                                            <li>-->
+<!--                                                <a href="login.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i> Login</a>-->
+<!--                                            </li>-->
+<!--                                            --><?php //} else{ ?>
+<!--                                                <a href="profile.php" class="btn btn-light"><i class="fa fa-user" aria-hidden="true"></i>--><?php //echo $_SESSION['username']; ?><!-- </a>-->
+<!--                                            --><?php //}?>
+<!--                                        </ul>-->
+
+                    <ul class="menu-search-bar" style="float: right">
+                        <?php if(!isset($_SESSION['username'])){?>
+                            <li><a href="login.php"><i class="fa fa-sign-in"></i> Log in  </a> </li>
+                        <?php } else { ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="profile.php">User Profile</a></li>
+                                <li><a href="personal_ads.php">Active Ads</a></li>
+                                <li><a href="favourite_ads.php">Favourite Ads</a></li>
+                                <li><a href="messages.php">Message Panel</a></li>
+                                <li><a href="logout.php">logout</a></li>
+                            </ul>
+                        </li>
+                        <?php } ?>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -295,7 +295,7 @@ ob_start();
                 <div class="short-history">
                     <ul>
                         <li>منشور منذ: <b>  <?php echo $date;?> </b></li>
-                        <li>موقع: <b>لندن</b></li>
+                        <li>موقع: <b><?php echo $user_region. " | ". $user_country; ?></b></li>
                         <li>فئة: <b><a href="#"><?php echo $cat_name; ?></a></b></li>
                     </ul>
                 </div>
