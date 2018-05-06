@@ -55,15 +55,11 @@ while ($row = mysqli_fetch_assoc($run_query)){
 
             if($km <= $dis) {
                 if($_GET['price'] != 'all'){
-                    echo "<script>alert('2222');</script>";
                    if($minPrice == 0){
-                       echo "<script>alert('000');</script>";
                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `USER_id` = '{$us_id}' AND `lang` = 'EN' AND `price` <= '$maxPrice'";
                    }else if($maxPrice == 'max'){
-                       echo "<script>alert('maxmax');</script>";
                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `USER_id` = '{$us_id}' AND `lang` = 'EN' AND `price` >= '$minPrice'";
                    }else{
-                       echo "<script>alert('minmax');</script>";
                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `USER_id` = '{$us_id}' AND `lang` = 'EN' AND (`price` >= '$minPrice' AND `price` <= '$maxPrice')";
                    }
                 }else{

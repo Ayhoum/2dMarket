@@ -101,11 +101,8 @@ require_once "scripts/time_elapse.php";
 
               <!-- Wrapper for slides -->
               <div class="carousel-inner" >
-                  <div class="itemFill imgLiquid item active" style="width:100%; height:600px;">
-                      <img src="../slider/1.jpg" alt="Los Angeles">
-                  </div>
 
-                  <div class="itemFill imgLiquid item" style="width:100%; height:600px;">
+                  <div class="itemFill imgLiquid item active" style="width:100%; height:600px;">
                       <img src="../slider/2.jpg" alt="Chicago">
                   </div>
 

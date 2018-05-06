@@ -5,6 +5,16 @@ include '../scripts/db_connection.php';
 //session_start();
 
 ?>
+
+<?php
+$priceVal = $_GET['price'];
+
+if($priceVal != "all"){
+    $price_parts = explode("-", $priceVal);
+    $minPrice = $price_parts[0];
+    $maxPrice = $price_parts[1];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -162,37 +172,7 @@ include '../scripts/db_connection.php';
                                 </div>
                             </div>
                             <!-- Categories Panel End -->
-                            <!-- Location Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" role="tab" id="cities">
-                                    <!-- Title -->
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">
-                                            <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Away From You
-                                        </a>
-                                    </h4>
-                                    <!-- Title End -->
-                                </div>
-                                <!-- Content -->
-                                <div id="citiesheading" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cities">
-                                    <div class="panel-body categories">
-                                        <ul>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 10 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 20 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 30 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 40 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 50 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 60 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 70 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 80 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 90 KM </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Location Panel End -->
+
                             <!-- Pricing Panel -->
                             <div class="panel panel-default">
                                 <!-- Heading -->
@@ -204,28 +184,42 @@ include '../scripts/db_connection.php';
                                         </a>
                                     </h4>
                                 </div>
+
                                 <!-- Content -->
                                 <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
                                     <div class="panel-body">
-                                        <span class="price-slider-value">Price (€) <span id="price-min"></span> - <span id="price-max"></span></span>
-                                        <div id="price-slider"></div>
+                                        <?php
+                                        if($priceVal == "all"){
+                                            ?>
+                                            min <input type="text" name="min" id="price-min-range" class="min" style="width:110px;"> -
+                                            max <input type="text" name="max" id="price-min-range" class="max" style="width:110px;"><br><br>
+                                            <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
+                                            <?php
+                                        }else{
+                                            ?>
+                                            min <input type="text" name="min" value="<?php echo $price_parts[0];?>" id="price-min-range" class="min" style="width:110px;"> -
+                                            max <input type="text" name="max" value="<?php echo $price_parts[1];?>" id="price-max-range" class="max" style="width:110px;"><br><br>
+                                            <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
+
+                                            <?php
+                                        }?>
                                     </div>
                                 </div>
                             </div>
                             <!-- Pricing Panel End -->
                             <!-- Featured Ads Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" >
-                                    <h4 class="panel-title">
-                                        <a>
-                                            Featured Ads
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- Content -->
-                                <?php include 'scripts/featured_ads.php';?>
-                            </div>
+<!--                            <div class="panel panel-default">-->
+<!--                                <!-- Heading -->
+<!--                                <div class="panel-heading" >-->
+<!--                                    <h4 class="panel-title">-->
+<!--                                        <a>-->
+<!--                                            Featured Ads-->
+<!--                                        </a>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <!-- Content -->
+<!--                                --><?php //include 'scripts/featured_ads.php';?>
+<!--                            </div>-->
                             <!-- Featured Ads Panel End -->
                         </div>
                         <!-- panel-group end -->
@@ -325,5 +319,24 @@ include '../scripts/db_connection.php';
 <script src="js/color-switcher.js"></script>
 <!-- Template Core JS -->
 <script src="js/custom.js"></script>
+<script>
+    var con = '<?php echo $country?>';
+    $('#submit').click(function () {
+        var price;
+        var min = $('.min').val();
+        var max = $('.max').val();
+        if(min == '' && max == ''){
+            price = "all";
+        }else if(min == ''){
+            min = 0;
+            price = min + "-" + max ;
+        }else if(max == ''){
+            price = min + "-max";
+        }else{
+            price = min + "-" + max ;
+        }
+        window.open("ads_per_country.php?country=" + con + "&price=" + price,"_self");
+    });
+</script>
 </body>
 </html>

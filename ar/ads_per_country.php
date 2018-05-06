@@ -4,7 +4,15 @@ include '../scripts/db_connection.php';
 session_start();
 ob_start();
 ?>
+<?php
+$priceVal = $_GET['price'];
 
+if($priceVal != "all"){
+    $price_parts = explode("-", $priceVal);
+    $minPrice = $price_parts[0];
+    $maxPrice = $price_parts[1];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -162,41 +170,6 @@ ob_start();
                                 </div>
                             </div>
                             <!-- الفئات Panel End -->
-                            <!-- Brands Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            <i class="more-less glyphicon glyphicon-plus"></i>
-                                            اعلانـات تبعد عنك مسـافة
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- Content -->
-                                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        <!-- Search -->
-
-                                        <!-- Brands List -->
-                                        <div class="skin-minimal">
-                                            <ul class="list" style="direction: rtl">
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 10 كـم </a></li>
-                                                <li><a style="direction: rtl" href="#"><i class="flaticon-signs-1"></i> 20 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 30 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 40 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 50 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 60 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 70 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 80 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 90 كـم </a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- Brands List End -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Brands Panel End -->
                             <!-- التسعير Panel -->
                             <div class="panel panel-default">
                                 <!-- Heading -->
@@ -211,25 +184,38 @@ ob_start();
                                 <!-- Content -->
                                 <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
                                     <div class="panel-body">
-                                        <span class="price-slider-value">Price ($) <span id="price-min"></span> - <span id="price-max"></span></span>
-                                        <div id="price-slider"></div>
+                                        <?php
+                                        if($priceVal == "all"){
+                                            ?>
+                                            من <input type="text" name="min" id="price-min-range" class="min" style="width:110px;"> -
+                                            إلى <input type="text" name="max" id="price-min-range" class="max" style="width:110px;"><br><br>
+                                            <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
+                                            <?php
+                                        }else{
+                                            ?>
+                                            من <input type="text" name="min" value="<?php echo $price_parts[0];?>" id="price-min-range" class="min" style="width:110px;"> -
+                                            إلى <input type="text" name="max" value="<?php echo $price_parts[1];?>" id="price-max-range" class="max" style="width:110px;"><br><br>
+                                            <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
+
+                                            <?php
+                                        }?>
                                     </div>
                                 </div>
                             </div>
                             <!-- التسعير Panel End -->
                             <!-- إعلانات مميزة Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" >
-                                    <h4 class="panel-title">
-                                        <a>
-                                            إعلانات مميزة
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- Content -->
-                                <?php include 'scripts/featured_ads.php';?>
-                            </div>
+<!--                            <div class="panel panel-default">-->
+<!--                                <!-- Heading -->
+<!--                                <div class="panel-heading" >-->
+<!--                                    <h4 class="panel-title">-->
+<!--                                        <a>-->
+<!--                                            إعلانات مميزة-->
+<!--                                        </a>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <!-- Content -->
+<!--                                --><?php //include 'scripts/featured_ads.php';?>
+<!--                            </div>-->
                             <!-- إعلانات مميزة Panel End -->
                         </div>
                         <!-- panel-group end -->
@@ -291,6 +277,25 @@ ob_start();
 <script src="js/color-switcher.js"></script>
 <!-- Template Core JS -->
 <script src="js/custom.js"></script>
+<script>
+    var con = '<?php echo $country?>';
+    $('#submit').click(function () {
+        var price;
+        var min = $('.min').val();
+        var max = $('.max').val();
+        if(min == '' && max == ''){
+            price = "all";
+        }else if(min == ''){
+            min = 0;
+            price = min + "-" + max ;
+        }else if(max == ''){
+            price = min + "-max";
+        }else{
+            price = min + "-" + max ;
+        }
+        window.open("ads_per_country.php?country=" + con + "&price=" + price,"_self");
+    });
+</script>
 </body>
 </html>
 
