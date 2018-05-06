@@ -62,7 +62,7 @@ ob_start();
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
     <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-        <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+        <h4 class="text-center" style="color: #00a9da"> Aan het laden..</h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
@@ -81,7 +81,7 @@ ob_start();
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="header-page">
-                    <h1>Advertentie Nummer <?php echo $_GET['ad_id'];?></h1>
+                    <h1>Advertentie Nummer : <?php echo $_GET['ad_id'];?></h1>
                 </div>
             </div>
         </div>
@@ -321,7 +321,7 @@ ob_start();
                     <a href="javascript:void(0)" class="btn btn-block pull-left btn-phone number " data-last="111111X"><i class="fa fa-phone"></i> <?php echo $user_phone;?></a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <a data-toggle="modal" data-target=".price-quote"  href="javascript:void(0)" class="btn btn-block pull-left btn-message"><i class="icon-envelope"></i> Message Seller</a>
+                    <a data-toggle="modal" data-target=".price-quote"  href="javascript:void(0)" class="btn btn-block pull-left btn-message"><i class="icon-envelope"></i> Stuur een Bericht</a>
                 </div>
             </div>
         </div>

@@ -66,7 +66,7 @@ ob_start();
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
     <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-        <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+        <h4 class="text-center" style="color: #00a9da">جاري التحميل.. </h4> </div>
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>

@@ -105,7 +105,6 @@ ob_start();
                 <div class="col-md-8 col-xs-12 col-sm-12">
                     <!-- Single Ad -->
                     <?php include 'scripts/ad_page_script.php'?>
-
                 </div>
                 <!-- Middle Content Area  End -->
 

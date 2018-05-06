@@ -268,24 +268,6 @@ if (isset($_GET['ad_id'])) {
         ?>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class="alert-box-container  margin-top-30">
             <div class="well">
                 <h3>Bids History </h3>
@@ -371,23 +353,6 @@ if (isset($_GET['ad_id'])) {
                 </form>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <?php } ?>
     <!-- Single Ad End -->
 
@@ -405,7 +370,7 @@ if (isset($_GET['ad_id'])) {
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <!-- Ads Archive -->
                 <?php
-                $related_ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$category_id}' ORDER BY `id` DESC LIMIT 4";
+                $related_ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$category_id}' AND lang = 'EN' ORDER BY `id` DESC LIMIT 4";
                 $related_ad_result = mysqli_query($mysqli, $related_ad_query);
                 if (mysqli_num_rows($related_ad_result) > 0) {
                     while ($row = mysqli_fetch_assoc($related_ad_result)) {
@@ -568,7 +533,7 @@ if (isset($_GET['ad_id'])) {
                         <?php
                     }
                 } else {
-                    echo " ";
+                    echo "There are no ads to be shown here!";
                 }
                 ?>
 
