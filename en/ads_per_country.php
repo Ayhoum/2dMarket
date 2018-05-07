@@ -174,38 +174,38 @@ if($priceVal != "all"){
                             <!-- Categories Panel End -->
 
                             <!-- Pricing Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" role="tab" id="headingfour">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
-                                            <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Price
-                                        </a>
-                                    </h4>
-                                </div>
-
-                                <!-- Content -->
-                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
-                                    <div class="panel-body">
-                                        <?php
-                                        if($priceVal == "all"){
-                                            ?>
-                                            min <input type="text" name="min" id="price-min-range" class="min" style="width:110px;"> -
-                                            max <input type="text" name="max" id="price-min-range" class="max" style="width:110px;"><br><br>
-                                            <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
-                                            <?php
-                                        }else{
-                                            ?>
-                                            min <input type="text" name="min" value="<?php echo $price_parts[0];?>" id="price-min-range" class="min" style="width:110px;"> -
-                                            max <input type="text" name="max" value="<?php echo $price_parts[1];?>" id="price-max-range" class="max" style="width:110px;"><br><br>
-                                            <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
-
-                                            <?php
-                                        }?>
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <div class="panel panel-default">-->
+<!--                                <!-- Heading -->
+<!--                                <div class="panel-heading" role="tab" id="headingfour">-->
+<!--                                    <h4 class="panel-title">-->
+<!--                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">-->
+<!--                                            <i class="more-less glyphicon glyphicon-plus"></i>-->
+<!--                                            Price-->
+<!--                                        </a>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!---->
+<!--                                <!-- Content -->
+<!--                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">-->
+<!--                                    <div class="panel-body">-->
+<!--                                        --><?php
+//                                        if($priceVal == "all"){
+//                                            ?>
+<!--                                            min <input type="text" name="min" id="price-min-range" class="min" style="width:110px;"> --->
+<!--                                            max <input type="text" name="max" id="price-min-range" class="max" style="width:110px;"><br><br>-->
+<!--                                            <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">-->
+<!--                                            --><?php
+//                                        }else{
+//                                            ?>
+<!--                                            min <input type="text" name="min" value="--><?php //echo $price_parts[0];?><!--" id="price-min-range" class="min" style="width:110px;"> --->
+<!--                                            max <input type="text" name="max" value="--><?php //echo $price_parts[1];?><!--" id="price-max-range" class="max" style="width:110px;"><br><br>-->
+<!--                                            <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">-->
+<!---->
+<!--                                            --><?php
+//                                        }?>
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <!-- Pricing Panel End -->
                             <!-- Featured Ads Panel -->
 <!--                            <div class="panel panel-default">-->

@@ -163,73 +163,73 @@ ob_start();
                             </div>
                             <!-- الفئات Panel End -->
                             <!-- Brands Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            <i class="more-less glyphicon glyphicon-plus"></i>
-                                            اعلانـات تبعد عنك مسـافة
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- Content -->
-                                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        <!-- Search -->
-
-                                        <!-- Brands List -->
-                                        <div class="skin-minimal">
-                                            <ul class="list" style="direction: rtl">
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 10 كـم </a></li>
-                                                <li><a style="direction: rtl" href="#"><i class="flaticon-signs-1"></i> 20 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 30 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 40 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 50 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 60 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 70 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 80 كـم </a></li>
-                                                <li><a href="#"><i class="flaticon-signs-1"></i> 90 كـم </a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- Brands List End -->
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <div class="panel panel-default">-->
+<!--                                <!-- Heading -->-->
+<!--                                <div class="panel-heading" role="tab" id="headingTwo">-->
+<!--                                    <h4 class="panel-title">-->
+<!--                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">-->
+<!--                                            <i class="more-less glyphicon glyphicon-plus"></i>-->
+<!--                                            اعلانـات تبعد عنك مسـافة-->
+<!--                                        </a>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <!-- Content -->
+<!--                                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">-->
+<!--                                    <div class="panel-body">-->
+<!--                                        <!-- Search -->
+<!---->
+<!--                                        <!-- Brands List -->
+<!--                                        <div class="skin-minimal">-->
+<!--                                            <ul class="list" style="direction: rtl">-->
+<!--                                                <li><a href="#"><i class="flaticon-signs-1"></i> 10 كـم </a></li>-->
+<!--                                                <li><a style="direction: rtl" href="#"><i class="flaticon-signs-1"></i> 20 كـم </a></li>-->
+<!--                                                <li><a href="#"><i class="flaticon-signs-1"></i> 30 كـم </a></li>-->
+<!--                                                <li><a href="#"><i class="flaticon-signs-1"></i> 40 كـم </a></li>-->
+<!--                                                <li><a href="#"><i class="flaticon-signs-1"></i> 50 كـم </a></li>-->
+<!--                                                <li><a href="#"><i class="flaticon-signs-1"></i> 60 كـم </a></li>-->
+<!--                                                <li><a href="#"><i class="flaticon-signs-1"></i> 70 كـم </a></li>-->
+<!--                                                <li><a href="#"><i class="flaticon-signs-1"></i> 80 كـم </a></li>-->
+<!--                                                <li><a href="#"><i class="flaticon-signs-1"></i> 90 كـم </a></li>-->
+<!--                                            </ul>-->
+<!--                                        </div>-->
+<!--                                        <!-- Brands List End -->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <!-- Brands Panel End -->
                             <!-- التسعير Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" role="tab" id="headingfour">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
-                                            <i class="more-less glyphicon glyphicon-plus"></i>
-                                            السعر
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- Content -->
-                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
-                                    <div class="panel-body">
-                                        <span class="price-slider-value">Price ($) <span id="price-min"></span> - <span id="price-max"></span></span>
-                                        <div id="price-slider"></div>
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <div class="panel panel-default">-->
+<!--                                <!-- Heading -->
+<!--                                <div class="panel-heading" role="tab" id="headingfour">-->
+<!--                                    <h4 class="panel-title">-->
+<!--                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">-->
+<!--                                            <i class="more-less glyphicon glyphicon-plus"></i>-->
+<!--                                            السعر-->
+<!--                                        </a>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <!-- Content -->
+<!--                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">-->
+<!--                                    <div class="panel-body">-->
+<!--                                        <span class="price-slider-value">Price ($) <span id="price-min"></span> - <span id="price-max"></span></span>-->
+<!--                                        <div id="price-slider"></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <!-- التسعير Panel End -->
                             <!-- إعلانات مميزة Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" >
-                                    <h4 class="panel-title">
-                                        <a>
-                                            إعلانات مميزة
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- Content -->
-                                <?php include 'scripts/featured_ads.php';?>
-                            </div>
+<!--                            <div class="panel panel-default">-->
+<!--                                <!-- Heading -->
+<!--                                <div class="panel-heading" >-->
+<!--                                    <h4 class="panel-title">-->
+<!--                                        <a>-->
+<!--                                            إعلانات مميزة-->
+<!--                                        </a>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <!-- Content -->
+<!--                                --><?php //include 'scripts/featured_ads.php';?>
+<!--                            </div>-->
                             <!-- إعلانات مميزة Panel End -->
                         </div>
                         <!-- panel-group end -->
