@@ -456,15 +456,10 @@ require_once "scripts/time_elapse.php";
       <script src="js/custom.js"></script>
       <!-- Googgle map For THis Page Only -->
 <!--      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>-->
-      <script src="js/infobox.js"></script>
       <!-- Parallax -->
       <script src="js/imgLiquid-min.js"></script>
 
-      <script type="text/javascript">
-	      "use strict";
-         google.maps.event.addDomListener(window, 'load', speedTest.init);
-		 (jQuery);
-      </script>
+
 
 <script>
     $(function() {
@@ -511,6 +506,7 @@ require_once "scripts/time_elapse.php";
         hide_min_max: true,
         prettify_enabled: false,
         onChange: function (data) {
+            alert(data.from);
             stepSliderValueElement.value = data.from;
         }
     });
@@ -525,7 +521,7 @@ require_once "scripts/time_elapse.php";
     var submitBut = function () {
         cat   = $("#catSelect").val();
         query = $("#querySearch").val();
-        dis   = $("#price-min").val();
+        dis   = $("#example_id").val();
         order = "latest";
         price = "all";
         if(cat == null || cat == "dis"){
@@ -534,9 +530,7 @@ require_once "scripts/time_elapse.php";
         if(query == ""){
             $("#querySearch").addClass('shadow');
         }
-        if(dis == 0.00){
-            $(".noUi-connects").addClass('shadow');
-        }
+
         if(cat != null && cat != "dis" && query != "" && dis != 0.00){
 
 

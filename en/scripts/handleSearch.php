@@ -47,6 +47,7 @@ while ($row = mysqli_fetch_assoc($run_query)){
     $lat = $row['lat'];
     $us_id = $row['USER_id'];
 
+
     if($us_id != $idUser){
 
         if(!empty($lon) && !empty($lat)){
@@ -72,32 +73,33 @@ while ($row = mysqli_fetch_assoc($run_query)){
             }
         }
     }
-}
-    if (empty($num_Ads)) {
-        ?>
-
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 " >
-            <div class="category-grid-box" style="background-color: white">
-
-                <div class="short-description">
-                    <!-- Ad Title -->
-                    <h3>Unfortunately, no ads can be shown!</h3>
-                </div>
-            </div>
-        </div>
-        <?php
-
-    } else {
+    if($num_Ads != 0){
         while ($row = mysqli_fetch_assoc($run_queryAD)) {
-            array_push($adsArr, $row['id']);
+            $var = $row['id'];
+            array_push($adsArr, $var);
         }
     }
+}
+
+//    if ($num_Ads == 0) {
+//
+//        ?>
+<!---->
+<!--        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 " >-->
+<!--            <div class="category-grid-box" style="background-color: white">-->
+<!---->
+<!--                <div class="short-description">-->
+<!--                    <!-- Ad Title -->
+<!--                    <h3>Unfortunately, no ads can be shown!</h3>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        --><?php
+//
+//    }
 //                $sql = 'SELECT *
 //          FROM `table`
 //         WHERE `id` IN (' . implode(',', array_map('intval', $array)) . ')';
-
-
-
 
 
 $ids = join("','",$adsArr);
@@ -122,6 +124,7 @@ if ($num_Ads <= 10) {
 $run_queryAD = mysqli_query($mysqli, $ad_query);
 
 if (mysqli_num_rows($run_queryAD) > 0) {
+
     while ($row = mysqli_fetch_assoc($run_queryAD)) {
         $ad_id = $row['id'];
         $title = $row['title'];
@@ -416,26 +419,13 @@ while ($row = mysqli_fetch_assoc($run_query)){
 
             }
         }
-}
-    if (empty($num_Ads)) {
-        ?>
-
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 " >
-            <div class="category-grid-box" style="background-color: white">
-
-                <div class="short-description">
-                    <!-- Ad Title -->
-                    <h3>Unfortunately, no ads can be shown!</h3>
-                </div>
-            </div>
-        </div>
-
-        <?php
-    } else {
+    if($num_Ads != 0){
         while ($row = mysqli_fetch_assoc($run_queryAD)) {
-            array_push($adsArr, $row['id']);
+            $var = $row['id'];
+            array_push($adsArr, $var);
         }
     }
+}
 
 
 //                $sql = 'SELECT *

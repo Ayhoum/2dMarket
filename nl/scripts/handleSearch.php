@@ -72,26 +72,14 @@ while ($row = mysqli_fetch_assoc($run_query)){
             }
         }
     }
-}
-    if (empty($num_Ads)) {
-        ?>
-
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 " >
-            <div class="category-grid-box" style="background-color: white">
-
-                <div class="short-description">
-                    <!-- Ad Title -->
-                    <h3>Helaas kunnen er geen advertenties worden getoond!</h3>
-                </div>
-            </div>
-        </div>
-        <?php
-
-    } else {
+    if($num_Ads != 0){
         while ($row = mysqli_fetch_assoc($run_queryAD)) {
-            array_push($adsArr, $row['id']);
+            $var = $row['id'];
+            array_push($adsArr, $var);
         }
     }
+}
+
 //                $sql = 'SELECT *
 //          FROM `table`
 //         WHERE `id` IN (' . implode(',', array_map('intval', $array)) . ')';
@@ -416,27 +404,13 @@ while ($row = mysqli_fetch_assoc($run_query)){
 
             }
         }
-}
-    if (empty($num_Ads)) {
-        ?>
-
-        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 " >
-            <div class="category-grid-box" style="background-color: white">
-
-                <div class="short-description">
-                    <!-- Ad Title -->
-                    <h3>Unfortunately, no ads can be shown!</h3>
-                </div>
-            </div>
-        </div>
-
-        <?php
-    } else {
+    if($num_Ads != 0){
         while ($row = mysqli_fetch_assoc($run_queryAD)) {
-            array_push($adsArr, $row['id']);
+            $var = $row['id'];
+            array_push($adsArr, $var);
         }
     }
-
+}
 
 //                $sql = 'SELECT *
 //          FROM `table`

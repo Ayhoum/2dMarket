@@ -131,10 +131,10 @@ session_start();
                             $cat   = $_GET['cat'];
                             $searchTxt = $_GET['query'];
                             $order = $_GET['order'];
-                            $price = $_GET['price'];
+                        $priceVal = $_GET['price'];
 
-                            if($price != "all"){
-                                $price_parts = explode("-", $price);
+                            if($priceVal != "all"){
+                                $price_parts = explode("-", $priceVal);
                                 $minPrice = $price_parts[0];
                                 $maxPrice = $price_parts[1];
 
@@ -226,7 +226,7 @@ session_start();
                                     <div class="panel-body categories">
                                         <ul>
                                             <?php
-                                            if($price != "all") {
+                                            if($priceVal != "all") {
                                             ?>
                                                 <li><a href="search_result.php?order=<?php echo $order; ?>&dis=10.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 10 KM </a></li>
                                                 <li><a href="search_result.php?order=<?php echo $order; ?>&dis=20.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 20 KM </a></li>
@@ -240,15 +240,15 @@ session_start();
                                             <?php
                                             }else{
                                                 ?>
-                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=10.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 10 KM </a></li>
-                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=20.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 20 KM </a></li>
-                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=30.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 30 KM </a></li>
-                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=40.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 40 KM </a></li>
-                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=50.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 50 KM </a></li>
-                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=60.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 60 KM </a></li>
-                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=70.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 70 KM </a></li>
-                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=80.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 80 KM </a></li>
-                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=90.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $price;?>"><i class="flaticon-signs-1"></i> 90 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=10.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 10 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=20.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 20 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=30.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 30 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=40.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 40 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=50.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 50 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=60.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 60 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=70.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 70 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=80.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 80 KM </a></li>
+                                                <li><a href="search_result.php?order=<?php echo $order; ?>&dis=90.00&query=<?php echo $searchTxt; ?>&cat=<?php echo $cat; ?>-<?php echo $subCat; ?>&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 90 KM </a></li>
                                             <?php
                                             }
                                             ?>

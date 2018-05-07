@@ -455,11 +455,38 @@ require_once "scripts/time_elapse.php";
       <script src="js/data.json"></script>
       <script src="js/markerclusterer.js"></script>
       <script src="js/markers-map.js"></script>
-<!--      <script type="text/javascript">-->
-<!--	      "use strict";-->
-<!--         google.maps.event.addDomListener(window, 'load', speedTest.init);-->
-<!--		 (jQuery);-->
-<!--      </script>-->
+      <script>
+          $(function() {
+
+              $(".itemFill").imgLiquid({
+                  fill: true,
+                  horizontalAlign: "center",
+                  verticalAlign: "center"
+              });
+
+          });
+
+
+          var latVal;
+          var lonVal;
+
+          function setCookie(cname, cvalue, exdays) {
+              var d = new Date();
+              d.setTime(d.getTime() + (exdays*60*60*24*1000));
+              var expires = "expires="+ d.toUTCString();
+              document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+          }
+
+          navigator.geolocation.getCurrentPosition(function(position) {
+              latVal = position.coords.latitude;
+              lonVal = position.coords.longitude;
+              setCookie("longC",lonVal,2);
+              setCookie("latiC",latVal,2);
+          });
+
+
+
+      </script>
    <script>
        var stepSliderValueElement = document.getElementById('dis-min');
        stepSliderValueElement.value = 10;
