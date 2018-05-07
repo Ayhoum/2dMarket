@@ -164,55 +164,55 @@ include '../scripts/db_connection.php';
                             </div>
                             <!-- Categories Panel End -->
                             <!-- Location Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" role="tab" id="cities">
-                                    <!-- Title -->
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">
-                                            <i class="more-less glyphicon glyphicon-plus"></i>
-                                            البعد عنك
-                                        </a>
-                                    </h4>
-                                    <!-- Title End -->
-                                </div>
-                                <!-- Content -->
-                                <div id="citiesheading" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cities">
-                                    <div class="panel-body categories">
-                                        <ul>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 10 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 20 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 30 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 40 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 50 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 60 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 70 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 80 KM </a></li>
-                                            <li><a href="#"><i class="flaticon-signs-1"></i> 90 KM </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Location Panel End -->
-                            <!-- Pricing Panel -->
-                            <div class="panel panel-default">
-                                <!-- Heading -->
-                                <div class="panel-heading" role="tab" id="headingfour">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
-                                            <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Price
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- Content -->
-                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
-                                    <div class="panel-body">
-                                        <span class="price-slider-value">السعر (€) <span id="price-min"></span> - <span id="price-max"></span></span>
-                                        <div id="price-slider"></div>
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <div class="panel panel-default">-->
+<!--                                <!-- Heading -->
+<!--                                <div class="panel-heading" role="tab" id="cities">-->
+<!--                                    <!-- Title -->
+<!--                                    <h4 class="panel-title">-->
+<!--                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">-->
+<!--                                            <i class="more-less glyphicon glyphicon-plus"></i>-->
+<!--                                            البعد عنك-->
+<!--                                        </a>-->
+<!--                                    </h4>-->
+<!--                                    <!-- Title End -->
+<!--                                </div>-->
+<!--                                <!-- Content -->
+<!--                                <div id="citiesheading" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cities">-->
+<!--                                    <div class="panel-body categories">-->
+<!--                                        <ul>-->
+<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 10 KM </a></li>-->
+<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 20 KM </a></li>-->
+<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 30 KM </a></li>-->
+<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 40 KM </a></li>-->
+<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 50 KM </a></li>-->
+<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 60 KM </a></li>-->
+<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 70 KM </a></li>-->
+<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 80 KM </a></li>-->
+<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 90 KM </a></li>-->
+<!--                                        </ul>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <!-- Location Panel End -->
+<!--                            <!-- Pricing Panel -->
+<!--                            <div class="panel panel-default">-->
+<!--                                <!-- Heading -->
+<!--                                <div class="panel-heading" role="tab" id="headingfour">-->
+<!--                                    <h4 class="panel-title">-->
+<!--                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">-->
+<!--                                            <i class="more-less glyphicon glyphicon-plus"></i>-->
+<!--                                            Price-->
+<!--                                        </a>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <!-- Content -->
+<!--                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">-->
+<!--                                    <div class="panel-body">-->
+<!--                                        <span class="price-slider-value">السعر (€) <span id="price-min"></span> - <span id="price-max"></span></span>-->
+<!--                                        <div id="price-slider"></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <!-- Pricing Panel End -->
                             <!-- Featured Ads Panel -->
 <!--                            <div class="panel panel-default">-->
