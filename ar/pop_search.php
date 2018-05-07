@@ -135,7 +135,7 @@ include '../scripts/db_connection.php';
                                     <!-- Title End -->
                                 </div>
                                 <!-- Content -->
-                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body categories">
                                         <ul>
                                             <?php
