@@ -394,7 +394,7 @@ if (isset($_GET['ad_id'])) {
 
 
                         require_once 'time_elapse.php';
-                        $date1 = time_elapsed_string($date);
+                        $date1 = time_elapsed_string($date1);
 
                         // Category_info
                         $cat_query1 = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id1}'";
@@ -408,7 +408,7 @@ if (isset($_GET['ad_id'])) {
 
                         $select_query1 = "SELECT * FROM `USER` WHERE `id` = '{$user_id1}'";
                         $select_result1 = mysqli_query($mysqli, $select_query1);
-                        while ($row = mysqli_fetch_assoc($select_result)) {
+                        while ($row = mysqli_fetch_assoc($select_result1)) {
                             $user_first_name1 = $row['first_name'];
                             $user_last_name1 = $row['last_name'];
                             $user_email1 = $row['email'];
@@ -448,7 +448,7 @@ if (isset($_GET['ad_id'])) {
 
 
                         $img_query1 = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$id1}'";
-                        $img_result = mysqli_query($mysqli, $img_query1);
+                        $img_result1 = mysqli_query($mysqli, $img_query1);
                         if (mysqli_num_rows($img_result1) > 0) {
                             while ($row = mysqli_fetch_assoc($img_result1)) {
                                 $picture_name_1 = $row['picture_name'];
