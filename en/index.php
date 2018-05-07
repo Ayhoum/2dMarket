@@ -83,7 +83,7 @@ require_once "scripts/time_elapse.php";
                        }
                    },
                    "theme": "edgeless",
-                   "position": "bottom-right",
+                   "position": "bottom-left",
                    "type": "opt-in",
                    "content": {
                        "message": "This website uses cookies to ensure you get the best experience on our website.",
