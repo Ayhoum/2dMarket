@@ -68,6 +68,32 @@ require_once "scripts/time_elapse.php";
                background-image: none
            }
        </style>
+
+       <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+       <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+       <script>
+           window.addEventListener("load", function(){
+               window.cookieconsent.initialise({
+                   "palette": {
+                       "popup": {
+                           "background": "#252e39"
+                       },
+                       "button": {
+                           "background": "#14a7d0"
+                       }
+                   },
+                   "theme": "edgeless",
+                   "position": "bottom-right",
+                   "type": "opt-in",
+                   "content": {
+                       "message": "This website uses cookies to ensure you get the best experience on our website.",
+                       "dismiss": "Got it",
+                       "allow": "Allow cookies",
+                       "link": "learn more!",
+                       "href": "www.2dmarket.com/en/cookies.php"
+                   }
+               })});
+       </script>
    </head>
    <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
