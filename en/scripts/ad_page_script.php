@@ -370,84 +370,84 @@ if (isset($_GET['ad_id'])) {
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <!-- Ads Archive -->
                 <?php
-                $related_ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$category_id}' AND lang = 'EN' ORDER BY `id` DESC LIMIT 4";
-                $related_ad_result = mysqli_query($mysqli, $related_ad_query);
-                if (mysqli_num_rows($related_ad_result) > 0) {
-                    while ($row = mysqli_fetch_assoc($related_ad_result)) {
-                        $id = $row['id'];
-                        $title = $row['title'];
-                        $lang = $row['lang'];
-                        $selling_type = $row['selling_type'];
-                        $status = $row['status'];
-                        $delivery_type = $row['delivery_type'];
-                        $description = $row['description'];
-                        $ad_type = $row['ad_type'];
-                        $date = $row['date'];
-                        $price = $row['price'];
-                        $condition = $row['condition'];
-                        $visits = $row['visits'];
+                $related_ad_query1 = "SELECT * FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$category_id}' AND lang = 'EN' ORDER BY `id` DESC LIMIT 4";
+                $related_ad_result1 = mysqli_query($mysqli, $related_ad_query1);
+                if (mysqli_num_rows($related_ad_result1) > 0) {
+                    while ($row = mysqli_fetch_assoc($related_ad_result1)) {
+                        $id1 = $row['id'];
+                        $title1 = $row['title'];
+                        $lang1 = $row['lang'];
+                        $selling_type1 = $row['selling_type'];
+                        $status1 = $row['status'];
+                        $delivery_type1 = $row['delivery_type'];
+                        $description1 = $row['description'];
+                        $ad_type1 = $row['ad_type'];
+                        $date1 = $row['date'];
+                        $price1 = $row['price'];
+                        $condition1 = $row['condition'];
+                        $visits1 = $row['visits'];
 
-                        $user_id = $row['USER_id'];
-                        $category_id = $row['CATEGORY_id'];
+                        $user_id1 = $row['USER_id'];
+                        $category_id1 = $row['CATEGORY_id'];
 
-                        $description = strip_tags($description);
-                        $description = substr($description, 0, 200);
+                        $description1 = strip_tags($description1);
+                        $description1 = substr($description1, 0, 200);
 
 
                         require_once 'time_elapse.php';
-                        $date = time_elapsed_string($date);
+                        $date1 = time_elapsed_string($date);
 
                         // Category_info
-                        $cat_query = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";
-                        $cat_result = mysqli_query($mysqli, $cat_query);
-                        if (mysqli_num_rows($cat_result) > 0) {
-                            while ($row = mysqli_fetch_assoc($cat_result)) {
-                                $cat_name = $row['name'];
+                        $cat_query1 = "SELECT * FROM `CATEGORY` WHERE `id` = '{$category_id}'";
+                        $cat_result1 = mysqli_query($mysqli, $cat_query1);
+                        if (mysqli_num_rows($cat_result1) > 0) {
+                            while ($row = mysqli_fetch_assoc($cat_result1)) {
+                                $cat_name1 = $row['name'];
                             }
                         }
 
 
-                        $select_query = "SELECT * FROM `USER` WHERE `id` = '{$user_id}'";
-                        $select_result = mysqli_query($mysqli, $select_query);
+                        $select_query1 = "SELECT * FROM `USER` WHERE `id` = '{$user_id1}'";
+                        $select_result1 = mysqli_query($mysqli, $select_query1);
                         while ($row = mysqli_fetch_assoc($select_result)) {
-                            $user_first_name = $row['first_name'];
-                            $user_last_name = $row['last_name'];
-                            $user_email = $row['email'];
-                            $user_phone = $row['phone_number'];
-                            $user_username = $row['username'];
-                            $user_pic = $row['profile_picture'];
-                            $user_register_date = $row['register_date'];
-                            $online_status = $row['online_status'];
+                            $user_first_name1 = $row['first_name'];
+                            $user_last_name1 = $row['last_name'];
+                            $user_email1 = $row['email'];
+                            $user_phone1 = $row['phone_number'];
+                            $user_username1 = $row['username'];
+                            $user_pic1 = $row['profile_picture'];
+                            $user_register_date1 = $row['register_date'];
+                            $online_status1 = $row['online_status'];
 
                         }
 
 
 // Address info.
 
-                        $address_query = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$user_id}";
-                        $address_result = mysqli_query($mysqli, $address_query);
-                        if (mysqli_num_rows($address_result) > 0) {
-                            while ($row = mysqli_fetch_assoc($address_result)) {
-                                $user_userid = $row['id'];
-                                $user_street_name = $row['street_name'];
-                                $user_postcode = $row['postcode'];
-                                $user_house_number = $row['house_number'];
-                                $user_region = $row['region'];
-                                $user_city = $row['city'];
-                                $user_country = $row['country'];
+                        $address_query1 = "SELECT  * FROM `ADDRESS` WHERE `USER_id` = {$user_id1}";
+                        $address_result1 = mysqli_query($mysqli, $address_query1);
+                        if (mysqli_num_rows($address_result1) > 0) {
+                            while ($row = mysqli_fetch_assoc($address_result1)) {
+                                $user_userid1 = $row['id'];
+                                $user_street_name1 = $row['street_name'];
+                                $user_postcode1 = $row['postcode'];
+                                $user_house_number1 = $row['house_number'];
+                                $user_region1 = $row['region'];
+                                $user_city1 = $row['city'];
+                                $user_country1 = $row['country'];
 
-                                $location = $user_country . " | " . $user_country;
+                                $location1 = $user_country1 . " | " . $user_country1;
 
 
                             }
                         } else {
-                            $user_postcode = "unknown ";
-                            $user_city = "address";
+                            $user_postcode1 = "unknown ";
+                            $user_city1 = "address";
                         }
 
 
-                        $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$id}'";
-                        $img_result = mysqli_query($mysqli, $img_query);
+                        $img_query1 = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$id1}'";
+                        $img_result1 = mysqli_query($mysqli, $img_query1);
                         if (mysqli_num_rows($img_result) > 0) {
                             while ($row = mysqli_fetch_assoc($img_result)) {
                                 $picture_name_1 = $row['picture_name'];
@@ -466,7 +466,7 @@ if (isset($_GET['ad_id'])) {
                                 <!-- Img Block -->
                                 <div class="ad-archive-img">
                                     <a href="#">
-                                        <?php if ($ad_type == "PREMIUM"){?><div class="ribbon popular"></div> <?php }?>
+                                        <?php if ($ad_type1 == "PREMIUM"){?><div class="ribbon popular"></div> <?php }?>
                                         <img class="img-responsive" src="<?php echo $picture_url_1. $picture_name_1?>" alt="">
                                     </a>
                                 </div>
@@ -479,14 +479,14 @@ if (isset($_GET['ad_id'])) {
                                 <!-- Ad Desc -->
                                 <div class="ad-archive-desc">
                                     <!-- Price -->
-                                    <div class="ad-price"> € <?php echo $price; ?></div>
+                                    <div class="ad-price"> € <?php echo $price1; ?></div>
                                     <!-- Title -->
-                                    <h3> <a href="ad_page.php?ad_id=<?php echo $id;?>"><?php echo $title;?> </a></h3>
+                                    <h3> <a href="ad_page.php?ad_id=<?php echo $id1;?>"><?php echo $title1;?> </a></h3>
                                     <!-- Category -->
-                                    <div class="category-title"> <span><a href="ads_per_cat.php?cat_id=<?php echo $category_id;?>"><?php echo $cat_name?></a></span> </div>
+                                    <div class="category-title"> <span><a href="ads_per_cat.php?cat_id=<?php echo $category_id1;?>"><?php echo $cat_name1?></a></span> </div>
                                     <!-- Short Description -->
                                     <div class="clearfix visible-xs-block"></div>
-                                    <p class="hidden-sm"><?php echo $description;?></p>
+                                    <p class="hidden-sm"><?php echo $description1;?></p>
                                     <!-- Ad Features -->
                                     <ul class="add_info">
                                         <!-- Contact Details -->
@@ -495,8 +495,8 @@ if (isset($_GET['ad_id'])) {
                                                 <span class="tooltip-item"><i class="fa fa-phone"></i></span>
                                                 <div class="tooltip-content">
                                                     <h4>Contact Info,</h4>
-                                                    <strong>Username : </strong> <?php echo $user_username; ?>
-                                                    <br> <strong>Email : </strong> <?php echo $user_email;?>
+                                                    <strong>Username : </strong> <?php echo $user_username1; ?>
+                                                    <br> <strong>Email : </strong> <?php echo $user_email1;?>
                                                     <!--                                                            <br> <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>-->
                                                 </div>
                                             </div>
@@ -507,7 +507,7 @@ if (isset($_GET['ad_id'])) {
                                                 <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
                                                 <div class="tooltip-content">
                                                     <h4>Address</h4>
-                                                    <?php echo $location; ?>
+                                                    <?php echo $location1; ?>
                                                 </div>
                                             </div>
                                         </li>
@@ -515,15 +515,15 @@ if (isset($_GET['ad_id'])) {
                                         <li>
                                             <div class="custom-tooltip tooltip-effect-4">
                                                 <span class="tooltip-item"><i class="fa fa-cog"></i></span>
-                                                <div class="tooltip-content"> <strong>Product Info.</strong> <span class="label label-danger"><?php echo $status . " | ". $delivery_type;?></span> </div>
+                                                <div class="tooltip-content"> <strong>Product Info.</strong> <span class="label label-danger"><?php echo $status1 . " | ". $delivery_type1;?></span> </div>
                                             </div>
                                         </li>
                                         <!-- Ad Type -->
                                     </ul>
                                     <!-- Ad History -->
                                     <div class="clearfix archive-history">
-                                        <div class="last-updated">Added : <?php echo $date;?></div>
-                                        <div class="ad-meta"> <a href="scripts/add_to_favorite.php?ad_id=<?php echo $id;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> Save Ad.</a> <a href="ad_page.php?ad_id=<?php echo $id; ?>" class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a> </div>
+                                        <div class="last-updated">Added : <?php echo $date1;?></div>
+                                        <div class="ad-meta"> <a href="scripts/add_to_favorite.php?ad_id=<?php echo $id1;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> Save Ad.</a> <a href="ad_page.php?ad_id=<?php echo $id1; ?>" class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a> </div>
                                     </div>
                                 </div>
                                 <!-- Ad Desc End -->
