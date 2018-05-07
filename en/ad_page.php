@@ -163,10 +163,10 @@ ob_start();
                                     <a href="#"><?php echo $title;?></a>
                                 </h3>
                                 <ul class="recent-ads-list-location">
-                                    <li><a href="#"><?php echo $location; ?></a>,</li>
+                                    <li><a href="#"><?php echo $user_region . " | " . $user_country; ?></a>,</li>
                                 </ul>
                                 <div class="recent-ads-list-price">
-                                    <?php echo $price; ?>
+                                    € <?php echo $price; ?>
                                 </div>
                                 <!-- /.recent-ads-list-price -->
                             </div>
@@ -193,7 +193,7 @@ ob_start();
                         <label>Your message</label>
                         <textarea name="message" placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control"></textarea>
                     </div>
-                    <div class="col-md-12  col-sm-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>
+<!--                    <div class="col-md-12  col-sm-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>-->
                     <div class="clearfix"></div>
                     <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
                         <button type="submit" class="btn btn-theme btn-block" name="submit">Send</button>
