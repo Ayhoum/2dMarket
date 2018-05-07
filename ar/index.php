@@ -8,6 +8,13 @@ require_once "scripts/time_elapse.php";
 <!DOCTYPE html>
 <html lang="ar">
    <head>
+       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+       <script>
+           (adsbygoogle = window.adsbygoogle || []).push({
+               google_ad_client: "ca-pub-5850194650079393",
+               enable_page_level_ads: true
+           });
+       </script>
       <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
       <!--[if IE]>
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
