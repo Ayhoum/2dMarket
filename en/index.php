@@ -459,95 +459,45 @@ require_once "scripts/time_elapse.php";
       <script src="js/infobox.js"></script>
       <!-- Parallax -->
       <script src="js/imgLiquid-min.js"></script>
-<!--      <script src="js/data.json"></script>-->
-<!--      <script src="js/markerclusterer.js"></script>-->
-<!--      <script src="js/markers-map.js"></script>-->
-<!--      <script type="text/javascript">-->
-<!--	      "use strict";-->
-<!--         google.maps.event.addDomListener(window, 'load', speedTest.init);-->
-<!--		 (jQuery);-->
-<!--      </script>-->
 
-<!--<script>-->
-<!--    $(function() {-->
-<!---->
-<!--        $(".itemFill").imgLiquid({-->
-<!--            fill: true,-->
-<!--            horizontalAlign: "center",-->
-<!--            verticalAlign: "center"-->
-<!--        });-->
-<!---->
-<!--    });-->
-<!---->
-<!---->
-<!--    var long;-->
-<!--    var lati;-->
-<!--    $(document).ready(function() {-->
-<!--        var currgeocoder;-->
-<!---->
-<!---->
-<!---->
-<!--        //Set geo location lat and long-->
-<!---->
-<!--        navigator.geolocation.getCurrentPosition(function(position) {-->
-<!---->
-<!--            geo_loc = processGeolocationResult(position);-->
-<!--            currLatLong = geo_loc.split(",");-->
-<!--            initializeCurrent(currLatLong[0], currLatLong[1]);-->
-<!---->
-<!--        });-->
-<!---->
-<!--        //Get geo location result-->
-<!---->
-<!--        function processGeolocationResult(position) {-->
-<!--            html5Lat = position.coords.latitude; //Get latitude-->
-<!--            html5Lon = position.coords.longitude; //Get longitude-->
-<!--            html5TimeStamp = position.timestamp; //Get timestamp-->
-<!--            html5Accuracy = position.coords.accuracy; //Get accuracy in meters-->
-<!--            return (html5Lat).toFixed(8) + ", " + (html5Lon).toFixed(8);-->
-<!--        }-->
-<!---->
-<!--        function setCookie(cname, cvalue, exdays) {-->
-<!--            var d = new Date();-->
-<!--            d.setTime(d.getTime() + (exdays*60*60*24*1000));-->
-<!--            var expires = "expires="+ d.toUTCString();-->
-<!--            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";-->
-<!--        }-->
-<!---->
-<!---->
-<!--        function initializeCurrent(latcurr, longcurr) {-->
-<!--            currgeocoder = new google.maps.Geocoder();-->
-<!--            console.log(latcurr + "-- ######## --" + longcurr);-->
-<!---->
-<!--            if (latcurr != '' && longcurr != '') {-->
-<!--                var myLatlng = new google.maps.LatLng(latcurr, longcurr);-->
-<!--                long = longcurr;-->
-<!--                lati = latcurr;-->
-<!--                setCookie("longC",long,2);-->
-<!--                setCookie("latiC",lati,2);-->
-<!---->
-<!--                return getCurrentAddress(myLatlng);-->
-<!--            }-->
-<!--        }-->
-<!---->
-<!--        //Get current address-->
-<!---->
-<!--        function getCurrentAddress(location) {-->
-<!--            currgeocoder.geocode({-->
-<!--                'location': location-->
-<!---->
-<!--            }, function(results, status) {-->
-<!---->
-<!--                if (status == google.maps.GeocoderStatus.OK) {-->
-<!--                    console.log(results[0]);-->
-<!--                } else {-->
-<!--                    alert('Geocode was not successful for the following reason: ' + status);-->
-<!--                }-->
-<!--            });-->
-<!--        }-->
-<!--    });-->
-<!---->
-<!--</script>-->
+      <script type="text/javascript">
+	      "use strict";
+         google.maps.event.addDomListener(window, 'load', speedTest.init);
+		 (jQuery);
+      </script>
+
+<script>
+    $(function() {
+
+        $(".itemFill").imgLiquid({
+            fill: true,
+            horizontalAlign: "center",
+            verticalAlign: "center"
+        });
+
+    });
+
+
+    var latVal;
+    var lonVal;
+
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*60*60*24*1000));
+        var expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+        latVal = position.coords.latitude;
+        lonVal = position.coords.longitude;
+        setCookie("longC",lonVal,2);
+        setCookie("latiC",latVal,2);
+    });
+
+
+
+</script>
 
 <script>
     var stepSliderValueElement = document.getElementById('dis-min');
