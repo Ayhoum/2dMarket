@@ -304,7 +304,7 @@ if (isset($_POST['submit'])){
 
 											<td align='center' style='padding: 30px 0 30px 0;'>
 												<a href='https://twitter.com/2DmarKet1'>
-													<img src='https://cdn2.iconfinder.com/data/icons/social-media-2151/512/11_Media_social_website_twitter-48.png' border='0'>
+													<img src='https://cdn3.iconfinder.com/data/icons/picons-social/57/43-twitter-48.png' border='0'>
 												</a>
 											</td>
 										</tr>
@@ -329,7 +329,7 @@ if (isset($_POST['submit'])){
 											<td align='middle'>
 												<table width='60' height='2' border='0' cellpadding='0' cellspacing='0' style='width: 60px; height: 2px;'>
 													<tr>
-														<td align='middle' width='60' height='2' style=' width: 60px; height: 2px; font-size: 1px;'><img src='http://www.2dmarket.com/en/images/logo_png.png'></td>
+														<td align='middle' width='60' height='2' style=' width: 60px; height: 2px; font-size: 1px;'><img src='http://www.2dmarket.com/ar/images/logo_files/logo_png_email.png'></td>
 													</tr>
 												</table>
 											</td>

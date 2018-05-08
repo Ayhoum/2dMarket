@@ -227,7 +227,7 @@ if (mysqli_num_rows($getAgent) == 1) {
 							</tr>
 
 							<tr>
-								<td class='hero-subheader__content' style='direction:ltr;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;' align='right'>To start your amazing journey:<br>
+								<td class='hero-subheader__content' style='direction:ltr;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;' align='left'>To start your amazing journey:<br>
 								<a href='$link'>Click Here!</a>
 								</td>
 							</tr>
@@ -285,7 +285,7 @@ if (mysqli_num_rows($getAgent) == 1) {
 
 											<td align='center' style='padding: 30px 0 30px 0;'>
 												<a href='https://twitter.com/2DmarKet1'>
-													<img src='https://cdn2.iconfinder.com/data/icons/social-media-2151/512/11_Media_social_website_twitter-48.png' border='0'>
+													<img src='https://cdn3.iconfinder.com/data/icons/picons-social/57/43-twitter-48.png' border='0'>
 												</a>
 											</td>
 										</tr>
@@ -310,7 +310,7 @@ if (mysqli_num_rows($getAgent) == 1) {
 											<td align='middle'>
 												<table width='60' height='2' border='0' cellpadding='0' cellspacing='0' style='width: 60px; height: 2px;'>
 													<tr>
-														<td align='middle' width='60' height='2' style=' width: 60px; height: 2px; font-size: 1px;'><img src='http://www.2dmarket.com/en/images/logo_png.png'></td>
+														<td align='middle' width='60' height='2' style=' width: 60px; height: 2px; font-size: 1px;'><img src='http://www.2dmarket.com/en/images/logo_files/logo_png_email.png'></td>
 													</tr>
 												</table>
 											</td>
