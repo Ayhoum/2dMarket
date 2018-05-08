@@ -17,14 +17,23 @@ if (isset($_GET['page'])) {
 $ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'EN' ";
 $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
 $num_Ads = mysqli_num_rows($ad_result_get_num);
+$order = $_GET['order'];
+
+if($order == 'latest'){
+    $suffix = " `date` DESC";
+}else if($order == 'priceLow'){
+    $suffix = " `price` ASC";
+}else if($order == 'priceHigh'){
+    $suffix = " `price` DESC";
+}
 
 if($num_Ads <= 10){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY ". $suffix;
 }else if($page == 0 || $page == 1){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC LIMIT 10";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY " . $suffix. " LIMIT 10";
 }else if($page > 1){
     $start = (($page - 1) * 10);
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY " . $suffix. " LIMIT 10 OFFSET $start";
 }
 //    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);
@@ -196,7 +205,7 @@ if($num_Ads <= 10){
         <?php
         if ($page != 0 && $page != 1) {
             ?>
-            <li><a href="all_product.php?page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
+            <li><a href="all_product.php?order=<?php echo $order;?>&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }
@@ -205,13 +214,13 @@ if($num_Ads <= 10){
             ?>
             <li <?php if ($i == $page || ($i == 1 && $page == 0)) {
                 echo 'class="active"';
-            } ?>><a href="all_product.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            } ?>><a href="all_product.php?order=<?php echo $order;?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 
         <?php } ?>
         <?php
         if ($page != $num_Ads) {
             ?>
-            <li><a href="all_product.php?page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
+            <li><a href="all_product.php?order=<?php echo $order;?>&page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }

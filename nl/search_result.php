@@ -112,9 +112,9 @@ session_start();
                                         <h6>Sorteer op :</h6>
                                         <div class="custom-select-box">
                                             <select id="orderOptions" name="order" class="custom-select">
-                                                <option value="latest">De laatste</option>
-                                                <option value="priceLow">Prijs (laag naar hoog) </option>
-                                                <option value="priceHigh">Price (hoog naar laag) </option>
+                                                <option value="latest" <?php if("latest" == $_GET['order']){ echo "selected";}?>>De laatste</option>
+                                                <option value="priceLow" <?php if("priceLow" == $_GET['order']){ echo "selected";}?>>Prijs (laag naar hoog) </option>
+                                                <option value="priceHigh" <?php if("priceHigh" == $_GET['order']){ echo "selected";}?>>Price (hoog naar laag) </option>
                                             </select>
                                         </div>
                                     </div>

@@ -142,7 +142,7 @@
                             </ul>
                         </li>
 
-                        <li><a href="all_product.php">Alle Ads. </a></li>
+                        <li><a href="all_product.php?order=latest">Alle Ads. </a></li>
                         <li><a href="contact.php">Contact Us</a></li>
                     </ul>
                     <!--                    <ul class="menu-search-bar">-->

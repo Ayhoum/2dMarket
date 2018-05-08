@@ -61,7 +61,7 @@ $user_id = $_GET['user_id'];
 
 
 } else {
-    header("Location: all_product.php");
+    header("Location: all_product.php?order=latest");
 }
 ?>
 

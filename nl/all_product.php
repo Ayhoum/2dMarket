@@ -109,10 +109,10 @@ session_start();
                                     <div class="header-listing">
                                         <h6>Sorteer op:</h6>
                                         <div class="custom-select-box">
-                                            <select name="order" class="custom-select">
-                                                <option value="1">The latest</option>
-                                                <option value="2">Prijs (laag naar hoog) </option>
-                                                <option value="3">Price (hoog naar laag) </option>
+                                            <select id="orderOptions" name="order" class="custom-select">
+                                                <option value="latest" <?php if("latest" == $_GET['order']){ echo "selected";}?>>De laatste</option>
+                                                <option value="priceLow" <?php if("priceLow" == $_GET['order']){ echo "selected";}?>>Prijs (laag naar hoog) </option>
+                                                <option value="priceHigh" <?php if("priceHigh" == $_GET['order']){ echo "selected";}?>>Price (hoog naar laag) </option>
                                             </select>
                                         </div>
                                     </div>
@@ -352,5 +352,11 @@ session_start();
 <script src="js/color-switcher.js"></script>
 <!-- Template Core JS -->
 <script src="js/custom.js"></script>
+<script>
+    $('#orderOptions').on('change', function() {
+        order = this.value;
+        window.open("all_product.php?order=" + order,"_self");
+    })
+</script>
 </body>
 </html>

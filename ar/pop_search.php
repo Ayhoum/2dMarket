@@ -98,10 +98,10 @@ include '../scripts/db_connection.php';
                                     <div class="header-listing">
                                         <h6>الترتيب بحسب :</h6>
                                         <div class="custom-select-box">
-                                            <select name="order" class="custom-select">
-                                                <option value="1">الأخيرة</option>
-                                                <option value="2">السعر (الأرخص حتى الأغلى) </option>
-                                                <option value="3">السعر (الأغلى حتى الأرخص) </option>
+                                            <select id="orderOptions" name="order" class="custom-select">
+                                                <option value="latest" <?php if("latest" == $_GET['order']){ echo "selected";}?>>الأحدث</option>
+                                                <option value="priceLow" <?php if("priceLow" == $_GET['order']){ echo "selected";}?>>السعر (الأرخص حتى الأغلى) </option>
+                                                <option value="priceHigh" <?php if("priceHigh" == $_GET['order']){ echo "selected";}?>>السعر (الأغلى حتى الأرخص) </option>
                                             </select>
                                         </div>
                                     </div>
@@ -398,6 +398,24 @@ include '../scripts/db_connection.php';
 
 
     });
+
+    $('#orderOptions').on('change', function() {
+        var price;
+        var min = $('.min').val();
+        var max = $('.max').val();
+        if(min == '' && max == ''){
+            price = "all";
+        }else if(min == ''){
+            min = 0;
+            price = min + "-" + max ;
+        }else if(max == ''){
+            price = min + "-max";
+        }else{
+            price = min + "-" + max ;
+        }
+        order = this.value;
+        window.open("pop_search.php?tag=" + tag + "&price=" + price + "&order=" + order + "&dis=" + dis,"_self");
+    })
 </script>
 </body>
 </html>

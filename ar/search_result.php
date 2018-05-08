@@ -113,9 +113,9 @@ session_start();
                                         <h6>الترتيب بحسب :</h6>
                                         <div class="custom-select-box">
                                             <select id="orderOptions" name="order" class="custom-select">
-                                                <option value="latest">الأخيرة</option>
-                                                <option value="priceLow">السعر (الأرخص حتى الأغلى) </option>
-                                                <option value="priceHigh">السعر (الأغلى حتى الأرخص) </option>
+                                                <option value="latest" <?php if("latest" == $_GET['order']){ echo "selected";}?>>الأحدث</option>
+                                                <option value="priceLow" <?php if("priceLow" == $_GET['order']){ echo "selected";}?>>السعر (الأرخص حتى الأغلى) </option>
+                                                <option value="priceHigh" <?php if("priceHigh" == $_GET['order']){ echo "selected";}?>>السعر (الأغلى حتى الأرخص) </option>
                                             </select>
                                         </div>
                                     </div>

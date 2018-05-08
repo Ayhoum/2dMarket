@@ -14,28 +14,41 @@ if (isset($_GET['page'])) {
     $page = 0;
 }
 $country = $_GET['country'];
+
+
+if($order == 'latest'){
+    $suffix = " `date` DESC";
+}else if($order == 'priceLow'){
+    $suffix = " `price` ASC";
+}else if($order == 'priceHigh'){
+    $suffix = " `price` DESC";
+}
+
+
+
+
 if($_GET['price'] != 'all'){
     if($minPrice == 0){
         $ad_query_get_num = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` <= '$maxPrice' ORDER BY ADVERTISEMENT.id DESC";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` <= '$maxPrice' ORDER BY " . $suffix;
     }else if($maxPrice == 'max'){
         $ad_query_get_num = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` >= '$minPrice' ORDER BY ADVERTISEMENT.id DESC";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` >= '$minPrice' ORDER BY " . $suffix;
     }else{
         $ad_query_get_num = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL'  AND (`price` >= '$minPrice' AND `price` <= '$maxPrice') ORDER BY ADVERTISEMENT.id DESC";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL'  AND (`price` >= '$minPrice' AND `price` <= '$maxPrice') ORDER BY " . $suffix;
     }
 }else{
     $ad_query_get_num = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' ORDER BY ADVERTISEMENT.id DESC";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' ORDER BY " . $suffix;
 }
 
 $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
@@ -48,23 +61,23 @@ if($num_Ads <= 10){
             $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` <= '$maxPrice' ORDER BY ADVERTISEMENT.id DESC";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` <= '$maxPrice' ORDER BY " . $suffix;
         }else if($maxPrice == 'max'){
             $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` >= '$minPrice' ORDER BY ADVERTISEMENT.id DESC";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` >= '$minPrice' ORDER BY " . $suffix;
         }else{
             $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL'  AND (`price` >= '$minPrice' AND `price` <= '$maxPrice') ORDER BY ADVERTISEMENT.id DESC";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL'  AND (`price` >= '$minPrice' AND `price` <= '$maxPrice') ORDER BY " . $suffix;
         }
     }else{
         $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' ORDER BY ADVERTISEMENT.id DESC";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' ORDER BY " . $suffix;
     }
 
 }else if($page == 0 || $page == 1){
@@ -74,23 +87,23 @@ if($num_Ads <= 10){
             $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` <= '$maxPrice' ORDER BY ADVERTISEMENT.id DESC LIMIT 10";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` <= '$maxPrice' ORDER BY " . $suffix . " LIMIT 10";
         }else if($maxPrice == 'max'){
             $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` >= '$minPrice' ORDER BY ADVERTISEMENT.id DESC LIMIT 10";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` >= '$minPrice' ORDER BY " . $suffix . " LIMIT 10";
         }else{
             $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL'  AND (`price` >= '$minPrice' AND `price` <= '$maxPrice') ORDER BY ADVERTISEMENT.id DESC LIMIT 10";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL'  AND (`price` >= '$minPrice' AND `price` <= '$maxPrice') ORDER BY " . $suffix . " LIMIT 10";
         }
     }else{
         $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' ORDER BY ADVERTISEMENT.id DESC LIMIT 10";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' ORDER BY " . $suffix . " LIMIT 10";
     }
 
 
@@ -102,23 +115,23 @@ if($num_Ads <= 10){
             $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` <= '$maxPrice' ORDER BY ADVERTISEMENT.id DESC LIMIT 10 OFFSET $start";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` <= '$maxPrice' ORDER BY " . $suffix . " LIMIT 10 OFFSET $start";
         }else if($maxPrice == 'max'){
             $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` >= '$minPrice' ORDER BY ADVERTISEMENT.id DESC LIMIT 10 OFFSET $start";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' AND `price` >= '$minPrice' ORDER BY " . $suffix . " LIMIT 10 OFFSET $start";
         }else{
             $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL'  AND (`price` >= '$minPrice' AND `price` <= '$maxPrice') ORDER BY ADVERTISEMENT.id DESC LIMIT 10 OFFSET $start";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL'  AND (`price` >= '$minPrice' AND `price` <= '$maxPrice') ORDER BY " . $suffix . " LIMIT 10 OFFSET $start";
         }
     }else{
         $ad_query = "SELECT ADVERTISEMENT.*, ADDRESS.USER_id
                                           FROM ADVERTISEMENT
                                           LEFT JOIN ADDRESS ON ADVERTISEMENT.USER_id = ADDRESS.USER_id
-                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' ORDER BY ADVERTISEMENT.id DESC LIMIT 10 OFFSET $start";
+                                          WHERE ADDRESS.country LIKE '%{$country}%' && ADVERTISEMENT.lang = 'NL' ORDER BY " . $suffix . " LIMIT 10 OFFSET $start";
     }
 
 
@@ -292,7 +305,7 @@ if($num_Ads <= 10){
         <?php
         if ($page != 0 && $page != 1) {
             ?>
-            <li><a href="ads_per_country.php?country=<?php echo $country;?>&&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
+            <li><a href="ads_per_country.php?order=<?php echo $order;?>&country=<?php echo $country;?>&&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }
@@ -301,13 +314,13 @@ if($num_Ads <= 10){
             ?>
             <li <?php if ($i == $page || ($i == 1 && $page == 0)) {
                 echo 'class="active"';
-            } ?>><a href="ads_per_country.php?country=<?php echo $country;?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            } ?>><a href="ads_per_country.php?order=<?php echo $order;?>&country=<?php echo $country;?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 
         <?php } ?>
         <?php
         if ($page != $num_Ads) {
             ?>
-            <li><a href="ads_per_country.php?country=<?php echo $country;?>&&page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
+            <li><a href="ads_per_country.php?order=<?php echo $order;?>&country=<?php echo $country;?>&&page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }

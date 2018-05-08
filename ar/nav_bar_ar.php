@@ -139,7 +139,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="pull-right"><a href="all_product.php">جميـع الاعلانـات </a></li>
+                        <li class="pull-right"><a href="all_product.php?order=latest">جميـع الاعلانـات </a></li>
                         <li class="pull-right"><a href="contact.php">تواصـل معنـا</a></li>
                     </ul>
                     <!--                    <ul class="menu-search-bar">-->

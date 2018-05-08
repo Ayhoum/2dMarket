@@ -106,10 +106,10 @@ if($priceVal != "all"){
                                     <div class="header-listing">
                                         <h6>Sort by :</h6>
                                         <div class="custom-select-box">
-                                            <select name="order" class="custom-select">
-                                                <option value="1">De Laatste</option>
-                                                <option value="2">Prijs (laag naar hoog) </option>
-                                                <option value="3">Prijs (hoog naar laag) </option>
+                                            <select id="orderOptions" name="order" class="custom-select">
+                                                <option value="latest" <?php if("latest" == $_GET['order']){ echo "selected";}?>>De laatste</option>
+                                                <option value="priceLow" <?php if("priceLow" == $_GET['order']){ echo "selected";}?>>Prijs (laag naar hoog) </option>
+                                                <option value="priceHigh" <?php if("priceHigh" == $_GET['order']){ echo "selected";}?>>Price (hoog naar laag) </option>
                                             </select>
                                         </div>
                                     </div>
@@ -118,6 +118,10 @@ if($priceVal != "all"){
                         </div>
                         <!-- Sorting Filters End-->
                         <div class="clearfix"></div>
+
+                        <?php
+                        $order = $_GET['order'];
+                        ?>
                         <?php include  'scripts/ads_per_country_script.php';?>
                     </div>
                     <!-- Row End -->
@@ -319,6 +323,7 @@ if($priceVal != "all"){
 <script src="js/custom.js"></script>
 <script>
     var con = '<?php echo $country?>';
+    var order = '<?php echo $order ?>';
     $('#submit').click(function () {
         var price;
         var min = $('.min').val();
@@ -333,8 +338,26 @@ if($priceVal != "all"){
         }else{
             price = min + "-" + max ;
         }
-        window.open("ads_per_country.php?country=" + con + "&price=" + price,"_self");
+        window.open("ads_per_country.php?order=" + order + "&country=" + con + "&price=" + price,"_self");
     });
+
+    $('#orderOptions').on('change', function() {
+        var price;
+        var min = $('.min').val();
+        var max = $('.max').val();
+        if(min == '' && max == ''){
+            price = "all";
+        }else if(min == ''){
+            min = 0;
+            price = min + "-" + max ;
+        }else if(max == ''){
+            price = min + "-max";
+        }else{
+            price = min + "-" + max ;
+        }
+        order = this.value;
+        window.open("ads_per_country.php?order=" + order + "&country=" + con + "&price=" + price,"_self");
+    })
 </script>
 </body>
 </html>
