@@ -364,7 +364,6 @@ if (isset($_POST['submit'])){
     if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }
-    header("Location: register_2.php");
 
     $_SESSION['new_user']= null;
 
