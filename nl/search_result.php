@@ -448,6 +448,24 @@ session_start();
 
 
     });
+
+    $('#orderOptions').on('change', function() {
+        var price;
+        var min = $('.min').val();
+        var max = $('.max').val();
+        if(min == '' && max == ''){
+            price = "all";
+        }else if(min == ''){
+            min = 0;
+            price = min + "-" + max ;
+        }else if(max == ''){
+            price = min + "-max";
+        }else{
+            price = min + "-" + max ;
+        }
+        order = this.value;
+        window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat +"-"+subCat + "&price=" + price,"_self");
+    })
 </script>
 
 
