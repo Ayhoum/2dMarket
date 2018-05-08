@@ -22,12 +22,12 @@ $num_Ads = mysqli_num_rows($ad_result_get_num);
     <!-- Listing Ad Grid -->
     <?php
     if($num_Ads <= 6){
-        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `USER_id` = '{$user_id}' ORDER BY `date` DESC";
+        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `USER_id` = '{$user_id}' AND `lang` = 'NL' ORDER BY `date` DESC";
     }else if($page == 0 || $page == 1){
-        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `USER_id` = '{$user_id}' ORDER BY `date` DESC LIMIT 6";
+        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `USER_id` = '{$user_id}' AND `lang` = 'NL' ORDER BY `date` DESC LIMIT 6";
     }else if($page > 1){
         $start = (($page - 1) * 6);
-        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `USER_id` = '{$user_id}' ORDER BY `date` DESC LIMIT 6 OFFSET $start";
+        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `USER_id` = '{$user_id}' AND `lang` = 'NL' ORDER BY `date` DESC LIMIT 6 OFFSET $start";
 
     }
 
