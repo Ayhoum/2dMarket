@@ -588,7 +588,7 @@ require_once "scripts/time_elapse.php";
           var submitBut = function () {
               cat   = $("#catSelect").val();
               query = $("#querySearch").val();
-              dis   = $("#price-min").val();
+              dis   = $("#example_id").val();
               order = "latest";
               price = "all";
               if(cat == null || cat == "dis"){

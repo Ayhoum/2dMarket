@@ -167,6 +167,8 @@ require_once "scripts/time_elapse.php";
             </div>
             <div class="row" style="margin-left: 0;margin-right: 0;">
                <form method="post" class="search-form validation">
+                   <div class="row">
+
                   <!-- Category -->
                   <div class="col-md-3 col-xs-12 col-sm-6">
                      <select name="cat" class="category form-control" id="catSelect" required>
@@ -230,6 +232,7 @@ require_once "scripts/time_elapse.php";
                        </ul>
                    </div>
                    </div>
+
                </form>
                <!-- end .search-form -->
             </div>

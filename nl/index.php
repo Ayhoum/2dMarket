@@ -160,71 +160,74 @@ require_once "scripts/time_elapse.php";
                <div class="search-title">Zoek een Ad.</div>
             </div>
             <div class="row" style="margin-left: 0;margin-right: 0;">
-               <form method="post" class="search-form validation">
-                  <!-- Category -->
-                  <div class="col-md-3 col-xs-12 col-sm-6">
-                     <select name="cat" class="category form-control">
-                         <option selected disabled value="dis">Kies een optie</option>
-                         <?php
-                         // GET ALL CATEGORIES from DB
-                         $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'NL' ORDER BY `name` ASC  ";
-                         $cat_result= mysqli_query($mysqli, $cat_query);
-                         if (mysqli_num_rows($cat_result) > 0 ) {
-                         while ($row = mysqli_fetch_assoc($cat_result)) {
-                         $id = $row['id'];
-                         $name = $row['name'];
-                         // GET ALL RELATED SUB_CATEGORIES from DB
-                         $sub_cat_query = "SELECT * FROM `SUB_CATEGORY`  WHERE `CATEGORY_id` = '{$id}'  ";
-                         $sub_cat_result = mysqli_query($mysqli, $sub_cat_query);
-                         if (mysqli_num_rows($sub_cat_result) > 0) {
-                         while ($row = mysqli_fetch_assoc($sub_cat_result)) {
-                         $sub_id = $row['id'];
-                         $sub_name = $row['name'];
-                         ?>
-                         <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
-                         <?php
-                                                                 }
-                                                             } else {
-                                                                 ?>
-                         <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name ; ?></option>
-                         <?php
-                                                             }
-                                                         }
-                                                     }
-                                                     ?>
-                     </select>
-                  </div>
-                  <!-- Search Field -->
-                   <div class="col-md-3 col-xs-12 col-sm-6">
-                       <input type="text" name="query" id="querySearch" class="form-control" placeholder="Wat zoekt u.." required/>
-                   </div>
-                  <!-- Price Range SLider -->
-                   <div class="col-md-3 col-xs-12 col-sm-6">
-                       <span class="price-slider-value">Afstand (Km) - <input type="text" name="dis" id="dis-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
-                       <input type="text" id="example_id" name="example_name" value="" />
-                   </div>
-                  <!-- Search Button -->
-                   <div class="col-md-3 col-xs-12 col-sm-6">
-                       <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Zoek</button>
-                   </div>
-            </div>
-             <div class="row">
-                 <div class="hero-form-sub col-md-12">
-                     <strong class="hidden-sm-down">Zoekopdrachten</strong>
-                     <ul>
-                         <li><a href="pop_search.php?tag=Iphone 7&dis=all&price=all&order=latest">Iphone 7</a></li>
-                         <li><a href="pop_search.php?tag=Autos&dis=all&price=all&order=latest">Autos</a></li>
-                         <li><a href="pop_search.php?tag=Samsung S8&dis=all&price=all&order=latest">Samsung S8</a></li>
-                         <li><a href="pop_search.php?tag=Vaatwassers&dis=all&price=all&order=latest">Vaatwassers</a></li>
-                         <li><a href="pop_search.php?tag=Shorts&dis=all&price=all&order=latest">Shorts</a></li>
-                         <li><a href="pop_search.php?tag=Fietsen&dis=all&price=all&order=latest">Fietsen</a></li>
-                         <li><a href="pop_search.php?tag=Laptop&dis=all&price=all&order=latest">Laptops</a></li>
-                         <li><a href="pop_search.php?tag=Xbox Spelen&dis=all&price=all&order=latest">Xbox Spelen</a></li>
-                     </ul>
-                 </div>
-             </div>
-                  <!-- end .item -->
-               </form>
+                <form method="post" class="search-form validation">
+                    <div class="row">
+
+                        <!-- Category -->
+                        <div class="col-md-3 col-xs-12 col-sm-6">
+                            <select name="cat" class="category form-control" id="catSelect" required>
+                                <option selected disabled value="dis">Kies een optie</option>
+                                <?php
+                                // GET ALL CATEGORIES from DB
+                                $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'NL' ORDER BY `name` ASC  ";
+                                $cat_result= mysqli_query($mysqli, $cat_query);
+                                if (mysqli_num_rows($cat_result) > 0 ) {
+                                    while ($row = mysqli_fetch_assoc($cat_result)) {
+                                        $id = $row['id'];
+                                        $name = $row['name'];
+                                        // GET ALL RELATED SUB_CATEGORIES from DB
+                                        $sub_cat_query = "SELECT * FROM `SUB_CATEGORY`  WHERE `CATEGORY_id` = '{$id}'  ";
+                                        $sub_cat_result = mysqli_query($mysqli, $sub_cat_query);
+                                        if (mysqli_num_rows($sub_cat_result) > 0) {
+                                            while ($row = mysqli_fetch_assoc($sub_cat_result)) {
+                                                $sub_id = $row['id'];
+                                                $sub_name = $row['name'];
+                                                ?>
+                                                <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
+                                                <?php
+                                            }
+                                        } else {
+                                            ?>
+                                            <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name ; ?></option>
+                                            <?php
+                                        }
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <!-- Search Field -->
+                        <div class="col-md-3 col-xs-12 col-sm-6">
+                            <input type="text" name="query" id="querySearch" class="form-control" placeholder="What Are You Looking For..." required/>
+                        </div>
+                        <!-- Price Range SLider -->
+                        <div class="col-md-3 col-xs-12 col-sm-6">
+                            <span class="price-slider-value">Afstand (Km) - <input type="text" name="dis" id="dis-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
+                            <input type="text" id="example_id" name="example_name" value="" />
+                        </div>
+                        <!-- Search Button -->
+                        <div class="col-md-3 col-xs-12 col-sm-6">
+                            <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Zoeken</button>
+                        </div>
+                        <!-- end .item -->
+                    </div>
+                    <div class="row">
+                        <div class="hero-form-sub col-md-12">
+                            <strong class="hidden-sm-down">populaire zoekopdrachten</strong>
+                            <ul>
+                                <li><a href="pop_search.php?tag=Iphone 7&dis=all&price=all&order=latest">Iphone 7</a></li>
+                                <li><a href="pop_search.php?tag=Autos&dis=all&price=all&order=latest">Autos</a></li>
+                                <li><a href="pop_search.php?tag=Samsung S8&dis=all&price=all&order=latest">Samsung S8</a></li>
+                                <li><a href="pop_search.php?tag=Vaatwasser&dis=all&price=all&order=latest">Vaatwasser</a></li>
+                                <li><a href="pop_search.php?tag=Tshirt&dis=all&price=all&order=latest">Tshirt</a></li>
+                                <li><a href="pop_search.php?tag=Fietsen&dis=all&price=all&order=latest">Fietsen</a></li>
+                                <li><a href="pop_search.php?tag=Laptop&dis=all&price=all&order=latest">Laptop</a></li>
+                                <li><a href="pop_search.php?tag=Xbox Spelen&dis=all&price=all&order=latest">Xbox Spelen</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </form>
                <!-- end .search-form -->
             </div>
             <!-- end .tab-panel -->
@@ -449,12 +452,9 @@ require_once "scripts/time_elapse.php";
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
       <!-- Googgle map For THis Page Only -->
-<!--      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>-->
-      <script src="js/infobox.js"></script>
+      <!--      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>-->
       <!-- Parallax -->
-      <script src="js/data.json"></script>
-      <script src="js/markerclusterer.js"></script>
-      <script src="js/markers-map.js"></script>
+      <script src="js/imgLiquid-min.js"></script>
       <script>
           $(function() {
 
@@ -523,54 +523,50 @@ require_once "scripts/time_elapse.php";
           myLat = getCookie("latiC");
           myLon = getCookie("longC");
 
+      </script>
+      <script>
+          var stepSliderValueElement = document.getElementById('dis-min');
+          stepSliderValueElement.value = 10;
+          $("#example_id").ionRangeSlider({
+              grid: false,
+              min: 10,
+              max: 100,
+              from: 0,
+              step: 10,
+              hide_min_max: true,
+              prettify_enabled: false,
+              onChange: function (data) {
+                  stepSliderValueElement.value = data.from;
+              }
+          });
 
+
+          var cat;
+          var query;
+          var dis;
+          var order;
+          var price;
+
+          var submitBut = function () {
+              cat   = $("#catSelect").val();
+              query = $("#querySearch").val();
+              dis   = $("#example_id").val();
+              order = "latest";
+              price = "all";
+              if(cat == null || cat == "dis"){
+                  $(".select2Class").addClass('shadow');
+              }
+              if(query == ""){
+                  $("#querySearch").addClass('shadow');
+              }
+
+              if(cat != null && cat != "dis" && query != "" && dis != 0.00){
+
+                  window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
+              }
+          };
 
       </script>
-   <script>
-       var stepSliderValueElement = document.getElementById('dis-min');
-       stepSliderValueElement.value = 10;
-       $("#example_id").ionRangeSlider({
-           grid: false,
-           min: 10,
-           max: 100,
-           from: 0,
-           step: 10,
-           hide_min_max: true,
-           prettify_enabled: false,
-           onChange: function (data) {
-               stepSliderValueElement.value = data.from;
-           }
-       });
-
-       var cat;
-       var query;
-       var dis;
-       var order;
-       var price;
-
-       var submitBut = function () {
-           cat   = $("#catSelect").val();
-           query = $("#querySearch").val();
-           dis   = $("#price-min").val();
-           order = "latest";
-           price = "all";
-           if(cat == null || cat == "dis"){
-               $(".select2Class").addClass('shadow');
-           }
-           if(query == ""){
-               $("#querySearch").addClass('shadow');
-           }
-           if(dis == 0.00){
-               $(".noUi-connects").addClass('shadow');
-           }
-           if(cat != null && cat != "dis" && query != "" && dis != 0.00){
-
-
-
-               window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
-           }
-       };
-   </script>
    </body>
 </html>
 

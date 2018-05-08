@@ -223,7 +223,7 @@
                                             alt="<?php echo $user_username; ?>"> </a>
                             </div>
                             <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id; ?>"
-                                                    class="view-details">View Details</a>
+                                                    class="view-details">أنظر التفاصيل</a>
                             <!-- Additional Info -->
                             <div class="additional-information">
                                 <p><?php echo $description; ?></p>
@@ -248,7 +248,7 @@
                             </h3>
                             <!-- Price -->
                             <div class="price"><?php if ($selling_type == "BID") {
-                                    echo "€ " . $price . "<span style='font-size:14px;'> (Bid)</span>";
+                                    echo "€ " . $price . "<span style='font-size:14px;'> (مزايدة)</span>";
                                 } else {
                                     echo "€ " . $price;
                                 } ?></div>
@@ -276,7 +276,7 @@
                     <a href="all_product">
                         <div class="banner">
                             <div class="wrapper">
-                                <span class="title">Oh no! it seems that there is no matching Ads for your search; Try something else!</span>
+                                <span class="title">يبدو أنه لا يوجد إعلانات يمكن عرضها هنا! حاول البحث عن شيء آخر!</span>
                             </div>
                         </div>
                         <!-- /.banner-->
@@ -293,8 +293,8 @@
                 <a href="">
                     <div class="banner">
                         <div class="wrapper">
-                            <span class="title">Do you want your property to be listed here?</span>
-                            <span class="submit">Submit it now! <i class="fa fa-plus-square"></i></span>
+                            <span class="title" style="width: 71%">هل تريد بيع أغراضك هنا؟</span>
+                            <span class="submit">أنشر الآن! <i class="fa fa-plus-square"></i></span>
                         </div>
                     </div>
                     <!-- /.banner-->
@@ -554,7 +554,7 @@
                                             alt="<?php echo $user_username; ?>"> </a>
                             </div>
                             <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id; ?>"
-                                                    class="view-details">View Details</a>
+                                                    class="view-details">أنظر التفاصيل</a>
                             <!-- Additional Info -->
                             <div class="additional-information">
                                 <p><?php echo $description; ?></p>
@@ -579,7 +579,7 @@
                             </h3>
                             <!-- Price -->
                             <div class="price"><?php if ($selling_type == "BID") {
-                                    echo "€ " . $price . "<span style='font-size:14px;'> (Bid)</span>";
+                                    echo "€ " . $price . "<span style='font-size:14px;'> (مزايدة)</span>";
                                 } else {
                                     echo "€ " . $price;
                                 } ?></div>
@@ -608,8 +608,8 @@
                 <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>">
                     <div class="banner">
                         <div class="wrapper">
-                            <span class="title">Do you want your property to be listed here?</span>
-                            <span class="submit">Submit it now! <i class="fa fa-plus-square"></i></span>
+                            <span class="title">هل تريد بيع أغراضك هنا؟</span>
+                            <span class="submit">أنشر الآن! <i class="fa fa-plus-square"></i></span>
                         </div>
                     </div>
                     <!-- /.banner-->
