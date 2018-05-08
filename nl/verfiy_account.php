@@ -29,7 +29,7 @@ if (isset($_GET['code']) && isset($_GET['email'])){
     if ($email1 == $_GET['email'] && $code == $_GET['code']){
 
         //update data in USER table;
-        $update_query  = "UPDATE `USER` SET `profile_status` = 'CONFORMED' WHERE `email` = '{$email}'";
+        $update_query  = "UPDATE `USER` SET `profile_status` = 'CONFORMED', `code` = 'null' WHERE `email` = '{$email}";
         $update_result = mysqli_query($mysqli,$update_query);
 
 
