@@ -8,14 +8,7 @@ require_once "scripts/time_elapse.php";
 <!DOCTYPE html>
 <html lang="ar">
    <head>
-       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-       <script>
-           (adsbygoogle = window.adsbygoogle || []).push({
-               google_ad_client: "ca-pub-5850194650079393",
-               enable_page_level_ads: false
-           });
-       </script>
-      <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+       <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
       <!--[if IE]>
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <![endif]-->
@@ -241,6 +234,17 @@ require_once "scripts/time_elapse.php";
          <section class="custom-padding gray categories">
               <!-- Main Container -->
               <div class="container">
+                  <div class="row">
+                      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                      <!-- Index H -->
+                      <ins class="adsbygoogle"
+                           style="display:inline-block;width:970px;height:90px"
+                           data-ad-client="ca-pub-5850194650079393"
+                           data-ad-slot="3654180573"></ins>
+                      <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                      </script>
+                  </div>
                   <!-- Row -->
                   <div class="row">
                       <!-- Category -->
@@ -339,6 +343,16 @@ require_once "scripts/time_elapse.php";
                         </div>
                      </div>
                   </div>
+                   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                   <!-- AD Index -->
+                   <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-5850194650079393"
+                        data-ad-slot="9864365708"
+                        data-ad-format="auto"></ins>
+                   <script>
+                       (adsbygoogle = window.adsbygoogle || []).push({});
+                   </script>
                   <!-- Middle Content Box End -->
                </div>
                <!-- Row End -->
