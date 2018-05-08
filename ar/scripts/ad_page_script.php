@@ -389,8 +389,8 @@ if (isset($_GET['ad_id'])) {
                         $user_id1 = $row['USER_id'];
                         $category_id1 = $row['CATEGORY_id'];
 
-                        $description1 = strip_tags($description);
-                        $description1 = substr($description, 0, 200);
+                        $description1 = strip_tags($description1);
+                        $description1 = substr($description1, 0, 200);
 
 
                         require_once 'time_elapse.php';
@@ -445,7 +445,7 @@ if (isset($_GET['ad_id'])) {
                         }
 
 
-                        $img_query1 = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$id}'";
+                        $img_query1 = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$id1}'";
                         $img_result1 = mysqli_query($mysqli, $img_query1);
                         if (mysqli_num_rows($img_result1) > 0) {
                             while ($row = mysqli_fetch_assoc($img_result1)) {

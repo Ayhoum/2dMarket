@@ -1,7 +1,6 @@
 ﻿<?php
 ob_start();
 session_start();
-include 'scripts/sessions.php';
 require_once '../scripts/db_connection.php';
 ?>
 <!DOCTYPE html>
@@ -112,7 +111,7 @@ require_once '../scripts/db_connection.php';
                         </div>
                         <p class="lead" style="direction: rtl">النشر على موقعنا مجاني ولكن عليك التـأكد من اعلانك لا يخـالف <a style="direction: rtl" href="#">سياســات الموقــع</a>  </p>
                         <form  name="add_new_ad" method="post" id="advForm" class="submit-form" enctype="multipart/form-data">
-                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="direction: rtl">
                          <ul class="accordion">
                              <li>
                                  <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 1.</span> اختيــار الصنـف : </a></h4>
@@ -287,7 +286,7 @@ require_once '../scripts/db_connection.php';
          <?php include "footer.php"; ?>
          <!-- =-=-=-=-=-=-= FOOTER END =-=-=-=-=-=-= -->
       </div>
-      <!-- Main Content Area End --> 
+      <!-- Main Content Area End -->
       <!-- Post Ad Sticky -->
       <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
          <span class="sell-icons">
@@ -342,15 +341,15 @@ require_once '../scripts/db_connection.php';
       <script src="js/form-dropzone.js" ></script>
       <script type="text/javascript">
 	   "use strict";
-	   
+
 	   /*--------- Textarea Ck Editor --------*/
 	     CKEDITOR.replace( 'editor2' );
-		 
-	   /*--------- Ad Tags --------*/ 
+
+	   /*--------- Ad Tags --------*/
 		 $('#tags').tagsInput({
    			'width':'100%'
 		 });
-	   
+
          /*--------- create remove function in dropzone --------*/
 
 
