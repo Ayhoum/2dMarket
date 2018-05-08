@@ -149,7 +149,7 @@ require_once '../scripts/db_connection.php';
                                                                      $sub_id = $row['id'];
                                                                      $sub_name = $row['name'];
                                                                      ?>
-                                                                     <option value="<?php echo $id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
+                                                                     <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
                                                                      <?php
                                                                  }
                                                              } else {
