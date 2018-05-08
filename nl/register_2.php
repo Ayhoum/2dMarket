@@ -20,17 +20,29 @@ if (isset($_POST['submit']) && $_GET['id']){
     $region         = mysqli_real_escape_string($mysqli,$region);
     $city           = $_POST['city'];
     $city           = mysqli_real_escape_string($mysqli,$city);
+
+    $fullurl = "http://maps.googleapis.com/maps/api/geocode/json?address=".$city."+".$street_name."+".$house_number;
+    $string = file_get_contents($fullurl); // get json content
+    $json_a = json_decode($string, true); //json decoder
+
+    $lat = $json_a['results'][0]['geometry']['location']['lat']; // get ing for json
+
+    $lon =  $json_a['results'][0]['geometry']['location']['lng']; // get ing for json
+
+
     $id = $_GET['id'];
 
 
-    $insert_address_query  = "INSERT INTO `ADDRESS` (street_name, house_number, country, postcode, city, region, USER_id)";
+    $insert_address_query  = "INSERT INTO `ADDRESS` (street_name, house_number, country, postcode, city, region, USER_id, lon, lat)";
     $insert_address_query .="VALUES   ( '{$street_name}',
                                         '{$house_number}',
                                         '{$country}',
                                         '{$postcode}',
                                         '{$city}',
                                         '{$region}',
-                                        '{$id}' )";
+                                        '{$id}',
+                                        '{$lon}',
+                                        '{$lat}' )";
 
     $insert_address_result = mysqli_query($mysqli,$insert_address_query);
 
