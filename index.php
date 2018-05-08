@@ -5,7 +5,7 @@
    <script>
        (adsbygoogle = window.adsbygoogle || []).push({
            google_ad_client: "ca-pub-5850194650079393",
-           enable_page_level_ads: true
+           enable_page_level_ads: false
        });
 	</script>
 </head>
