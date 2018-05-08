@@ -211,7 +211,7 @@ while($row = mysqli_fetch_assoc($result)){
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Away From You
+                                            البعد عنك
                                         </a>
                                     </h4>
                                     <!--                                    <!-- Title End -->
@@ -259,7 +259,7 @@ while($row = mysqli_fetch_assoc($result)){
                                     <h4 class="panel-title">
                                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Price
+                                            السعر
                                         </a>
                                     </h4>
                                 </div>

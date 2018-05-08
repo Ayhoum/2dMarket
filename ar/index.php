@@ -217,14 +217,14 @@ require_once "scripts/time_elapse.php";
                    <div class="hero-form-sub">
                        <strong class="hidden-sm-down">أشهر عمليات البحث</strong>
                        <ul>
-                           <li><a href="pop_search.php?tag=Iphone 7">Iphone 7</a></li>
-                           <li><a href="pop_search.php?tag=سيارات">سيارات</a></li>
-                           <li><a href="pop_search.php?tag=سامسونج S8">سامسونج S8</a></li>
-                           <li><a href="pop_search.php?tag=غسالة">غسالة</a></li>
-                           <li><a href="pop_search.php?tag=شاشة">شاشة</a></li>
-                           <li><a href="pop_search.php?tag=دراجات">دراجات</a></li>
-                           <li><a href="pop_search.php?tag=لابتوب">لابتوب</a></li>
-                           <li><a href="pop_search.php?tag=ألعاب إكسبوكس">ألعاب إكسبوكس</a></li>
+                           <li><a href="pop_search.php?tag=Iphone 7&dis=all&price=all&order=latest">Iphone 7</a></li>
+                           <li><a href="pop_search.php?tag=سيارات&dis=all&price=all&order=latest">سيارات</a></li>
+                           <li><a href="pop_search.php?tag=سامسونج S8&dis=all&price=all&order=latest">سامسونج S8</a></li>
+                           <li><a href="pop_search.php?tag=غسالة&dis=all&price=all&order=latest">غسالة</a></li>
+                           <li><a href="pop_search.php?tag=شاشة&dis=all&price=all&order=latest">شاشة</a></li>
+                           <li><a href="pop_search.php?tag=دراجات&dis=all&price=all&order=latest">دراجات</a></li>
+                           <li><a href="pop_search.php?tag=لابتوب&dis=all&price=all&order=latest">لابتوب</a></li>
+                           <li><a href="pop_search.php?tag=ألعاب إكسبوكس&dis=all&price=all&order=latest">ألعاب إكسبوكس</a></li>
                        </ul>
                    </div>
                </form>

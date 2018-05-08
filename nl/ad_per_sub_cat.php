@@ -196,7 +196,7 @@ while($row = mysqli_fetch_assoc($result)){
                                 <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">
                                         <i class="more-less glyphicon glyphicon-plus"></i>
-                                        Away From You
+                                        Afstand van u
                                     </a>
                                 </h4>
                                 <!--                                    <!-- Title End -->

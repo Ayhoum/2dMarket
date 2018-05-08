@@ -109,6 +109,24 @@ include '../scripts/db_connection.php';
                         </div>
                         <!-- Sorting Filters End-->
                         <div class="clearfix"></div>
+                        <?php
+                        $dis   = $_GET['dis'];
+                        $tag   = $_GET['tag'];
+                        $priceVal = $_GET['price'];
+                        $order = $_GET['order'];
+                        $dis = $_GET['dis'];
+                        if($priceVal != "all"){
+                            $price_parts = explode("-", $priceVal);
+                            $minPrice = $price_parts[0];
+                            $maxPrice = $price_parts[1];
+
+                        }
+
+
+                        $valLong = $_COOKIE['longC'];
+                        $valLati = $_COOKIE['latiC'];
+                        ?>
+
                         <?php include  'scripts/pop_search_script.php';?>
                     </div>
                     <!-- Row End -->
@@ -163,55 +181,86 @@ include '../scripts/db_connection.php';
                             </div>
                             <!-- Categories Panel End -->
                             <!-- Location Panel -->
-<!--                            <div class="panel panel-default">-->
+                            <div class="panel panel-default">
 <!--                                <!-- Heading -->
-<!--                                <div class="panel-heading" role="tab" id="cities">-->
-<!--                                    <!-- Title -->
-<!--                                    <h4 class="panel-title">-->
-<!--                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">-->
-<!--                                            <i class="more-less glyphicon glyphicon-plus"></i>-->
-<!--                                            Away From You-->
-<!--                                        </a>-->
-<!--                                    </h4>-->
-<!--                                    <!-- Title End -->
-<!--                                </div>-->
-<!--                                <!-- Content -->
-<!--                                <div id="citiesheading" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cities">-->
-<!--                                    <div class="panel-body categories">-->
-<!--                                        <ul>-->
-<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 10 KM </a></li>-->
-<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 20 KM </a></li>-->
-<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 30 KM </a></li>-->
-<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 40 KM </a></li>-->
-<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 50 KM </a></li>-->
-<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 60 KM </a></li>-->
-<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 70 KM </a></li>-->
-<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 80 KM </a></li>-->
-<!--                                            <li><a href="#"><i class="flaticon-signs-1"></i> 90 KM </a></li>-->
-<!--                                        </ul>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <!-- Location Panel End -->
-<!--                            <!-- Pricing Panel -->
-<!--                            <div class="panel panel-default">-->
-<!--                                <!-- Heading -->
-<!--                                <div class="panel-heading" role="tab" id="headingfour">-->
-<!--                                    <h4 class="panel-title">-->
-<!--                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">-->
-<!--                                            <i class="more-less glyphicon glyphicon-plus"></i>-->
-<!--                                            Price-->
-<!--                                        </a>-->
-<!--                                    </h4>-->
-<!--                                </div>-->
-<!--                                <!-- Content -->
-<!--                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">-->
-<!--                                    <div class="panel-body">-->
-<!--                                        <span class="price-slider-value">Price (€) <span id="price-min"></span> - <span id="price-max"></span></span>-->
-<!--                                        <div id="price-slider"></div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <div class="panel-heading" role="tab" id="cities">
+                                <!--                                    <!-- Title -->
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#citiesheading" aria-expanded="true" aria-controls="citiesheading">
+                                        <i class="more-less glyphicon glyphicon-plus"></i>
+                                        Away From You
+                                    </a>
+                                </h4>
+                                <!--                                    <!-- Title End -->
+                            </div>
+                            <!--                                <!-- Content -->
+                            <div id="citiesheading" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="cities">
+                                <div class="panel-body categories">
+                                    <ul>
+                                        <?php
+                                        if($priceVal != "all") {
+                                            ?>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=10.00&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 10 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=20.00&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 20 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=30.00&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 30 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=40.00&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 40 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=50.00&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 50 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=60.00&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 60 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=70.00&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 70 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=80.00&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 80 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=90.00&price=<?php echo $price_parts[0];?>-<?php echo $price_parts[1];?>"><i class="flaticon-signs-1"></i> 90 KM </a></li>
+                                            <?php
+                                        }else{
+                                            ?>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=10.00&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 10 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=20.00&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 20 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=30.00&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 30 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=40.00&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 40 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=50.00&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 50 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=60.00&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 60 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=70.00&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 70 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=80.00&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 80 KM </a></li>
+                                            <li><a href="pop_search.php?tag=<?php echo $tag; ?>&order=<?php echo $order; ?>&dis=90.00&price=<?php echo $priceVal;?>"><i class="flaticon-signs-1"></i> 90 KM </a></li>
+                                            <?php
+                                        }
+                                        ?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Location Panel End -->
+                        <!-- Pricing Panel -->
+                        <div class="panel panel-default">
+                            <!--                                <!-- Heading -->
+                            <div class="panel-heading" role="tab" id="headingfour">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                        <i class="more-less glyphicon glyphicon-plus"></i>
+                                        Price
+                                    </a>
+                                </h4>
+                            </div>
+                            <!--                                <!-- Content -->
+                            <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
+                                <div class="panel-body">
+                                    <?php
+                                    if($priceVal == "all"){
+                                        ?>
+                                        min <input type="text" name="min" id="price-min-range" class="min" style="width:110px;"> -
+                                                                                                                                 max <input type="text" name="max" id="price-min-range" class="max" style="width:110px;"><br><br>
+                                        <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
+                                        <?php
+                                    }else{
+                                        ?>
+                                        min <input type="text" name="min" value="<?php echo $price_parts[0];?>" id="price-min-range" class="min" style="width:110px;"> -
+                                                                                                                                                                       max <input type="text" name="max" value="<?php echo $price_parts[1];?>" id="price-max-range" class="max" style="width:110px;"><br><br>
+                                        <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
+
+                                        <?php
+                                    }?>
+                                </div>
+                            </div>
+                        </div>
 <!--                            <!-- Pricing Panel End -->
 <!--                            <!-- Featured Ads Panel -->
 <!--                            <div class="panel panel-default">-->
@@ -325,5 +374,28 @@ include '../scripts/db_connection.php';
 <script src="js/color-switcher.js"></script>
 <!-- Template Core JS -->
 <script src="js/custom.js"></script>
+<script>
+    var tag = '<?php echo $tag?>';
+    var order = '<?php echo $order?>';
+    var dis = '<?php echo $dis?>';
+    $('#submit').click(function () {
+        var price;
+        var min = $('.min').val();
+        var max = $('.max').val();
+        if(min == '' && max == ''){
+            price = "all";
+        }else if(min == ''){
+            min = 0;
+            price = min + "-" + max ;
+        }else if(max == ''){
+            price = min + "-max";
+        }else{
+            price = min + "-" + max ;
+        }
+        window.open("pop_search.php?tag=" + tag + "&price=" + price + "&order=" + order + "&dis=" + dis,"_self");
+
+
+    });
+</script>
 </body>
 </html>

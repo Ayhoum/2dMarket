@@ -107,12 +107,12 @@ session_start();
                             <div class="listingTopFilterBar">
                                 <div class="col-md-5 col-xs-12 col-sm-6 no-padding">
                                     <div class="header-listing">
-                                        <h6>Sorteer :</h6>
+                                        <h6>Sorteer op:</h6>
                                         <div class="custom-select-box">
                                             <select name="order" class="custom-select">
                                                 <option value="1">The latest</option>
-                                                <option value="2">Price (low to high) </option>
-                                                <option value="3">Price (high to low) </option>
+                                                <option value="2">Prijs (laag naar hoog) </option>
+                                                <option value="3">Price (hoog naar laag) </option>
                                             </select>
                                         </div>
                                     </div>

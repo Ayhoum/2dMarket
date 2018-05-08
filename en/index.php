@@ -219,14 +219,14 @@ require_once "scripts/time_elapse.php";
                    <div class="hero-form-sub col-md-12">
                        <strong class="hidden-sm-down">Popular Searches</strong>
                        <ul>
-                           <li><a href="pop_search.php?tag=Iphone 7">Iphone 7</a></li>
-                           <li><a href="pop_search.php?tag=Cars">Cars</a></li>
-                           <li><a href="pop_search.php?tag=Samsung S8">Samsung S8</a></li>
-                           <li><a href="pop_search.php?tag=Wash Machine">Wash machine</a></li>
-                           <li><a href="pop_search.php?tag=Shorts">Shorts</a></li>
-                           <li><a href="pop_search.php?tag=Bike">Bikes</a></li>
-                           <li><a href="pop_search.php?tag=Laptop">Laptops</a></li>
-                           <li><a href="pop_search.php?tag=Xbox Games">Xbox Games</a></li>
+                           <li><a href="pop_search.php?tag=Iphone 7&dis=all&price=all&order=latest">Iphone 7</a></li>
+                           <li><a href="pop_search.php?tag=Cars&dis=all&price=all&order=latest">Cars</a></li>
+                           <li><a href="pop_search.php?tag=Samsung S8&dis=all&price=all&order=latest">Samsung S8</a></li>
+                           <li><a href="pop_search.php?tag=Wash Machine&dis=all&price=all&order=latest">Wash machine</a></li>
+                           <li><a href="pop_search.php?tag=Shorts&dis=all&price=all&order=latest">Shorts</a></li>
+                           <li><a href="pop_search.php?tag=Bike&dis=all&price=all&order=latest">Bikes</a></li>
+                           <li><a href="pop_search.php?tag=Laptop&dis=all&price=all&order=latest">Laptops</a></li>
+                           <li><a href="pop_search.php?tag=Xbox Games&dis=all&price=all&order=latest">Xbox Games</a></li>
                        </ul>
                    </div>
                    </div>
