@@ -53,6 +53,7 @@ if (isset($_POST['submit']) && $_GET['id']){
 
 
 
+
     $mail             = new PHPMailer(); // defaults to using php "mail()"
     $mail->CharSet = 'UTF-8';
     $mail->IsHTML(true);
@@ -60,13 +61,13 @@ if (isset($_POST['submit']) && $_GET['id']){
     $body             = "
 
 
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml' xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office'>
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">
 <head>
-	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-	<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-	<title>2D Market | verify Account</title>
-	<style type='text/css'>
+	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
+	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+	<title>2D Market | Account Conformation </title>
+	<style type=\"text/css\">
 		/* ----- Custom Font Import ----- */
 		/*@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);*/
 		@import url(https://fontlibrary.org/face/droid-arabic-kufi);
@@ -240,12 +241,12 @@ if (isset($_POST['submit']) && $_GET['id']){
 						<!-- / Hero subheader -->
 						<table class='container hero-subheader' border='0' cellpadding='0' cellspacing='0' width='620' style='width: 620px;'>
 							<tr>
-								<td class='hero-subheader__title' style='direction:ltr;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;' align='center'>Verify Your Account On 2D Market</td>
+								<td class='hero-subheader__title' style='direction:ltr;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;' align='center'>Just one more step</td>
 							</tr>
 
 							<tr>
-								<td class='hero-subheader__content' style='direction:ltr;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;' align='left'>To verify :<br>
-								<a href='$link'>Click Here!</a>
+								<td class='hero-subheader__content' style='direction:ltr;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;' align='left'>You are just a step ahead to activate your account on 2D Market. <br>
+								 To conform your email : <a href='$link'>Click Here!</a>
 								</td>
 							</tr>
 						</table>
@@ -355,16 +356,16 @@ if (isset($_POST['submit']) && $_GET['id']){
     $address1= $email;
     $mail->AddAddress($address1);
 
-    $mail->Subject    = "Verify Your Account";
+    $mail->Subject    = "Verify your email ";
 
     $mail->MsgHTML($body);
 
     if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }
+    header("Location: login.php");
 
-    header("Location : index.php");
-    $_SESSION['new_user']= null;
+
 
 } else {
     echo "";

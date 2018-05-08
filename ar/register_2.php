@@ -45,7 +45,7 @@ if (isset($_POST['submit']) && $_GET['id']){
 
     $code = rand(10000,99999);
 
-    $link = "http://www.2dmarket.com/en/verfiy_account.php?code=" . $code . "&email=" . $email;
+    $link = "http://www.2dmarket.com/ar/verfiy_account.php?code=" . $code . "&email=" . $email;
 
     $update_user_query ="UPDATE USER  SET `code` ='{$code}' where `id` ='{$id}'";
 
@@ -65,7 +65,7 @@ if (isset($_POST['submit']) && $_GET['id']){
 <head>
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 	<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-	<title>2D Market | تـأكيد تسجيـل الحسـاب</title>
+	<title>2D Market | تـأكيـد الحسـاب</title>
 	<style type='text/css'>
 		/* ----- Custom Font Import ----- */
 		/*@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);*/
@@ -240,12 +240,12 @@ if (isset($_POST['submit']) && $_GET['id']){
 						<!-- / Hero subheader -->
 						<table class='container hero-subheader' border='0' cellpadding='0' cellspacing='0' width='620' style='width: 620px;'>
 							<tr>
-								<td class='hero-subheader__title' style='direction:ltr;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;' align='center'>لتتمكن من تسجيل الدخول في موقعنا الرجـاء تأكيد حسابك</td>
+								<td class='hero-subheader__title' style='direction:ltr;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;' align='center'>تـأكيد حسـابك على موقعنـا </td>
 							</tr>
 
 							<tr>
-								<td class='hero-subheader__content' style='direction:ltr;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;' align='right'>لتأكيـد الحسـاب :<br>
-								<a href='$link'>اضغط هنـا</a>
+								<td class='hero-subheader__content' style='direction:ltr;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;' align='right'>لتفعيل حسـابك :<br>
+								<a href='$link'>إضغط هنا!</a>
 								</td>
 							</tr>
 						</table>
@@ -355,15 +355,16 @@ if (isset($_POST['submit']) && $_GET['id']){
     $address1= $email;
     $mail->AddAddress($address1);
 
-    $mail->Subject    = "Verify Your Account";
+    $mail->Subject    = "Verify Account";
 
     $mail->MsgHTML($body);
 
     if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }
+    header("Location: index.php");
 
-    $_SESSION['new_user']= null;
+
 
 }
 
@@ -428,6 +429,9 @@ if (isset($_POST['submit']) && $_GET['id']){
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
+       <script src="dist/geodatasource-cr.min.js"></script>
+       <link rel="stylesheet" href="dist/geodatasource-countryflag.css">
+
    </head>
    <body>
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->

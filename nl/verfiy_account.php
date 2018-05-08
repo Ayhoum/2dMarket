@@ -9,47 +9,45 @@
 
 
 <?php
+require_once '../scripts/db_connection.php';
+require_once 'phpmailer/class.phpmailer.php';
 
-if(isset($_GET['code'])){
-    $code = $_GET['code'];
-}else{
-    header("Location: index.php");
-}
-if(isset($_GET['email'])){
+
+if (isset($_GET['code']) && isset($_GET['email'])){
+
+    //check if the code is right
     $email = $_GET['email'];
-}else{
-    header("Location: index.php");
-}
 
-$query = "SELECT * From USER WHERE email = '{$email}' ";
-$getAgent = mysqli_query($mysqli, $query);
-if (mysqli_num_rows($getAgent) == 1) {
-    while ($row = mysqli_fetch_assoc($getAgent)) {
-        $id = $row['id'];
-        $email = $row['email'];
+    $check_query  = "SELECT * FROM `USER` WHERE `email` = '{$email}'";
+    $check_result = mysqli_query($mysqli,$check_query);
+    while ($row = mysqli_fetch_assoc($check_result)){
+        $email1 = $row ['email'];
+        $code  = $row['code'];
     }
 
-    $update_user_query ="UPDATE `USER` SET  `profile_status` ='CONFORMED' where `id` ='{$id}'";
 
-    $update_user_result = mysqli_query($mysqli,$update_user_query);
+    if ($email1 == $_GET['email'] && $code == $_GET['code']){
 
-
-    $link = "www.2dmarket.com/en/index.php";
-
-    $mail             = new PHPMailer(); // defaults to using php "mail()"
-    $mail->CharSet = 'UTF-8';
-    $mail->IsHTML(true);
-
-    $body             = "
+        //update data in USER table;
+        $update_query  = "UPDATE `USER` SET `profile_status` = 'CONFORMED' WHERE `email` = '{$email}'";
+        $update_result = mysqli_query($mysqli,$update_query);
 
 
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml' xmlns:v='urn:schemas-microsoft-com:vml' xmlns:o='urn:schemas-microsoft-com:office:office'>
+
+        $mail             = new PHPMailer(); // defaults to using php "mail()"
+        $mail->CharSet = 'UTF-8';
+        $mail->IsHTML(true);
+
+        $body             = "
+
+
+<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
+<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">
 <head>
-	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-	<meta name='viewport' content='width=device-width, initial-scale=1.0'/>
-	<title>2D Market | Welkom bij 2D Market</title>
-	<style type='text/css'>
+	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />
+	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>
+	<title>2D Market | Welkom </title>
+	<style type=\"text/css\">
 		/* ----- Custom Font Import ----- */
 		/*@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext);*/
 		@import url(https://fontlibrary.org/face/droid-arabic-kufi);
@@ -211,7 +209,7 @@ if (mysqli_num_rows($getAgent) == 1) {
 								<td class='info-bullets__block' style='padding: 30px 30px 15px 30px;' align='center'>
 									<table class='container' border='0' cellpadding='0' cellspacing='0' align='center'>
 										<tr>
-											<td align='center' width='60' height='2' style=' width: 60px; height: 2px; font-size: 1px;'><img src='http://www.2dmarket.com/nl/images/logo_files/logo_png_email.png'></td>
+											<td align='center' width='60' height='2' style=' width: 60px; height: 2px; font-size: 1px;'><img src='http://www.2dmarket.com/en/images/logo_files/logo_png_email.png'></td>
 										</tr>
 									</table>
 								</td>
@@ -223,12 +221,12 @@ if (mysqli_num_rows($getAgent) == 1) {
 						<!-- / Hero subheader -->
 						<table class='container hero-subheader' border='0' cellpadding='0' cellspacing='0' width='620' style='width: 620px;'>
 							<tr>
-								<td class='hero-subheader__title' style='direction:ltr;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;' align='center'>Van harte welkom bij ons website</td>
+								<td class='hero-subheader__title' style='direction:ltr;font-size: 43px; font-weight: bold; padding: 80px 0 15px 0;' align='center'>Onze familie wordt groter</td>
 							</tr>
 
 							<tr>
-								<td class='hero-subheader__content' style='direction:ltr;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;' align='left'>Om je geweldige ervaring te beginnen:<br>
-								<a href='$link'>Hier Clickken!</a>
+								<td class='hero-subheader__content' style='direction:ltr;font-size: 16px; line-height: 27px; color: #969696; padding: 0 60px 90px 0;' align='left'>U bent nu een lid van onze familie geworden. <br>
+								Om je geweldige ervaring te beginnen: <a href='$link'>Hier clikken!</a>
 								</td>
 							</tr>
 						</table>
@@ -310,7 +308,7 @@ if (mysqli_num_rows($getAgent) == 1) {
 											<td align='middle'>
 												<table width='60' height='2' border='0' cellpadding='0' cellspacing='0' style='width: 60px; height: 2px;'>
 													<tr>
-														<td align='middle' width='60' height='2' style=' width: 60px; height: 2px; font-size: 1px;'><img src='http://www.2dmarket.com/nl/images/logo_files/logo_png_email.png'></td>
+														<td align='middle' width='60' height='2' style=' width: 60px; height: 2px; font-size: 1px;'><img src='http://www.2dmarket.com/en/images/logo_files/logo_png_email.png'></td>
 													</tr>
 												</table>
 											</td>
@@ -335,20 +333,23 @@ if (mysqli_num_rows($getAgent) == 1) {
 ";
 
 
-    $address1= $email;
-    $mail->AddAddress($address1);
+        $address1= $email;
+        $mail->AddAddress($address1);
 
-    $mail->Subject    = "Password Restore";
+        $mail->Subject    = "Welkom bij 2D Market";
 
-    $mail->MsgHTML($body);
+        $mail->MsgHTML($body);
 
-    if(!$mail->Send()) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
+        if(!$mail->Send()) {
+            echo "Mailer Error: " . $mail->ErrorInfo;
+        }
+        header("Location: login.php");
+
+    } else {
+        echo " not the same";
     }
-    header("Location: password_email.php");
+} else {
+    echo "Error";
 }
-
-header("Location: login.php");
-
 
 ?>
