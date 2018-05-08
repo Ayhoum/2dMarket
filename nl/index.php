@@ -528,7 +528,7 @@ require_once "scripts/time_elapse.php";
           $("#example_id").ionRangeSlider({
               grid: false,
               min: 10,
-              max: 100,
+              max: 300,
               from: 0,
               step: 10,
               hide_min_max: true,
