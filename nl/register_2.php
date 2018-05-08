@@ -530,7 +530,7 @@ if (isset($_POST['submit'])){
                              </div>
 
                              <div class="margin-top-20">
-                                 <button type="button" name="submit" id="submitBut" class="submitBut btn btn-theme pull-right">Inschrijven</button>
+                                 <button type="submit" name="submit" class="submitBut btn btn-theme pull-right">Inschrijven</button>
                              </div>
                         </form>
 
