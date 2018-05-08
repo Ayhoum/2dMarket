@@ -14,17 +14,17 @@ if (isset($_GET['page'])) {
 } else {
     $page = 0;
 }
-$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'EN' ";
+$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'NL' ";
 $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
 $num_Ads = mysqli_num_rows($ad_result_get_num);
 
 if($num_Ads <= 10){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'NL'  ORDER BY `ad_type` DESC";
 }else if($page == 0 || $page == 1){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC LIMIT 10";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'NL'  ORDER BY `ad_type` DESC LIMIT 10";
 }else if($page > 1){
     $start = (($page - 1) * 10);
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
+    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'NL'  ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
 }
 //    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN'  ORDER BY `ad_type` DESC";
     $ad_result = mysqli_query($mysqli, $ad_query);
@@ -87,7 +87,7 @@ if($num_Ads <= 10){
                 $online_status = $row['online_status'];
 
             }
-            if (empty($user_pic) || !file_exists('../../uploads/users/'.$user_pic)) {
+            if (empty($user_pic)) {
                 $user_pic = "https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Account-256.png";
             }else{
                 $user_pic = '../../uploads/users/'.$user_pic;
@@ -120,7 +120,7 @@ if($num_Ads <= 10){
                     $pic_name = $row['picture_name'];
                 }
             }
-            if(empty($pic_name) || !file_exists('../en_ad_photo/'.$pic_name)){
+            if(empty($pic_name)){
                 $pic = 'en_ad_photo/';
                 $pic_name = 'white.jpg';
             }

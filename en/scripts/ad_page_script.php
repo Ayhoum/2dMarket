@@ -120,7 +120,7 @@ if (isset($_GET['ad_id'])) {
                             <?php
                         }
                     }
-                    elseif (empty($picture_name) || !file_exists('../en_ad_photo/'.$picture_name)){
+                    elseif (empty($picture_name)){
                         ?>
                         <li class="flex-active-slide"><img alt="" style="width: 750px; height: 420px object-fit: cover;" src="<?php echo "en_ad_photo/white.jpg"; ?>"></li>
                     <?php } ?>
@@ -150,7 +150,7 @@ if (isset($_GET['ad_id'])) {
                         }
                     }
 
-                    if(empty($picture_name) || !file_exists('../en_ad_photo/'.$picture_name)){
+                    if(empty($picture_name)){
                         ?>
                         <li class="flex-active-slide"><img alt="" style="width: 200px; height: 112px object-fit: cover;"
                                                            src="<?php echo "en_ad_photo/white.jpg"; ?>"
@@ -455,7 +455,7 @@ if (isset($_GET['ad_id'])) {
 
                             }
                         }
-                        if(empty($picture_name_1) || !file_exists('../en_ad_photo/'.$picture_name_1)){
+                        if(empty($picture_name_1)){
                             $picture_url_1 = 'en_ad_photo/';
                             $picture_name_1 = 'white.jpg';
                         }

@@ -1,15 +1,13 @@
 ﻿<?php
 ob_start();
 session_start();
-include 'scripts/sessions.php';
 require_once '../scripts/db_connection.php';
 require_once '../phpmailer/class.phpmailer.php';
 
 ?>
 
 <?php
-$id = $_SESSION['new_user'];
-if (isset($_POST['submit'])){
+if (isset($_POST['submit']) && $_GET['id']){
     $street_name    = $_POST['street_name'];
     $street_name    = mysqli_real_escape_string($mysqli,$street_name);
     $house_number   = $_POST['house_number'];
@@ -22,6 +20,7 @@ if (isset($_POST['submit'])){
     $region         = mysqli_real_escape_string($mysqli,$region);
     $city           = $_POST['city'];
     $city           = mysqli_real_escape_string($mysqli,$city);
+    $id = $_GET['id'];
 
 
     $insert_address_query  = "INSERT INTO `ADDRESS` (street_name, house_number, country, postcode, city, region, USER_id)";
@@ -37,7 +36,7 @@ if (isset($_POST['submit'])){
 
 
     //get user info.
-    $get_query = "SELECT * FROM `USER` WHERE `id`= '{$id}'";
+    $get_query = "SELECT * FROM `USER` WHERE `id` = '{$id}'";
 
     $get_result = mysqli_query($mysqli, $get_query);
     while ($row=mysqli_fetch_assoc($get_result)){
@@ -484,7 +483,7 @@ if (isset($_POST['submit'])){
                            </h3>
                         </div>
                         <p class="lead">om een betere ervaring op te hebben op  <a href="#">2dmarket.com</a> vul de rest van uw info in.</p>
-                        <form  name="add_new_ad" method="post" action="register_2.php" class="submit-form" enctype="multipart/form-data">
+                        <form  name="add_new_ad" method="post" action="register_2.php?id=<?php echo $_GET['id'];?>" class="submit-form" enctype="multipart/form-data">
                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                              <div class="row">
                                  <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">

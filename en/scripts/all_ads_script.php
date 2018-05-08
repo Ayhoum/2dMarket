@@ -87,7 +87,7 @@ if($num_Ads <= 10){
                 $online_status = $row['online_status'];
 
             }
-            if (empty($user_pic) || !file_exists('../../uploads/users/'.$user_pic)) {
+             if (empty($user_pic)) {
                 $user_pic = "https://cdn4.iconfinder.com/data/icons/web-ui-color/128/Account-256.png";
             }else{
                 $user_pic = '../../uploads/users/'.$user_pic;
@@ -120,7 +120,7 @@ if($num_Ads <= 10){
                     $pic_name = $row['picture_name'];
                 }
             }
-            if(empty($pic_name) || !file_exists('../en_ad_photo/'.$pic_name)){
+            if(empty($pic_name)){
                 $pic = 'en_ad_photo/';
                 $pic_name = 'white.jpg';
             }

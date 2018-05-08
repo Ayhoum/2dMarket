@@ -1,6 +1,4 @@
 <?php
-session_start();
-ob_start();
 require_once "../../scripts/db_connection.php";
 
 if(isset($_POST['submit'])){
@@ -34,9 +32,9 @@ if(isset($_POST['submit'])){
     $get_result = mysqli_query($mysqli, $get_query);
     while ($row=mysqli_fetch_assoc($get_result)){
         $id = $row['id'];
-        $_SESSION['new_user'] = $id;
+
     }
-header("Location: ../register_2.php");
+header("Location: ../register_2.php?id=$id");
 }else{
 
     header("Location: ../register.php");
