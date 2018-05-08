@@ -146,14 +146,11 @@ session_start();
 
                             $valLong = $_COOKIE['longC'];
                             $valLati = $_COOKIE['latiC'];
+
+                        include 'scripts/handleSearch.php';
+
                         ?>
-                        <?php
-                        if(empty($valLati) || empty($valLong)){
-                            echo "Your search process has been terminated";
-                        }else{
-                            include 'scripts/handleSearch.php';
-                        }
-                        ?>
+
 
 
                     </div>
