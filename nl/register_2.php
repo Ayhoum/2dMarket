@@ -8,7 +8,7 @@ require_once '../phpmailer/class.phpmailer.php';
 ?>
 
 <?php
-
+$id = $_SESSION['new_user'];
 if (isset($_POST['submit'])){
     $street_name    = $_POST['street_name'];
     $street_name    = mysqli_real_escape_string($mysqli,$street_name);
@@ -22,7 +22,6 @@ if (isset($_POST['submit'])){
     $region         = mysqli_real_escape_string($mysqli,$region);
     $city           = $_POST['city'];
     $city           = mysqli_real_escape_string($mysqli,$city);
-    $id = $_SESSION['new_user'];
 
 
     $insert_address_query  = "INSERT INTO `ADDRESS` (street_name, house_number, country, postcode, city, region, USER_id)";
