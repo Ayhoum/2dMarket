@@ -131,8 +131,8 @@ require_once '../scripts/db_connection.php';
                                              <!-- Category  -->
                                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                                  <label class="control-label">Category <small>Kies een categorie </small></label>
-                                                 <select name="category_id" class="category form-control">
-                                                     <option label="kies een Optie"></option>
+                                                 <select name="category_id" id="category"  class="category form-control">
+                                                     <option label="Select Option"></option>
                                                      <?php
                                                      // GET ALL CATEGORIES from DB
                                                      $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'NL' ORDER BY `name` ASC  ";
@@ -154,7 +154,7 @@ require_once '../scripts/db_connection.php';
                                                                  }
                                                              } else {
                                                                  ?>
-                                                                 <option value="<?php echo $id; ?>"><?php echo $name ; ?></option>
+                                                                 <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name ; ?></option>
                                                                  <?php
                                                              }
                                                          }
@@ -172,7 +172,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">Advertentie title <small> schrijf een title </small></label>
-                                             <input name= "title" class="form-control" placeholder="Honda civic 2017 te koop" type="text">
+                                             <input name= "title" class="form-control" id="title" placeholder="Honda civic 2017 te koop" type="text">
                                          </div>
                                      </div>
                                      <!-- end row-->
@@ -180,7 +180,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">Prijs <small>Allen Euro</small></label>
-                                             <input name= "price" class="form-control" placeholder="Bijvoorbeeld : 350 " type="text">
+                                             <input name= "price" id="price" class="form-control" placeholder="Bijvoorbeeld : 350 " type="text">
                                          </div>
                                      </div>
                                      <!-- Ad Type  -->
@@ -188,7 +188,7 @@ require_once '../scripts/db_connection.php';
                                          <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                                              <label  class="control-label">Advertntie Type<small>Bidden of Vast prijs</small></label>
                                              <div class="skin-minimal">
-                                                 <select name="selling_type" class="category form-control">
+                                                 <select name="selling_type" id="sellType" class="category form-control">
                                                      <option value="">Kies een optie</option>
                                                      <option value="BID"> Bidden </option>
                                                      <option value="FIXED_PRICE"> Vast Prijs </option>
@@ -199,7 +199,7 @@ require_once '../scripts/db_connection.php';
                                          <div class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                                              <label class="control-label">Conditie<small></small></label>
                                              <div class="skin-minimal">
-                                                 <select name="condition" class="category form-control">
+                                                 <select name="condition" id="condition" class="category form-control">
                                                      <option value=""> Select an option</option>
                                                      <option value="NEW"> Nieuwe </option>
                                                      <option value="USED"> Gebruikt </option>
@@ -210,7 +210,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">Bezorging <small>Ophalen of Versturen </small></label>
-                                             <select name="delivery_type" class="category form-control">
+                                             <select name="delivery_type" id="deliveryType" class="category form-control">
                                                  <option value=""> Select an option</option>
                                                  <option value="PICK_UP"> Ophalen </option>
                                                  <option value="DELIVERY"> Verzending </option>

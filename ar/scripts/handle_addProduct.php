@@ -29,14 +29,16 @@ if (isset($_GET['cat'])
     $ad_type        = "NORMAL";
     $price          = mysqli_real_escape_string($mysqli,$_GET['price']);
 
+    date_default_timezone_set('Europe/Amsterdam');
 
         $lang    = "AR";
-        $user_id =  $_SESSION['id'];
+    $date = date('Y-m-d H:i:s');
+    $user_id =  $_SESSION['id'];
         $status = "AVAILABLE";
         $zeroVal = 0;
         $ins_ad_query  = "INSERT INTO `ADVERTISEMENT`";
-        $ins_ad_query .= "(`title`, `lang`, `selling_type`, `status`, `delivery_type`, `description`, `ad_type`, `USER_id`, `CATEGORY_id`, `condition`, `price`, `visits`, `sub_cat_id`)";
-        $ins_ad_query .= "VALUES (      '{$title}',
+    $ins_ad_query .= "(`title`, `lang`, `selling_type`, `status`, `delivery_type`, `description`, `ad_type`, `USER_id`, `CATEGORY_id`, `condition`, `price`, `visits`, `sub_cat_id`, `date`)";
+    $ins_ad_query .= "VALUES (      '{$title}',
                                         '{$lang}',
                                         '{$selling_type}',
                                         '{$status}',
@@ -48,7 +50,8 @@ if (isset($_GET['cat'])
                                         '{$condition}',
                                         '{$price}',
                                         '{$zeroVal}',
-                                        '{$sub_cat_id}')";
+                                        '{$sub_cat_id}',
+                                        '{$date}')";
 
         $ins_ad_result = mysqli_query($mysqli,$ins_ad_query);
 
