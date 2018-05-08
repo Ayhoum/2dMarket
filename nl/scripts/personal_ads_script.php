@@ -138,7 +138,7 @@ $num_Ads = mysqli_num_rows($ad_result_get_num);
                                    href="edit_ad.php?id=<?php echo $user_id;?>&&ad_id=<?php echo $ad_id; ?>"><i class="fa fa-pencil edit"></i></a>
                             </li>
                             <li><a data-toggle="tooltip" data-placement="top" title="" data-original-title="Advertentie verwijderen"
-                                   href="delete_ad.php?ad_id<?php echo $ad_id; ?>"><i
+                                   href="scripts/delete_ad.php?ad_id=<?php echo $ad_id; ?>"><i
                                             class="fa fa-times delete"></i></a></li>
                         </ul>
                     </div>
