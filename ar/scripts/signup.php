@@ -14,21 +14,27 @@ if(isset($_POST['submit'])){
     $lname = mysqli_real_escape_string($mysqli,$lname);
     $username         = $_POST['username'];
     $username = mysqli_real_escape_string($mysqli,$username);
+    $phone         = $_POST['phone'];
+    $phone = mysqli_real_escape_string($mysqli,$phone);
     $password         = $_POST['password'];
     $option=["COST"=> 12];
     $hash_pass = password_hash($password,PASSWORD_DEFAULT,$option);
 
 
-    $query = "INSERT INTO USER (first_name, last_name, username, email, password) 
+    date_default_timezone_set('Europe/Amsterdam');
+    $date = date('Y-m-d H:i:s');
+
+    $query = "INSERT INTO USER (first_name, last_name, username, register_date, phone_number, email, password) 
       VALUES (
       '{$fname}',
       '{$lname}',
       '{$username}',
+      '{$date}',
+      '{$phone}',
       '{$email}',
       '{$hash_pass}')";
 
     $run = mysqli_query($mysqli, $query);
-
 
 
     //get user info.

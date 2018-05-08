@@ -204,25 +204,29 @@ require_once "../scripts/db_connection.php";
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
-                                                    <label>First Name</label>
+                                                    <label>Voornaam</label>
                                                     <input required placeholder="Voer uw voornaam in" name="fname" class="form-control" type="text">
                                                 </div>
                                                 <div class="form-group col-sm-6">
-                                                    <label>Last Name</label>
+                                                    <label>Achternaam</label>
                                                     <input required placeholder="Voer uw achternaam in" name="lname" class="form-control" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Username</label>
+                                                <label>Gebruikersnaam</label>
                                                 <input required placeholder="Voer uw gebruikersnaam in" name="username" class="form-control" type="text">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Telefoonnummer</label>
+                                                <input required placeholder="Voer uw telefoonnummer in" name="phone_number" class="form-control" type="text">
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
-                                                    <label>Password</label>
+                                                    <label>Wachtwoord</label>
                                                     <input required placeholder="Voer uw wachtwoord in" id="inputPassword" name="password" class="form-control" type="password">
                                                 </div>
                                                 <div class="form-group col-sm-6">
-                                                    <label>Repeate The Password</label>
+                                                    <label>Wachtwoord bevstigen</label>
                                                     <input required placeholder="Voer uw wachtwoord opnieuw in" name="repassword" class="form-control" onChange="checkPasswordMatch();" id="inputPasswordConfirm" type="password">
                                                     <label id="txtConfirm"></label>
                                                 </div>
@@ -376,12 +380,12 @@ require_once "../scripts/db_connection.php";
         var confirmPassword = $("#inputPasswordConfirm").val();
 
         if (password != confirmPassword){
-            $("#txtConfirm").html("Doesn't Match");
+            $("#txtConfirm").html("Komt niet overeen");
             $("#txtConfirm").removeClass('greenfont');
             $("#txtConfirm").addClass('redfont');
             $("#regBut").prop("disabled",true);
         }else{
-            $("#txtConfirm").html("Passwords match.");
+            $("#txtConfirm").html("wachtwoorden komen overeen");
             $("#txtConfirm").removeClass('redfont');
             $("#txtConfirm").addClass('greenfont');
             $("#regBut").prop("disabled",false);
@@ -394,12 +398,12 @@ require_once "../scripts/db_connection.php";
             $.post('scripts/handle_email.php?email='+email,function(response){
 
                 if(response > 0){
-                    $('#checkEmailError').html("This email is already registered!");
+                    $('#checkEmailError').html("Deze e-mail is al geregistreerd!");
                     $('#checkEmailError').removeClass('greenfont');
                     $('#checkEmailError').addClass('redfont');
                     $("#regBut").prop("disabled",true);
                 }else{
-                    $('#checkEmailError').html("This email is available!");
+                    $('#checkEmailError').html("Deze e-mail is beschikbaar!");
                     $('#checkEmailError').removeClass('redfont');
                     $('#checkEmailError').addClass('greenfont');
                     $("#regBut").prop("disabled",false);

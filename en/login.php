@@ -231,6 +231,10 @@ require_once "../scripts/db_connection.php";
                                                 <label>Username</label>
                                                 <input required placeholder="Your Username" name="username" class="form-control" type="text">
                                             </div>
+                                            <div class="form-group">
+                                                <label>Phone nummber</label>
+                                                <input required placeholder="Your phone number" name="phone_number" class="form-control" type="text">
+                                            </div>
                                             <div class="row">
                                                 <div class="form-group col-sm-6">
                                                     <label>Password</label>

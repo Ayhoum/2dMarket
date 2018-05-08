@@ -184,7 +184,7 @@ require_once "../scripts/db_connection.php";
                                               <form name="signup" id="signupForm" method="post" action="scripts/signup.php" data-toggle="validator">
                                                   <div class="form-group">
                                                       <label>البريـد الالكتروني</label>
-                                                      <input autocomplete="false" required placeholder="Enter Your Email" name="email" onchange="checkAvailability();" id="emailArea" class="form-control" type="email">
+                                                      <input autocomplete="false" required placeholder="قم بادخال ايميلك" name="email" onchange="checkAvailability();" id="emailArea" class="form-control" type="email">
                                                       <label id="checkEmailError" class=""></label>
                                                   </div>
                                                   <div class="row">
@@ -200,6 +200,10 @@ require_once "../scripts/db_connection.php";
                                                   <div class="form-group">
                                                       <label>اسم المستخدم</label>
                                                       <input required placeholder="قم باختيار اسم مستخدم خاص بك" name="username" class="form-control" type="text">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label>رقم الهاتف</label>
+                                                      <input required placeholder="قم بادخـال رقم هاتفك" name="phone_number" class="form-control" type="text">
                                                   </div>
                                                   <div class="row">
                                                       <div class="form-group col-sm-6">
@@ -352,12 +356,12 @@ require_once "../scripts/db_connection.php";
               var confirmPassword = $("#inputPasswordConfirm").val();
 
               if (password != confirmPassword){
-                  $("#txtConfirm").html("Doesn't Match");
+                  $("#txtConfirm").html("كلمات السر غير متطابقة");
                   $("#txtConfirm").removeClass('greenfont');
                   $("#txtConfirm").addClass('redfont');
                   $("#regBut").prop("disabled",true);
               }else{
-                  $("#txtConfirm").html("Passwords match.");
+                  $("#txtConfirm").html("كلمات السر متطابقة");
                   $("#txtConfirm").removeClass('redfont');
                   $("#txtConfirm").addClass('greenfont');
                   $("#regBut").prop("disabled",false);
@@ -370,19 +374,19 @@ require_once "../scripts/db_connection.php";
                   $.post('scripts/handle_email.php?email='+email,function(response){
 
                       if(response > 0){
-                          $('#checkEmailError').html("This email is already registered!");
+                          $('#checkEmailError').html("هذا الايميل موجد مسبقاً");
                           $('#checkEmailError').removeClass('greenfont');
                           $('#checkEmailError').addClass('redfont');
                           $("#regBut").prop("disabled",true);
                       }else{
-                          $('#checkEmailError').html("This email is available!");
+                          $('#checkEmailError').html("هذا الايميل متـاح");
                           $('#checkEmailError').removeClass('redfont');
                           $('#checkEmailError').addClass('greenfont');
                           $("#regBut").prop("disabled",false);
                       }
                   });
               }else{
-                  $('#checkEmailError').html("Enter a valid Email Address!");
+                  $('#checkEmailError').html("ادخل ايميلا صالحـاً");
                   $('#checkEmailError').removeClass('greenfont');
                   $('#checkEmailError').addClass('redfont');
                   $("#regBut").prop("disabled",true);

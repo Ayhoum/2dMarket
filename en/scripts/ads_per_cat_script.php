@@ -40,7 +40,7 @@
 
         $lon = $row['lon'];
         $lat = $row['lat'];
-        $us_id = $row['USER_id'];
+        $us = $row['USER_id'];
 
 
         if(!empty($lon) && !empty($lat)){

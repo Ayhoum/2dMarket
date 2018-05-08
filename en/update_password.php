@@ -41,6 +41,7 @@ if(isset($_POST['updatePass'])){
     if($pass == $pass2){
         $encCode = ['cost' => 12];
         $encPassword = password_hash($pass2, PASSWORD_BCRYPT, $encCode);
+        echo "<script>alert($encPassword);</script>";
         $queryUpdate = "UPDATE USER SET password = '{$encPassword}' WHERE email = '{$email}'";
         $run = mysqli_query($mysqli,$queryUpdate);
 

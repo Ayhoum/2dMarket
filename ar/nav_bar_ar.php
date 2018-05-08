@@ -154,7 +154,7 @@
 
                     <ul class="menu-search-bar" style="float: left">
                         <?php if(!isset($_SESSION['username'])){?>
-                            <li><a href="login.php"><i class="fa fa-sign-in"></i> Log in  </a> </li>
+                            <li><a href="login.php"><i class="fa fa-sign-in"></i> تسجيـل الدخـول  </a> </li>
                         <?php } else { ?>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
