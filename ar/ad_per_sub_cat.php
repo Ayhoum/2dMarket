@@ -132,8 +132,35 @@ while($row = mysqli_fetch_assoc($result)){
                         <!-- Sorting Filters Breadcrumb End -->
                         <!-- Sorting Filters End-->
                         <div class="clearfix"></div>
+
+
+
+                        <?php
+
+
+
+                        $dis   = $_GET['dis'];
+                        $order = $_GET['order'];
+                        $priceVal = $_GET['price'];
+                        $cat = $_GET['sub_cat_id'];
+                        if($priceVal != "all"){
+                            $price_parts = explode("-", $priceVal);
+                            $minPrice = $price_parts[0];
+                            $maxPrice = $price_parts[1];
+
+                        }
+
+                        $valLong = $_COOKIE['longC'];
+                        $valLati = $_COOKIE['latiC'];
+                        ?>
+                        <?php
+                        if(empty($valLati) || empty($valLong)){
+                            header("Location: index.php");
+                        }else{
+                            include  'scripts/ads_per_sub_cat_script.php';
+                        }
+                        ?>
                         <!-- Ads Archive -->
-                        <?php include 'scripts/ads_per_sub_cat_script.php';?>
                         <!-- Pagination End -->
                     </div>
                     <!-- Row End -->

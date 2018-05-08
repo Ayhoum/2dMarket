@@ -3,9 +3,9 @@ $prefix = $_SERVER['HTTP_HOST'];
 $file = explode('/', $_SERVER['PHP_SELF']);
 $page = $file[count($file)-1];
 
-$en = "HTTP://".$prefix.'/website/2dMarket/en/'.$page;
-$nl = "HTTP://".$prefix.'/website/2dMarket/nl/'.$page;
-$ar = "HTTP://".$prefix.'/website/2dMarket/ar/'.$page;
+$en = "HTTP://".$prefix.'/en/'.$page;
+$nl = "HTTP://".$prefix.'/nl/'.$page;
+$ar = "HTTP://".$prefix.'/ar/'.$page;
 ?>
 
 <div class="header-top">
