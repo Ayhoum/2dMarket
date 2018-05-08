@@ -107,7 +107,7 @@ session_start();
                         <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
                             <div class="clearfix"></div>
                             <div class="listingTopFilterBar">
-                                <div class="col-md-5 col-xs-12 col-sm-6 no-padding">
+                                <div class="col-md-6 col-xs-12 col-sm-6 no-padding">
                                     <div class="header-listing">
                                         <h6>Sorteer op :</h6>
                                         <div class="custom-select-box">
