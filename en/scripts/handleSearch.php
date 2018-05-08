@@ -215,7 +215,7 @@ if (mysqli_num_rows($run_queryAD) > 0) {
                 $pic_name = $row['picture_name'];
             }
         }
-        if (empty($pic_name) || !file_exists('../en_ad_photo/' . $pic_name)) {
+        if (empty($pic_name)) {
             $pic = 'en_ad_photo/';
             $pic_name = 'white.jpg';
         }
@@ -404,14 +404,14 @@ while ($row = mysqli_fetch_assoc($run_query)){
             if($km <= $dis) {
                 if($_GET['price'] != 'all'){
                     if($minPrice == 0){
-                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `USER_id` = '{$us_id}' AND `lang` = 'EN' AND `price` <= '$maxPrice'";
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `lang` = 'EN' AND `price` <= '$maxPrice'";
                     }else if($maxPrice == 'max'){
-                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `USER_id` = '{$us_id}' AND `lang` = 'EN' AND `price` >= '$minPrice'";
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `lang` = 'EN' AND `price` >= '$minPrice'";
                     }else{
-                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `USER_id` = '{$us_id}' AND `lang` = 'EN' AND (`price` >= '$minPrice' AND `price` <= '$maxPrice')";
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `lang` = 'EN' AND (`price` >= '$minPrice' AND `price` <= '$maxPrice')";
                     }
                 }else{
-                    $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `USER_id` = '{$us_id}' AND `lang` = 'EN' ";
+                    $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `lang` = 'EN' ";
                 }
 
                 $run_queryAD = mysqli_query($mysqli, $queryAD);
@@ -545,7 +545,7 @@ if (mysqli_num_rows($run_queryAD) > 0) {
                 $pic_name = $row['picture_name'];
             }
         }
-        if (empty($pic_name) || !file_exists('../en_ad_photo/' . $pic_name)) {
+        if (empty($pic_name)) {
             $pic = 'en_ad_photo/';
             $pic_name = 'white.jpg';
         }
