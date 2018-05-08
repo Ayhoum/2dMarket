@@ -8,28 +8,105 @@
 ?>
 <div class="posts-masonry">
 
-<?php
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-} else {
-    $page = 0;
-}
+    <?php
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+    } else {
+        $page = 0;
+    }
+    $adsArr = array();
+    $num_Ads_val = 0;
+    function distanceCalculation($point1_lat, $point1_long, $point2_lat, $point2_long) {
+        // Calculate the distance in degrees
+        $degrees = rad2deg(acos((sin(deg2rad($point1_lat))*sin(deg2rad($point2_lat))) + (cos(deg2rad($point1_lat))*cos(deg2rad($point2_lat))*cos(deg2rad($point1_long-$point2_long)))));
+        $distance = $degrees * 111.13384; // 1 degree = 111.13384 km, based on the average diameter of the Earth (12,735 km)
 
-$category_id = $_GET['cat_id'];
-$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'EN' && `CATEGORY_id` = '{$category_id}' ";
-$ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
-$num_Ads = mysqli_num_rows($ad_result_get_num);
+        // Convert the distance in degrees to the chosen unit (kilometres, miles or nautical miles)
+        return round($distance, 0);
+    }
+    $point1 = array("lat" => $valLati, "long" => $valLong); // Current
 
-if($num_Ads <= 10){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'EN' && `CATEGORY_id` = '{$category_id}' ORDER BY `ad_type` DESC";
-}else if($page == 0 || $page == 1){
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `CATEGORY_id` = '{$category_id}' ORDER BY `ad_type` DESC LIMIT 10";
-}else if($page > 1){
-    $start = (($page - 1) * 10);
-    $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `lang` = 'EN' && `CATEGORY_id` = '{$category_id}' ORDER BY `ad_type` DESC LIMIT 10 OFFSET $start";
 
-}
+    $category_id = $_GET['cat_id'];
+    $ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE  `lang` = 'EN' && `CATEGORY_id` = '{$category_id}' ";
+    $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
+    $num_Ads = mysqli_num_rows($ad_result_get_num);
+
+
+    $query = "SELECT * FROM ADDRESS";
+    $run_query = mysqli_query($mysqli,$query);
+
+    while ($row = mysqli_fetch_assoc($run_query)){
+
+        $lon = $row['lon'];
+        $lat = $row['lat'];
+        $us_id = $row['USER_id'];
+
+
+        if(!empty($lon) && !empty($lat)){
+            $point2 = array("lat" => $lat, "long" => $lon); // Target
+            $km = distanceCalculation($point1['lat'], $point1['long'], $point2['lat'], $point2['long']); // Calculate distance in kilometres (default)
+            if($dis == "all"){
+                $dis = 99999999;
+            }
+            if($km <= $dis) {
+                if($_GET['price'] != 'all'){
+                    if($minPrice == 0){
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}' AND `USER_id` = '{$us_id}' AND `lang` = 'EN' AND `price` <= '$maxPrice'";
+                    }else if($maxPrice == 'max'){
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}' AND `USER_id` = '{$us_id}' AND `lang` = 'EN' AND `price` >= '$minPrice'";
+                    }else{
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}' AND `USER_id` = '{$us_id}' AND `lang` = 'EN' AND (`price` >= '$minPrice' AND `price` <= '$maxPrice')";
+                    }
+                }else{
+                    $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}' AND `USER_id` = '{$us_id}' AND `lang` = 'EN' ";
+                }
+
+                $run_queryAD = mysqli_query($mysqli, $queryAD);
+                $num_Ads_val += mysqli_num_rows($run_queryAD);
+
+            }
+        }
+
+        if($num_Ads_val != 0){
+            while ($row = mysqli_fetch_assoc($run_queryAD)) {
+                $var = $row['id'];
+                array_push($adsArr, $var);
+            }
+        }
+    }
+
+
+    $ids = join("','",$adsArr);
+    if($order == 'latest'){
+        $suffix = " `date` DESC";
+    }else if($order == 'priceLow'){
+        $suffix = " `price` ASC";
+    }else if($order == 'priceHigh'){
+        $suffix = " `price` DESC";
+    }
+    if ($num_Ads <= 10) {
+        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `id` IN ('$ids') AND `lang` = 'EN'  ORDER BY `ad_type` DESC," . $suffix;
+    } else if ($page == 0 || $page == 1) {
+        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `id` IN ('$ids') AND `lang` = 'EN'  ORDER BY `ad_type` DESC," . $suffix ." LIMIT 10";
+    } else if ($page > 1) {
+        $start = (($page - 1) * 10);
+        $ad_query = "SELECT * FROM `ADVERTISEMENT` WHERE `id` IN ('$ids') AND `lang` = 'EN'  ORDER BY `ad_type` DESC," . $suffix ." LIMIT 10 OFFSET $start";
+    }
+
+
+
+
+
+
+
+
+
+
+
     $ad_result = mysqli_query($mysqli, $ad_query);
+    $num_Ads_collected = mysqli_num_rows($ad_result);
+
     if (mysqli_num_rows($ad_result) > 0) {
         while ($row = mysqli_fetch_assoc($ad_result)) {
             $ad_id = $row['id'];
@@ -148,7 +225,7 @@ if($num_Ads <= 10){
                         <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
                         <?php }elseif ($status == "AVAILABLE"){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
                         <!-- Ad Category -->
-                        <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
+                        <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>&dis=all&price=all&order=latest"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
                         <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                         <!-- Price -->
@@ -168,14 +245,14 @@ if($num_Ads <= 10){
             <?php
 
         }
-    } else {
+    }else {
         ?>
         <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
             <section class="advertising">
                 <a href="all_product">
                     <div class="banner">
                         <div class="wrapper">
-                            <span class="title">Oh no! it seems that There is no Ads in this Category yet; Try something else!</span>
+                            <span class="title">Oh no! it seems that there is no Ads in this category; Try something else!</span>
                         </div>
                     </div>
                     <!-- /.banner-->
@@ -183,12 +260,12 @@ if($num_Ads <= 10){
             </section>
         </div>
 
-    <?php
+        <?php
     }
     ?>
     <div class="col-md-12 col-xs-12 col-sm-12">
         <section class="advertising">
-            <a href="new_advertisement.php">
+            <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>">
                 <div class="banner">
                     <div class="wrapper">
                         <span class="title">Do you want your property to be listed here?</span>
@@ -202,7 +279,6 @@ if($num_Ads <= 10){
 
 </div>
 
-
 <div class="clearfix"></div>
 <!-- Pagination -->
 <div class="text-center margin-top-30 block-center">
@@ -210,7 +286,7 @@ if($num_Ads <= 10){
         <?php
         if ($page != 0 && $page != 1) {
             ?>
-            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
+            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&dis=<?php echo $_GET['dis']; ?>&price=<?php echo $_GET['price']; ?>&order=<?php echo $_GET['order']; ?>&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }
@@ -219,13 +295,13 @@ if($num_Ads <= 10){
             ?>
             <li <?php if ($i == $page || ($i == 1 && $page == 0)) {
                 echo 'class="active"';
-            } ?>><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            } ?>><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&dis=<?php echo $_GET['dis']; ?>&price=<?php echo $_GET['price']; ?>&order=<?php echo $_GET['order']; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 
         <?php } ?>
         <?php
         if ($page != $num_Ads) {
             ?>
-            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&?age=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
+            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&dis=<?php echo $_GET['dis']; ?>&price=<?php echo $_GET['price']; ?>&order=<?php echo $_GET['order']; ?>&page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }

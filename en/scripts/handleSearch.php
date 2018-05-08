@@ -255,7 +255,7 @@ if (mysqli_num_rows($run_queryAD) > 0) {
                                 class="label label-success"><?php echo $status; ?></span></p><?php } ?>
                     <!-- Ad Category -->
                     <div class="category-title"><span><a
-                                    href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name; ?></a></span>
+                                    href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>&dis=all&price=all&order=latest"><?php echo $cat_name; ?></a></span>
                     </div>
                     <!-- Ad Title -->
                     <h3><a title=""
@@ -585,7 +585,7 @@ if (mysqli_num_rows($run_queryAD) > 0) {
                                 class="label label-success"><?php echo $status; ?></span></p><?php } ?>
                     <!-- Ad Category -->
                     <div class="category-title"><span><a
-                                    href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name; ?></a></span>
+                                    href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>&dis=all&price=all&order=latest"><?php echo $cat_name; ?></a></span>
                     </div>
                     <!-- Ad Title -->
                     <h3><a title=""

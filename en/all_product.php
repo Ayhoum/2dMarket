@@ -166,7 +166,7 @@ session_start();
 
                                                 ?>
 
-                                                <li><a href="ad_per_cat.php?cat_id=<?php echo $cat_id; ?>"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span style="color: #985f0d">(<?php echo $cat_count;?>)</span></a></li>
+                                                <li><a href="ad_per_cat.php?cat_id=<?php echo $cat_id; ?>&dis=all&price=all&order=latest"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span style="color: #985f0d">(<?php echo $cat_count;?>)</span></a></li>
                                                 <?php
                                             }
                                             ?>
