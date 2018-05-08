@@ -236,21 +236,21 @@ require_once '../scripts/db_connection.php';
                                      <!-- end row -->
                                  </div>
                              </li>
-                             <li>
-                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 4.</span> Advertisement Options</a></h4>
-                                 <div class="accordion-content">
-                                     <div class="row">
-                                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                             <label class="control-label">Ad Type  <small>Choose between Free Or Premium</small></label>
-                                             <select name="ad_type" id="adType" class="category form-control">
-                                                 <option value=""> Select an option</option>
-                                                 <option value="NORMAL"> Normal</option>
-                                                 <option value="PREMIUM"> Premium</option>
-                                             </select>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </li>
+<!--                             <li>-->
+<!--                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 4.</span> Advertisement Options</a></h4>-->
+<!--                                 <div class="accordion-content">-->
+<!--                                     <div class="row">-->
+<!--                                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">-->
+<!--                                             <label class="control-label">Ad Type  <small>Choose between Free Or Premium</small></label>-->
+<!--                                             <select name="ad_type" id="adType" class="category form-control">-->
+<!--                                                 <option value=""> Select an option</option>-->
+<!--                                                 <option value="NORMAL"> Normal</option>-->
+<!--                                                 <option value="PREMIUM"> Premium</option>-->
+<!--                                             </select>-->
+<!--                                         </div>-->
+<!--                                     </div>-->
+<!--                                 </div>-->
+<!--                             </li>-->
                          </ul>
                              <div class="margin-top-20">
                                  <button type="button" name="submit" id="submitBut" class="submitBut btn btn-theme pull-right">Publish My Ad</button>

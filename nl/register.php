@@ -72,7 +72,7 @@ if(isset($_SESSION['username'])){
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <div id="loader-wrapper">
           <div id="loader"><img class="img-responsive"  src="images/logo_files/design.gif">
-              <h4 class="text-center" style="color: #00a9da"> Loading..</h4> </div>
+              <h4 class="text-center" style="color: #00a9da"> Aan het laden..</h4> </div>
           <div class="loader-section section-left"></div>
           <div class="loader-section section-right"></div>
       </div>
@@ -93,7 +93,7 @@ if(isset($_SESSION['username'])){
             <div class="row">
                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <div class="header-page text-center">
-                     <h1>Create Your Account</h1>
+                     <h1>Maak een nieuwe account</h1>
                   </div>
                </div>
             </div>

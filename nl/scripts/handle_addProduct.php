@@ -15,8 +15,7 @@ if (isset($_GET['cat'])
     && isset($_GET['sellType'])
     && isset($_GET['cond'])
     && isset($_GET['delivery'])
-    && isset($_GET['des'])
-    && isset($_GET['adType'])) {
+    && isset($_GET['des'])) {
 
 
 
@@ -27,7 +26,7 @@ if (isset($_GET['cat'])
     $condition      = mysqli_real_escape_string($mysqli,$_GET['cond']);
     $category_id    = mysqli_real_escape_string($mysqli,$_GET['cat']);
     $sub_cat_id     = mysqli_real_escape_string($mysqli,$_GET['subCat']);
-    $ad_type        = mysqli_real_escape_string($mysqli,$_GET['adType']);
+    $ad_type        = "NORMAL";
     $price          = mysqli_real_escape_string($mysqli,$_GET['price']);
 
 

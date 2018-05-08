@@ -15,7 +15,17 @@ if(isset($_POST['submit'])){
       '{$username}',
       '{$email}',
       '{$password}')";
-header("Location: ../login.php");
+
+
+    //get user info.
+    $get_query = "SELECT * FROM USER WHERE `email` = '{$email}' && `username` = '{$username}' ";
+    $get_result = mysqli_query($mysqli, $get_query);
+    while ($row=mysqli_fetch_assoc($get_result)){
+        $id = $row['id'];
+        $_SESSION['new_user'] = $id;
+    }
+    header("Location: ../register_2.php");
 }else{
-    header("Location: ../index.php");
+
+    header("Location: ../register.php");
 }

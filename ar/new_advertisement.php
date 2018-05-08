@@ -235,21 +235,21 @@ require_once '../scripts/db_connection.php';
                                      <!-- end row -->
                                  </div>
                              </li>
-                             <li>
-                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 4.</span> خيـارات الاعـلان </a></h4>
-                                 <div class="accordion-content">
-                                     <div class="row">
-                                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                             <label class="control-label"> خيارات الاعلان  <small>قم بالاختيار الاعلان المدفوع أو العادي </small></label>
-                                             <select name="ad_type" id="adType" class="category form-control">
-                                                 <option value=""> Select an option</option>
-                                                 <option value="NORMAL">اعلان عادي</option>
-                                                 <option value="PREMIUM">اعلان مدفوع</option>
-                                             </select>
-                                         </div>
-                                     </div>
-                                 </div>
-                             </li>
+<!--                             <li>-->
+<!--                                 <h4 class="accordion-title"> <a href="#"><span style="color: #985f0d"> 4.</span> خيـارات الاعـلان </a></h4>-->
+<!--                                 <div class="accordion-content">-->
+<!--                                     <div class="row">-->
+<!--                                         <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">-->
+<!--                                             <label class="control-label"> خيارات الاعلان  <small>قم بالاختيار الاعلان المدفوع أو العادي </small></label>-->
+<!--                                             <select name="ad_type" id="adType" class="category form-control">-->
+<!--                                                 <option value=""> Select an option</option>-->
+<!--                                                 <option value="NORMAL">اعلان عادي</option>-->
+<!--                                                 <option value="PREMIUM">اعلان مدفوع</option>-->
+<!--                                             </select>-->
+<!--                                         </div>-->
+<!--                                     </div>-->
+<!--                                 </div>-->
+<!--                             </li>-->
                          </ul>
                              <div class="margin-top-20 col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                  <button type="button" name="submit" id="submitBut" style="width: 100%" class="submitBut btn btn-theme pull-right">قم بنشر الاعلان</button>
