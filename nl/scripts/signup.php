@@ -1,4 +1,9 @@
 <?php
+session_start();
+ob_start();
+
+require_once "../../scripts/db_connection.php";
+
 if(isset($_POST['submit'])){
 
     $email            = $_POST['email'];
