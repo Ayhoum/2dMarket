@@ -111,7 +111,7 @@ if (mysqli_num_rows($ad_result) > 0) {
                     <!-- Ad Img End -->
                     <div class="short-description">
                         <!-- Ad Category -->
-                        <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>"><?php echo $cat_name;?></a></span> </div>
+                        <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&dis=all&price=all&order=latest"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
                         <h3><a title="" href="single-page-listing.html"><?php echo $title;?></a></h3>
                         <!-- Price -->

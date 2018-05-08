@@ -261,7 +261,7 @@ require_once "scripts/time_elapse.php";
                               ?>
 
                               <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                  <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>"><?php echo $name;?><span>(<?php echo $cat_count; ?> Ads)</span>
+                                  <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>&dis=all&price=all&order=latest"><?php echo $name;?><span>(<?php echo $cat_count; ?> Ads)</span>
                                       <i class="<?php echo $icon;?>"></i>
                                   </a>
                               </li>
