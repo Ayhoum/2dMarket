@@ -177,7 +177,7 @@ while($row = mysqli_fetch_assoc($result)){
 
                                                 ?>
 
-                                                <li><a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $sub_cat_id; ?>"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span style="color: #985f0d">(<?php echo $cat_count;?>)</span></a></li>
+                                                <li><a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $sub_cat_id; ?>&dis=all&price=all&order=latest"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span style="color: #985f0d">(<?php echo $cat_count;?>)</span></a></li>
                                                 <?php
                                             }
                                             ?>

@@ -49,7 +49,7 @@
                                             }
                                             ?>
                                             <li>
-                                                <a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $id;?>"> <i class="<?php echo $icon;?>"></i> <?php echo $name; ?></a>
+                                                <a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $id;?>&dis=all&price=all&order=latest"> <i class="<?php echo $icon;?>"></i> <?php echo $name; ?></a>
                                             </li>
 
                                         <?php }?>
@@ -76,7 +76,7 @@
                                             }
                                             ?>
                                             <li>
-                                                <a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $id;?>"> <i class="<?php echo $icon;?>"></i> <?php echo $name; ?></a>
+                                                <a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $id;?>&dis=all&price=all&order=latest"> <i class="<?php echo $icon;?>"></i> <?php echo $name; ?></a>
                                             </li>
 
                                         <?php }?>
@@ -102,7 +102,7 @@
                                             }
                                             ?>
                                             <li>
-                                                <a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $id;?>"> <i class="<?php echo $icon;?>"></i> <?php echo $name; ?></a>
+                                                <a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $id;?>&dis=all&price=all&order=latest"> <i class="<?php echo $icon;?>"></i> <?php echo $name; ?></a>
                                             </li>
 
                                         <?php }?>
@@ -129,7 +129,7 @@
                                             }
                                             ?>
                                             <li>
-                                                <a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $id;?>"> <i class="<?php echo $icon;?>"></i> <?php echo $name; ?></a>
+                                                <a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $id;?>&dis=all&price=all&order=latest"> <i class="<?php echo $icon;?>"></i> <?php echo $name; ?></a>
                                             </li>
 
                                         <?php }?>

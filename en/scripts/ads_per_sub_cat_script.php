@@ -287,7 +287,7 @@ $num_Ads_collected = mysqli_num_rows($ad_result);
         <?php
         if ($page != 0 && $page != 1) {
             ?>
-            <li><a href="ad_per_sub_cat.php?cat_id=<?php echo $sub_category_id;?>&dis=all&price=all&order=latest&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
+            <li><a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $sub_category_id;?>&dis=all&price=all&order=latest&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }
@@ -296,13 +296,13 @@ $num_Ads_collected = mysqli_num_rows($ad_result);
             ?>
             <li <?php if ($i == $page || ($i == 1 && $page == 0)) {
                 echo 'class="active"';
-            } ?>><a href="ad_per_sub_cat.php?cat_id=<?php echo $sub_category_id;?>&dis=all&price=all&order=latest&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            } ?>><a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $sub_category_id;?>&dis=all&price=all&order=latest&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 
         <?php } ?>
         <?php
         if ($page != $num_Ads_collected) {
             ?>
-            <li><a href="ad_per_sub_cat.php?cat_id=<?php echo $sub_category_id;?>&dis=all&price=all&order=latest&?age=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
+            <li><a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $sub_category_id;?>&dis=all&price=all&order=latest&?age=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
                                                                               aria-hidden="true"></i></a></li>
             <?php
         }
