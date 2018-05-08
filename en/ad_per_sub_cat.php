@@ -153,9 +153,9 @@ while($row = mysqli_fetch_assoc($result)){
 
                         $valLong = $_COOKIE['longC'];
                         $valLati = $_COOKIE['latiC'];
-                        ?>
-                        <?php
+
                         include  'scripts/ads_per_sub_cat_script.php';
+
                         ?>
 
                     </div>
