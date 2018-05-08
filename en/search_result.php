@@ -272,7 +272,7 @@ session_start();
                                 <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfour">
                                     <div class="panel-body">
                                         <?php
-                                        if($price == "all"){
+                                        if($priceVal == "all"){
                                             ?>
                                             min <input type="text" name="min" id="price-min-range" class="min" style="width:110px;"> -
                                             max <input type="text" name="max" id="price-min-range" class="max" style="width:110px;"><br><br>
