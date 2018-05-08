@@ -174,7 +174,15 @@ if (isset($_GET['ad_id'])) {
         </div>
         <div class="clearfix"></div>
 
-        <img alt="" class="center-block margin-bottom-30" src="images/advertise-728x90.jpg">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Ad Page Ad H -->
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-5850194650079393"
+             data-ad-slot="6902875030"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
 
         <!-- Short Description  -->
         <div class="ad-box">
@@ -538,7 +546,15 @@ if (isset($_GET['ad_id'])) {
                 ?>
 
                 <!-- Ads Listing -->
-                <img alt="" class="center-block margin-top-30 margin-bottom-30" src="images/advertise-728x90.jpg">
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <!-- Ad Page Ad H -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:728px;height:90px"
+                     data-ad-client="ca-pub-5850194650079393"
+                     data-ad-slot="6902875030"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
         </div>
     </div>

@@ -105,7 +105,17 @@ ob_start();
             <div class="row">
                 <!-- =-=-=-=-=-=-= Advertizing Sidebar =-=-=-=-=-=-= -->
                 <div class="col-md-2 col-sm-2  hidden-xs hidden-sm  leftbar-stick">
-                    <div class="theiaStickySidebar"> <img alt="" src="images/160x600.png"> </div>
+                    <div class="theiaStickySidebar">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- Ad Page Ad -->
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:160px;height:600px"
+                             data-ad-client="ca-pub-5850194650079393"
+                             data-ad-slot="4993104984"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
                 </div>
 
                 <!-- Middle Content Area -->
@@ -118,7 +128,17 @@ ob_start();
 
                 <!-- =-=-=-=-=-=-= Advertizing Sidebar =-=-=-=-=-=-= -->
                 <div class="col-md-2 col-sm-2 hidden-xs hidden-sm rightbar-stick">
-                    <div class="theiaStickySidebar"> <img alt="" src="images/160x600.png"> </div>
+                    <div class="theiaStickySidebar">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <!-- Ad Page Ad -->
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:160px;height:600px"
+                             data-ad-client="ca-pub-5850194650079393"
+                             data-ad-slot="4993104984"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
                 </div>
             </div>
             <!-- Row End -->
