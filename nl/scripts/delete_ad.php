@@ -13,6 +13,6 @@ $delete_query = "DELETE FROM `ADVERTISEMENT` WHERE id = '{$ad_id}'";
 $delete_result = mysqli_query($mysqli, $delete_query);
 
 
-header("Location: ../_.php");
+header("Location: ../profile.php");
 ?>
 

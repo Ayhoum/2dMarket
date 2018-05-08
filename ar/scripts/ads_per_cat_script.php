@@ -52,14 +52,14 @@
             if($km <= $dis) {
                 if($_GET['price'] != 'all'){
                     if($minPrice == 0){
-                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}' AND `USER_id` = '{$us_id}' AND `lang` = 'AR' AND `price` <= '$maxPrice'";
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}' AND `lang` = 'AR' AND `price` <= '$maxPrice'";
                     }else if($maxPrice == 'max'){
-                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}' AND `USER_id` = '{$us_id}' AND `lang` = 'AR' AND `price` >= '$minPrice'";
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}'  AND `lang` = 'AR' AND `price` >= '$minPrice'";
                     }else{
-                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}' AND `USER_id` = '{$us_id}' AND `lang` = 'AR' AND (`price` >= '$minPrice' AND `price` <= '$maxPrice')";
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}'  AND `lang` = 'AR' AND (`price` >= '$minPrice' AND `price` <= '$maxPrice')";
                     }
                 }else{
-                    $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}' AND `USER_id` = '{$us_id}' AND `lang` = 'AR' ";
+                    $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$category_id}'  AND `lang` = 'AR' ";
                 }
 
                 $run_queryAD = mysqli_query($mysqli, $queryAD);

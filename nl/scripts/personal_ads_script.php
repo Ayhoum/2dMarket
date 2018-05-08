@@ -13,7 +13,7 @@ if (isset($_GET['page'])) {
 }
 $user_id = $_SESSION['id'];
 
-$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE `USER_id` = '{$user_id}'";
+$ad_query_get_num = "SELECT * FROM `ADVERTISEMENT` WHERE `USER_id` = '{$user_id}' AND `lang` = 'NL'";
 $ad_result_get_num = mysqli_query($mysqli, $ad_query_get_num);
 $num_Ads = mysqli_num_rows($ad_result_get_num);
 ?>
@@ -93,7 +93,8 @@ $num_Ads = mysqli_num_rows($ad_result_get_num);
                 }
 
             } else {
-                $picture_url = "http://www.nsrcel.org/wp-content/uploads/2018/01/product.png";
+                $picture_url = "nl_ad_photo/";
+                $picture_name = "white.jpg";
             }
             $pic_number = "SELECT COUNT(*) AS 'pic_count' FROM `ADVERTISEMENT_PICTURE` WHERE ADVERTISEMENT_id = '{$ad_id}'";
             $number_result = mysqli_query($mysqli, $pic_number);
@@ -104,11 +105,7 @@ $num_Ads = mysqli_num_rows($ad_result_get_num);
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 ">
                 <div class="white category-grid-box-1 ">
                     <!-- Image Box -->
-                    <?php
-                    if (empty($picture_name)) {
-                        $picture_name = "white.jpg";
-                    }
-                    ?>
+
                     <div class="image"><img src="en_ad_photo/<?php echo $picture_name; ?>" class="img-responsive">
 
                     </div>
@@ -137,9 +134,9 @@ $num_Ads = mysqli_num_rows($ad_result_get_num);
                                    data-original-title="Bewerk deze advertentie"
                                    href="edit_ad.php?id=<?php echo $user_id;?>&&ad_id=<?php echo $ad_id; ?>"><i class="fa fa-pencil edit"></i></a>
                             </li>
-                            <li><a data-toggle="tooltip" data-placement="top" title="" data-original-title="Advertentie verwijderen"
-                                   href="scripts/delete_ad.php?ad_id=<?php echo $ad_id; ?>"><i
-                                            class="fa fa-times delete"></i></a></li>
+<!--                            <li><a data-toggle="tooltip" data-placement="top" title="" data-original-title="Advertentie verwijderen"-->
+<!--                                   href="scripts/delete_ad.php?ad_id=--><?php //echo $ad_id; ?><!--"><i-->
+<!--                                            class="fa fa-times delete"></i></a></li>-->
                         </ul>
                     </div>
                 </div>
