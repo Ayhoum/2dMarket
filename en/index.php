@@ -348,17 +348,18 @@ require_once "scripts/time_elapse.php";
                            ?>
                         </div>
                      </div>
+                      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                      <!-- AD Index -->
+                      <ins class="adsbygoogle"
+                           style="display:block"
+                           data-ad-client="ca-pub-5850194650079393"
+                           data-ad-slot="9864365708"
+                           data-ad-format="auto"></ins>
+                      <script>
+                          (adsbygoogle = window.adsbygoogle || []).push({});
+                      </script>
                   </div>
-                   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                   <!-- AD Index -->
-                   <ins class="adsbygoogle"
-                        style="display:block"
-                        data-ad-client="ca-pub-5850194650079393"
-                        data-ad-slot="9864365708"
-                        data-ad-format="auto"></ins>
-                   <script>
-                       (adsbygoogle = window.adsbygoogle || []).push({});
-                   </script>
+
                   <!-- Middle Content Box End -->
                </div>
                <!-- Row End -->

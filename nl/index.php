@@ -343,7 +343,6 @@ require_once "scripts/time_elapse.php";
                            ?>
                         </div>
                      </div>
-                  </div>
                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                    <!-- AD Index -->
                    <ins class="adsbygoogle"
@@ -354,7 +353,8 @@ require_once "scripts/time_elapse.php";
                    <script>
                        (adsbygoogle = window.adsbygoogle || []).push({});
                    </script>
-                  <!-- Middle Content Box End -->
+                  </div>
+                   <!-- Middle Content Box End -->
                </div>
                <!-- Row End -->
             </div>
