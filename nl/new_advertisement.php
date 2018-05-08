@@ -135,7 +135,7 @@ require_once '../scripts/db_connection.php';
                                                      <option label="kies een Optie"></option>
                                                      <?php
                                                      // GET ALL CATEGORIES from DB
-                                                     $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'EN' ORDER BY `name` ASC  ";
+                                                     $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'NL' ORDER BY `name` ASC  ";
                                                      $cat_result= mysqli_query($mysqli, $cat_query);
                                                      if (mysqli_num_rows($cat_result) > 0 ) {
                                                          while ($row = mysqli_fetch_assoc($cat_result)) {
