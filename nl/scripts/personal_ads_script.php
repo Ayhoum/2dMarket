@@ -106,7 +106,7 @@ $num_Ads = mysqli_num_rows($ad_result_get_num);
                 <div class="white category-grid-box-1 ">
                     <!-- Image Box -->
 
-                    <div class="image"><img src="en_ad_photo/<?php echo $picture_name; ?>" class="img-responsive">
+                    <div class="image"><img src="nl_ad_photo/<?php echo $picture_name; ?>" class="img-responsive">
 
                     </div>
                     <!-- Short Description -->
