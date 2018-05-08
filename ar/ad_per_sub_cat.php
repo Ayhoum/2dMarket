@@ -154,11 +154,7 @@ while($row = mysqli_fetch_assoc($result)){
                         $valLati = $_COOKIE['latiC'];
                         ?>
                         <?php
-                        if(empty($valLati) || empty($valLong)){
-                            header("Location: index.php");
-                        }else{
-                            include  'scripts/ads_per_sub_cat_script.php';
-                        }
+                        include  'scripts/ads_per_sub_cat_script.php';
                         ?>
                         <!-- Ads Archive -->
                         <!-- Pagination End -->
@@ -215,7 +211,7 @@ while($row = mysqli_fetch_assoc($result)){
                             </div>
                             <!-- Categories Panel End -->
                             <!-- Location Panel -->
-<!--                            <div class="panel panel-default">
+                            <div class="panel panel-default">
 <!--                                <!-- Heading -->
                             <div class="panel-heading" role="tab" id="cities">
                                 <!--                                    <!-- Title -->
@@ -298,7 +294,7 @@ while($row = mysqli_fetch_assoc($result)){
 <!--                            <!-- Pricing Panel End -->
 <!--                            <!-- Featured Ads Panel -->
 <!--                            <div class="panel panel-default">-->
-<!--                                <!-- Heading -->-->
+<!--                                <!-- Heading -->
 <!--                                <div class="panel-heading" >-->
 <!--                                    <h4 class="panel-title">-->
 <!--                                        <a>-->
@@ -306,7 +302,7 @@ while($row = mysqli_fetch_assoc($result)){
 <!--                                        </a>-->
 <!--                                    </h4>-->
 <!--                                </div>-->
-<!--                                <!-- Content -->-->
+<!--                                <!-- Content -->
 <!--                                --><?php //include 'scripts/featured_ads.php';?>
 <!--                            </div>-->
                             <!-- Featured Ads Panel End -->

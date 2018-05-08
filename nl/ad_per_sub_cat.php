@@ -155,11 +155,8 @@ while($row = mysqli_fetch_assoc($result)){
                         $valLati = $_COOKIE['latiC'];
                         ?>
                         <?php
-                        if(empty($valLati) || empty($valLong)){
-                            header("Location: index.php");
-                        }else{
-                            include  'scripts/ads_per_sub_cat_script.php';
-                        }
+                        include  'scripts/ads_per_sub_cat_script.php';
+
                         ?>
                     </div>
                     <!-- Row End -->
@@ -214,7 +211,7 @@ while($row = mysqli_fetch_assoc($result)){
                             </div>
                             <!-- Categories Panel End -->
                             <!-- Location Panel -->
-<!--                            <div class="panel panel-default">
+                            <div class="panel panel-default">
 <!--                                <!-- Heading -->
                             <div class="panel-heading" role="tab" id="cities">
                                 <!--                                    <!-- Title -->
@@ -269,7 +266,7 @@ while($row = mysqli_fetch_assoc($result)){
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                                         <i class="more-less glyphicon glyphicon-plus"></i>
-                                        Price
+                                        Prijs
                                     </a>
                                 </h4>
                             </div>

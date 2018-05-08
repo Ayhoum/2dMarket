@@ -155,11 +155,7 @@ while($row = mysqli_fetch_assoc($result)){
                         $valLati = $_COOKIE['latiC'];
                         ?>
                         <?php
-                        if(empty($valLati) || empty($valLong)){
-                            header("Location: index.php");
-                        }else{
-                            include  'scripts/ads_per_sub_cat_script.php';
-                        }
+                        include  'scripts/ads_per_sub_cat_script.php';
                         ?>
 
                     </div>
