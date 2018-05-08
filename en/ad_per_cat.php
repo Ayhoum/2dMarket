@@ -136,7 +136,7 @@ while($row = mysqli_fetch_assoc($result)){
                         <!-- Sorting Filters End-->
                         <div class="clearfix"></div>
                         <?php
-//                        $dis   = $_GET['dis'];
+                        $dis   = $_GET['dis'];
                         $cat   = $_GET['cat_id'];
                         $priceVal = $_GET['price'];
                         $order = $_GET['order'];

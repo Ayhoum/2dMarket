@@ -253,14 +253,14 @@ while($row = mysqli_fetch_assoc($result)){
                                     <?php
                                     if($priceVal == "all"){
                                         ?>
-                                        min <input type="text" name="min" id="price-min-range" class="min" style="width:110px;"> -
-                                                                                                                                 max <input type="text" name="max" id="price-min-range" class="max" style="width:110px;"><br><br>
+                                        من <input type="text" name="min" id="price-min-range" class="min" style="width:110px;"> -
+                                                                                                                                 إلى <input type="text" name="max" id="price-min-range" class="max" style="width:110px;"><br><br>
                                         <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
                                         <?php
                                     }else{
                                         ?>
-                                        min <input type="text" name="min" value="<?php echo $price_parts[0];?>" id="price-min-range" class="min" style="width:110px;"> -
-                                                                                                                                                                       max <input type="text" name="max" value="<?php echo $price_parts[1];?>" id="price-max-range" class="max" style="width:110px;"><br><br>
+                                        من <input type="text" name="min" value="<?php echo $price_parts[0];?>" id="price-min-range" class="min" style="width:110px;"> -
+                                                                                                                                                                       إلى <input type="text" name="max" value="<?php echo $price_parts[1];?>" id="price-max-range" class="max" style="width:110px;"><br><br>
                                         <input class="btn btn-light" id="submit" style="width: 100%;" type="button" name="priceSubmit" value="Apply">
 
                                         <?php

@@ -150,7 +150,7 @@ if($num_Ads <= 10){
                         <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
                         <?php }elseif ($status == "AVAILABLE"){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
                         <!-- Ad Category -->
-                        <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
+                        <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>&dis=all&price=all&order=latest"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
                         <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                         <!-- Price -->

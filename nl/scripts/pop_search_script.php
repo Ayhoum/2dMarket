@@ -148,7 +148,7 @@
                         <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo $status ;?></span></p>
                         <?php }elseif ($status == "AVAILABLE"){?>  <p> <span class="label label-success"><?php echo $status ;?></span></p><?php }?>
                         <!-- Ad Category -->
-                        <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>"><?php echo $cat_name;?></a></span> </div>
+                        <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>&dis=all&price=all&order=latest"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
                         <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                         <!-- Price -->
@@ -210,7 +210,7 @@
         <?php
         if ($page != 0 && $page != 1) {
             ?>
-            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
+            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&dis=<?php echo $_GET['dis']; ?>&price=<?php echo $_GET['price']; ?>&order=<?php echo $_GET['order']; ?>&page=<?php echo $page - 1; ?>"> <i class="fa fa-chevron-left"
                                                                                                               aria-hidden="true"></i></a></li>
             <?php
         }
@@ -219,13 +219,13 @@
             ?>
             <li <?php if ($i == $page || ($i == 1 && $page == 0)) {
                 echo 'class="active"';
-            } ?>><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            } ?>><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&dis=<?php echo $_GET['dis']; ?>&price=<?php echo $_GET['price']; ?>&order=<?php echo $_GET['order']; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
 
         <?php } ?>
         <?php
         if ($page != $num_Ads) {
             ?>
-            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&&?age=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
+            <li><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&dis=<?php echo $_GET['dis']; ?>&price=<?php echo $_GET['price']; ?>&order=<?php echo $_GET['order']; ?>&page=<?php echo $page + 1; ?>"> <i class="fa fa-chevron-right"
                                                                                                               aria-hidden="true"></i></a></li>
             <?php
         }
