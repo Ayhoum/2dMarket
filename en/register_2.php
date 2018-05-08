@@ -20,7 +20,7 @@ if (isset($_POST['submit'])){
     $country        = mysqli_real_escape_string($mysqli,$country);
     $region         = $_POST['region'];
     $region         = mysqli_real_escape_string($mysqli,$region);
-    $city           = $_POST['$city'];
+    $city           = $_POST['city'];
     $city           = mysqli_real_escape_string($mysqli,$city);
     $id = $_SESSION['new_user'];
 

@@ -20,9 +20,10 @@ if (isset($_POST['submit'])){
     $country        = mysqli_real_escape_string($mysqli,$country);
     $region         = $_POST['region'];
     $region         = mysqli_real_escape_string($mysqli,$region);
-    $city           = $_POST['$city'];
+    $city           = $_POST['city'];
     $city           = mysqli_real_escape_string($mysqli,$city);
     $id = $_SESSION['new_user'];
+
 
     $insert_address_query  = "INSERT INTO `ADDRESS` (street_name, house_number, country, postcode, city, region, USER_id)";
     $insert_address_query .="VALUES   ( '{$street_name}',
@@ -47,7 +48,7 @@ if (isset($_POST['submit'])){
 
     $code = rand(10000,99999);
 
-    $link = "http://www.2dmarket.com/en/verfiy_account.php?code=" . $code . "&email=" . $email;
+    $link = "http://www.2dmarket.com/en/verfiy_account.php?code=" . $code. "&email=" . $email;
 
     $update_user_query ="UPDATE USER  SET `code` ='{$code}' where `id` ='{$id}'";
 
@@ -364,7 +365,6 @@ if (isset($_POST['submit'])){
     if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }
-    header("Location: register_2.php");
 
     $_SESSION['new_user']= null;
 
