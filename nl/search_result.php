@@ -111,7 +111,7 @@ session_start();
                                     <div class="header-listing">
                                         <h6>Sorteer op :</h6>
                                         <div class="custom-select-box">
-                                            <select name="order" class="custom-select">
+                                            <select id="orderOptions" name="order" class="custom-select">
                                                 <option value="latest">De laatste</option>
                                                 <option value="priceLow">Prijs (laag naar hoog) </option>
                                                 <option value="priceHigh">Price (hoog naar laag) </option>

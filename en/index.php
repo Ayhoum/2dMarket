@@ -473,8 +473,8 @@ require_once "scripts/time_elapse.php";
     });
 
 
-    var latVal;
     var lonVal;
+    var latVal;
 
     function setCookie(cname, cvalue, exdays) {
         var d = new Date();
@@ -483,14 +483,51 @@ require_once "scripts/time_elapse.php";
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
 
+
+    function getCookie(name) {
+        var dc = document.cookie;
+        var prefix = name + "=";
+        var begin = dc.indexOf("; " + prefix);
+        if (begin == -1) {
+            begin = dc.indexOf(prefix);
+            if (begin != 0) return null;
+        }
+        else
+        {
+            begin += 2;
+            var end = document.cookie.indexOf(";", begin);
+            if (end == -1) {
+                end = dc.length;
+            }
+        }
+        // because unescape has been deprecated, replaced with decodeURI
+        //return unescape(dc.substring(begin + prefix.length, end));
+        return decodeURI(dc.substring(begin + prefix.length, end));
+    }
+
+
+
     navigator.geolocation.getCurrentPosition(function(position) {
         latVal = position.coords.latitude;
         lonVal = position.coords.longitude;
-        setCookie("longC",lonVal,2);
-        setCookie("latiC",latVal,2);
+            setCookie("longC",lonVal,2);
+            setCookie("latiC",latVal,2);
     });
 
+    var myLat = getCookie("latiC");
+    var myLon = getCookie("longC");
 
+    if ((myLat === undefined && myLon === undefined) || (myLat === null && myLon === null)) {
+        // lonVal = 5.9447851;
+        // latVal = 52.2114194;
+        lonVal = 6.846034;
+        latVal = 53.1141306;
+        setCookie("longC",lonVal,2);
+        setCookie("latiC",latVal,2);
+    }
+
+     myLat = getCookie("latiC");
+    myLon = getCookie("longC");
 
 </script>
 
