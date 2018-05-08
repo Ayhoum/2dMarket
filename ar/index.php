@@ -548,10 +548,8 @@ require_once "scripts/time_elapse.php";
           var myLon = getCookie("longC");
 
           if ((myLat === undefined && myLon === undefined) || (myLat === null && myLon === null)) {
-              // lonVal = 5.9447851;
-              // latVal = 52.2114194;
-              lonVal = 6.846034;
-              latVal = 53.1141306;
+              lonVal = 5.9447851;
+              latVal = 52.2114194;
               setCookie("longC",lonVal,2);
               setCookie("latiC",latVal,2);
           }
