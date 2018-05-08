@@ -711,7 +711,6 @@ if (isset($_POST['submit'])){
                            + '&des=' + desField
                            + '&adType=' + adTypeField, function (response) {
 
-                           alert(response);
                            if (response != 'error') {
                                myDr.processQueue();
                            }

@@ -437,7 +437,6 @@ require_once '../scripts/db_connection.php';
                            + '&des=' + desField
                            + '&adType=' + adTypeField, function (response) {
 
-                           alert(response);
                            if (response != 'error') {
                                myDr.processQueue();
                            }

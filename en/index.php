@@ -506,7 +506,6 @@ require_once "scripts/time_elapse.php";
         hide_min_max: true,
         prettify_enabled: false,
         onChange: function (data) {
-            alert(data.from);
             stepSliderValueElement.value = data.from;
         }
     });
