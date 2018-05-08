@@ -112,7 +112,7 @@ session_start();
                                     <div class="header-listing">
                                         <h6>الترتيب بحسب :</h6>
                                         <div class="custom-select-box">
-                                            <select name="order" class="custom-select">
+                                            <select id="orderOptions" name="order" class="custom-select">
                                                 <option value="latest">الأخيرة</option>
                                                 <option value="priceLow">السعر (الأرخص حتى الأغلى) </option>
                                                 <option value="priceHigh">السعر (الأغلى حتى الأرخص) </option>

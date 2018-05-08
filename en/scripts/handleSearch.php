@@ -369,7 +369,6 @@ if (mysqli_num_rows($run_queryAD) > 0) {
 
 }
 else{
-
 $adsArr = array();
 
 
@@ -386,7 +385,6 @@ function distanceCalculation($point1_lat, $point1_long, $point2_lat, $point2_lon
 
 $point1 = array("lat" => $valLati, "long" => $valLong); // Current
 
-
 $query = "SELECT * FROM ADDRESS";
 $run_query = mysqli_query($mysqli,$query);
 
@@ -394,24 +392,24 @@ while ($row = mysqli_fetch_assoc($run_query)){
 
     $lon = $row['lon'];
     $lat = $row['lat'];
-    $us_id = $row['USER_id'];
+    $us = $row['USER_id'];
 
 
         if(!empty($lon) && !empty($lat)){
             $point2 = array("lat" => $lat, "long" => $lon); // Target
             $km = distanceCalculation($point1['lat'], $point1['long'], $point2['lat'], $point2['long']); // Calculate distance in kilometres (default)
-
             if($km <= $dis) {
+
                 if($_GET['price'] != 'all'){
                     if($minPrice == 0){
-                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `lang` = 'EN' AND `price` <= '$maxPrice'";
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `USER_id` = '{$us}' AND `lang` = 'EN' AND `price` <= '$maxPrice'";
                     }else if($maxPrice == 'max'){
-                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `lang` = 'EN' AND `price` >= '$minPrice'";
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `USER_id` = '{$us}' AND `lang` = 'EN' AND `price` >= '$minPrice'";
                     }else{
-                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `lang` = 'EN' AND (`price` >= '$minPrice' AND `price` <= '$maxPrice')";
+                        $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `USER_id` = '{$us}' AND `lang` = 'EN' AND (`price` >= '$minPrice' AND `price` <= '$maxPrice')";
                     }
                 }else{
-                    $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `lang` = 'EN' ";
+                    $queryAD = "SELECT * FROM ADVERTISEMENT WHERE `CATEGORY_id` = '{$cat}' AND (`sub_cat_id` IS NULL OR `sub_cat_id` = '{$subCat}') AND (`title` LIKE '%$searchTxt%' OR `description` LIKE '%$searchTxt%') AND `USER_id` = '{$us}' AND `lang` = 'EN' ";
                 }
 
                 $run_queryAD = mysqli_query($mysqli, $queryAD);
@@ -419,6 +417,7 @@ while ($row = mysqli_fetch_assoc($run_query)){
 
             }
         }
+
     if($num_Ads != 0){
         while ($row = mysqli_fetch_assoc($run_queryAD)) {
             $var = $row['id'];
@@ -426,7 +425,6 @@ while ($row = mysqli_fetch_assoc($run_query)){
         }
     }
 }
-
 
 //                $sql = 'SELECT *
 //          FROM `table`

@@ -111,7 +111,7 @@ session_start();
                                     <div class="header-listing">
                                         <h6>Sort by :</h6>
                                         <div class="custom-select-box">
-                                            <select name="order" class="custom-select">
+                                            <select id="orderOptions" name="order" class="custom-select">
                                                 <option value="latest">The latest</option>
                                                 <option value="priceLow">Price (low to high) </option>
                                                 <option value="priceHigh">Price (high to low) </option>
