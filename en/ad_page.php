@@ -4,6 +4,50 @@ session_start();
 ob_start();
 ?>
 
+<?php
+if (isset($_POST['Log_in'])){
+    $email = $_POST['email'];
+    $pass  = $_POST['password'];
+
+    $query = "SELECT * FROM USER WHERE email='$email'";
+    $results = mysqli_query($mysqli, $query);
+    if (mysqli_num_rows($results) == 1) {
+        while ($row = mysqli_fetch_assoc($results)) {
+            $hash = $row['password'];
+            if ((password_verify($pass, $hash))){
+                $username                   = $row['username'];
+                $_SESSION['username']       = $username;
+                $email                      = $row['email'];
+                $_SESSION['email']          = $email;
+                $id                         = $row['id'];
+                $_SESSION['id']             = $id;
+                $profile_pic                = $row['profile_picture'];
+                $_SESSION['profile_pic']    = $profile_pic;
+                $phone                      = $row['phone_number'];
+                $_SESSION['phone']          = $phone;
+                $fName                      = $row['first_name'];
+                $lName                      = $row['last_name'];
+                $full_name                  = $fName . " " . $lName;
+                $_SESSION['full_name']      = $full_name;
+                echo "done";
+
+
+                $update_status_query = "UPDATE `USER`  SET `online_status` = 'ONLINE' WHERE `id` = '{$id}'";
+                $update_status_result = mysqli_query($mysqli,$update_status_query);
+
+            }else{
+                echo "error_password";
+            }
+
+        }
+    } else {
+        echo "error_username";
+    }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,6 +107,7 @@ ob_start();
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -196,19 +241,8 @@ ob_start();
                     </div>
                 </div>
                 <!-- content goes here -->
+                <?php if (isset($_SESSION['username'])){ ?>
                 <form action="scripts/send_message.php?user_id=<?php echo $user_userid;?>&ad_id=<?php echo $ad_id; ?>" method="post">
-<!--                    <div class="form-group  col-md-6  col-sm-6">-->
-<!--                        <label>Your Name</label>-->
-<!--                        <input type="text" class="form-control" placeholder="Enter Your Name">-->
-<!--                    </div>-->
-<!--                    <div class="form-group  col-md-6  col-sm-6">-->
-<!--                        <label>Email Address</label>-->
-<!--                        <input type="email" class="form-control" placeholder="Enter email">-->
-<!--                    </div>-->
-<!--                    <div class="form-group  col-md-12  col-sm-12">-->
-<!--                        <label>Contact No</label>-->
-<!--                        <input type="text" class="form-control" placeholder="Contact No">-->
-<!--                    </div>-->
                     <div class="form-group  col-md-12  col-sm-12">
                         <label>Your message</label>
                         <textarea name="message" placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control"></textarea>
@@ -219,6 +253,27 @@ ob_start();
                         <button type="submit" class="btn btn-theme btn-block" name="submit">Send</button>
                     </div>
                 </form>
+                <?php }else {?>
+                <div role="alert" class="alert alert-warning alert-dismissible">
+                    <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>
+                    <strong>Warning</strong> - To be able to chat with <?php echo $user_username;?> <b>please login first</b>
+                </div>
+                <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input id="email_field" placeholder="Your Email" class="form-control" name="email" type="email">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input id="password_field" placeholder="Your Password" class="form-control" name="password" type="password">
+                </div>
+
+                <button type="submit" class="btn btn-theme btn-lg btn-block" name="Log_in">Log In</button>
+
+                </form>
+            </div>
+        </div>
+                <?php }?>
             </div>
         </div>
     </div>
@@ -230,7 +285,7 @@ ob_start();
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                <h3 class="modal-title">Share</h3>
+                <h3 class="modal-title">Send a message</h3>
             </div>
             <div class="modal-body">
                 <div class="recent-ads">
@@ -238,20 +293,19 @@ ob_start();
                         <div class="recent-ads-container">
                             <div class="recent-ads-list-image">
                                 <a href="#" class="recent-ads-list-image-inner">
-                                    <img src="images/car.png" alt="">
+                                    <img src="<?php// echo  $picture_url . $picture_name;;?>" alt="">
                                 </a><!-- /.recent-ads-list-image-inner -->
                             </div>
                             <!-- /.recent-ads-list-image -->
                             <div class="recent-ads-list-content">
                                 <h3 class="recent-ads-list-title">
-                                    <a href="#">Honda Civic Oriel 1.8 i-VTEC CVT 2017</a>
+                                    <a href="#"><?php echo $title;?></a>
                                 </h3>
                                 <ul class="recent-ads-list-location">
-                                    <li><a href="#">New York</a>,</li>
-                                    <li><a href="#">Brooklyn</a></li>
+                                    <li><a href="#"><?php echo $user_region . " | " . $user_country; ?></a>,</li>
                                 </ul>
                                 <div class="recent-ads-list-price">
-                                    $ 17,000
+                                    € <?php echo $price; ?>
                                 </div>
                                 <!-- /.recent-ads-list-price -->
                             </div>
@@ -260,15 +314,41 @@ ob_start();
                         <!-- /.recent-ads-container -->
                     </div>
                 </div>
-                <h3>Key Features</h3>
-                <p>Alarm, Alloy Wheels, Anti-Lock Brakes, Automatic Air Conditioning, Bluetooth Interface Telephone Equipment, Body Coloured Bumpers, Centre Console, Centre Rear Seat Belt, Cloth interior, Cruise Control, Driver Information System</p>
-                <h3>Link</h3>
-                <p><a href="https://themeforest.net/user/scriptsbundle/portfolio">https://themeforest.net/user/scriptsbundle/portfolio</a></p>
+                <!-- content goes here -->
+                <?php if (isset($_SESSION['username'])){ ?>
+                <form action="scripts/send_message.php?user_id=<?php echo $user_userid;?>&ad_id=<?php echo $ad_id; ?>" method="post">
+                    <div class="form-group  col-md-12  col-sm-12">
+                        <label>Your message</label>
+                        <textarea name="message" placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control"></textarea>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
+                        <button type="submit" class="btn btn-theme btn-message" name="submit">Send</button>
+                    </div>
+                </form>
+                <?php }else {?>
+                <div role="alert" class="alert alert-warning alert-dismissible">
+                    <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>
+                    <strong>Warning</strong> - To be able to chat with <?php echo $user_username;?> <b>please login first</b>
+                </div>
+                <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input id="email_field" placeholder="Your Email" class="form-control" name="email" type="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input id="password_field" placeholder="Your Password" class="form-control" name="password" type="password">
+                    </div>
+
+                    <button type="submit" class="btn btn-theme btn-lg btn-block" name="Log_in">Log In</button>
+
+                </form>
             </div>
-            <div class="modal-footer">
-                <a href="" class="btn btn-fb btn-md"><i class="fa fa-facebook"></i></a>
-                <a class="btn btn-twitter btn-md"><i class="fa fa-twitter"></i></a>
-                <a class="btn btn-gplus btn-md"><i class="fa fa-google-plus"></i></a>
+
+        </div>
+
+        <?php }?>
             </div>
         </div>
     </div>
@@ -343,10 +423,10 @@ ob_start();
         </div>
         <div class="col-md-5  col-sm-12 col-xs-12 no-padding">
             <div class="pull-left row">
-                <div class="col-md-6 col-sm-6 col-xs-12 ">
-                    <a href="javascript:void(0)" class="btn btn-block pull-left btn-phone number " data-last="111111X"><i class="fa fa-phone"></i> <?php echo $user_phone;?></a>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
+<!--                <div class="col-md-6 col-sm-6 col-xs-12 ">-->
+<!--                    <a href="javascript:void(0)" class="btn btn-block pull-left btn-phone number " data-last="111111X"><i class="fa fa-phone"></i> --><?php //echo $user_phone;?><!--</a>-->
+<!--                </div>-->
+                <div class="col-md-12 col-sm-12 col-xs-12">
                     <a data-toggle="modal" data-target=".price-quote"  href="javascript:void(0)" class="btn btn-block pull-left btn-message"><i class="icon-envelope"></i> Message Seller</a>
                 </div>
             </div>

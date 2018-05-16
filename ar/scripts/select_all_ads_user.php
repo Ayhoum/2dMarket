@@ -108,7 +108,7 @@ if($num_Ads <= 5){
                 $sub_cat_name = $row['name'];
             }
             ?>
-        <div class="well ad-listing clearfix">
+        <div class="well ad-listing clearfix" style="direction: rtl">
             <div class="col-md-3 col-sm-5 col-xs-12 grid-style no-padding">
                 <!-- Image Box -->
                 <div class="img-box">

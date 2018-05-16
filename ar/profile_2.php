@@ -151,20 +151,20 @@ include 'scripts/user_info.php';
 
             <div class="row">
                 <!-- Middle Content Area -->
-                <div class="col-md-12 col-xs-12 col-sm-12">
+                <div class="col-md-12 col-xs-12 col-sm-12" style="direction: rtl">
 
                     <!-- Row -->
                     <div class="profile-section margin-bottom-20">
                         <div class="profile-tabs">
                             <ul class="nav nav-justified nav-tabs">
-                                <li class="active"><a href="#ads" data-toggle="tab">All Ads</a></li>
+                                <li class="active"><a href="#ads" data-toggle="tab">كـافة الاعلانـات</a></li>
                                 <!--                              <li><a href="#edit" data-toggle="tab">Edit Profile</a></li>-->
                                 <!--                              <li><a href="#payment" data-toggle="tab">Plan Setting</a></li>-->
                                 <!--                              <li><a href="#settings" data-toggle="tab">Notification Settings</a></li>-->
                             </ul>
                             <div class="tab-content">
                                 <div class="profile-edit tab-pane fade in active" id="ads">
-                                    <h2 class="heading-md">Advertiesment of <?php echo $user_first_name. " " .$user_last_name;?>.</h2>
+                                    <h2 class="heading-md">اعلانـات  <?php echo $user_first_name. " " .$user_last_name;?>.</h2>
                                     <?php include 'scripts/select_all_ads_user.php';?>
                                 </div>
                             </div>

@@ -162,10 +162,10 @@ if (isset($_GET['ad_id'])) {
         </div>
         <!-- Share Ad  -->
         <div class="ad-share text-center">
-<!--            <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-4 col-sm-4 col-xs-12">-->
-<!--                <i class="fa fa-share-alt"></i> <span class="hidetext">Share</span>-->
-<!--            </div>-->
-            <a class="ad-box col-md-12 col-sm-12 col-xs-12"
+            <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-6 col-sm-6 col-xs-6">
+                <i class="fa fa-envelope"></i> <span class="hidetext">Send <?php echo $user_username;?> a message</span>
+            </div>
+            <a class="ad-box col-md-6 col-sm-6 col-xs-6"
                href="scripts/add_to_favorite.php?ad_id=<?php echo $ad_id; ?>"><i class="fa fa-star active"></i> <span
                         class="hidetext">Add to Favorites </span></a>
 <!--            <div data-target=".report-quote" data-toggle="modal" class="ad-box col-md-4 col-sm-4 col-xs-12">-->
@@ -531,7 +531,7 @@ if (isset($_GET['ad_id'])) {
                                     <!-- Ad History -->
                                     <div class="clearfix archive-history">
                                         <div class="last-updated">Added : <?php echo $date1;?></div>
-                                        <div class="ad-meta"> <a href="scripts/add_to_favorite.php?ad_id=<?php echo $id1;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> Save Ad.</a> <a href="ad_page.php?ad_id=<?php echo $id1; ?>" class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a> </div>
+                                        <div class="ad-meta"> <?php if (isset($_SESSION['username'])){?><a href="scripts/add_to_favorite.php?ad_id=<?php echo $id1;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> Save Ad.</a><?php }?> <a href="ad_page.php?ad_id=<?php echo $id1; ?>" class="btn btn-success"><i class="fa fa-eye"></i> View Details.</a> </div>
                                     </div>
                                 </div>
                                 <!-- Ad Desc End -->
