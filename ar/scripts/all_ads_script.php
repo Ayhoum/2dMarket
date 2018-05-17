@@ -131,47 +131,33 @@ if($num_Ads <= 10){
                 $pic_name = "white.jpg";
             }
             ?>
-
-            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 ">
-                <div class="category-grid-box" style="background-color: white">
-                    <!-- Ad Img -->
-                    <?php if ($ad_type == "PREMIUM") {?>  <div class="featured-ribbon">  <span>متميـز</span>  </div> <?php } ?>
-                    <div class="category-grid-img">
-                        <img class="img-responsive " style="width: 100%; height: 200px; object-fit: cover;" alt="" src="<?php echo $pic . $pic_name ;?>">
-                        <!-- Ad Status -->
-                        <!-- User Review -->
-                        <div class="user-preview" style="float: left">
-                            <a href="profile_2.php?user_id=<?php echo $user_id;?>"> <img src="../uploads/users/<?php echo $user_pic;?>" class="avatar avatar-small" alt="<?php echo $user_username;?>"> </a>
-                        </div>
-                        <!-- View Details --><a href="ad_page.php?ad_id=<?php echo $ad_id;?>" class="view-details">View Details</a>
-                        <!-- Additional Info -->
-                        <div class="additional-information">
-                            <p><?php echo $description; ?></p>
-                        </div>
-                        <!-- Additional Info End-->
-                    </div>
-                    <!-- Ad Img End -->
-                    <div class="short-description">
-                        <?php      if ($status == "SOLD"){?>        <p> <span class="label label-danger"><?php echo "مبـاع" ;?></span></p>
-                        <?php }elseif ($status == "RESERVED"){?>    <p> <span class="label label-warning"><?php echo "محجـوز" ;?></span></p>
-                        <?php }elseif ($status == "AVAILABLE"){?>  <p> <span class="label label-success"><?php echo  "متـاح";?></span></p><?php }?>
-                        <!-- Ad Category -->
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12  ">
+                <div class="white category-grid-box-1 ">
+                    <!-- Image Box -->
+                    <div class="image">  <a href="ad_page.php?ad_id=<?php echo $ad_id; ?>"><img class="img-responsive " style="width: 100%; height: 200px; object-fit: cover;" alt="" src="<?php echo $pic . $pic_name ;?>"></a> </div>
+                    <!-- Short Description -->
+                    <div class="short-description-1 ">
+                        <!-- Category Title -->
                         <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id; ?>&dis=all&price=all&order=latest"><?php echo $cat_name;?></a></span> </div>
                         <!-- Ad Title -->
-                        <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
+                        <h3>
+                            <a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a>
+                        </h3>
+                        <!-- Location -->
+                        <a href="profile_2.php?user_id=<?php echo $user_id; ?>"> <p class="location">  <i class="fa fa-user-circle"></i><?php echo $user_username;?></p> </a>
+                        <p class="location"><i class="fa fa-map-marker">  </i><?php echo $user_postcode. " | " . $user_city ; ?></p>
                         <!-- Price -->
-                        <div class="price"><?php if ($selling_type == "BID"){ echo "Bid";}else{ echo "€ ". $price;}?></div>
+                        <span class="ad-price"><?php if ($selling_type == "BID"){ echo "Bid";}else{ echo "€ ". $price;}?></span>
                     </div>
-                    <!-- Addition Info -->
-                    <div class="ad-info">
+                    <!-- Ad Meta Stats -->
+                    <div class="ad-info-1">
                         <ul>
-                            <li><i class="fa fa-map-marker"></i><?php echo $user_postcode. " | " . $user_city ; ?></li>
-                            <li><i class="fa fa-clock-o"></i> <?php echo $date;?> </li>
+                            <li> <i class="fa fa-eye"></i><a href="#"><?php echo  $visits. " مشاهدة ";?></a> </li>
+                            <li> <i class="fa fa-clock-o"></i><?php echo $date; ?> </li>
                         </ul>
                     </div>
                 </div>
             </div>
-
 
             <?php
 
