@@ -162,12 +162,12 @@ if (isset($_GET['ad_id'])) {
         </div>
         <!-- Share Ad  -->
         <div class="ad-share text-center">
-            <!--            <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-4 col-sm-4 col-xs-12">-->
-            <!--                <i class="fa fa-share-alt"></i> <span class="hidetext">Share</span>-->
-            <!--            </div>-->
-            <a class="ad-box col-md-12 col-sm-12 col-xs-12"
+            <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-6 col-sm-6 col-xs-6">
+                <i class="fa fa-envelope"></i> <span class="hidetext">ارسل <?php echo $user_username;?> رسـالة </span>
+            </div>
+            <a class="ad-box col-md-6 col-sm-6 col-xs-6"
                href="scripts/add_to_favorite.php?ad_id=<?php echo $ad_id; ?>"><i class="fa fa-star active"></i> <span
-                        class="hidetext">إضافة إلى المفضلة </span></a>
+                        class="hidetext">الاضـافة الى المفضلة </span></a>
             <!--            <div data-target=".report-quote" data-toggle="modal" class="ad-box col-md-4 col-sm-4 col-xs-12">-->
             <!--                <i class="fa fa-warning"></i> <span class="hidetext">Report</span>-->
             <!--            </div>-->
@@ -443,7 +443,7 @@ if (isset($_GET['ad_id'])) {
                                 $user_city1 = $row['city'];
                                 $user_country1 = $row['country'];
 
-                                $location1 = $user_country1 . " | " . $user_country1;
+                                $location1 = $user_country1 . " | " . $user_city1;
 
 
                             }
@@ -467,12 +467,14 @@ if (isset($_GET['ad_id'])) {
                             $picture_name_1 = 'white.jpg';
                         }
                         ?>
+
+                        <!-- Ads Listing -->
                         <div class="ads-list-archive">
                             <!-- Image Block -->
                             <div class="col-lg-5 col-md-5 col-sm-5 no-padding">
                                 <!-- Img Block -->
                                 <div class="ad-archive-img">
-                                    <a href="#">
+                                    <a href="ad_page.php?ad_id=<?php echo $id1;?>">
                                         <?php if ($ad_type1 == "PREMIUM"){?><div class="ribbon popular"></div> <?php }?>
                                         <img class="img-responsive" src="<?php echo $picture_url_1. $picture_name_1?>" alt="">
                                     </a>
@@ -484,16 +486,16 @@ if (isset($_GET['ad_id'])) {
                             <!-- Content Block -->
                             <div class="col-lg-7 col-md-7 col-sm-7 no-padding">
                                 <!-- Ad Desc -->
-                                <div class="ad-archive-desc">
+                                <div class="ad-archive-desc" >
                                     <!-- Price -->
-                                    <div class="ad-price"> € <?php echo $price1; ?></div>
+                                    <div class="ad-price" style="float: left"> € <?php echo $price1; ?></div>
                                     <!-- Title -->
-                                    <h3> <a href="ad_page.php?ad_id=<?php echo $id1;?>"><?php echo $title1;?> </a></h3>
+                                    <h3><?php echo $title1; ?> </h3>
                                     <!-- Category -->
-                                    <div class="category-title"> <span><a href="ads_per_cat.php?cat_id=<?php echo $category_id1;?>"><?php echo $cat_name1?></a></span> </div>
+                                    <div class="category-title"> <span><a href="ads_per_cat.php?cat_id=<?php echo $category_id1;?>"><?php echo $cat_name1; ?></a></span> </div>
                                     <!-- Short Description -->
                                     <div class="clearfix visible-xs-block"></div>
-                                    <p class="hidden-sm"><?php echo $description1;?></p>
+                                    <p class="hidden-sm"><?php echo $description1; ?></p>
                                     <!-- Ad Features -->
                                     <ul class="add_info">
                                         <!-- Contact Details -->
@@ -501,10 +503,9 @@ if (isset($_GET['ad_id'])) {
                                             <div class="custom-tooltip tooltip-effect-4">
                                                 <span class="tooltip-item"><i class="fa fa-phone"></i></span>
                                                 <div class="tooltip-content">
-                                                    <h4>بيانات الإتصال،</h4>
-                                                    <strong>اسم المستخدم: </strong> <?php echo $user_username1; ?>
-                                                    <br> <strong>البريد الإلكتروني: </strong> <?php echo $user_email1;?>
-                                                    <!--                                                            <br> <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>-->
+                                                    <h4>معلومـات التواصل</h4>
+                                                    <strong>اسم المستخدم : </strong> <?php echo $user_username1; ?>
+                                                    <br> <strong>البريد الالكتروني : </strong> <?php echo $user_email1;?>
                                                 </div>
                                             </div>
                                         </li>
@@ -519,24 +520,18 @@ if (isset($_GET['ad_id'])) {
                                             </div>
                                         </li>
                                         <!-- Ad Type -->
-                                        <li>
-                                            <div class="custom-tooltip tooltip-effect-4">
-                                                <span class="tooltip-item"><i class="fa fa-cog"></i></span>
-                                                <div class="tooltip-content"> <strong>بيانات المنتج</strong> <span class="label label-danger"><?php echo $status1 . " | ". $delivery_type1;?></span> </div>
-                                            </div>
-                                        </li>
-                                        <!-- Ad Type -->
                                     </ul>
                                     <!-- Ad History -->
                                     <div class="clearfix archive-history">
-                                        <div class="last-updated">أضيف: <?php echo $date1;?></div>
-                                        <div class="ad-meta"> <a href="scripts/add_to_favorite.php?ad_id=<?php echo $id1;?>" class="btn save-ad"><i class="fa fa-heart-o"></i>احفظ الإعلان </a> <a href="ad_page.php?ad_id=<?php echo $id1; ?>" class="btn btn-success"><i class="fa fa-phone"></i>أظهر التفاصيل</a> </div>
+                                        <div class="last-updated">تمت الاضـافة: منذ <?php echo $date1; ?></div>
+                                        <div class="ad-meta"> <?php if (isset($_SESSION['username'])){?><a href="scripts/add_to_favorite.php?ad_id=<?php echo $id1;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> حفظ الاعلان</a><?php }?> <a href="ad_page.php?ad_id=<?php echo $id1; ?>" class="btn btn-success"><i class="fa fa-eye"></i> المزيد من التفاصيل</a> </div>
                                     </div>
                                 </div>
                                 <!-- Ad Desc End -->
                             </div>
                             <!-- Content Block End -->
                         </div>
+
                         <?php
                     }
                 } else {

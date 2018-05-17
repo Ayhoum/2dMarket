@@ -197,29 +197,50 @@ ob_start();
                     </div>
                 </div>
                 <!-- content goes here -->
+                <?php if (isset($_SESSION['username'])){ ?>
+
                 <form action="scripts/send_message.php?user_id=<?php echo $user_userid;?>&ad_id=<?php echo $ad_id; ?>" method="post">
-<!--                    <div class="form-group  col-md-6  col-sm-6">-->
-<!--                        <label>Your Name</label>-->
-<!--                        <input type="text" class="form-control" placeholder="Enter Your Name">-->
-<!--                    </div>-->
-<!--                    <div class="form-group  col-md-6  col-sm-6">-->
-<!--                        <label>Email Address</label>-->
-<!--                        <input type="email" class="form-control" placeholder="Enter email">-->
-<!--                    </div>-->
-<!--                    <div class="form-group  col-md-12  col-sm-12">-->
-<!--                        <label>Contact No</label>-->
-<!--                        <input type="text" class="form-control" placeholder="Contact No">-->
-<!--                    </div>-->
                     <div class="form-group  col-md-12  col-sm-12">
                         <label>Uw Bricht</label>
                         <textarea name="message" placeholder="B.v Wat is het laatste prijs ? " rows="3" class="form-control"></textarea>
                     </div>
-<!--                    <div class="col-md-12  col-sm-12"> <img src="images/captcha.gif" alt="" class="img-responsive"> </div>-->
                     <div class="clearfix"></div>
                     <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
                         <button type="submit" class="btn btn-theme btn-block" name="submit">Stuur</button>
                     </div>
                 </form>
+                    { ?>
+                    <form action="scripts/send_message.php?user_id=<?php echo $user_userid;?>&ad_id=<?php echo $ad_id; ?>" method="post">
+                        <div class="form-group  col-md-12  col-sm-12">
+                            <label>Your message</label>
+                            <textarea name="message" placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control"></textarea>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
+                            <button type="submit" class="btn btn-theme btn-message" name="submit">Send</button>
+                        </div>
+                    </form>
+                <?php }else {?>
+                <div role="alert" class="alert alert-warning alert-dismissible">
+                    <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>
+                    <strong>Waarschuwing</strong> - om een contact met <?php echo $user_username;?> <b> te maken. Log alstublieft eerst in</b>
+                </div>
+                <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input id="email_field" placeholder="Uw Email" class="form-control" name="email" type="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Wachtwoord</label>
+                        <input id="password_field" placeholder="Uw Wachtwoord" class="form-control" name="password" type="password">
+                    </div>
+                    <button type="submit" class="btn btn-theme btn-lg btn-block" name="Log_in">Inloggen</button>
+                </form>
+            </div>
+
+        </div>
+
+        <?php }?>
             </div>
         </div>
     </div>
@@ -344,10 +365,7 @@ ob_start();
         </div>
         <div class="col-md-5  col-sm-12 col-xs-12 no-padding">
             <div class="pull-left row">
-                <div class="col-md-6 col-sm-6 col-xs-12 ">
-                    <a href="javascript:void(0)" class="btn btn-block pull-left btn-phone number " data-last="111111X"><i class="fa fa-phone"></i> <?php echo $user_phone;?></a>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-12 col-sm-6 col-xs-12">
                     <a data-toggle="modal" data-target=".price-quote"  href="javascript:void(0)" class="btn btn-block pull-left btn-message"><i class="icon-envelope"></i> Stuur een Bericht</a>
                 </div>
             </div>

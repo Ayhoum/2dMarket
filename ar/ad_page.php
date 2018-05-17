@@ -155,12 +155,12 @@ ob_start();
 </div>
 <!-- Main Content Area End -->
 <!-- Post Ad Sticky -->
-<a href="new_advertisement.php" class="sticky-post-button hidden-xs">
-         <span class="sell-icons">
-         <i class="flaticon-transport-9"></i>
-         </span>
-    <h4>يبيع</h4>
-</a>
+<!--<a href="new_advertisement.php" class="sticky-post-button hidden-xs">-->
+<!--         <span class="sell-icons">-->
+<!--         <i class="flaticon-transport-9"></i>-->
+<!--         </span>-->
+<!--    <h4>يبيع</h4>-->
+<!--</a>-->
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>
 
@@ -178,7 +178,7 @@ ob_start();
                         <div class="recent-ads-container">
                             <div class="recent-ads-list-image">
                                 <a href="#" class="recent-ads-list-image-inner">
-                                    <img src="<?php// echo  $picture_url . $picture_name;;?>" alt="">
+                                    <img src="<?php echo  $picture_url . $picture_name;?>" alt="">
                                 </a><!-- /.recent-ads-list-image-inner -->
                             </div>
                             <!-- /.recent-ads-list-image -->
@@ -200,6 +200,7 @@ ob_start();
                     </div>
                 </div>
                 <!-- content goes here -->
+                <?php if (isset($_SESSION['username'])){ ?>
                 <form action="scripts/send_message.php?user_id=<?php echo $user_userid;?>&ad_id=<?php echo $ad_id; ?>" method="post">
                     <div class="form-group  col-md-12  col-sm-12">
                         <label>الرسـالة:</label>
@@ -211,6 +212,24 @@ ob_start();
                         <button type="submit" class="btn btn-theme btn-block" name="submit">ارسـال</button>
                     </div>
                 </form>
+                <?php }else {?>
+                <div role="alert" class="alert alert-warning alert-dismissible" style="direction: rtl">
+                    <button aria-label="Close" data-dismiss="alert" class="close" type="button"></button>
+                    <strong>تحذير</strong> - لكي تتمكن من التواصل مع <?php echo $user_username;?> <b>الرجـاء قم بتسجيل الدخول اولاً</b>
+                </div>
+                <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
+                    <div class="form-group">
+                        <label>البريد الالكتروني</label>
+                        <input id="email_field" placeholder="قم بادخال البريد الالكتروني" class="form-control" name="email" type="email">
+                    </div>
+                    <div class="form-group">
+                        <label>كلمة السر</label>
+                        <input id="password_field" placeholder="قم بادخال كلمة السر" class="form-control" name="password" type="password">
+                    </div>
+
+                    <button type="submit" class="btn btn-theme btn-lg btn-block" name="Log_in">تسجيـل الدخول</button>
+                </form>
+                <?php }?>
             </div>
         </div>
     </div>
@@ -322,18 +341,15 @@ ob_start();
                 <div class="short-history">
                     <ul>
                         <li>منشور منذ: <b>  <?php echo $date;?> </b></li>
-                        <li>موقع: <b><?php echo $user_region. " | ". $user_country; ?></b></li>
-                        <li>فئة: <b><a href="#"><?php echo $cat_name; ?></a></b></li>
+                        <li>مكان الاعلان: <b><?php echo $user_region. " | ". $user_country; ?></b></li>
+                        <li>التصنيف: <b><a href="#"><?php echo $cat_name; ?></a></b></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-md-5  col-sm-12 col-xs-12 no-padding">
+        <div class="col-md-5 col-sm-12 col-xs-12 no-padding">
             <div class="pull-left row">
-                <div class="col-md-6 col-sm-6 col-xs-12 ">
-                    <a href="javascript:void(0)" class="btn btn-block pull-left btn-phone number " data-last="111111X"><i class="fa fa-phone"></i> <span><?php echo $user_phone;?> </span></a>
-                </div>
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-12 col-sm-6 col-xs-12">
                     <a data-toggle="modal" data-target=".price-quote"  href="javascript:void(0)" class="btn btn-block pull-left btn-message"><i class="icon-envelope"></i> تواصـل مع البـائع</a>
                 </div>
             </div>

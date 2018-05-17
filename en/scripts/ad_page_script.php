@@ -444,7 +444,7 @@ if (isset($_GET['ad_id'])) {
                                 $user_city1 = $row['city'];
                                 $user_country1 = $row['country'];
 
-                                $location1 = $user_country1 . " | " . $user_country1;
+                                $location1 = $user_country1 . " | " . $user_city1;
 
 
                             }
@@ -538,6 +538,7 @@ if (isset($_GET['ad_id'])) {
                             </div>
                             <!-- Content Block End -->
                         </div>
+
                         <?php
                     }
                 } else {

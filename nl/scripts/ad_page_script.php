@@ -162,15 +162,12 @@ if (isset($_GET['ad_id'])) {
         </div>
         <!-- Share Ad  -->
         <div class="ad-share text-center">
-            <!--            <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-4 col-sm-4 col-xs-12">-->
-            <!--                <i class="fa fa-share-alt"></i> <span class="hidetext">Share</span>-->
-            <!--            </div>-->
-            <a class="ad-box col-md-12 col-sm-12 col-xs-12"
+            <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-6 col-sm-6 col-xs-6">
+                <i class="fa fa-envelope"></i> <span class="hidetext">stuur <?php echo $user_username;?> een bricht</span>
+            </div>
+            <a class="ad-box col-md-6 col-sm-6 col-xs-6"
                href="scripts/add_to_favorite.php?ad_id=<?php echo $ad_id; ?>"><i class="fa fa-star active"></i> <span
-                        class="hidetext">Toevoegen aan favorieten </span></a>
-            <!--            <div data-target=".report-quote" data-toggle="modal" class="ad-box col-md-4 col-sm-4 col-xs-12">-->
-            <!--                <i class="fa fa-warning"></i> <span class="hidetext">Report</span>-->
-            <!--            </div>-->
+                        class="hidetext">Aan aan de favorietenlijst toevoegen </span></a>
         </div>
         <div class="clearfix"></div>
 
@@ -443,14 +440,14 @@ if (isset($_GET['ad_id'])) {
                                 $user_city1 = $row['city'];
                                 $user_country1 = $row['country'];
 
-                                $location1 = $user_country1 . " | " . $user_country1;
+                                $location1 = $user_country1 . " | " . $user_city1;
 
 
                             }
                         } else {
                             $user_postcod1 = "unknown ";
                             $user_city1 = "address";
-                            $location1 = $user_country1 . " | " . $user_country1;
+                            $location1 = $user_country1 . " | " . $user_city1;
 
                         }
 
@@ -503,8 +500,8 @@ if (isset($_GET['ad_id'])) {
                                             <div class="custom-tooltip tooltip-effect-4">
                                                 <span class="tooltip-item"><i class="fa fa-phone"></i></span>
                                                 <div class="tooltip-content">
-                                                    <h4>Contact Informatie,</h4>
-                                                    <strong>Gebruikersnaam : </strong> <?php echo $user_username1; ?>
+                                                    <h4>Contact Info,</h4>
+                                                    <strong>Username : </strong> <?php echo $user_username1; ?>
                                                     <br> <strong>Email : </strong> <?php echo $user_email1;?>
                                                     <!--                                                            <br> <strong>Sunday</strong> <span class="label label-success">+92-123-4567</span>-->
                                                 </div>
@@ -515,7 +512,7 @@ if (isset($_GET['ad_id'])) {
                                             <div class="custom-tooltip tooltip-effect-4">
                                                 <span class="tooltip-item"><i class="fa fa-map-marker"></i></span>
                                                 <div class="tooltip-content">
-                                                    <h4>Adres</h4>
+                                                    <h4>Address</h4>
                                                     <?php echo $location1; ?>
                                                 </div>
                                             </div>
@@ -524,15 +521,15 @@ if (isset($_GET['ad_id'])) {
                                         <li>
                                             <div class="custom-tooltip tooltip-effect-4">
                                                 <span class="tooltip-item"><i class="fa fa-cog"></i></span>
-                                                <div class="tooltip-content"> <strong>Product Informatie</strong> <span class="label label-danger"><?php echo $status1 . " | ". $delivery_type1;?></span> </div>
+                                                <div class="tooltip-content"> <strong>Product Info.</strong> <span class="label label-danger"><?php echo $status1 . " | ". $delivery_type1;?></span> </div>
                                             </div>
                                         </li>
                                         <!-- Ad Type -->
                                     </ul>
                                     <!-- Ad History -->
                                     <div class="clearfix archive-history">
-                                        <div class="last-updated">Toegevoegd : <?php echo $date1;?></div>
-                                        <div class="ad-meta"> <a href="scripts/add_to_favorite.php?ad_id=<?php echo $id1;?>" class="btn save-ad"><i class="fa fa-heart-o"></i>Bewaar Advertentie</a> <a href="ad_page.php?ad_id=<?php echo $id1; ?>" class="btn btn-success"><i class="fa fa-phone"></i> View Details.</a> </div>
+                                        <div class="last-updated">Added : <?php echo $date1;?></div>
+                                        <div class="ad-meta"> <?php if (isset($_SESSION['username'])){?><a href="scripts/add_to_favorite.php?ad_id=<?php echo $id1;?>" class="btn save-ad"><i class="fa fa-heart-o"></i> Save Ad.</a><?php }?> <a href="ad_page.php?ad_id=<?php echo $id1; ?>" class="btn btn-success"><i class="fa fa-eye"></i> View Details.</a> </div>
                                     </div>
                                 </div>
                                 <!-- Ad Desc End -->
@@ -542,7 +539,7 @@ if (isset($_GET['ad_id'])) {
                         <?php
                     }
                 } else {
-                    echo "There are no ads to be shown here!";
+                    echo " ";
                 }
                 ?>
 
