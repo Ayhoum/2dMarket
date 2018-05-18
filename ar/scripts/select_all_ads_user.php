@@ -112,16 +112,19 @@ if($num_Ads <= 5){
             <div class="col-md-3 col-sm-5 col-xs-12 grid-style no-padding">
                 <!-- Image Box -->
                 <div class="img-box">
+                    <a href="ad_page.php?ad_id=<?php echo $ad_id;?>">
                     <img style="width: 100%; height: 200px; object-fit: cover;" src="<?php echo $pic . $pic_name; ?>" class="img-responsive" alt="">
+
                     <div class="total-images"><strong><?php echo $count; ?></strong> photos </div>
+                    </a>
                 </div>
                 <?php if ($ad_type == 'FEATURED') {?>
                 <!-- Ad Status --><span class="ad-status"> Featured </span>
                 <?php }?>
                 <!-- User Preview -->
-                <div class="user-preview">
-                    <a href="#"> <img src="../uploads/users/<?php echo $user_pic; ?>" class="avatar avatar-small" alt=""> </a>
-                </div>
+<!--                <div class="user-preview">-->
+<!--                    <a href="#"> <img src="../uploads/users/--><?php //echo $user_pic; ?><!--" class="avatar avatar-small" alt=""> </a>-->
+<!--                </div>-->
             </div>
             <div class="row">
                 <div class="content-area">
@@ -131,17 +134,11 @@ if($num_Ads <= 5){
                         <!-- Ad Title -->
                         <h3><a><?php echo $title; ?></a></h3>
                         <!-- Info Icons -->
-                        <ul class="additional-info pull-right">
-                            <li>
-                                <a data-toggle="tooltip" title="Send Message" href="#" class="fa fa-envelope"></a>
-                            </li>
-                            <li>
-                                <a data-toggle="tooltip" title="+92-4567-123" href="#" class="fa fa-phone"></a>
-                            </li>
-                            <li>
-                                <a data-toggle="tooltip" title="Bookmark" href="scripts/add_to_favorite.php?ad_id=<?php echo $ad_id;?>" class="fa fa-heart"></a>
-                            </li>
-                        </ul>
+<!--                        <ul class="additional-info pull-right">-->
+<!--                            <li>-->
+<!--                                <a data-toggle="tooltip" title="Bookmark" href="scripts/add_to_favorite.php?ad_id=--><?php //echo $ad_id;?><!--" class="fa fa-heart"></a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
                         <!-- Ad Meta Info -->
                         <ul class="ad-meta-info">
                             <li> <i class="fa fa-map-marker"></i><a href="#"><?php echo $location; ?></a> </li>
@@ -162,8 +159,10 @@ if($num_Ads <= 5){
                         <div class="price"> <span><?php if ($selling_type == "FIXED_PRICE"){echo "€ ". $price;} else echo "(BID)";?></span> </div>
                         <!-- Ad View Button -->
 
-                        <button  class="btn btn-block btn-success" onclick="window.location.href='ad_page.php?ad_id=<?php echo $ad_id; ?>'"> <i class="fa fa-eye" aria-hidden="true"></i> View Ad.</button>
-
+                        <button  class="btn btn-block btn-success" onclick="window.location.href='ad_page.php?ad_id=<?php echo $ad_id; ?>'"> <i class="fa fa-eye" aria-hidden="true"></i> مشاهدة الاعلان</button>
+                        <?php if (isset($_SESSION['username'])){?>
+                        <button  class="btn btn-block btn-success" onclick="window.location.href='scripts/add_to_favorite.php?ad_id=<?php echo $ad_id; ?>'"> <i class="fa fa-heart" aria-hidden="true"></i> اضافة الى المفضلة</button>
+                        <?php }?>
                     </div>
                 </div>
             </div>

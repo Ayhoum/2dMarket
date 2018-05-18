@@ -132,15 +132,11 @@ if($num_Ads <= 5){
                         <h3><a><?php echo $title; ?></a></h3>
                         <!-- Info Icons -->
                         <ul class="additional-info pull-right">
-                            <li>
-                                <a data-toggle="tooltip" title="Send Message" href="#" class="fa fa-envelope"></a>
-                            </li>
-                            <li>
-                                <a data-toggle="tooltip" title="+92-4567-123" href="#" class="fa fa-phone"></a>
-                            </li>
+                           <?php if (isset($_SESSION['username'])){ ?>
                             <li>
                                 <a data-toggle="tooltip" title="Bookmark" href="scripts/add_to_favorite.php?ad_id=<?php echo $ad_id;?>" class="fa fa-heart"></a>
                             </li>
+                            <?php } ?>
                         </ul>
                         <!-- Ad Meta Info -->
                         <ul class="ad-meta-info">
