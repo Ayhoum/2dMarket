@@ -54,19 +54,22 @@ if(isset($_POST['guestlogin']))
 if(isset($_POST['login']))
 {
 
-     $query = "SELECT $MySQLi_userid_field,$MySQLi_username_field,$MySQLi_password_field,$MySQLi_status_field FROM `".$config['db']['pre'].$MySQLi_user_table_name."` WHERE $MySQLi_username_field='" . $_POST['username'] . "' AND $MySQLi_password_field='" . md5($_POST['password']) . "' LIMIT 1";
+     $query = "SELECT $MySQLi_userid_field,$MySQLi_username_field,$MySQLi_password_field,$MySQLi_status_field FROM `".$MySQLi_user_table_name."` WHERE $MySQLi_username_field='" . $_POST['username'] . "'  LIMIT 1";
+
     $query_result = mysqli_query($con,$query);
      $row_count = mysqli_num_rows($query_result);
     if($row_count>0){
         $info = mysqli_fetch_array($query_result);
         $user_id = $info[$MySQLi_userid_field];
         $username = $info[$MySQLi_username_field];
+        $passwordHash = $info['password'];
         $status = $info[$MySQLi_status_field];
+        if((password_verify($_POST['password'], $passwordHash)))
+        {
         if($status != 2)
         {
             $_SESSION['id'] = $user_id;
             $_SESSION['username'] = $username;
-
             echo '<script type="text/javascript"> window.location = "index.php" </script>';
             exit;
         }
@@ -77,6 +80,7 @@ if(isset($_POST['login']))
             else
                 $error = $lang['USERNOTFOUND'];
         }
+    }
     }
     else
     {

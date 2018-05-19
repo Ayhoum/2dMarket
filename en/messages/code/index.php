@@ -10,7 +10,7 @@ if(isset($_GET['lang'])){
     $_SESSION['lang'] = $_GET['lang'];
 }
 
-if(!isset($GLOBALS['sesId'])) {
+if(!isset($_SESSION['id'])) {
     header("Location: login.php");
     exit;
 }
@@ -23,7 +23,7 @@ $TFuserid      = $GLOBALS['MySQLi_userid_field'];
 $TFusername    = $GLOBALS['MySQLi_username_field'];
 $TFPicname     = $GLOBALS['MySQLi_photo_field'];
 
-$query1 = "SELECT $TFPicname FROM `".$TNMuser."` where $TFuserid = '".$GLOBALS['sesId']."'";
+$query1 = "SELECT $TFPicname FROM `".$TNMuser."` where $TFuserid = '".$_SESSION['id']."'";
 $result1 = $con->query($query1);
 $row1 = mysqli_fetch_assoc($result1);
 $sesUname = $GLOBALS['sesUsername'];
