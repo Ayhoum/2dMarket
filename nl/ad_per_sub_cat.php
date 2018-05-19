@@ -186,7 +186,7 @@ while($row = mysqli_fetch_assoc($result)){
                                     <div class="panel-body categories">
                                         <ul>
                                             <?php
-                                            $cat_query  = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` ='{$_GET['cat_id']}'";
+                                            $cat_query  = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` ='{$_GET['sub_cat_id']}'";
                                             $cat_result = mysqli_query($mysqli, $cat_query);
                                             while ($row = mysqli_fetch_assoc($cat_result)) {
                                                 $sub_cat_id = $row['id'];
