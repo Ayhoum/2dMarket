@@ -176,7 +176,7 @@ while($row = mysqli_fetch_assoc($result)){
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Subcategorieën
+                                            Categorieën
                                         </a>
                                     </h4>
                                     <!-- Title End -->
@@ -186,14 +186,14 @@ while($row = mysqli_fetch_assoc($result)){
                                     <div class="panel-body categories">
                                         <ul>
                                             <?php
-                                            $cat_query  = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` ='{$_GET['cat_id']}'";
+                                            $cat_query  = "SELECT * FROM `CATEGORY` WHERE `lang` ='NL'";
                                             $cat_result = mysqli_query($mysqli, $cat_query);
                                             while ($row = mysqli_fetch_assoc($cat_result)) {
-                                                $sub_cat_id = $row['id'];
+                                                $cat_id = $row['id'];
                                                 $cat_name   = $row['name'];
                                                 $icon_name  = $row['icon_name'];
 
-                                                $count_query = "SELECT COUNT(*) AS 'SUB_CAT_count' FROM `ADVERTISEMENT` WHERE sub_cat_id = '{$sub_cat_id}' ";
+                                                $count_query = "SELECT COUNT(*) AS 'SUB_CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$cat_id}' ";
                                                 $count_result = mysqli_query($mysqli,$count_query);
                                                 while ($row = mysqli_fetch_assoc($count_result)){
                                                     $cat_count = $row['SUB_CAT_count'];
@@ -201,7 +201,7 @@ while($row = mysqli_fetch_assoc($result)){
 
                                                 ?>
 
-                                                <li><a href="ad_per_sub_cat.php?sub_cat_id=<?php echo $sub_cat_id; ?>&dis=all&price=all&order=latest"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span style="color: #985f0d">(<?php echo $cat_count;?>)</span></a></li>
+                                                <li><a href="ad_per_cat.php?cat_id=<?php echo $cat_id; ?>&dis=all&price=all&order=latest"><i class="<?php echo $icon_name; ?>"></i><?php echo $cat_name; ?><span style="color: #985f0d">(<?php echo $cat_count;?>)</span></a></li>
                                                 <?php
                                             }
                                             ?>

@@ -256,7 +256,7 @@ if($num_Ads <= 10){
                     <!-- Ad Meta Stats -->
                     <div class="ad-info-1">
                         <ul>
-                            <li> <i class="fa fa-eye"></i><a href="#"><?php echo  $visits. " مشاهدة ";?></a> </li>
+                            <li> <i class="fa fa-eye"></i><a href="#"><?php echo  $visits. " view ";?></a> </li>
                             <li> <i class="fa fa-clock-o"></i><?php echo $date; ?> </li>
                         </ul>
                     </div>
