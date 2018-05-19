@@ -176,7 +176,7 @@ while($row = mysqli_fetch_assoc($result)){
                                     <h4 class="panel-title">
                                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                             <i class="more-less glyphicon glyphicon-plus"></i>
-                                            Subcategorieën
+                                            Categorieën
                                         </a>
                                     </h4>
                                     <!-- Title End -->
@@ -186,7 +186,7 @@ while($row = mysqli_fetch_assoc($result)){
                                     <div class="panel-body categories">
                                         <ul>
                                             <?php
-                                            $cat_query  = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` ='{$_GET['sub_cat_id']}'";
+                                            $cat_query  = "SELECT * FROM `CATEGORY` WHERE `lang` ='NL'";
                                             $cat_result = mysqli_query($mysqli, $cat_query);
                                             while ($row = mysqli_fetch_assoc($cat_result)) {
                                                 $sub_cat_id = $row['id'];
