@@ -46,11 +46,14 @@ $MySQLi_status_field    = 'online_status';      // This field must be enum('0', 
 $MySQLi_username_field  = 'username';           // This Field for unique username must be unique
 $MySQLi_password_field  = 'password';           // For User password using for login and register
 $MySQLi_email_field     = 'email';              // For User email
+$MySQLi_firstname_field  = 'first_name';         // For User fullname
+$MySQLi_lastname_field  = 'last_name';         // For User fullname
 $MySQLi_fullname_field  = 'first_name';         // For User fullname
 $MySQLi_joined_field    = 'profile_status';     // This field for when user is register in your website
 $MySQLi_country_field   = 'country';            // For User Country Name
 $MySQLi_about_field     = 'about';              // For User status or about user. using as whatsapp like user status
 $MySQLi_sex_field       = 'sex';                // For User Gender
+$MySQLi_phone_field       = 'phone_number';                // For User phone
 $MySQLi_dob_field       = 'dob';                // For User Date of birth
 $MySQLi_photo_field     = 'profile_picture';            // For User Date of birth
 
