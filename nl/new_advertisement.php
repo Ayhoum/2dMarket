@@ -226,11 +226,13 @@ require_once '../scripts/db_connection.php';
                                      <div class="row ">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">Produkt fotos </label>
-                                             <div class="dropzone" id="my-dropzone" name="mainFileUploader">
-                                                 <div class="fallback">
-                                                     <input name="file[]" type="file" multiple="multiple" />
-                                                 </div>
-                                             </div>
+                                             <input type="file" id="upload_img" name="profile_img" class="form-control margin-bottom-20" multiple>
+
+                                             <!--                                             <div class="dropzone" id="my-dropzone" name="mainFileUploader">-->
+<!--                                                 <div class="fallback">-->
+<!--                                                     <input name="file[]" type="file" multiple="multiple" />-->
+<!--                                                 </div>-->
+<!--                                             </div>-->
                                          </div>
                                      </div>
                                      <hr>
@@ -461,6 +463,20 @@ require_once '../scripts/db_connection.php';
               }
           };
 
+      </script>
+      <script>
+          $('#upload_img').change(function(){
+              readImgUrlAndPreview(this);
+              function readImgUrlAndPreview(input){
+                  if (input.files && input.files[0]) {
+                      var reader = new FileReader();
+                      reader.onload = function (e) {
+                          $('#img_preview').attr('src', e.target.result);
+                      }
+                  };
+                  reader.readAsDataURL(input.files[0]);
+              }
+          });
       </script>
       <!-- JS -->
    </body>
