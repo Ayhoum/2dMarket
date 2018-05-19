@@ -133,7 +133,7 @@ function searchUser($con,$config){
         $TFemail       = $GLOBALS['MySQLi_email_field'];
         $TFphoto       = $GLOBALS['MySQLi_photo_field'];
 
-        $query1 = "SELECT * FROM `".$config['db']['pre'].$TNMuser."` where $TFuserid = '".$GLOBALS['sesId']."'";
+        $query1 = "SELECT * FROM `".$TNMuser."` where $TFuserid = '".$GLOBALS['sesId']."'";
         $result1 = $con->query($query1);
         $row1 = mysqli_fetch_assoc($result1);
         $row1[$TFusername];
@@ -142,7 +142,7 @@ function searchUser($con,$config){
         if($sesuserpic == "")
             $sesuserpic = "avatar_default.png";
 
-        $sql_res=mysqli_query($con,"SELECT * FROM `".$config['db']['pre'].$TNMuser."` where ($TFusername like '%$q%' or $TFemail like '%$q%') and ($TFuserid != '".$GLOBALS['sesId']."')  order by $TFuserid LIMIT 5");
+        $sql_res=mysqli_query($con,"SELECT * FROM `".$TNMuser."` where ($TFusername like '%$q%' or $TFemail like '%$q%') and ($TFuserid != '".$GLOBALS['sesId']."')  order by $TFuserid LIMIT 5");
         while($row=mysqli_fetch_array($sql_res))
         {
             $id = $row[$TFuserid];
@@ -164,19 +164,19 @@ function searchUser($con,$config){
             <li class="person chatboxhead" id="chatbox1_<?php echo $username ?>" data-chat="person_<?php echo $id ?>" href="javascript:void(0);" onclick="javascript:chatWith('<?php echo $username ?>','<?php echo $id ?>','<?php echo $sesuserpic; ?>','<?php echo $onofst ?>')">
                 <a href="javascript:void(0)">
                     <span class="userimage profile-picture min-profile-picture"><img src="storage/user_image/<?php echo $picname; ?>" alt="<?php echo $username ?>" class="bg-theme"></span>
-            <span>
+                    <span>
                 <span class="bname personName"><?php echo $username ?></span>
                 <span class="personStatus"><span class="time <?php echo $onofst ?>"><i class="fa fa-circle" aria-hidden="true"></i></span></span>
                 <small class="preview"><div class="<?php echo $onofst ?> email"><?php echo $email ?></div></small>
             </span>
                 </a>
-        <span class="hidecontent">
+                <span class="hidecontent">
             <input id="to_id" name="to_id" value="<?php echo $id ?>" type="hidden">
             <input id="to_uname" name="to_uname" value="<?php echo $username ?>" type="hidden">
             <input id="from_uname" name="from_uname" value="<?php echo $row1['username']; ?>" type="hidden">
         </span>
             </li>
-        <?php
+            <?php
         }
 
     }
@@ -203,7 +203,7 @@ function savechat($con,$config){
     $uname = $_GET['uname'];
 
     if($_GET['mail'] == "true"){
-        $query1 = "SELECT email FROM `".$config['db']['pre'].$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_username_field']."` = '".$GLOBALS['sesUsername']."' LIMIT 1";
+        $query1 = "SELECT email FROM `".$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_username_field']."` = '".$GLOBALS['sesUsername']."' LIMIT 1";
         $result1 = $con->query($query1);
         $row1 = mysqli_fetch_assoc($result1);
         $email = $row1[$GLOBALS['MySQLi_email_field']];
@@ -281,7 +281,7 @@ function lastseen($con,$config) {
 
 function userProfile($con,$config) {
 
-    $query1 = "SELECT * FROM `".$config['db']['pre'].$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_username_field']."` = '".$_GET['uname']."' LIMIT 1";
+    $query1 = "SELECT * FROM `".$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_username_field']."` = '".$_GET['uname']."' LIMIT 1";
     $result1 = $con->query($query1);
     $row1 = mysqli_fetch_assoc($result1);
     $username   = $row1[$GLOBALS['MySQLi_username_field']];
@@ -324,14 +324,14 @@ function userProfile($con,$config) {
             <div class="col-md-1 col-sm-1 text-center">&nbsp;</div>
         </div>
     </div>
-<?php
+    <?php
 
 
 }                                       //Done
 
 function chatfrindList($con,$config) {
 
-    $query1 = "SELECT * FROM `".$config['db']['pre'].$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_userid_field']."` = '".$GLOBALS['sesId']."' ";
+    $query1 = "SELECT * FROM `".$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_userid_field']."` = '".$GLOBALS['sesId']."' ";
     $result1 = $con->query($query1);
     $row1 = mysqli_fetch_assoc($result1);
     $row1[$GLOBALS['MySQLi_username_field']];
@@ -354,7 +354,7 @@ function chatfrindList($con,$config) {
             ORDER BY message_id DESC";*/
 
     //This quesry shows user contact list publicly
-    $query = "select $TFid,$TFusername,$TFname,$TFPicname from `".$config['db']['pre'].$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_userid_field']."` != '".$GLOBALS['sesId']."' ORDER BY id DESC";
+    $query = "select $TFid,$TFusername,$TFname,$TFPicname from `".$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_userid_field']."` != '".$GLOBALS['sesId']."' ORDER BY id DESC";
 
 
 
@@ -392,7 +392,7 @@ function chatfrindList($con,$config) {
                 <input id="from_uname" name="from_uname" value="<?php echo $row1[$GLOBALS['MySQLi_username_field']]; ?>" type="hidden">
             </span>
         </li>
-    <?php
+        <?php
 
 
     }
@@ -435,7 +435,7 @@ function get_all_msg($con,$config) {
         $picname2 = "";
         $TFPicname     = $GLOBALS['MySQLi_photo_field'];
 
-        $query1 = "SELECT $TFPicname FROM `".$config['db']['pre'].$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_username_field']."` ='" .mysqli_real_escape_string($con,$chat['from_uname']). "' LIMIT 1";
+        $query1 = "SELECT $TFPicname FROM `".$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_username_field']."` ='" .mysqli_real_escape_string($con,$chat['from_uname']). "' LIMIT 1";
         $query_result = mysqli_query ($con, $query1) OR error(mysqli_error($con));
         while ($info = mysqli_fetch_array($query_result))
         {
@@ -443,7 +443,7 @@ function get_all_msg($con,$config) {
             //$status = $info['online'];
         }
 
-        $query4 = "SELECT $TFPicname FROM `".$config['db']['pre'].$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_username_field']."` ='" .mysqli_real_escape_string($con,$chat['to_uname']). "' LIMIT 1";
+        $query4 = "SELECT $TFPicname FROM `".$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_username_field']."` ='" .mysqli_real_escape_string($con,$chat['to_uname']). "' LIMIT 1";
         $query_result4 = mysqli_query ($con, $query4) OR error(mysqli_error($con));
         while ($info4 = mysqli_fetch_array($query_result4))
         {
@@ -635,14 +635,14 @@ function chatHeartbeat($con, $config)
         $picname = "";
         $picname2 = "";
 
-        $query1 = "SELECT $TFPicname FROM `".$config['db']['pre'].$TNMuser."` WHERE $TFusername='" .mysqli_real_escape_string($con,$chat['from_uname']). "' LIMIT 1";
+        $query1 = "SELECT $TFPicname FROM `".$TNMuser."` WHERE $TFusername='" .mysqli_real_escape_string($con,$chat['from_uname']). "' LIMIT 1";
         $query_result = mysqli_query ($con, $query1) OR error(mysqli_error($con));
         while ($info = mysqli_fetch_array($query_result))
         {
             $picname = "small".$info[$TFPicname];
         }
 
-        $query4 = "SELECT $TFPicname FROM `".$config['db']['pre'].$TNMuser."` WHERE $TFusername='" .mysqli_real_escape_string($con,$GLOBALS['sesUsername']). "' LIMIT 1";
+        $query4 = "SELECT $TFPicname FROM `".$TNMuser."` WHERE $TFusername='" .mysqli_real_escape_string($con,$GLOBALS['sesUsername']). "' LIMIT 1";
         $query_result4 = mysqli_query ($con, $query4) OR error(mysqli_error($con));
         while ($info4 = mysqli_fetch_array($query_result4))
         {
@@ -868,13 +868,13 @@ function sendChat($con, $config)
     $TFusername    = $GLOBALS['MySQLi_username_field'];
     $TFPicname     = $GLOBALS['MySQLi_photo_field'];
 
-    $query1 = "SELECT $TFPicname FROM `".$config['db']['pre'].$TNMuser."` WHERE $TFusername ='" . mysqli_real_escape_string($con, $to) . "' LIMIT 1";
+    $query1 = "SELECT $TFPicname FROM `".$TNMuser."` WHERE $TFusername ='" . mysqli_real_escape_string($con, $to) . "' LIMIT 1";
     $query_result = mysqli_query($con, $query1) OR error(mysqli_error($con));
     while ($info = mysqli_fetch_array($query_result)) {
         $picname = "small" . $info[$TFPicname];
     }
 
-    $query4 = "SELECT $TFPicname FROM `".$config['db']['pre'].$TNMuser."` WHERE $TFusername ='" . mysqli_real_escape_string($con, $GLOBALS['sesUsername']) . "' LIMIT 1";
+    $query4 = "SELECT $TFPicname FROM `".$TNMuser."` WHERE $TFusername ='" . mysqli_real_escape_string($con, $GLOBALS['sesUsername']) . "' LIMIT 1";
     $query_result4 = mysqli_query($con, $query4) OR error(mysqli_error($con));
     while ($info4 = mysqli_fetch_array($query_result4)) {
         $picname2 = "small" . $info4[$TFPicname];
