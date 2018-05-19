@@ -23,7 +23,7 @@ $TFuserid      = $GLOBALS['MySQLi_userid_field'];
 $TFusername    = $GLOBALS['MySQLi_username_field'];
 $TFPicname     = $GLOBALS['MySQLi_photo_field'];
 
-$query1 = "SELECT $TFPicname FROM `".$config['db']['pre'].$TNMuser."` where $TFuserid = '".$GLOBALS['sesId']."'";
+$query1 = "SELECT $TFPicname FROM `".$TNMuser."` where $TFuserid = '".$GLOBALS['sesId']."'";
 $result1 = $con->query($query1);
 $row1 = mysqli_fetch_assoc($result1);
 $sesUname = $GLOBALS['sesUsername'];
