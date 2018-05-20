@@ -135,18 +135,18 @@
                                 </ul>
                             </li>
 
-                            <li><a href="all_product.php?order=latest">All Ads </a></li>
+                            <li ><a href="all_product.php?order=latest">All Ads </a></li>
                             <?php if(!isset($_SESSION['username'])){?>
-                                <li><a href="login.php"><i class="fa fa-sign-in"></i> Log in  </a> </li>
+                                <li ><a  style="color: rgba(166,85,218,0.86)"   href="login.php"><i class="fa fa-sign-in"></i> Log in  </a> </li>
                             <?php } else { ?>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
+                                    <a style="color: rgba(166,85,218,0.86)" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="profile.php">Mijn Profile</a></li>
-                                        <li><a href="personal_ads.php">Mijn Advertenties</a></li>
-                                        <li><a href="favourite_ads.php">Favoriete Advertenties</a></li>
-                                        <li><a href="messages.php">Mijn Brichten</a></li>
-                                        <li><a href="logout.php">Uitloggen</a></li>
+                                        <li><a style="color: rgba(166,85,218,0.86)" href="profile.php">Mijn Profile</a></li>
+                                        <li><a style="color: rgba(166,85,218,0.86)" href="personal_ads.php">Mijn Advertenties</a></li>
+                                        <li><a style="color: rgba(166,85,218,0.86)" href="favourite_ads.php">Favoriete Advertenties</a></li>
+                                        <li><a style="color: rgba(166,85,218,0.86)" href="messages.php">Mijn Brichten</a></li>
+                                        <li><a style="color: rgba(166,85,218,0.86)" href="logout.php">Uitloggen</a></li>
                                     </ul>
                                 </li>
                             <?php } ?>                        </ul>
@@ -240,7 +240,7 @@
 
                     <!-- Search Button -->
                     <div class="col-md-3 col-xs-12 col-sm-12 no-padding">
-                        <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Search</button>
+                        <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Zoek</button>
                     </div>
                 </form>
                 <!-- end .search-form -->

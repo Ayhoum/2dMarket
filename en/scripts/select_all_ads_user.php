@@ -111,10 +111,12 @@ if($num_Ads <= 5){
         <div class="well ad-listing clearfix">
             <div class="col-md-3 col-sm-5 col-xs-12 grid-style no-padding">
                 <!-- Image Box -->
+                <a href="ad_page.php?ad_id=<?php echo $ad_id; ?>">
                 <div class="img-box">
                     <img style="width: 100%; height: 200px; object-fit: cover;" src="<?php echo $pic . $pic_name; ?>" class="img-responsive" alt="">
                     <div class="total-images"><strong><?php echo $count; ?></strong> photos </div>
                 </div>
+                </a>
                 <?php if ($ad_type == 'FEATURED') {?>
                 <!-- Ad Status --><span class="ad-status"> Featured </span>
                 <?php }?>

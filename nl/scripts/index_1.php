@@ -115,10 +115,10 @@ if (mysqli_num_rows($ad_result) > 0) {
                     <!-- Ad Meta Info -->
                     <ul class="ad-meta-info">
                         <li>
-                            <a href="#" data-toggle="tooltip" title="Ad. info"> <i class="flaticon-ribbon-badge"></i><?php echo $delivery_type . " | ". $selling_type;?></a>
+                            <a href="#" data-toggle="tooltip" title="Advertentie info"> <i class="flaticon-ribbon-badge"></i><?php echo $delivery_type . " | ". $selling_type;?></a>
                         </li>
-                        <li> <a href="#" data-toggle="tooltip" title="Condition"><i class="flaticon-check-square"></i><?php echo $condition;?></a> </li>
-                        <li> <a href="profile_2.php<?php echo $user_id;?>" data-toggle="tooltip" title="Contact Person"><i class="flaticon-man"></i><?php echo $user_username; ?></a> </li>
+                        <li> <a href="#" data-toggle="tooltip" title="Staat"><i class="flaticon-check-square"></i><?php echo $condition;?></a> </li>
+                        <li> <a href="profile_2.php?user_id=<?php echo $user_id;?>" data-toggle="tooltip" title="Contactpersoon"><i class="flaticon-man"></i><?php echo $user_username; ?></a> </li>
                     </ul>
                 </div>
                 <!-- Ad Meta Stats -->
@@ -129,7 +129,7 @@ if (mysqli_num_rows($ad_result) > 0) {
                         <li class="views"> <i class="fa fa-eye"></i><?php echo $vistis; ?> </li>
                     </ul>
                     <!-- View All Button -->
-                    <div class="detail-button"> <a href="ad_page.php?ad_id=<?php echo $ad_id; ?>">View Details</a> </div>
+                    <div class="detail-button"> <a href="ad_page.php?ad_id=<?php echo $ad_id; ?>">Bekijk details</a> </div>
                 </div>
             </div>
         </div>

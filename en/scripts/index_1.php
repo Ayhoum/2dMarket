@@ -117,7 +117,7 @@ if (mysqli_num_rows($ad_result) > 0) {
                             <a href="#" data-toggle="tooltip" title="Ad. info"> <i class="flaticon-ribbon-badge"></i><?php echo $delivery_type . " | ". $selling_type;?></a>
                         </li>
                         <li> <a href="#" data-toggle="tooltip" title="Condition"><i class="flaticon-check-square"></i><?php echo $condition;?></a> </li>
-                        <li> <a href="profile_2.php<?php echo $user_id;?>" data-toggle="tooltip" title="Contact Person"><i class="flaticon-man"></i><?php echo $user_username; ?></a> </li>
+                        <li> <a href="profile_2.php?user_id=<?php echo $user_id;?>" data-toggle="tooltip" title="Contact Person"><i class="flaticon-man"></i><?php echo $user_username; ?></a> </li>
                     </ul>
                 </div>
                 <!-- Ad Meta Stats -->

@@ -70,7 +70,7 @@ require_once "../scripts/db_connection.php";
                    $.post('scripts/handle_login.php?email=' + email + '&pass=' + password, function (response) {
 
                        if (response == "done") {
-                           window.location.href = "profile.php";
+                           window.location.href = "index.php";
                        } else if(response == "error_password"){
                            $("#modalPassError").modal();
 

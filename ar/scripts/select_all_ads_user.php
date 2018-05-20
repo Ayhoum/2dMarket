@@ -107,24 +107,25 @@ if($num_Ads <= 5){
                 $sub_cat_id   = $row['id'];
                 $sub_cat_name = $row['name'];
             }
+            if ($condition == "NEW") {
+                $condition = "جديد";
+            } else{
+                $condition = "مستعمل";
+            }
             ?>
         <div class="well ad-listing clearfix" style="direction: rtl">
             <div class="col-md-3 col-sm-5 col-xs-12 grid-style no-padding">
                 <!-- Image Box -->
+                <a href="ad_page.php?ad_id=<?php echo $ad_id;?>">
                 <div class="img-box">
-                    <a href="ad_page.php?ad_id=<?php echo $ad_id;?>">
                     <img style="width: 100%; height: 200px; object-fit: cover;" src="<?php echo $pic . $pic_name; ?>" class="img-responsive" alt="">
-
-                    <div class="total-images"><strong><?php echo $count; ?></strong> photos </div>
-                    </a>
+                    <div class="total-images"><strong><?php echo $count; ?></strong> صورة </div>
                 </div>
+                </a>
                 <?php if ($ad_type == 'FEATURED') {?>
                 <!-- Ad Status --><span class="ad-status"> Featured </span>
                 <?php }?>
-                <!-- User Preview -->
-<!--                <div class="user-preview">-->
-<!--                    <a href="#"> <img src="../uploads/users/--><?php //echo $user_pic; ?><!--" class="avatar avatar-small" alt=""> </a>-->
-<!--                </div>-->
+
             </div>
             <div class="row">
                 <div class="content-area">
@@ -152,8 +153,8 @@ if($num_Ads <= 5){
                     <div class="col-md-3 col-xs-12 col-sm-12">
                         <!-- Ad Stats -->
                         <div class="short-info">
-                            <div class="ad-stats hidden-xs"><span>Condition  : </span><?php echo $condition; ?></div>
-                            <div class="ad-stats hidden-xs"><span>Sub Category : </span><?php echo $sub_cat_name; ?></div>
+                            <div class="ad-stats hidden-xs"><span>حالة المنتج  : </span><?php echo $condition; ?></div>
+                            <div class="ad-stats hidden-xs"><span>التصنيف الفرعي : </span><?php echo $sub_cat_name; ?></div>
                         </div>
                         <!-- Price -->
                         <div class="price"> <span><?php if ($selling_type == "FIXED_PRICE"){echo "€ ". $price;} else echo "(BID)";?></span> </div>
