@@ -15304,6 +15304,7 @@ h6 small,
     background-color: #353c48;
 }
 .wchat-header {
+    border-top: 1px solid rgba(255, 255, 255, .08);
     background-color: #353c48 !important;
 }
 .wchat-chat {
@@ -15329,4 +15330,8 @@ h6 small,
 }
 .drawer {
     background-color: #353c48;
+}
+.specColor{
+    background-color: #fff;
+    color: #353c48;
 }

@@ -15077,6 +15077,7 @@ table.dataTable.order-column.stripe tbody tr.even > .sorting_1 {
     background-color: #fff;
 }
 .wchat-header {
+  border-top: 1px solid rgba(0, 0, 0, .08);
     background-color: #fff !important;
 }
 .wchat-chat {
@@ -15101,4 +15102,9 @@ table.dataTable.order-column.stripe tbody tr.even > .sorting_1 {
 }
 .drawer {
     background-color: #fff;
+}
+.specColor{
+  background-color: #353c48;
+  color: #fff;
+
 }

@@ -11,7 +11,7 @@ if(isset($_GET['lang'])){
 }
 
 if(!isset($_SESSION['id'])) {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit;
 }
 $config['lang'] = check_user_lang($config);
@@ -37,6 +37,7 @@ if($sesuserpic == "")
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -44,11 +45,11 @@ if($sesuserpic == "")
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
+
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Wchat - Responsive php ajax inbox messaging</title>
+    <title>2DMarket - Chat</title>
     <!-- Bootstrap Core CSS -->
     <link href="assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Animation CSS -->
     <link href="assets/css/animate.css" rel="stylesheet">
     <link href="assets/css/custom.css" rel="stylesheet" id="style">
     <!-- Theme light dark version CSS -->
@@ -114,8 +115,8 @@ if($sesuserpic == "")
                         <div class="intro-body">
                             <div class="intro-image" style="opacity: 1; transform: scale(1);"></div>
                             <div class="intro-text-container" style="opacity: 1; transform: translateY(0px);">
-                                <h1 class="intro-title">Welcome to wchat <?php echo $GLOBALS['sesUsername']; ?></h1>
-                                <div class="intro-text">No Conversation sync. Please search users and start chat.
+                                <h1 class="intro-title">Welcome to 2DMarket <?php echo $GLOBALS['sesUsername']; ?></h1>
+                                <div class="intro-text">No Conversation selected. Please select a chat.
                                 </div>
                             </div>
                         </div>
@@ -153,7 +154,14 @@ if($sesuserpic == "")
                     <div id="my-profile" style="display: none;">
                     </div>
                     <div id="contact-list">
+                        <a href="../index.php">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center specColor" style="padding-top:10px;padding-bottom:10px;">
+                            <button type="button"><span class="font-19"><i class="ti-home"></i> Home</span></button>
+                        </div>
+                        </a>
+
                         <header class="wchat-header wchat-chat-header top">
+
                             <div class="chat-avatar">
                                 <div class="avatar icon-user-default" style="height: 40px; width: 40px;">
                                     <div class="avatar-body userimage"><img src="<?php echo $config['site_url']; ?>storage/user_image/<?php echo $sesuserpic; ?>" class="avatar-image is-loaded" width="100%"></div>
@@ -169,9 +177,10 @@ if($sesuserpic == "")
                                         <button class="icon dropdown-toggle" data-toggle="dropdown" href="#"><span class="font-19"><i class="icon icon-options-vertical"></i></span></button>
                                         <ul class="dropdown-menu dropdown-user animated flipInY">
                                             <li><a href="../profile.php"><i class="ti-user"></i> <?php echo $lang['MYPROFILE']; ?></a></li>
-<!--                                            <li><a href="edit_profile.php"><i class="ti-wallet"></i> --><?php //echo $lang['EDITPROFILE']; ?><!--</a></li>-->
-<!--                                            <li role="separator" class="divider"></li>-->
-<!--                                            <li><a href="logout.php"><i class="fa fa-power-off"></i> --><?php //echo $lang['LOGOUT']; ?><!--</a></li>-->
+                                            <li><a href="../index.php"><i class="ti-home"></i> Home</a></li>
+                                            <!--                                            <li><a href="edit_profile.php"><i class="ti-wallet"></i> --><?php //echo $lang['EDITPROFILE']; ?><!--</a></li>-->
+                                            <!--                                            <li role="separator" class="divider"></li>-->
+                                            <!--                                            <li><a href="logout.php"><i class="fa fa-power-off"></i> --><?php //echo $lang['LOGOUT']; ?><!--</a></li>-->
                                         </ul>
                                         <!-- /.dropdown-user -->
                                     </div>
@@ -179,9 +188,9 @@ if($sesuserpic == "")
                                 </div>
                             </div>
                         </header>
-                        <div class="form-material">
-                            <input class="form-control p-lr-20 live-search-box search_bg" id="searchbox" type="text" placeholder="<?php echo $lang['SEARCHBYUNOREM']; ?>">
-                        </div>
+<!--                        <div class="form-material">-->
+<!--                            <input class="form-control p-lr-20 live-search-box search_bg" id="searchbox" type="text" placeholder="--><?php //echo $lang['SEARCHBYUNOREM']; ?><!--">-->
+<!--                        </div>-->
                         <div class="contact-drawer">
                             <ul class="chatonline drawer-body contact-list" id="display" data-list-scroll-container="true">
                                 <!--Dynamic comes conversation list-->
@@ -1735,6 +1744,7 @@ if($sesuserpic == "")
 </div>
 
 
+
 <!-- .right-sidebar -->
 <div class="right-sidebar">
     <div class="slimscrollright">
@@ -1777,7 +1787,17 @@ if($sesuserpic == "")
 </div>
 <!--This div for modal light box chat box image-->
 
+
+
+
+
+
+
+
 <!-- jQuery -->
+
+
+
 <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="assets/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -1790,9 +1810,13 @@ if($sesuserpic == "")
 <script>
     var siteurl = '<?php echo $config['site_url']; ?>';
 </script>
+
+
+
 <script type="text/javascript" src="chatjs/lightbox.js"></script>
 <script type="text/javascript" src="chatjs/inbox.js"></script>
 <script type="text/javascript" src="chatjs/custom.js"></script>
+
 <!--ChatJs-->
 <!-- Media Uploader -->
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
