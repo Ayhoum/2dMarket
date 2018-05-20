@@ -580,12 +580,12 @@ if (isset($_POST['submit']) && $_GET['id']){
       </div>
       <!-- Main Content Area End --> 
       <!-- Post Ad Sticky -->
-      <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
-         <span class="sell-icons">
-         <i class="flaticon-transport-9"></i>
-         </span>
-         <h4>VERKOPEN</h4>
-      </a>
+<!--      <a href="--><?php //if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?><!--" class="sticky-post-button hidden-xs">-->
+<!--         <span class="sell-icons">-->
+<!--         <i class="flaticon-transport-9"></i>-->
+<!--         </span>-->
+<!--         <h4>VERKOPEN</h4>-->
+<!--      </a>-->
 
 
       <!-- Back To Top -->

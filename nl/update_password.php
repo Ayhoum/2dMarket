@@ -219,12 +219,12 @@ if(isset($_POST['updatePass'])){
 </div>
 
 <!-- Post Ad Sticky -->
-<a href="#" class="sticky-post-button hidden-xs">
-         <span class="sell-icons">
-         <i class="flaticon-transport-9"></i>
-         </span>
-    <h4>Verkoop</h4>
-</a>
+<!--<a href="#" class="sticky-post-button hidden-xs">-->
+<!--         <span class="sell-icons">-->
+<!--         <i class="flaticon-transport-9"></i>-->
+<!--         </span>-->
+<!--    <h4>Verkoop</h4>-->
+<!--</a>-->
 <!-- Back To Top -->
 <a href="#0" class="cd-top">Top</a>
 <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->

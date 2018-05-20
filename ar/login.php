@@ -123,28 +123,6 @@ require_once "../scripts/db_connection.php";
               <div class="container">
                   <!-- Row -->
                   <div class="row">
-                      <!-- Middle Content Area -->
-<!--                      <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">-->
-<!--                          <!--  Form -->
-<!--                          <div class="form-grid">-->
-<!--                              <form action="#" name="login" id="login_form" method="post" data-toggle="validator">-->
-<!--                                  <div class="form-group">-->
-<!--                                      <label>البريـد الالكترونـي</label>-->
-<!--                                      <input id="email_field" placeholder="قم بادخال بريدك الالكتروني" class="form-control" type="email" name="email">-->
-<!--                                  </div>-->
-<!--                                  <div class="form-group">-->
-<!--                                      <label>كلـمة المـرور</label>-->
-<!--                                      <input id="password_field" placeholder="قم بادخال كلمة المرور" class="form-control" type="password" name="password">-->
-<!---->
-<!--                                      <p><b><a href="resotre_password.php" target="_blank">نسيت كلمة المرور الخاصة بك؟</a></b></p>-->
-<!--                                  </div>-->
-<!---->
-<!--                                  <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">تسجيـل الدخـول </button>-->
-<!--                              </form>-->
-<!--                          </div>-->
-<!--                          <!-- Form -->
-<!--                      </div>-->
-                      <!-- Middle Content Area  End -->
                           <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
                               <div class="heading-title text-center">
                                   <h2>أهـلا بكم في موقعنـا </h2>
@@ -163,11 +141,11 @@ require_once "../scripts/db_connection.php";
                                               <form action="#" name="login" id="login_form" method="post" data-toggle="validator">
                                                   <div class="form-group">
                                                       <label>البريد الالكتروني</label>
-                                                      <input id="email_field" placeholder="Your Email" class="form-control" type="email" name="email">
+                                                      <input id="email_field" placeholder="ادخل بريدك الالكتروني" class="form-control" type="email" name="email">
                                                   </div>
                                                   <div class="form-group">
                                                       <label>كلمة السر</label>
-                                                      <input id="password_field" placeholder="Your Password" class="form-control" type="password" name="password">
+                                                      <input id="password_field" placeholder="ادخل كلمة السر الخاصة بك" class="form-control" type="password" name="password">
 
                                                       <p><b><a href="resotre_password.php" target="_blank">هل نسيت كلمة المرور الخاصة بك؟ </a></b></p>
                                                   </div>
@@ -184,7 +162,7 @@ require_once "../scripts/db_connection.php";
                                               <form name="signup" id="signupForm" method="post" action="scripts/signup.php" data-toggle="validator">
                                                   <div class="form-group">
                                                       <label>البريـد الالكتروني</label>
-                                                      <input autocomplete="false" required placeholder="قم بادخال ايميلك" name="email" onchange="checkAvailability();" id="emailArea" class="form-control" type="email">
+                                                      <input autocomplete="false" required placeholder="قم بادخال البريد الالكتروني الخاص بك" name="email" onchange="checkAvailability();" id="emailArea" class="form-control" type="email">
                                                       <label id="checkEmailError" class=""></label>
                                                   </div>
                                                   <div class="row">
@@ -302,12 +280,12 @@ require_once "../scripts/db_connection.php";
 
       <!-- Main Content Area End --> 
       <!-- Post Ad Sticky -->
-      <a href="<?php if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?>" class="sticky-post-button hidden-xs">
-         <span class="sell-icons">
-         <i class="flaticon-transport-9"></i>
-         </span>
-          <h4>قم بالبيع الان</h4>
-      </a>
+<!--      <a href="--><?php //if (isset($_SESSION['id'])){echo "new_advertisement.php";  } else { echo "login.php"; }?><!--" class="sticky-post-button hidden-xs">-->
+<!--         <span class="sell-icons">-->
+<!--         <i class="flaticon-transport-9"></i>-->
+<!--         </span>-->
+<!--          <h4>قم بالبيع الان</h4>-->
+<!--      </a>-->
       <!-- Back To Top -->
       <a href="#0" class="cd-top">Top</a>
       <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
