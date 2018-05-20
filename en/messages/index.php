@@ -46,7 +46,7 @@ if($sesuserpic == "")
     <meta name="author" content="">
     <!-- Favicon icon -->
 
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <link rel="icon" href="../images/logo_files/logo_png.png" type="image/x-icon" />
     <title>2DMarket - Chat</title>
     <!-- Bootstrap Core CSS -->
     <link href="assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
