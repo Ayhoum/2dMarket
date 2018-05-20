@@ -276,7 +276,7 @@ function get_all_msg(url){
                         }
 
                         if (item.u == 2) {
-                            $("#chatbox_"+chatboxtitle).prepend('<div class="col-xs-12 p-b-10"><div class="chat-image  profile-picture max-profile-picture"> <img alt="'+item.sender+'" src="'+siteurl+'storage/user_image/'+img+'" class="bg-theme"> </div><div class="chat-body"><div class="chat-text"><h4>'+item.sender+'</h4><p>'+message_content+'</p><b>'+item.time+'</b> </div></div></div>');
+                            $("#chatbox_"+chatboxtitle).prepend('<div class="col-xs-12 p-b-10"><div class="chat-image  profile-picture max-profile-picture"> <img alt="'+item.sender+'" src="'+siteurl+'storage/user_image/avatar_default2.png'+'" class="bg-theme"> </div><div class="chat-body"><div class="chat-text"><h4>'+item.sender+'</h4><p>'+message_content+'</p><b>'+item.time+'</b> </div></div></div>');
                         } else
                         {
                             if(seen == 1){
@@ -649,7 +649,7 @@ function chatHeartbeat(TOusername){
 
                             $("#chatbox_" + chatboxtitle).append('<div class="col-xs-12 p-b-10">' +
                             '<div class="chat-image  profile-picture max-profile-picture">' +
-                            '<img alt="' + chatboxtitle + '" src="' + siteurl + 'storage/user_image/' + fromPic + '" class="bg-theme">' +
+                            '<img alt="' + chatboxtitle + '" src="' + siteurl + 'storage/user_image/avatar_default2.png' + '" class="bg-theme">' +
                             '</div>' +
                             '<div class="chat-body">' +
                             '<div class="chat-text">' +

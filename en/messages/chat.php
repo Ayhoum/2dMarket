@@ -139,7 +139,7 @@ function searchUser($con,$config){
         $row1[$TFusername];
         $sesuserpic = $row1[$TFphoto];
 
-        if($sesuserpic == "")
+//        if($sesuserpic == "")
             $sesuserpic = "avatar_default.png";
 
         $sql_res=mysqli_query($con,"SELECT * FROM `".$TNMuser."` where ($TFusername like '%$q%' or $TFemail like '%$q%') and ($TFuserid != '".$GLOBALS['sesId']."')  order by $TFuserid LIMIT 5");
@@ -149,11 +149,11 @@ function searchUser($con,$config){
             $username = $row[$TFusername];
             $email = $row[$TFemail];
             $picname = $row[$TFphoto];
-            if($picname == "")
-                $picname = "avatar_default.png";
-            else{
-                $picname = "small".$picname;
-            }
+//            if($picname == "")
+                $picname = "avatar_default2.png";
+//            else{
+//                $picname = "small".$picname;
+//            }
 
             $onofst =  getlastActiveTime($username);
 
@@ -292,8 +292,8 @@ function userProfile($con,$config) {
     $phone        = $row1[$GLOBALS['MySQLi_phone_field']];
     $picname    = $row1[$GLOBALS['MySQLi_photo_field']];
 
-    if($picname == "")
-        $picname = "avatar_default.png";
+//    if($picname == "")
+        $picname = "avatar_default2.png";
 
     ?>
     <div class="">
@@ -334,8 +334,8 @@ function chatfrindList($con,$config) {
     $row1[$GLOBALS['MySQLi_username_field']];
     $sesuserpic = $row1[$GLOBALS['MySQLi_photo_field']];
 
-    if($sesuserpic == "")
-        $sesuserpic = "avatar_default.png";
+//    if($sesuserpic == "")
+    $sesuserpic = "avatar_default.png";
 
     $TFid          = $GLOBALS['MySQLi_userid_field'];
     $TFusername    = $GLOBALS['MySQLi_username_field'];
@@ -361,11 +361,11 @@ function chatfrindList($con,$config) {
         $username = $row[$TFusername];
         $fullname = $row[$TFname];
         $picname = $row[$TFPicname];
-        if($picname == "")
-            $picname = "avatar_default.png";
-        else{
-            $picname = "small".$picname;
-        }
+//        if($picname == "")
+            $picname = "avatar_default2.png";
+//        else{
+//            $picname = "small".$picname;
+//        }
 
         $sql = "SELECT 1 FROM `".$config['db']['pre']."messages` where to_uname = '".$GLOBALS['sesUsername']."' AND from_uname = '$username' and seen = '0'";
         $countrecd = mysqli_num_rows(mysqli_query($con,$sql));
@@ -448,11 +448,11 @@ function get_all_msg($con,$config) {
         }
 
 
-        if($picname == "small")
+//        if($picname == "small")
             $picname = "avatar_default.png";
 
-        if($picname2 == "small")
-            $picname2 = "avatar_default.png";
+//        if($picname2 == "small")
+            $picname2 = "avatar_default2.png";
 
         $status = "0";
         if($status == "0")
@@ -646,11 +646,11 @@ function chatHeartbeat($con, $config)
             $picname2 = "small".$info4[$TFPicname];
         }
 
-        if($picname == "small")
+//        if($picname == "small")
             $picname = "avatar_default.png";
 
-        if($picname2 == "small")
-            $picname2 = "avatar_default.png";
+//        if($picname2 == "small")
+            $picname2 = "avatar_default2.png";
 
         $status = "0";
         if($status == "0")
@@ -877,10 +877,10 @@ function sendChat($con, $config)
         $picname2 = "small" . $info4[$TFPicname];
     }
 
-    if ($picname == "small")
+//    if ($picname == "small")
         $picname = "avatar_default.png";
-    if ($picname2 == "small")
-        $picname2 = "avatar_default.png";
+//    if ($picname2 == "small")
+        $picname2 = "avatar_default2.png";
 
     $status = "0";
     if ($status == "0")
