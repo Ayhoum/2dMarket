@@ -69,7 +69,7 @@ function updatelastActiveTime(){
 
     for($i = 0; $i < count($lastActiveTime); $i++){
         $username = $lastActiveTime[$i]['username'];
-        if ($username == $GLOBALS['sesUsername']) {
+        if ($username == $_SESSION['username']) {
             $a = 1;
             $key = $i;
             break;
@@ -80,7 +80,7 @@ function updatelastActiveTime(){
         $lastActiveTime[$key]['last_active_timestamp'] = $GLOBALS['timenow'];
     }else{
         $len = count($lastActiveTime);
-        $lastActiveTime[$len]["username"]=$GLOBALS['sesUsername'];
+        $lastActiveTime[$len]["username"]=$_SESSION['username'];
         $lastActiveTime[$len]["last_active_timestamp"] = $GLOBALS['timenow'];
     }
 
@@ -285,10 +285,11 @@ function userProfile($con,$config) {
     $result1 = $con->query($query1);
     $row1 = mysqli_fetch_assoc($result1);
     $username   = $row1[$GLOBALS['MySQLi_username_field']];
-    $name       = $row1[$GLOBALS['MySQLi_fullname_field']];
+    $fname       = $row1[$GLOBALS['MySQLi_firstname_field']];
+    $lname       = $row1[$GLOBALS['MySQLi_lastname_field']];
     $email      = $row1[$GLOBALS['MySQLi_email_field']];
-    $status     = $row1[$GLOBALS['MySQLi_about_field']];
-    $sex        = $row1[$GLOBALS['MySQLi_sex_field']];
+//    $status     = $row1[$GLOBALS['MySQLi_about_field']];
+    $phone        = $row1[$GLOBALS['MySQLi_phone_field']];
     $picname    = $row1[$GLOBALS['MySQLi_photo_field']];
 
     if($picname == "")
@@ -301,7 +302,7 @@ function userProfile($con,$config) {
                 <div class="user-content"> <a href="javascript:void(0)">
                         <img class="thumb-lg img-circle" src="storage/user_image/<?php echo $picname; ?>" alt="<?php echo $username ?>"></a>
                     <h4 class="text-white"><?php echo $username ?></h4>
-                    <h5 class="text-white"><?php echo $email ?></h5>
+                    <a href="mailto:<?php echo $email ?>"><h5 class="text-white"><?php echo $email ?></h5></a>
                 </div>
             </div>
         </div>
@@ -309,16 +310,12 @@ function userProfile($con,$config) {
         <div class="user-btm-box">
             <!-- .row -->
             <div class="row text-center m-t-10">
-                <div class="col-md-6 b-r"><strong>Name</strong><p><?php echo $name ?></p></div>
-                <div class="col-md-6"><strong>Gender</strong><p><?php echo $sex ?></p></div>
+                <div class="col-md-6 b-r"><strong>Name</strong><p><?php echo $fname . ' ' . $lname ?></p></div>
+                <div class="col-md-6"><strong>Phone:</strong><p><?php echo $phone ?></p></div>
             </div>
             <!-- /.row -->
-            <hr>
             <!-- .row -->
-            <div class="row text-center m-t-10">
-                <div class="col-md-12"><strong>Status</strong><p><?php echo $status ?> </p></div>
 
-            </div>
             <hr>
 
             <div class="col-md-1 col-sm-1 text-center">&nbsp;</div>
@@ -331,7 +328,7 @@ function userProfile($con,$config) {
 
 function chatfrindList($con,$config) {
 
-    $query1 = "SELECT * FROM `".$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_userid_field']."` = '".$GLOBALS['sesId']."' ";
+    $query1 = "SELECT * FROM `".$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_userid_field']."` = '".$_SESSION['id']."' ";
     $result1 = $con->query($query1);
     $row1 = mysqli_fetch_assoc($result1);
     $row1[$GLOBALS['MySQLi_username_field']];
@@ -345,16 +342,16 @@ function chatfrindList($con,$config) {
     $TFname        = $GLOBALS['MySQLi_fullname_field'];
     $TFPicname     = $GLOBALS['MySQLi_photo_field'];
     //This query shows user contact list by conversation
-    /*$query = "select $TFid,$TFusername,$TFname,$TFPicname,message_date from `".$config['db']['pre'].$GLOBALS['MySQLi_user_table_name']."` as u
+    $query = "select $TFid,$TFusername,$TFname,$TFPicname,message_date from `".$GLOBALS['MySQLi_user_table_name']."` as u
             INNER JOIN
             (
-                select max(message_id) as message_id,to_id,from_id,message_date from `".$config['db']['pre']."messages` where to_id = '".$GLOBALS['sesId']."' or from_id = '".$GLOBALS['sesId']."' GROUP BY to_id,from_id
+                select max(message_id) as message_id,to_id,from_id,message_date from `".$config['db']['pre']."messages` where to_id = '".$_SESSION['id']."' or from_id = '".$_SESSION['id']."' GROUP BY to_id,from_id
             )
-            m ON u.$TFid = m.from_id or u.$TFid = m.to_id  where (u.$TFid != '".$GLOBALS['sesId']."') GROUP BY u.$TFid
-            ORDER BY message_id DESC";*/
+            m ON u.$TFid = m.from_id or u.$TFid = m.to_id  where (u.$TFid != '".$_SESSION['id']."') GROUP BY u.$TFid
+            ORDER BY message_id DESC";
 
     //This quesry shows user contact list publicly
-    $query = "select $TFid,$TFusername,$TFname,$TFPicname from `".$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_userid_field']."` != '".$GLOBALS['sesId']."' ORDER BY id DESC";
+//    $query = "select $TFid,$TFusername,$TFname,$TFPicname from `".$GLOBALS['MySQLi_user_table_name']."` where `".$GLOBALS['MySQLi_userid_field']."` != '".$GLOBALS['sesId']."' ORDER BY id DESC";
 
 
 
@@ -403,7 +400,7 @@ function get_all_msg($con,$config) {
 
     $perPage = 10;
 
-    $sql = "select * from `".$config['db']['pre']."messages` where ((to_uname = '".$GLOBALS['sesUsername']."' AND from_uname = '".$_GET['client']."') OR (to_uname = '".$_GET['client']."' AND from_uname = '".$GLOBALS['sesUsername']."' ))order by message_id DESC ";
+    $sql = "select * from `".$config['db']['pre']."messages` where ((to_uname = '".$_SESSION['username']."' AND from_uname = '".$_GET['client']."') OR (to_uname = '".$_GET['client']."' AND from_uname = '".$_SESSION['username']."' ))order by message_id DESC ";
 
     $page = 1;
     if(!empty($_GET["page"])) {
@@ -582,7 +579,7 @@ EOD;
             }
         }
     }
-    $sql = "update `".$config['db']['pre']."messages` set recd = 1 where to_uname = '".mysqli_real_escape_string($con,$GLOBALS['sesUsername'])."' and recd = 0";
+    $sql = "update `".$config['db']['pre']."messages` set recd = 1 where to_uname = '".mysqli_real_escape_string($con,$_SESSION['username'])."' and recd = 0";
     $query = $con->query($sql);
 
     if ($items != '') {

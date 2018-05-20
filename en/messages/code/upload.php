@@ -190,7 +190,7 @@ if (!$chunks || $chunk == $chunks - 1) {
     $tun = isset($_GET["tun"]) ? $_GET["tun"] : 0;
     //$fun = isset($_GET["fun"]) ? $_GET["fun"] : 0;
 
-    $query = mysqli_query($con, "select $MySQLi_userid_field from `".$config['db']['pre']."$MySQLi_user_table_name` where $MySQLi_username_field = '".$_GET["tun"]."' LIMIT 1 ");
+    $query = mysqli_query($con, "select $MySQLi_userid_field from `"."$MySQLi_user_table_name` where $MySQLi_username_field = '".$_GET["tun"]."' LIMIT 1 ");
     $fetch = mysqli_fetch_assoc($query);
     $to_id = $fetch[$MySQLi_userid_field];
 
@@ -198,7 +198,7 @@ if (!$chunks || $chunk == $chunks - 1) {
         "(NOW(), $from_user_id, $to_id, '".$_GET["tun"]."', '$from_username', '".mysqli_real_escape_string($con,$message_content)."','file')";
     $con->query($query);
     $last_id = $con->insert_id;
-    $query1 = "SELECT * FROM `".$config['db']['pre'].$MySQLi_user_table_name."` where $MySQLi_userid_field = '".$GLOBALS['sesId']."' LIMIT 1";
+    $query1 = "SELECT * FROM `".$MySQLi_user_table_name."` where $MySQLi_userid_field = '".$GLOBALS['sesId']."' LIMIT 1";
     $result1 = $con->query($query1);
     $row1 = mysqli_fetch_assoc($result1);
     $sesUname = $row1[$MySQLi_username_field];
