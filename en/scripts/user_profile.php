@@ -9,6 +9,7 @@
 
 <?php
 $id = $_SESSION['id'];
+
 $select_query = "SELECT * FROM `USER` WHERE `id` = '{$id}'";
     $select_result = mysqli_query($mysqli, $select_query);
     while ($row = mysqli_fetch_assoc($select_result)) {

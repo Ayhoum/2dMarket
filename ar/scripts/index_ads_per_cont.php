@@ -39,7 +39,7 @@
                                           WHERE ADDRESS.country = '{$country}' && ADVERTISEMENT.lang = 'AR'";
                             $country_result = mysqli_query($mysqli, $country_query);
                             $num_ads = mysqli_num_rows($country_result);
-
+                            if ($num_ads > 0){
                             if   ($country == "Netherlands") { $country = "هـولاندا";}
                             elseif ($country == "Syrian Arab Republic"){ $country = "سـوريـا";}
                             elseif ($country == "Germany"){  $country = "ألمـانيـا";}
@@ -58,7 +58,7 @@
                                 </div>
                             </a>
                         </div>
-                        <?php } ?>
+                        <?php } } ?>
                     </div>
                     <!-- Countries Masonry Grid End -->
                 </div>

@@ -114,121 +114,6 @@ require_once "scripts/time_elapse.php";
       </div>
       <!-- Navigation Menu End -->
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
-      <!-- =-=-=-=-=-=-= Listing Map =-=-=-=-=-=-= -->
-      <section class="clearfix">
-<!--         <div class="map">-->
-<!--            <div id="map"></div>-->
-<!--         </div>-->
-
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner" >
-                  <div class="item active" style="width:100%; background-size: cover">
-                      <img src="../slider/2.jpg" alt="Chicago">
-                  </div>
-
-                  <div class="item" style="width:100%; background-size: cover">
-                      <img src="../slider/3.jpg" alt="New York">
-                  </div>
-              </div>
-
-              <!-- Left and right controls -->
-              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                  <span class="glyphicon glyphicon-triangle-left" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
-                  <span class="sr-only">Previous</span>
-              </a>
-              <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                  <span class="glyphicon glyphicon-triangle-right" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
-                  <span class="sr-only">Next</span>
-              </a>
-          </div>
-          <!-- end map -->
-      </section>
-      <!-- =-=-=-=-=-=-= Listing Map End =-=-=-=-=-=-= -->
-      <!-- =-=-=-=-=-=-= Advance Search =-=-=-=-=-=-= -->
-      <section class="search-2">
-         <div class="container">
-            <!-- Title -->
-            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
-               <div class="search-title">Zoek een Ad.</div>
-            </div>
-            <div class="row" style="margin-left: 0;margin-right: 0;">
-                <form method="post" class="search-form validation">
-                    <div class="row">
-
-                        <!-- Category -->
-                        <div class="col-md-3 col-xs-12 col-sm-6">
-                            <select name="cat" class="category form-control" id="catSelect" required>
-                                <option selected disabled value="dis">Kies een optie</option>
-                                <?php
-                                // GET ALL CATEGORIES from DB
-                                $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'NL' ORDER BY `name` ASC  ";
-                                $cat_result= mysqli_query($mysqli, $cat_query);
-                                if (mysqli_num_rows($cat_result) > 0 ) {
-                                    while ($row = mysqli_fetch_assoc($cat_result)) {
-                                        $id = $row['id'];
-                                        $name = $row['name'];
-                                        // GET ALL RELATED SUB_CATEGORIES from DB
-                                        $sub_cat_query = "SELECT * FROM `SUB_CATEGORY`  WHERE `CATEGORY_id` = '{$id}'  ";
-                                        $sub_cat_result = mysqli_query($mysqli, $sub_cat_query);
-                                        if (mysqli_num_rows($sub_cat_result) > 0) {
-                                            while ($row = mysqli_fetch_assoc($sub_cat_result)) {
-                                                $sub_id = $row['id'];
-                                                $sub_name = $row['name'];
-                                                ?>
-                                                <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
-                                                <?php
-                                            }
-                                        } else {
-                                            ?>
-                                            <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name ; ?></option>
-                                            <?php
-                                        }
-                                    }
-                                }
-                                ?>
-                            </select>
-                        </div>
-                        <!-- Search Field -->
-                        <div class="col-md-3 col-xs-12 col-sm-6">
-                            <input type="text" name="query" id="querySearch" class="form-control" placeholder="What Are You Looking For..." required/>
-                        </div>
-                        <!-- Price Range SLider -->
-                        <div class="col-md-3 col-xs-12 col-sm-6">
-                            <span class="price-slider-value">Afstand (Km) - <input type="text" name="dis" id="dis-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
-                            <input type="text" id="example_id" name="example_name" value="" />
-                        </div>
-                        <!-- Search Button -->
-                        <div class="col-md-3 col-xs-12 col-sm-6">
-                            <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Zoeken</button>
-                        </div>
-                        <!-- end .item -->
-                    </div>
-                    <div class="row">
-                        <div class="hero-form-sub col-md-12">
-                            <strong class="hidden-sm-down">populaire zoekopdrachten</strong>
-                            <ul>
-                                <li><a href="pop_search.php?tag=Iphone 7&dis=all&price=all&order=latest">Iphone 7</a></li>
-                                <li><a href="pop_search.php?tag=Autos&dis=all&price=all&order=latest">Autos</a></li>
-                                <li><a href="pop_search.php?tag=Samsung S8&dis=all&price=all&order=latest">Samsung S8</a></li>
-                                <li><a href="pop_search.php?tag=Vaatwasser&dis=all&price=all&order=latest">Vaatwasser</a></li>
-                                <li><a href="pop_search.php?tag=Tshirt&dis=all&price=all&order=latest">Tshirt</a></li>
-                                <li><a href="pop_search.php?tag=Fietsen&dis=all&price=all&order=latest">Fietsen</a></li>
-                                <li><a href="pop_search.php?tag=Laptop&dis=all&price=all&order=latest">Laptop</a></li>
-                                <li><a href="pop_search.php?tag=Xbox Spelen&dis=all&price=all&order=latest">Xbox Spelen</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </form>
-               <!-- end .search-form -->
-            </div>
-            <!-- end .tab-panel -->
-         </div>
-         <!-- end .container -->
-      </section>
-      <!-- =-=-=-=-=-=-= Advance Search End =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
          <!-- =-=-=-=-=-=-= Categories =-=-=-=-=-=-= -->
@@ -247,67 +132,53 @@ require_once "scripts/time_elapse.php";
                           (adsbygoogle = window.adsbygoogle || []).push({});
                       </script>
                   </div>
+              </div>
+              <!-- Main Container End -->
+          </section>
+          <!-- =-=-=-=-=-=-= Categories =-=-=-=-=-=-= -->
+          <section class="section-padding gray">
+              <!-- Main Container -->
+              <div class="container">
+                  <!-- Row -->
                   <div class="row">
-                      <!-- Category -->
-                      <ul class="category-list-style">
-                          <!-- Category -->
-                          <!-- Category List -->
-                          <?php
-
-                          $query = "SELECT * FROM `CATEGORY` WHERE `lang` = 'NL' LIMIT 8";
-                          $result = mysqli_query($mysqli, $query);
-                          While($row = mysqli_fetch_assoc($result)){
-                              $id = $row['id'];
-                              $name = $row['name'];
-                              $icon = $row['icon_name'];
-
-                              $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$id}' ";
-                              $count_result = mysqli_query($mysqli,$count_query);
-                              while ($row = mysqli_fetch_assoc($count_result)){
-                                  $cat_count = $row['CAT_count'];
-                              }
-                              ?>
-
-                              <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                  <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>&dis=all&price=all&order=latest"><?php echo $name;?><span>(<?php echo $cat_count; ?> Ads)</span>
-                                      <i class="<?php echo $icon;?>"></i>
-                                  </a>
-                              </li>
-
-                          <?php }?>
-                      </ul>
+                      <!-- Heading Area -->
+                      <div class="heading-panel">
+                          <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                              <!-- Main Title -->
+                              <h1>Hoe <span class="heading-color">2Dmarket.com</span>  werkt</h1>
+                              <!-- Short Description -->
+                              <p class="heading-text">Het is heel gemakkelijk en eenvoudig om onze website te gebruiken</p>
+                          </div>
+                      </div>
+                      <!-- Middle Content Box -->
+                      <div class="col-xs-12 col-md-12 col-sm-12 ">
+                          <div class="row">
+                              <div class="how-it-work text-center">
+                                  <div class="how-it-work-icon"> <i class="flaticon-people"></i> </div>
+                                  <h4>Maak een account aan</h4>
+                                  <p>Vul gewoon uw persoonlijke gegevens in, zoals gebruikersnaam, e-mailadres en adres. in <a href="login.php">Inschrijven Tik op Inloggenpagina</a></p>
+                              </div>
+                              <div class="how-it-work text-center ">
+                                  <div class="how-it-work-icon"> <i class="flaticon-people-2"></i> </div>
+                                  <h4>Plaats gratis advertentie</h4>
+                                  <p>U kunt gewoon een advertentie op onze website toevoegen door naar de pagina te gaan <a href="new_advertisement.php"> New advertisment</a> nadat u bent ingelogd. Daarna vul uw produckt gegvens in</p>
+                              </div>
+                              <div class="how-it-work text-center">
+                                  <div class="how-it-work-icon "> <i class="flaticon-heart-1"></i> </div>
+                                  <h4>Deal Done</h4>
+                                  <p>Dat is het, na het plaatsen van een advertentie. reageren op de berichten van andere klanten. Verkoop uw product vervolgens aan hen</p>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Middle Content Box End -->
                   </div>
                   <!-- Row End -->
               </div>
               <!-- Main Container End -->
-          </section>         <!-- =-=-=-=-=-=-= Categories =-=-=-=-=-=-= -->
-         <!-- =-=-=-=-=-=-= Call to Action =-=-=-=-=-=-= -->
-         <div class="parallex bg-img-3  section-padding">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-8 col-sm-12">
-                     <div class="call-action">
-                        <i class="flaticon-shapes"></i>
-                        <h4>Wilt uw advertinte here ook zien ?</h4>
-                        <p>Het kan eenvoudige een simpele manier! </p>
-                     </div>
-                     <!-- end subsection-text -->
-                  </div>
-                  <!-- end col-md-8 -->
-                  <div class="col-md-4 col-sm-12">
-                      <div class="parallex-button"> <a href="<?php if (isset($_SESSION['username'])) {?>new_advertisement.php<?php } else {echo "login.php"; } ?>" class="btn btn-theme">Plaats een advertentie <i class="fa fa-angle-double-right "></i></a> </div>
-                     <!-- end parallex-button -->
-                  </div>
-                  <!-- end col-md-4 -->
-               </div>
-               <!-- end row -->
-            </div>
-            <!-- end container -->
-         </div>
-         <!-- =-=-=-=-=-=-= Call to Action =-=-=-=-=-=-= -->
-          <!-- =-=-=-=-=-=-= Abs By Countries =-=-=-=-=-=-= -->
-          <?php include 'scripts/index_ads_per_cont.php';?>
-         <!-- =-=-=-=-=-=-= Abs By Countries End =-=-=-=-=-=-= -->
+          </section>
+
+
+
          <!-- =-=-=-=-=-=-= Featured Ads =-=-=-=-=-=-= -->
          <section class="custom-padding">
             <!-- Main Container -->
@@ -361,6 +232,10 @@ require_once "scripts/time_elapse.php";
             <!-- Main Container End -->
          </section>
          <!-- =-=-=-=-=-=-= Featured Ads End =-=-=-=-=-=-= -->
+          <?php include "scripts/index_3.php"; ?>
+          <!-- =-=-=-=-=-=-= Abs By Countries =-=-=-=-=-=-= -->
+          <?php include 'scripts/index_ads_per_cont.php';?>
+          <!-- =-=-=-=-=-=-= Abs By Countries End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= Statistics Counter =-=-=-=-=-=-= -->
          <div class="funfacts custom-padding parallex">
             <div class="container">

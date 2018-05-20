@@ -96,7 +96,7 @@ require_once "scripts/time_elapse.php";
                })});
        </script>
    </head>
-   <body class="rtl">
+   <body class="rtl loaded">
       <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
       <div id="loader-wrapper">
           <div id="loader"><img class="img-responsive"  src="images/design.gif">
@@ -116,121 +116,8 @@ require_once "scripts/time_elapse.php";
       </div>
       <!-- Navigation Menu End -->
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
-      <!-- =-=-=-=-=-=-= Listing Map =-=-=-=-=-=-= -->
-      <section class="clearfix">
-<!--         <div class="map">-->
-<!--            <div id="map"></div>-->
-<!--         </div>-->
-
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner" >
-
-                  <div class="itemFill imgLiquid item active" style="width:100%; height:600px;">
-                      <img src="../slider/2.jpg" alt="Chicago">
-                  </div>
-
-                  <div class="itemFill imgLiquid item" style="width:100%; height:600px;">
-                      <img src="../slider/3.jpg" alt="New York">
-                  </div>
-              </div>
-
-              <!-- Left and right controls -->
-              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                  <span class="glyphicon glyphicon-triangle-left" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
-                  <span class="sr-only">Previous</span>
-              </a>
-              <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                  <span class="glyphicon glyphicon-triangle-right" style="position: absolute;top: 50%;z-index: 5;display: inline-block;margin-top: -10px;"></span>
-                  <span class="sr-only">Next</span>
-              </a>
-          </div>
-          <!-- end map -->
-      </section>
-      <!-- =-=-=-=-=-=-= Listing Map End =-=-=-=-=-=-= -->
-      <!-- =-=-=-=-=-=-= Advance Search =-=-=-=-=-=-= -->
-      <section class="search-2">
-         <div class="container">
-            <!-- Title -->
-            <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
-               <div class="search-title">استعرض الإعلانات</div>
-            </div>
-             <div class="row" style="margin-left: 0;margin-right: 0;">
-               <form method="post" class="search-form">
-                  <!-- Category -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
-                      <select name="cat" class="category form-control" id="catSelect" required>
-                        <option label="">اختر من القائمة</option>
-                         <?php
-                         // GET ALL CATEGORIES from DB
-                         $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'AR' ORDER BY `id` ASC  ";
-                         $cat_result= mysqli_query($mysqli, $cat_query);
-                         if (mysqli_num_rows($cat_result) > 0 ) {
-                             while ($row = mysqli_fetch_assoc($cat_result)) {
-                                 $id = $row['id'];
-                                 $name = $row['name'];
-                                 // GET ALL RELATED SUB_CATEGORIES from DB
-                                 $sub_cat_query = "SELECT * FROM `SUB_CATEGORY`  WHERE `CATEGORY_id` = '{$id}'  ";
-                                 $sub_cat_result = mysqli_query($mysqli, $sub_cat_query);
-                                 if (mysqli_num_rows($sub_cat_result) > 0) {
-                                     while ($row = mysqli_fetch_assoc($sub_cat_result)) {
-                                         $sub_id = $row['id'];
-                                         $sub_name = $row['name'];
-                                         ?>
-                                         <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name . " | " . $sub_name; ?></option>
-                                         <?php
-                                     }
-                                 } else {
-                                     ?>
-                                     <option value="<?php echo $id."-".$sub_id; ?>"><?php echo $name ; ?></option>
-                                     <?php
-                                 }
-                             }
-                         }
-                         ?>
-                     </select>
-                  </div>
-                  <!-- Search Field -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
-                      <input type="text" name="query" id="querySearch" class="form-control" placeholder="عن ماذا تريد البحث..." required/>
-                  </div>
-                  <!-- Price Range SLider -->
-                   <div class="col-md-3 col-xs-12 col-sm-6">
-                       <span class="price-slider-value">المسافة (Km) - <input type="text" name="dis" id="dis-min" style="width:110px;color: #fff;background: #363c48;border: 0;" readonly="true" required> </span>
-                       <input type="text" id="example_id" name="example_name" value="" />
-                   </div>
-                  <!-- Search Button -->
-                  <div class="col-md-3 col-xs-12 col-sm-3">
-                      <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">بحث</button>
-                  </div>
-                  <!-- end .item -->
-             </div>
-             <div class="row">
-                   <div class="hero-form-sub">
-                       <strong class="hidden-sm-down">أشهر عمليات البحث</strong>
-                       <ul>
-                           <li><a href="pop_search.php?tag=Iphone 7&dis=all&price=all&order=latest">Iphone 7</a></li>
-                           <li><a href="pop_search.php?tag=سيارات&dis=all&price=all&order=latest">سيارات</a></li>
-                           <li><a href="pop_search.php?tag=سامسونج S8&dis=all&price=all&order=latest">سامسونج S8</a></li>
-                           <li><a href="pop_search.php?tag=غسالة&dis=all&price=all&order=latest">غسالة</a></li>
-                           <li><a href="pop_search.php?tag=شاشة&dis=all&price=all&order=latest">شاشة</a></li>
-                           <li><a href="pop_search.php?tag=دراجات&dis=all&price=all&order=latest">دراجات</a></li>
-                           <li><a href="pop_search.php?tag=لابتوب&dis=all&price=all&order=latest">لابتوب</a></li>
-                           <li><a href="pop_search.php?tag=ألعاب إكسبوكس&dis=all&price=all&order=latest">ألعاب إكسبوكس</a></li>
-                       </ul>
-                   </div>
-               </form>
-               <!-- end .search-form -->
-            </div>
-            <!-- end .tab-panel -->
-         </div>
-         <!-- end .container -->
-      </section>
-      <!-- =-=-=-=-=-=-= Advance Search End =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
-         <!-- =-=-=-=-=-=-= الفئات =-=-=-=-=-=-= -->
          <section class="custom-padding gray categories">
               <!-- Main Container -->
               <div class="container">
@@ -245,69 +132,52 @@ require_once "scripts/time_elapse.php";
                           (adsbygoogle = window.adsbygoogle || []).push({});
                       </script>
                   </div>
+              </div>
+              <!-- Main Container End -->
+          </section>
+         <!-- =-=-=-=-=-=-= الفئات =-=-=-=-=-=-= -->
+
+          <section class="section-padding gray">
+              <!-- Main Container -->
+              <div class="container" style="direction: rtl">
                   <!-- Row -->
                   <div class="row">
-                      <!-- Category -->
-                      <ul class="category-list-style">
-                          <!-- Category -->
-                          <!-- Category List -->
-                          <?php
-
-                          $query = "SELECT * FROM `CATEGORY` WHERE `lang` = 'AR' LIMIT 8";
-                          $result = mysqli_query($mysqli, $query);
-                          While($row = mysqli_fetch_assoc($result)){
-                              $id = $row['id'];
-                              $name = $row['name'];
-                              $icon = $row['icon_name'];
-
-                              $count_query = "SELECT COUNT(*) AS 'CAT_count' FROM `ADVERTISEMENT` WHERE CATEGORY_id = '{$id}' ";
-                              $count_result = mysqli_query($mysqli,$count_query);
-                              while ($row = mysqli_fetch_assoc($count_result)){
-                                  $cat_count = $row['CAT_count'];
-                              }
-                              ?>
-
-                              <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                  <a href="ad_per_cat.php?cat_id=<?php echo $id; ?>&dis=all&price=all&order=latest"><?php echo $name;?><span>(<?php echo $cat_count; ?> إعلانات)</span>
-                                      <i class="<?php echo $icon;?>"></i>
-                                  </a>
-                              </li>
-
-                          <?php }?>
-                      </ul>
+                      <!-- Heading Area -->
+                      <div class="heading-panel">
+                          <div class="col-xs-12 col-md-12 col-sm-12 text-center">
+                              <!-- Main Title -->
+                              <h1> كيفية العمل على موقعنـا <span class="heading-color"> 2Dmarket </span></h1>
+                              <!-- Short Description -->
+                              <p class="heading-text">استخدام موقعنا سهل جداً وسلس!</p>
+                          </div>
+                      </div>
+                      <!-- Middle Content Box -->
+                      <div class="col-xs-12 col-md-12 col-sm-12 ">
+                          <div class="row">
+                              <div class="how-it-work text-center">
+                                  <div class="how-it-work-icon"> <i class="flaticon-people"></i> </div>
+                                  <h4>أنشئ حسابك</h4>
+                                  <p> يمكنك انشاء حساب على موقعنا من خلال الذهاب الى صفحة<a href="login.php"> تسجيل الدخول والضغط على تبوبية حساب جديد </a>  </p>
+                              </div>
+                              <div class="how-it-work text-center ">
+                                  <div class="how-it-work-icon"> <i class="flaticon-people-2"></i> </div>
+                                  <h4>انشر إعلانك مجانا</h4>
+                                  <p>بعد انتهائك من تسجيل الدخول يمكنك البدء بعملية بيع المنتجات من خلال الضغط على <a href="new_advertisement.php"> اضافة اعلان جديد</a> ومن ثم يمكنك ملئ الحقول ومن ثم نشر الاعلان. </p>
+                              </div>
+                              <div class="how-it-work text-center">
+                                  <div class="how-it-work-icon "> <i class="flaticon-heart-1"></i> </div>
+                                  <h4>تم البيـع</h4>
+                                  <p>بعد انتهائك من نشر اعلاناتك يمكنك التواصل مع المستخدمية الاخرين من خلال استخدام خاصية الراسائل ومن ثم الاتفاق على عملية البيع.</p>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- Middle Content Box End -->
                   </div>
                   <!-- Row End -->
               </div>
               <!-- Main Container End -->
           </section>
-         <!-- =-=-=-=-=-=-= الفئات =-=-=-=-=-=-= -->
-         <!-- =-=-=-=-=-=-= Call to Action =-=-=-=-=-=-= -->
-         <div class="parallex bg-img-3  section-padding">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-8 col-sm-12">
-                     <div class="call-action">
-                        <i class="flaticon-shapes"></i>
-                        <h4>قـم الان بالانضـمام الى موقعنا واستفد من المزايا الكثيرة </h4>
-                        <p>كن متأكداً دوماً بأن اعلانك سيصل الى اكبر عدد ممكن من المتصفحين</p>
-                     </div>
-                     <!-- end subsection-text -->
-                  </div>
-                  <!-- end col-md-8 -->
-                  <div class="col-md-4 col-sm-12">
-                     <div class="parallex-button"> <a href="login.php" class="btn btn-theme">انشر إعلانك مجانا <i class="fa fa-angle-double-left "></i></a> </div>
-                     <!-- end parallex-button -->
-                  </div>
-                  <!-- end col-md-4 -->
-               </div>
-               <!-- end row -->
-            </div>
-            <!-- end container -->
-         </div>
-         <!-- =-=-=-=-=-=-= Call to Action =-=-=-=-=-=-= -->
-          <!-- =-=-=-=-=-=-= Abs By Countries =-=-=-=-=-=-= -->
-          <?php include 'scripts/index_ads_per_cont.php';?>
-          <!-- =-=-=-=-=-=-= Abs By Countries End =-=-=-=-=-=-= -->
+
          <!-- =-=-=-=-=-=-= إعلانات مميزة =-=-=-=-=-=-= -->
          <section class="custom-padding">
             <!-- Main Container -->
@@ -360,6 +230,10 @@ require_once "scripts/time_elapse.php";
             <!-- Main Container End -->
          </section>
          <!-- =-=-=-=-=-=-= إعلانات مميزة End =-=-=-=-=-=-= -->
+          <?php include "scripts/index_3.php";?>
+          <!-- =-=-=-=-=-=-= Abs By Countries =-=-=-=-=-=-= -->
+          <?php include 'scripts/index_ads_per_cont.php';?>
+          <!-- =-=-=-=-=-=-= Abs By Countries End =-=-=-=-=-=-= -->
          <!-- =-=-=-=-=-=-= Statistics Counter =-=-=-=-=-=-= -->
          <div class="funfacts custom-padding parallex">
             <div class="container">

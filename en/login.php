@@ -1,7 +1,72 @@
 ﻿<?php
 session_start();
 require_once "../scripts/db_connection.php";
+
+//Include GP config file && User class
+include_once 'google_login_api/gpConfig.php';
+include_once 'google_login_api/User.php';
+
+if(isset($_GET['code'])){
+$gClient->authenticate($_GET['code']);
+$_SESSION['token'] = $gClient->getAccessToken();
+header('Location: ' . filter_var($redirectURL, FILTER_SANITIZE_URL));
+}
+
+if (isset($_SESSION['token'])) {
+$gClient->setAccessToken($_SESSION['token']);
+}
+
+if ($gClient->getAccessToken()) {
+//Get user profile data from google
+$gpUserProfile = $google_oauthV2->userinfo->get();
+
+//Initialize User class
+$user = new User();
+
+//Insert or update user data to the database
+$gpUserData = array(
+'oauth_provider'=> 'google',
+'oauth_uid'         => $gpUserProfile['id'],
+'first_name'        => $gpUserProfile['given_name'],
+'last_name'         => $gpUserProfile['family_name'],
+'email'             => $gpUserProfile['email'],
+'locale'            => $gpUserProfile['locale'],
+'profile_picture'   => $gpUserProfile['picture'],
+'link'              => $gpUserProfile['link']
+);
+$userData = $user->checkUser($gpUserData);
+
+$_SESSION['username'] = $gpUserProfile['given_name'] ." ". $gpUserProfile['family_name'];
+
+$_SESSION['outh'] = $gpUserProfile['id'];
+
+
+
+//Storing user data into session
+$_SESSION['userData'] = $userData;
+
+//Render facebook profile data
+if(!empty($userData)){
+//        $output = '<h1>Google+ Profile Details </h1>';
+//        $output .= '<img src="'.$userData['profile_picture'].'" width="300" height="220">';
+//        $output .= '<br/>Google ID : ' . $userData['oauth_uid'];
+//        $output .= '<br/>Name : ' . $userData['first_name'].' '.$userData['last_name'];
+//        $output .= '<br/>Email : ' . $userData['email'];
+//        $output .= '<br/>Locale : ' . $userData['locale'];
+//        $output .= '<br/>Logged in with : Google';
+//        $output .= '<br/><a href="'.$userData['link'].'" target="_blank">Click to Visit Google+ Page</a>';
+//        $output .= '<br/>Logout from <a href="logout.php">Google</a>';
+header("Location : ../google_login_api/google_login_api_HRWNdR/index.php");
+}else{
+        $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
+//header("Location : login.php");
+}
+} else {
+$authUrl = $gClient->createAuthUrl();
+$output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/btn_google_signin_dark_pressed_web.png" alt=""/></a>';
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,6 +156,7 @@ require_once "../scripts/db_connection.php";
         .greenfont{
             color: green;
         }
+
     </style>
 
 </head>
@@ -125,19 +191,6 @@ require_once "../scripts/db_connection.php";
         </div>
     </div>
 </div>
-<!-- Small Breadcrumb -->
-<!--      <div class="small-breadcrumb">-->
-<!--         <div class="container">-->
-<!--            <div class=" breadcrumb-link">-->
-<!--               <ul>-->
-<!--                  <li><a href="index.html">Home Page</a></li>-->
-<!--                  <li><a href="#">Pages</a></li>-->
-<!--                  <li><a class="active" href="#">Sign In</a></li>-->
-<!--               </ul>-->
-<!--            </div>-->
-<!--         </div>-->
-<!--      </div>-->
-<!-- Small Breadcrumb -->
 <!-- =-=-=-=-=-=-= Transparent Breadcrumb End =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
@@ -147,32 +200,6 @@ require_once "../scripts/db_connection.php";
         <div class="container">
             <!-- Row -->
             <div class="row">
-                <!-- Middle Content Area -->
-<!--                <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">-->
-<!--                    <!--  Form -->
-<!--                    <div class="form-grid">-->
-<!--                        <form action="#" name="login" id="login_form" method="post" data-toggle="validator">-->
-<!--                            <div class="form-group">-->
-<!--                                <label>Email</label>-->
-<!--                                <input id="email_field" placeholder="Your Email" class="form-control" type="email" name="email">-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label>Password</label>-->
-<!--                                <input id="password_field" placeholder="Your Password" class="form-control" type="password" name="password">-->
-<!---->
-<!--                                <p><b><a href="resotre_password.php" target="_blank">Have you forgot your password!</a></b></p>-->
-<!--                                <p><b><a href="register.php" target="_blank">Are new here? Register now ! </a></b></p>-->
-<!---->
-<!--                            </div>-->
-<!---->
-<!--                            <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">Log In</button>-->
-<!---->
-<!--                        </form>-->
-<!--                    </div>-->
-<!---->
-<!--                    <!-- Form -->
-<!--                </div>-->
-                <!-- Middle Content Area  End -->
                 <div class="row">
                     <div class="col-sm-offset-0 col-sm-12 col-md-offset-3 col-md-6">
                         <div class="heading-title">
@@ -203,7 +230,9 @@ require_once "../scripts/db_connection.php";
                                             </div>
 
                                             <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">Log In</button>
-
+                                            <div class="form-group">
+<!--                                            --><?php //echo $output;?>
+                                            </div>
                                         </form>
                                     </div>
 
