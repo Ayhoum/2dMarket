@@ -21,8 +21,8 @@ if(isset($_SESSION['id'])){
  * You Can set your own timezone here.
  * Example : Asia/Kolkata
  */
-date_default_timezone_set('America/New_York');
-$date = new DateTime("now", new DateTimeZone('America/New_York') );
+date_default_timezone_set('Europe/Amsterdam');
+$date = new DateTime("now", new DateTimeZone('Europe/Amsterdam') );
 $timenow = date('Y-m-d H:i:s');
 
 /**

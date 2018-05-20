@@ -10,8 +10,8 @@ $sesUsername = $_SESSION['username'];
 $sesId = $_SESSION['id'];
 
 //You Can set your own timezone here.
-date_default_timezone_set('America/New_York');
-$date = new DateTime("now", new DateTimeZone('America/New_York') );
+date_default_timezone_set('Europe/Amsterdam');
+$date = new DateTime("now", new DateTimeZone('Europe/Amsterdam') );
 $timenow = date('Y-m-d H:i:s');
 
 // Make sure file is not cached (as it happens for example on iOS devices)

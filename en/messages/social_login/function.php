@@ -3,8 +3,8 @@
  * You Can set your own timezone here.
  * Example : Asia/Kolkata
  */
-date_default_timezone_set('Asia/Kolkata');
-$date = new DateTime("now", new DateTimeZone('Asia/Kolkata') );
+date_default_timezone_set('Europe/Amsterdam');
+$date = new DateTime("now", new DateTimeZone('Europe/Amsterdam') );
 $timenow = date('Y-m-d H:i:s');
 
 function redirect_parent($url,$close=false)
