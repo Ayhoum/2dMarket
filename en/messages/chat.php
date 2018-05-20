@@ -140,7 +140,7 @@ function searchUser($con,$config){
         $sesuserpic = $row1[$TFphoto];
 
 //        if($sesuserpic == "")
-            $sesuserpic = "avatar_default.png";
+        $sesuserpic = "avatar_default.png";
 
         $sql_res=mysqli_query($con,"SELECT * FROM `".$TNMuser."` where ($TFusername like '%$q%' or $TFemail like '%$q%') and ($TFuserid != '".$GLOBALS['sesId']."')  order by $TFuserid LIMIT 5");
         while($row=mysqli_fetch_array($sql_res))
@@ -150,7 +150,7 @@ function searchUser($con,$config){
             $email = $row[$TFemail];
             $picname = $row[$TFphoto];
 //            if($picname == "")
-                $picname = "avatar_default2.png";
+            $picname = "avatar_default2.png";
 //            else{
 //                $picname = "small".$picname;
 //            }
@@ -293,7 +293,7 @@ function userProfile($con,$config) {
     $picname    = $row1[$GLOBALS['MySQLi_photo_field']];
 
 //    if($picname == "")
-        $picname = "avatar_default2.png";
+    $picname = "avatar_default2.png";
 
     ?>
     <div class="">
@@ -362,7 +362,7 @@ function chatfrindList($con,$config) {
         $fullname = $row[$TFname];
 //        $picname = $row[$TFPicname];
 //        if($picname == "")
-            $picname = "avatar_default2.png";
+        $picname = "avatar_default2.png";
 //        else{
 //            $picname = "small".$picname;
 //        }
@@ -470,10 +470,10 @@ function get_all_msg($con,$config) {
 
 
 //        if($picname == "small")
-            $picname = "avatar_default.png";
+        $picname = "avatar_default.png";
 
 //        if($picname2 == "small")
-            $picname2 = "avatar_default2.png";
+        $picname2 = "avatar_default2.png";
 
         $status = "0";
         if($status == "0")
@@ -671,10 +671,10 @@ function chatHeartbeat($con, $config)
         }
 
 //        if($picname == "small")
-            $picname = "avatar_default.png";
+        $picname = "avatar_default.png";
 
 //        if($picname2 == "small")
-            $picname2 = "avatar_default2.png";
+        $picname2 = "avatar_default2.png";
 
         $status = "0";
         if($status == "0")
@@ -902,9 +902,9 @@ function sendChat($con, $config)
     }
 
 //    if ($picname == "small")
-        $picname = "avatar_default.png";
+    $picname = "avatar_default.png";
 //    if ($picname2 == "small")
-        $picname2 = "avatar_default2.png";
+    $picname2 = "avatar_default2.png";
 
     $status = "0";
     if ($status == "0")
