@@ -360,7 +360,7 @@ function chatfrindList($con,$config) {
         $id = $row[$TFid];
         $username = $row[$TFusername];
         $fullname = $row[$TFname];
-        $picname = $row[$TFPicname];
+//        $picname = $row[$TFPicname];
 //        if($picname == "")
             $picname = "avatar_default2.png";
 //        else{
@@ -372,15 +372,36 @@ function chatfrindList($con,$config) {
 
         $onofst =  getlastActiveTime($username);
 
+
+
+        $queryU = "SELECT AD_id FROM `".$config['db']['pre']."messages` WHERE (to_uname = '".$GLOBALS['sesUsername']."' AND from_uname = '{$username}') OR (to_uname = '".$username."' AND from_uname = '{$GLOBALS['sesUsername']}')";
+        $resultU = mysqli_query($con,$queryU);
+        if (mysqli_num_rows($resultU) > 0) {
+            while ($row = mysqli_fetch_assoc($resultU)) {
+                $idAd = $row['AD_id'];
+                $queryT = "SELECT * FROM `ADVERTISEMENT` WHERE id='{$idAd}'";
+                $resultsT = mysqli_query($con, $queryT);
+                if (mysqli_num_rows($resultsT) == 1) {
+                    while ($row = mysqli_fetch_assoc($resultsT)) {
+                        $title = $row['title'];
+
+                    }
+                }
+
+            }
+        }
+
         ?>
         <li class="person chatboxhead" id="chatbox1_<?php echo $username ?>" data-chat="person_<?php echo $id ?>" href="javascript:void(0)" onclick="javascript:chatWith('<?php echo $username ?>','<?php echo $id ?>','<?php echo $sesuserpic; ?>','<?php echo $onofst ?>')">
             <a href="javascript:void(0)">
                 <span class="userimage profile-picture min-profile-picture"><img src="<?php echo $config['site_url']; ?>storage/user_image/<?php echo $picname; ?>" alt="<?php echo $username ?>" class="avatar-image is-loaded bg-theme" width="100%"></span>
                 <span>
+                    <span class="bname personName">(<i><?php echo $title ?></i>)  </span><br>
                     <span class="bname personName"><?php echo $fullname; ?></span>
                     <span class="personStatus"><span class="time <?php echo $onofst ?>"><i class="fa fa-circle" aria-hidden="true"></i></span></span>
-                    <span class="count"><?php if($countrecd >0){ ?> <span class="icon-meta unread-count"><?php echo $countrecd; ?></span> <?php }?></span><br>
-                    <small class="preview"><span class="<?php echo $onofst ?>"><?php echo $onofst ?></span></small>
+                    <span style="font-size: 10px;" class="<?php echo $onofst ?>"><i><?php echo $onofst ?></i></span>
+                    <span class="count"><?php if($countrecd >0){ ?> <span class="icon-meta unread-count"><?php echo $countrecd; ?></span> <?php }?></span>
+
                 </span>
             </a>
             <span class="hidecontent">
@@ -503,7 +524,7 @@ function get_all_msg($con,$config) {
                 }
             }
         }
-
+        $Ad_id = $chat['AD_id'];
         $timeago = timeAgo($chat['message_date']);
         $chatContent = stripslashes($chat['message_content']);
         $items .= <<<EOD
@@ -521,7 +542,8 @@ function get_all_msg($con,$config) {
 			"mtype": "{$chat['message_type']}",
 			"m": "{$chatContent}",
 			"time": "{$timeago}",
-			"seen": "{$chat['seen']}"
+			"seen": "{$chat['seen']}",
+			"idAd": "{$Ad_id}"
 	   },
 EOD;
 
@@ -551,7 +573,8 @@ EOD;
 "st": "{$status}",
 "page": "{$_SESSION['chatpage']}",
 "pages": "{$pages}",
-"m": "{$message}"
+"m": "{$message}",
+"idAd": "{$Ad_id}"
 },
 EOD;
 
@@ -571,7 +594,8 @@ EOD;
 "st": "{$status}",
 "page": "{$_SESSION['chatpage']}",
 "pages": "{$pages}",
-"m": "{$message}"
+"m": "{$message}",
+"idAd": "{$Ad_id}"
 },
 EOD;
                     $_SESSION['tsChatBoxes'][$chatbox] = 1;

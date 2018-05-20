@@ -209,9 +209,18 @@ function get_all_msg(url){
                     pages = item.pages;
                     msgtype = item.mtype;
                     message_content = item.m;
+                    Id = item.idAd;
+                    $.post('chatjs/handle_adIn.php?id=' + Id, function (response) {
 
 
-
+                        if (response != "error") {
+                            var fields = response.split('-');
+                            $("#titleC").html('<b>Title:</b> '+fields[0]);
+                            $("#locationC").html('<b>Location:</b> '+fields[2]);
+                            $("#conditionC").html('<b>Condition:</b> '+fields[1]);
+                            $("#idC").html('<b>Ad. Id:</b> '+Id);
+                        }
+                    });
                     if (item.page != "" && i == 0) {
                         $("#chatbox_"+chatboxtitle).prepend('<div class="col-xs-12 p-b-10"><input type="hidden" class="pagenum" value="'+item.page+'" /><input type="hidden" class="total-page" value="'+pages+'" /></div>');
                     }
@@ -300,7 +309,6 @@ function get_all_msg(url){
                 if (page == 1) {
                     scrollDown();
                 }
-
             });
         },
         error: function(xhr, textStatus, errorThrown){

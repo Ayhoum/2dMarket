@@ -187,6 +187,7 @@ if($sesuserpic == "")
                                     <div class="menu-item right-side-toggle"><button class="icon ti-settings font-20" title="Attach"></button><span></span></div>
                                 </div>
                             </div>
+
                         </header>
 <!--                        <div class="form-material">-->
 <!--                            <input class="form-control p-lr-20 live-search-box search_bg" id="searchbox" type="text" placeholder="--><?php //echo $lang['SEARCHBYUNOREM']; ?><!--">-->
@@ -254,9 +255,20 @@ if($sesuserpic == "")
                             <div class="menu-item right-side-toggle hidden-xs hidden"><button class="icon ti-settings font-20" title="Attach"></button><span></span></div>
                         </div>
                     </div>
+
                 </header>
 
                 <div class="wchat-body wchat-chat-tile-container" style="background-size: cover;">
+<!--                    <div id="idInfo" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="background: white;z-index: 9999;padding-top: 5px;padding-bottom: 5px;box-shadow: 0px -3px 10px #353c48;font-family: 'Poppins', sans-serif;">-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div id="titleC"></div>-->
+<!--                            <div id="locationC"></div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div id="conditionC"></div>-->
+<!--                            <div id="idC"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                     <div>
                         <span>
                             <div class="scroll-down" style="transform: scaleX(1) scaleY(1); opacity: 1; visibility:hidden;">
