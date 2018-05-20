@@ -224,16 +224,17 @@
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
                         <select class="category form-control">
                             <option label="Kies een afstand">Kies een afstand</option>
-                            <option>10</option>
-                            <option>20</option>
-                            <option>30</option>
-                            <option>40</option>
-                            <option>50</option>
-                            <option>60</option>
-                            <option>70</option>
-                            <option>80</option>
-                            <option>90</option>
-                            <option>100</option>
+                            <option value="10">10 KM</option>
+                            <option value="20">20 KM</option>
+                            <option value="30">30 KM</option>
+                            <option value="40">40 KM</option>
+                            <option value="50">50 KM</option>
+                            <option value="60">60 KM</option>
+                            <option value="70">70 KM</option>
+                            <option value="80">80 KM</option>
+                            <option value="90">90 KM</option>
+                            <option value="100">100 KM</option>
+                            <option value="all">Onbeperkt</option>
 
                         </select>
                     </div>

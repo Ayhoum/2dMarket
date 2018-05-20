@@ -223,17 +223,17 @@
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
                         <select class="category form-control">
                             <option label="اختر مسافة البحث">اختر مسافة البحث</option>
-                            <option>10 كـم</option>
-                            <option>20 كـم</option>
-                            <option>30 كـم</option>
-                            <option>40 كـم</option>
-                            <option>50 كـم</option>
-                            <option>60 كـم</option>
-                            <option>70 كـم</option>
-                            <option>80 كـم</option>
-                            <option>90 كـم</option>
-                            <option>100 كـم</option>
-                            <option>غير محدد</option>
+                            <option value="10">10 كـم</option>
+                            <option value="20">20 كـم</option>
+                            <option value="30">30 كـم</option>
+                            <option value="40">40 كـم</option>
+                            <option value="50">50 كـم</option>
+                            <option value="60">60 كـم</option>
+                            <option value="70">70 كـم</option>
+                            <option value="80">80 كـم</option>
+                            <option value="90">90 كـم</option>
+                            <option value="100">100 كـم</option>
+                            <option value="all">غير محدد</option>
                         </select>
                     </div>
                     <!-- Search Button -->
