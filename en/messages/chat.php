@@ -195,11 +195,11 @@ function savechat($con,$config){
         $mesg = $chat['message_content'];
         $time = $chat['message_date'];
         $linebreak = "\r\n";
-        $Filecontent = $Filecontent.$time.' - '.$from .' : '. $mesg ." \\r\\n";
+//        $Filecontent = $Filecontent.$linebreak.$time." - ".$from ." : ". $mesg;
 
-        $Mailcontent = $Mailcontent."<tr><td>".$time."</td><td>".$from."</td><td>".$mesg."</td></tr>";
+        $Filecontent = $Filecontent."<p><span style='margin-right: 10px;margin-left: 10px;'>".$time.":       </span><span style='margin-right: 10px;margin-left: 10px;'><b>".$from.":</b>  </span><span style='margin-right: 10px;margin-left: 10px;'>".$mesg."</span></p>";
+
     }
-
     $uname = $_GET['uname'];
 
     if($_GET['mail'] == "true"){

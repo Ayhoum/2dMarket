@@ -3,12 +3,13 @@ require_once('config.php');
 if(isset($_GET['uname'])){
     $uname = $_GET['uname'];
 
-    $fname = "Chat with ".$uname.".txt";
-    $filename = "Chat with ".$uname.".txt";
+    $fname = "Chat with ".$uname.".html";
+    $filename = "Chat with ".$uname.".html";
     $data = $_GET['content'];
     $handle = fopen($filename, 'w') or die('Cannot open file:  '.$filename);
-    $data = str_replace('\r\n', PHP_EOL, $data);
-    fwrite($handle, $data);
+    $data = str_replace("\n", PHP_EOL, $data);
+    $data = str_replace('\/', '/', $data);
+    file_put_contents($filename, $data, FILE_APPEND | LOCK_EX);
     fclose($handle);
 
     header("Cache-Control: public");
