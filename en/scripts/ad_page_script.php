@@ -675,7 +675,7 @@ if (isset($_GET['ad_id'])) {
                     </tbody>
                 </table>
             </div>
-
+        <?php if (isset($_SESSION['username'])) { ?>
             <div class="well">
                 <h3>Submit a bid</h3>
                 <form action=" " method="post">
@@ -690,7 +690,17 @@ if (isset($_GET['ad_id'])) {
                 </form>
             </div>
         </div>
-    <?php } ?>
+            <?php
+        } else { ?>
+            <div role="alert" class="alert alert-warning alert-dismissible">
+                <button aria-label="Close" data-dismiss="alert" class="close" type="button"></button>
+                to be able to do a bod on this product <strong><a href="login.php">please login </a></strong>
+            </div>
+            <?php
+        }
+    }
+
+    ?>
     <!-- Single Ad End -->
 
     <!-- =-=-=-=-=-=-= Latest Ads =-=-=-=-=-=-= -->
