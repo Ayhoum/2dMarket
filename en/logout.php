@@ -15,6 +15,9 @@ $update_status_query = "UPDATE `USER`  SET `online_status` = 'OFFLINE' WHERE `id
 $update_status_result = mysqli_query($mysqli,$update_status_query);
 if ($update_status_query){
 
+    unset($_SESSION['token']);
+    unset($_SESSION['userData']);
+
     session_unset();
     session_destroy();
     header("Location: index.php");

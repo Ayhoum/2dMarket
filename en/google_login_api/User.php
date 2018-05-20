@@ -1,6 +1,6 @@
 <?php
 class User {
-	private $dbHost     = "localhost";
+    private $dbHost     = "localhost";
     private $dbUsername = "2dmarketweb";
     private $dbPassword = "uJMr5CGK&M6l";
     private $dbName     = "2D_Market";

@@ -1,72 +1,53 @@
 ﻿<?php
 session_start();
 require_once "../scripts/db_connection.php";
-
-//Include GP config file && User class
 include_once 'google_login_api/gpConfig.php';
 include_once 'google_login_api/User.php';
 
+
 if(isset($_GET['code'])){
-$gClient->authenticate($_GET['code']);
-$_SESSION['token'] = $gClient->getAccessToken();
-header('Location: ' . filter_var($redirectURL, FILTER_SANITIZE_URL));
+    $gClient->authenticate($_GET['code']);
+    $_SESSION['token'] = $gClient->getAccessToken();
+    header('Location: ' . filter_var($redirectURL, FILTER_SANITIZE_URL));
 }
 
 if (isset($_SESSION['token'])) {
-$gClient->setAccessToken($_SESSION['token']);
+    $gClient->setAccessToken($_SESSION['token']);
 }
 
 if ($gClient->getAccessToken()) {
-//Get user profile data from google
-$gpUserProfile = $google_oauthV2->userinfo->get();
+    //Get user profile data from google
+    $gpUserProfile = $google_oauthV2->userinfo->get();
 
-//Initialize User class
-$user = new User();
+    //Initialize User class
+    $user = new User();
 
-//Insert or update user data to the database
-$gpUserData = array(
-'oauth_provider'=> 'google',
-'oauth_uid'         => $gpUserProfile['id'],
-'first_name'        => $gpUserProfile['given_name'],
-'last_name'         => $gpUserProfile['family_name'],
-'email'             => $gpUserProfile['email'],
-'locale'            => $gpUserProfile['locale'],
-'profile_picture'   => $gpUserProfile['picture'],
-'link'              => $gpUserProfile['link']
-);
-$userData = $user->checkUser($gpUserData);
+    //Insert or update user data to the database
+    $gpUserData = array(
+        'oauth_provider'=> 'google',
+        'oauth_uid'     => $gpUserProfile['id'],
+        'first_name'    => $gpUserProfile['given_name'],
+        'last_name'     => $gpUserProfile['family_name'],
+        'email'         => $gpUserProfile['email'],
+        'locale'        => $gpUserProfile['locale'],
+        'profile_picture'       => $gpUserProfile['picture'],
+        'link'          => $gpUserProfile['link']
+    );
+    $userData = $user->checkUser($gpUserData);
 
-$_SESSION['username'] = $gpUserProfile['given_name'] ." ". $gpUserProfile['family_name'];
+    //Storing user data into session
 
-$_SESSION['outh'] = $gpUserProfile['id'];
+    $_SESSION['username'] = $gpUserProfile['given_name'] . $gpUserProfile['family_name'];
+    $_SESSION['outh'] = $gpUserProfile['id'];
 
+    $_SESSION['userData'] = $userData;
 
-
-//Storing user data into session
-$_SESSION['userData'] = $userData;
-
-//Render facebook profile data
-if(!empty($userData)){
-//        $output = '<h1>Google+ Profile Details </h1>';
-//        $output .= '<img src="'.$userData['profile_picture'].'" width="300" height="220">';
-//        $output .= '<br/>Google ID : ' . $userData['oauth_uid'];
-//        $output .= '<br/>Name : ' . $userData['first_name'].' '.$userData['last_name'];
-//        $output .= '<br/>Email : ' . $userData['email'];
-//        $output .= '<br/>Locale : ' . $userData['locale'];
-//        $output .= '<br/>Logged in with : Google';
-//        $output .= '<br/><a href="'.$userData['link'].'" target="_blank">Click to Visit Google+ Page</a>';
-//        $output .= '<br/>Logout from <a href="logout.php">Google</a>';
-header("Location : ../google_login_api/google_login_api_HRWNdR/index.php");
-}else{
-        $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
-//header("Location : login.php");
 }
-} else {
-$authUrl = $gClient->createAuthUrl();
-$output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/btn_google_signin_dark_pressed_web.png" alt=""/></a>';
+else {
+    $authUrl = $gClient->createAuthUrl();
+    $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/glogin.png" alt=""/></a>';
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -231,11 +212,10 @@ $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="ima
 
                                             <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">Log In</button>
                                             <div class="form-group">
-<!--                                            --><?php //echo $output;?>
                                             </div>
                                         </form>
+                                        <?php echo $output; ?>
                                     </div>
-
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="register">
 
