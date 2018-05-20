@@ -168,10 +168,10 @@ if($sesuserpic == "")
                                     <div class="menu-item active dropdown pull-right">
                                         <button class="icon dropdown-toggle" data-toggle="dropdown" href="#"><span class="font-19"><i class="icon icon-options-vertical"></i></span></button>
                                         <ul class="dropdown-menu dropdown-user animated flipInY">
-                                            <li><a href="profile.php"><i class="ti-user"></i> <?php echo $lang['MYPROFILE']; ?></a></li>
-                                            <li><a href="edit_profile.php"><i class="ti-wallet"></i> <?php echo $lang['EDITPROFILE']; ?></a></li>
-                                            <li role="separator" class="divider"></li>
-                                            <li><a href="logout.php"><i class="fa fa-power-off"></i> <?php echo $lang['LOGOUT']; ?></a></li>
+                                            <li><a href="../profile.php"><i class="ti-user"></i> <?php echo $lang['MYPROFILE']; ?></a></li>
+<!--                                            <li><a href="edit_profile.php"><i class="ti-wallet"></i> --><?php //echo $lang['EDITPROFILE']; ?><!--</a></li>-->
+<!--                                            <li role="separator" class="divider"></li>-->
+<!--                                            <li><a href="logout.php"><i class="fa fa-power-off"></i> --><?php //echo $lang['LOGOUT']; ?><!--</a></li>-->
                                         </ul>
                                         <!-- /.dropdown-user -->
                                     </div>
@@ -238,7 +238,6 @@ if($sesuserpic == "")
                                 <button class="icon dropdown-toggle" data-toggle="dropdown" href="#"><span class="font-19"><i class="icon icon-options-vertical"></i></span></button>
                                 <ul class="dropdown-menu dropdown-user animated flipInY">
                                     <li><a href="javascript:void(0)" onclick="javascript:ShowProfile();"><i class="ti-user"></i> User Profile</a></li>
-                                    <li><a href="javascript:void(0)" onclick="javascript:savechat('true')"><i class="ti-wallet"></i> Email This Chat</a></li>
                                     <li><a href="javascript:void(0)" onclick="javascript:savechat()"><i class="icon-doc"></i> Save Chat</a></li>
                                 </ul>
                                 <!-- /.dropdown-user -->
