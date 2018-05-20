@@ -5,6 +5,7 @@
  * Date: 4-3-2018
  * Time: 21:37
  */
+include "../phpmailer/class.phpmailer.php";
 ?>
 <?php
 if (isset($_GET['ad_id'])) {
