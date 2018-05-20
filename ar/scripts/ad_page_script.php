@@ -103,63 +103,26 @@ if (isset($_GET['ad_id'])) {
             </div>
         </div>
         <!-- Listing Slider  -->
-        <div class="flexslider single-page-slider">
-            <div class="flex-viewport">
-                <ul class="slides slide-main">
-                    <?php
-                    $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
-                    $img_result = mysqli_query($mysqli, $img_query);
-                    if (mysqli_num_rows($img_result) > 0) {
-                        while ($row = mysqli_fetch_assoc($img_result)) {
-                            $picture_name = $row['picture_name'];
-                            $picture_url = $row['picture_url'];
-
-
-                            ?>
-                            <li class="flex-active-slide"><img alt="" style="width: 750px; height: 420px object-fit: cover;" src="<?php echo $picture_url . $picture_name; ?>" title="<?php echo $picture_name ?>"></li>
-
-                            <?php
-                        }
+        <div class="owl-carousel owl-theme single-details">
+            <!-- Slide -->
+            <?php
+            $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
+            $img_result = mysqli_query($mysqli, $img_query);
+            if (mysqli_num_rows($img_result) > 0) {
+                while ($row = mysqli_fetch_assoc($img_result)) {
+                    $picture_name = $row['picture_name'];
+                    $picture_url = $row['picture_url'];
+                    if (empty($picture_name)){
+                        $picture_name = "white.jpg";
+                        $picture_url  = "en_ad_photo/";
                     }
-                    elseif (empty($picture_name)){
-                        ?>
-                        <li class="flex-active-slide"><img alt="" style="width: 750px; height: 420px object-fit: cover;" src="<?php echo "ar_ad_photo/white.jpg"; ?>"></li>
-                    <?php } ?>
-                </ul>
-            </div>
-        </div>
-        <!-- Listing Slider Thumb -->
-        <div class="flexslider" id="carousels">
-            <div class="flex-viewport">
-                <ul class="slides slide-thumbnail">
+                    ?>
+                    <div class="item" style="width: 750px; height: 420px"><img style="width: 750px; height: 420px object-fit: cover;" src="<?php echo $picture_url.  $picture_name;?>" alt=""></div>
                     <?php
-                    $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
-                    $img_result = mysqli_query($mysqli, $img_query);
-                    if (mysqli_num_rows($img_result) > 0) {
-                        while ($row = mysqli_fetch_assoc($img_result)) {
-                            $picture_name = $row['picture_name'];
-                            $picture_url = $row['picture_url'];
+                }
+            }
 
-
-                            ?>
-                            <li class="flex-active-slide"><img style="width: 200px; height: 112px object-fit: cover;" alt=""
-                                                               src="<?php echo $picture_url . $picture_name; ?>"
-                                                               title="<?php
-                                                               $picture_name ?>"></li>
-
-                            <?php
-                        }
-                    }
-
-                    if(empty($picture_name)){
-                        ?>
-                        <li class="flex-active-slide"><img alt="" style="width: 200px; height: 112px object-fit: cover;"
-                                                           src="<?php echo "ar_ad_photo/white.jpg"; ?>"
-                            ></li>
-                    <?php } ?>
-
-                </ul>
-            </div>
+            ?>
         </div>
         <!-- Share Ad  -->
         <div class="ad-share text-center">

@@ -64,6 +64,7 @@ if (isset($_POST['Log_in'])){
     <![endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
+
     <title>2D Market | Ad Page</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
     <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
@@ -108,7 +109,6 @@ if (isset($_POST['Log_in'])){
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-</head>
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
 <div id="loader-wrapper">
@@ -491,6 +491,7 @@ if (isset($_POST['Log_in'])){
         });
     })(jQuery);
 </script>
+
 </body>
 </html>
 
