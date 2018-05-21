@@ -1,8 +1,70 @@
-﻿﻿<?php
+﻿<?php
 session_start();
 require_once "../scripts/db_connection.php";
-?>
+include_once 'google_login_api_test/gpConfig.php';
+include_once 'google_login_api_test/User.php';
 
+
+if(isset($_GET['code'])){
+    $gClient->authenticate($_GET['code']);
+    $_SESSION['token'] = $gClient->getAccessToken();
+    header('Location: ' . filter_var($redirectURL, FILTER_SANITIZE_URL));
+}
+
+if (isset($_SESSION['token'])) {
+    $gClient->setAccessToken($_SESSION['token']);
+}
+
+if ($gClient->getAccessToken()) {
+    //Get user profile data from google
+    $gpUserProfile = $google_oauthV2->userinfo->get();
+
+    //Initialize User class
+    $user = new User();
+
+    //Insert or update user data to the database
+    $gpUserData = array(
+        'oauth_provider'    => 'google',
+        'oauth_uid'         => $gpUserProfile['id'],
+        'first_name'        => $gpUserProfile['given_name'],
+        'last_name'         => $gpUserProfile['family_name'],
+        'email'             => $gpUserProfile['email'],
+        'locale'            => $gpUserProfile['locale'],
+        'profile_picture'   => $gpUserProfile['picture'],
+        'link'              => $gpUserProfile['link']
+    );
+    $userData = $user->checkUser($gpUserData);
+
+    //Storing user data into session
+
+    $id_query  = "select * from `USER` where `oauth_uid` = '{$gpUserProfile['id']}'";
+    $id_result =mysqli_query($mysqli, $id_query);
+    while ($row=mysqli_fetch_assoc($id_result)){
+        $id = $row['id'];
+    }
+    $_SESSION['id']         = $id;
+    $_SESSION['username']   = $gpUserProfile['given_name'] . $gpUserProfile['family_name'];
+    $_SESSION['userData']   = $userData;
+
+
+    //Render facebook profile data
+    if(!empty($userData)){
+        if($_SESSION['new'] == 'true'){
+            unset($_SESSION['new']);
+            header("Location: register_2.php?id=".$_SESSION['id']);
+
+        }else{
+            unset($_SESSION['new']);
+            header("Location: index.php");
+        }
+    }else{
+        echo '<h3 style="color:red">Some problem occurred, please try again.</h3>';
+    }
+} else {
+    $authUrl = $gClient->createAuthUrl();
+    $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/btn_google_signin_dark_pressed_web.png" alt=""/></a>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -190,6 +252,7 @@ require_once "../scripts/db_connection.php";
                                             <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">Inloggen</button>
 
                                         </form>
+                                        <?php echo $output; ?>
                                     </div>
 
                                 </div>

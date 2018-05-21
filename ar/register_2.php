@@ -374,6 +374,7 @@ if (isset($_POST['submit']) && $_GET['id']){
     if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }
+    unset($_SESSION['new']);
     header("Location: index.php");
 
 
