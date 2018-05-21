@@ -110,7 +110,7 @@ require_once "scripts/time_elapse.php";
     <!-- Top Bar End -->
     <!-- Navigation Menu -->
 
-    <?php include "nav_bar_en_test.php";?>
+    <?php include "nav_bar_en.php";?>
 
 </div>
 <!-- Navigation Menu End -->

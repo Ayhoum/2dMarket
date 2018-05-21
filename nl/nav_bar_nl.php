@@ -162,7 +162,7 @@
 
                         <ul class="menu-search-bar" style="float: right">
 
-                            <li><a href="javascript:void(0)"  class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i>Advertentie plaatsen </a> </li>
+                            <li><a href="<?php if (isset($_SESSION['username'])){ echo "new_advertisement.php"; }else { echo "login.php"; }  ?>"  class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i>Advertentie plaatsen </a> </li>
 
                         </ul>
                     </div>
