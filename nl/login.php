@@ -62,7 +62,7 @@ if ($gClient->getAccessToken()) {
     }
 } else {
     $authUrl = $gClient->createAuthUrl();
-    $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/btn_google_signin_dark_pressed_web.png" alt=""/></a>';
+    $output = filter_var($authUrl, FILTER_SANITIZE_URL);
 }
 ?>
 <!DOCTYPE html>
@@ -252,7 +252,10 @@ if ($gClient->getAccessToken()) {
                                             <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">Inloggen</button>
 
                                         </form>
-                                        <?php echo $output; ?>
+                                        <a href="<?php echo $output; ?>" class="btn btn-block btn-social btn-gplus">
+                                            <span class="fa fa-google-plus"></span> Sign in with google
+                                        </a>
+
                                     </div>
 
                                 </div>
