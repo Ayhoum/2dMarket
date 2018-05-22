@@ -117,7 +117,7 @@ require_once "scripts/time_elapse.php";
 <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Listing Map =-=-=-=-=-=-= -->
 <section class="section-padding white">
-    <div class="row">
+    <div class="row center-block text-center">
         <script type="text/javascript">
             google_ad_client = "ca-pub-5850194650079393";
             google_ad_slot = "4488709505";
