@@ -119,11 +119,12 @@ require_once "scripts/time_elapse.php";
 <section class="section-padding white">
     <div class="row">
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- Index H -->
+        <!-- R -->
         <ins class="adsbygoogle"
-             style="display:inline-block;width:970px;height:90px"
+             style="display:block"
              data-ad-client="ca-pub-5850194650079393"
-             data-ad-slot="3654180573"></ins>
+             data-ad-slot="3813512965"
+             data-ad-format="auto"></ins>
         <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
