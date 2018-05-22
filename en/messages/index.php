@@ -115,6 +115,7 @@ if($sesuserpic == "")
                         <div class="intro-body">
                             <div class="intro-image" style="opacity: 1; transform: scale(1);"></div>
                             <div class="intro-text-container" style="opacity: 1; transform: translateY(0px);">
+                                <img src="../images/logo_files/2Dmarket_white%20(1).gif" style="width: 150px;height: 150px;margin-top: -15px" class="d-inline-block align-top" alt="2D Market">
                                 <h1 class="intro-title">Welcome to 2DMarket <?php echo $GLOBALS['sesUsername']; ?></h1>
                                 <div class="intro-text">No Conversation selected. Please select a chat.
                                 </div>
