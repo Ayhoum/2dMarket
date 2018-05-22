@@ -144,7 +144,7 @@
                                         <li><a href="profile.php">User Profile</a></li>
                                         <li><a href="personal_ads.php">Active Ads</a></li>
                                         <li><a href="favourite_ads.php">Favourite Ads</a></li>
-                                        <li><a href="messages.php">Message Panel</a></li>
+                                        <li><a href="messages/index.php">Message Panel</a></li>
                                         <li><a href="logout.php">logout</a></li>
                                     </ul>
                                 </li>

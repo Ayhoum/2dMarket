@@ -140,13 +140,13 @@
                                 <li ><a  style="color: rgba(166,85,218,0.86)"   href="login.php"><i class="fa fa-sign-in"></i> Log in  </a> </li>
                             <?php } else { ?>
                                 <li class="dropdown">
-                                    <a style="color: rgba(166,85,218,0.86)" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a style="color: rgba(166,85,218,0.86)" href="profile.php">Mijn Profile</a></li>
-                                        <li><a style="color: rgba(166,85,218,0.86)" href="personal_ads.php">Mijn Advertenties</a></li>
-                                        <li><a style="color: rgba(166,85,218,0.86)" href="favourite_ads.php">Favoriete Advertenties</a></li>
-                                        <li><a style="color: rgba(166,85,218,0.86)" href="messages.php">Mijn Brichten</a></li>
-                                        <li><a style="color: rgba(166,85,218,0.86)" href="logout.php">Uitloggen</a></li>
+                                        <li><a href="profile.php">Mijn Profile</a></li>
+                                        <li><a href="personal_ads.php">Mijn Advertenties</a></li>
+                                        <li><a href="favourite_ads.php">Favoriete Advertenties</a></li>
+                                        <li><a href="messages/index.php">Mijn Brichten</a></li>
+                                        <li><a href="logout.php">Uitloggen</a></li>
                                     </ul>
                                 </li>
                             <?php } ?>                        </ul>
@@ -182,10 +182,10 @@
                 <!-- Form -->
                 <form method="post" class="search-form">
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <input type="text" class="form-control" placeholder="What Are You Looking For..." />
+                        <input id="querySearch" type="text" class="form-control" placeholder="What Are You Looking For..." />
                     </div>
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <select class="category form-control">
+                        <select id="catSelect" class="category form-control">
                             <option label="Kies een categorie">Kies een categorie</option>
                             <?php
                             // GET ALL CATEGORIES from DB
@@ -222,7 +222,7 @@
                     </div>
 
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <select class="category form-control">
+                        <select id="dis" class="category form-control">
                             <option label="Kies een afstand">Kies een afstand</option>
                             <option value="10">10 KM</option>
                             <option value="20">20 KM</option>
@@ -249,3 +249,33 @@
         </div>
     </div>
 </div>
+<script>
+
+    var cat;
+    var query;
+    var dis;
+    var order;
+    var price;
+
+    var submitBut = function () {
+        cat   = $("#catSelect").val();
+        query = $("#querySearch").val();
+        dis   = $("#dis").val();
+        order = "latest";
+        price = "all";
+        if(cat == null || cat == "dis"){
+            $(".select2Class").addClass('shadow');
+        }
+        if(query == ""){
+            $("#querySearch").addClass('shadow');
+        }
+
+        if(cat != null && cat != "dis" && query != "" && dis != 0.00){
+
+
+
+            window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
+        }
+    };
+
+</script>

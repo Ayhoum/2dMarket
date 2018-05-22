@@ -117,7 +117,7 @@ require_once "scripts/time_elapse.php";
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
          <!-- =-=-=-=-=-=-= Categories =-=-=-=-=-=-= -->
-          <section class="custom-padding gray categories">
+          <section class="custom-padding white categories">
               <!-- Main Container -->
               <div class="container">
                   <!-- Row -->
@@ -410,49 +410,6 @@ require_once "scripts/time_elapse.php";
 
           myLat = getCookie("latiC");
           myLon = getCookie("longC");
-
-      </script>
-      <script>
-          var stepSliderValueElement = document.getElementById('dis-min');
-          stepSliderValueElement.value = 10;
-          $("#example_id").ionRangeSlider({
-              grid: false,
-              min: 10,
-              max: 300,
-              from: 0,
-              step: 10,
-              hide_min_max: true,
-              prettify_enabled: false,
-              onChange: function (data) {
-                  stepSliderValueElement.value = data.from;
-              }
-          });
-
-
-          var cat;
-          var query;
-          var dis;
-          var order;
-          var price;
-
-          var submitBut = function () {
-              cat   = $("#catSelect").val();
-              query = $("#querySearch").val();
-              dis   = $("#example_id").val();
-              order = "latest";
-              price = "all";
-              if(cat == null || cat == "dis"){
-                  $(".select2Class").addClass('shadow');
-              }
-              if(query == ""){
-                  $("#querySearch").addClass('shadow');
-              }
-
-              if(cat != null && cat != "dis" && query != "" && dis != 0.00){
-
-                  window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
-              }
-          };
 
       </script>
    </body>

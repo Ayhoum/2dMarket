@@ -140,7 +140,21 @@
                             </ul>
                         </li>
                         <li class="pull-right"><a href="all_product.php?order=latest">جميـع الاعلانـات </a></li>
-                        <li class="pull-right"><a href="contact.php">تواصـل معنـا</a></li>
+                        <?php if(!isset($_SESSION['username'])){?>
+                            <li><a href="login.php"><i class="fa fa-sign-in"></i> تسجيـل الدخـول  </a> </li>
+                        <?php } else { ?>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="profile.php">الصفحة الشخصيـة</a></li>
+                                    <li><a href="personal_ads.php">اعلانـاتي</a></li>
+                                    <li><a href="favourite_ads.php">الاعلانـات المفضلة</a></li>
+                                    <li><a href="messages/index.php">الرسـائل</a></li>
+                                    <li><a href="logout.php">تسجيـل الخروج</a></li>
+                                </ul>
+                            </li>
+                        <?php } ?>
+<!--                        <li class="pull-right"><a href="contact.php">تواصـل معنـا</a></li>-->
                     </ul>
                     <!--                    <ul class="menu-search-bar">-->
                     <!--                                            --><?php //if(!isset($_SESSION['username'])){?>
@@ -152,22 +166,9 @@
                     <!--                                            --><?php //}?>
                     <!--                                        </ul>-->
 
-                    <ul class="menu-search-bar" style="float: left">
-                        <?php if(!isset($_SESSION['username'])){?>
-                            <li><a href="login.php"><i class="fa fa-sign-in"></i> تسجيـل الدخـول  </a> </li>
-                        <?php } else { ?>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="profile.php">الصفحة الشخصيـة</a></li>
-                                    <li><a href="personal_ads.php">اعلانـاتي</a></li>
-                                    <li><a href="favourite_ads.php">الاعلانـات المفضلة</a></li>
-                                    <li><a href="messages.php">الرسـائل</a></li>
-                                    <li><a href="logout.php">تسجيـل الخروج</a></li>
-                                </ul>
-                            </li>
-                        <?php } ?>
-                    </ul>
+<!--                    <ul class="menu-search-bar" style="float: left">-->
+<!--                        -->
+<!--                    </ul>-->
 
                     <ul class="menu-search-bar" style="float: left">
 
@@ -187,7 +188,7 @@
                 <!-- Form -->
                 <form method="post" class="search-form">
                     <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
-                        <select class="category form-control">
+                        <select id="catSelect" class="category form-control">
                             <option label="اختر تصنيفاً من القائمة">اختر تصنيفاً من القائمة</option>
                             <?php
                             // GET ALL CATEGORIES from DB
@@ -220,14 +221,14 @@
                     </div>
                     <!-- Search Field -->
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <input type="text" class="form-control" placeholder="عن ماذا تبحث ؟" />
+                        <input id="querySearch" type="text" class="form-control" placeholder="عن ماذا تبحث ؟" />
                     </div>
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
                         <input type="text" class="form-control" placeholder="Postcode" />
                     </div>
 
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <select class="category form-control">
+                        <select id="dis" class="category form-control">
                             <option label="اختر مسافة البحث">اختر مسافة البحث</option>
                             <option value="10">10 كـم</option>
                             <option value="20">20 كـم</option>
@@ -244,7 +245,7 @@
                     </div>
                     <!-- Search Button -->
                     <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
-                        <button type="submit" class="btn btn-block btn-light">ابحث</button>
+                        <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">ابحث</button>
                     </div>
                 </form>
                 <!-- end .search-form -->
@@ -252,4 +253,33 @@
         </div>
     </div>
 </div>
+<script>
 
+    var cat;
+    var query;
+    var dis;
+    var order;
+    var price;
+
+    var submitBut = function () {
+        cat   = $("#catSelect").val();
+        query = $("#querySearch").val();
+        dis   = $("#dis").val();
+        order = "latest";
+        price = "all";
+        if(cat == null || cat == "dis"){
+            $(".select2Class").addClass('shadow');
+        }
+        if(query == ""){
+            $("#querySearch").addClass('shadow');
+        }
+
+        if(cat != null && cat != "dis" && query != "" && dis != 0.00){
+
+
+
+            window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
+        }
+    };
+
+</script>

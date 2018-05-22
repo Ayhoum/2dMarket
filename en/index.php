@@ -118,15 +118,15 @@ require_once "scripts/time_elapse.php";
 <!-- =-=-=-=-=-=-= Listing Map =-=-=-=-=-=-= -->
 <section class="section-padding white">
     <div class="row">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- R -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5850194650079393"
-             data-ad-slot="3813512965"
-             data-ad-format="auto"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
+        <script type="text/javascript">
+            google_ad_client = "ca-pub-5850194650079393";
+            google_ad_slot = "4488709505";
+            google_ad_width = 970;
+            google_ad_height = 250;
+        </script>
+        <!-- H -->
+        <script type="text/javascript"
+                src="//pagead2.googlesyndication.com/pagead/show_ads.js">
         </script>
     </div>
     <!--         <div class="map">-->

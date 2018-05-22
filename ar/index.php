@@ -118,18 +118,19 @@ require_once "scripts/time_elapse.php";
       <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
       <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
       <div class="main-content-area clearfix">
-         <section class="custom-padding gray categories">
+         <section class="custom-padding white categories">
               <!-- Main Container -->
               <div class="container">
                   <div class="row">
-                      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                      <!-- Index H -->
-                      <ins class="adsbygoogle"
-                           style="display:inline-block;width:970px;height:90px"
-                           data-ad-client="ca-pub-5850194650079393"
-                           data-ad-slot="3654180573"></ins>
-                      <script>
-                          (adsbygoogle = window.adsbygoogle || []).push({});
+                      <script type="text/javascript">
+                          google_ad_client = "ca-pub-5850194650079393";
+                          google_ad_slot = "4488709505";
+                          google_ad_width = 970;
+                          google_ad_height = 250;
+                      </script>
+                      <!-- H -->
+                      <script type="text/javascript"
+                              src="//pagead2.googlesyndication.com/pagead/show_ads.js">
                       </script>
                   </div>
               </div>
@@ -446,53 +447,6 @@ require_once "scripts/time_elapse.php";
           myLon = getCookie("longC");
 
 
-
-      </script>
-      <script>
-          var stepSliderValueElement = document.getElementById('dis-min');
-          stepSliderValueElement.value = 10;
-          $("#example_id").ionRangeSlider({
-              grid: false,
-              min: 10,
-              max: 300,
-              from: 0,
-              step: 10,
-              hide_min_max: true,
-              prettify_enabled: false,
-              onChange: function (data) {
-                  stepSliderValueElement.value = data.from;
-              }
-          });
-
-
-          var cat;
-          var query;
-          var dis;
-          var order;
-          var price;
-
-          var submitBut = function () {
-              cat   = $("#catSelect").val();
-              query = $("#querySearch").val();
-              dis   = $("#example_id").val();
-              order = "latest";
-              price = "all";
-              if(cat == null || cat == "dis"){
-                  $(".select2Class").addClass('shadow');
-              }
-              if(query == ""){
-                  $("#querySearch").addClass('shadow');
-              }
-              if(dis == 0.00){
-                  $(".noUi-connects").addClass('shadow');
-              }
-              if(cat != null && cat != "dis" && query != "" && dis != 0.00){
-
-
-
-                  window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
-              }
-          };
 
       </script>
    </body>
