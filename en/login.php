@@ -1,8 +1,8 @@
 ﻿<?php
 session_start();
 require_once "../scripts/db_connection.php";
-include_once 'google_login_api/gpConfig.php';
-include_once 'google_login_api/User.php';
+include_once 'google_login_api_test/gpConfig.php';
+include_once 'google_login_api_test/User.php';
 
 
 if(isset($_GET['code'])){
@@ -24,28 +24,45 @@ if ($gClient->getAccessToken()) {
 
     //Insert or update user data to the database
     $gpUserData = array(
-        'oauth_provider'=> 'google',
-        'oauth_uid'     => $gpUserProfile['id'],
-        'first_name'    => $gpUserProfile['given_name'],
-        'last_name'     => $gpUserProfile['family_name'],
-        'email'         => $gpUserProfile['email'],
-        'locale'        => $gpUserProfile['locale'],
-        'profile_picture'       => $gpUserProfile['picture'],
-        'link'          => $gpUserProfile['link']
+        'oauth_provider'    => 'google',
+        'oauth_uid'         => $gpUserProfile['id'],
+        'first_name'        => $gpUserProfile['given_name'],
+        'last_name'         => $gpUserProfile['family_name'],
+        'email'             => $gpUserProfile['email'],
+        'locale'            => $gpUserProfile['locale'],
+        'profile_picture'   => $gpUserProfile['picture'],
+        'link'              => $gpUserProfile['link']
     );
     $userData = $user->checkUser($gpUserData);
 
     //Storing user data into session
 
-    $_SESSION['username'] = $gpUserProfile['given_name'] . $gpUserProfile['family_name'];
-    $_SESSION['outh'] = $gpUserProfile['id'];
+    $id_query  = "select * from `USER` where `oauth_uid` = '{$gpUserProfile['id']}'";
+    $id_result =mysqli_query($mysqli, $id_query);
+    while ($row=mysqli_fetch_assoc($id_result)){
+        $id = $row['id'];
+    }
+    $_SESSION['id']         = $id;
+    $_SESSION['username']   = $gpUserProfile['given_name'] . $gpUserProfile['family_name'];
+    $_SESSION['userData']   = $userData;
 
-    $_SESSION['userData'] = $userData;
 
-}
-else {
+    //Render facebook profile data
+    if(!empty($userData)){
+        if($_SESSION['new'] == 'true'){
+            unset($_SESSION['new']);
+            header("Location: register_2.php?id=".$_SESSION['id']);
+
+        }else{
+            unset($_SESSION['new']);
+            header("Location: index.php");
+        }
+    }else{
+        echo '<h3 style="color:red">Some problem occurred, please try again.</h3>';
+    }
+} else {
     $authUrl = $gClient->createAuthUrl();
-    $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="images/glogin.png" alt=""/></a>';
+    $output = filter_var($authUrl, FILTER_SANITIZE_URL);
 }
 ?>
 
@@ -214,7 +231,11 @@ else {
                                             <div class="form-group">
                                             </div>
                                         </form>
-                                        <?php echo $output; ?>
+
+                                        <a href="<?php echo $output; ?>" class="btn btn-block btn-social btn-gplus">
+                                            <span class="fa fa-google-plus"></span> Sign in with google
+                                        </a>
+
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="register">

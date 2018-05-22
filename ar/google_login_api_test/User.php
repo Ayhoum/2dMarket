@@ -5,8 +5,8 @@ class User {
     private $dbPassword = "uJMr5CGK&M6l";
     private $dbName     = "2D_Market";
     private $userTbl    = 'USER';
-	
-	function __construct(){
+
+    function __construct(){
         if(!isset($this->db)){
             // Connect to the database
             $conn = new mysqli($this->dbHost, $this->dbUsername, $this->dbPassword, $this->dbName);
@@ -17,8 +17,8 @@ class User {
             }
         }
     }
-	
-	function checkUser($userData = array()){
+
+    function checkUser($userData = array()){
         if(!empty($userData)){
             //Check whether user data already exists in database
             $prevQuery = "SELECT * FROM ".$this->userTbl." WHERE oauth_provider = '".$userData['oauth_provider']."' AND oauth_uid = '".$userData['oauth_uid']."'";
@@ -34,6 +34,8 @@ class User {
                 link = '".$userData['link']."'
                 WHERE oauth_provider = '".$userData['oauth_provider']."' AND oauth_uid = '".$userData['oauth_uid']."'";
                 $update = $this->db->query($query);
+
+                $_SESSION['new'] = 'false';
             }else{
                 //Insert user data
                 $query = "INSERT INTO ".$this->userTbl." SET 
@@ -46,13 +48,15 @@ class User {
                 profile_picture = '".$userData['profile_picture']."', 
                 link = '".$userData['link']."'";
                 $insert = $this->db->query($query);
+
+                $_SESSION['new'] = 'true';
             }
-            
+
             //Get user data from the database
             $result = $this->db->query($prevQuery);
             $userData = $result->fetch_assoc();
         }
-        
+
         //Return user data
         return $userData;
     }

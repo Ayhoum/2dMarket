@@ -7,6 +7,7 @@ require_once '../phpmailer/class.phpmailer.php';
 ?>
 
 <?php
+
 if (isset($_POST['submit']) && $_GET['id']){
     $street_name    = $_POST['street_name'];
     $street_name    = mysqli_real_escape_string($mysqli,$street_name);
@@ -376,6 +377,9 @@ if (isset($_POST['submit']) && $_GET['id']){
     if(!$mail->Send()) {
         echo "Mailer Error: " . $mail->ErrorInfo;
     }
+
+    unset($_SESSION['new']);
+
     header("Location: login.php");
 
 
