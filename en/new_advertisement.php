@@ -111,7 +111,7 @@ require_once '../scripts/db_connection.php';
                            </h3>
                         </div>
                         <p class="lead">Posting an ad on <a href="#">2dmarket.com</a> is free! However, all ads must follow our rules:</p>
-                        <form  name="add_new_ad" method="post" id="advForm" class="submit-form" enctype="multipart/form-data">
+                        <form action="scripts/handle_addProduct.php" name="add_new_ad" method="post" id="advForm" class="submit-form" onsubmit="return validateForm()" enctype="multipart/form-data">
                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                          <ul class="accordion ">
                              <li class="panel-collapse collapse in">
@@ -216,11 +216,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row ">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">Photos of your product</label>
-                                             <div class="dropzone" id="my-dropzone" name="mainFileUploader">
-                                                 <div class="fallback">
-                                                     <input name="file[]" type="file" multiple="multiple" />
-                                                 </div>
-                                             </div>
+                                             <input name="file[]" type="file" multiple="multiple" />
                                          </div>
                                      </div>
                                      <hr>
@@ -229,7 +225,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
                                              <label class="control-label">Product Description <small>Enter a description of the product</small></label>
-                                             <textarea name="description" id="editor2" rows="12" class="form-control"></textarea>
+                                             <textarea name="editor2" id="editor2" rows="12" class="form-control"></textarea>
                                          </div>
                                      </div>
                                      <!-- end row -->
@@ -252,7 +248,7 @@ require_once '../scripts/db_connection.php';
 <!--                             </li>-->
                          </ul>
                              <div class="margin-top-20">
-                                 <button type="button" name="submit" id="submitBut" class="submitBut btn btn-theme pull-right">Publish My Ad</button>
+                                 <button type="submit" name="submit" id="" class="submitBut btn btn-theme pull-right">Publish My Ad</button>
                              </div>
                         </form>
 
@@ -356,100 +352,53 @@ require_once '../scripts/db_connection.php';
          /*--------- create remove function in dropzone --------*/
 
 
+       function validateForm() {
+           var categoryField        = $("#category").val();
+           var titleField           = $("#title").val();
+           var priceField           = $("#price").val();
+           var sellTypeField        = $("#sellType").val();
+           var conditionField       = $("#condition").val();
+           var deliveryTypeField    = $("#deliveryType").val();
+           var adTypeField          = $("#adType").val();
+           document.getElementById('modal-body').innerHTML = "";
 
-       Dropzone.options.myDropzone = {
-           url: "scripts/uploadphotos.php",
-           autoProcessQueue: false,
-           uploadMultiple: true,
-           parallelUploads: 25,
-           maxFiles: 25,
-           addRemoveLinks: true,
-           acceptedFiles: "image/*",
-           success: function(){
-               window.location.href = "profile.php";
-           },
-           init: function() {
-               var submitButton = document.querySelector(".submitBut");
-               var myDr = this;
-               // First change the button to actually tell Dropzone to process the queue.
-               submitButton.addEventListener("click", function () {
+           if(categoryField == ''
+               || titleField == ''
+               || priceField == ''
+               || sellTypeField == ''
+               || conditionField == ''
+               || deliveryTypeField == ''
+               || adTypeField == ''){
+               document.getElementById('modal-body').innerHTML = "";
 
+               if(categoryField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> Category </p>";
+               }
+               if(titleField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> Title </p>";
+               }
+               if(priceField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> Price </p>";
+               }
+               if(sellTypeField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> Type of selling </p>";
+               }
+               if(conditionField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> Product condition </p>";
+               }
+               if(deliveryTypeField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> Delivery method </p>";
+               }
+               if(adTypeField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> Advertisement type </p>";
+               }
 
-
-
-
-                   var categoryField        = $("#category").val();
-                   var titleField           = $("#title").val();
-                   var priceField           = $("#price").val();
-                   var sellTypeField        = $("#sellType").val();
-                   var conditionField       = $("#condition").val();
-                   var deliveryTypeField    = $("#deliveryType").val();
-                   var desField             = CKEDITOR.instances.editor2.getData();
-                   var adTypeField          = $("#adType").val();
-                   var categoryId ;
-                   var subCategoryId ;
-
-                   if(categoryField == ''
-                       || titleField == ''
-                       || priceField == ''
-                       || sellTypeField == ''
-                       || conditionField == ''
-                       || deliveryTypeField == ''
-                       || adTypeField == ''){
-                       document.getElementById('modal-body').innerHTML = "";
-
-                       if(categoryField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Category </p>";
-                       }
-                       if(titleField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Title </p>";
-                       }
-                       if(priceField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Price </p>";
-                       }
-                       if(sellTypeField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Type of selling </p>";
-                       }
-                       if(conditionField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Product condition </p>";
-                       }
-                       if(deliveryTypeField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Delivery method </p>";
-                       }
-                       if(adTypeField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Advertisement type </p>";
-                       }
-
-                       $("#fieldsError").modal();
-                   }else{
-                       if (categoryField != ''){
-                           var resultCat = categoryField.split("-");
-                           categoryId    = resultCat[0];
-                           subCategoryId = resultCat[1];
-                       }
-
-                       $.post('scripts/handle_addProduct.php?cat=' + categoryId
-
-                           + '&subCat=' + subCategoryId
-                           + '&title=' + titleField
-                           + '&price=' + priceField
-                           + '&sellType=' + sellTypeField
-                           + '&cond=' + conditionField
-                           + '&delivery=' + deliveryTypeField
-                           + '&des=' + desField
-                           + '&adType=' + adTypeField, function (response) {
-
-                           if (response != 'error') {
-                               myDr.processQueue();
-                           }
-                       });
-
-
-                   }
-
-               });
+               $("#fieldsError").modal();
+               return false;
+           }else{
+               return true;
            }
-       };
+       }
 
       </script>
       <!-- JS -->

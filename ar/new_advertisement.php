@@ -110,7 +110,7 @@ require_once '../scripts/db_connection.php';
                            </h3>
                         </div>
                         <p class="lead" style="direction: rtl">النشر على موقعنا مجاني ولكن عليك التـأكد من اعلانك لا يخـالف <a style="direction: rtl" href="#">سياســات الموقــع</a>  </p>
-                        <form  name="add_new_ad" method="post" id="advForm" class="submit-form" enctype="multipart/form-data">
+                        <form action="scripts/handle_addProduct.php" name="add_new_ad" method="post" onsubmit="return validateForm()" id="advForm" class="submit-form" enctype="multipart/form-data">
                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12" style="direction: rtl">
                          <ul class="accordion">
                              <li>
@@ -121,7 +121,7 @@ require_once '../scripts/db_connection.php';
                                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                                  <label class="control-label">الصنف <small>اختر تصنيفاً مناسباً لاعلانك</small></label>
                                                  <select name="category_id" id="category"  class="category form-control">
-                                                     <option label="Select Option"></option>
+                                                     <option label="قم بالاختيار"></option>
                                                      <?php
                                                      // GET ALL CATEGORIES from DB
                                                      $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'AR' ORDER BY `name` ASC  ";
@@ -215,11 +215,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row ">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">اضـافة صور لمنتجك </label>
-                                             <div class="dropzone" id="my-dropzone" name="mainFileUploader">
-                                                 <div class="fallback">
-                                                     <input name="file[]" type="file" multiple="multiple" />
-                                                 </div>
-                                             </div>
+                                             <input name="file[]" type="file" multiple="multiple" />
                                          </div>
                                      </div>
                                      <hr>
@@ -228,7 +224,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
                                              <label class="control-label">وصف المنتج <small>قم باضافة وصف للمنتج </small></label>
-                                             <textarea name="description" id="editor2" rows="12" class="form-control"></textarea>
+                                             <textarea name="editor2" id="editor2" rows="12" class="form-control"></textarea>
                                          </div>
                                      </div>
                                      <!-- end row -->
@@ -251,7 +247,7 @@ require_once '../scripts/db_connection.php';
 <!--                             </li>-->
                          </ul>
                              <div class="margin-top-20 col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                 <button type="button" name="submit" id="submitBut" style="width: 100%" class="submitBut btn btn-theme pull-right">قم بنشر الاعلان</button>
+                                 <button type="submit" name="submit" id="submitBut" style="width: 100%" class="submitBut btn btn-theme pull-right">قم بنشر الاعلان</button>
                              </div>
                         </form>
 
@@ -270,14 +266,14 @@ require_once '../scripts/db_connection.php';
               <div id="fieldsError" class="modal fade" role="dialog">
                   <div class="modal-dialog">
                       <!-- Modal content-->
-                      <div class="modal-content">
+                      <div class="modal-content" style="direction: rtl;">
                           <div class="modal-header rte">
-                              <h2 class="modal-title text-center">You left the following fields empty:</h2>
+                              <h2 class="modal-title text-center">لقد تركت بعض الخانات الفارغة:</h2>
                           </div>
                           <div class="modal-body" id="modal-body">
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-info" data-dismiss="modal">Continue</button>
+                              <button type="button" class="btn btn-info" data-dismiss="modal">متابعة</button>
                           </div>
                       </div>
                   </div>
@@ -353,101 +349,53 @@ require_once '../scripts/db_connection.php';
          /*--------- create remove function in dropzone --------*/
 
 
+       function validateForm() {
+           var categoryField        = $("#category").val();
+           var titleField           = $("#title").val();
+           var priceField           = $("#price").val();
+           var sellTypeField        = $("#sellType").val();
+           var conditionField       = $("#condition").val();
+           var deliveryTypeField    = $("#deliveryType").val();
+           var adTypeField          = $("#adType").val();
+           document.getElementById('modal-body').innerHTML = "";
 
-       Dropzone.options.myDropzone = {
-           url: "scripts/uploadphotos.php",
-           autoProcessQueue: false,
-           uploadMultiple: true,
-           parallelUploads: 25,
-           maxFiles: 25,
-           addRemoveLinks: true,
-           acceptedFiles: "image/*",
-           success: function(){
-               window.location.href = "profile.php";
-           },
-           init: function() {
-               var submitButton = document.querySelector(".submitBut");
-               var myDr = this;
-               // First change the button to actually tell Dropzone to process the queue.
-               submitButton.addEventListener("click", function () {
+           if(categoryField == ''
+               || titleField == ''
+               || priceField == ''
+               || sellTypeField == ''
+               || conditionField == ''
+               || deliveryTypeField == ''
+               || adTypeField == ''){
+               document.getElementById('modal-body').innerHTML = "";
 
+               if(categoryField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> الصنف </p>";
+               }
+               if(titleField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> العنوان </p>";
+               }
+               if(priceField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> السعر </p>";
+               }
+               if(sellTypeField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> كيفية البيع </p>";
+               }
+               if(conditionField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> الحالة </p>";
+               }
+               if(deliveryTypeField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> كيفية التوصيل </p>";
+               }
+               if(adTypeField == ''){
+                   document.getElementById('modal-body').innerHTML += "<p> Advertisement type </p>";
+               }
 
-
-
-
-                   var categoryField        = $("#category").val();
-                   var titleField           = $("#title").val();
-                   var priceField           = $("#price").val();
-                   var sellTypeField        = $("#sellType").val();
-                   var conditionField       = $("#condition").val();
-                   var deliveryTypeField    = $("#deliveryType").val();
-                   var desField             = CKEDITOR.instances.editor2.getData();
-                   var adTypeField          = $("#adType").val();
-                   var categoryId ;
-                   var subCategoryId ;
-
-                   if(categoryField == ''
-                       || titleField == ''
-                       || priceField == ''
-                       || sellTypeField == ''
-                       || conditionField == ''
-                       || deliveryTypeField == ''
-                       || adTypeField == ''){
-                       document.getElementById('modal-body').innerHTML = "";
-
-                       if(categoryField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Category </p>";
-                       }
-                       if(titleField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Title </p>";
-                       }
-                       if(priceField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Price </p>";
-                       }
-                       if(sellTypeField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Type of selling </p>";
-                       }
-                       if(conditionField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Product condition </p>";
-                       }
-                       if(deliveryTypeField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Delivery method </p>";
-                       }
-                       if(adTypeField == ''){
-                           document.getElementById('modal-body').innerHTML += "<p> Advertisement type </p>";
-                       }
-
-                       $("#fieldsError").modal();
-                   }else{
-                       if (categoryField != ''){
-                           var resultCat = categoryField.split("-");
-                           categoryId    = resultCat[0];
-                           subCategoryId = resultCat[1];
-                       }
-
-                       $.post('scripts/handle_addProduct.php?cat=' + categoryId
-
-                           + '&subCat=' + subCategoryId
-                           + '&title=' + titleField
-                           + '&price=' + priceField
-                           + '&sellType=' + sellTypeField
-                           + '&cond=' + conditionField
-                           + '&delivery=' + deliveryTypeField
-                           + '&des=' + desField
-                           + '&adType=' + adTypeField, function (response) {
-
-                           if (response != 'error') {
-                               myDr.processQueue();
-                           }
-                       });
-
-
-                   }
-
-               });
+               $("#fieldsError").modal();
+               return false;
+           }else{
+               return true;
            }
-       };
-
+       }
       </script>
       <!-- JS -->
    </body>

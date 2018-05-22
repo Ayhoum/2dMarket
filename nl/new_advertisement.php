@@ -121,7 +121,7 @@ require_once '../scripts/db_connection.php';
                            </h3>
                         </div>
                         <p class="lead">Voeg uw advertentie toe <a href="#">2dmarket.com</a> is helmaal gratis :</p>
-                         <form  name="add_new_ad" method="post" id="advForm" class="submit-form" enctype="multipart/form-data">
+                         <form action="scripts/handle_addProduct.php" name="add_new_ad" method="post" id="advForm" class="submit-form" onsubmit="return validateForm()" enctype="multipart/form-data">
                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                          <ul class="accordion">
                              <li>
@@ -130,7 +130,7 @@ require_once '../scripts/db_connection.php';
                                          <div class="row">
                                              <!-- Category  -->
                                              <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                                                 <label class="control-label">Category <small>Kies een categorie </small></label>
+                                                 <label class="control-label">Categorie <small>Kies een categorie </small></label>
                                                  <select name="category_id" id="category"  class="category form-control">
                                                      <option label="Select Option"></option>
                                                      <?php
@@ -226,13 +226,8 @@ require_once '../scripts/db_connection.php';
                                      <div class="row ">
                                          <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
                                              <label class="control-label">Produkt fotos </label>
-                                             <input type="file" id="upload_img" name="profile_img" class="form-control margin-bottom-20" multiple>
+                                             <input name="file[]" type="file" multiple="multiple" />
 
-                                             <!--                                             <div class="dropzone" id="my-dropzone" name="mainFileUploader">-->
-<!--                                                 <div class="fallback">-->
-<!--                                                     <input name="file[]" type="file" multiple="multiple" />-->
-<!--                                                 </div>-->
-<!--                                             </div>-->
                                          </div>
                                      </div>
                                      <hr>
@@ -241,7 +236,7 @@ require_once '../scripts/db_connection.php';
                                      <div class="row">
                                          <div class="col-md-12 col-lg-12 col-xs-12  col-sm-12">
                                              <label class="control-label">Productomschrijving <small>Voer een beschrijving van het product in</small></label>
-                                             <textarea name="description" id="editor2" rows="12" class="form-control"></textarea>
+                                             <textarea name="editor2" id="editor2" rows="12" class="form-control"></textarea>
                                          </div>
                                      </div>
                                      <!-- end row -->
@@ -265,7 +260,7 @@ require_once '../scripts/db_connection.php';
 <!--                             </li>-->
                          </ul>
                              <div class="margin-top-20">
-                                 <button type="button" name="submit" id="submitBut" class="submitBut btn btn-theme pull-right">Publish My Ad</button>
+                                 <button type="submit" name="submit" id="submitBut" class="submitBut btn btn-theme pull-right">Publish My Ad</button>
                              </div>
                         </form>
 
@@ -286,12 +281,12 @@ require_once '../scripts/db_connection.php';
                       <!-- Modal content-->
                       <div class="modal-content">
                           <div class="modal-header rte">
-                              <h2 class="modal-title text-center">You left the following fields empty:</h2>
+                              <h2 class="modal-title text-center">Je hebt de volgende velden leeg gelaten:</h2>
                           </div>
                           <div class="modal-body" id="modal-body">
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-info" data-dismiss="modal">Continue</button>
+                              <button type="button" class="btn btn-info" data-dismiss="modal">Doorgaan</button>
                           </div>
                       </div>
                   </div>
@@ -368,115 +363,53 @@ require_once '../scripts/db_connection.php';
 
 
 
+          function validateForm() {
+              var categoryField        = $("#category").val();
+              var titleField           = $("#title").val();
+              var priceField           = $("#price").val();
+              var sellTypeField        = $("#sellType").val();
+              var conditionField       = $("#condition").val();
+              var deliveryTypeField    = $("#deliveryType").val();
+              var adTypeField          = $("#adType").val();
+              document.getElementById('modal-body').innerHTML = "";
 
-          Dropzone.options.myDropzone = {
-              url: "scripts/uploadphotos.php",
-              autoProcessQueue: false,
-              uploadMultiple: true,
-              parallelUploads: 25,
-              maxFiles: 25,
-              addRemoveLinks: true,
-              acceptedFiles: "image/*",
-              success: function(){
-                  window.location.href = "profile.php";
-              },
-              init: function() {
-                  var submitButton = document.querySelector(".submitBut");
-                  var myDr = this;
-                  // First change the button to actually tell Dropzone to process the queue.
-                  submitButton.addEventListener("click", function () {
+              if(categoryField == ''
+                  || titleField == ''
+                  || priceField == ''
+                  || sellTypeField == ''
+                  || conditionField == ''
+                  || deliveryTypeField == ''
+                  || adTypeField == ''){
+                  document.getElementById('modal-body').innerHTML = "";
 
+                  if(categoryField == ''){
+                      document.getElementById('modal-body').innerHTML += "<p> Categorie </p>";
+                  }
+                  if(titleField == ''){
+                      document.getElementById('modal-body').innerHTML += "<p> Title </p>";
+                  }
+                  if(priceField == ''){
+                      document.getElementById('modal-body').innerHTML += "<p> Prijs </p>";
+                  }
+                  if(sellTypeField == ''){
+                      document.getElementById('modal-body').innerHTML += "<p> Advertntie Type </p>";
+                  }
+                  if(conditionField == ''){
+                      document.getElementById('modal-body').innerHTML += "<p> Conditie </p>";
+                  }
+                  if(deliveryTypeField == ''){
+                      document.getElementById('modal-body').innerHTML += "<p> Bezorging </p>";
+                  }
+                  if(adTypeField == ''){
+                      document.getElementById('modal-body').innerHTML += "<p> Advertntie Type </p>";
+                  }
 
-
-
-
-                      var categoryField        = $("#category").val();
-                      var titleField           = $("#title").val();
-                      var priceField           = $("#price").val();
-                      var sellTypeField        = $("#sellType").val();
-                      var conditionField       = $("#condition").val();
-                      var deliveryTypeField    = $("#deliveryType").val();
-                      var desField             = CKEDITOR.instances.editor2.getData();
-                      var adTypeField          = $("#adType").val();
-                      var categoryId ;
-                      var subCategoryId ;
-
-                      if(categoryField == ''
-                          || titleField == ''
-                          || priceField == ''
-                          || sellTypeField == ''
-                          || conditionField == ''
-                          || deliveryTypeField == ''
-                          || adTypeField == ''){
-                          document.getElementById('modal-body').innerHTML = "";
-
-                          if(categoryField == ''){
-                              document.getElementById('modal-body').innerHTML += "<p> Category </p>";
-                          }
-                          if(titleField == ''){
-                              document.getElementById('modal-body').innerHTML += "<p> Title </p>";
-                          }
-                          if(priceField == ''){
-                              document.getElementById('modal-body').innerHTML += "<p> Price </p>";
-                          }
-                          if(sellTypeField == ''){
-                              document.getElementById('modal-body').innerHTML += "<p> Type of selling </p>";
-                          }
-                          if(conditionField == ''){
-                              document.getElementById('modal-body').innerHTML += "<p> Product condition </p>";
-                          }
-                          if(deliveryTypeField == ''){
-                              document.getElementById('modal-body').innerHTML += "<p> Delivery method </p>";
-                          }
-                          if(adTypeField == ''){
-                              document.getElementById('modal-body').innerHTML += "<p> Advertisement type </p>";
-                          }
-
-                          $("#fieldsError").modal();
-                      }else{
-                          if (categoryField != ''){
-                              var resultCat = categoryField.split("-");
-                              categoryId    = resultCat[0];
-                              subCategoryId = resultCat[1];
-                          }
-
-                          $.post('scripts/handle_addProduct.php?cat=' + categoryId
-
-                              + '&subCat=' + subCategoryId
-                              + '&title=' + titleField
-                              + '&price=' + priceField
-                              + '&sellType=' + sellTypeField
-                              + '&cond=' + conditionField
-                              + '&delivery=' + deliveryTypeField
-                              + '&des=' + desField
-                              + '&adType=' + adTypeField, function (response) {
-
-                              if (response != 'error') {
-                                  myDr.processQueue();
-                              }
-                          });
-
-
-                      }
-
-                  });
+                  $("#fieldsError").modal();
+                  return false;
+              }else{
+                  return true;
               }
-          };
-
-      </script>
-      <script>
-          $('#upload_img').change(function(){
-              readImgUrlAndPreview(this);
-              function readImgUrlAndPreview(input){
-                  if (input.files && input.files[0]) {
-                      var reader = new FileReader();
-                      reader.onload = function (e) {
-                          $('#img_preview').attr('src', e.target.result);
-                      }
-                  };
-                  reader.readAsDataURL(input.files[0]);
-              }
-          });
+          }
       </script>
       <!-- JS -->
    </body>
