@@ -220,7 +220,7 @@
                         </select>
                     </div>
                     <!-- Search Field -->
-                    <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
+                    <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
                         <input id="querySearch" type="text" class="form-control" placeholder="عن ماذا تبحث ؟" />
                     </div>
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
@@ -244,8 +244,8 @@
                         </select>
                     </div>
                     <!-- Search Button -->
-                    <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
-                        <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">ابحث</button>
+                    <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
+                        <button type="button" name="submit" style="width: 100%;" onclick="submitBut();" id="submitSearch" class="btn btn-light">ابحث</button>
                     </div>
                 </form>
                 <!-- end .search-form -->

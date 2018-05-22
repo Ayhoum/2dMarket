@@ -181,10 +181,10 @@
             <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
                 <!-- Form -->
                 <form method="post" class="search-form">
-                    <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
+                    <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
                         <input id="querySearch" type="text" class="form-control" placeholder="What Are You Looking For..." />
                     </div>
-                    <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
+                    <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
                         <select id="catSelect" class="category form-control">
                             <option label="Kies een categorie">Kies een categorie</option>
                             <?php
@@ -240,8 +240,8 @@
                     </div>
 
                     <!-- Search Button -->
-                    <div class="col-md-3 col-xs-12 col-sm-12 no-padding">
-                        <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Zoek</button>
+                    <div class="col-md-2 col-xs-12 col-sm-12 no-padding">
+                        <button type="button" style="width: 100%;" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Zoek</button>
                     </div>
                 </form>
                 <!-- end .search-form -->
