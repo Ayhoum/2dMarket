@@ -16,9 +16,35 @@ ob_start();
 if (isset($_POST['submit'])){
     $message = $_POST['message'];
     $from_id = $_SESSION['id'];
-
+    $message2 = "";
     $to_id = $_GET['user_id'];
     $ad_id = $_GET['ad_id'];
+
+
+    $queryAd = "SELECT * FROM `ADVERTISEMENT` WHERE id = '{$ad_id}'";
+    $runQueryAd = mysqli_query($mysqli,$queryAd);
+    if(mysqli_num_rows($runQueryAd) > 0){
+        while($row = mysqli_fetch_assoc($runQueryAd)){
+            $title = $row['title'];
+            $price = $row['price'];
+            $user_id = $row['USER_id'];
+
+            $message2 .= $title . " - ". $price . "\n";
+
+        }
+    }
+
+    $queryLocation = "SELECT * FROM `ADDRESS` WHERE USER_id = '{$user_id}'";
+    $runQueryLoc = mysqli_query($mysqli,$queryLocation);
+    if(mysqli_num_rows($runQueryLoc) > 0){
+        while($row = mysqli_fetch_assoc($runQueryLoc)){
+            $country = $row['country'];
+            $city = $row['city'];
+            $message2 .= $country . " - " . $city;
+        }
+    }
+
+
 
     date_default_timezone_set('Europe/Amsterdam');
     $date = date('Y-m-d H:i:s');
@@ -41,6 +67,10 @@ if (isset($_POST['submit'])){
 
 $date = date('Y-m-d H:i:s');
 
+
+    $chat_query = "INSERT INTO `2DM_messages` (`from_id`,`to_id`,`from_uname`,`to_uname`, `message_content`, `message_date`, `message_type`, `AD_id`) 
+                                          VALUES ('{$from_id}','{$to_id}','{$from_un}','{$to_un}','{$message2}','{$date}','Ad','{$ad_id}') ";
+    $chat_result = mysqli_query($mysqli, $chat_query);
 
         $chat_query = "INSERT INTO `2DM_messages` (`from_id`,`to_id`,`from_uname`,`to_uname`, `message_content`, `message_date`, `message_type`, `AD_id`) 
                                           VALUES ('{$from_id}','{$to_id}','{$from_un}','{$to_un}','{$message}','{$date}','text','{$ad_id}') ";

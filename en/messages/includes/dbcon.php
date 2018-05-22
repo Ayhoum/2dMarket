@@ -8,6 +8,8 @@
 session_start();
 // Create connection in MYsqli
 $con = new mysqli($config['db']['host'], $config['db']['user'], $config['db']['pass'], $config['db']['name']);
+$sql= 'SET CHARACTER SET utf8';
+mysqli_query($con,$sql);
 // Check connection in MYsqli
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());

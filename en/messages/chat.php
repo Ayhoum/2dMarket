@@ -396,8 +396,7 @@ function chatfrindList($con,$config) {
             <a href="javascript:void(0)">
                 <span class="userimage profile-picture min-profile-picture"><img src="<?php echo $config['site_url']; ?>storage/user_image/<?php echo $picname; ?>" alt="<?php echo $username ?>" class="avatar-image is-loaded bg-theme" width="100%"></span>
                 <span>
-                    <span class="bname personName">(<i><?php echo $title ?></i>)  </span><br>
-                    <span class="bname personName"><?php echo $fullname; ?></span>
+                    <span class="bname personName"><?php echo $fullname; ?></span><br>
                     <span class="personStatus"><span class="time <?php echo $onofst ?>"><i class="fa fa-circle" aria-hidden="true"></i></span></span>
                     <span style="font-size: 10px;" class="<?php echo $onofst ?>"><i><?php echo $onofst ?></i></span>
                     <span class="count"><?php if($countrecd >0){ ?> <span class="icon-meta unread-count"><?php echo $countrecd; ?></span> <?php }?></span>

@@ -257,6 +257,18 @@ function get_all_msg(url){
                             else{
                                 message_content = "<a href='"+file_content.file_path+"' class='download-link' download></a>";
                             }
+                        }else if(msgtype =="Ad"){
+                            message_content= '<div class="col-xs-12 p-b-10 odd">' +
+                                '<div class="chat-body" style="\n' +
+                                '    width:  100%;\n' +
+                                '"><div class="chat-text text-center" style="\n' +
+                                '    width:  100%;\n' +
+                                '    background: #ff6849;\n' +
+                                '"><h4>'+item.m+'</h4>' +
+                                '<span class="msg-status msg-AlaaAldinSemsemea"><i class="fa fa-check"></i></span>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>'
                         }
 
 
@@ -283,7 +295,9 @@ function get_all_msg(url){
 
 
                         }
-
+                        if(msgtype == "Ad"){
+                            $("#chatbox_"+chatboxtitle).prepend(message_content);
+                        }else{
                         if (item.u == 2) {
                             $("#chatbox_"+chatboxtitle).prepend('<div class="col-xs-12 p-b-10"><div class="chat-image  profile-picture max-profile-picture"> <img alt="'+item.sender+'" src="'+siteurl+'storage/user_image/avatar_default2.png'+'" class="bg-theme"> </div><div class="chat-body"><div class="chat-text"><h4>'+item.sender+'</h4><p>'+message_content+'</p><b>'+item.time+'</b> </div></div></div>');
                         } else
@@ -303,6 +317,7 @@ function get_all_msg(url){
                             '<h4>'+item.sender+'</h4><p>'+message_content+'</p>' +
                             '<b>'+item.time+'</b>'+seentpl+'</div></div></div>');
                         }
+                    }
                     }
 
                 }
