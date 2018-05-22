@@ -264,7 +264,7 @@ function get_all_msg(url){
                                 '    width:  100%;\n' +
                                 '"><div class="chat-text text-center" style="\n' +
                                 '    width:  100%;\n' +
-                                '    background: #ff6849;\n' +
+                                '    background: #ff9292;\n' +
                                 '"><h4>'+item.m+'</h4>' +
                                 '<span class="msg-status msg-AlaaAldinSemsemea"><i class="fa fa-check"></i></span>' +
                                 '</div>' +
