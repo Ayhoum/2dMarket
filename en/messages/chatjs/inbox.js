@@ -259,6 +259,7 @@ function get_all_msg(url){
                             }
                         }else if(msgtype =="Ad"){
                             message_content= '<div class="col-xs-12 p-b-10 odd">' +
+                                '<div class="container" style=" width: 100%; ">' +
                                 '<div class="chat-body" style="\n' +
                                 '    width:  100%;\n' +
                                 '"><div class="chat-text text-center" style="\n' +
@@ -268,7 +269,8 @@ function get_all_msg(url){
                                 '<span class="msg-status msg-AlaaAldinSemsemea"><i class="fa fa-check"></i></span>' +
                                 '</div>' +
                                 '</div>' +
-                                '</div>'
+                                '</div>' +
+                                '</div>';
                         }
 
 
