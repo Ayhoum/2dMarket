@@ -181,10 +181,10 @@
                 <!-- Form -->
                 <form method="post" class="search-form">
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <input type="text" class="form-control" placeholder="What Are You Looking For..." />
+                        <input id="querySearch" type="text" class="form-control" placeholder="What Are You Looking For..." />
                     </div>
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <select class="category form-control">
+                        <select id="catSelect" class="category form-control">
                             <option label="Select a category">Select a category</option>
                             <?php
                             // GET ALL CATEGORIES from DB
@@ -221,7 +221,7 @@
                     </div>
 
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <select class="category form-control">
+                        <select id="dis" class="category form-control">
                             <option label="Select a category">Select search distance</option>
                             <option value="10">10 KM</option>
                             <option value="20">20 KM</option>
@@ -233,7 +233,7 @@
                             <option value="80">80 KM</option>
                             <option value="90">90 KM</option>
                             <option value="100">100 KM</option>
-                            <option value="all">Unlimited</option>
+                            <option value="'all'">Unlimited</option>
                         </select>
                     </div>
 
@@ -247,3 +247,33 @@
         </div>
     </div>
 </div>
+<script>
+
+    var cat;
+    var query;
+    var dis;
+    var order;
+    var price;
+
+    var submitBut = function () {
+        cat   = $("#catSelect").val();
+        query = $("#querySearch").val();
+        dis   = $("#dis").val();
+        order = "latest";
+        price = "all";
+        if(cat == null || cat == "dis"){
+            $(".select2Class").addClass('shadow');
+        }
+        if(query == ""){
+            $("#querySearch").addClass('shadow');
+        }
+
+        if(cat != null && cat != "dis" && query != "" && dis != 0.00){
+
+
+
+            window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
+        }
+    };
+
+</script>
