@@ -83,7 +83,7 @@ if (mysqli_num_rows($ad_result) > 0) {
             $pic_name = $row['picture_name'];
         }
         if(empty($pic_name)){
-            $pic = 'en_ad_photo/';
+            $pic = 'ar_ad_photo/';
             $pic_name = 'white.jpg';
         }
         ?>
