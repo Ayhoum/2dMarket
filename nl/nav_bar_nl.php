@@ -182,7 +182,7 @@
                 <!-- Form -->
                 <form method="post" class="search-form">
                     <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
-                        <input id="querySearch" type="text" class="form-control" placeholder="What Are You Looking For..." />
+                        <input id="querySearch" type="text" class="form-control" placeholder="Waar bent u naar op zoek..." />
                     </div>
                     <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
                         <select id="catSelect" class="category form-control">

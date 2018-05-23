@@ -224,7 +224,7 @@
                         <input id="querySearch" type="text" class="form-control" placeholder="عن ماذا تبحث ؟" />
                     </div>
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <input type="text" class="form-control" placeholder="Postcode" />
+                        <input type="text" class="form-control" placeholder="الرمز البريدي" />
                     </div>
 
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
