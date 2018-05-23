@@ -67,7 +67,7 @@ if (isset($_POST['Log_in'])){
 
     <title>2D Market | Ad Page</title>
     <!-- =-=-=-=-=-=-= Favicons Icon =-=-=-=-=-=-= -->
-    <link rel="icon" href="images/logo_files/logo_png.png" type="image/x-icon" />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- =-=-=-=-=-=-= Mobile Specific =-=-=-=-=-=-= -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- =-=-=-=-=-=-= Bootstrap CSS Style =-=-=-=-=-=-= -->
@@ -100,6 +100,7 @@ if (isset($_POST['Log_in'])){
     <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
     <link rel="stylesheet" id="color" href="css/colors/defualt.css">
     <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
+    <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
     <!-- JavaScripts -->
     <script src="js/modernizr.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -108,6 +109,7 @@ if (isset($_POST['Log_in'])){
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+</head>
 
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->

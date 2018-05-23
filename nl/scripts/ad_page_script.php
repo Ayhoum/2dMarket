@@ -114,7 +114,7 @@ if (isset($_GET['ad_id'])) {
                     $picture_url = $row['picture_url'];
                     if (empty($picture_name)){
                         $picture_name = "white.jpg";
-                        $picture_url  = "en_ad_photo/";
+                        $picture_url  = "nl_ad_photo/";
                     }
                     ?>
                     <div class="item" style="width: 750px; height: 420px"><img style="width: 750px; height: 420px object-fit: cover;" src="<?php echo $picture_url.  $picture_name;?>" alt=""></div>

@@ -137,19 +137,21 @@
 
                             <li ><a href="all_product.php?order=latest">All Ads </a></li>
                             <?php if(!isset($_SESSION['username'])){?>
-                                <li ><a  style="color: rgba(166,85,218,0.86)"   href="login.php"><i class="fa fa-sign-in"></i> Log in  </a> </li>
+                                <li ><a  style="color: rgba(166,85,218,0.86)"   href="login.php"><i class="fa fa-sign-in"></i> Inloggen  </a> </li>
                             <?php } else { ?>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="profile.php">Mijn Profile</a></li>
-                                        <li><a href="personal_ads.php">Mijn Advertenties</a></li>
-                                        <li><a href="favourite_ads.php">Favoriete Advertenties</a></li>
-                                        <li><a href="messages/index.php">Mijn Brichten</a></li>
-                                        <li><a href="logout.php">Uitloggen</a></li>
+                                <li>
+                                    <a  style="color: #00c292" href="javascript:void(0)"><?php echo $_SESSION['username']; ?> <i class="fa fa-angle-down fa-indicator"></i></a>
+                                    <!-- drop down multilevel  -->
+                                    <ul class="drop-down-multilevel">
+                                        <li><a href="profile.php">Mijn profile </i></a></li>
+                                        <li><a href="personal_ads.php">Mijn advertenties </i></a></li>
+                                        <li><a href="messages/index.php">Brichten </i></a></li>
+                                        <li><a style="color: red" href="logout.php">Uitloggen</a></li>
                                     </ul>
                                 </li>
-                            <?php } ?>                        </ul>
+
+                            <?php } ?>
+                        </ul>
                         <!--                    <ul class="menu-search-bar">-->
                         <!--                                            --><?php //if(!isset($_SESSION['username'])){?>
                         <!--                                            <li>-->

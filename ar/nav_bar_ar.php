@@ -140,20 +140,21 @@
                             </ul>
                         </li>
                         <li class="pull-right"><a href="all_product.php?order=latest">جميـع الاعلانـات </a></li>
+
                         <?php if(!isset($_SESSION['username'])){?>
-                            <li><a href="login.php"><i class="fa fa-sign-in"></i> تسجيـل الدخـول  </a> </li>
+                            <li ><a  style="color: rgba(166,85,218,0.86)"   href="login.php"><i class="fa fa-sign-in"></i> تسجيل الدخول  </a> </li>
                         <?php } else { ?>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="profile.php">الصفحة الشخصيـة</a></li>
-                                    <li><a href="personal_ads.php">اعلانـاتي</a></li>
-                                    <li><a href="favourite_ads.php">الاعلانـات المفضلة</a></li>
-                                    <li><a href="messages/index.php">الرسـائل</a></li>
-                                    <li><a href="logout.php">تسجيـل الخروج</a></li>
-                                </ul>
-                            </li>
-                        <?php } ?>
+                        <li>
+                            <a  style="color: #00c292" href="javascript:void(0)"><?php echo $_SESSION['username']; ?> <i class="fa fa-angle-down fa-indicator"></i></a>
+                            <!-- drop down multilevel  -->
+                            <ul class="drop-down-multilevel">
+                                <li><a href="profile.php">الصفحة الشخصية </i></a></li>
+                                <li><a href="personal_ads.php"> الاعلانات الشخصية</i></a></li>
+                                <li><a href="messages/index.php">المحادثات </i></a></li>
+                                <li><a style="color: red" href="logout.php">تسجيل الخروج</a></li>
+                            </ul>
+                        </li>
+                        <?php }?>
 <!--                        <li class="pull-right"><a href="contact.php">تواصـل معنـا</a></li>-->
                     </ul>
                     <!--                    <ul class="menu-search-bar">-->

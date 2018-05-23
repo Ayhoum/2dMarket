@@ -102,13 +102,15 @@ if (isset($_GET['ad_id'])) {
                 </ul>
             </div>
         </div>
-        <div class="owl-carousel owl-theme single-details">
-            <!-- Slide -->
-            <?php
-            $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
-            $img_result = mysqli_query($mysqli, $img_query);
-            if (mysqli_num_rows($img_result) > 0) {
-                while ($row = mysqli_fetch_assoc($img_result)) {
+        <!-- Listing Slider  -->
+        <div class="flexslider single-page-slider">
+            <div class="flex-viewport">
+                <ul class="slides slide-main">
+                    <?php
+                    $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
+                    $img_result = mysqli_query($mysqli, $img_query);
+
+                    while ($row = mysqli_fetch_assoc($img_result)) {
                     $picture_name = $row['picture_name'];
                     $picture_url = $row['picture_url'];
                     if (empty($picture_name)){
@@ -116,13 +118,33 @@ if (isset($_GET['ad_id'])) {
                         $picture_url  = "en_ad_photo/";
                     }
                     ?>
-                    <div class="item" style="width: 750px; height: 420px"><img style="width: 750px; height: 420px object-fit: cover;" src="<?php echo $picture_url.  $picture_name;?>" alt=""></div>
-                    <?php
-                }
-            }
 
-            ?>
+                    <li class=""><img alt="" src="<?php echo $picture_url. $picture_name;?>" title=""></li>
+                </ul>
+                <?php  } ?>
+            </div>
         </div>
+        <!-- Listing Slider Thumb -->
+        <div class="flexslider" id="carousels">
+            <div class="flex-viewport">
+                <ul class="slides slide-thumbnail">
+                    <?php
+                    $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
+                    $img_result = mysqli_query($mysqli, $img_query);
+                    while ($row = mysqli_fetch_assoc($img_result)) {
+                    $picture_name = $row['picture_name'];
+                    $picture_url = $row['picture_url'];
+                    if (empty($picture_name)){
+                    $picture_name = "white.jpg";
+                    $picture_url  = "en_ad_photo/";
+                    }
+                    ?>
+                    <li class=""><img alt="" draggable="false" src="<?php echo $picture_name. $picture_url ;?>"> </li>
+                    <?php }?>
+                </ul>
+            </div>
+        </div>
+
         <!-- Share Ad  -->
         <div class="ad-share text-center">
             <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-6 col-sm-6 col-xs-6">
