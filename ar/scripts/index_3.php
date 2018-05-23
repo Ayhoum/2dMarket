@@ -134,7 +134,7 @@
                                             <!-- Ad Category -->
                                             <div class="category-title"> <span><a href="ad_per_cat.php?cat_id=<?php echo $category_id;?>&dis=all&price=all&order=latest"><?php echo $cat_name; ?></a></span> </div>
                                             <!-- Ad Title -->
-                                            <h3><a title="" href="ad_page.php?ad_id=<?php $ad_id;?>"><?php echo $title;?></a></h3>
+                                            <h3><a title="" href="ad_page.php?ad_id=<?php echo $ad_id;?>"><?php echo $title;?></a></h3>
                                             <!-- Price -->
                                             <?php if ($selling_type == "BID") { ?><div class="price">€ <?php echo $price;?> <span class="negotiable">(Bid)</span></div><?php } else {?> <div class="price">€ <?php echo $price;?> </div><?php }?>
                                         </div>
