@@ -17,9 +17,9 @@ ob_start();
         });
     </script>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <!--[if IE]>
+    <!--[if IE]-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <![endif]-->
+    <!--[endif]-->
     <meta name="description" content="">
     <meta name="author" content="ScriptsBundle">
     <title>2D Market | منتج رقـم : <?php echo $_GET['ad_id'];?></title>
@@ -64,10 +64,10 @@ ob_start();
     <script src="js/modernizr.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <!--[if lt IE 9]-->
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <!--[endif]-->
 </head>
 <body class="rtl">
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -367,6 +367,7 @@ ob_start();
 <script src="js/forest-megamenu.js"></script>
 <!-- Jquery Appear Plugin -->
 <script src="js/jquery.appear.min.js"></script>
+<script src="js/jquery.flexslider-min.js"></script>
 <!-- Numbers Animation   -->
 <script src="js/jquery.countTo.js"></script>
 <!-- Jquery Smooth Scroll  -->
@@ -413,6 +414,7 @@ ob_start();
             }
         });
     })(jQuery);
+
 </script>
 </body>
 </html>

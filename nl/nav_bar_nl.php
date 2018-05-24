@@ -145,7 +145,7 @@
                                     <ul class="drop-down-multilevel">
                                         <li><a href="profile.php">Mijn profile </i></a></li>
                                         <li><a href="personal_ads.php">Mijn advertenties </i></a></li>
-                                        <li><a href="messages/index.php">Brichten </i></a></li>
+                                        <li><a href="../messages/index.php?l=nl">Brichten </i></a></li>
                                         <li><a style="color: red" href="logout.php">Uitloggen</a></li>
                                     </ul>
                                 </li>

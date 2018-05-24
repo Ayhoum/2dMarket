@@ -126,7 +126,7 @@ include 'scripts/user_profile.php';
                             <li  class="active"  ><a href="personal_ads.php">اعلانـاتي <span class="badge"><?php echo $ad_count; ?> </span></a></li>
                             <li><a href="favourite_ads.php">الاعـلانات المفضلـة <span class="badge"><?php echo $fav_count; ?></span></a></li>
                             <li><a href="personal_bids.php">المزيادات الخاصة بي <span class="badge"></span></a></li>
-                            <li ><a href="messages/index.php">المحـادثـات</a></li>
+                            <li ><a href="../messages/index.php?l=ar">المحـادثـات</a></li>
                             <li><a href="logout.php">تسجيـل الخروج</a></li>
                         </ul>
                     </div>

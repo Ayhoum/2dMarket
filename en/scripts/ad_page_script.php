@@ -102,6 +102,8 @@ if (isset($_GET['ad_id'])) {
                 </ul>
             </div>
         </div>
+
+
         <!-- Listing Slider  -->
         <div class="flexslider single-page-slider">
             <div class="flex-viewport">
@@ -109,7 +111,7 @@ if (isset($_GET['ad_id'])) {
                     <?php
                     $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
                     $img_result = mysqli_query($mysqli, $img_query);
-
+                    $imgIndex = 0;
                     while ($row = mysqli_fetch_assoc($img_result)) {
                     $picture_name = $row['picture_name'];
                     $picture_url = $row['picture_url'];
@@ -117,11 +119,17 @@ if (isset($_GET['ad_id'])) {
                         $picture_name = "white.jpg";
                         $picture_url  = "en_ad_photo/";
                     }
-                    ?>
-
-                    <li class=""><img alt="" src="<?php echo $picture_url. $picture_name;?>" title=""></li>
-                </ul>
+                     if($imgIndex == 0){
+                        ?>
+                        <li class="flex-active-slide"><img style="width: 750px; height: 420px; object-fit: cover;" alt="<?php echo $picture_name;?>" src="<?php echo $picture_url. $picture_name;?>" title=""></li>
+                        <?php
+                        $imgIndex++;
+                    }else{ ?>
+                    <li><img style="width: 750px; height: 420px; object-fit: cover;" alt="<?php echo $picture_name;?>" src="<?php echo $picture_url. $picture_name;?>" title=""></li>
+                    <?php } ?>
                 <?php  } ?>
+                </ul>
+
             </div>
         </div>
         <!-- Listing Slider Thumb -->
@@ -131,19 +139,28 @@ if (isset($_GET['ad_id'])) {
                     <?php
                     $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
                     $img_result = mysqli_query($mysqli, $img_query);
+                    $imgIndex1 = 0;
                     while ($row = mysqli_fetch_assoc($img_result)) {
-                    $picture_name = $row['picture_name'];
-                    $picture_url = $row['picture_url'];
-                    if (empty($picture_name)){
-                    $picture_name = "white.jpg";
-                    $picture_url  = "en_ad_photo/";
-                    }
-                    ?>
-                    <li class=""><img alt="" draggable="false" src="<?php echo $picture_name. $picture_url ;?>"> </li>
-                    <?php }?>
+                        $picture_name = $row['picture_name'];
+                        $picture_url = $row['picture_url'];
+                        if (empty($picture_name)){
+                            $picture_name = "white.jpg";
+                            $picture_url  = "en_ad_photo/";
+                        }
+                         if($imgIndex1 == 0){
+                        ?>
+                        <li class="flex-active-slide"><img alt="<?php echo $picture_name;?>" draggable="false" src="<?php echo $picture_url. $picture_name;?>"> </li>
+                        <?php
+                        $imgIndex1++;
+                    }else{ ?>
+                        <li><img alt="<?php echo $picture_name;?>" draggable="false" src="<?php echo $picture_url. $picture_name;?>"></li>
+                    <?php } ?>
+                <?php  } ?>
                 </ul>
             </div>
         </div>
+
+
 
         <!-- Share Ad  -->
         <div class="ad-share text-center">
@@ -886,9 +903,8 @@ if (isset($_GET['ad_id'])) {
     <?php
 }
 ?>
-
-<script>
-    function ManualRefresh(){
-        window.location.reload();
-    }
-</script>
+<!--<script>-->
+<!--    function ManualRefresh(){-->
+<!--        window.location.reload();-->
+<!--    }-->
+<!--</script>-->

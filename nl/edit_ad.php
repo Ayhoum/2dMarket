@@ -133,7 +133,7 @@ if (mysqli_num_rows($address_result) > 0) {
                             <li ><a href="personal_ads.php">Mijn Advertenties <span class="badge"><?php //echo //$ad_count; ?> </span></a></li>
                             <li><a href="favourite_ads.php">Favorieten advertenties <span class="badge"><?php //echo //$fav_count; ?></span></a></li>
                             <li><a href="personal_bids.php">Mijn biedingen <span class="badge"></span></a></li>
-                            <li ><a href="messages/index.php">Mijn Berichten</a></li>
+                            <li ><a href="../messages/index.php?l=nl">Mijn Berichten</a></li>
                             <li><a href="logout.php">Uitloggen</a></li>
                         </ul>
                     </div>

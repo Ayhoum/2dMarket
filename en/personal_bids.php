@@ -120,7 +120,7 @@ include 'scripts/sessions.php';
                             <li ><a href="favourite_ads.php">Favourites Ads <span class="badge"><?php echo $fav_count; ?></span></a></li>
                             <li class="active"><a href="personal_bids.php">My Bids <span class="badge"></span></a></li>
 
-                            <li ><a href="messages/index.php">Messages</a></li>
+                            <li ><a href="../messages/index.php?l=en">Messages</a></li>
                             <li><a href="logout.php">Logout</a></li>
                         </ul>
                     </div>

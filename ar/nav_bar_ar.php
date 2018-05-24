@@ -150,7 +150,7 @@
                             <ul class="drop-down-multilevel">
                                 <li><a href="profile.php">الصفحة الشخصية </i></a></li>
                                 <li><a href="personal_ads.php"> الاعلانات الشخصية</i></a></li>
-                                <li><a href="messages/index.php">المحادثات </i></a></li>
+                                <li><a href="../messages/index.php?l=ar">المحادثات </i></a></li>
                                 <li><a style="color: red" href="logout.php">تسجيل الخروج</a></li>
                             </ul>
                         </li>

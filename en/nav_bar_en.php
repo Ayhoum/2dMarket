@@ -144,7 +144,7 @@
                                     <ul class="drop-down-multilevel">
                                         <li><a href="profile.php">My profile </i></a></li>
                                         <li><a href="personal_ads.php">My Ads. </i></a></li>
-                                        <li><a href="messages/index.php">Messages </i></a></li>
+                                        <li><a href="../messages/index.php?l=en">Messages </i></a></li>
                                         <li><a style="color: red" href="logout.php">Logout</a></li>
                                     </ul>
                                 </li>
