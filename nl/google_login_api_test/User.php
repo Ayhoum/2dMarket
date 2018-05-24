@@ -37,6 +37,7 @@ class User {
 
                 $_SESSION['new'] = 'false';
             }else{
+                $rand = rand(1,99999);
                 //Insert user data
                 $query = "INSERT INTO ".$this->userTbl." SET 
                 oauth_provider = '".$userData['oauth_provider']."', 
@@ -45,7 +46,8 @@ class User {
                 last_name = '".$userData['last_name']."', 
                 email = '".$userData['email']."', 
                 locale = '".$userData['locale']."', 
-                profile_picture = '".$userData['profile_picture']."', 
+                profile_picture = '".$userData['profile_picture']."',
+                username = '".$userData['first_name'].$userData['last_name'].$rand."', 
                 link = '".$userData['link']."'";
                 $insert = $this->db->query($query);
 
