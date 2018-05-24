@@ -159,7 +159,7 @@ if (isset($_GET['ad_id'])) {
         </div>
         <!-- Share Ad  -->
         <div class="ad-share text-center">
-            <div data-toggle="modal" data-target=".share-ad" class="ad-box col-md-6 col-sm-6 col-xs-6">
+            <div data-toggle="modal" data-target=".price-quote" class="ad-box col-md-6 col-sm-6 col-xs-6">
                 <i class="fa fa-envelope"></i> <span class="hidetext">ارسل <?php echo $user_username;?> رسـالة </span>
             </div>
             <a class="ad-box col-md-6 col-sm-6 col-xs-6"
