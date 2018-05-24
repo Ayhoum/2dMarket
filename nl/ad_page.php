@@ -209,17 +209,6 @@ ob_start();
                         <button type="submit" class="btn btn-theme btn-block" name="submit">Stuur</button>
                     </div>
                 </form>
-                    { ?>
-                    <form action="scripts/send_message.php?user_id=<?php echo $user_userid;?>&ad_id=<?php echo $ad_id; ?>" method="post">
-                        <div class="form-group  col-md-12  col-sm-12">
-                            <label>Your message</label>
-                            <textarea name="message" placeholder="What is the price of the Honda Civic 2017 you have in your inventory?" rows="3" class="form-control"></textarea>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div class="col-md-12  col-sm-12 margin-bottom-20 margin-top-20">
-                            <button type="submit" class="btn btn-theme btn-message" name="submit">Send</button>
-                        </div>
-                    </form>
                 <?php }else {?>
                 <div role="alert" class="alert alert-warning alert-dismissible">
                     <button aria-label="Close" data-dismiss="alert" class="close" type="button"><span aria-hidden="true">×</span></button>
