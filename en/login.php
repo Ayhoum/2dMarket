@@ -31,8 +31,7 @@ if ($gClient->getAccessToken()) {
         'email'             => $gpUserProfile['email'],
         'locale'            => $gpUserProfile['locale'],
         'profile_picture'   => $gpUserProfile['picture'],
-        'link'              => $gpUserProfile['link'],
-        'username'          => $gpUserProfile['username']
+        'link'              => $gpUserProfile['link']
     );
     $userData = $user->checkUser($gpUserData);
 
@@ -42,9 +41,11 @@ if ($gClient->getAccessToken()) {
     $id_result =mysqli_query($mysqli, $id_query);
     while ($row=mysqli_fetch_assoc($id_result)){
         $id = $row['id'];
+        $username = ['username'];
     }
+
     $_SESSION['id']         = $id;
-    $_SESSION['username']   = $gpUserProfile['username'];
+    $_SESSION['username']   = $username;
     $_SESSION['userData']   = $userData;
 
 
