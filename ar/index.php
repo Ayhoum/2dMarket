@@ -450,6 +450,12 @@ require_once "scripts/time_elapse.php";
 
 
       </script>
+      <script type="text/javascript" src="js/adsbygoogle.js"></script>
+      <script>
+          if( window.adblockblock === undefined ){
+              window.location.replace("adblock.php");
+          }
+      </script>
    </body>
 </html>
 

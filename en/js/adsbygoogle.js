@@ -1,0 +1,1 @@
+window.adblockblock = true;
