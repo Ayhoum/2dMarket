@@ -140,9 +140,13 @@ function searchUser($con,$config){
         $row1[$TFusername];
         $sesuserpic = $row1[$TFphoto];
 
-//        if($sesuserpic == "")
-        $sesuserpic = "avatar_default.png";
 
+        $rest = substr($sesuserpic, 0, 5);
+        if($rest == 'https'){
+
+        }else{
+            $sesuserpic =  "storage/user_image/avatar_default.png";
+        }
         $sql_res=mysqli_query($con,"SELECT * FROM `".$TNMuser."` where ($TFusername like '%$q%' or $TFemail like '%$q%') and ($TFuserid != '".$GLOBALS['sesId']."')  order by $TFuserid LIMIT 5");
         while($row=mysqli_fetch_array($sql_res))
         {
@@ -151,8 +155,10 @@ function searchUser($con,$config){
             $email = $row[$TFemail];
             $picname = $row[$TFphoto];
             $rest = substr($picname, 0, 5);
-            if($rest != 'https'){
-                $picname =  $config['site_url']."storage/user_image/avatar_default.png";
+            if($rest == 'https'){
+
+            }else{
+                $picname =  "storage/user_image/avatar_default.png";
             }
 
             $onofst =  getlastActiveTime($username);
@@ -293,8 +299,10 @@ function userProfile($con,$config) {
     $picname    = $row1[$GLOBALS['MySQLi_photo_field']];
 
     $rest = substr($picname, 0, 5);
-    if($rest != 'https'){
-        $picname =  $config['site_url']."storage/user_image/avatar_default.png";
+    if($rest == 'https'){
+
+    }else{
+        $picname =  "storage/user_image/avatar_default.png";
     }
     ?>
     <div class="">
@@ -336,8 +344,12 @@ function chatfrindList($con,$config) {
     $sesuserpic = $row1[$GLOBALS['MySQLi_photo_field']];
 
 //    if($sesuserpic == "")
-    $sesuserpic = "avatar_default.png";
+    $rest = substr($sesuserpic, 0, 5);
+    if($rest == 'https'){
 
+    }else{
+        $sesuserpic =  "storage/user_image/avatar_default.png";
+    }
     $TFid          = $GLOBALS['MySQLi_userid_field'];
     $TFusername    = $GLOBALS['MySQLi_username_field'];
     $TFname        = $GLOBALS['MySQLi_fullname_field'];
@@ -363,8 +375,10 @@ function chatfrindList($con,$config) {
         $fullname = $row[$TFname];
         $picname = $row[$TFPicname];
         $rest = substr($picname, 0, 5);
-        if($rest != 'https'){
-            $picname =  $config['site_url']."storage/user_image/avatar_default.png";
+        if($rest == 'https'){
+
+        }else{
+            $picname =  "storage/user_image/avatar_default.png";
         }
 
 
@@ -470,12 +484,16 @@ function get_all_msg($con,$config) {
 
 
         $rest = substr($picname, 0, 5);
-        if($rest != 'https'){
-            $picname =  $config['site_url']."storage/user_image/avatar_default.png";
+        if($rest == 'https'){
+
+        }else{
+            $picname =  "storage/user_image/avatar_default.png";
         }
         $rest = substr($picname2, 0, 5);
-        if($rest != 'https'){
-            $picname2 =  $config['site_url']."storage/user_image/avatar_default.png";
+        if($rest == 'https'){
+
+        }else{
+            $picname2 =  "storage/user_image/avatar_default.png";
         }
         $status = "0";
         if($status == "0")
@@ -662,26 +680,30 @@ function chatHeartbeat($con, $config)
         $query_result = mysqli_query ($con, $query1) OR error(mysqli_error($con));
         while ($info = mysqli_fetch_array($query_result))
         {
-            $picname = $info[$TFPicname];
+            $picname2 = $info[$TFPicname];
         }
 
         $query4 = "SELECT $TFPicname FROM `".$TNMuser."` WHERE $TFusername='" .mysqli_real_escape_string($con,$_SESSION['username']). "' LIMIT 1";
         $query_result4 = mysqli_query ($con, $query4) OR error(mysqli_error($con));
         while ($info4 = mysqli_fetch_array($query_result4))
         {
-            $picname2 = $info4[$TFPicname];
+            $picname = $info4[$TFPicname];
         }
 
 //        if($picname == "small")
         $rest = substr($picname, 0, 5);
-        if($rest != 'https'){
-            $picname =  $config['site_url']."storage/user_image/avatar_default.png";
+        if($rest == 'https'){
+
+        }else{
+            $picname =  "storage/user_image/avatar_default.png";
         }
 
 //        if($picname2 == "small")
         $rest = substr($picname2, 0, 5);
-        if($rest != 'https'){
-            $picname2 =  $config['site_url']."storage/user_image/avatar_default.png";
+        if($rest == 'https'){
+
+        }else{
+            $picname2 =  "storage/user_image/avatar_default.png";
         }
 
         $status = "0";
@@ -911,13 +933,17 @@ function sendChat($con, $config)
 
 //    if ($picname == "small")
     $rest = substr($picname, 0, 5);
-    if($rest != 'https'){
-        $picname =  $config['site_url']."storage/user_image/avatar_default.png";
+    if($rest == 'https'){
+
+    }else{
+        $picname =  "storage/user_image/avatar_default.png";
     }
 //    if ($picname2 == "small")
     $rest = substr($picname2, 0, 5);
-    if($rest != 'https'){
-        $picname2 =  $config['site_url']."storage/user_image/avatar_default.png";
+    if($rest == 'https'){
+
+    }else{
+        $picname2 =  "storage/user_image/avatar_default.png";
     }
 
     $status = "0";
