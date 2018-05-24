@@ -135,7 +135,7 @@
                                 </ul>
                             </li>
 
-                            <li ><a href="all_product.php?order=latest">All Ads </a></li>
+                            <li ><a href="all_product.php?order=latest">Alle advertenties </a></li>
                             <?php if(!isset($_SESSION['username'])){?>
                                 <li ><a  style="color: rgba(166,85,218,0.86)"   href="login.php"><i class="fa fa-sign-in"></i> Inloggen  </a> </li>
                             <?php } else { ?>
