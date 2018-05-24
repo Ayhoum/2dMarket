@@ -116,7 +116,7 @@ require_once "scripts/time_elapse.php";
 <!-- Navigation Menu End -->
 <!-- =-=-=-=-=-=-= Light Header End  =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Listing Map =-=-=-=-=-=-= -->
-<section class="section-padding white">
+<section class="section-padding gray">
     <div class="row center-block text-center">
         <script type="text/javascript">
             google_ad_client = "ca-pub-5850194650079393";
@@ -181,7 +181,7 @@ require_once "scripts/time_elapse.php";
 <!-- =-=-=-=-=-=-= How It Work End =-=-=-=-=-=-= -->
 <!-- =-=-=-=-=-=-= Main Content Area =-=-=-=-=-=-= -->
 <div class="main-content-area clearfix">
-    <section class="custom-padding">
+    <section class="custom-padding gray">
         <!-- Main Container -->
         <div class="container">
             <!-- Row -->

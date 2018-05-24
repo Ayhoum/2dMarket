@@ -7,7 +7,7 @@
  */
 ?>
 <!-- =-=-=-=-=-=-= electronics slider =-=-=-=-=-=-= -->
-<section class="custom-padding">
+<section class="custom-padding gray">
     <!-- Main Container -->
     <div class="container">
         <!-- Row -->
@@ -160,7 +160,7 @@
     <!-- Main Container End -->
 </section>
 <!-- =-=-=-=-=-=-= cars slider =-=-=-=-=-=-= -->
-<section class="custom-padding">
+<section class="custom-padding gray">
     <!-- Main Container -->
     <div class="container">
         <!-- Row -->
@@ -313,7 +313,7 @@
     <!-- Main Container End -->
 </section>
 <!-- =-=-=-=-=-=-= home & garden slider =-=-=-=-=-=-= -->
-<section class="custom-padding">
+<section class="custom-padding gray">
     <!-- Main Container -->
     <div class="container">
         <!-- Row -->
