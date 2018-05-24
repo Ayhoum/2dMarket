@@ -68,12 +68,12 @@ if (isset($_POST['submit'])){
 $date = date('Y-m-d H:i:s');
 
 
-    $chat_query = "INSERT INTO `2DM_messages` (`from_id`,`to_id`,`from_uname`,`to_uname`, `message_content`, `message_date`, `message_type`, `AD_id`) 
-                                          VALUES ('{$from_id}','{$to_id}','{$from_un}','{$to_un}','{$message2}','{$date}','Ad','{$ad_id}') ";
+    $chat_query = "INSERT INTO `2dm_messages` (`from_id`,`to_id`,`from_uname`,`to_uname`, `message_content`, `message_date`, `message_type`) 
+                                          VALUES ('{$from_id}','{$to_id}','{$from_un}','{$to_un}','{$message2}','{$date}','Ad') ";
     $chat_result = mysqli_query($mysqli, $chat_query);
 
-        $chat_query = "INSERT INTO `2DM_messages` (`from_id`,`to_id`,`from_uname`,`to_uname`, `message_content`, `message_date`, `message_type`, `AD_id`) 
-                                          VALUES ('{$from_id}','{$to_id}','{$from_un}','{$to_un}','{$message}','{$date}','text','{$ad_id}') ";
+        $chat_query = "INSERT INTO `2dm_messages` (`from_id`,`to_id`,`from_uname`,`to_uname`, `message_content`, `message_date`, `message_type` ) 
+                                          VALUES ('{$from_id}','{$to_id}','{$from_un}','{$to_un}','{$message}','{$date}','text') ";
         $chat_result = mysqli_query($mysqli, $chat_query);
 
         $link = "http://www.2dmarket.com/en/login.php";
