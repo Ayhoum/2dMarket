@@ -25,7 +25,7 @@ session_start();
                         class="fa fa-user"></i> <?php echo $_SESSION['username']; ?> <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
-                    <a href="/en/index.php"><i class="fa fa-fw fa-home"></i> 2dMarkt</a>
+                    <a href="/en/index.php"><i class="fa fa-fw fa-home"></i> 2DMarket</a>
                 </li>
 
                 <li class="divider">
