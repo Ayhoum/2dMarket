@@ -31,7 +31,8 @@ if ($gClient->getAccessToken()) {
         'email'             => $gpUserProfile['email'],
         'locale'            => $gpUserProfile['locale'],
         'profile_picture'   => $gpUserProfile['picture'],
-        'link'              => $gpUserProfile['link']
+        'link'              => $gpUserProfile['link'],
+        'username'          => $gpUserProfile['username']
     );
     $userData = $user->checkUser($gpUserData);
 
@@ -43,7 +44,7 @@ if ($gClient->getAccessToken()) {
         $id = $row['id'];
     }
     $_SESSION['id']         = $id;
-    $_SESSION['username']   = $gpUserProfile['given_name'] . $gpUserProfile['family_name'];
+    $_SESSION['username']   = $gpUserProfile['username'];
     $_SESSION['userData']   = $userData;
 
 
