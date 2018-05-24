@@ -15,34 +15,66 @@ ob_start();
 
 if (isset($_POST['submit'])){
     $message = $_POST['message'];
-    $part_one = $_SESSION['id'];
-
-    $part_two = $_GET['user_id'];
+    $from_id = $_SESSION['id'];
+    $message2 = "";
+    $to_id = $_GET['user_id'];
     $ad_id = $_GET['ad_id'];
+
+
+    $queryAd = "SELECT * FROM `ADVERTISEMENT` WHERE id = '{$ad_id}'";
+    $runQueryAd = mysqli_query($mysqli,$queryAd);
+    if(mysqli_num_rows($runQueryAd) > 0){
+        while($row = mysqli_fetch_assoc($runQueryAd)){
+            $title = $row['title'];
+            $price = $row['price'];
+            $user_id = $row['USER_id'];
+
+            $message2 .= $title . " - ". $price . "\n";
+
+        }
+    }
+
+    $queryLocation = "SELECT * FROM `ADDRESS` WHERE USER_id = '{$user_id}'";
+    $runQueryLoc = mysqli_query($mysqli,$queryLocation);
+    if(mysqli_num_rows($runQueryLoc) > 0){
+        while($row = mysqli_fetch_assoc($runQueryLoc)){
+            $country = $row['country'];
+            $city = $row['city'];
+            $message2 .= $country . " - " . $city;
+        }
+    }
+
+
 
     date_default_timezone_set('Europe/Amsterdam');
     $date = date('Y-m-d H:i:s');
 
 
 
-    $select_query = "SELECT * FROM `CHAT` WHERE `part_one` = '{$part_one}' && `part_two` =  '{$part_two} ' && `ADVERTISEMENT_id` = '{$ad_id})' LIMIT 1 ";
-    $select_result = mysqli_query($mysqli, $select_query);
-    if (mysqli_num_rows($select_result) > 0) {
-        while ($row= mysqli_fetch_assoc($select_result)){
-            $chat_id = $row['id'];
-        }
+    $get_uname1_query = "SELECT * From `USER` WHERE id = '{$from_id}'";
+    $get_uname1_result = mysqli_query($mysqli,$get_uname1_query);
+    while ($row = mysqli_fetch_assoc($get_uname1_result)){
+        $from_un = $row['username'];
+    }
+
+    $get_uname2_query = "SELECT * From `USER` WHERE id = '{$to_id}'";
+    $get_uname2_result = mysqli_query($mysqli,$get_uname2_query);
+    while ($row = mysqli_fetch_assoc($get_uname2_result)){
+        $to_un = $row['username'];
+        $email = $row['email'];
+    }
 
 
-        $msg_query  = "INSERT INTO `MESSAGE` (`msg_text`, `sender`, `msg_time`, `CHAT_id`) VALUES ('{$message}', '{$part_one}', '{$date}','{$chat_id}')";
-        $msg_result = mysqli_query($mysqli, $msg_query);
+    $date = date('Y-m-d H:i:s');
 
 
+    $chat_query = "INSERT INTO `2dm_messages` (`from_id`,`to_id`,`from_uname`,`to_uname`, `message_content`, `message_date`, `message_type`) 
+                                          VALUES ('{$from_id}','{$to_id}','{$from_un}','{$to_un}','{$message2}','{$date}','Ad') ";
+    $chat_result = mysqli_query($mysqli, $chat_query);
 
-        $get_email_query = "SELECT * From `USER` WHERE id = '{$part_two}'";
-        $get_email_result = mysqli_query($mysqli,$get_email_query);
-        while ($row = mysqli_fetch_assoc($get_email_result)){
-            $email = $row['email'];
-        }
+    $chat_query = "INSERT INTO `2dm_messages` (`from_id`,`to_id`,`from_uname`,`to_uname`, `message_content`, `message_date`, `message_type` ) 
+                                          VALUES ('{$from_id}','{$to_id}','{$from_un}','{$to_un}','{$message}','{$date}','text') ";
+    $chat_result = mysqli_query($mysqli, $chat_query);
 
         $link = "http://www.2dmarket.com/nl/login.php";
 
