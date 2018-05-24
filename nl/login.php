@@ -252,8 +252,8 @@ if ($gClient->getAccessToken()) {
                                             </div>
 
                                             <button type="button" onclick="logIn();" class="btn btn-theme btn-lg btn-block" name="Log_in">Inloggen</button>
-
                                         </form>
+
                                         <a href="<?php echo $output; ?>" class="btn btn-block btn-social btn-gplus">
                                             <span class="fa fa-google-plus"></span> Sign in with google
                                         </a>
