@@ -413,6 +413,7 @@ require_once "scripts/time_elapse.php";
           myLon = getCookie("longC");
 
       </script>
+      <script src="js/jquery.flexslider-min.js"></script>
    </body>
 </html>
 

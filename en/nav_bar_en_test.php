@@ -1,6 +1,12 @@
-
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Alaa
+ * Date: 20-3-2018
+ * Time: 20:32
+ */
+?>
 <div class="colored-header">
-    <!-- menu start -->
     <nav id="menu-1" class="mega-menu">
         <!-- menu list items container -->
         <section class="menu-list-items">
@@ -8,7 +14,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <!-- menu logo -->
-                        <ul class="menu-logo">
+                        <ul class="menu-logo pull-right">
                             <li>
                                 <a class="navbar-brand" href="index.php">
                                     <img src="images/logo_files/2Dmarket_white%20(1).gif" style="width: 80px;height: 80px;margin-top: -15px" class="d-inline-block align-top" alt="2D Market">
@@ -16,20 +22,20 @@
                             </li>
                         </ul>
                         <!-- menu links -->
-                        <ul class="menu-links center-block">
+                        <ul class="menu-links center-block pull-right">
                             <!-- active class -->
 
-                            <li>
-                                <a href="#">Categories <i class="fa fa-angle-down fa-indicator"></i></a>
-                                <!-- drop down multilevel  -->
-                                <ul class="drop-down-multilevel" role='menu'>
+                            <li class="pull-right">
+                                <a href="javascript:void(0)"> التصنيـفات<i class="fa fa-angle-down fa-indicator"></i></a>
+                                <!-- drop down full width -->
+                                <ul class="drop-down-multilevel">
                                     <li>
-                                        <a href="javascript:void(0)">Electronics <i class="fa fa-angle-right fa-indicator"></i> </a>
+                                        <a href="javascript:void(0)">أجهزة إلكترونية <i class="fa fa-angle-right fa-indicator"></i> </a>
                                         <!-- drop down second level -->
                                         <ul class="drop-down-multilevel">
                                             <?php
 
-                                            $query = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` = '59'";
+                                            $query = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` = '60'";
                                             $result = mysqli_query($mysqli, $query);
                                             While($row = mysqli_fetch_assoc($result)){
                                                 $id = $row['id'];
@@ -51,12 +57,12 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0)">Cars & Motorbikes <i class="fa fa-angle-left fa-indicator"></i> </a>
+                                        <a href="javascript:void(0)">سيارات ودراجات آلية <i class="fa fa-angle-left fa-indicator"></i> </a>
                                         <!-- add class left-side -->
                                         <ul class="drop-down-multilevel left-side">
                                             <?php
 
-                                            $query = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` = '75'";
+                                            $query = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` = '77'";
                                             $result = mysqli_query($mysqli, $query);
                                             While($row = mysqli_fetch_assoc($result)){
                                                 $id = $row['id'];
@@ -77,12 +83,12 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0)">Fashion <i class="fa fa-angle-right fa-indicator"></i> </a>
+                                        <a href="javascript:void(0)">أزياء <i class="fa fa-angle-right fa-indicator"></i> </a>
                                         <!-- drop down second level -->
                                         <ul class="drop-down-multilevel">
                                             <?php
 
-                                            $query = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` = '62'";
+                                            $query = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` = '64'";
                                             $result = mysqli_query($mysqli, $query);
                                             While($row = mysqli_fetch_assoc($result)){
                                                 $id = $row['id'];
@@ -104,12 +110,12 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0)">Home Appliances <i class="fa fa-angle-left fa-indicator"></i> </a>
+                                        <a href="javascript:void(0)">الأجهزة المنزلية <i class="fa fa-angle-left fa-indicator"></i> </a>
                                         <!-- add class left-side -->
                                         <ul class="drop-down-multilevel left-side">
                                             <?php
 
-                                            $query = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` = '65'";
+                                            $query = "SELECT * FROM `SUB_CATEGORY` WHERE `CATEGORY_id` = '67'";
                                             $result = mysqli_query($mysqli, $query);
                                             While($row = mysqli_fetch_assoc($result)){
                                                 $id = $row['id'];
@@ -129,26 +135,28 @@
                                             <?php }?>
                                         </ul>
                                     </li>
-                                    <li><a href="categories.php">All Categories</a>
+                                    <li><a href="categories.php">جميع التصنيفات</a>
                                     </li>
                                 </ul>
                             </li>
+                            <li class="pull-right"><a href="all_product.php?order=latest">جميـع الاعلانـات </a></li>
 
-                            <li><a href="all_product.php?order=latest">All Ads </a></li>
                             <?php if(!isset($_SESSION['username'])){?>
-                                <li><a href="login.php"><i class="fa fa-sign-in"></i> Log in  </a> </li>
+                                <li ><a  style="color: rgba(166,85,218,0.86)"   href="login.php"><i class="fa fa-sign-in"></i> تسجيل الدخول  </a> </li>
                             <?php } else { ?>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="icon-profile-male" aria-hidden="true"></i> <?php echo $_SESSION['username']; ?> <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="profile.php">User Profile</a></li>
-                                        <li><a href="personal_ads.php">Active Ads</a></li>
-                                        <li><a href="favourite_ads.php">Favourite Ads</a></li>
-                                        <li><a href="../messages/index.php?l=en">Message Panel</a></li>
-                                        <li><a href="logout.php">logout</a></li>
+                                <li>
+                                    <a  style="color: #00c292" href="javascript:void(0)"><?php echo $_SESSION['username']; ?> <i class="fa fa-angle-down fa-indicator"></i></a>
+                                    <!-- drop down multilevel  -->
+                                    <ul class="drop-down-multilevel">
+                                        <li><a href="profile.php">الصفحة الشخصية </i></a></li>
+                                        <li><a href="personal_ads.php"> الاعلانات الشخصية</i></a></li>
+                                        <li><a href="../messages/index.php?l=ar">المحادثات </i></a></li>
+                                        <li><a style="color: red" href="logout.php">تسجيل الخروج</a></li>
                                     </ul>
                                 </li>
-                            <?php } ?>                        </ul>
+                            <?php }?>
+                            <!--                        <li class="pull-right"><a href="contact.php">تواصـل معنـا</a></li>-->
+                        </ul>
                         <!--                    <ul class="menu-search-bar">-->
                         <!--                                            --><?php //if(!isset($_SESSION['username'])){?>
                         <!--                                            <li>-->
@@ -159,36 +167,33 @@
                         <!--                                            --><?php //}?>
                         <!--                                        </ul>-->
 
-                        <ul class="menu-search-bar" style="float: right">
+                        <!--                    <ul class="menu-search-bar" style="float: left">-->
+                        <!--                        -->
+                        <!--                    </ul>-->
 
-                            <li><a href="javascript:void(0)"  class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i>Post Free Ad </a> </li>
+                        <ul class="menu-search-bar" style="float: left">
+
+                            <li><a href="<?php if (isset($_SESSION['username'])){ echo "new_advertisement.php"; }else { echo "login.php"; }  ?>"  class="btn btn-light"><i class="fa fa-plus" aria-hidden="true"></i>انشر اعلانك الان </a> </li>
 
                         </ul>
                     </div>
-
-
                 </div>
             </div>
         </section>
     </nav>
-    <!-- Navigation Menu End -->
 </div>
-<!-- =-=-=-=-=-=-= Advance Search =-=-=-=-=-=-= -->
 <div id="search-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
                 <!-- Form -->
                 <form method="post" class="search-form">
-                    <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <input type="text" class="form-control" placeholder="What Are You Looking For..." />
-                    </div>
-                    <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <select class="category form-control">
-                            <option label="Select a category">Select a category</option>
+                    <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
+                        <select id="catSelect" class="category form-control">
+                            <option label="اختر تصنيفاً من القائمة">اختر تصنيفاً من القائمة</option>
                             <?php
                             // GET ALL CATEGORIES from DB
-                            $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'EN' ORDER BY `name` ASC  ";
+                            $cat_query= "SELECT * FROM `CATEGORY` WHERE `lang` = 'AR' ORDER BY `name` ASC  ";
                             $cat_result= mysqli_query($mysqli, $cat_query);
                             if (mysqli_num_rows($cat_result) > 0 ) {
                                 while ($row = mysqli_fetch_assoc($cat_result)) {
@@ -216,30 +221,32 @@
                         </select>
                     </div>
                     <!-- Search Field -->
+                    <div class="col-md-3 col-xs-12 col-sm-4 no-padding">
+                        <input id="querySearch" type="text" class="form-control" placeholder="عن ماذا تبحث ؟" />
+                    </div>
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <input type="text" class="form-control" placeholder="Postcode" />
+                        <input type="text" class="form-control" placeholder="الرمز البريدي" />
                     </div>
 
                     <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
-                        <select class="category form-control">
-                            <option label="Select a category">Select search distance</option>
-                            <option value="10">10 KM</option>
-                            <option value="20">20 KM</option>
-                            <option value="30">30 KM</option>
-                            <option value="40">40 KM</option>
-                            <option value="50">50 KM</option>
-                            <option value="60">60 KM</option>
-                            <option value="70">70 KM</option>
-                            <option value="80">80 KM</option>
-                            <option value="90">90 KM</option>
-                            <option value="100">100 KM</option>
-                            <option value="all">Unlimited</option>
+                        <select id="dis" class="category form-control">
+                            <option label="اختر مسافة البحث">اختر مسافة البحث</option>
+                            <option value="10">10 كـم</option>
+                            <option value="20">20 كـم</option>
+                            <option value="30">30 كـم</option>
+                            <option value="40">40 كـم</option>
+                            <option value="50">50 كـم</option>
+                            <option value="60">60 كـم</option>
+                            <option value="70">70 كـم</option>
+                            <option value="80">80 كـم</option>
+                            <option value="90">90 كـم</option>
+                            <option value="100">100 كـم</option>
+                            <option value="all">غير محدد</option>
                         </select>
                     </div>
-
                     <!-- Search Button -->
-                    <div class="col-md-3 col-xs-12 col-sm-12 no-padding">
-                        <button type="button" name="submit" onclick="submitBut();" id="submitSearch" class="btn btn-light">Search</button>
+                    <div class="col-md-2 col-xs-12 col-sm-4 no-padding">
+                        <button type="button" name="submit" style="width: 100%;" onclick="submitBut();" id="submitSearch" class="btn btn-light">ابحث</button>
                     </div>
                 </form>
                 <!-- end .search-form -->
@@ -247,3 +254,33 @@
         </div>
     </div>
 </div>
+<script>
+
+    var cat;
+    var query;
+    var dis;
+    var order;
+    var price;
+
+    var submitBut = function () {
+        cat   = $("#catSelect").val();
+        query = $("#querySearch").val();
+        dis   = $("#dis").val();
+        order = "latest";
+        price = "all";
+        if(cat == null || cat == "dis"){
+            $(".select2Class").addClass('shadow');
+        }
+        if(query == ""){
+            $("#querySearch").addClass('shadow');
+        }
+
+        if(cat != null && cat != "dis" && query != "" && dis != 0.00){
+
+
+
+            window.open("search_result.php?order=" + order + "&dis=" + dis + "&query=" + query + "&cat=" + cat + "&price=" + price,"_self");
+        }
+    };
+
+</script>
