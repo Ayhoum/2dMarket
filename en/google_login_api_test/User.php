@@ -31,6 +31,7 @@ class User {
                 email = '".$userData['email']."', 
                 locale = '".$userData['locale']."', 
                 profile_picture = '".$userData['profile_picture']."', 
+                username = '".$userData['first_name'].$userData['last_name']."', 
                 link = '".$userData['link']."'
                 WHERE oauth_provider = '".$userData['oauth_provider']."' AND oauth_uid = '".$userData['oauth_uid']."'";
                 $update = $this->db->query($query);
@@ -45,7 +46,8 @@ class User {
                 last_name = '".$userData['last_name']."', 
                 email = '".$userData['email']."', 
                 locale = '".$userData['locale']."', 
-                profile_picture = '".$userData['profile_picture']."', 
+                profile_picture = '".$userData['profile_picture']."',
+                username = '".$userData['first_name'].$userData['last_name']."', 
                 link = '".$userData['link']."'";
                 $insert = $this->db->query($query);
 
