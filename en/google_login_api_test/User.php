@@ -24,6 +24,7 @@ class User {
             $prevQuery = "SELECT * FROM ".$this->userTbl." WHERE oauth_provider = '".$userData['oauth_provider']."' AND oauth_uid = '".$userData['oauth_uid']."'";
             $prevResult = $this->db->query($prevQuery);
             if($prevResult->num_rows > 0){
+                $rand = rand(1,99999);
                 //Update user data if already exists
                 $query = "UPDATE ".$this->userTbl." SET 
                 first_name = '".$userData['first_name']."', 
@@ -31,13 +32,14 @@ class User {
                 email = '".$userData['email']."', 
                 locale = '".$userData['locale']."', 
                 profile_picture = '".$userData['profile_picture']."', 
-                username = '".$userData['first_name'].$userData['last_name']."', 
+                username = '".$userData['first_name'].$userData['last_name'].$rand."', 
                 link = '".$userData['link']."'
                 WHERE oauth_provider = '".$userData['oauth_provider']."' AND oauth_uid = '".$userData['oauth_uid']."'";
                 $update = $this->db->query($query);
 
                 $_SESSION['new'] = 'false';
             }else{
+                $rand = rand(1,99999);
                 //Insert user data
                 $query = "INSERT INTO ".$this->userTbl." SET 
                 oauth_provider = '".$userData['oauth_provider']."', 
@@ -47,7 +49,7 @@ class User {
                 email = '".$userData['email']."', 
                 locale = '".$userData['locale']."', 
                 profile_picture = '".$userData['profile_picture']."',
-                username = '".$userData['first_name'].$userData['last_name']."', 
+                username = '".$userData['first_name'].$userData['last_name'].$rand."', 
                 link = '".$userData['link']."'";
                 $insert = $this->db->query($query);
 
