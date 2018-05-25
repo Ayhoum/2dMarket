@@ -103,9 +103,31 @@ if (isset($_GET['ad_id'])) {
             </div>
         </div>
 
-        <div class="owl-carousel owl-theme single-details" data-slider-id="1">
-            <!-- Slide -->
-            <?php
+
+<!--        <div class="lazy slider" data-sizes="50vw">-->
+<!--            <!-- Slide -->
+<!--            --><?php
+//            $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
+//            $img_result = mysqli_query($mysqli, $img_query);
+//            if (mysqli_num_rows($img_result) > 0) {
+//                while ($row = mysqli_fetch_assoc($img_result)) {
+//                    $picture_name = $row['picture_name'];
+//                    $picture_url = $row['picture_url'];
+//                    if (empty($picture_name)){
+//                        $picture_name = "white.jpg";
+//                        $picture_url  = "en_ad_photo/";
+//                    }
+//                    ?>
+<!--                    <div><img style="width: 750px; height: 420px" src="--><?php //echo $picture_url.  $picture_name;?><!--"></div>-->
+<!--                    --><?php
+//                }
+//            }
+//
+//            ?>
+<!--        </div>-->
+
+        <div class="carousel"
+             data-flickity='{ "imagesLoaded": true, "percentPosition": false }'>            <?php
             $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
             $img_result = mysqli_query($mysqli, $img_query);
             if (mysqli_num_rows($img_result) > 0) {
@@ -114,16 +136,22 @@ if (isset($_GET['ad_id'])) {
                     $picture_url = $row['picture_url'];
                     if (empty($picture_name)){
                         $picture_name = "white.jpg";
-                        $picture_url  = "en_ad_photo/";
+                        $picture_url  = "nl_ad_photo/";
                     }
                     ?>
-                    <div class="item" style="width: 750px; height: 420px"><img style="width: 750px; height: 420px object-fit: cover;" src="<?php echo $picture_url.  $picture_name;?>" alt=""></div>
+<!--                    <div class="carousel-cell"><img style="width: 750px; height: 420px; object-fit: cover;" src=""></div>-->
+                    <img src="<?php echo $picture_url.  $picture_name;?>" alt="orange tree" />
+
                     <?php
                 }
             }
 
             ?>
         </div>
+
+
+
+
         <!-- Share Ad  -->
         <div class="ad-share text-center">
             <div data-toggle="modal" data-target=".price-quote" class="ad-box col-md-6 col-sm-6 col-xs-6">
@@ -867,3 +895,10 @@ if (isset($_GET['ad_id'])) {
         window.location.reload();
     }
 </script>
+<?php
+if($selling_type == 'BID'){
+    ?>
+</div>
+<?php
+}
+?>

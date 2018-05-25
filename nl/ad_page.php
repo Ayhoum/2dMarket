@@ -56,6 +56,8 @@ ob_start();
     <link rel="stylesheet" id="color" href="css/colors/defualt.css">
     <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
     <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
     <!-- JavaScripts -->
     <script src="js/modernizr.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -64,6 +66,30 @@ ob_start();
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <!--[endif]-->
+    <style>
+
+        /* external css: flickity.css */
+
+        * { box-sizing: border-box; }
+
+        body { font-family: sans-serif; }
+
+        .carousel {
+            background: #EEE;
+        }
+
+        .carousel img {
+            display: block;
+            height: 200px;
+        }
+
+        @media screen and ( min-width: 768px ) {
+            .carousel img {
+                height: 400px;
+            }
+        }
+    </style>
+
 </head>
 <body>
 <!-- =-=-=-=-=-=-= Preloader =-=-=-=-=-=-= -->
@@ -364,6 +390,8 @@ ob_start();
 
 <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
 <script src="js/jquery.min.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
 <!-- Bootstrap Core Css  -->
 <script src="js/bootstrap.min.js"></script>
 <!-- Jquery Easing -->
