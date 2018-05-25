@@ -103,60 +103,57 @@ if (isset($_GET['ad_id'])) {
             </div>
         </div>
         <!-- Listing Slider  -->
-        <div class="flexslider single-page-slider">
-            <div class="flex-viewport">
-                <ul class="slides slide-main">
+        <div class="owl-carousel owl-theme single-details" data-slider-id="1">
+            <!-- Slide -->
+            <?php
+            $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
+            $img_result = mysqli_query($mysqli, $img_query);
+            if (mysqli_num_rows($img_result) > 0) {
+                while ($row = mysqli_fetch_assoc($img_result)) {
+                    $picture_name = $row['picture_name'];
+                    $picture_url = $row['picture_url'];
+                    if (empty($picture_name)){
+                        $picture_name = "white.jpg";
+                        $picture_url  = "en_ad_photo/";
+                    }
+                    ?>
+                    <div class="item" style="width: 750px; height: 420px"><img style="width: 750px; height: 420px object-fit: cover;" src="<?php echo $picture_url.  $picture_name;?>" alt=""></div>
                     <?php
-                    $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
-                    $img_result = mysqli_query($mysqli, $img_query);
-                    $imgIndex = 0;
-                    while ($row = mysqli_fetch_assoc($img_result)) {
-                        $picture_name = $row['picture_name'];
-                        $picture_url = $row['picture_url'];
-                        if (empty($picture_name)){
-                            $picture_name = "white.jpg";
-                            $picture_url  = "en_ad_photo/";
-                        }
-                        if($imgIndex == 0){
-                            ?>
-                            <li class="flex-active-slide"><img style="width: 750px; height: 420px; object-fit: cover;" alt="<?php echo $picture_name;?>" src="<?php echo $picture_url. $picture_name;?>" title=""></li>
-                            <?php
-                            $imgIndex++;
-                        }else{ ?>
-                            <li><img style="width: 750px; height: 420px; object-fit: cover;" alt="<?php echo $picture_name;?>" src="<?php echo $picture_url. $picture_name;?>" title=""></li>
-                        <?php } ?>
-                    <?php  } ?>
-                </ul>
+                }
+            }
 
-            </div>
+            ?>
         </div>
-        <!-- Listing Slider Thumb -->
-        <div class="flexslider" id="carousels">
-            <div class="flex-viewport">
-                <ul class="slides slide-thumbnail">
-                    <?php
-                    $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
-                    $img_result = mysqli_query($mysqli, $img_query);
-                    $imgIndex1 = 0;
-                    while ($row = mysqli_fetch_assoc($img_result)) {
-                        $picture_name = $row['picture_name'];
-                        $picture_url = $row['picture_url'];
-                        if (empty($picture_name)){
-                            $picture_name = "white.jpg";
-                            $picture_url  = "en_ad_photo/";
-                        }
-                        if($imgIndex1 == 0){
-                            ?>
-                            <li class="flex-active-slide"><img alt="<?php echo $picture_name;?>" draggable="false" src="<?php echo $picture_url. $picture_name;?>"> </li>
-                            <?php
-                            $imgIndex1++;
-                        }else{ ?>
-                            <li><img alt="<?php echo $picture_name;?>" draggable="false" src="<?php echo $picture_url. $picture_name;?>"></li>
-                        <?php } ?>
-                    <?php  } ?>
-                </ul>
-            </div>
-        </div>
+        <!--<li><img style="width: 750px; height: 420px; object-fit: cover;" alt="--><?php //echo $picture_name;?><!--" src="--><?php //echo $picture_url. $picture_name;?><!--" title=""></li>-->
+
+
+<!--        <!-- Listing Slider Thumb -->
+<!--        <div class="flexslider" id="carousels">-->
+<!--            <div class="flex-viewport">-->
+<!--                <ul class="slides slide-thumbnail">-->
+<!--                    --><?php
+//                    $img_query = "SELECT * FROM `ADVERTISEMENT_PICTURE` WHERE `ADVERTISEMENT_id` = '{$ad_id}'";
+//                    $img_result = mysqli_query($mysqli, $img_query);
+//                    $imgIndex1 = 0;
+//                    while ($row = mysqli_fetch_assoc($img_result)) {
+//                        $picture_name = $row['picture_name'];
+//                        $picture_url = $row['picture_url'];
+//                        if (empty($picture_name)){
+//                            $picture_name = "white.jpg";
+//                            $picture_url  = "en_ad_photo/";
+//                        }
+//                        if($imgIndex1 == 0){
+//                            ?>
+<!--                            <li class="flex-active-slide"><img alt="--><?php //echo $picture_name;?><!--" draggable="false" src="--><?php //echo $picture_url. $picture_name;?><!--"> </li>-->
+<!--                            --><?php
+//                            $imgIndex1++;
+//                        }else{ ?>
+<!--                            <li><img alt="--><?php //echo $picture_name;?><!--" draggable="false" src="--><?php //echo $picture_url. $picture_name;?><!--"></li>-->
+<!--                        --><?php //} ?>
+<!--                    --><?php // } ?>
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
         <!-- Share Ad  -->
         <div class="ad-share text-center">
             <div data-toggle="modal" data-target=".price-quote" class="ad-box col-md-6 col-sm-6 col-xs-6">
@@ -896,4 +893,6 @@ if (isset($_GET['ad_id'])) {
     function ManualRefresh(){
         window.location.reload();
     }
+
+
 </script>

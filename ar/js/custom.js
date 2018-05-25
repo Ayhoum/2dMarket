@@ -294,22 +294,22 @@ Designed and Development by: ScriptsBundle
 
     /*==========  Single Page SLider With Thumb ==========*/
 
-    $("#carousels").flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: false,
-        itemWidth: 110,
-        itemMargin: 50,
-        asNavFor: '.single-page-slider'
-    });
-    $(".single-page-slider").flexslider({
-        animation: "slide",
-        controlNav: false,
-        animationLoop: false,
-        slideshow: true,
-        sync: "#carousel"
-    });
+    // $("#carousels").flexslider({
+    //     animation: "slide",
+    //     controlNav: false,
+    //     animationLoop: false,
+    //     slideshow: false,
+    //     itemWidth: 110,
+    //     itemMargin: 50,
+    //     asNavFor: '.single-page-slider'
+    // });
+    // $(".single-page-slider").flexslider({
+    //     animation: "slide",
+    //     controlNav: false,
+    //     animationLoop: false,
+    //     slideshow: true,
+    //     sync: "#carousel"
+    // });
 
     /*==========  Price Range Slider  ==========*/
     // var stepSlider = document.getElementById('price-slider');
