@@ -496,7 +496,7 @@ if (isset($_POST['submit']) && $_GET['id']){
                <div class="row">
                   <div class="col-md-12">
                      <!-- end post-padding -->
-                     <div class="post-ad-form extra-padding postdetails">
+                     <div class="post-ad-form postdetails">
                         <div class="heading-panel text-center">
                            <h3 class="main-title text-left">
                               Complete your info.
