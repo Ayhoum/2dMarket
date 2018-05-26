@@ -321,7 +321,6 @@ require_once "scripts/time_elapse.php";
 <script src="js/forest-megamenu.js"></script>
 <!-- Jquery Appear Plugin -->
 <script src="js/jquery.appear.min.js"></script>
-<script src="js/jquery.flexslider-min.js"></script>
 <!-- Numbers Animation   -->
 <script src="js/jquery.countTo.js"></script>
 <!-- Jquery Smooth Scroll  -->
