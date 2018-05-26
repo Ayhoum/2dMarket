@@ -382,15 +382,6 @@ require_once "scripts/time_elapse.php";
       <!-- Template Core JS -->
       <script src="js/custom.js"></script>
       <script>
-          $(function() {
-
-              $(".itemFill").imgLiquid({
-                  fill: true,
-                  horizontalAlign: "center",
-                  verticalAlign: "center"
-              });
-
-          });
 
 
           var lonVal;

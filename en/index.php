@@ -50,6 +50,8 @@ require_once "scripts/time_elapse.php";
     <link href="css/responsive-media.css" rel="stylesheet">
     <!-- =-=-=-=-=-=-= Template Color =-=-=-=-=-=-= -->
     <link rel="stylesheet" id="color" href="css/colors/defualt.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <!-- =-=-=-=-=-=-= For Style Switcher =-=-=-=-=-=-= -->
     <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
     <!-- JavaScripts -->
@@ -61,12 +63,13 @@ require_once "scripts/time_elapse.php";
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
-        .shadow{
-            box-shadow: 0 0 12px red;
+        * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
         }
-        .carousel-control.left, .carousel-control.right {
-            background-image: none
-        }
+
+        body { font-family: sans-serif; }
+
     </style>
 
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
@@ -311,8 +314,10 @@ require_once "scripts/time_elapse.php";
 <!--</a>-->
 <a href="#0" class="cd-top">Top</a>
 <!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
-<!-- =-=-=-=-=-=-= JQUERY =-=-=-=-=-=-= -->
 <script src="js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
 <!-- Bootstrap Core Css  -->
 <script src="js/bootstrap.min.js"></script>
 <!-- Jquery Easing -->
@@ -328,10 +333,11 @@ require_once "scripts/time_elapse.php";
 <!-- Jquery Select Options  -->
 <script src="js/select2.min.js"></script>
 <!-- noUiSlider -->
+<script src="js/nouislider.all.min.js"></script>
 <script src="js/ion.rangeSlider.js"></script>
 <script src="js/ion.rangeSlider.min.js"></script>
 <!-- Carousel Slider  -->
-<script src="js/carousel.min.js"></script>
+<!--<script src="js/carousel.min.js"></script>-->
 <script src="js/slide.js"></script>
 <!-- Image Loaded  -->
 <script src="js/imagesloaded.js"></script>
@@ -349,21 +355,10 @@ require_once "scripts/time_elapse.php";
 <!-- Googgle map For THis Page Only -->
 <!--      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcH2huiDBaDIkLnb691-9MIn-MhALCCGk&sensor=false"></script>-->
 <!-- Parallax -->
-<script src="js/imgLiquid-min.js"></script>
 
 
 
 <script>
-    $(function() {
-
-        $(".itemFill").imgLiquid({
-            fill: true,
-            horizontalAlign: "center",
-            verticalAlign: "center"
-        });
-
-    });
-
 
     var lonVal;
     var latVal;
@@ -426,8 +421,30 @@ require_once "scripts/time_elapse.php";
         window.location.replace("adblock.php");
     }
 </script>
-
-
+<script>
+    $(document).ready(function(){
+        $('.owl-carousel').owlCarousel({
+            loop: false,
+            nav : false
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('.owl1').owlCarousel({
+            loop: false,
+            navigation : false
+        });
+        $('.owl2').owlCarousel({
+            loop: false,
+            navigation : false
+        });
+        $('.owl3').owlCarousel({
+            loop: false,
+            navigation : false
+        });
+    });
+</script>
 </body>
 </html>
 

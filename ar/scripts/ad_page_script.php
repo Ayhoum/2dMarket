@@ -140,7 +140,7 @@ if (isset($_GET['ad_id'])) {
                     }
                     ?>
                     <!--                    <div class="carousel-cell"><img style="width: 750px; height: 420px; object-fit: cover;" src=""></div>-->
-                    <img src="<?php echo $picture_url.  $picture_name;?>" alt="orange tree" />
+                    <img src="<?php echo $picture_url.  $picture_name;?>" />
 
                     <?php
                 }
